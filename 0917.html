@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="9/17(목) 큐티 · 사사기 8:1–21">
+<meta property="og:description" content="존중받을 때가 아니라 무시당할 때 드러납니다">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "9월 17일 목요일", "ref": "사사기 8장 1–21절", "headline": "존중받을 때가 아니라<br>무시당할 때 드러납니다", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 8:1–21", "s1heading": "오늘의 말씀", "verse": "\"내가 이제 행한 일이 너희가 한 것에 비교되겠느냐\" 하매<br>그 말을 들으므로 그들의 노여움이 풀리니라", "verseRef": "사사기 8:2–3", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 이스라엘 안에서 시작된 싸움", "paragraphs": ["지난 이야기에서 기드온은 하나님의 도우심으로 300명의 군사만으로 미디안의 대군을 무너뜨렸습니다. 사람의 힘으로는 설명할 수 없는 승리였습니다. 하나님은 처음부터 \"내 손이 나를 구원하였다 할까 함이니라\"라고 말씀하셨고, 실제 전쟁에서도 미디안 사람들이 서로 칼로 치게 하심으로 승리의 주인이 하나님이심을 분명히 보여주셨습니다.", "그런데 오늘 8장부터 분위기가 조금씩 달라집니다. 기드온의 싸움을 보면 크게 세 번의 국면이 있습니다. 처음엔 자기 집 안의 바알 우상과의 싸움, 그다음엔 밖에 있는 미디안과의 싸움이었습니다. <mark>그런데 이제부터 이스라엘 안에서의 싸움이 시작됩니다.</mark> 오히려 이 세 번째 싸움이 더 위험합니다. 밖의 적과 싸울 때는 하나님을 의지했던 기드온이, 승리 이후에는 조금씩 자기 힘과 자기 감정에 끌려가는 모습이 나타나기 때문입니다. <mark>성경은 이 순간부터 기드온이 완전히 타락했다고 선을 그어주지 않습니다. 오히려 알아차릴 수 없을 정도로 조금씩 변해갑니다.</mark>"]}, {"title": "1–3절 · 에브라임의 분노를 지혜롭게 풀다", "paragraphs": ["에브라임 지파 사람들이 기드온에게 크게 따집니다 — \"미디안과 싸우러 갈 때 우리를 부르지 않았으니 어찌 이같이 대접하느냐?\" 본문은 단순히 \"질문했다\"가 아니라 \"크게 다투는지라\"고 말합니다. 명예의 문제일 수도, 전리품과 관련된 문제일 수도 있지만, 한 가지는 분명합니다. <mark>에브라임은 처음부터 중요하게 대우받지 못했다는 사실에 크게 상처받았습니다.</mark>", "그런데 기드온의 반응이 놀랍습니다. \"내가 이제 행한 일이 너희가 한 것에 비교되겠느냐? 에브라임의 끝물 포도가 아비에셀(기드온 가문)의 맏물 포도보다 낫지 아니하냐?\" 자신의 공을 낮추고 에브라임이 세운 공을 높여줍니다. 그 결과 <mark>\"그 말을 들으므로 그들의 노여움이 풀리니라.\"</mark> 힘으로 이길 수 있는 갈등을 부드러운 말로 풀어내는 것도 믿음의 성숙입니다."], "points": ["우리의 성숙은 내가 옳다는 것을 증명하는 능력보다, 관계를 살리기 위해 나를 낮출 수 있는 데서 드러날 때가 많다"]}, {"title": "4–12절 · 세바와 살문나를 향한 집요한 추격", "paragraphs": ["기드온과 300명은 비록 피곤하나 요단을 건너 계속 추격합니다. 끈기와 인내가 있는 모습입니다. 그런데 문맥을 조금 더 크게 볼 필요가 있습니다. 질문은 \"얼마나 끝까지 달렸는가\"가 아니라 <mark>\"무엇을 위해 그렇게 끝까지 달리고 있는가\"</mark>입니다. 뒤에 가면 그 집요함 속에 개인적인 복수의 동기가 섞여 있었음이 드러나기 때문입니다.", "숙곳 사람들에게 지친 군사를 위해 떡을 요청했지만 거절당합니다. 아직 세바와 살문나를 잡지 못한 상태라, 도왔다가 미디안에게 보복당할 위험을 생각했을 수 있습니다 — 자기 안전을 먼저 생각한 것입니다. 그런데 기드온의 반응이 문제입니다. 에브라임에게는 부드러웠던 사람이 숙곳의 거절 앞에서는 <mark>\"들가시와 찔레로 너희 살을 찢으리라\"</mark>고 말합니다. 브누엘에서 같은 거절을 당하자 이번엔 \"내가 평안히 돌아올 때에 이 망대를 헐리라\"고 합니다.", "여기서 흥미로운 건 '평안'이 곧 '샬롬'이라는 표현입니다. 앞서 6장에서 기드온은 여호와 샬롬이라는 제단을 세웠습니다. 그때 샬롬은 하나님이 주시는 평안이었습니다. 그런데 이제 기드온에게서 나오는 샬롬은 <mark>브누엘 사람들에게는 파괴를 의미하게 됩니다.</mark> 같은 사람이지만 점점 다른 모습이 나타납니다."], "points": ["우리의 성숙은 존중받을 때보다 무시당했을 때 더 분명하게 드러난다"]}, {"title": "13–17절 · 자신을 돕지 않은 이스라엘 백성에게 보복하다", "paragraphs": ["기드온은 세바와 살문나를 잡은 뒤 숙곳으로 돌아와 한 청년을 붙잡아 지도자 77명의 이름을 알아냅니다. 자신을 조롱했던 말을 그대로 기억하고 있다는 점이 중요합니다. <mark>그는 \"너희가 하나님의 백성을 돕지 않았다\"고 말하지 않습니다. 그가 기억하는 것은 \"너희가 나를 조롱했다\"는 것입니다.</mark> 하나님의 임무와 기드온 개인의 상처받은 명예가 섞이기 시작합니다.", "브누엘에서는 더 심각해집니다. 말한 대로 망대를 헐어버릴 뿐 아니라, <mark>그 성읍 사람들을 죽입니다.</mark> 그들은 가나안 사람이 아니라 이스라엘 사람입니다. 이스라엘을 미디안에서 구하도록 세워진 사사가, 이제 이스라엘 사람을 죽이는 사람이 되어갑니다."], "points": ["하나님의 일을 한다고 해서, 내 분노와 상처와 복수심까지 자동으로 하나님의 뜻이 되는 것은 아니다"]}, {"title": "18–21절 · 드러난 개인적 복수, 그리고 힘의 논리", "paragraphs": ["기드온은 붙잡은 두 왕에게 묻습니다 — \"너희가 다볼에서 죽인 자들은 어떠한 사람들이냐?\" 그들이 답합니다 — \"그들이 너와 같아서 모두 왕자들의 모습과 같더라.\" 그러자 기드온이 말합니다 — \"그들은 내 형제들이며 내 어머니의 아들들이니라.\" <mark>여기서 처음으로 기드온이 왜 그토록 세바와 살문나를 끝까지 추격했는지가 드러납니다.</mark> 처음엔 이스라엘을 구원하는 전쟁이었지만, 그 안에 자기 가족을 위한 복수도 섞여 있었습니다.", "기드온은 아직 어린 아들 여델에게 \"일어나 그들을 죽이라\" 명령하지만, 여델은 두려워 칼을 빼지 못합니다. <mark>이 모습은 과거의 기드온을 떠올리게 합니다.</mark> 기드온도 처음엔 너무나 두려워했고, 자신을 작다고 했고, 계속 확인을 구했습니다. 이제 그는 두려워하는 아들에게 \"죽여라\"라고 말합니다. 마치 여델이 예전의 기드온을 비추는 거울 같습니다.", "결국 세바와 살문나가 말합니다 — \"당신이 직접 일어나 우리를 치소서. 사람은 그 힘을 따라 강하느니라.\" 그러자 기드온이 직접 그들을 죽입니다. <mark>'힘'이라는 말이 의미 있게 들립니다.</mark> 7장에서는 하나님이 기드온의 힘을 계속 줄이셨습니다. \"내 손이, 곧 나의 힘이 나를 구원하였다\"고 말하지 못하게 하려는 것이었습니다. 그런데 8장에서는 점점 기드온의 힘이 이야기의 전면에 등장합니다."], "points": ["승리보다 더 어려운 것은, 승리한 뒤에도 하나님 앞에서 자신을 잃지 않는 것이다"]}, {"title": "적용 · 강해진 뒤에도, 무시당해도 흔들리지 않는 믿음", "paragraphs": ["오늘 두 가지를 우리 자신에게 물어보면 좋겠습니다. <b>첫째, 나는 강해진 뒤에도 여전히 하나님을 의지하고 있는가.</b> 기드온은 약할 때 하나님을 많이 찾았습니다. 두려울 때마다 묻고, 확신이 없을 때 표징을 구하고, 말씀을 기다렸습니다. 그런데 승리하고 사람들이 따르고 자기 힘으로 무언가 할 수 있다는 경험이 쌓이면서, 조금씩 <mark>자기 힘과 자기 판단이 이야기의 중심에 나타납니다.</mark> 우리도 그렇습니다. 힘들 때는 간절히 기도하지만, 일이 잘 풀리고 내 판단이 맞았다는 결과가 반복될 때는 오히려 하나님을 덜 의지하게 될 수 있습니다. <mark>믿음은 어려움을 통과할 때만 시험받는 것이 아니라, 성공을 통과할 때도 시험받습니다.</mark>", "<b>둘째, 나는 무시당하고 상처받았을 때 어떻게 반응하는가.</b> 에브라임에게는 부드럽게 반응했던 기드온이, 숙곳과 브누엘에게는 전혀 다른 모습을 보였습니다. 자신을 인정하지 않고 자존심을 건드리자 그 안에서 보복이 올라오기 시작했습니다. <mark>우리의 성숙은 존중받을 때보다 무시당했을 때 더 분명하게 드러납니다.</mark> 누군가 내 말을 듣지 않을 때, 내 수고를 알아주지 않을 때, 내게 모욕적인 말을 할 때 — 그 순간 내 안에서 무엇이 나오는지를 보아야 합니다.", "예수님도 엄청난 조롱과 침 뱉음과 모욕을 당하셨고, 십자가에서 죽어가며 비웃음을 받으셨습니다. 그러나 예수님은 자신을 모욕한 사람들에게 <mark>복수하기 위해 피를 흘리신 것이 아니라, 그들을 살리기 위해 자신의 피를 흘리셨습니다.</mark> 사사들은 힘을 얻을수록 자기 명예와 복수를 위해 다른 사람의 피를 흘리지만, 예수님은 이미 모든 권세를 가지셨음에도 그 권세를 자기 백성을 살리는 데 사용하신 참된 왕이십니다. 우리에게는 더 나은 구원자, 죽이는 것이 아니라 우리를 위해 죽는 왕이 필요합니다. 그분이 바로 예수 그리스도이십니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "요즘 잘 풀리고 있는 일 하나를 떠올리며, 그 가운데서도 여전히 하나님을 의지하고 있는지 점검했다"}, {"key": "c2", "text": "최근 누군가에게 무시당하거나 인정받지 못했을 때 내 안에서 무엇이 올라왔는지 돌아봤다"}, {"key": "c3", "text": "관계 속 갈등 하나를 힘으로 이기려 하지 않고 나를 낮추는 말로 풀어낼 수 있는지 생각해봤다"}, {"key": "c4", "text": "내 열심과 분노, 복수심을 하나님의 뜻이라고 착각하고 있지는 않은지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "요즘 내가 누군가에게 무시당하거나 인정받지 못해 상처받은 순간이 있다면, 그때 내 안에서 무엇이 올라왔습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "나를 낮추기", "value": "오늘 갈등 상황 하나를 힘이 아니라 낮추는 말로 풀어보기"}, {"key": "act2", "label": "복수심 내려놓기", "value": "최근 나를 무시했던 사람을 향한 마음을 오늘 하나님께 내어놓기"}, {"key": "act3", "label": "강할 때 의지하기", "value": "요즘 잘되고 있는 일 하나를 두고 '주님이 하셨습니다'라고 고백하기"}, {"key": "act4", "label": "예수님의 길 선택하기", "value": "모욕당했을 때 예수님처럼 반응하는 연습을 오늘 한 번 해보기"}, {"key": "act5", "label": "가족·공동체 돌아보기", "value": "가족이나 공동체 안에서 서로 상처 주고 있는 부분이 있는지 한 사람과 나누기"}], "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "약할 때뿐 아니라 강해진 뒤에도 저를 붙드시는 주님, 조롱과 모욕 앞에서도 우리를 살리기 위해 피 흘리신 예수님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "잘되고 인정받을 때 하나님보다 제 힘과 판단을 더 의지했던 것을, 무시당했을 때 보복하고 싶었던 마음을 회개합니다"}, {"key": "p3", "tag": "간구", "text": "강해진 뒤에도 하나님을 의지하게 하시고, 무시당할 때에도 복수가 아니라 예수님의 마음을 품게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "September 17, Thursday", "ref": "Judges 8:1–21", "headline": "True faith is revealed<br>not in honor, but in disrespect", "videoLabel": "Listen to today's 10-minute message", "videoSub": "Daily Bread QT · Judges 8:1–21", "s1heading": "Today's Word", "verse": "\"Is not what I have done now less than what you have done?\" he said,<br>and when they heard this, their resentment against him subsided.", "verseRef": "Judges 8:2–3", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · A War That Begins Within Israel", "paragraphs": ["In the previous story, Gideon, with God's help, brought down Midian's vast army using only 300 men — a victory human strength could never explain. God had said from the start, \"lest Israel vaunt themselves against me, saying, Mine own hand hath saved me,\" and in the actual battle He made unmistakably clear that He alone was the author of that victory, causing the Midianites to strike one another down.", "But starting in chapter 8, the mood begins to shift. Gideon's fight unfolds in three stages: first the battle with the household idol of Baal, then the battle outside with Midian — <mark>and now, a battle beginning inside Israel itself.</mark> This third battle is actually the more dangerous one. Gideon, who depended on God while fighting an outside enemy, now begins, after victory, to be pulled little by little by his own strength and his own emotions. <mark>Scripture never draws a clear line saying Gideon has now fully fallen — the change comes so gradually we can barely notice it.</mark>"]}, {"title": "Verses 1–3 · Wisely Defusing Ephraim's Anger", "paragraphs": ["The men of Ephraim confront Gideon sharply — \"Why have you treated us this way, not calling us when you went to fight Midian?\" The text doesn't simply say they \"asked\" — it says they \"strove sharply\" with him. It may have been a matter of honor, rivalry, or the spoils, but one thing is clear: <mark>Ephraim was deeply wounded by not being treated as important from the start.</mark>", "Yet Gideon's response is remarkable. \"Is not what I have done now less than what you have done? Are not the gleanings of Ephraim's grapes better than the full vintage of Abiezer (Gideon's own clan)?\" He lowers his own achievement and lifts up theirs. As a result, <mark>\"when they heard this, their resentment against him subsided.\"</mark> Defusing a conflict you could win by force, with gentle words instead, is also a mark of spiritual maturity."], "points": ["Our maturity often shows not in the ability to prove we're right, but in the willingness to lower ourselves to save a relationship"]}, {"title": "Verses 4–12 · The Relentless Pursuit of Zebah and Zalmunna", "paragraphs": ["Gideon and the 300, though exhausted, cross the Jordan and keep pursuing. It shows genuine endurance. But we need to widen the lens a little. The real question isn't \"how far did he run\" but <mark>\"what was he running for?\"</mark> — because later verses reveal that a personal motive of revenge was mixed into that relentlessness.", "At Succoth, Gideon politely asks for bread for his exhausted men, but is refused — perhaps because, with Zebah and Zalmunna not yet captured, helping Gideon risked Midianite retaliation. They put their own safety first. But Gideon's response is troubling. The same man who was gentle toward Ephraim now says to Succoth, <mark>\"I will tear your flesh with the thorns of the wilderness and with briers.\"</mark> Refused the same way at Penuel, he says, \"When I come again in peace, I will break down this tower.\"", "What's striking here is that \"peace\" is the same word as \"shalom.\" Earlier, in chapter 6, Gideon built an altar called The-LORD-Is-Peace — where shalom meant the peace God gives. But now, the shalom coming from Gideon <mark>means destruction for the people of Penuel.</mark> It's the same man, but a different man is slowly emerging."], "points": ["Our maturity is revealed far more clearly when we are disrespected than when we are honored"]}, {"title": "Verses 13–17 · Retaliation Against Israel's Own People", "paragraphs": ["After capturing Zebah and Zalmunna, Gideon returns to Succoth, catches a young man, and learns the names of its seventy-seven leaders — the ones who refused to help him. <mark>Notice what he remembers: not \"you did not help God's people,\" but \"you mocked me.\"</mark> God's mission and Gideon's own wounded pride begin to mix together.", "At Penuel it grows even worse. Gideon not only tears down the tower as he said he would, but <mark>kills the men of the city.</mark> They are not Canaanites — they are fellow Israelites. The judge once raised up to save Israel from Midian is now becoming a man who kills Israelites."], "points": ["Doing God's work doesn't automatically make my anger, my wounded pride, and my desire for revenge God's will"]}, {"title": "Verses 18–21 · Personal Revenge Revealed, and the Logic of Strength", "paragraphs": ["Gideon asks the two captured kings, \"What manner of men were they whom ye slew at Tabor?\" They answer, \"As thou art, so were they; each one resembled the children of a king.\" Gideon replies, \"They were my brethren, even the sons of my mother.\" <mark>Only now is it revealed why Gideon pursued Zebah and Zalmunna so relentlessly.</mark> What began as a war to save Israel had personal revenge for his own family mixed in all along.", "Gideon orders his young son Jether, \"Rise, and slay them,\" but Jether, still a boy, is too afraid to draw his sword. <mark>This scene calls back the earlier Gideon.</mark> Gideon himself was once deeply afraid, called himself small, and kept asking for confirmation. Now he tells his frightened son, \"Kill them.\" Jether stands almost like a mirror reflecting the Gideon of before.", "Finally Zebah and Zalmunna say, \"Rise thou, and slay us: for as the man is, so is his strength.\" And Gideon kills them himself. <mark>The word \"strength\" carries real weight here.</mark> In chapter 7, God kept reducing Gideon's strength so he could never say, \"my own hand — my own strength — saved me.\" But in chapter 8, Gideon's own strength increasingly takes center stage."], "points": ["Harder than winning the victory is not losing yourself before God after the victory"]}, {"title": "Application · A Faith That Doesn't Waver — Strong or Disrespected", "paragraphs": ["Today let's ask ourselves two things. <b>First, do I still depend on God even after becoming strong?</b> Gideon sought God often when he was weak — asking whenever he was afraid, seeking signs when unsure, waiting on God's word. But as victory came, as people began to follow him, as he built up experience that his own strength could accomplish things, <mark>his own strength and his own judgment slowly moved to the center of the story.</mark> We are the same. We pray desperately when things are hard. But when things go well, when people affirm us, when our judgment keeps turning out right, we can end up depending on God less. <mark>Faith isn't tested only by hardship — it's also tested by success.</mark>", "<b>Second, how do I respond when I am disrespected and wounded?</b> Gideon, gentle with Ephraim, showed a completely different face to Succoth and Penuel. The moment his pride was touched and he wasn't honored, revenge began rising up inside him. <mark>Our maturity is revealed far more clearly when we are disrespected than when we are honored.</mark> When someone won't listen to me, doesn't acknowledge my effort, dismisses my opinion, or insults me — that's the moment to watch what actually comes out of me.", "Jesus faced immense mockery — spat on, insulted, jeered at as He died on the cross. Yet Jesus <mark>did not shed His blood to take revenge on those who mocked Him — He shed His blood to save them.</mark> The judges of Israel, the more power they gained, shed others' blood for their own honor and revenge. But Jesus, though He already held all authority, used that authority to save His people — the true King. We need a better savior than this: not one who kills, but one who dies for us. That King is Jesus Christ."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I thought of one thing that's going well for me right now, and checked whether I still depend on God in the midst of it."}, {"key": "c2", "text": "I looked back at what rose up inside me the last time I felt disrespected or unacknowledged."}, {"key": "c3", "text": "I considered whether I could resolve one relational conflict with humble words instead of trying to win by force."}, {"key": "c4", "text": "I checked whether I've been mistaking my own zeal, anger, or desire for revenge for God's will."}], "s4heading": "One-Line Reflection", "memoHint": "If there's a recent moment when you felt disrespected or unacknowledged, what rose up inside you then?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Humble myself", "value": "Resolve one conflict today with humble words instead of force"}, {"key": "act2", "label": "Release the grudge", "value": "Hand over to God today my feelings toward someone who recently disrespected me"}, {"key": "act3", "label": "Depend on Him in strength", "value": "Say of one thing that's going well, 'The Lord did this'"}, {"key": "act4", "label": "Choose Jesus' way", "value": "Practice responding the way Jesus did, the next time I'm insulted"}, {"key": "act5", "label": "Check my family/community", "value": "Talk with one person about whether we've been hurting each other in my family or community"}], "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Lord, for holding me not only when I'm weak but also after I've grown strong, and thank You, Jesus, for shedding Your blood to save us even in the face of mockery and insult."}, {"key": "p2", "tag": "Repent", "text": "I repent of depending on my own strength and judgment more than God when things go well, and of wanting revenge when I was disrespected."}, {"key": "p3", "tag": "Ask", "text": "Let me depend on You even after growing strong, and let me carry Jesus' heart, not revenge, whenever I am disrespected."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Setyembre 17, Huwebes", "ref": "Mga Hukom 8:1–21", "headline": "Ang tunay na pananampalataya ay lumitaw<br>hindi sa paggalang, kundi sa pagwalang-halaga", "videoLabel": "Pakinggan ang 10-minutong mensahe ngayon", "videoSub": "Daily Bread QT · Mga Hukom 8:1–21", "s1heading": "Ang Salita Ngayon", "verse": "\"Hindi ba mas maliit ang nagawa ko ngayon kaysa sa nagawa ninyo?\" aniya,<br>at nang marinig nila ito, humupa ang kanilang galit sa kanya.", "verseRef": "Mga Hukom 8:2–3", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Isang Digmaang Nagsisimula sa Loob ng Israel", "paragraphs": ["Sa naunang kwento, sa tulong ng Diyos, ibinagsak ni Gideon ang malaking hukbo ng Midian gamit lamang ang 300 katao — isang tagumpay na hindi kailanman kayang ipaliwanag ng lakas ng tao. Sinabi na ng Diyos sa simula, \"baka ipagmalaki ng Israel laban sa akin, na sabihin, Iniligtas ako ng aking sariling kamay,\" at sa tunay na labanan, malinaw Niyang ipinakita na Siya lamang ang may-ari ng tagumpayang iyon, sa pamamagitan ng pagpapatayan ng mga Midianita sa isa't isa.", "Ngunit mula sa kabanata 8, unti-unting nagbabago ang kapaligiran. Ang laban ni Gideon ay may tatlong yugto: una ang labanan sa diyus-diyusang Baal sa loob ng kanyang tahanan, pangalawa ang labanan sa labas kasama ang Midian — <mark>at ngayon, nagsisimula ang labanan sa loob mismo ng Israel.</mark> Ang ikatlong labanang ito ang mas mapanganib. Si Gideon, na umasa sa Diyos habang lumalaban sa panlabas na kaaway, ay nagsisimulang unti-unting madala ng sariling lakas at damdamin pagkatapos ng tagumpay. <mark>Hindi tinukoy ng Kasulatan ang eksaktong sandali kung kailan lubusang nabagsak si Gideon — dahan-dahan ang pagbabago, halos hindi mapapansin.</mark>"]}, {"title": "Talata 1–3 · Matalinong Pinawi ang Galit ng Efraim", "paragraphs": ["Direktang nagreklamo ang mga lalaki ng Efraim kay Gideon — \"Bakit hindi mo kami tinawag noong nakipaglaban ka sa Midian?\" Hindi lamang \"nagtanong\" sila — \"masidhing nakipagtalo\" sila sa kanya, ayon sa teksto. Maaaring usapin ito ng karangalan, ng kumpetisyon, o ng samsam sa digmaan, ngunit malinaw ang isang bagay: <mark>nasaktan nang malaki ang Efraim sa pakiramdam na hindi sila itinuring na mahalaga mula sa simula.</mark>", "Ngunit kamangha-mangha ang sagot ni Gideon. \"Hindi ba mas maliit ang nagawa ko ngayon kaysa sa nagawa ninyo? Hindi ba mas mabuti ang natirang ubas ng Efraim kaysa sa unang ani ng Abiezer (angkan ni Gideon)?\" Ibinaba niya ang kanyang sariling nagawa at itinaas ang nagawa ng Efraim. Bunga nito, <mark>\"nang marinig nila ito, humupa ang kanilang galit sa kanya.\"</mark> Ang paglutas ng away na kaya mong panalunan gamit ang lakas, sa pamamagitan ng malumanay na salita, ay tanda rin ng kapanahunan sa pananampalataya."], "points": ["Ang aming kapanahunan ay kadalasang lumilitaw hindi sa kakayahang patunayan na tama ako, kundi sa kahandaang magpakumbaba upang mailigtas ang relasyon"]}, {"title": "Talata 4–12 · Ang Walang-humpay na Paghabol kay Zeba at Zalmuna", "paragraphs": ["Bagaman pagod, tumawid si Gideon at ang 300 sa Jordan upang ipagpatuloy ang paghabol. Nagpapakita ito ng tunay na katatagan. Ngunit kailangan nating tingnan nang mas malawak. Ang tunay na tanong ay hindi \"gaano katagal siya tumakbo\" kundi <mark>\"para saan siya tumatakbo?\"</mark> — dahil sa susunod na mga talata, lumitaw na may halong personal na paghihiganti sa kanyang walang-humpay na pagtugis.", "Sa Sucot, magalang na humingi si Gideon ng tinapay para sa kanyang mga pagod na kawal, ngunit tinanggihan siya — marahil dahil, hindi pa nahuhuli si Zeba at Zalmuna, panganib para sa Sucot ang tulungan si Gideon dahil sa maghihiganti ang Midian. Inuna nila ang kanilang sariling kaligtasan. Ngunit nakababahala ang tugon ni Gideon. Ang taong maamo sa Efraim ay nagsabi sa Sucot, <mark>\"gugutayin ko ang inyong laman ng mga tinik at dawag ng ilang.\"</mark> Nang tanggihan siya sa Penuel sa parehong paraan, sinabi niya, \"Kapag bumalik akong ligtas, wawasakin ko ang toreng ito.\"", "Kapansin-pansin dito na ang \"ligtas\" (kapayapaan) ay ang parehong salitang \"shalom.\" Sa naunang kabanata 6, nagtayo si Gideon ng dambanang tinawag na Ang-Panginoon-ay-Kapayapaan — kung saan ang shalom ay kapayapaang mula sa Diyos. Ngunit ngayon, ang shalom na nagmumula kay Gideon <mark>ay nangangahulugan ng pagkawasak para sa mga taga-Penuel.</mark> Iisang tao siya, ngunit dahan-dahang lumilitaw ang ibang mukha niya."], "points": ["Ang aming kapanahunan ay mas malinaw na nahahayag kapag hinamak kami kaysa kapag iginagalang kami"]}, {"title": "Talata 13–17 · Paghihiganti Laban sa Kapwa Israelita", "paragraphs": ["Matapos mahuli si Zeba at Zalmuna, bumalik si Gideon sa Sucot, hinuli ang isang binata, at natuklasan ang mga pangalan ng pitumpu't pitong pinuno nito — ang mga tumangging tulungan siya. <mark>Pansinin ang natatandaan niya: hindi \"hindi ninyo tinulungan ang bayan ng Diyos,\" kundi \"kinutya ninyo ako.\"</mark> Nagsisimulang maghalo ang misyon ng Diyos at ang nasugatang pagmamalaki ni Gideon.", "Sa Penuel, lumala pa ito. Hindi lamang giniba ni Gideon ang tore gaya ng sinabi niya, ngunit <mark>pinatay niya ang mga lalaki ng bayan.</mark> Hindi sila mga Canaanita — mga kapwa Israelita sila. Ang hukom na dating itinaas upang iligtas ang Israel mula sa Midian ay unti-unting nagiging taong pumapatay ng mga Israelita."], "points": ["Ang paggawa ng gawain ng Diyos ay hindi awtomatikong ginagawang kalooban ng Diyos ang aking galit, nasugatang pagmamalaki, at pagnanais na maghiganti"]}, {"title": "Talata 18–21 · Ang Personal na Paghihiganti at ang Lohika ng Lakas", "paragraphs": ["Tinanong ni Gideon ang dalawang nahuling hari, \"Anong uri ng mga tao ang pinatay ninyo sa Tabor?\" Sumagot sila, \"Kagaya mo sila, tulad ng anak ng hari ang kanilang anyo.\" Sinabi ni Gideon, \"Sila ang aking mga kapatid, mga anak ng aking ina.\" <mark>Ngayon lamang nahayag kung bakit walang-humpay na hinabol ni Gideon si Zeba at Zalmuna.</mark> Ang dating digmaan para iligtas ang Israel ay may kahalong personal na paghihiganti para sa kanyang sariling pamilya.", "Inutusan ni Gideon ang kanyang batang anak na si Jeter, \"Bumangon ka, at patayin mo sila,\" ngunit natakot si Jeter, na bata pa, na bunutin ang kanyang espada. <mark>Ang eksenang ito ay nagpapaalala sa dating Gideon.</mark> Si Gideon din, noong una, ay sobrang natakot, tinawag ang sarili niyang maliit, at patuloy na humingi ng katiyakan. Ngayon, sinasabi niya sa kanyang natatakot na anak, \"Patayin mo sila.\" Si Jeter ay tila salamin na sumasalamin sa dating Gideon.", "Sa huli, sinabi ni Zeba at Zalmuna, \"Bumangon ka mismo at patayin mo kami: sapagkat ang lakas ng tao ay ayon sa kanya.\" At personal na pinatay sila ni Gideon. <mark>Ang salitang \"lakas\" ay may malalim na kahulugan dito.</mark> Sa kabanata 7, patuloy na binawasan ng Diyos ang lakas ni Gideon, upang hindi niya masabing \"ang aking sariling kamay — ang aking sariling lakas — ang nagligtas sa akin.\" Ngunit sa kabanata 8, unti-unting nauuna ang sariling lakas ni Gideon sa kwento."], "points": ["Mas mahirap kaysa sa panalo ang huwag mawala ang sarili sa harap ng Diyos matapos manalo"]}, {"title": "Pagsasabuhay · Isang Pananampalatayang Hindi Nayayanig — Malakas man o Hinamak", "paragraphs": ["Ngayon, tanungin natin ang ating sarili sa dalawang bagay. <b>Una, umaasa pa rin ba ako sa Diyos kahit pagkatapos ko nang lumakas?</b> Malimit humingi si Gideon sa Diyos noong siya ay mahina — tinatanong sa tuwing natatakot, humihingi ng tanda kapag walang katiyakan, hinihintay ang salita ng Diyos. Ngunit habang dumarating ang tagumpay, habang sinusundan siya ng mga tao, habang naipon ang karanasang kaya niyang gumawa ng bagay gamit ang sariling lakas, <mark>unti-unting lumipat sa gitna ng kwento ang sariling lakas at hatol niya.</mark> Tayo rin ay ganito. Nananalangin tayo nang taimtim kapag mahirap. Ngunit kapag umaayos ang mga bagay, kapag kinikilala tayo ng mga tao, kapag paulit-ulit na tama ang aming hatol, maaaring humina ang pag-asa natin sa Diyos. <mark>Hindi lamang sa kahirapan nasusubok ang pananampalataya — nasusubok din ito sa tagumpay.</mark>", "<b>Ikalawa, paano ako tumutugon kapag hinahamak at nasasaktan ako?</b> Si Gideon, na maamo sa Efraim, ay ibang-iba ang mukhang ipinakita sa Sucot at Penuel. Sa sandaling nasugatan ang kanyang pagmamalaki at hindi siya iginalang, nagsimulang tumaas ang paghihiganti sa loob niya. <mark>Ang aming kapanahunan ay mas malinaw na nahahayag kapag hinamak kami kaysa kapag iginagalang kami.</mark> Kapag hindi ako pinapakinggan ng isang tao, hindi kinikilala ang aking pagsisikap, ipinagwalang-bahala ang aking opinyon, o niinsulto ako — iyon ang sandaling dapat nating pagmasdan kung ano talaga ang lumalabas sa atin.", "Nakaranas si Jesus ng matinding kutya — dinuraan, ininsulto, kinutya habang namamatay sa krus. Ngunit <mark>hindi dumaloy ang dugo ni Jesus upang maghiganti sa mga kumutya sa Kanya — dumaloy ito upang iligtas sila.</mark> Ang mga hukom ng Israel, kung mas malakas sila, mas nagpapadanak ng dugo ng iba para sa kanilang sariling karangalan at paghihiganti. Ngunit si Jesus, bagamat hawak na Niya ang lahat ng kapangyarihan, ginamit Niya ang kapangyarihang iyon upang iligtas ang Kanyang bayan — ang tunay na Hari. Kailangan natin ng mas mabuting tagapagligtas kaysa dito: hindi isang pumapatay, kundi isang namamatay para sa atin. Ang Haring iyon ay si Jesu-Cristo."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Naisip ko ang isang bagay na umaayos ngayon sa aking buhay, at sinuri kung umaasa pa rin ako sa Diyos sa kalagitnaan nito."}, {"key": "c2", "text": "Binalikan ko ang tumaas sa loob ko noong huling pagkakataong naramdaman kong hinamak o hindi kinilala."}, {"key": "c3", "text": "Isinaalang-alang ko kung malulutas ko ba ang isang tunggalian sa relasyon gamit ang mapagpakumbabang salita imbes na manalo gamit ang lakas."}, {"key": "c4", "text": "Sinuri ko kung ipinagkakamali ko ba ang aking sariling sigasig, galit, o pagnanais na maghiganti bilang kalooban ng Diyos."}], "s4heading": "Isang Linyang Pagninilay", "memoHint": "Kung may kamakailang sandali na naramdaman mong hinamak o hindi kinilala, ano ang tumaas sa loob mo noon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Magpakumbaba", "value": "Lutasin ngayon ang isang tunggalian gamit ang mapagpakumbabang salita imbes na lakas"}, {"key": "act2", "label": "Bitawan ang sama ng loob", "value": "Ibigay sa Diyos ngayon ang nararamdaman ko sa taong kamakailan ay humamak sa akin"}, {"key": "act3", "label": "Umasa sa Kanya kahit malakas", "value": "Sabihin tungkol sa isang bagay na umaayos, 'Ang Panginoon ang gumawa nito'"}, {"key": "act4", "label": "Piliin ang paraan ni Jesus", "value": "Sanayin ang tumugon gaya ni Jesus, sa susunod na ako ay iinsultuhin"}, {"key": "act5", "label": "Suriin ang pamilya/komunidad", "value": "Pag-usapan sa isang tao kung may nasasaktan kami sa isa't isa sa pamilya o komunidad"}], "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Panginoon, sa paghawak Mo sa akin hindi lamang kapag mahina ako, kundi pagkatapos ko nang lumakas, at salamat, Jesus, sa pagdaloy ng Iyong dugo upang iligtas kami kahit sa harap ng kutya at insulto."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa mas pag-asa sa aking sariling lakas at hatol kaysa sa Diyos kapag umaayos ang mga bagay, at sa pagnanais na maghiganti noong hinamak ako."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong umasa sa Iyo kahit pagkatapos akong lumakas, at dalhin ko ang puso ni Jesus, hindi paghihiganti, sa tuwing hinahamak ako."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+</body>
+</html>
