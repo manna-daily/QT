@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="9/18(금) 큐티 · 사사기 8:22–35">
+<meta property="og:description" content="구원받고도 하나님을 잊을 수 있습니까">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "9월 18일 금요일", "ref": "사사기 8장 22–35절", "headline": "구원받고도<br>하나님을 잊을 수 있습니까", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 8:22–35", "s1heading": "오늘의 말씀", "verse": "\"...사방의 모든 원수의 손에서 자기들을 건져내신<br>여호와 자기들의 하나님을 기억하지 아니하며\"", "verseRef": "사사기 8:34", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 입술의 고백과 삶의 방향", "paragraphs": ["앞선 본문에서 기드온은 하나님의 도우심으로 미디안과의 전쟁에서 승리했습니다. 그러나 승리 이후의 모습은 조금씩 달라졌습니다. 이스라엘을 구원하도록 부름받은 사람이 자기 명예를 지키기 위해 동족에게 보복하고, 형제들의 죽음에 대한 개인적인 복수에 집착하는 모습까지 보여주었습니다. 성경은 기드온이 어느 순간부터 변질되었는지 명확하게 선을 그어주지 않습니다. 오히려 그의 변화를 천천히 보여줍니다.", "그런데 이 질문을 기드온에게만 던질 수는 없습니다. 우리 자신의 모습이기도 하기 때문입니다. 우리는 입술로 하나님이 우리의 구원자이시며 삶의 주인이시라고 고백합니다. 그러나 실제 삶에서, 중요한 결정을 내릴 때, 사람들과 갈등할 때, 성공을 경험할 때도 <mark>여전히 하나님을 주인으로 모시고 있습니까? 아니면 고백은 하면서 실제로는 내 뜻과 감정, 내 성공을 중심으로 살아가고 있지는 않습니까?</mark> 기드온의 시작을 기억해 보십시오. 그는 자기 아버지 집에 있던 바알의 제단을 무너뜨리는 일로 사명을 시작했습니다. 그런데 오늘 본문에서는 그가 만든 금 에봇이 오히려 이스라엘을 우상숭배로 이끄는 계기가 됩니다. <mark>처음에는 우상을 무너뜨렸는데, 마지막에는 자신이 만든 것이 올무가 된 것입니다.</mark>"]}, {"title": "22–23절 · 왕이 되지 않겠다는 선언, 그리고 그 이후의 간극", "paragraphs": ["이스라엘 백성이 기드온에게 요청합니다 — 기드온뿐 아니라 그의 아들과 손자까지, 자신들을 미디안에서 구원했으니 대대로 다스려 달라는 것입니다. 앞선 7장을 기억해야 합니다. 하나님은 기드온의 군대를 300명으로 줄이시면서 이스라엘이 \"자기 손으로 구원했다\"고 자랑하지 못하게 하셨습니다. 그런데 이제 백성들은 승리의 진짜 주인이신 하나님보다 기드온을 바라보고 앞세웁니다. <mark>하나님께서 주신 은혜를 기억하지 못하면, 하나님이 사용하신 사람이나 도구가 어느 순간 하나님의 자리를 차지할 수 있습니다.</mark>", "기드온의 대답은 신학적으로 정확합니다 — \"여호와께서 너희를 다스리시리라.\" 이스라엘의 궁극적인 왕은 사람이 아니라 하나님이십니다. 그런데 기드온의 이후 삶을 보면 그의 선언과 행동 사이에 간극이 나타납니다. 말로는 왕이 되지 않겠다고 했지만, 이후 많은 재물과 아내를 소유하고 왕의 가정과 비슷한 모습을 보여줍니다. 그가 의도적으로 거짓말했다고 단정할 필요는 없습니다. 그러나 한 가지는 분명합니다. <mark>기드온이 입술로 선언한 하나님의 통치가 그의 삶과 예배 속에서 일관되게 실현되지는 않았습니다.</mark>"], "points": ["입술에서 멈추는 고백으로는 충분하지 않다 — 그 고백이 우리의 선택과 삶의 방식으로 이어져야 한다"]}, {"title": "24–27절 · 금 에봇, 우상을 무너뜨린 사람이 만든 또 다른 우상", "paragraphs": ["왕권을 거절한 직후 기드온은 백성에게 전리품으로 얻은 금 귀고리 하나씩을 요청합니다. 백성들은 기꺼이 내어놓아 무려 1,700세겔(약 19kg)의 금이 모입니다. 여기에 미디안 왕들의 장신구와 자주색 의복도 더해집니다. 출애굽기 32장이 떠오릅니다 — 아론도 백성에게 금 귀고리를 가져오게 해서 금송아지를 만들었습니다. <mark>두 사건이 똑같지는 않지만, 백성에게서 금을 모아 종교적인 물건을 만들고 그것이 잘못된 예배로 이어진다는 점에서 닮아 있습니다.</mark> 하나님께서 주신 물질도 하나님보다 더 중요해지면 우상이 될 수 있습니다.", "기드온은 그 금으로 에봇을 만들어 자기 고향 오브라에 둡니다. 기드온이 처음부터 우상을 만들려 했다고 단정할 수는 없습니다. 그러나 결과는 성경이 분명하게 말합니다 — <mark>\"온 이스라엘이 그것을 음란하게 위함으로 그것이 기드온과 그의 집에 올무가 되니라.\"</mark> 기드온의 시작과 마지막을 비교해 보십시오. 6장에서는 아버지 집의 바알 제단을 무너뜨렸는데, 8장에서는 자신이 만든 에봇이 이스라엘을 우상숭배로 이끄는 계기가 됩니다."], "points": ["하나님을 위해 시작한 일이라도, 하나님보다 그것 자체를 더 붙들기 시작하면 신앙의 방향이 잘못될 수 있다"]}, {"title": "28–32절 · 40년의 평안, 그리고 기드온의 죽음", "paragraphs": ["미디안은 다시 이스라엘을 공격하지 못하고, 기드온이 살아 있는 동안 그 땅은 40년 동안 평안합니다. 분명 하나님이 주신 은혜입니다. 그러나 주의해야 합니다 — <mark>40년의 평안이 기드온의 모든 행동을 하나님께서 승인하셨다는 뜻은 아닙니다.</mark> 이미 27절에서 에봇이 올무가 되었다고 말씀했기 때문입니다. 외부의 전쟁은 끝났지만, 내부의 영적인 문제는 여전히 남아 있었습니다. 더 안타까운 것은 이것이 사사기에서 마지막으로 등장하는 '땅의 평안' 선언이라는 점입니다. 이후 이스라엘은 더 깊은 혼란으로 들어갑니다.", "기드온은 아내가 많았고 아들이 70명, 그리고 세겜에 있는 첩에게서 얻은 아들의 이름은 아비멜렉 — '내 아버지는 왕이다'라는 뜻입니다. 이 이름 하나로 기드온이 스스로 왕이라 자처했다고 단정할 수는 없지만, 앞선 23절의 \"내가 너희를 다스리지 아니하겠다\"는 선언과 나란히 놓으면, 그의 가정이 왕의 가정과 비슷한 모습이라는 점을 지나치기 어렵습니다. <mark>우리가 다음 세대에 남기는 것은 입술로 가르치는 신앙만이 아니라, 실제로 살아낸 삶의 방식입니다.</mark>"], "points": ["삶이 평안하다는 사실만으로 내가 하나님과 올바른 관계에 있다고 판단해서는 안 된다"]}, {"title": "33–35절 · 기드온이 죽자 이스라엘이 은혜를 잊다", "paragraphs": ["기드온이 죽자 이스라엘은 다시 바알들을 따르고, 바알브릿('언약의 주')을 자기들의 신으로 삼습니다. 참으로 아이러니합니다 — 자신들과 언약을 맺고 구원하신 여호와를 버리고, 다른 신을 '언약의 주'로 섬기기 시작한 것입니다. <mark>외적 문제인 미디안은 해결되었지만, 이스라엘의 근본적인 문제는 해결되지 않았습니다. 그 문제는 미디안이 아니라, 하나님을 떠나는 마음이었기 때문입니다.</mark>", "34절은 \"자기들을 건져내신 여호와 자기들의 하나님을 기억하지 아니하며\"라고 말합니다. 여기서 '기억하지 않았다'는 것은 하나님이 누구신지 머릿속에서 완전히 잊었다는 뜻이 아닙니다. <mark>그분이 베푸신 구원의 은혜가 더 이상 그들의 삶을 움직이지 않았다는 것입니다.</mark> 그들은 300명으로 승리하게 하신 일을 경험했고, 40년의 평안도 누렸습니다. 그러나 그 은혜가 하나님을 왕으로 섬기는 삶으로는 이어지지 않았습니다. 이 망각은 다음 장, 아비멜렉과 기드온의 아들들에게서 일어나는 비극으로 이어집니다."], "points": ["은혜를 기억한다는 것은 과거의 사건을 아는 데서 그치는 것이 아니라, 그 은혜가 오늘 나의 선택을 움직이게 하는 것이다"]}, {"title": "적용 · 이미 받은 은혜에 합당하게", "paragraphs": ["하나님의 구원을 경험하는 것과 하나님의 통치 아래 살아가는 것은 같은 일이 아닙니다. 이스라엘은 하나님의 은혜와 구원을 경험했지만 하나님을 잊었습니다. 기드온은 \"여호와께서 왕이시라\"고 선언했지만 그의 삶과 예배는 그 고백과 일치하지 않았습니다. 우리도 마찬가지입니다 — 예수님을 믿는다고 고백하면서 실제로는 내가 왕이 되어 살아갈 수 있습니다. 그래서 오늘 진지하게 물어야 합니다 — <mark>나는 이미 받은 은혜에 대해 어떻게 반응하며 살아가고 있습니까?</mark> 더 큰 은혜를 구하기 전에, 이미 받은 넉넉한 은혜를 기억해야 합니다. 예수님께서 십자가에서 우리 죄를 담당하셨고, 하나님의 자녀가 되는 은혜, 언제든지 하나님께 나아갈 수 있는 권리를 주셨습니다. <mark>우리는 은혜를 얻기 위해 순종하는 것이 아니라, 이미 은혜를 받았기에 감사하며 순종하는 것입니다.</mark>", "그렇다면 왕의 자녀는 어떻게 살아야 할까요? 예수님은 제자들의 발을 씻기셨습니다. 주님이시며 선생이신 분이 가장 낮은 자리에서 섬기셨고, 제자들에게도 서로 발을 씻어주라고 가르치셨습니다. <mark>왕이신 예수님께서 보여주신 삶은 권력으로 자신을 높이는 삶이 아니라, 사랑으로 다른 사람을 섬기는 삶이었습니다.</mark> 오늘 우리의 삶에서 은혜에 합당한 반응은 구체적입니다 — 가정에서 내 뜻을 고집하기보다 가족을 사랑하는 것, 교회에서 내 사역의 성과를 자랑하기보다 하나님께 영광 돌리고 사람을 섬기는 것, 중요한 결정 앞에서 내 유익만 생각하기보다 하나님이 기뻐하시는 뜻을 구하는 것, 그리고 지금까지 베푸신 은혜를 당연하게 여기지 않고 감사하는 것입니다.", "우리에게 완벽한 삶을 요구하시는 것이 아닙니다. 우리는 여전히 넘어지고 실수합니다. 그러나 그때마다 십자가의 은혜를 기억하고 다시 하나님께 돌아와야 합니다. <mark>중요한 것은 우리의 삶의 방향이 누구를 향해 있는가 하는 것입니다.</mark>"]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "내 입술의 고백과 실제 선택 사이에 간격이 있는 부분은 없는지 하나 떠올려봤다"}, {"key": "c2", "text": "하나님을 위해 시작한 일(사역·습관·방식) 중 어느새 그 자체를 더 붙들고 있는 건 없는지 점검했다"}, {"key": "c3", "text": "요즘 삶이 평안하다는 사실만으로 하나님과의 관계가 괜찮다고 안심하고 있지는 않은지 돌아봤다"}, {"key": "c4", "text": "이미 받은 은혜(구원)를 기억하며 오늘 하루를 살고 있는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "이미 받은 은혜를 기억한다면, 오늘 내 삶에서 무엇이 달라져야 합니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "왕의 자리 내려놓기", "value": "가정이나 관계에서 내 뜻을 고집하기보다 오늘 한 가지 양보하기"}, {"key": "act2", "label": "붙들고 있는 것 점검", "value": "하나님보다 더 붙들고 있는 것(성과·방식·명성)이 있는지 하나 적어보기"}, {"key": "act3", "label": "은혜 기억하기", "value": "예수님이 십자가에서 주신 은혜를 오늘 한 문장으로 감사드리기"}, {"key": "act4", "label": "섬김 실천하기", "value": "누군가의 수고를 씻어주듯 낮은 자리에서 한 가지 섬기기"}, {"key": "act5", "label": "다음 세대에 남기기", "value": "자녀나 다음 세대에게 말이 아니라 삶으로 보여줄 것 하나 실천하기"}], "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "값없이 은혜로 저를 하나님의 자녀 삼아주신 주님, 이미 받은 은혜가 얼마나 큰지 다시 기억하게 하심을 감사합니다"}, {"key": "p2", "tag": "회개", "text": "입술로는 주님이 왕이라 고백하면서 실제로는 제 뜻과 감정을 왕으로 삼았던 것을 회개합니다"}, {"key": "p3", "tag": "간구", "text": "이미 받은 은혜를 당연히 여기지 않게 하시고, 오늘 제 삶의 방향이 주님을 향하게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "September 18, Friday", "ref": "Judges 8:22–35", "headline": "Can you forget God<br>even after being saved?", "videoLabel": "Listen to today's 10-minute message", "videoSub": "Daily Bread QT · Judges 8:22–35", "s1heading": "Today's Word", "verse": "\"...and did not remember the LORD their God,<br>who had delivered them out of the hands of all their enemies on every side.\"", "verseRef": "Judges 8:34", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Confession on the Lips, Direction of the Life", "paragraphs": ["In the previous passage, Gideon won the war against Midian by God's help — but after the victory, his life slowly began to change. A man called to save Israel started retaliating against his own kinsmen to defend his honor, and became consumed with personal revenge for his brothers' deaths. Scripture never draws a clear line for exactly when Gideon changed — it shows the change slowly instead.", "But this question isn't only for Gideon. It's ours too. With our lips we confess that God is our Savior and the Lord of our life. But in real life — when we make important decisions, when we're in conflict with people, even when we experience success — <mark>is God still truly Lord, or have we quietly made our own will, our emotions, our success the center instead?</mark> Remember how Gideon began: he tore down the altar of Baal in his own father's house. But in today's passage, the gold ephod he himself made becomes the very thing that leads Israel into idolatry. <mark>He began by tearing down an idol; he ended with something he made becoming a snare.</mark>"]}, {"title": "Verses 22–23 · A Declaration Not to Be King, and the Gap That Followed", "paragraphs": ["Israel asks Gideon — not just him, but his son and grandson after him — to rule over them as a dynasty, because he saved them from Midian. Remember chapter 7: God reduced Gideon's army to 300 precisely so Israel could never boast, \"our own hand saved us.\" Yet now the people look to Gideon and put him forward, ahead of the God who was the true author of the victory. <mark>When we forget the grace God has given, the person or the means God used can quietly take God's own place.</mark>", "Gideon's answer is theologically precise — \"The LORD shall rule over you.\" Israel's ultimate King is not a man but God. But look at Gideon's life afterward: though he said in words he would not be king, he goes on to gather great wealth and many wives, living in a way that resembles a royal household. We shouldn't assume he deliberately lied — but one thing is clear: <mark>the rule of God that Gideon declared with his lips was never consistently lived out in his life and worship.</mark>"], "points": ["A confession that stops at the lips isn't enough — it has to reach our choices and our way of living"]}, {"title": "Verses 24–27 · A Golden Ephod — He Began by Tearing Down an Idol", "paragraphs": ["Right after refusing the kingship, Gideon asks the people for one gold earring each from the plunder. They give willingly — about 1,700 shekels of gold, roughly 19 kilograms, along with the Midianite kings' ornaments and purple garments. This calls to mind Exodus 32, where Aaron, too, gathered gold earrings from the people — and made a golden calf with them. <mark>These aren't identical events, but they share a pattern: gold gathered from the people, shaped into something religious, leading to wrongful worship.</mark> Even something God has given can become an idol the moment it matters more than God Himself.", "Gideon makes the gold into an ephod and sets it up in his hometown, Ophrah. We can't say for certain Gideon meant to make an idol from the start — but Scripture is clear about the outcome: <mark>\"all Israel prostituted themselves to it there, and it became a snare to Gideon and to his household.\"</mark> Compare his beginning to his ending — he began by tearing down his father's altar to Baal; he ends by making the very thing that leads Israel into idolatry."], "points": ["Even something we start for God's sake can bend the direction of our faith, the moment we hold onto the thing itself more tightly than God"]}, {"title": "Verses 28–32 · Forty Years of Peace, and Gideon's Death", "paragraphs": ["Midian never rises against Israel again, and the land has peace for forty years while Gideon lives — undeniably a grace from God. But we should be careful here: <mark>forty years of peace doesn't mean God approved of everything Gideon did</mark> — verse 27 has already told us the ephod became a snare. The outward war had ended, but the inward, spiritual problem remained. More striking still, this is the last time Judges ever announces peace in the land; after this, Israel spirals into deeper confusion. Peace in our circumstances is never proof by itself that we're right with God.", "Gideon returns home to many wives, seventy sons, and one more son by a concubine in Shechem — named Abimelech, which generally means \"my father is king.\" One name alone can't prove Gideon claimed kingship for himself, but it's hard not to recall verse 23 — \"I will not rule over you\" — beside a household that looked very much like a royal one. <mark>What we hand to the next generation isn't only the faith we teach with our words, but the way we actually lived.</mark>"], "points": ["Peace in our circumstances is never proof by itself that we're right with God"]}, {"title": "Verses 33–35 · After Gideon Dies, Israel Forgets the Grace", "paragraphs": ["As soon as Gideon dies, Israel turns again to the Baals, making Baal-Berith — \"lord of the covenant\" — their god. It's a bitter irony: the people abandon the LORD who made covenant with them and saved them, to serve another as \"lord of the covenant\" instead. <mark>The outward problem, Midian, was solved — but Israel's deeper problem was never solved, because it was never Midian. It was a heart drifting away from God.</mark>", "Verse 34 says they \"did not remember the LORD their God, who had delivered them.\" To \"not remember\" here doesn't mean God's existence was erased from their minds — <mark>it means the grace of that deliverance no longer moved their lives.</mark> They had experienced the 300 men's victory; they had enjoyed forty years of peace — yet that grace never turned into a life that served God as King. This forgetfulness becomes the seed of the tragedy that follows in the very next chapter, involving Abimelech and Gideon's own sons."], "points": ["Remembering grace means more than knowing what happened in the past — it's letting that grace move today's choices"]}, {"title": "Application · Living Worthy of the Grace Already Received", "paragraphs": ["Experiencing God's salvation and living under God's rule are not the same thing. Israel experienced God's grace and deliverance — and still forgot Him. Gideon declared \"the LORD shall rule\" — yet his life and worship never fully matched that confession. We can be the same: confessing faith in Jesus while our real self quietly rules our own life. So today, ask this seriously: <mark>how am I actually responding to the grace I have already received?</mark> Before we ask for more grace, we should remember the immense grace we already have — Jesus carried our sin on the cross, and gave us the right to become God's children, to come before Him at any time. <mark>We don't obey in order to earn that grace — we obey because we are already grateful for grace we've already received.</mark>", "So how should children of the King live? Jesus washed His disciples' feet — the Lord and Teacher taking the lowest place to serve them — and told them to wash one another's feet in turn. <mark>The King's own life wasn't about rising through power, but about serving others through love.</mark> Concretely today: love family rather than insisting on my own way; give God the glory and serve people rather than boasting of my own results; seek what pleases God rather than only my own benefit before a big decision; and give thanks for grace already given, rather than treating it as ordinary.", "This isn't a demand for a perfect life — we will still stumble and fail. But each time, we return to the grace of the cross and come back to God. <mark>What matters most is which direction our life is actually facing.</mark>"]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I thought of one place where there might be a gap between what I confess with my lips and what I actually choose."}, {"key": "c2", "text": "I checked whether something I started for God's sake (a ministry, habit, or method) has quietly become something I hold onto more than God Himself."}, {"key": "c3", "text": "I reflected on whether I've been assuming my relationship with God is fine just because my life feels peaceful right now."}, {"key": "c4", "text": "I checked whether I'm actually living today in light of the grace I've already received."}], "s4heading": "One-Line Reflection", "memoHint": "If you truly remembered the grace you've already received, what would have to change in your life today?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Step down from the throne", "value": "Give way once today in family or a relationship instead of insisting on my own way"}, {"key": "act2", "label": "Check what I'm holding", "value": "Write down one thing I may be holding onto more tightly than God — results, method, or reputation"}, {"key": "act3", "label": "Remember the grace", "value": "Give thanks in one sentence today for the grace Jesus gave on the cross"}, {"key": "act4", "label": "Practice serving", "value": "Serve someone in a lowly way today, as if washing their feet"}, {"key": "act5", "label": "Leave a legacy", "value": "Show my children or the next generation one thing through my life, not just my words"}], "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Lord, for making me Your child by grace, freely given — help me remember again how great the grace I've already received truly is."}, {"key": "p2", "tag": "Repent", "text": "I repent of confessing with my lips that You are King while actually letting my own will and emotions rule my life."}, {"key": "p3", "tag": "Ask", "text": "Let me never take the grace I've already received for granted, and let my life today truly face toward You."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Setyembre 18, Biyernes", "ref": "Mga Hukom 8:22–35", "headline": "Kaya ba nating<br>limutin ang Diyos kahit naligtas na?", "videoLabel": "Pakinggan ang 10-minutong mensahe ngayon", "videoSub": "Daily Bread QT · Mga Hukom 8:22–35", "s1heading": "Ang Salita Ngayon", "verse": "\"...at hindi naaalala ang Panginoon nilang Diyos,<br>na nagligtas sa kanila mula sa kamay ng lahat ng kanilang mga kaaway sa palibot.\"", "verseRef": "Mga Hukom 8:34", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Pagpapahayag sa Bibig, Direksyon ng Buhay", "paragraphs": ["Sa naunang bahagi, nagwagi si Gideon sa digmaan laban sa Midian sa tulong ng Diyos — ngunit pagkatapos ng tagumpay, unti-unting nagbago ang kanyang buhay. Ang taong tinawag upang iligtas ang Israel ay nagsimulang gantihan ang kanyang mga kapwa-lahi para ipagtanggol ang kanyang karangalan, at nalulong sa personal na paghihiganti para sa kamatayan ng kanyang mga kapatid. Hindi tinukoy ng Kasulatan nang eksakto kailan nagbago si Gideon — dahan-dahan lamang ipinakita ang pagbabago.", "Ngunit hindi lamang ito tanong para kay Gideon. Ito rin ay tanong para sa atin. Sa aming mga bibig, ipinapahayag namin na ang Diyos ang aming Tagapagligtas at Panginoon ng aming buhay. Ngunit sa totoong buhay — kapag gumagawa kami ng mahahalagang desisyon, kapag may tunggalian sa mga tao, kahit sa pagkakaroon ng tagumpay — <mark>tunay bang ang Diyos ang Panginoon, o tahimik nating ginawang sentro ang sariling kalooban, damdamin, at tagumpay?</mark> Alalahanin kung paano nagsimula si Gideon: giniba niya ang dambana ni Baal sa tahanan ng kanyang ama. Ngunit sa bahaging ito ngayon, ang gintong ephod na kanyang ginawa ang naging dahilan ng pagsamba sa diyus-diyusan ng Israel. <mark>Nagsimula siya sa paggiba ng diyus-diyusan; natapos siya sa isang bagay na kanyang ginawa na naging bitag.</mark>"]}, {"title": "Talata 22–23 · Isang Pagtanggi sa Pagiging Hari, at ang Puwang na Sumunod", "paragraphs": ["Hiniling ng Israel kay Gideon — hindi lamang siya, kundi ang kanyang anak at apo pagkatapos niya — na maghari sa kanila bilang isang dinastiya, dahil iniligtas niya sila mula sa Midian. Alalahanin ang kabanata 7: binawasan ng Diyos ang hukbo ni Gideon tungo sa 300 upang hindi kailanman maipagmalaki ng Israel, \"iniligtas kami ng aming sariling kamay.\" Ngunit ngayon, tumitingin ang mga tao kay Gideon at itinataas siya, higit sa Diyos na tunay na may-ari ng tagumpay. <mark>Kapag nakalimutan natin ang biyayang ibinigay ng Diyos, ang tao o kasangkapang ginamit ng Diyos ay maaaring tahimik na okupahin ang lugar ng Diyos.</mark>", "Tumpak sa teolohiya ang sagot ni Gideon — \"Ang Panginoon ang maghahari sa inyo.\" Ang huling Hari ng Israel ay hindi tao kundi ang Diyos. Ngunit tingnan ang buhay ni Gideon pagkatapos: bagamat sinabi niya sa salita na hindi siya maghahari, nagpatuloy siya sa pag-ipon ng malaking kayamanan at maraming asawa, namumuhay sa paraang katulad ng isang maharlikang sambahayan. Hindi natin kailangang ipagpalagay na sinadya niyang nagsinungaling — ngunit malinaw ang isang bagay: <mark>ang paghahari ng Diyos na ipinahayag ni Gideon sa kanyang bibig ay hindi kailanman patuloy na naisabuhay sa kanyang buhay at pagsamba.</mark>"], "points": ["Ang pagpapahayag na tumitigil lamang sa bibig ay hindi sapat — dapat umabot ito sa aming mga pinagpasyahan at pamumuhay"]}, {"title": "Talata 24–27 · Isang Gintong Ephod — Nagsimula Siya sa Paggiba ng Diyus-diyusan", "paragraphs": ["Kaagad pagkatapos tanggihan ang paghahari, humingi si Gideon sa mga tao ng isang gintong hikaw mula sa samsam. Kusang-loob nilang ibinigay — humigit-kumulang 1,700 shekel ng ginto, mga 19 kilo, kasama ang mga alahas at kasuotang kulay ube ng mga hari ng Midian. Ito ay nagpapaalala sa Exodo 32, kung saan si Aaron din ay nangolekta ng mga gintong hikaw mula sa mga tao — at ginawang gintong guya. <mark>Hindi magkatulad ang dalawang pangyayaring ito, ngunit may parehong huwaran: ginto na nangolekta mula sa mga tao, hinulma sa isang bagay na relihiyoso, na humantong sa maling pagsamba.</mark> Kahit ang isang bagay na ibinigay ng Diyos ay maaaring maging diyus-diyusan sa sandaling mas mahalaga ito kaysa sa Diyos Mismo.", "Ginawa ni Gideon ang ginto na isang ephod at inilagay ito sa kanyang bayang sinilangan, ang Ophra. Hindi natin masasabi nang tiyak na sinadya ni Gideon na gumawa ng diyus-diyusan mula sa simula — ngunit malinaw ang Kasulatan tungkol sa bunga: <mark>\"nagpatutot ang buong Israel dito, at ito ay naging bitag kay Gideon at sa kanyang sambahayan.\"</mark> Ihambing ang kanyang simula sa kanyang wakas — nagsimula siya sa paggiba ng dambana ng kanyang ama para kay Baal; natapos siya sa paggawa ng bagay na naghatid sa Israel sa pagsamba sa diyus-diyusan."], "points": ["Kahit ang isang bagay na sinimulan natin para sa Diyos ay maaaring baluktot ang direksyon ng aming pananampalataya, sa sandaling higit natin itong pinaghahawakan kaysa sa Diyos"]}, {"title": "Talata 28–32 · Apatnapung Taon ng Kapayapaan, at ang Kamatayan ni Gideon", "paragraphs": ["Hindi na muling lumaban ang Midian sa Israel, at ang lupain ay nagtamasa ng kapayapaan sa loob ng apatnapung taon habang buhay si Gideon — walang duda na isang biyaya mula sa Diyos. Ngunit dapat tayong mag-ingat dito: <mark>ang apatnapung taon ng kapayapaan ay hindi nangangahulugang inaprubahan ng Diyos ang lahat ng ginawa ni Gideon</mark> — sinabi na sa talata 27 na ang ephod ay naging bitag. Natapos na ang panlabas na digmaan, ngunit nanatili ang panloob na espirituwal na problema. Mas kapansin-pansin, ito ang huling pagkakataong ipinahayag ng Aklat ng mga Hukom ang kapayapaan sa lupain; pagkatapos nito, lumalim pa ang kaguluhan ng Israel. Ang kapayapaan sa ating kalagayan ay hindi kailanman patunay lamang na tama tayo sa harap ng Diyos.", "Bumalik si Gideon sa kanyang tahanan na may maraming asawa, pitumpu't anak, at isa pang anak sa isang babae sa Sekem — na pinangalanang Abimelec, na sa pangkalahatan ay nangangahulugang \"ang aking ama ay hari.\" Ang isang pangalan lamang ay hindi kayang patunayan na inangkin ni Gideon ang pagiging hari para sa kanyang sarili, ngunit mahirap hindi maalala ang talata 23 — \"hindi ako maghahari sa inyo\" — sa tabi ng isang sambahayan na kahawig ng isang maharlikang sambahayan. <mark>Ang ipinapasa natin sa susunod na henerasyon ay hindi lamang ang pananampalatayang itinuro natin sa salita, kundi ang paraan ng aming aktwal na pamumuhay.</mark>"], "points": ["Ang kapayapaan sa ating kalagayan ay hindi kailanman patunay lamang na tama tayo sa harap ng Diyos"]}, {"title": "Talata 33–35 · Pagkamatay ni Gideon, Nakalimutan ng Israel ang Biyaya", "paragraphs": ["Sa sandaling mamatay si Gideon, bumalik ang Israel sa mga Baal, ginagawang Baal-berit — \"panginoon ng tipan\" — ang kanilang diyos. Ito ay isang mapait na kabalintunaan: iniwan ng mga tao ang Panginoon na nakipagtipan sa kanila at nagligtas sa kanila, upang maglingkod sa iba bilang \"panginoon ng tipan\" sa kanyang lugar. <mark>Ang panlabas na problema, ang Midian, ay nalutas — ngunit ang mas malalim na problema ng Israel ay hindi kailanman nalutas, dahil hindi kailanman ito ang Midian. Ito ay isang pusong lumalayo sa Diyos.</mark>", "Sinasabi ng talata 34 na \"hindi nila naalala ang Panginoon nilang Diyos, na nagligtas sa kanila.\" Ang \"hindi naalala\" dito ay hindi nangangahulugang lubusang nabura sa kanilang isipan ang pag-iral ng Diyos — <mark>nangangahulugan ito na ang biyaya ng kaligtasang iyon ay hindi na gumagalaw sa kanilang buhay.</mark> Naranasan nila ang tagumpay ng 300 katao; natamasa nila ang apatnapung taon ng kapayapaan — ngunit ang biyayang iyon ay hindi kailanman naging buhay na naglilingkod sa Diyos bilang Hari. Ang pagkalimot na ito ang binhi ng trahedyang susunod sa kasunod na kabanata, na kinasasangkutan ni Abimelec at ng mga anak ni Gideon mismo."], "points": ["Ang pag-alala sa biyaya ay higit pa sa kaalaman tungkol sa nangyari noon — hayaan mong ang biyayang iyon ang gumalaw sa mga pinagpasyahan mo ngayon"]}, {"title": "Pagsasabuhay · Namumuhay nang Karapat-dapat sa Biyayang Natanggap na", "paragraphs": ["Ang karanasan ng kaligtasan ng Diyos at ang pamumuhay sa ilalim ng paghahari ng Diyos ay hindi parehong bagay. Naranasan ng Israel ang biyaya at kaligtasan ng Diyos — at gayunpaman nakalimutan Siya. Ipinahayag ni Gideon na \"ang Panginoon ang maghahari\" — ngunit ang kanyang buhay at pagsamba ay hindi kailanman lubusang tumugma sa pahayag na iyon. Tayo rin ay maaaring ganito: ipinapahayag ang pananampalataya kay Jesus habang tahimik na naghahari ang sarili nating kalooban sa aming buhay. Kaya ngayon, seryosong itanong: <mark>paano ko talaga tinutugon ang biyayang natanggap ko na?</mark> Bago tayo humingi ng higit na biyaya, dapat nating alalahanin ang napakalaking biyayang natanggap na natin — dinala ni Jesus ang aming kasalanan sa krus, at ibinigay sa amin ang karapatang maging anak ng Diyos, na makalapit sa Kanya anumang oras. <mark>Hindi tayo sumusunod upang kamtin ang biyayang iyon — sumusunod tayo dahil nagpapasalamat na tayo sa biyayang natanggap na natin.</mark>", "Kung gayon, paano dapat mamuhay ang mga anak ng Hari? Hinugasan ni Jesus ang mga paa ng Kanyang mga alagad — ang Panginoon at Guro na kumuha ng pinakamababang lugar upang paglingkuran sila — at sinabi sa kanila na maghugasan ng paa sa isa't isa. <mark>Ang buhay mismo ng Hari ay hindi tungkol sa pagtaas gamit ang kapangyarihan, kundi tungkol sa paglilingkod sa iba sa pamamagitan ng pag-ibig.</mark> Kaya ngayon, tiyak ang mga bagay na dapat gawin: pagmamahal sa pamilya kaysa sa pagpupumilit sa sariling kalooban; pagbigay ng kaluwalhatian sa Diyos at paglilingkod sa mga tao kaysa sa pagmamayabang sa sariling tagumpay; paghahanap sa kalooban ng Diyos kaysa sa sariling kapakinabangan bago ang isang malaking desisyon; at pagpasalamat sa biyayang ibinigay na, sa halip na ituring itong ordinaryo lamang.", "Hindi ito paghingi ng perpektong buhay — patuloy tayong madadapa at magkakamali. Ngunit sa bawat pagkakataon, dapat tayong bumalik sa biyaya ng krus at bumalik sa Diyos. <mark>Ang mahalaga ay kung saang direksyon talaga humaharap ang aming buhay.</mark>"]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Naisip ko ang isang bahagi kung saan maaaring may puwang sa pagitan ng ipinapahayag ko sa bibig at ng aktwal kong pinipili."}, {"key": "c2", "text": "Sinuri ko kung ang isang bagay na sinimulan ko para sa Diyos (ministeryo, ugali, o paraan) ay tahimik na naging mas mahalaga sa akin kaysa sa Diyos Mismo."}, {"key": "c3", "text": "Sinuri ko kung ipinapalagay ko lamang na maayos ang aking relasyon sa Diyos dahil payapa ang aking buhay ngayon."}, {"key": "c4", "text": "Sinuri ko kung tunay akong namumuhay ngayon nang naaayon sa biyayang natanggap ko na."}], "s4heading": "Isang Linyang Pagninilay", "memoHint": "Kung tunay mong naalala ang biyayang natanggap mo na, ano ang dapat magbago sa iyong buhay ngayon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Bumaba sa trono", "value": "Sumuko nang isang bagay ngayon sa pamilya o relasyon imbes na ipilit ang sariling kalooban"}, {"key": "act2", "label": "Suriin ang pinaghahawakan", "value": "Isulat ang isang bagay na maaaring mas mahigpit kong pinaghahawakan kaysa sa Diyos — resulta, paraan, o reputasyon"}, {"key": "act3", "label": "Alalahanin ang biyaya", "value": "Magpasalamat sa isang pangungusap ngayon para sa biyayang ibinigay ni Jesus sa krus"}, {"key": "act4", "label": "Sanayin ang paglilingkod", "value": "Paglingkuran ang isang tao sa mababang paraan ngayon, na tulad ng paghugas ng kanyang paa"}, {"key": "act5", "label": "Iwan ang mana", "value": "Ipakita sa aking mga anak o sa susunod na henerasyon ang isang bagay sa pamamagitan ng buhay, hindi lamang salita"}], "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Panginoon, sa paggawa Mo sa akin na anak Mo sa pamamagitan ng biyaya, walang bayad na ibinigay — tulungan Mo akong alalahanin muli kung gaano kadakila ang biyayang natanggap ko na."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagpapahayag sa bibig na Ikaw ang Hari habang hinahayaan kong ang sariling kalooban at damdamin ang maghari sa aking buhay."}, {"key": "p3", "tag": "Kahilingan", "text": "Huwag mo akong hayaang ituring na ordinaryo lamang ang biyayang natanggap ko na, at hayaan mong ang aking buhay ngayon ay tunay na humarap sa Iyo."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
