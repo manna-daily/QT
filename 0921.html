@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="9/21(월) 큐티 · 사사기 9:22–45">
+<meta property="og:description" content="3년이 지나도 하나님은 그 피를 잊지 않으셨습니다">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "9월 21일 월요일", "ref": "사사기 9장 22–45절", "headline": "3년이 지나도<br>하나님은 그 피를 잊지 않으셨습니다", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 9:22-45", "s1heading": "오늘의 말씀", "verse": "\"...이는 여룹바알의 아들 칠십 인에게 행한 포학한 일과 그 피 흘린 죄를<br>아비멜렉과 세겜 사람들에게 돌리려 하심이더라\"", "verseRef": "사사기 9:24", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 22–24절 · 3년이 지나도 잊지 않으신 하나님", "paragraphs": ["아비멜렉이 이스라엘을 다스린 지 3년이 지났습니다. 앞선 사사들의 이야기에는 하나님이 구원하신 뒤 \"땅이 평온하였다\"는 선언이 반복되었지만, 아비멜렉의 이야기에는 그런 평안의 선언이 없습니다. 그는 형제들을 살해하고 세겜 사람들의 지지로 왕이 되었고, 그 피와 희생 위에 3년이라는 시간이 흘렀을 뿐입니다.", "그런데 본문은 하나님께서 아비멜렉과 세겜 사람들 사이에 악한 영을 보내셨다고 말합니다. 그 이유를 24절이 직접 설명합니다. <mark>기드온의 아들 일흔 명을 죽인 죄와, 그 살인을 도운 세겜 사람들의 죄를 갚기 위해서</mark>였습니다. 3년이 지났지만, 하나님은 그들이 흘린 피를 잊지 않으셨습니다."], "points": ["책임을 묻는 시간이 늦어지는 것과 책임이 사라지는 것은 다릅니다."]}, {"title": "25–29절 · 세겜의 배신, 뒤바뀐 혈통의 논리", "paragraphs": ["세겜 사람들은 산꼭대기에 사람을 매복시켜 지나가는 이들을 약탈하기 시작합니다. 한때 자신들이 세운 왕에게 등을 돌리기 시작한 것입니다. 그때 가알이라는 사람이 형제들과 함께 세겜에 들어오고, 세겜 사람들은 이제 그를 신뢰합니다. 마침내 사람들은 신전에 모여 먹고 마시며 자신들이 왕으로 세웠던 아비멜렉을 저주합니다.", "가알은 세겜 사람들에게 묻습니다. <mark>\"우리가 왜 아비멜렉을 섬겨야 하느냐\"</mark>고. 그는 아비멜렉이 결국 남의 혈통(기드온의 아들)이라며, 세겜 본래의 혈통을 내세워 그를 배척합니다. 그런데 이 장면은 낯설지 않습니다. 아비멜렉이 처음 세겜 사람들을 설득할 때 내세운 논리도 <mark>\"나는 너희와 골육이다\"</mark>였습니다. 그를 세울 때 쓰였던 혈통의 논리가, 이제 그를 몰아내는 논리로 그대로 뒤바뀐 것입니다."], "points": ["자신들의 이익을 위해 맺은 관계는, 이익이 달라지면 언제든 다른 편으로 돌아설 수 있습니다. 문제는 혈연이나 신분 자체가 아니라, 그 관계를 움직이는 중심이 진실과 의로움이 아니라 자기 이익이라는 데 있습니다."]}, {"title": "30–41절 · 스불의 밀고와 가알의 패배", "paragraphs": ["세겜의 관리 스불은 가알의 도전을 듣고 분노하며, 몰래 사람을 보내 아비멜렉에게 상황을 알립니다. 그는 밤에 군대를 이끌고 와 들에 매복했다가 해가 뜨면 성읍을 치라고 조언합니다. 앞서 세겜 사람들이 매복했던 것처럼, 이제 아비멜렉이 세겜을 향해 매복을 준비합니다. 서로의 이익을 위해 힘을 합쳤던 사람들이, 이제 서로를 제거하기 위해 같은 방법을 사용하는 것입니다.", "다음 날 아침, 가알은 산에서 사람들이 내려오는 것을 보지만, 스불은 그것이 산 그림자일 뿐이라며 둘러댑니다. 상황이 분명해지자 스불은 가알을 조롱하며 나가 싸우라고 부추기고, 가알은 세겜 사람들을 이끌고 나가지만 크게 패배합니다. 요담이 경고했던 불이 조금씩 현실이 되어가고 있습니다."], "points": ["예수 그리스도로 맺어진 진실과 신뢰가 없다면, 서로를 도왔던 힘과 지혜가 서로를 공격하는 데 그대로 쓰일 수 있습니다."]}, {"title": "42–45절 · 아비멜렉, 세겜을 파괴하다", "paragraphs": ["가알을 물리친 것으로 관계가 회복되었을까요? 아닙니다. 다음 날 세겜 사람들이 들로 나가자, 아비멜렉은 군대를 세 부대로 나누어 매복시켜 성문을 막고 들에 있는 사람들을 공격합니다. 그는 반란을 진압하는 데서 끝나지 않고, 자신을 왕으로 세웠던 성읍 전체를 하루 종일 공격해 점령하고, 사람들을 죽이고, 성읍을 헐어버린 뒤 그 위에 소금을 뿌립니다. 완전한 황폐와 저주의 표시였습니다."], "points": ["요담의 우화 속 가시나무는 자신을 왕으로 세우지 않으면 불로 태우겠다고 위협했습니다. 세겜 사람들에게 유리하리라 믿었던 그 왕이, 결국 그들을 파괴하는 자가 되었습니다."]}, {"title": "적용 · 두 종류의 피", "paragraphs": ["오늘 본문은 두 종류의 피를 생각하게 합니다. 하나는 <mark>자신의 이익을 위해 다른 사람에게 흘리게 한 피</mark>입니다. 아비멜렉은 권력을 위해 형제들의 생명을 빼앗았습니다. 우리가 그와 똑같은 살인을 저지르지는 않지만, 내 뜻을 이루려고 누군가를 희생시키거나, 나에게 유리하다는 이유로 잘못을 눈감고 지원할 수는 있습니다. 하나님은 그런 악을 가볍게 여기지 않으십니다.", "다른 하나는 <mark>우리를 살리기 위해 예수님이 흘리신 피</mark>입니다. 아비멜렉은 자신이 왕이 되려고 남의 생명을 빼앗았지만, 참된 왕 예수님은 죄인 된 우리를 살리려고 자신의 생명을 내어주셨습니다. 이것이 세상의 왕권과 예수님의 왕권의 결정적인 차이입니다.", "우리의 가정과 교회도 마찬가지입니다. 혈연이나 친분, 서로의 이익만으로 하나 되려 한다면, 생각과 이익이 달라질 때 언제든 갈라질 수 있습니다. 그러나 에베소서 2장은 예수님이 십자가로 원수 된 것을 소멸하시고 화목하게 하셨다고 말합니다. 오늘 스스로에게 물어보십시오. 나는 여전히 내 뜻과 이익을 위해 다른 사람을 희생시키며 살고 있습니까, 아니면 나를 위해 피 흘리신 예수님을 삶의 주인으로 모시고 살아가고 있습니까?"], "points": ["이미 십자가의 은혜로 구원받았기에, 이제 그 은혜에 합당하게 살아가도록 부름받았습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "지금 아무 일도 일어나지 않는다고 해서, 내가 다른 사람에게 준 상처나 잘못이 이미 사라졌다고 여기고 있지는 않은지 점검했다"}, {"key": "c2", "text": "내 뜻을 이루기 위해 누군가를 희생시키거나, 나에게 유리하다는 이유로 잘못을 눈감아 준 적은 없는지 돌아봤다"}, {"key": "c3", "text": "나를 하나 되게 하는 중심이 서로의 이익이나 혈연이 아니라 예수 그리스도인지 점검했다"}, {"key": "c4", "text": "나를 위해 피 흘리신 예수님의 은혜를 기억하며, 그분을 삶의 주인으로 모시고 살아가고 있는지 돌아봤다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 내 삶에서 '시간이 지나면 괜찮아지겠지' 하며 미뤄두고 있는 잘못이나 상처가 있다면 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "미룬 문제 마주하기", "value": "시간이 지나면 괜찮아지겠지 하고 미뤄둔 잘못이나 관계 하나를 마주하기"}, {"key": "act2", "label": "이익 아닌 중심 점검하기", "value": "지금 속한 공동체나 관계의 중심이 이익인지 그리스도인지 하나 점검해보기"}, {"key": "act3", "label": "십자가 앞에 나의 죄 내려놓기", "value": "가볍게 여겼던 잘못 하나를 오늘 하나님 앞에 정직하게 내려놓기"}, {"key": "act4", "label": "은혜에 합당하게 살기", "value": "받은 은혜를 기억하며 오늘 한 가지 다른 사람을 살리는 선택하기"}, {"key": "act5", "label": "화목 실천하기", "value": "관계가 틀어진 사람이 있다면 화목을 위해 오늘 작은 한 걸음 내딛기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "죄인 된 저를 살리시려고 자신의 피를 흘려주신 참된 왕 예수님, 그 은혜를 다시 기억하게 하심을 감사합니다"}, {"key": "p2", "tag": "회개", "text": "제 이익을 위해 누군가를 희생시키거나 잘못을 눈감아 준 순간들을 회개합니다"}, {"key": "p3", "tag": "간구", "text": "제 삶을 하나로 묶는 중심이 이익이 아니라 예수 그리스도가 되게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "September 21, Monday", "ref": "Judges 9:22–45", "headline": "Even After Three Years,<br>God Did Not Forget That Blood", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 9:22-45", "s1heading": "Today's Word", "verse": "\"...to avenge the crime against the seventy sons of Jerubbaal, and to bring their blood<br>upon Abimelech and upon the men of Shechem.\"", "verseRef": "Judges 9:24", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Verses 22–24 · God Who Did Not Forget After Three Years", "paragraphs": ["Three years have passed since Abimelech began ruling Israel. In the stories of earlier judges, we hear again and again that \"the land had rest\" after God saved His people — but there's no such declaration of peace in Abimelech's story. He became king through his brothers' murder and Shechem's support, and three years simply passed over that blood and sacrifice.", "But the text tells us God sent an evil spirit between Abimelech and the people of Shechem. Verse 24 explains why directly: <mark>to repay the crime of killing Gideon's seventy sons, and the guilt of the people of Shechem who helped in that murder</mark>. Three years had passed, but God had not forgotten the blood they shed."], "points": ["A delay in being held responsible is not the same as responsibility disappearing."]}, {"title": "Verses 25–29 · Shechem's Betrayal — The Kinship Logic Reversed", "paragraphs": ["The people of Shechem set men in ambush on the hilltops, robbing everyone who passed by — they had begun turning against the very king they'd made. Then a man named Gaal comes into Shechem with his brothers, and the people now put their trust in him. Eventually they gather at their temple, eat and drink, and curse Abimelech, the king they themselves had raised up.", "Gaal asks the people, <mark>\"Why should we serve Abimelech?\"</mark> He points out that Abimelech is, after all, from someone else's bloodline (Gideon's son), and rallies them around Shechem's own ancestry to reject him. This scene isn't unfamiliar — when Abimelech first persuaded Shechem, his own argument was <mark>\"I am your own flesh and blood.\"</mark> The very logic of kinship used to install him is now turned around to drive him out."], "points": ["A relationship built only for mutual benefit can turn against you the moment the benefit changes. The problem isn't kinship or status itself — it's that what moves the relationship is self-interest, not truth and righteousness."]}, {"title": "Verses 30–41 · Zebul's Betrayal-Report and Gaal's Defeat", "paragraphs": ["Zebul, an official of Shechem, hears Gaal's challenge and grows furious, secretly sending word to Abimelech. He advises him to come by night with his troops, lie in ambush in the fields, and attack the city at daybreak. Just as the people of Shechem had ambushed travelers earlier, now Abimelech prepares an ambush against Shechem itself. People who once joined forces for mutual benefit now use the same tactics to destroy one another.", "The next morning, Gaal sees people coming down from the mountains, but Zebul dismisses it as just the shadow of the hills. As the situation becomes unmistakable, Zebul mocks Gaal and goads him into battle. Gaal leads the people of Shechem out but is decisively defeated. The fire Jotham warned of is slowly becoming real."], "points": ["Without the truth and trust that come from being joined in Christ, the very strength and wisdom that once helped each other can just as easily turn to attacking one another."]}, {"title": "Verses 42–45 · Abimelech Destroys Shechem", "paragraphs": ["Was the relationship restored once Gaal was defeated? No. The next day, when the people of Shechem go out to the fields, Abimelech divides his troops into three companies, ambushes them, blocks the city gate, and attacks the people in the fields. He doesn't stop at putting down the rebellion — he spends the whole day attacking the very city that had made him king, captures it, kills its people, tears the city down, and sows it with salt. A sign of total desolation and curse."], "points": ["In Jotham's fable, the thornbush threatened to burn everyone if it wasn't truly made king. The very king Shechem believed would benefit them became the one who destroyed them."]}, {"title": "Application · Two Kinds of Blood", "paragraphs": ["Today's passage asks us to think about two kinds of blood. One is <mark>blood shed for someone else's benefit at another person's expense</mark>. Abimelech took his brothers' lives for power. We may not commit the same murder, but we can sacrifice someone to get our own way, or look the other way at wrongdoing because it benefits us. God does not take such evil lightly.", "The other is <mark>the blood Jesus shed to save us</mark>. Abimelech took others' lives to become king; but Jesus, the true King, gave up His own life to save us sinners. This is the decisive difference between the kingship of this world and the kingship of Jesus.", "Our families and churches are no different. If kinship, familiarity, or shared benefit alone is what holds us together, we can split apart the moment our thinking or our interests diverge. But Ephesians 2 tells us Jesus destroyed the hostility through the cross and made reconciliation. So ask yourself today: am I still sacrificing others for my own will and benefit, or am I living with Jesus — who shed His blood for me — as the Lord of my life?"], "points": ["Having already been saved by the grace of the cross, we are now called to live a life worthy of that grace."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I checked whether I've assumed that a wrong or hurt I caused someone has simply disappeared just because nothing happened right away."}, {"key": "c2", "text": "I reflected on whether I've sacrificed someone to get my own way, or looked the other way at wrongdoing because it benefited me."}, {"key": "c3", "text": "I checked whether what holds me together with others is Jesus Christ, rather than shared benefit or kinship alone."}, {"key": "c4", "text": "I reflected on whether I remember the grace of Jesus, who shed His blood for me, and actually live with Him as Lord of my life."}], "s4heading": "One-Line Reflection", "memoHint": "Is there a wrong or a hurt in your life right now that you've been putting off, thinking 'it'll be fine with time'?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Face a Delayed Issue", "value": "Face one wrong or broken relationship you've been putting off, thinking time would fix it"}, {"key": "act2", "label": "Check the Center, Not the Benefit", "value": "Check whether the center of a community or relationship you're in is Christ or shared benefit"}, {"key": "act3", "label": "Lay Down Your Sin at the Cross", "value": "Honestly bring one thing you've taken lightly before God today"}, {"key": "act4", "label": "Live Worthy of Grace", "value": "Remember the grace you've received and make one choice today that gives life to someone else"}, {"key": "act5", "label": "Practice Reconciliation", "value": "If there's someone you're estranged from, take one small step toward reconciliation today"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Jesus, the true King who shed Your own blood to save me, a sinner — thank You for helping me remember that grace again."}, {"key": "p2", "tag": "Repent", "text": "I repent of the moments I sacrificed someone for my own benefit, or looked the other way at wrongdoing."}, {"key": "p3", "tag": "Ask", "text": "Let Jesus Christ, not shared benefit, be the center that holds my life together."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Setyembre 21, Lunes", "ref": "Mga Hukom 9:22–45", "headline": "Kahit Makalipas ang Tatlong Taon,<br>Hindi Nakalimutan ng Diyos ang Dugong Iyon", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 9:22-45", "s1heading": "Salita Ngayon", "verse": "\"...upang gantihan ang krimen laban sa pitumpung anak ni Jerobaal, at upang ibalik ang kanilang dugo<br>kay Abimelek at sa mga tao ng Shekem.\"", "verseRef": "Mga Hukom 9:24", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Talata 22–24 · Ang Diyos na Hindi Nakalimot Matapos ang Tatlong Taon", "paragraphs": ["Tatlong taon na mula nang simulan ni Abimelek na mamuno sa Israel. Sa mga kwento ng naunang mga hukom, paulit-ulit nating naririnig na \"namahinga ang lupain\" matapos iligtas ng Diyos ang Kanyang bayan — ngunit walang ganitong pahayag ng kapayapaan sa kwento ni Abimelek. Naging hari siya sa pamamagitan ng pagpatay sa kanyang mga kapatid at suporta ng Shekem, at tatlong taon lang ang lumipas sa ibabaw ng dugo at sakripisyong iyon.", "Ngunit sinasabi ng teksto na nagpadala ang Diyos ng masamang espiritu sa pagitan ni Abimelek at ng mga tao ng Shekem. Direktang ipinaliwanag ng talata 24 kung bakit: <mark>upang gantihan ang krimen ng pagpatay sa pitumpung anak ni Gideon, at ang kasalanan ng mga tao ng Shekem na tumulong sa pagpatay na iyon</mark>. Tatlong taon na ang lumipas, ngunit hindi nakalimutan ng Diyos ang dugong kanilang pinadanak."], "points": ["Ang pagkaantala ng pananagutan ay hindi katumbas ng pagkawala ng pananagutan."]}, {"title": "Talata 25–29 · Ang Pagtataksil ng Shekem — Nabaligtad na Lohika ng Kadugtungan", "paragraphs": ["Naglagay ng mga tao sa tuktok ng mga burol ang mga tao ng Shekem upang tambangan at nakawan ang bawat dumaraan — nagsimula na silang tumalikod sa mismong haring sila mismo ang naghari. Pagkatapos dumating si Gaal kasama ang kanyang mga kapatid sa Shekem, at ngayon ay ipinagkakatiwala na siya ng mga tao. Sa huli, nagtipon sila sa kanilang templo, kumain at uminom, at sinumpa si Abimelek — ang hari na sila mismo ang naghari.", "Tinanong ni Gaal ang mga tao, <mark>\"Bakit dapat naming paglingkuran si Abimelek?\"</mark> Itinuro niya na si Abimelek ay, sa huli, mula sa ibang lahi (anak ni Gideon), at ginamit niya ang sariling lahi ng Shekem upang tanggihan siya. Hindi kakaiba ang eksenang ito — nang unang hinikayat ni Abimelek ang Shekem, ang kanyang argumento mismo ay <mark>\"ako'y inyong sariling kadugo.\"</mark> Ang lohika ng kadugtungan na ginamit upang itaas siya ay ngayon ginamit din upang ibagsak siya."], "points": ["Ang relasyong itinayo lamang para sa kapwa-kapakinabangan ay maaaring bumaligtad laban sa iyo sa sandaling magbago ang kapakinabangan. Ang suliranin ay hindi ang kadugtungan o katayuan mismo — kundi ang nagpapakilos sa relasyon ay sariling interes, hindi katotohanan at katuwiran."]}, {"title": "Talata 30–41 · Ang Pag-uulat ni Zebul sa Pagtataksil at Pagkatalo ni Gaal", "paragraphs": ["Narinig ni Zebul, isang opisyal ng Shekem, ang hamon ni Gaal at lubhang nagalit, at lihim na nagpadala ng balita kay Abimelek. Ipinayo niya na dumating siya nang gabi kasama ang kanyang mga sundalo, magtago sa mga bukid, at salakayin ang lungsod pagsikat ng araw. Kung paanong nagtambang noon ang mga tao ng Shekem, ngayon si Abimelek naman ang naghahanda ng tambang laban sa Shekem. Ang mga taong minsang nagsanib-puwersa para sa kapwa-kapakinabangan ay gumagamit na ngayon ng parehong pamamaraan upang wasakin ang isa't isa.", "Kinaumagahan, nakita ni Gaal ang mga taong bumababa mula sa mga bundok, ngunit sinabi ni Zebul na anino lamang iyon ng mga burol. Nang malinaw na ang sitwasyon, kinutya ni Zebul si Gaal at hinamon siyang lumabas at lumaban. Pinangunahan ni Gaal ang mga tao ng Shekem palabas ngunit lubos na natalo. Unti-unting nagiging katotohanan ang apoy na binalaan ni Jotam."], "points": ["Kung walang katotohanan at tiwalang mula sa pagkakaisa kay Cristo, ang mismong lakas at karunungan na minsang nagtulungan ay maaaring gamitin na ngayon upang salakayin ang isa't isa."]}, {"title": "Talata 42–45 · Winasak ni Abimelek ang Shekem", "paragraphs": ["Naibalik ba ang relasyon nang matalo si Gaal? Hindi. Kinabukasan, nang lumabas ang mga tao ng Shekem patungo sa mga bukid, hinati ni Abimelek ang kanyang mga sundalo sa tatlong pangkat, nagtambang, hinarangan ang tarangkahan ng lungsod, at sinalakay ang mga taong nasa bukid. Hindi siya tumigil sa pagsupil ng pag-aalsa — buong araw niyang sinalakay ang mismong lungsod na naghari sa kanya, sinakop ito, pinatay ang mga tao, giniba ang lungsod, at winisikan ito ng asin. Isang tanda ng ganap na kapinsalaan at sumpa."], "points": ["Sa kwento ni Jotam, nagbanta ang tinikan na susunugin ang lahat kung hindi ito talagang gagawing hari. Ang mismong hari na inakala ng Shekem na makikinabang sila ay naging siya mismong wumasak sa kanila."]}, {"title": "Aplikasyon · Dalawang Uri ng Dugo", "paragraphs": ["Pinaiisip tayo ng binasa natin ngayon tungkol sa dalawang uri ng dugo. Ang una ay <mark>dugong ipinadanak para sa sariling kapakinabangan sa gastos ng iba</mark>. Kinuha ni Abimelek ang buhay ng kanyang mga kapatid para sa kapangyarihan. Maaaring hindi natin gawin ang parehong pagpatay, ngunit maaari nating isakripisyo ang iba upang makuha ang gusto natin, o pabayaan ang kamalian dahil ito'y kapaki-pakinabang sa atin. Hindi binabale-wala ng Diyos ang ganitong kasamaan.", "Ang isa pa ay <mark>ang dugong ipinadanak ni Jesus upang iligtas tayo</mark>. Kinuha ni Abimelek ang buhay ng iba upang maging hari; ngunit si Jesus, ang tunay na Hari, ay ibinigay ang sarili Niyang buhay upang iligtas tayong mga makasalanan. Ito ang mapagpasyang pagkakaiba ng paghahari ng mundong ito at ng paghahari ni Jesus.", "Hindi naiiba ang ating mga pamilya at iglesia. Kung ang kadugtungan, pagkakakilala, o kapwa-kapakinabangan lamang ang nagbubuklod sa atin, maaari tayong magkahiwalay sa sandaling magkaiba ang ating pag-iisip o interes. Ngunit sinasabi ng Efeso 2 na sinira ni Jesus ang alitan sa pamamagitan ng krus at ginawa tayong magkasundo. Kaya tanungin mo ang sarili mo ngayon: patuloy pa rin ba akong nagsasakripisyo ng iba para sa sarili kong kalooban at kapakinabangan, o namumuhay ba ako kasama si Jesus — na nagpadanak ng Kanyang dugo para sa akin — bilang Panginoon ng aking buhay?"], "points": ["Dahil naligtas na tayo sa biyaya ng krus, tinawag na tayo ngayon upang mamuhay nang karapat-dapat sa biyayang iyon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Sinuri ko kung inaakala kong nawala na ang pinsala o sakit na naidulot ko sa iba dahil lamang walang agad na nangyari."}, {"key": "c2", "text": "Pinag-isipan ko kung may isinakripisyo akong tao upang makuha ang gusto ko, o pinabayaan ang kamalian dahil ito'y kapaki-pakinabang sa akin."}, {"key": "c3", "text": "Sinuri ko kung si Jesu-Cristo, sa halip na kapwa-kapakinabangan o kadugtungan lamang, ang nagbubuklod sa akin at sa iba."}, {"key": "c4", "text": "Pinag-isipan ko kung naaalala ko ang biyaya ni Jesus, na nagpadanak ng Kanyang dugo para sa akin, at talagang namumuhay ako kasama Siya bilang Panginoon ng aking buhay."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "May mali ba o sakit sa iyong buhay ngayon na ipinagpapaliban mo dahil sa iniisip mong 'mawawala rin ito sa paglipas ng panahon'?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Harapin ang Ipinagpaliban na Isyu", "value": "Harapin ang isang mali o sirang relasyon na ipinagpaliban mo dahil sa akala mong aayusin ito ng panahon"}, {"key": "act2", "label": "Suriin ang Sentro, Hindi ang Kapakinabangan", "value": "Suriin kung si Cristo, o kapwa-kapakinabangan lamang, ang sentro ng isang komunidad o relasyong kasangkot mo"}, {"key": "act3", "label": "Ilagay sa Krus ang Iyong Kasalanan", "value": "Tapat na dalhin sa Diyos ngayon ang isang bagay na hindi mo pinahalagahan"}, {"key": "act4", "label": "Mamuhay nang Karapat-dapat sa Biyaya", "value": "Alalahanin ang natanggap mong biyaya at gumawa ng isang pagpiling nagbibigay-buhay sa iba ngayon"}, {"key": "act5", "label": "Magsagawa ng Pagkakasundo", "value": "Kung may taong hindi mo kasundo, gumawa ng isang maliit na hakbang tungo sa pagkakasundo ngayon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Jesus, ang tunay na Hari na nagpadanak ng Iyong dugo upang iligtas ako, isang makasalanan — salamat sa pagtulong sa akin na maalala muli ang biyayang iyon."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa mga sandaling isinakripisyo ko ang iba para sa sarili kong kapakinabangan, o pinabayaan ang kamalian."}, {"key": "p3", "tag": "Kahilingan", "text": "Hayaang si Jesu-Cristo, hindi ang kapwa-kapakinabangan, ang sentro na magbubuklod sa aking buhay."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
