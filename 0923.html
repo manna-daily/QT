@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="9/23(수) 큐티 · 사사기 10:1–18">
+<meta property="og:description" content="우리는 하나님을 찾고 있습니까, 해결책만 찾고 있습니까">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "9월 23일 수요일", "ref": "사사기 10장 1–18절", "headline": "우리는 하나님을 찾고 있습니까,<br>해결책만 찾고 있습니까", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 10:1-18", "s1heading": "오늘의 말씀", "verse": "\"이에 자기 가운데에서 이방 신들을 제거하고 여호와를 섬기매<br>여호와께서 이스라엘의 곤고로 말미암아 마음에 근심하시니라\"", "verseRef": "사사기 10:16", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 1–5절 · 돌라와 야일, 조용했던 45년", "paragraphs": ["아비멜렉이 죽은 뒤 돌라와 야일이라는 두 사사가 일어나 각각 23년, 22년 동안 이스라엘을 다스립니다. 성경은 돌라가 어떤 적과 싸웠는지 말하지 않지만, <mark>\"이스라엘을 구원하였다\"</mark>는 사실만은 분명히 기록합니다. 아비멜렉의 이야기는 길고 복잡했지만, 돌라의 이야기는 단 두 절뿐입니다. 그렇다고 그의 사역이 가벼운 것은 아닙니다. 하나님의 백성을 돌보는 일은 늘 극적인 사건으로만 나타나지 않습니다. 한 사람이 말씀 앞에 서도록 꾸준히 돕는 일, 가족과 함께 기도하는 일, 맡겨진 자리를 신실하게 섬기는 일도 결코 작지 않습니다.", "야일에게는 아들 서른 명과 나귀 서른 마리, 성읍 서른 개가 있었다고 소개됩니다. 비교적 안정되고 번영한 시대였던 것으로 보입니다. 그런데 바로 다음 절에서 이스라엘은 다시 우상숭배로 돌아갑니다. 45년 동안 평온했다는 사실이, 이스라엘의 믿음이 깊어졌다는 증거는 아니었습니다."], "points": ["문제가 없는 시간이 길다고 믿음이 저절로 깊어지는 것은 아닙니다. 평안할 때에도 말씀과 기도로 하나님과의 관계를 이어가야 합니다."]}, {"title": "6–9절 · 하나님을 버리고, 섬긴 신에게 구원받지 못하다", "paragraphs": ["이스라엘이 다시 여호와 앞에 악을 행합니다. 이번에는 바알과 아스다롯뿐 아니라 아람, 시돈, 모압, 암몬, 블레셋의 신들까지 섬깁니다. 성경은 일곱 부류의 신들을 나열하며 우상숭배가 얼마나 광범위해졌는지를 보여주고, 결정적인 한 문장을 덧붙입니다. <mark>\"여호와를 버리고 그를 섬기지 아니하였다\"</mark>. 하나님의 구원을 여러 번 경험한 백성이, 정작 하나님을 직접 버린 것입니다.", "결국 하나님은 그들을 블레셋과 암몬의 손에 넘기시고, 암몬은 18년 동안 길르앗을 압제하며 요단을 건너 유다와 베냐민, 에브라임까지 공격합니다. 여기에 아이러니가 있습니다. 이스라엘은 암몬의 신을 섬겼지만, 정작 암몬에게 짓밟힐 때 그 신은 그들을 구원하지 못했습니다. 세겜 사람들이 신전의 보루를 피난처로 삼았다가 지켜지지 못했던 것과 같습니다."], "points": ["하나님을 대신해 선택한 것은, 우리의 참된 구원자가 될 수 없습니다."]}, {"title": "10–16절 · 죄를 고백했지만, 하나님은 곧바로 구원을 약속하지 않으셨다", "paragraphs": ["고통 속에서 이스라엘이 하나님께 부르짖습니다. 그런데 이번에는 조금 다릅니다. <mark>\"우리가 우리 하나님을 버리고 바알들을 섬겨 주께 범죄하였나이다\"</mark> — 사사기에서 처음으로 자신들의 죄를 구체적으로 고백합니다. 그러나 하나님의 대답은 예상과 다릅니다. 애굽과 여러 원수에게서 그들을 구원하셨던 역사를 상기시키시며, 구원받을 때마다 다시 하나님을 버렸다고 책망하십니다. 그리고 <mark>\"너희가 택한 신들에게 가서 부르짖으라\"</mark>고 말씀하십니다.", "문제는 도움을 구하는 행위가 아니었습니다. 필요할 때만 하나님을 찾고, 구원받은 뒤 평안해지면 다시 버리는 삶의 방식이었습니다. 요한복음 6장에서 오병이어 이후 사람들이 예수님을 찾아왔을 때, 예수님은 그들이 떡을 먹고 배불렀기 때문에 찾아왔다고 말씀하시며 <mark>썩을 양식이 아니라 영생하도록 있는 양식</mark>을 위해 일하라고 하셨습니다.", "이스라엘은 다시 죄를 고백하고, 이번엔 실제로 이방 신들을 제거하고 여호와를 섬깁니다. 6절에서는 이방 신을 섬기고 여호와를 버렸지만, 16절에서는 이방 신을 제거하고 여호와를 섬깁니다. 그리고 성경은 <mark>하나님의 마음이 이스라엘의 곤고로 말미암아 근심하셨다</mark>고 기록합니다. 그러나 이 장면에서도 하나님은 즉시 구원자를 보내겠다고 약속하지 않으십니다."], "points": ["회개는 하나님께 원하는 결과를 얻어내는 기술이 아니라, 하나님을 버렸던 삶에서 돌이켜 그분께 돌아가는 여정입니다."]}, {"title": "17–18절 · 하나님께 묻지 않고, 서로에게 묻다", "paragraphs": ["암몬이 길르앗에 진을 치자, 이스라엘도 미스바에 모여 전쟁을 준비합니다. 그런데 지도자들이 서로 묻습니다. <mark>\"누가 먼저 나가서 암몬 자손과 싸우겠느냐\"</mark>. 그리고 싸우는 사람을 길르앗의 머리로 삼겠다고 말합니다. 사사기 1장 1절과 비교해 보십시오. 여호수아가 죽은 뒤 불안한 가운데서도 이스라엘은 <mark>여호와께</mark> 누가 먼저 올라가 싸울지 여쭈었습니다.", "그런데 지금은 죄를 고백하고 우상까지 제거했지만, 정작 실제 결정의 순간에 하나님께 묻는 장면도, 하나님이 구원자를 세우시는 장면도 없습니다. 서로를 바라보며 싸움을 이끌 사람을 찾을 뿐입니다. 지도자를 세우고 준비하는 것 자체가 잘못은 아닙니다. 문제는 하나님을 찾는다고 말하면서, 중요한 선택 앞에서는 하나님의 뜻을 묻지 않는다는 데 있습니다."], "points": ["사람을 찾는 일이 하나님을 찾는 일을 대신해서는 안 됩니다."]}, {"title": "적용 · 해결책이 아니라, 하나님 자신을 찾는 삶", "paragraphs": ["교회에 문제가 생기면 우리는 종종 \"사람만 바뀌면 해결될 것\"이라 생각합니다. 물론 건강한 지도자는 꼭 필요합니다. 그러나 한 사람의 변화가 공동체 전체의 회개와 순종을 대신할 수는 없습니다. 목회자도 성도도, 각자 하나님 앞에 서야 합니다. 하나님을 찾는다는 것은 특별한 프로그램에서 시작되지 않습니다. 다시 기본으로 돌아가는 것입니다 — 예배에서 말씀을 진지하게 듣고, 복음에 집중하고, 함께 기도하는 것입니다.", "가정도 마찬가지입니다. 언제 마지막으로 부부가, 혹은 자녀와 함께 하나님 앞에 나아가 삶을 나누고 기도했습니까? 그런 시간이 전혀 없다면 \"바쁘다\"는 이유로 넘겨서는 안 됩니다. 입술의 고백이 삶의 순종을 대신할 수 없고, 주일 한 번의 예배가 나머지 엿새의 삶을 대신할 수 없습니다.", "그래서 우리의 질문은 \"이 문제를 어떻게 해결할까\"에서 끝나면 안 됩니다. \"이 문제 앞에서 하나님은 무엇을 원하시는가, 나는 그 말씀에 어떻게 순종할 것인가\"까지 나아가야 합니다. 예수님을 믿는다는 것은 어려울 때 도움받으려고 그분을 찾는 것이 아니라, 우리를 위해 죽으시고 부활하신 예수님을 삶의 주인으로 모시는 것입니다."], "points": ["하나님이 주실 것은 원하면서 하나님 자신은 원하지 않는 것 — 그것이 문제입니다. 하나님은 위기를 해결하는 수단이 아니라 우리가 섬겨야 할 삶의 주인이십니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "요즘 하나님을 찾는 이유가 하나님 자신 때문인지, 문제 해결 때문인지 솔직하게 돌아봤다"}, {"key": "c2", "text": "평안한 시기라고 말씀과 기도를 뒤로 미루고 있지는 않은지 점검했다"}, {"key": "c3", "text": "중요한 결정 앞에서 하나님께 묻기보다 사람을 먼저 찾고 있지는 않은지 돌아봤다"}, {"key": "c4", "text": "우리 가정이 함께 하나님 앞에 나아가 기도하는 시간이 있는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 내가 하나님께 구하고 있는 것은 '하나님 자신'입니까, '해결책'입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "결정 앞에서 먼저 묻기", "value": "오늘 앞둔 결정 하나를 사람에게 묻기 전에 먼저 하나님께 기도로 여쭙기"}, {"key": "act2", "label": "가족과 함께 기도하기", "value": "오늘 저녁 가족(또는 배우자·자녀)과 5분이라도 함께 기도하는 시간 갖기"}, {"key": "act3", "label": "예배의 기본 회복하기", "value": "다음 예배에서 사람보다 말씀에 집중하고, 들은 말씀 한 줄을 적어두기"}, {"key": "act4", "label": "평안할 때 말씀 붙들기", "value": "문제가 없는 오늘, 말씀 한 장을 읽고 하나님께 감사 기도하기"}, {"key": "act5", "label": "작은 신실함 실천하기", "value": "돌라처럼 눈에 띄지 않아도 맡겨진 자리에서 한 사람을 신실하게 섬기기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "구원받은 뒤에도 거듭 떠났던 저를 끝까지 포기하지 않으시고 근심하며 기다려 주신 하나님, 그 사랑을 감사합니다"}, {"key": "p2", "tag": "회개", "text": "필요할 때만 주님을 찾고 평안할 때는 말씀과 기도를 멀리했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "해결책이 아니라 주님 자신을 구하게 하시고, 우리 가정과 교회가 다시 말씀과 기도의 자리로 돌아가게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "September 23, Wednesday", "ref": "Judges 10:1–18", "headline": "Are We Seeking God,<br>or Only a Solution?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 10:1-18", "s1heading": "Today's Word", "verse": "\"So they put away the foreign gods from among them and served the LORD,<br>and He became impatient over the misery of Israel.\"", "verseRef": "Judges 10:16", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Verses 1–5 · Tola and Jair, Forty-Five Quiet Years", "paragraphs": ["After Abimelech's death, two judges arise — Tola and Jair — who lead Israel for 23 and 22 years. Scripture doesn't tell us which enemy Tola fought, but it clearly records that he <mark>\"saved Israel.\"</mark> Abimelech's story was long and complicated; Tola's is just two verses. Yet his work was not insignificant. Caring for God's people doesn't always show up as dramatic events. Steadily helping one person stand before the Word, praying together as a family, faithfully serving where you've been placed — none of these are small.", "Jair is introduced with thirty sons, thirty donkeys, and thirty towns — a relatively stable, prosperous time. But in the very next verse, Israel returns to idolatry. Forty-five peaceful years were not proof that Israel's faith had grown deeper."], "points": ["A long season without problems doesn't automatically deepen our faith. Even in peace, we must keep our relationship with God alive through the Word and prayer."]}, {"title": "Verses 6–9 · Forsaking God, and Not Being Saved by the Gods They Served", "paragraphs": ["Israel again does evil in the LORD's sight. This time they serve not only the Baals and Ashtaroth, but also the gods of Aram, Sidon, Moab, Ammon, and the Philistines. Scripture lists seven groups of gods to show how widespread their idolatry had become — and adds one decisive line: <mark>\"they forsook the LORD and did not serve Him.\"</mark> A people who had experienced God's deliverance again and again now directly abandoned Him.", "So God gives them into the hands of the Philistines and the Ammonites. Ammon oppresses Gilead for eighteen years, even crossing the Jordan to attack Judah, Benjamin, and Ephraim. Here's the irony: Israel served Ammon's gods, yet when Ammon crushed them, those gods couldn't save them — just as the people of Shechem found no protection in the temple stronghold they had trusted."], "points": ["Whatever we choose in place of God cannot be our true savior."]}, {"title": "Verses 10–16 · They Confessed, Yet God Did Not Promise Immediate Rescue", "paragraphs": ["In their distress, Israel cries out to God — but this time is a little different: <mark>\"We have sinned against You, because we have forsaken our God and served the Baals.\"</mark> For the first time in Judges, they confess their sin specifically. Yet God's answer is not what we'd expect. He reminds them how He saved them from Egypt and many other enemies, rebukes them for forsaking Him every time after being saved, and says, <mark>\"Go and cry out to the gods you have chosen.\"</mark>", "The problem wasn't asking for help. It was a way of life — seeking God only when needed, then abandoning Him again once life was peaceful. In John 6, after the feeding of the five thousand, Jesus told the crowds they sought Him because they ate the loaves and were filled, and urged them to work <mark>not for food that perishes, but for food that endures to eternal life</mark>.", "Israel confesses again, and this time they actually put away the foreign gods and serve the LORD. In verse 6 they served foreign gods and forsook the LORD; in verse 16 they remove the foreign gods and serve the LORD. Scripture records that <mark>God's heart was grieved over Israel's misery</mark>. Yet even here, God does not promise to send a deliverer right away."], "points": ["Repentance isn't a technique for getting the result we want from God — it's a journey of turning back from a life that abandoned Him, and returning to Him."]}, {"title": "Verses 17–18 · Asking One Another Instead of Asking God", "paragraphs": ["When Ammon camps in Gilead, Israel gathers at Mizpah to prepare for war. But the leaders ask one another, <mark>\"Who will be the first to fight against the Ammonites?\"</mark> — promising to make that man head over all Gilead. Compare Judges 1:1. After Joshua died, even amid uncertainty, Israel asked <mark>the LORD</mark> who should go up first to fight.", "Now they have confessed their sin and even removed their idols — but at the actual moment of decision, there's no scene of asking God, and no scene of God raising up a deliverer. They simply look at one another for someone to lead the fight. Appointing leaders and preparing isn't wrong in itself. The problem is saying we seek God while not asking for His will when it comes to the choices that matter."], "points": ["Seeking people must never replace seeking God."]}, {"title": "Application · A Life That Seeks God Himself, Not Just a Solution", "paragraphs": ["When problems arise in the church, we often think, \"If only the right person were in charge, it would be fixed.\" Healthy leaders are certainly needed. But one person's change can't substitute for the whole community's repentance and obedience. Pastors and members alike must each stand before God. Seeking God doesn't start with a special program — it means returning to the basics: listening seriously to the Word in worship, focusing on the gospel, and praying together.", "The same goes for our families. When did you last come before God together with your spouse or children, sharing life and praying? If there's no such time at all, don't let it slide with \"we're busy.\" A confession on the lips can't replace obedience in life, and one Sunday service can't replace the other six days.", "So our question can't end with \"How do I fix this problem?\" It must go on to \"What does God want in this situation, and how will I obey His Word?\" Believing in Jesus isn't seeking Him for help when things are hard — it's receiving Jesus, who died and rose for us, as the Lord of our lives."], "points": ["Wanting what God can give, but not wanting God Himself — that's the real problem. God is not a tool for solving our crises; He is the Lord of our lives, whom we are to serve."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I honestly reflected on whether I seek God these days for Himself, or just for a solution."}, {"key": "c2", "text": "I checked whether I've been putting off the Word and prayer because life feels peaceful right now."}, {"key": "c3", "text": "I reflected on whether I look to people first before asking God when facing important decisions."}, {"key": "c4", "text": "I checked whether my family has a time to come before God together in prayer."}], "s4heading": "One-Line Reflection", "memoHint": "What am I really asking God for right now — God Himself, or a solution?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Ask God First", "value": "Before asking anyone about a decision you face today, bring it to God in prayer first"}, {"key": "act2", "label": "Pray with Family", "value": "This evening, spend even five minutes praying together with your family (spouse or children)"}, {"key": "act3", "label": "Return to Worship Basics", "value": "At your next worship service, focus on the Word rather than people, and write down one line you heard"}, {"key": "act4", "label": "Hold the Word in Peaceful Times", "value": "On a day without problems, read one chapter of Scripture and pray a prayer of thanks"}, {"key": "act5", "label": "Practice Quiet Faithfulness", "value": "Like Tola, faithfully serve one person where you've been placed, even if no one notices"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "God, thank You for not giving up on me even when I kept leaving after being saved, and for grieving and waiting for me."}, {"key": "p2", "tag": "Repent", "text": "I repent of seeking You only when I needed You, and drifting from Your Word and prayer when life was peaceful."}, {"key": "p3", "tag": "Ask", "text": "Let me seek You Yourself, not just solutions — and bring our families and church back to the place of Your Word and prayer."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Setyembre 23, Miyerkules", "ref": "Mga Hukom 10:1–18", "headline": "Ang Diyos Ba ang Hinahanap Natin,<br>o Solusyon Lamang?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 10:1-18", "s1heading": "Salita Ngayon", "verse": "\"Kaya inalis nila ang mga diyus-diyosan sa gitna nila at naglingkod kay Yahweh,<br>at nahabag Siya sa paghihirap ng Israel.\"", "verseRef": "Mga Hukom 10:16", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Talata 1–5 · Sina Tola at Jair, Apatnapu't Limang Tahimik na Taon", "paragraphs": ["Pagkamatay ni Abimelek, dalawang hukom ang bumangon — sina Tola at Jair — na namuno sa Israel nang 23 at 22 taon. Hindi sinasabi ng Kasulatan kung sinong kaaway ang nilabanan ni Tola, ngunit malinaw nitong itinala na siya'y <mark>\"nagligtas sa Israel.\"</mark> Mahaba at magulo ang kwento ni Abimelek; dalawang talata lamang ang kay Tola. Ngunit hindi maliit ang kanyang gawain. Ang pag-aalaga sa bayan ng Diyos ay hindi laging nakikita sa mga dramatikong pangyayari. Ang patuloy na pagtulong sa isang tao na tumayo sa harap ng Salita, ang pananalangin kasama ang pamilya, ang tapat na paglilingkod sa lugar kung saan ka inilagay — wala sa mga ito ang maliit.", "Ipinakilala si Jair na may tatlumpung anak, tatlumpung asno, at tatlumpung bayan — isang medyo matatag at masaganang panahon. Ngunit sa kasunod na talata, bumalik ang Israel sa pagsamba sa diyus-diyosan. Ang apatnapu't limang taon ng kapayapaan ay hindi patunay na lumalim ang pananampalataya ng Israel."], "points": ["Ang mahabang panahong walang problema ay hindi kusang nagpapalalim ng pananampalataya. Kahit sa kapayapaan, dapat nating panatilihing buhay ang relasyon sa Diyos sa pamamagitan ng Salita at panalangin."]}, {"title": "Talata 6–9 · Tinalikuran ang Diyos, at Hindi Iniligtas ng mga Diyos na Kanilang Pinaglingkuran", "paragraphs": ["Muling gumawa ng masama ang Israel sa paningin ni Yahweh. Sa pagkakataong ito, pinaglingkuran nila hindi lamang ang mga Baal at Astarot, kundi pati ang mga diyos ng Aram, Sidon, Moab, Ammon, at mga Filisteo. Inilista ng Kasulatan ang pitong uri ng diyos upang ipakita kung gaano kalawak ang kanilang pagsamba sa diyus-diyosan — at idinagdag ang isang mapagpasyang pangungusap: <mark>\"tinalikuran nila si Yahweh at hindi na naglingkod sa Kanya.\"</mark> Ang bayang paulit-ulit na nakaranas ng pagliligtas ng Diyos ay ngayon direktang tumalikod sa Kanya.", "Kaya ibinigay sila ng Diyos sa kamay ng mga Filisteo at Ammonita. Inapi ng Ammon ang Gilead sa loob ng labing-walong taon, tumawid pa sa Jordan upang salakayin ang Juda, Benjamin, at Efraim. Narito ang kabalintunaan: pinaglingkuran ng Israel ang mga diyos ng Ammon, ngunit nang durugin sila ng Ammon, hindi sila nailigtas ng mga diyos na iyon — tulad ng mga tao ng Shekem na hindi naprotektahan ng kuta ng templong kanilang pinagkatiwalaan."], "points": ["Anumang piliin natin kapalit ng Diyos ay hindi maaaring maging tunay nating tagapagligtas."]}, {"title": "Talata 10–16 · Nagpahayag Sila ng Kasalanan, Ngunit Hindi Agad Nangako ng Pagliligtas ang Diyos", "paragraphs": ["Sa kanilang kagipitan, dumaing ang Israel sa Diyos — ngunit medyo iba ngayon: <mark>\"Nagkasala kami laban sa Iyo, sapagkat tinalikuran namin ang aming Diyos at naglingkod sa mga Baal.\"</mark> Sa unang pagkakataon sa aklat ng Mga Hukom, tiyak nilang ipinahayag ang kanilang kasalanan. Ngunit hindi inaasahan ang sagot ng Diyos. Ipinaalala Niya kung paano Niya sila iniligtas mula sa Ehipto at sa maraming kaaway, sinaway sila dahil sa pagtalikod sa Kanya tuwing sila'y naliligtas, at sinabi, <mark>\"Humayo kayo at dumaing sa mga diyos na inyong pinili.\"</mark>", "Ang problema ay hindi ang paghingi ng tulong. Ito ay isang paraan ng pamumuhay — hinahanap ang Diyos kapag kailangan lamang, at tinatalikuran muli kapag payapa na ang buhay. Sa Juan 6, matapos pakainin ang limang libo, sinabi ni Jesus sa mga tao na hinanap nila Siya dahil kumain sila ng tinapay at nabusog, at hinimok silang magtrabaho <mark>hindi para sa pagkaing nasisira, kundi para sa pagkaing nananatili hanggang sa buhay na walang hanggan</mark>.", "Muling nagpahayag ng kasalanan ang Israel, at sa pagkakataong ito, talagang inalis nila ang mga diyus-diyosan at naglingkod kay Yahweh. Sa talata 6, naglingkod sila sa mga ibang diyos at tinalikuran si Yahweh; sa talata 16, inalis nila ang mga ibang diyos at naglingkod kay Yahweh. Itinala ng Kasulatan na <mark>nahabag ang puso ng Diyos sa paghihirap ng Israel</mark>. Ngunit kahit dito, hindi nangako ang Diyos na magpapadala agad ng tagapagligtas."], "points": ["Ang pagsisisi ay hindi isang teknik upang makuha ang gusto natin mula sa Diyos — ito ay isang paglalakbay ng pagtalikod mula sa buhay na tumalikod sa Kanya, at pagbabalik sa Kanya."]}, {"title": "Talata 17–18 · Nagtanungan sa Isa't Isa sa Halip na Magtanong sa Diyos", "paragraphs": ["Nang magkampo ang Ammon sa Gilead, nagtipon ang Israel sa Mizpa upang maghanda sa digmaan. Ngunit nagtanungan ang mga pinuno sa isa't isa, <mark>\"Sino ang unang lalaban sa mga Ammonita?\"</mark> — nangangakong gagawin siyang pinuno ng buong Gilead. Ihambing ito sa Mga Hukom 1:1. Pagkamatay ni Josue, kahit sa gitna ng kawalang-katiyakan, nagtanong ang Israel <mark>kay Yahweh</mark> kung sino ang unang aakyat upang lumaban.", "Ngayon, nagpahayag na sila ng kasalanan at inalis pa ang mga diyus-diyosan — ngunit sa mismong sandali ng pagpapasya, walang eksena ng pagtatanong sa Diyos, at walang eksena ng Diyos na nagbabangon ng tagapagligtas. Tumitingin lamang sila sa isa't isa para sa taong mamumuno sa laban. Hindi mali ang pagtatalaga ng pinuno at paghahanda. Ang problema ay ang pagsasabing hinahanap natin ang Diyos habang hindi natin hinihingi ang Kanyang kalooban sa mga pagpiling mahalaga."], "points": ["Ang paghahanap sa tao ay hindi dapat pumalit sa paghahanap sa Diyos."]}, {"title": "Aplikasyon · Isang Buhay na Naghahanap sa Diyos Mismo, Hindi Lamang ng Solusyon", "paragraphs": ["Kapag may problema sa iglesia, madalas nating isipin, \"Kung tamang tao lang ang mamumuno, maaayos na ito.\" Tunay na kailangan ang malusog na pinuno. Ngunit ang pagbabago ng isang tao ay hindi maaaring pumalit sa pagsisisi at pagsunod ng buong komunidad. Ang pastor at ang mga miyembro ay parehong dapat tumayo sa harap ng Diyos. Ang paghahanap sa Diyos ay hindi nagsisimula sa isang espesyal na programa — ito ay pagbabalik sa mga pangunahing bagay: seryosong pakikinig sa Salita sa pagsamba, pagtuon sa ebanghelyo, at sama-samang pananalangin.", "Ganoon din ang ating mga pamilya. Kailan ka huling lumapit sa Diyos kasama ang iyong asawa o mga anak, nagbabahagi ng buhay at nananalangin? Kung wala talagang ganoong oras, huwag itong palampasin dahil lang \"abala tayo.\" Ang pagpapahayag sa labi ay hindi maaaring pumalit sa pagsunod sa buhay, at ang isang pagsamba tuwing Linggo ay hindi maaaring pumalit sa natitirang anim na araw.", "Kaya ang ating tanong ay hindi dapat magtapos sa \"Paano ko aayusin ang problemang ito?\" Dapat itong umabot sa \"Ano ang nais ng Diyos sa sitwasyong ito, at paano ko susundin ang Kanyang Salita?\" Ang pananampalataya kay Jesus ay hindi paghahanap sa Kanya para sa tulong kapag mahirap — ito ay pagtanggap kay Jesus, na namatay at nabuhay para sa atin, bilang Panginoon ng ating buhay."], "points": ["Ang pagnanais sa kayang ibigay ng Diyos, ngunit hindi sa Diyos Mismo — iyon ang tunay na problema. Ang Diyos ay hindi kasangkapan upang lutasin ang ating krisis; Siya ang Panginoon ng ating buhay na dapat nating paglingkuran."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Tapat kong pinag-isipan kung hinahanap ko ang Diyos ngayon para sa Kanya Mismo, o para lamang sa solusyon."}, {"key": "c2", "text": "Sinuri ko kung ipinagpapaliban ko ang Salita at panalangin dahil payapa ang buhay ngayon."}, {"key": "c3", "text": "Pinag-isipan ko kung tao muna ang tinitingnan ko bago magtanong sa Diyos kapag may mahalagang desisyon."}, {"key": "c4", "text": "Sinuri ko kung may oras ang aming pamilya para sama-samang lumapit sa Diyos sa panalangin."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano talaga ang hinihingi ko sa Diyos ngayon — ang Diyos Mismo, o isang solusyon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Magtanong Muna sa Diyos", "value": "Bago magtanong kaninuman tungkol sa isang desisyon ngayon, dalhin muna ito sa Diyos sa panalangin"}, {"key": "act2", "label": "Manalangin Kasama ang Pamilya", "value": "Ngayong gabi, gumugol kahit limang minuto sa sama-samang pananalangin kasama ang pamilya (asawa o mga anak)"}, {"key": "act3", "label": "Bumalik sa Pundasyon ng Pagsamba", "value": "Sa susunod na pagsamba, tumuon sa Salita sa halip na sa tao, at isulat ang isang linyang narinig mo"}, {"key": "act4", "label": "Kapitan ang Salita sa Panahon ng Kapayapaan", "value": "Sa araw na walang problema, magbasa ng isang kabanata ng Kasulatan at manalangin ng pasasalamat"}, {"key": "act5", "label": "Isagawa ang Tahimik na Katapatan", "value": "Tulad ni Tola, tapat na paglingkuran ang isang tao sa lugar kung saan ka inilagay, kahit walang nakakapansin"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Diyos, salamat sa hindi Mo pagsuko sa akin kahit paulit-ulit akong lumayo matapos akong iligtas, at sa Iyong paghahabag at paghihintay sa akin."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa paghahanap sa Iyo kapag kailangan lamang, at paglayo sa Iyong Salita at panalangin kapag payapa ang buhay."}, {"key": "p3", "tag": "Kahilingan", "text": "Hayaang hanapin ko Ikaw Mismo, hindi lamang mga solusyon — at ibalik ang aming mga pamilya at iglesia sa lugar ng Iyong Salita at panalangin."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
