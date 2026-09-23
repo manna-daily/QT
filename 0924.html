@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="9/24(목) 큐티 · 사사기 11:1–11">
+<meta property="og:description" content="필요할 때만 찾는 관계, 사랑일까요">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "9월 24일 목요일", "ref": "사사기 11장 1–11절", "headline": "필요할 때만 찾는 관계,<br>사랑일까요", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 11:1-11", "s1heading": "오늘의 말씀", "verse": "\"너희가 전에 나를 미워하여 내 아버지 집에서 쫓아내지 아니하였느냐<br>이제 너희가 환난을 당하였다고 어찌하여 내게 왔느냐\"", "verseRef": "사사기 11:7", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 하나님과의 관계가 사람과의 관계로 이어집니다", "paragraphs": ["앞선 10장 마지막에서 암몬이 쳐들어오자 길르앗 지도자들은 서로에게 물었습니다. <mark>\"누가 먼저 나가서 암몬 자손과 싸우겠느냐\"</mark>. 사사기 1장에서는 같은 전쟁의 순간에 여호와께 물었지만, 이제는 하나님께 묻지 않고 서로를 바라봅니다. 이스라엘은 어려울 때 하나님을 찾고, 문제가 해결되면 다시 하나님을 버리는 일을 반복해 왔습니다.", "오늘 본문은 그 모습이 사람과 사람 사이에서도 똑같이 나타난다는 것을 보여줍니다. 하나님을 필요할 때만 찾던 방식이, 이제 한 사람 입다를 대하는 방식에서 그대로 반복됩니다. <mark>하나님과의 수직적인 관계에서 드러난 왜곡이, 사람과의 수평적인 관계에서도 그대로 드러나는 것</mark>입니다."]}, {"title": "1–3절 · 큰 용사였지만, 가족에게 쫓겨난 사람", "paragraphs": ["성경은 입다를 두 가지 모습으로 소개합니다. 먼저 그는 <mark>\"큰 용사\"</mark>였습니다. 기드온에게도 쓰였던 표현으로, 전쟁을 할 줄 아는 뛰어난 사람이었습니다. 그런데 바로 이어서 그의 어머니가 기생이었다고 기록합니다. 전쟁에서는 인정받을 능력이 있었지만, 가정 안에서는 인정받기 어려운 불안정한 자리에서 태어난 사람이었습니다.", "길르앗의 아내가 낳은 아들들이 자라자 입다에게 말합니다. <mark>\"너는 다른 여인의 자식이니 우리 아버지 집에서 기업을 얻지 못하리라\"</mark>. 유산을 함께 나누고 싶지 않았던 것입니다. 입다는 스스로 떠난 것이 아니라 쫓겨났습니다. 그리고 그 기억은 시간이 흘러도 사라지지 않았습니다. 훗날 7절에서 그는 이 일을 정확하게 되짚습니다.", "입다는 돕 땅으로 가고, 그 주변에 잡류가 모여듭니다. 공동체의 중심에서 밀려난 사람이 주변부의 사람들과 함께 살아남았고, 어느새 사람들을 이끄는 지도자가 되어 있었습니다. 그러나 이 장면을 \"사람이 버려도 결국 높아진다\"는 성공 이야기로만 읽으면 본문의 핵심을 놓칩니다. 이후 그가 지도자가 되는 과정에는 상처와 권력, 협상과 조건이 복잡하게 얽혀 있기 때문입니다."], "points": ["우리의 가치는 나를 무시했던 사람들에게 다시 인정받는 것으로 회복되지 않습니다. 그리스도 안에서 이미 사랑받고 받아들여졌다는 진리가 우리의 정체성을 결정합니다."]}, {"title": "4–11절 · 사랑해서가 아니라, 필요해서 다시 찾아오다", "paragraphs": ["암몬이 쳐들어오고 싸울 사람이 나타나지 않자, 길르앗 장로들이 입다를 찾아갑니다. 왜 입다였을까요? 그가 큰 용사였기 때문입니다. 불편하지만 분명한 사실이 있습니다. 그들은 입다가 그리워서가 아니라, <mark>그가 가진 능력이 필요해서</mark> 찾아간 것입니다. 그리고 처음에는 \"우리의 장관(군사 지휘관)이 되어 달라\"고만 말합니다. 부탁이라기보다 협상의 시작이었습니다.", "입다가 되묻습니다. <mark>\"너희가 전에 나를 미워하여 쫓아내지 아니하였느냐, 이제 환난을 당하였다고 어찌하여 내게 왔느냐\"</mark>. 이 말은 바로 앞장에서 하나님이 이스라엘에게 하신 말씀과 놀랍도록 닮았습니다. 이스라엘은 하나님을 버렸다가 환난이 오자 하나님을 찾았고, 길르앗 사람들은 입다를 버렸다가 환난이 오자 입다를 찾습니다. 하나님을 목적이 아니라 수단으로 대하던 삶이, 사람에게도 똑같이 반복된 것입니다.", "그러자 장로들은 조건을 올립니다. 이번엔 \"길르앗 모든 주민의 머리가 되어 달라\"고 합니다. 그런데 \"우리가 너를 잘못 대했다\"는 사과는 끝내 나오지 않습니다. 입다 역시 조건을 확인합니다. <mark>\"여호와께서 그들을 내게 넘겨주시면 내가 과연 너희의 머리가 되겠느냐\"</mark>. 결국 그는 길르앗의 머리와 장관으로 세워지고, 미스바에서 자신의 말을 여호와 앞에 아룁니다."], "points": ["필요해서 다시 연결되는 것과 관계가 진정으로 회복되는 것은 같지 않습니다. 하나님을 이용하는 관계에 익숙해지면, 사람도 이용하는 관계로 대하기 쉽습니다."]}, {"title": "적용 · 버려진 돌, 그러나 우리를 이용하지 않으신 예수님", "paragraphs": ["오늘 본문은 두 관계를 함께 점검하게 합니다. 나는 하나님을 사랑해서 찾습니까, 내 문제를 해결해 주실 수 있어서 찾습니까? 나는 사람을 사랑해서 관계합니까, 그 사람이 내게 무언가 해 줄 수 있어서 가까이합니까? 도움이 필요할 때만 연락하고, 더 이상 도움이 되지 않는다 싶으면 멀어지고 있지는 않습니까? 교회 안에서도 사역에 도움이 되는 사람만 가까이하고 그렇지 않은 사람은 관심 밖으로 밀어낼 수 있습니다.", "이 두 관계의 회복을 가장 분명하게 보여주시는 분이 예수님입니다. 예수님도 <mark>건축자들이 버린 돌</mark>이 되셨습니다. 그러나 결정적인 차이가 있습니다. 입다는 자신을 버린 사람들에게 자신을 머리로 세울 것인지 확인하며 자리를 확보했지만, 예수님은 자신을 버린 죄인들을 구하시려고 자신의 생명을 내어주셨습니다. 우리는 하나님을 이용하려 했지만, 예수님은 우리를 이용하지 않으셨습니다. 우리가 아직 죄인 되었을 때 우리를 사랑하셨습니다.", "그 사랑을 받은 우리의 관계는 달라져야 합니다. \"저 사람이 나에게 무엇을 해 줄 수 있는가\"만 묻는 것이 아니라, \"예수님께 받은 사랑으로 내가 이 사람을 어떻게 사랑할 수 있는가\"를 물어야 합니다. 교회는 필요에 따라 사람을 연결하는 조직이 아니라, 그리스도의 사랑을 받은 사람들이 그 사랑 안에서 서로 연결되어 가는 공동체입니다."], "points": ["하나님과의 수직적인 관계가 회복될 때, 사람과의 수평적인 관계도 달라집니다. 받은 사랑을 흘려보내는 것 — 그것이 그리스도인의 관계입니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "내가 하나님을 찾는 이유가 하나님을 사랑해서인지, 문제를 해결해 주시기 때문인지 돌아봤다"}, {"key": "c2", "text": "도움이 필요할 때만 연락하고, 필요가 없어지면 멀어진 관계가 있는지 떠올려봤다"}, {"key": "c3", "text": "교회나 모임에서 사람을 '나에게 도움이 되는가'라는 기준으로 보고 있지는 않은지 점검했다"}, {"key": "c4", "text": "나를 무시했던 사람에게 인정받으려는 마음보다, 그리스도 안에서 이미 받아들여진 사실을 붙들고 있는지 돌아봤다"}], "s4heading": "묵상 한 줄", "memoHint": "필요할 때만 찾았던 사람이 있다면 누구입니까? 오늘 그 사람을 필요가 아니라 사랑으로 대할 수 있는 방법은 무엇일까요?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "용건 없이 연락하기", "value": "부탁할 일이 없어도 오늘 한 사람에게 안부를 묻는 연락하기"}, {"key": "act2", "label": "밀어낸 사람 돌아보기", "value": "'도움이 안 된다'고 멀리했던 사람 한 명에게 먼저 관심 표현하기"}, {"key": "act3", "label": "한 영혼으로 만나기", "value": "오늘 만나는 사람을 업무나 사역이 아니라 한 영혼으로 대하며 이야기 들어주기"}, {"key": "act4", "label": "하나님께 감사만 드리기", "value": "오늘 기도에서 아무것도 구하지 않고 하나님 자신으로 인해 감사만 드리기"}, {"key": "act5", "label": "받은 사랑 흘려보내기", "value": "예수님께 받은 사랑을 떠올리며 조건 없이 누군가를 한 가지 섬기기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "제가 아무 쓸모 없을 때에도, 죄인 되었을 때에도 먼저 사랑하시고 생명을 내어주신 예수님, 감사합니다"}, {"key": "p2", "tag": "회개", "text": "하나님도 사람도 필요할 때만 찾고, 필요 없어지면 멀리했던 저의 모습을 회개합니다"}, {"key": "p3", "tag": "간구", "text": "하나님과의 관계가 회복되어, 그 사랑이 가정과 교회와 이웃을 향한 관계로 흘러가게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "September 24, Thursday", "ref": "Judges 11:1–11", "headline": "A Relationship That Only Seeks You When Needed —<br>Is That Love?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 11:1-11", "s1heading": "Today's Word", "verse": "\"Did you not hate me and drive me out of my father's house?<br>Why have you come to me now when you are in distress?\"", "verseRef": "Judges 11:7", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Our Relationship with God Spills into Our Relationships with People", "paragraphs": ["At the end of chapter 10, when Ammon attacked, Gilead's leaders asked one another, <mark>\"Who will be the first to fight against the Ammonites?\"</mark> In Judges 1, at the same kind of moment, Israel asked the LORD. Now they don't ask God — they look at each other. Israel had kept repeating a pattern: seeking God in trouble, then abandoning Him once the problem was solved.", "Today's passage shows that same pattern showing up between people. The way Israel treated God — seeking Him only when needed — is now repeated in how they treat one man, Jephthah. <mark>The distortion in their vertical relationship with God shows up just the same in their horizontal relationships with people.</mark>"]}, {"title": "Verses 1–3 · A Mighty Warrior, Driven Out by His Family", "paragraphs": ["Scripture introduces Jephthah in two ways. First, he was <mark>\"a mighty warrior\"</mark> — the same phrase used of Gideon, describing someone highly capable in battle. But right after that, it records that his mother was a prostitute. He had abilities that would be recognized on the battlefield, yet he was born into an unstable place where he'd struggle to be accepted in his own family.", "When the sons of Gilead's wife grew up, they told Jephthah, <mark>\"You shall not have an inheritance in our father's house, for you are the son of another woman.\"</mark> They didn't want to share the inheritance. Jephthah didn't leave on his own — he was driven out. And that memory didn't fade with time; later, in verse 7, he recalls it precisely.", "Jephthah goes to the land of Tob, and worthless men gather around him. Pushed out of the center of his community, he survives among people on the margins — and somewhere along the way, becomes a leader others follow. But if we read this only as a success story — \"rejected, but eventually raised up\" — we miss the point. The road to his leadership is tangled with hurt and power, negotiation and conditions."], "points": ["Our worth isn't restored by finally being recognized by the people who looked down on us. The truth that we are already loved and accepted in Christ is what defines who we are."]}, {"title": "Verses 4–11 · They Came Back — Not Out of Love, but Out of Need", "paragraphs": ["When Ammon attacks and no one steps up to fight, the elders of Gilead go to Jephthah. Why him? Because he was a mighty warrior. It's uncomfortable, but clear: they didn't go because they missed him — they went because <mark>they needed what he could do</mark>. At first, they only ask him to be their \"commander\" (military leader). It's less a request than the start of a negotiation.", "Jephthah answers back: <mark>\"Did you not hate me and drive me out? Why have you come to me now when you are in distress?\"</mark> These words strikingly echo what God had just said to Israel in the previous chapter. Israel abandoned God and sought Him when trouble came; Gilead abandoned Jephthah and sought him when trouble came. A life that treated God as a means rather than the goal is repeated exactly in how they treat a person.", "So the elders raise their offer: now they ask him to be \"head over all the inhabitants of Gilead.\" Yet the words \"we wronged you\" never come. Jephthah, too, confirms the terms: <mark>\"If the LORD gives them over to me, will I really be your head?\"</mark> In the end he's made head and commander of Gilead, and he speaks all his words before the LORD at Mizpah."], "points": ["Reconnecting out of need is not the same as a relationship truly being restored. When we get used to using God, it becomes easy to use people too."]}, {"title": "Application · The Rejected Stone — Jesus, Who Never Used Us", "paragraphs": ["Today's passage asks us to examine both relationships. Do I seek God because I love Him, or because He can solve my problems? Do I relate to people because I love them, or because they can do something for me? Do I only reach out when I need help, and drift away when someone is no longer useful? Even in church, we can draw close to people who help our ministry and push aside those who don't seem useful.", "The one who shows the restoration of both relationships most clearly is Jesus. He too became <mark>the stone the builders rejected</mark>. But there's a decisive difference. Jephthah secured his position by confirming whether those who rejected him would make him their head. Jesus gave up His own life to save the sinners who rejected Him. We tried to use God — but Jesus never used us. He loved us while we were still sinners.", "Having received that love, our relationships must change. Instead of only asking \"What can this person do for me?\", we should ask, \"With the love I've received from Jesus, how can I love this person?\" The church isn't an organization that connects people according to need — it's a community of people who have received Christ's love, being joined to one another within that love."], "points": ["When our vertical relationship with God is restored, our horizontal relationships with people change too. Letting the love we've received flow outward — that's what Christian relationships look like."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I seek God because I love Him, or because He solves my problems."}, {"key": "c2", "text": "I thought of a relationship where I only reached out when I needed help, and drifted away once I didn't."}, {"key": "c3", "text": "I checked whether I view people at church or in my groups by the standard of 'are they useful to me?'"}, {"key": "c4", "text": "I reflected on whether I'm holding onto the truth that I'm already accepted in Christ, rather than trying to win approval from those who looked down on me."}], "s4heading": "One-Line Reflection", "memoHint": "Is there someone you've only sought out when you needed them? How could you treat them with love rather than need today?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Reach Out Without a Reason", "value": "Contact one person today just to ask how they're doing, with nothing to ask of them"}, {"key": "act2", "label": "Remember Someone You Pushed Aside", "value": "Show interest first to one person you kept at a distance because they 'weren't helpful'"}, {"key": "act3", "label": "Meet a Person as a Soul", "value": "Treat someone you meet today as a soul, not a task or ministry item, and really listen"}, {"key": "act4", "label": "Just Thank God", "value": "In today's prayer, ask for nothing — simply thank God for who He is"}, {"key": "act5", "label": "Let Love Flow", "value": "Remember the love you've received from Jesus and serve someone in one way, with no strings attached"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Jesus, thank You for loving me first and giving Your life for me — even when I was of no use, even while I was still a sinner."}, {"key": "p2", "tag": "Repent", "text": "I repent of seeking both You and others only when I needed them, and drifting away when I didn't."}, {"key": "p3", "tag": "Ask", "text": "Restore my relationship with You, and let that love flow into my relationships with my family, my church, and my neighbors."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Setyembre 24, Huwebes", "ref": "Mga Hukom 11:1–11", "headline": "Relasyong Naghahanap Lamang Kapag Kailangan —<br>Pag-ibig Ba Iyon?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 11:1-11", "s1heading": "Salita Ngayon", "verse": "\"Hindi ba kinapootan ninyo ako at pinalayas sa bahay ng aking ama?<br>Bakit kayo lumapit sa akin ngayong kayo'y nasa kagipitan?\"", "verseRef": "Mga Hukom 11:7", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ang Relasyon sa Diyos ay Umaabot sa Relasyon sa Kapwa", "paragraphs": ["Sa dulo ng kabanata 10, nang sumalakay ang Ammon, nagtanungan ang mga pinuno ng Gilead, <mark>\"Sino ang unang lalaban sa mga Ammonita?\"</mark> Sa Mga Hukom 1, sa katulad na sandali, nagtanong ang Israel kay Yahweh. Ngayon, hindi na sila nagtatanong sa Diyos — nagtitinginan na lamang sila sa isa't isa. Paulit-ulit ang padron ng Israel: hinahanap ang Diyos kapag may problema, at tinatalikuran Siya kapag nalutas na ito.", "Ipinapakita ng binasa natin ngayon na ang parehong padron ay lumilitaw din sa pagitan ng mga tao. Ang paraan ng pakikitungo ng Israel sa Diyos — hinahanap lamang Siya kapag kailangan — ay inuulit na ngayon sa pakikitungo nila sa isang tao, si Jefte. <mark>Ang baluktot sa patayong relasyon nila sa Diyos ay lumilitaw din sa pahalang na relasyon nila sa kapwa.</mark>"]}, {"title": "Talata 1–3 · Isang Magiting na Mandirigma, Pinalayas ng Sariling Pamilya", "paragraphs": ["Ipinakilala ng Kasulatan si Jefte sa dalawang paraan. Una, siya'y <mark>\"isang magiting na mandirigma\"</mark> — ang parehong pananalitang ginamit kay Gideon, na naglalarawan sa isang taong mahusay sa digmaan. Ngunit kasunod agad nito, itinala na ang kanyang ina ay isang babaeng bayaran. May kakayahan siyang kikilalanin sa larangan ng digmaan, ngunit ipinanganak siya sa isang di-matatag na kalagayan kung saan mahirap siyang tanggapin sa sariling pamilya.", "Nang lumaki ang mga anak ng asawa ni Gilead, sinabi nila kay Jefte, <mark>\"Wala kang mamanahin sa bahay ng aming ama, sapagkat ikaw ay anak ng ibang babae.\"</mark> Ayaw nilang makibahagi sa mana. Hindi kusang umalis si Jefte — pinalayas siya. At hindi nawala ang alaalang iyon sa paglipas ng panahon; sa talata 7, eksaktong inalala niya ito.", "Pumunta si Jefte sa lupain ng Tob, at nagtipon sa kanya ang mga taong walang-kabuluhan. Itinulak palabas sa gitna ng kanyang komunidad, nabuhay siya kasama ng mga taong nasa gilid ng lipunan — at sa paglipas ng panahon, naging pinunong sinusundan ng iba. Ngunit kung babasahin lamang natin ito bilang kwento ng tagumpay — \"itinakwil, ngunit sa huli ay itinaas\" — hindi natin makukuha ang punto. Ang daan patungo sa kanyang pamumuno ay puno ng sugat at kapangyarihan, negosasyon at kondisyon."], "points": ["Ang ating halaga ay hindi naibabalik sa wakas na pagkilala mula sa mga taong minaliit tayo. Ang katotohanang tayo'y minamahal at tinatanggap na kay Cristo ang nagtatakda kung sino tayo."]}, {"title": "Talata 4–11 · Bumalik Sila — Hindi Dahil sa Pag-ibig, Kundi Dahil sa Pangangailangan", "paragraphs": ["Nang sumalakay ang Ammon at walang lumabas upang lumaban, pinuntahan ng mga matatanda ng Gilead si Jefte. Bakit siya? Dahil siya'y isang magiting na mandirigma. Hindi komportable, ngunit malinaw: hindi nila siya pinuntahan dahil nangulila sila sa kanya — pinuntahan nila siya dahil <mark>kailangan nila ang kanyang kakayahan</mark>. Sa simula, hiniling lamang nila na maging \"pinuno ng hukbo\" nila. Higit ito sa pagsisimula ng negosasyon kaysa sa pakiusap.", "Sumagot si Jefte: <mark>\"Hindi ba kinapootan ninyo ako at pinalayas? Bakit kayo lumapit sa akin ngayong kayo'y nasa kagipitan?\"</mark> Kapansin-pansin na kahawig ng mga salitang ito ang sinabi ng Diyos sa Israel sa nakaraang kabanata. Tinalikuran ng Israel ang Diyos at hinanap Siya nang dumating ang kagipitan; tinalikuran ng Gilead si Jefte at hinanap siya nang dumating ang kagipitan. Ang buhay na tinrato ang Diyos bilang kasangkapan sa halip na layunin ay eksaktong inuulit sa pakikitungo nila sa isang tao.", "Kaya itinaas ng mga matatanda ang kanilang alok: ngayon, hiniling nilang maging \"pinuno ng lahat ng naninirahan sa Gilead.\" Ngunit ang mga salitang \"nagkamali kami sa iyo\" ay hindi kailanman lumabas. Kinumpirma rin ni Jefte ang mga kondisyon: <mark>\"Kung ibibigay sila ni Yahweh sa akin, talaga bang ako ang magiging pinuno ninyo?\"</mark> Sa huli, ginawa siyang pinuno at kumander ng Gilead, at binigkas niya ang lahat ng kanyang salita sa harap ni Yahweh sa Mizpa."], "points": ["Ang muling pag-uugnay dahil sa pangangailangan ay hindi katulad ng tunay na naibalik na relasyon. Kapag nasanay tayong gamitin ang Diyos, madali ring gamitin ang kapwa."]}, {"title": "Aplikasyon · Ang Itinakwil na Bato — Si Jesus, na Hindi Tayo Kailanman Ginamit", "paragraphs": ["Hinihiling ng binasa natin ngayon na suriin ang dalawang relasyon. Hinahanap ko ba ang Diyos dahil mahal ko Siya, o dahil malulutas Niya ang aking mga problema? Nakikipag-ugnayan ba ako sa kapwa dahil mahal ko sila, o dahil may magagawa sila para sa akin? Lumalapit lamang ba ako kapag kailangan ko ng tulong, at lumalayo kapag hindi na sila kapaki-pakinabang? Kahit sa iglesia, maaari tayong lumapit sa mga taong nakakatulong sa ministeryo at itabi ang mga mukhang hindi kapaki-pakinabang.", "Ang pinakamalinaw na nagpapakita ng pagpapanumbalik ng dalawang relasyon ay si Jesus. Siya rin ay naging <mark>batong itinakwil ng mga tagapagtayo</mark>. Ngunit may mapagpasyang pagkakaiba. Sinigurado ni Jefte ang kanyang posisyon sa pamamagitan ng pagkumpirma kung gagawin siyang pinuno ng mga nagtakwil sa kanya. Ibinigay ni Jesus ang sarili Niyang buhay upang iligtas ang mga makasalanang nagtakwil sa Kanya. Sinubukan nating gamitin ang Diyos — ngunit hindi tayo kailanman ginamit ni Jesus. Minahal Niya tayo habang tayo'y makasalanan pa.", "Dahil natanggap natin ang pag-ibig na iyon, dapat magbago ang ating mga relasyon. Sa halip na itanong lamang \"Ano ang magagawa ng taong ito para sa akin?\", dapat nating itanong, \"Sa pag-ibig na natanggap ko kay Jesus, paano ko mamahalin ang taong ito?\" Ang iglesia ay hindi organisasyong nag-uugnay ng mga tao ayon sa pangangailangan — ito ay komunidad ng mga taong tumanggap ng pag-ibig ni Cristo, na pinagbubuklod sa isa't isa sa loob ng pag-ibig na iyon."], "points": ["Kapag naibalik ang ating patayong relasyon sa Diyos, nagbabago rin ang ating pahalang na relasyon sa kapwa. Ang pagpapadaloy ng pag-ibig na natanggap natin — iyan ang anyo ng Kristiyanong relasyon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung hinahanap ko ang Diyos dahil mahal ko Siya, o dahil nilulutas Niya ang aking mga problema."}, {"key": "c2", "text": "Naisip ko ang isang relasyon kung saan lumalapit lamang ako kapag kailangan ko ng tulong, at lumalayo kapag hindi na."}, {"key": "c3", "text": "Sinuri ko kung tinitingnan ko ang mga tao sa iglesia o grupo ayon sa pamantayang 'kapaki-pakinabang ba sila sa akin?'"}, {"key": "c4", "text": "Pinag-isipan ko kung kinakapitan ko ang katotohanang tinatanggap na ako kay Cristo, sa halip na hangaring makuha ang pagkilala ng mga minaliit ako."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "May tao bang hinanap mo lamang kapag kailangan mo siya? Paano mo siya maaaring tratuhin ngayon nang may pag-ibig sa halip na pangangailangan?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Kumustahin Nang Walang Dahilan", "value": "Kontakin ang isang tao ngayon para lamang kumustahin siya, nang walang hihilingin"}, {"key": "act2", "label": "Alalahanin ang Itinabi Mo", "value": "Unang magpakita ng malasakit sa isang taong inilayo mo dahil 'hindi siya nakakatulong'"}, {"key": "act3", "label": "Tratuhin Bilang Kaluluwa", "value": "Tratuhin ang taong makakasalamuha mo ngayon bilang isang kaluluwa, hindi gawain o ministeryo, at makinig nang totoo"}, {"key": "act4", "label": "Magpasalamat Lamang sa Diyos", "value": "Sa panalangin ngayon, huwag humingi ng anuman — magpasalamat lamang sa Diyos dahil sa kung sino Siya"}, {"key": "act5", "label": "Ipadaloy ang Pag-ibig", "value": "Alalahanin ang pag-ibig na natanggap mo kay Jesus at paglingkuran ang isang tao sa isang paraan, nang walang kondisyon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Jesus, salamat sa pag-ibig Mo sa akin nang una at sa pagbibigay ng Iyong buhay — kahit wala akong silbi, kahit makasalanan pa ako."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa paghahanap sa Iyo at sa kapwa kapag kailangan ko lamang, at paglayo kapag hindi na."}, {"key": "p3", "tag": "Kahilingan", "text": "Ibalik Mo ang aking relasyon sa Iyo, at hayaang dumaloy ang pag-ibig na iyon sa aking relasyon sa pamilya, iglesia, at kapwa."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
