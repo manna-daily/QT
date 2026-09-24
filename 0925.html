@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="9/25(금) 큐티 · 사사기 11:12–28">
+<meta property="og:description" content="나는 무엇을 기억하며 오늘을 판단합니까">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "9월 25일 금요일", "ref": "사사기 11장 12–28절", "headline": "나는 무엇을 기억하며<br>오늘을 판단합니까", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 11:12-28", "s1heading": "오늘의 말씀", "verse": "\"원하건대 심판하시는 여호와께서 오늘<br>이스라엘 자손과 암몬 자손 사이에 판결하시옵소서\"", "verseRef": "사사기 11:27", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 기억하는 믿음, 그러나 아는 것과 다스림받는 것은 다릅니다", "paragraphs": ["앞선 본문에서 입다는 길르앗의 머리가 되는 조건을 확인한 뒤, 미스바에서 모든 말을 여호와 앞에 아뢰었습니다. 그런데 오늘도 입다는 곧바로 전쟁하지 않습니다. 이번엔 암몬 왕과 협상을 시작합니다. 입다의 이야기에는 계속 협상이 등장합니다. 사람들과 조건을 확인하고, 암몬 왕과 말로 협상하고, 뒤에서는 하나님께도 서원으로 조건을 내겁니다.", "암몬 왕은 \"이스라엘이 우리 땅을 빼앗았으니 돌려 달라\"고 주장합니다. 입다는 칼 대신 이스라엘의 역사를 하나씩 꺼내 놓습니다. 그리고 그 중심에는 한 문장이 있습니다. <mark>\"이 땅은 우리가 힘으로 빼앗은 땅이 아니라, 여호와께서 주신 땅이다.\"</mark> 믿음에는 이렇게 하나님이 하신 일을 기억하는 것이 중요합니다."], "points": ["하나님이 하신 일을 많이 아는 것과, 그 말씀이 오늘 내 판단을 지배하는 것은 같지 않습니다."]}, {"title": "12–13절 · 칼보다 말을 먼저 — 암몬 왕의 영토 주장", "paragraphs": ["지도자가 된 입다는 먼저 암몬 왕에게 사자를 보냅니다. <mark>\"네가 나와 무슨 상관이 있기에 내 땅을 치러 내게 왔느냐\"</mark>. 이제 그는 개인이 아니라 길르앗을 대표해 \"내 땅\"이라고 말합니다. 입다는 큰 용사였지만, 가장 먼저 칼이 아니라 말을 사용했습니다.", "암몬 왕의 대답은 분명합니다. \"이스라엘이 애굽에서 올라올 때 아르논에서 얍복과 요단까지 내 땅을 빼앗았다.\" 입다는 \"왜 내 땅에 들어왔느냐\"고 하고, 암몬 왕은 \"원래 내 땅이었다\"고 합니다. 이 전쟁의 쟁점은 누가 더 강한가가 아니라, <mark>누가 이 땅에 대한 정당한 권리를 가지고 있는가</mark>였습니다. 암몬 왕이 역사로 주장하자, 입다도 역사로 대답합니다."]}, {"title": "14–24절 · 역사에서 신학으로 — \"여호와께서 넘겨주셨다\"", "paragraphs": ["입다는 먼저 결론을 말합니다. \"이스라엘이 모압 땅과 암몬 자손의 땅을 점령하지 아니하였느니라.\" 그리고 출애굽 이후의 역사를 풀어놓습니다. 이스라엘은 에돔 왕에게 지나가게 해 달라고 청했다가 거절당했지만 공격하지 않고 돌아갔습니다. 모압도 마찬가지로 침범하지 않고 우회했습니다. 처음부터 남의 땅을 빼앗으려고 올라온 것이 아니었습니다.", "아모리 왕 시혼은 달랐습니다. 지나가게 해 달라는 요청에 거절만 한 것이 아니라 군대를 모아 먼저 이스라엘을 공격했습니다. 그때 21절이 중요합니다. <mark>\"이스라엘의 하나님 여호와께서 시혼과 그의 모든 백성을 이스라엘의 손에 넘겨주시매\"</mark>. 입다는 \"우리가 이겼다\"가 아니라 \"하나님이 넘겨주셨다\"고 말합니다. 그리고 그 땅은 당시 암몬이 아니라 아모리 왕 시혼의 땅이었습니다.", "23절에서 입다의 논증은 역사에서 신학으로 넘어갑니다. 아모리 사람을 쫓아내신 분은 이스라엘이 아니라 여호와이셨습니다. 입다가 기억하는 역사의 중심에는 자기 민족의 힘이 아니라 하나님이 계셨습니다. 24절에서 그모스를 언급하는 부분은 해석이 갈리지만, 분명한 것은 27절에서 그가 최종 판결자로 여호와만을 부른다는 사실입니다."], "points": ["성경적인 기억은 사건만 기억하는 것이 아니라, 그 사건 속에서 하나님이 무엇을 하셨는지를 기억하는 것입니다."]}, {"title": "25–28절 · \"심판하시는 여호와께서 판결하시옵소서\"", "paragraphs": ["입다는 모압 왕 발락의 예까지 듭니다. 발락은 이스라엘을 두려워해 발람을 불러 저주하려 했지만, 그조차 \"이 땅이 내 땅이니 돌려 달라\"고 하지는 않았습니다. 또 이스라엘이 헤브론과 아로엘 주변에서 300년을 살았는데, 정말 암몬 땅이었다면 왜 그동안 되찾지 않았느냐고 묻습니다. 잠시 점령한 땅이 아니라 여러 세대가 살아온 땅이라는 것입니다.", "여기엔 인상적인 대조도 있습니다. 가족에게 <mark>\"너는 우리 아버지 집에서 기업을 얻지 못하리라\"</mark>는 말을 듣고 쫓겨났던 사람이, 이제 이스라엘의 기업을 변호하고 있습니다. 그리고 그 권리의 근거는 결국 하나님이 주셨다는 사실입니다.", "27절은 본문의 절정입니다. <mark>\"심판하시는 여호와께서 오늘 이스라엘 자손과 암몬 자손 사이에 판결하시옵소서\"</mark>. 이 책의 이름은 사사기이고 입다도 사사입니다. 그러나 모든 인간 사사 뒤에 계신 참된 사사는 하나님이십니다. 그리고 28절은 아주 짧습니다. \"암몬 왕이 듣지 아니하였더라.\" 입다의 긴 설명과 암몬 왕의 짧은 거절이 강하게 대조됩니다. 전쟁이 일어난 것은 설명이 부족해서가 아니라, 상대가 듣지 않았기 때문입니다."], "points": ["진실을 말하는 것은 우리의 책임이지만, 상대가 반드시 받아들이게 만드는 것은 우리의 능력이 아닙니다. 할 일을 다한 뒤에는 판단을 하나님께 맡겨야 합니다."]}, {"title": "적용 · 기억이 오늘의 판단을 지배하게", "paragraphs": ["우리에게 가장 중요한 과거의 사건은 예수 그리스도의 십자가와 부활입니다. 우리의 구원은 오늘 내가 얼마나 잘했느냐가 아니라, 예수님이 이미 무엇을 하셨느냐에 근거합니다. 그래서 예수님은 마지막 만찬에서 떡을 떼어 주시며 <mark>\"이를 행하여 나를 기념하라\"</mark>고 하셨습니다. 그러나 성경적인 기억은 옛일을 떠올리며 감동하는 데서 끝나지 않습니다. 그 기억으로 오늘을 다르게 사는 것입니다.", "입다의 한계도 바로 여기에 있었습니다. 그는 하나님이 하신 일을 누구보다 잘 알았지만, 이후 그의 판단은 그 말씀에 다스림받지 못했고, 곧 문제 많은 서원을 하게 됩니다. 우리도 십자가를 아는 것과 십자가의 방식으로 사람을 대하는 것이 다를 수 있습니다. 부활을 믿는다고 말하는 것과 부활의 소망으로 오늘의 두려움을 이기는 것도 다를 수 있습니다. 복음이 내가 돈을 쓰는 방법, 사람을 대하는 방법, 결정하는 방법, 갈등을 푸는 방법까지 실제로 다스리고 있습니까?", "믿음의 삶은 과거와 미래 사이에서 오늘을 사는 삶입니다. 과거에 예수님은 십자가에서 죽으시고 부활하셨고, 미래에 다시 오실 예수님을 기다립니다. 어디서 왔는지 기억하고 어디로 가는지 알기에, 오늘 어떻게 살아야 할지 결정할 수 있습니다. 그리고 관계에서도 모든 것을 통제하려 하지 마십시오. 진실을 말하고, 사랑으로 설명하고, 할 책임을 다하되, 상대의 마음까지 바꾸려 하지는 마십시오. 마지막 판단은 하나님께 있습니다."], "points": ["믿음은 하나님이 하신 일을 기억하는 것이며, 그 기억으로 오늘을 살아가는 것입니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "내가 알고 있는 말씀이 오늘 돈·관계·결정·갈등을 다루는 방식을 실제로 다스리고 있는지 돌아봤다"}, {"key": "c2", "text": "지금 누리는 것을 '내 힘으로 얻은 것'이 아니라 '하나님이 주신 것'으로 기억하고 있는지 점검했다"}, {"key": "c3", "text": "진실을 말한 뒤에도 상대의 반응까지 내가 통제하려 애쓰고 있지는 않은지 돌아봤다"}, {"key": "c4", "text": "십자가와 부활을 아는 것에 그치지 않고, 그 기억으로 오늘을 살고 있는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "하나님이 내 삶에서 하신 일 중 오늘 다시 기억해야 할 한 가지는 무엇이며, 그 기억은 오늘 나의 어떤 판단을 바꿔야 합니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "하나님이 하신 일 적기", "value": "지금까지 내 삶에서 하나님이 하신 일 세 가지를 적고 감사드리기"}, {"key": "act2", "label": "말씀으로 결정하기", "value": "오늘 내려야 할 결정 하나를 말씀 앞에서 다시 점검해 보기"}, {"key": "act3", "label": "판단을 맡기기", "value": "설득하려 애쓰던 관계 하나를 놓고 '판단은 주님께' 맡기는 기도 드리기"}, {"key": "act4", "label": "칼보다 말 먼저", "value": "갈등 상황에서 감정적으로 대응하기 전에 먼저 차분히 설명하기"}, {"key": "act5", "label": "십자가 기억하기", "value": "오늘 하루 중 한 번 멈추어 십자가와 부활을 떠올리며 기도하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "제 힘이 아니라 주님의 은혜로 오늘 이 자리에 서게 하시고, 십자가와 부활로 구원해 주신 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "말씀을 알면서도 그 말씀이 제 판단과 선택을 다스리지 못하게 했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "진실을 말하되 결과를 통제하려 하지 않고, 모든 판단을 심판하시는 주님께 맡기며 살게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "September 25, Friday", "ref": "Judges 11:12–28", "headline": "What Do I Remember<br>When I Make Today's Judgments?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 11:12-28", "s1heading": "Today's Word", "verse": "\"May the LORD, the Judge, decide today<br>between the people of Israel and the people of Ammon.\"", "verseRef": "Judges 11:27", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · A Faith That Remembers — But Knowing Isn't the Same as Being Ruled", "paragraphs": ["In the previous passage, Jephthah confirmed his terms for becoming head of Gilead, then spoke all his words before the LORD at Mizpah. Yet today he still doesn't rush into war. This time he begins negotiating with the king of Ammon. Negotiation keeps showing up in Jephthah's story: he confirms conditions with people, negotiates with Ammon's king through words, and later even sets conditions before God through a vow.", "The king of Ammon claims, \"Israel took our land — give it back.\" Instead of the sword, Jephthah lays out Israel's history piece by piece. And at the center is one sentence: <mark>\"This land isn't something we seized by force — the LORD gave it to us.\"</mark> Remembering what God has done is essential to faith."], "points": ["Knowing a lot about what God has done is not the same as letting His Word rule my judgments today."]}, {"title": "Verses 12–13 · Words Before the Sword — Ammon's Territorial Claim", "paragraphs": ["As the new leader, Jephthah first sends messengers to the king of Ammon: <mark>\"What do you have against me, that you have come to fight against my land?\"</mark> He now speaks as Gilead's representative — \"my land.\" Jephthah was a mighty warrior, yet the first thing he used was words, not the sword.", "The king's answer is clear: \"When Israel came up from Egypt, they took my land from the Arnon to the Jabbok and the Jordan.\" Jephthah says, \"Why have you come into my land?\" The king says, \"It was mine to begin with.\" The issue wasn't who was stronger — it was <mark>who had the rightful claim to this land</mark>. Ammon's king argued from history, so Jephthah answers from history too."]}, {"title": "Verses 14–24 · From History to Theology — \"The LORD Gave Them Over\"", "paragraphs": ["Jephthah states his conclusion first: \"Israel did not take the land of Moab or the land of the Ammonites.\" Then he recounts the history after the Exodus. Israel asked the king of Edom for passage, was refused — and turned back rather than attack. Likewise with Moab, they went around without invading. They hadn't come up to seize other nations' land.", "Sihon, king of the Amorites, was different. He didn't just refuse passage — he gathered his army and attacked Israel first. Verse 21 is key: <mark>\"And the LORD, the God of Israel, gave Sihon and all his people into the hand of Israel.\"</mark> Jephthah doesn't say \"we won\" — he says \"God gave them over.\" And that land had belonged not to Ammon, but to Sihon the Amorite.", "In verse 23, Jephthah's argument moves from history to theology. It wasn't Israel who drove out the Amorites — it was the LORD. At the center of the history Jephthah remembers is not his people's strength, but God. His mention of Chemosh in verse 24 is debated, but what's clear is that in verse 27 he calls on the LORD alone as the final Judge."], "points": ["Biblical remembering isn't just recalling events — it's remembering what God did within those events."]}, {"title": "Verses 25–28 · \"May the LORD, the Judge, Decide\"", "paragraphs": ["Jephthah even brings up Balak, king of Moab. Balak feared Israel and hired Balaam to curse them — yet even he never demanded, \"This land is mine, give it back.\" Jephthah also asks: Israel has lived in Heshbon, Aroer, and the surrounding towns for 300 years — if it was really Ammon's land, why didn't they reclaim it all that time? This wasn't land held briefly, but land lived on for generations.", "There's also a striking contrast here. The man once driven out by his family with the words <mark>\"You shall not have an inheritance in our father's house\"</mark> is now defending Israel's inheritance. And the ground of that right is, in the end, that God gave it.", "Verse 27 is the climax: <mark>\"May the LORD, the Judge, decide today between the people of Israel and the people of Ammon.\"</mark> This book is called Judges, and Jephthah is a judge — but behind every human judge stands the true Judge, God. Then verse 28 is very short: \"But the king of the Ammonites did not listen.\" Jephthah's long explanation and the king's brief refusal stand in sharp contrast. The war didn't happen because the explanation fell short — it happened because the other side wouldn't listen."], "points": ["Speaking the truth is our responsibility, but making others accept it is not within our power. After doing our part, we must leave the judgment to God."]}, {"title": "Application · Let Remembering Rule Today's Judgments", "paragraphs": ["The most important past event for us is the cross and resurrection of Jesus Christ. Our salvation rests not on how well I did today, but on what Jesus has already done. That's why at the Last Supper He broke bread and said, <mark>\"Do this in remembrance of Me.\"</mark> But biblical remembering doesn't end with being moved by the past — it means living today differently because of it.", "This is exactly where Jephthah fell short. He knew what God had done better than most, yet his later judgments weren't ruled by that Word — and soon he makes a deeply troubling vow. We too can know the cross and still not treat people the way of the cross; we can say we believe in the resurrection and still not overcome today's fears with resurrection hope. Is the gospel actually ruling how I spend money, treat people, make decisions, and resolve conflict?", "The life of faith is lived today, between the past and the future. In the past, Jesus died on the cross and rose again; in the future, we wait for His return. Because we remember where we came from and know where we're going, we can decide how to live today. And in our relationships, don't try to control everything. Speak the truth, explain with love, and do what's yours to do — but don't try to change the other person's heart yourself. The final judgment belongs to God."], "points": ["Faith is remembering what God has done — and living today by that memory."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether the Word I know actually rules how I handle money, relationships, decisions, and conflict today."}, {"key": "c2", "text": "I checked whether I remember what I have as 'what God gave me' rather than 'what I earned by my own strength.'"}, {"key": "c3", "text": "I reflected on whether, after speaking the truth, I still try to control how others respond."}, {"key": "c4", "text": "I checked whether I'm not just knowing about the cross and resurrection, but living today by that memory."}], "s4heading": "One-Line Reflection", "memoHint": "What is one thing God has done in my life that I need to remember again today — and which of today's judgments should that memory change?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Write Down What God Has Done", "value": "Write down three things God has done in your life so far and give thanks"}, {"key": "act2", "label": "Decide by the Word", "value": "Take one decision you need to make today and re-examine it before the Word"}, {"key": "act3", "label": "Leave the Judgment to God", "value": "Pray over a relationship you've been trying to persuade, entrusting the judgment to the Lord"}, {"key": "act4", "label": "Words Before the Sword", "value": "In a conflict, explain calmly first before reacting emotionally"}, {"key": "act5", "label": "Remember the Cross", "value": "Pause once today to remember the cross and resurrection, and pray"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "God, thank You that I stand here today not by my own strength but by Your grace, and that You saved me through the cross and resurrection."}, {"key": "p2", "tag": "Repent", "text": "I repent of knowing Your Word yet not letting it rule my judgments and choices."}, {"key": "p3", "tag": "Ask", "text": "Help me speak the truth without trying to control the outcome, and entrust every judgment to You, the Judge."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Setyembre 25, Biyernes", "ref": "Mga Hukom 11:12–28", "headline": "Ano ang Aking Inaalala<br>Kapag Humahatol Ako Ngayon?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 11:12-28", "s1heading": "Salita Ngayon", "verse": "\"Nawa'y si Yahweh, ang Hukom, ang magpasya ngayon<br>sa pagitan ng mga Israelita at ng mga Ammonita.\"", "verseRef": "Mga Hukom 11:27", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Pananampalatayang Umaalala — Ngunit Iba ang Pagkaalam sa Pagpapasakop", "paragraphs": ["Sa nakaraang bahagi, kinumpirma ni Jefte ang mga kondisyon upang maging pinuno ng Gilead, at binigkas niya ang lahat ng kanyang salita sa harap ni Yahweh sa Mizpa. Ngunit ngayon, hindi pa rin siya agad sumasabak sa digmaan. Sa pagkakataong ito, nakipag-usap siya sa hari ng Ammon. Paulit-ulit na lumilitaw ang negosasyon sa kwento ni Jefte: kinukumpirma niya ang mga kondisyon sa mga tao, nakikipag-usap sa hari ng Ammon, at sa kalaunan ay nagtatakda pa ng kondisyon sa Diyos sa pamamagitan ng panata.", "Iginiit ng hari ng Ammon, \"Inagaw ng Israel ang aming lupain — ibalik ninyo.\" Sa halip na espada, isa-isang inilatag ni Jefte ang kasaysayan ng Israel. At sa gitna nito ay isang pangungusap: <mark>\"Ang lupaing ito ay hindi namin inagaw sa lakas — ibinigay ito sa amin ni Yahweh.\"</mark> Mahalaga sa pananampalataya ang pag-alala sa ginawa ng Diyos."], "points": ["Ang maraming kaalaman tungkol sa ginawa ng Diyos ay hindi katulad ng pagpapahintulot na ang Kanyang Salita ang maghari sa aking mga paghatol ngayon."]}, {"title": "Talata 12–13 · Salita Bago ang Espada — Ang Pag-angkin ng Ammon sa Lupain", "paragraphs": ["Bilang bagong pinuno, nagpadala muna si Jefte ng mga sugo sa hari ng Ammon: <mark>\"Ano ang laban mo sa akin at dumating ka upang salakayin ang aking lupain?\"</mark> Nagsasalita na siya ngayon bilang kinatawan ng Gilead — \"aking lupain.\" Si Jefte ay isang magiting na mandirigma, ngunit ang una niyang ginamit ay salita, hindi espada.", "Malinaw ang sagot ng hari: \"Nang umahon ang Israel mula sa Ehipto, inagaw nila ang aking lupain mula sa Arnon hanggang sa Jabok at sa Jordan.\" Sinabi ni Jefte, \"Bakit ka pumasok sa aking lupain?\" Sinabi ng hari, \"Akin na iyon noon pa.\" Ang isyu ay hindi kung sino ang mas malakas — kundi <mark>kung sino ang may makatarungang karapatan sa lupaing ito</mark>. Nangatwiran mula sa kasaysayan ang hari ng Ammon, kaya sumagot din si Jefte mula sa kasaysayan."]}, {"title": "Talata 14–24 · Mula Kasaysayan Tungo sa Teolohiya — \"Ibinigay Sila ni Yahweh\"", "paragraphs": ["Inuna ni Jefte ang kanyang konklusyon: \"Hindi inagaw ng Israel ang lupain ng Moab o ang lupain ng mga Ammonita.\" Pagkatapos ay isinalaysay niya ang kasaysayan matapos ang Exodo. Humingi ang Israel ng daan sa hari ng Edom, tinanggihan — at bumalik sila sa halip na sumalakay. Ganoon din sa Moab; umikot sila nang hindi sumasalakay. Hindi sila umahon upang agawin ang lupain ng ibang bansa.", "Iba si Sihon, hari ng mga Amorita. Hindi lamang siya tumanggi — tinipon niya ang kanyang hukbo at unang sinalakay ang Israel. Mahalaga ang talata 21: <mark>\"At ibinigay ni Yahweh, ang Diyos ng Israel, si Sihon at ang lahat ng kanyang bayan sa kamay ng Israel.\"</mark> Hindi sinabi ni Jefte na \"nanalo kami\" — sinabi niyang \"ibinigay sila ng Diyos.\" At ang lupaing iyon ay pag-aari noon ni Sihon na Amorita, hindi ng Ammon.", "Sa talata 23, lumipat ang argumento ni Jefte mula kasaysayan tungo sa teolohiya. Hindi ang Israel ang nagpalayas sa mga Amorita — si Yahweh. Sa gitna ng kasaysayang inaalala ni Jefte ay hindi ang lakas ng kanyang bayan, kundi ang Diyos. Pinagtatalunan ang pagbanggit niya kay Kemos sa talata 24, ngunit malinaw na sa talata 27, si Yahweh lamang ang tinatawag niyang huling Hukom."], "points": ["Ang biblikal na pag-alala ay hindi lamang pag-alala ng mga pangyayari — ito ay pag-alala sa ginawa ng Diyos sa loob ng mga pangyayaring iyon."]}, {"title": "Talata 25–28 · \"Nawa'y si Yahweh, ang Hukom, ang Magpasya\"", "paragraphs": ["Binanggit pa ni Jefte si Balak, hari ng Moab. Natakot si Balak sa Israel at inupahan si Balaam upang sumpain sila — ngunit kahit siya ay hindi kailanman humiling, \"Akin ang lupaing ito, ibalik ninyo.\" Tinanong din ni Jefte: tatlong daang taon nang nakatira ang Israel sa Hesbon, Aroer, at mga karatig-bayan — kung talagang lupain ito ng Ammon, bakit hindi nila ito binawi sa buong panahong iyon? Hindi ito lupaing pansamantalang hawak, kundi lupaing tinirhan ng maraming salinlahi.", "May kapansin-pansing kaibahan din dito. Ang taong minsang pinalayas ng pamilya sa mga salitang <mark>\"Wala kang mamanahin sa bahay ng aming ama\"</mark> ay ngayon ipinagtatanggol ang mana ng Israel. At ang batayan ng karapatang iyon, sa huli, ay ibinigay ito ng Diyos.", "Ang talata 27 ang rurok: <mark>\"Nawa'y si Yahweh, ang Hukom, ang magpasya ngayon sa pagitan ng mga Israelita at ng mga Ammonita.\"</mark> Mga Hukom ang pangalan ng aklat na ito, at si Jefte ay isang hukom — ngunit sa likod ng bawat taong hukom ay ang tunay na Hukom, ang Diyos. At napakaikli ng talata 28: \"Ngunit hindi nakinig ang hari ng mga Ammonita.\" Matinding kaibahan ang mahabang paliwanag ni Jefte at ang maikling pagtanggi ng hari. Hindi nangyari ang digmaan dahil kulang ang paliwanag — nangyari ito dahil hindi nakinig ang kabila."], "points": ["Ang pagsasabi ng katotohanan ay ating pananagutan, ngunit ang pagpapatanggap nito sa iba ay wala sa ating kapangyarihan. Matapos gawin ang ating bahagi, dapat nating ipaubaya ang paghatol sa Diyos."]}, {"title": "Aplikasyon · Hayaang ang Pag-alala ang Maghari sa mga Paghatol Ngayon", "paragraphs": ["Ang pinakamahalagang pangyayari sa nakaraan para sa atin ay ang krus at muling pagkabuhay ni Jesu-Cristo. Ang ating kaligtasan ay hindi nakasalalay sa kung gaano kahusay ang ginawa ko ngayon, kundi sa kung ano na ang ginawa ni Jesus. Kaya sa Huling Hapunan, pinagputul-putol Niya ang tinapay at sinabi, <mark>\"Gawin ninyo ito bilang pag-alaala sa Akin.\"</mark> Ngunit ang biblikal na pag-alala ay hindi nagtatapos sa pagkaantig sa nakaraan — ito ay pamumuhay nang iba ngayon dahil dito.", "Dito mismo nagkulang si Jefte. Mas alam niya kaysa sa karamihan ang ginawa ng Diyos, ngunit ang kanyang mga sumunod na paghatol ay hindi pinaghaharian ng Salitang iyon — at hindi nagtagal ay gumawa siya ng isang lubhang nakababahalang panata. Tayo rin ay maaaring makaalam ng krus at hindi pa rin tratuhin ang kapwa sa paraan ng krus; maaari nating sabihing naniniwala tayo sa muling pagkabuhay at hindi pa rin madaig ang takot ngayon sa pag-asa ng muling pagkabuhay. Talaga bang pinaghaharian ng ebanghelyo kung paano ako gumagastos, nakikitungo sa tao, nagpapasya, at lumulutas ng alitan?", "Ang buhay ng pananampalataya ay isinasabuhay ngayon, sa pagitan ng nakaraan at hinaharap. Sa nakaraan, namatay si Jesus sa krus at muling nabuhay; sa hinaharap, hinihintay natin ang Kanyang pagbabalik. Dahil naaalala natin kung saan tayo nanggaling at alam natin kung saan tayo patungo, makapagpapasya tayo kung paano mamuhay ngayon. At sa ating mga relasyon, huwag subukang kontrolin ang lahat. Sabihin ang katotohanan, ipaliwanag nang may pag-ibig, at gawin ang iyong bahagi — ngunit huwag subukang ikaw mismo ang magbago ng puso ng iba. Nasa Diyos ang huling paghatol."], "points": ["Ang pananampalataya ay pag-alala sa ginawa ng Diyos — at pamumuhay ngayon ayon sa alaalang iyon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung talagang pinaghaharian ng Salitang alam ko ang paghawak ko sa pera, relasyon, desisyon, at alitan ngayon."}, {"key": "c2", "text": "Sinuri ko kung inaalala ko ang mayroon ako bilang 'ibinigay ng Diyos' sa halip na 'nakuha ko sa sariling lakas.'"}, {"key": "c3", "text": "Pinag-isipan ko kung, matapos sabihin ang katotohanan, sinusubukan ko pa ring kontrolin ang tugon ng iba."}, {"key": "c4", "text": "Sinuri ko kung hindi lamang ako may alam tungkol sa krus at muling pagkabuhay, kundi namumuhay ako ngayon ayon sa alaalang iyon."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano ang isang bagay na ginawa ng Diyos sa aking buhay na dapat kong alalahanin muli ngayon — at alin sa aking mga paghatol ngayon ang dapat nitong baguhin?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Isulat ang Ginawa ng Diyos", "value": "Isulat ang tatlong bagay na ginawa ng Diyos sa iyong buhay hanggang ngayon at magpasalamat"}, {"key": "act2", "label": "Magpasya Ayon sa Salita", "value": "Kunin ang isang desisyong kailangan mong gawin ngayon at suriin itong muli sa harap ng Salita"}, {"key": "act3", "label": "Ipaubaya ang Paghatol sa Diyos", "value": "Ipanalangin ang isang relasyong sinusubukan mong kumbinsihin, at ipaubaya ang paghatol sa Panginoon"}, {"key": "act4", "label": "Salita Bago ang Espada", "value": "Sa isang alitan, magpaliwanag muna nang mahinahon bago tumugon nang may emosyon"}, {"key": "act5", "label": "Alalahanin ang Krus", "value": "Huminto nang isang beses ngayon upang alalahanin ang krus at muling pagkabuhay, at manalangin"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Diyos, salamat na nakatayo ako rito ngayon hindi sa sariling lakas kundi sa Iyong biyaya, at na iniligtas Mo ako sa pamamagitan ng krus at muling pagkabuhay."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagkaalam ng Iyong Salita ngunit hindi pagpapahintulot na ito ang maghari sa aking mga paghatol at pagpili."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong sabihin ang katotohanan nang hindi kinokontrol ang resulta, at ipaubaya ang bawat paghatol sa Iyo, ang Hukom."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
