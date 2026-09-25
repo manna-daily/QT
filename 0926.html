@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="9/26(토) 큐티 · 사사기 11:29–40">
+<meta property="og:description" content="나는 하나님과 거래하고 있습니까">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "9월 26일 토요일", "ref": "사사기 11장 29–40절", "headline": "나는 하나님과<br>거래하고 있습니까", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 11:29-40", "s1heading": "오늘의 말씀", "verse": "\"자기 아들을 아끼지 아니하시고 우리 모든 사람을 위하여 내주신 이가<br>어찌 그 아들과 함께 모든 것을 우리에게 주시지 아니하겠느냐\"", "verseRef": "로마서 8:32", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 은혜가 먼저였습니다", "paragraphs": ["앞선 본문에서 입다는 이스라엘의 역사를 길게 설명하며 \"심판하시는 여호와께서 판결하시옵소서\"라고 고백했습니다. 여기까지만 보면 하나님을 깊이 신뢰하는 사람처럼 보입니다. 그런데 오늘 본문에서 입다의 믿음에 깊은 문제가 드러납니다. 그는 하나님을 알고 있었지만, 하나님을 온전히 신뢰하지는 못했습니다.", "29절은 이렇게 시작합니다. <mark>\"이에 여호와의 영이 입다에게 임하시니\"</mark>. 순서가 중요합니다. 입다가 무언가를 약속해서 하나님의 영이 임한 것이 아닙니다. 하나님께서 먼저 은혜를 베푸셨고, 이미 입다를 통해 이스라엘을 구원하고 계셨습니다. 그리고 32절은 분명히 말합니다. <mark>\"여호와께서 그들을 그의 손에 넘겨주시매\"</mark>. 승리의 주인은 입다가 아니라 여호와이셨습니다."], "points": ["성령이 먼저이고, 서원은 그 뒤에 나옵니다. 본문은 입다의 서원이 승리의 원인이었다고 말하지 않습니다."]}, {"title": "30–33절 · 불필요한 서원, 하나님과의 거래", "paragraphs": ["그런데 입다는 바로 다음 절에서 서원합니다. <mark>\"주께서 과연 암몬 자손을 내 손에 넘겨주시면, 내가 평안히 돌아올 때에 누구든지 내 집 문에서 나와서 나를 영접하는 그는 여호와께 돌릴 것이니 내가 그를 번제물로 드리겠나이다\"</mark>. 왜 \"과연\"이라는 말이 붙었을까요? 불안했기 때문입니다. 승리를 확실히 보장받고 싶었던 것입니다.", "입다는 계속 협상하며 살아온 사람이었습니다. 길르앗 장로들과 협상했고, 암몬 왕과 협상했습니다. 그리고 이제는 하나님과도 거래하려 합니다. \"하나님이 이것을 해 주시면, 나도 이것을 드리겠습니다.\" 서원 자체가 늘 잘못은 아닙니다. 야곱도, 한나도 서원했습니다. 문제는 무엇을 서원했는가, 그리고 더 깊게는 하나님을 어떤 분으로 생각했는가입니다.", "놀랍게도 20개 성읍이 무너지는 큰 승리는 단 두 절 만에 끝납니다. 성경은 전쟁보다 입다의 서원이 가져올 비극에 훨씬 더 많은 공간을 씁니다. 입다는 이미 받은 은혜를 알지 못하고, 아직 받지 못한 사람처럼 하나님과 거래했습니다."], "points": ["은혜를 모르면 헌신도 거래가 될 수 있습니다. 겉으로는 헌신처럼 보이지만, 마음 깊은 곳에서는 하나님을 움직이려는 것일 수 있습니다."]}, {"title": "34–40절 · 승리의 노래가 애가로 바뀌다", "paragraphs": ["입다가 집으로 돌아오자, 소고를 들고 춤추며 맞으러 나온 사람은 그의 딸이었습니다. 성경은 곧바로 덧붙입니다. <mark>\"그는 입다의 무남독녀라\"</mark> — 하나뿐인 자녀였습니다. 창세기 22장의 이삭을 떠올리게 하지만, 두 이야기는 결정적으로 다릅니다. 아브라함에게는 하나님이 먼저 명령하셨고 마지막에 막으셨습니다. 그러나 입다의 서원은 스스로 한 것이었고, 하나님은 그런 명령을 하신 적도, 그 서원에 동의하신 적도 없습니다.", "딸을 본 입다는 옷을 찢으며 말합니다. \"내 딸이여, 너는 나를 참담하게 하는 자요.\" 그러나 서원한 사람은 입다였고, 딸은 아무 잘못이 없었습니다. 그는 \"내가 여호와를 향하여 입을 열었으니 능히 돌이키지 못하리로다\"라고 말하지만, 이것은 잘못된 고백입니다. 율법은 사람을 제물로 드리는 것을 분명히 금합니다. 약속했으니 죄라도 행해야 한다는 것은 성경의 원리가 아닙니다.", "딸은 끝까지 이름조차 나오지 않지만, 여전히 \"내 아버지여\"라고 부르며 두 달 동안 친구들과 애곡하게 해 달라고 청합니다. 입다에게는 다른 자녀가 없었기에, 그의 미래와 가문도 함께 끊어집니다. 그는 승리로 현재의 자리를 지키려 했지만, 그 과정에서 가장 소중한 것을 잃었습니다. 이야기는 입다의 영광이 아니라, 이스라엘의 딸들이 해마다 이 이름 없는 딸을 기억하는 것으로 끝납니다."], "points": ["모든 승리가 진짜 승리는 아닙니다. 무엇을 얻었는가만이 아니라, 그것을 얻는 과정에서 무엇을 잃었는가도 보아야 합니다. 하나님을 잘못 이해한 대가는 나에게서 끝나지 않고 가족과 다음 세대에게까지 이어집니다."]}, {"title": "적용 · 거래가 아니라 응답입니다", "paragraphs": ["우리도 하나님께 이렇게 말할 수 있습니다. \"하나님, 이번 것만 해결해 주시면 정말 열심히 하겠습니다.\" \"제가 이만큼 헌금했으니 사업을 잘되게 해 주셔야 합니다.\" \"이렇게 오래 봉사했으니 적어도 제 자녀는 잘되게 해 주셔야 하지 않습니까?\" 기도와 헌금과 봉사가 하나님께 드리는 것이 아니라, 하나님을 움직이려는 수단이 될 수 있습니다.", "복음은 그 반대입니다. 우리가 먼저 무언가를 드렸기 때문에 하나님이 우리를 사랑하신 것이 아닙니다. 우리가 아직 죄인이었을 때 하나님이 먼저 그 아들을 주셨습니다. 입다는 자신을 살리려고 다른 사람의 생명을 내놓았지만, 예수님은 <mark>\"섬김을 받으려 함이 아니라 도리어 섬기려 하고 자기 목숨을 많은 사람의 대속물로 주려 함이라\"</mark>(마가복음 10:45)고 하시며, 다른 사람을 살리려고 자신의 생명을 내어주셨습니다.", "그래서 우리의 신앙은 거래가 아닙니다. 우리는 받기 위해 드리는 사람이 아니라, 이미 받았기 때문에 드리는 사람입니다. 질문을 바꿔야 합니다. \"하나님, 이것을 드릴 테니 이것을 주십시오\"가 아니라, \"하나님께서 이미 이렇게 큰 은혜를 주셨으니, 저는 그 은혜에 어떻게 응답하며 살겠습니까?\""], "points": ["믿음은 하나님을 움직이기 위해 무언가를 드리는 삶이 아니라, 이미 나를 위해 일하신 하나님의 은혜에 응답하는 삶입니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "나의 기도·헌금·봉사 속에 '이만큼 했으니 이것을 해 주셔야 한다'는 거래의 마음이 없는지 돌아봤다"}, {"key": "c2", "text": "하나님이 이미 먼저 베푸신 은혜를 잊고, 아직 받지 못한 사람처럼 불안해하고 있지는 않은지 점검했다"}, {"key": "c3", "text": "무언가를 얻는 과정에서 가족이나 소중한 관계를 잃고 있지는 않은지 돌아봤다"}, {"key": "c4", "text": "잘못된 약속이나 결정을 '이미 말했으니 돌이킬 수 없다'며 고집하고 있지는 않은지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 하나님께 '이것만 해 주시면…' 하고 조건을 걸고 있는 것이 있다면 무엇입니까? 그것을 '이미 받은 은혜에 대한 응답'으로 바꾼다면 어떻게 달라질까요?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "조건 없는 감사", "value": "오늘 기도에서 아무것도 요구하지 않고, 이미 받은 은혜 세 가지를 감사하기"}, {"key": "act2", "label": "헌신의 동기 점검", "value": "내가 하고 있는 봉사나 헌금 하나를 놓고 '무엇을 얻으려고'가 아니라 '받은 은혜 때문에' 하는지 돌아보기"}, {"key": "act3", "label": "잃고 있는 것 돌아보기", "value": "일이나 성취 때문에 소홀했던 가족에게 오늘 시간을 내어 마음 표현하기"}, {"key": "act4", "label": "잘못된 약속 돌이키기", "value": "성급하게 했던 약속이나 결정 중 바로잡아야 할 것이 있다면 정직하게 돌이키기"}, {"key": "act5", "label": "은혜에 응답하기", "value": "예수님이 먼저 주신 사랑을 기억하며, 대가를 바라지 않고 한 사람을 섬기기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "제가 아무것도 드리기 전에, 아직 죄인이었을 때 먼저 아들을 내어주신 하나님, 그 크신 은혜를 감사합니다"}, {"key": "p2", "tag": "회개", "text": "은혜를 잊고 기도와 헌금과 봉사로 하나님을 움직이려 했던 거래의 마음을 회개합니다"}, {"key": "p3", "tag": "간구", "text": "받기 위해 드리는 사람이 아니라, 이미 받은 은혜 때문에 기쁘게 응답하는 사람이 되게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "September 26, Saturday", "ref": "Judges 11:29–40", "headline": "Am I Making<br>a Deal with God?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 11:29-40", "s1heading": "Today's Word", "verse": "\"He who did not spare His own Son but gave Him up for us all,<br>how will He not also with Him graciously give us all things?\"", "verseRef": "Romans 8:32", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Grace Came First", "paragraphs": ["In the previous passage, Jephthah laid out Israel's history at length and declared, \"May the LORD, the Judge, decide.\" Up to that point, he looks like someone who deeply trusts God. But today's passage reveals a deep problem in his faith. He knew God — but he didn't fully trust Him.", "Verse 29 begins: <mark>\"Then the Spirit of the LORD was upon Jephthah.\"</mark> The order matters. The Spirit didn't come because Jephthah promised something. God showed grace first and was already saving Israel through him. And verse 32 says plainly: <mark>\"and the LORD gave them into his hand.\"</mark> The author of the victory was not Jephthah, but the LORD."], "points": ["The Spirit came first; the vow came after. The text never says Jephthah's vow was the cause of the victory."]}, {"title": "Verses 30–33 · An Unnecessary Vow — Making a Deal with God", "paragraphs": ["Yet in the very next verse, Jephthah makes a vow: <mark>\"If You will indeed give the Ammonites into my hand, then whatever comes out from the doors of my house to meet me when I return in peace... shall be the LORD's, and I will offer it up as a burnt offering.\"</mark> Why \"indeed\"? Because he was anxious. He wanted his victory guaranteed.", "Jephthah had lived by negotiating. He negotiated with Gilead's elders, and with the king of Ammon. Now he tries to strike a deal with God, too: \"If You do this for me, I'll give You that.\" Vows aren't always wrong in themselves — Jacob and Hannah made vows. The problem is what he vowed, and more deeply, what kind of God he thought God was.", "Remarkably, a great victory — twenty towns defeated — is over in just two verses. Scripture gives far more space to the tragedy his vow would bring than to the battle. Jephthah didn't grasp the grace he'd already received, and bargained with God like someone who hadn't received it yet."], "points": ["When we forget grace, even devotion can become a transaction. It may look like devotion on the outside, while deep inside we're trying to move God."]}, {"title": "Verses 34–40 · A Song of Victory Becomes a Lament", "paragraphs": ["When Jephthah returns home, the one who comes out to meet him with tambourines and dancing is his daughter. Scripture adds at once: <mark>\"She was his only child.\"</mark> It recalls Isaac in Genesis 22 — but the two stories differ decisively. God commanded Abraham, and in the end God stopped him. Jephthah's vow was his own; God never commanded it and never approved of it.", "Seeing her, Jephthah tears his clothes and says, \"Alas, my daughter! You have brought me very low.\" But he was the one who made the vow — his daughter had done nothing wrong. He says, \"I have opened my mouth to the LORD, and I cannot take back my vow,\" but that was a false conclusion. The Law clearly forbids human sacrifice. \"I promised, so I must do it even if it's sin\" is not a biblical principle.", "His daughter is never even named, yet she still calls him \"my father\" and asks for two months to mourn with her friends. Jephthah had no other children, so his future and family line ended with her. He sought to secure his present position through victory, but lost what was most precious along the way. The story ends not with Jephthah's glory, but with the daughters of Israel remembering this unnamed daughter every year."], "points": ["Not every victory is a true victory. We must look not only at what we gained, but at what we lost in gaining it. A distorted understanding of God doesn't stop with us — it reaches our families and the next generation."]}, {"title": "Application · Not a Transaction, but a Response", "paragraphs": ["We can say similar things to God: \"Lord, if You just fix this one thing, I'll really work hard for You.\" \"I've given this much, so You should make my business succeed.\" \"I've served this long — shouldn't my children at least turn out well?\" Prayer, giving, and service can become tools for moving God rather than offerings to Him.", "The gospel is the opposite. God didn't love us because we gave Him something first. While we were still sinners, God first gave His Son. Jephthah gave up another's life to save himself; but Jesus said, <mark>\"the Son of Man came not to be served but to serve, and to give His life as a ransom for many\"</mark> (Mark 10:45), and gave up His own life to save others.", "So our faith is not a transaction. We are not people who give in order to receive, but people who give because we have already received. We need to change the question — not \"God, I'll give You this, so give me that,\" but \"God, You've already given me such great grace — how will I live in response to it?\""], "points": ["Faith is not a life of giving something to move God, but a life of responding to the grace of God who has already worked for me."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether my prayer, giving, or service carries a transactional heart — 'I've done this much, so You should do that.'"}, {"key": "c2", "text": "I checked whether I've forgotten the grace God already gave first, and am anxious as if I haven't received it yet."}, {"key": "c3", "text": "I reflected on whether, in pursuing something, I'm losing my family or other precious relationships."}, {"key": "c4", "text": "I checked whether I'm clinging to a wrong promise or decision, saying 'I've already said it, so I can't turn back.'"}], "s4heading": "One-Line Reflection", "memoHint": "Is there something you're putting conditions on with God — 'if You just do this...'? How would it change if you turned it into a response to grace already received?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Unconditional Thanks", "value": "In today's prayer, ask for nothing — just give thanks for three graces you've already received"}, {"key": "act2", "label": "Check the Motive of Devotion", "value": "Take one area of service or giving and ask whether you do it 'to get something' or 'because of grace received'"}, {"key": "act3", "label": "Notice What You're Losing", "value": "Make time today for a family member you've neglected because of work or achievement, and express your love"}, {"key": "act4", "label": "Turn Back from a Wrong Promise", "value": "If there's a hasty promise or decision that needs correcting, honestly turn back from it"}, {"key": "act5", "label": "Respond to Grace", "value": "Remembering the love Jesus gave first, serve one person without expecting anything in return"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "God, thank You for giving Your Son first — before I gave anything, while I was still a sinner. Thank You for such great grace."}, {"key": "p2", "tag": "Repent", "text": "I repent of forgetting grace and trying to move You with my prayers, giving, and service, as if making a deal."}, {"key": "p3", "tag": "Ask", "text": "Make me not someone who gives in order to receive, but someone who joyfully responds because of grace already received."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Setyembre 26, Sabado", "ref": "Mga Hukom 11:29–40", "headline": "Nakikipagkasundo Ba Ako<br>sa Diyos?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 11:29-40", "s1heading": "Salita Ngayon", "verse": "\"Siya na hindi ipinagkait ang sarili Niyang Anak kundi ibinigay Siya para sa ating lahat,<br>paanong hindi Niya ibibigay sa atin ang lahat ng bagay kasama Niya?\"", "verseRef": "Roma 8:32", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ang Biyaya ang Nauna", "paragraphs": ["Sa nakaraang bahagi, mahabang isinalaysay ni Jefte ang kasaysayan ng Israel at ipinahayag, \"Nawa'y si Yahweh, ang Hukom, ang magpasya.\" Hanggang doon, mukha siyang taong lubos na nagtitiwala sa Diyos. Ngunit sa binasa natin ngayon, lumitaw ang malalim na problema sa kanyang pananampalataya. Kilala niya ang Diyos — ngunit hindi niya Siya lubos na pinagkatiwalaan.", "Nagsisimula ang talata 29: <mark>\"Pagkatapos ay dumating ang Espiritu ni Yahweh kay Jefte.\"</mark> Mahalaga ang pagkakasunod-sunod. Hindi dumating ang Espiritu dahil may ipinangako si Jefte. Ang Diyos ang unang nagbigay ng biyaya at iniligtas na Niya ang Israel sa pamamagitan niya. At malinaw na sinasabi ng talata 32: <mark>\"at ibinigay sila ni Yahweh sa kanyang kamay.\"</mark> Hindi si Jefte ang may-akda ng tagumpay, kundi si Yahweh."], "points": ["Ang Espiritu ang nauna; ang panata ay sumunod lamang. Hindi sinasabi ng teksto na ang panata ni Jefte ang sanhi ng tagumpay."]}, {"title": "Talata 30–33 · Isang Di-kailangang Panata — Pakikipagkasundo sa Diyos", "paragraphs": ["Ngunit sa kasunod na talata, nanata si Jefte: <mark>\"Kung talagang ibibigay Mo ang mga Ammonita sa aking kamay, ang sinumang lalabas sa pintuan ng aking bahay upang salubungin ako pagbalik ko nang payapa... ay magiging kay Yahweh, at iaalay ko siya bilang handog na susunugin.\"</mark> Bakit \"talagang\"? Dahil siya'y nababalisa. Nais niyang matiyak ang tagumpay.", "Namuhay si Jefte sa pakikipag-negosasyon. Nakipag-negosasyon siya sa mga matatanda ng Gilead, at sa hari ng Ammon. Ngayon, sinubukan din niyang makipagkasundo sa Diyos: \"Kung gagawin Mo ito para sa akin, ibibigay ko sa Iyo iyon.\" Hindi laging mali ang panata — nanata rin sina Jacob at Ana. Ang problema ay kung ano ang kanyang ipinanata, at sa mas malalim, kung anong uri ng Diyos ang akala niya sa Diyos.", "Kapansin-pansin, ang isang malaking tagumpay — dalawampung bayang nagapi — ay natapos sa dalawang talata lamang. Mas malaking puwang ang ibinigay ng Kasulatan sa trahedyang dala ng kanyang panata kaysa sa labanan. Hindi naunawaan ni Jefte ang biyayang natanggap na niya, at nakipagtawaran sa Diyos na parang hindi pa niya ito natatanggap."], "points": ["Kapag nakalimutan natin ang biyaya, kahit ang debosyon ay maaaring maging transaksyon. Maaaring mukhang debosyon sa labas, habang sa loob ay sinusubukan nating pagalawin ang Diyos."]}, {"title": "Talata 34–40 · Ang Awit ng Tagumpay ay Naging Panaghoy", "paragraphs": ["Pagbalik ni Jefte sa bahay, ang lumabas upang salubungin siya na may tamburin at sayaw ay ang kanyang anak na babae. Agad na idinagdag ng Kasulatan: <mark>\"Siya ang kanyang nag-iisang anak.\"</mark> Ipinaaalala nito si Isaac sa Genesis 22 — ngunit mapagpasyang magkaiba ang dalawang kwento. Inutusan ng Diyos si Abraham, at sa huli ay pinigilan siya ng Diyos. Ang panata ni Jefte ay kanyang sarili; hindi ito iniutos ng Diyos at hindi kailanman sinang-ayunan.", "Nang makita siya, pinunit ni Jefte ang kanyang damit at sinabi, \"Ay, anak ko! Ibinagsak mo ako nang lubha.\" Ngunit siya ang nanata — walang ginawang mali ang kanyang anak. Sinabi niya, \"Nagbukas ako ng bibig kay Yahweh, at hindi ko na mababawi ang aking panata,\" ngunit iyon ay maling konklusyon. Malinaw na ipinagbabawal ng Kautusan ang paghahandog ng tao. Ang \"nangako ako, kaya dapat ko itong gawin kahit kasalanan\" ay hindi biblikal na prinsipyo.", "Hindi man lamang pinangalanan ang kanyang anak, ngunit tinawag pa rin niya itong \"aking ama\" at humiling ng dalawang buwan upang manangis kasama ang mga kaibigan. Walang ibang anak si Jefte, kaya natapos sa kanya ang kanyang kinabukasan at angkan. Sinikap niyang tiyakin ang kanyang posisyon sa pamamagitan ng tagumpay, ngunit nawala ang pinakamahalaga sa proseso. Nagtatapos ang kwento hindi sa kaluwalhatian ni Jefte, kundi sa mga anak na babae ng Israel na taun-taong inaalala ang di-pinangalanang anak na ito."], "points": ["Hindi lahat ng tagumpay ay tunay na tagumpay. Dapat nating tingnan hindi lamang ang ating nakuha, kundi ang nawala sa atin sa pagkuha nito. Ang baluktot na pagkaunawa sa Diyos ay hindi humihinto sa atin — umaabot ito sa ating pamilya at sa susunod na salinlahi."]}, {"title": "Aplikasyon · Hindi Transaksyon, Kundi Tugon", "paragraphs": ["Maaari rin nating sabihin sa Diyos: \"Panginoon, kung aayusin Mo lang ang isang ito, talagang magsisikap ako para sa Iyo.\" \"Ganito karami ang ibinigay ko, kaya dapat Mong pagtagumpayin ang aking negosyo.\" \"Ganito katagal akong naglingkod — hindi ba dapat maging maayos man lang ang aking mga anak?\" Ang panalangin, pagbibigay, at paglilingkod ay maaaring maging kasangkapan upang pagalawin ang Diyos sa halip na handog sa Kanya.", "Kabaligtaran ang ebanghelyo. Hindi tayo minahal ng Diyos dahil may ibinigay tayo sa Kanya nang una. Habang tayo'y makasalanan pa, ibinigay muna ng Diyos ang Kanyang Anak. Ibinigay ni Jefte ang buhay ng iba upang iligtas ang sarili; ngunit sinabi ni Jesus, <mark>\"ang Anak ng Tao ay dumating hindi upang paglingkuran kundi upang maglingkod, at ibigay ang Kanyang buhay bilang pantubos para sa marami\"</mark> (Marcos 10:45), at ibinigay ang sarili Niyang buhay upang iligtas ang iba.", "Kaya ang ating pananampalataya ay hindi transaksyon. Hindi tayo mga taong nagbibigay upang tumanggap, kundi mga taong nagbibigay dahil nakatanggap na tayo. Kailangan nating baguhin ang tanong — hindi \"Diyos, ibibigay ko ito sa Iyo, kaya ibigay Mo sa akin iyon,\" kundi \"Diyos, napakalaking biyaya na ang ibinigay Mo sa akin — paano ako mamumuhay bilang tugon dito?\""], "points": ["Ang pananampalataya ay hindi buhay ng pagbibigay upang pagalawin ang Diyos, kundi buhay ng pagtugon sa biyaya ng Diyos na kumilos na para sa akin."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung may pusong nakikipagtransaksyon sa aking panalangin, pagbibigay, o paglilingkod — 'Ganito karami ang ginawa ko, kaya dapat Mong gawin iyon.'"}, {"key": "c2", "text": "Sinuri ko kung nakalimutan ko ang biyayang unang ibinigay ng Diyos, at nababalisa na parang hindi ko pa ito natatanggap."}, {"key": "c3", "text": "Pinag-isipan ko kung, sa paghahangad ng isang bagay, nawawala sa akin ang aking pamilya o iba pang mahahalagang relasyon."}, {"key": "c4", "text": "Sinuri ko kung kumakapit ako sa isang maling pangako o desisyon, sinasabing 'Nasabi ko na, kaya hindi na ako makababalik.'"}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "May bagay ba na nilalagyan mo ng kondisyon sa Diyos — 'kung gagawin Mo lang ito...'? Paano ito magbabago kung gagawin mo itong tugon sa biyayang natanggap na?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Pasasalamat na Walang Kondisyon", "value": "Sa panalangin ngayon, huwag humingi — magpasalamat lamang sa tatlong biyayang natanggap mo na"}, {"key": "act2", "label": "Suriin ang Motibo ng Debosyon", "value": "Kunin ang isang paglilingkod o pagbibigay at tanungin kung ginagawa mo ito 'upang makakuha' o 'dahil sa biyayang natanggap'"}, {"key": "act3", "label": "Pansinin ang Nawawala", "value": "Maglaan ng oras ngayon sa kapamilyang napabayaan mo dahil sa trabaho o tagumpay, at ipahayag ang iyong pagmamahal"}, {"key": "act4", "label": "Bumalik mula sa Maling Pangako", "value": "Kung may padalos-dalos na pangako o desisyong kailangang itama, tapat na bumalik mula rito"}, {"key": "act5", "label": "Tumugon sa Biyaya", "value": "Inaalala ang pag-ibig na unang ibinigay ni Jesus, paglingkuran ang isang tao nang walang inaasahang kapalit"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Diyos, salamat sa pagbibigay Mo muna ng Iyong Anak — bago pa ako nakapagbigay ng anuman, habang ako'y makasalanan pa. Salamat sa napakalaking biyaya."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa paglimot sa biyaya at pagsubok na pagalawin Ka sa pamamagitan ng aking panalangin, pagbibigay, at paglilingkod, na parang nakikipagkasundo."}, {"key": "p3", "tag": "Kahilingan", "text": "Gawin Mo akong hindi taong nagbibigay upang tumanggap, kundi taong masayang tumutugon dahil sa biyayang natanggap na."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
