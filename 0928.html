@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="9/28(월) 큐티 · 사사기 13:1–14">
+<meta property="og:description" content="우리가 찾기 전에 하나님이 먼저 찾아오십니다">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "9월 28일 월요일", "ref": "사사기 13장 1–14절", "headline": "우리가 찾기 전에<br>하나님이 먼저 찾아오십니다", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 13:1-14", "s1heading": "오늘의 말씀", "verse": "\"인자가 온 것은<br>잃어버린 자를 찾아 구원하려 함이니라\"", "verseRef": "누가복음 19:10", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 1절 · 부르짖음이 사라진 40년", "paragraphs": ["앞선 12장에는 죽음이 반복되었습니다. 에브라임 사람들이 죽고, 입다와 입산과 엘론과 압돈이 모두 죽습니다. 아무리 기술이 발전해도 인간이 스스로 해결할 수 없는 것, 바로 죽음입니다. 그런 가운데 오늘부터 삼손 이야기가 시작됩니다. 그러나 오늘 본문의 주인공은 삼손이 아니라, 먼저 움직이시는 하나님이십니다.", "이스라엘은 다시 여호와 앞에 악을 행했고, 블레셋의 지배 아래 무려 40년을 삽니다. 사사기에서 가장 긴 압제입니다. 그런데 이번 사이클에는 있어야 할 것이 없습니다. 옷니엘 때도, 에훗 때도, 기드온과 입다 때도 있었던 <mark>부르짖음이 없습니다</mark>. 고통 속에 있으면서도 아무도 \"하나님, 우리를 구원해 주십시오\"라고 말하지 않습니다. 15장에서 유다 사람들은 오히려 \"블레셋 사람이 우리를 다스리는 줄 알지 못하느냐\"고 말합니다. 압제가 당연한 현실이 되어 버린 것입니다.", "아픈데도 계속 참다 보면 내 상태가 얼마나 나쁜지 모를 수 있습니다. 고통을 느끼지 않는다고 건강한 것이 아닙니다. 믿음도 마찬가지입니다. 기도가 사라져도, 말씀이 없어도, 죄와 타협해도 익숙해지면, 어느 순간 \"하나님, 나를 구원해 주십시오\"라는 말조차 사라질 수 있습니다."], "points": ["죄보다 더 무서운 것은 죄에 익숙해지는 것입니다. 하나님이 필요하다는 사실조차 느끼지 못하는 것은 영적인 건강이 아닙니다."]}, {"title": "2–5절 · 아무도 구하지 않았는데, 하나님이 먼저 구원자를 준비하시다", "paragraphs": ["소라에 마노아라는 사람이 있었고, 그의 아내는 임신하지 못하는 여인이었습니다. 이름조차 기록되지 않습니다. 이스라엘에게 필요해 보이는 것은 블레셋을 상대할 강한 군대였지만, 하나님은 전쟁터로 가지 않으시고 <mark>한 여인의 태에서</mark> 시작하십니다. 사라, 리브가, 라헬, 한나처럼, 인간의 가능성이 막힌 자리에서 하나님이 생명을 시작하시는 장면이 성경에 반복됩니다.", "여호와의 사자가 나타나 말합니다. <mark>\"네가 임신하여 아들을 낳으리니\"</mark>. 흥미로운 것은 이 여인이 아이를 달라고 기도했다는 기록조차 없다는 것입니다. 이스라엘도 부르짖지 않았고, 여인도 구하지 않았습니다. 그런데 하나님이 먼저 구원을 시작하십니다. 구원의 시작은 인간의 요청이 아니라 하나님의 은혜입니다.", "이 아이는 나실인, 곧 하나님께 구별된 사람이 될 것입니다. 민수기 6장의 나실인은 스스로 일정 기간 자신을 구별했지만, 삼손은 태어나기 전부터 하나님이 선택하셨고 평생이 구별됩니다. 행동이 먼저가 아니라 <mark>정체성이 먼저</mark>이고, 사명과 행동이 뒤따릅니다. 그리고 하나님은 말씀하십니다. \"그가 이스라엘을 블레셋 사람의 손에서 구원하기 <mark>시작하리라</mark>.\" 완전히 구원한다고 하지 않으십니다. 삼손은 처음부터 한계가 있는 불완전한 구원자였습니다."], "points": ["은혜는 우리의 반응보다 먼저 옵니다. 우리가 아무것도 시작할 수 없다고 생각하는 자리에서도, 하나님은 생명의 일을 시작하실 수 있습니다."]}, {"title": "6–7절 · 이름 없는 여인이 말씀을 받다", "paragraphs": ["여인은 남편에게 달려가 \"하나님의 사람이 내게 오셨는데\"라며 자신이 들은 말씀을 전합니다. 그가 누구인지 다 이해하지는 못했지만, 받은 말씀은 기억해서 전했습니다. 전달 내용에는 흥미로운 차이도 있습니다. 머리에 삭도를 대지 말라는 것과 이스라엘을 구원하기 시작하리라는 사명은 빠지고, 대신 <mark>\"태에서부터 죽는 날까지 하나님께 바쳐진 나실인\"</mark>이라고 말합니다. 앞으로 펼쳐질 삼손의 마지막을 생각하면 의미 있게 들리는 표현입니다.", "이 장에서 계속 눈에 띄는 사람은 이름 없는 여인입니다. 이름은 나오지 않지만, 하나님의 말씀을 먼저 듣고, 받아들이고, 남편에게 전합니다. 하나님은 이름이 알려진 사람만 사용하지 않으십니다. 사람의 눈에 보이지 않는 사람이라도, 말씀을 듣고 순종하면 하나님의 구원 역사에 귀하게 쓰임받습니다."]}, {"title": "8–14절 · 새 말씀보다, 이미 주신 말씀부터", "paragraphs": ["마노아가 기도합니다. <mark>\"우리가 그 낳을 아이에게 어떻게 행할지를 우리에게 가르치게 하소서\"</mark>. 참 복된 질문입니다. \"이 아이가 무엇이 될까요\"가 아니라 \"하나님이 주신 이 아이를 우리가 어떻게 길러야 합니까\"라고 묻습니다. 이 시대 부모의 고백이 되길 바랍니다. 그리고 짧지만 놀라운 말씀이 이어집니다. <mark>\"하나님이 마노아의 목소리를 들으시니라\"</mark>. 창조주 하나님이 한 사람의 기도를 들으신다는 것, 그 자체가 은혜입니다.", "그런데 사자는 이번에도 아내에게 먼저 나타납니다. 여인은 남편을 배제하지 않고 급히 달려가 그를 부릅니다. 한 몸 된 복된 부부의 모습입니다. 마노아가 다시 묻습니다. \"이 아이를 어떻게 기르며 우리가 그에게 어떻게 행하리이까?\" 그런데 사자의 대답은 새로운 비밀이 아닙니다. <mark>\"내가 여인에게 말한 것들을 그가 다 삼가서… 내가 그에게 명령한 것은 다 지킬 것이니라\"</mark>. 사실상 \"내가 이미 말한 것을 먼저 지켜라\"는 대답이었습니다.", "우리도 하나님께 자주 묻습니다. \"그다음은 무엇입니까? 앞으로 어떻게 됩니까? 우리 자녀는 어떻게 됩니까?\" 그런데 때로 하나님의 대답은 새로운 정보가 아니라 \"내가 이미 준 말씀부터 살아라\"일 수 있습니다."], "points": ["믿음은 모든 미래를 미리 아는 것이 아니라, 오늘 분명히 말씀하신 것에 순종하며 걸어가는 것입니다."]}, {"title": "적용 · 이미 찾아오신 은혜에 응답하기", "paragraphs": ["오늘 이스라엘은 부르짖지 않았습니다. 마노아 부부는 생명을 만들어낼 수 없었습니다. 삼손은 아직 태어나지도 않았습니다. 그런데 하나님이 먼저 움직이셨습니다. 복음도 마찬가지입니다. 예수님은 <mark>\"인자가 온 것은 잃어버린 자를 찾아 구원하려 함이니라\"</mark>고 말씀하셨습니다. 우리가 먼저 예수님을 찾아간 것이 아니라, 예수님이 잃어버린 우리를 찾아오셨습니다.", "그러므로 오늘 우리가 할 일은 은혜를 만들어내는 것이 아니라, 이미 찾아오신 예수님의 말씀에 응답하는 것입니다. 기도가 없어도 익숙해지셨습니까? 말씀이 없어도 아무렇지 않습니까? 죄와 타협하면서도 더 이상 아프지 않습니까? 그렇다면 오늘 다시 말씀 앞에 서십시오. 문제는 하나님이 말씀하지 않으시는 것이 아니라, 우리가 그 말씀에 익숙해져 더 이상 듣지 못하는 것일 수 있습니다."], "points": ["지금 하나님이 내게 반복해서 들려주시는 말씀 하나는 무엇입니까? 새로운 무엇을 찾기 전에, 이미 주신 그 말씀부터 순종하십시오."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "기도나 말씀이 없는 상태에 익숙해져서 더 이상 불편하지 않은 것은 아닌지 돌아봤다"}, {"key": "c2", "text": "타협하고 있는 죄가 있는데도 더 이상 아프지 않은 것은 아닌지 점검했다"}, {"key": "c3", "text": "새로운 응답을 구하기 전에, 하나님이 이미 주신 말씀에 순종하고 있는지 돌아봤다"}, {"key": "c4", "text": "내가 찾기 전에 먼저 나를 찾아오신 예수님의 은혜를 오늘 다시 기억했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 하나님이 내게 반복해서 들려주시는데, 익숙해져서 흘려듣고 있는 말씀 하나는 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "다시 부르짖기", "value": "익숙해져 버린 문제 하나를 놓고 오늘 '하나님, 도와주십시오'라고 소리 내어 기도하기"}, {"key": "act2", "label": "이미 받은 말씀 순종", "value": "최근 마음에 계속 남아 있던 말씀 한 구절을 오늘 한 가지 행동으로 옮기기"}, {"key": "act3", "label": "자녀를 위해 묻기", "value": "마노아처럼 '이 아이를 어떻게 길러야 합니까'라고 자녀(다음 세대)를 위해 기도하기"}, {"key": "act4", "label": "숨은 순종 격려하기", "value": "이름 없이 섬기는 사람 한 명에게 감사와 격려의 말 전하기"}, {"key": "act5", "label": "먼저 찾아오신 은혜 감사", "value": "내가 구하기 전에 하나님이 먼저 해 주신 일 하나를 떠올리고 감사드리기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "제가 하나님을 찾지 않을 때에도 먼저 찾아오셔서 구원을 시작하신 은혜, 잃어버린 저를 찾아오신 예수님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "기도와 말씀이 없는 삶에 익숙해지고, 죄와 타협하면서도 아파하지 않았던 저의 무감각을 회개합니다"}, {"key": "p3", "tag": "간구", "text": "새로운 것을 찾기 전에 이미 주신 말씀을 듣는 귀와 순종하는 마음을 주시고, 다시 주님께 부르짖게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "September 28, Monday", "ref": "Judges 13:1–14", "headline": "Before We Seek Him,<br>God Comes Looking for Us First", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 13:1-14", "s1heading": "Today's Word", "verse": "\"For the Son of Man came<br>to seek and to save the lost.\"", "verseRef": "Luke 19:10", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Verse 1 · Forty Years Without a Cry", "paragraphs": ["Chapter 12 was full of repeated deaths — the Ephraimites, Jephthah, Ibzan, Elon, and Abdon all died. No matter how far technology advances, there's one thing humans cannot solve on their own: death. Against that backdrop, Samson's story begins today. Yet the main character of today's passage isn't Samson — it's God, who moves first.", "Israel again did evil in the LORD's sight and lived under Philistine rule for forty years — the longest oppression in Judges. But something is missing from this cycle. With Othniel, Ehud, Gideon, and Jephthah, there was always <mark>a cry to God</mark>. This time there is none. Even in suffering, no one says, \"God, save us.\" In chapter 15, the men of Judah even say, \"Don't you know the Philistines rule over us?\" Oppression had become simply the way things were.", "When we keep enduring pain, we may lose sight of how bad our condition really is. Not feeling pain doesn't mean we're healthy. Faith is the same. When we get used to life without prayer, without the Word, even with compromise with sin, at some point even the words \"God, save me\" can disappear."], "points": ["More frightening than sin is getting used to sin. Not even feeling our need for God is not a sign of spiritual health."]}, {"title": "Verses 2–5 · No One Asked — Yet God Prepared a Deliverer First", "paragraphs": ["There was a man of Zorah named Manoah, and his wife was barren — her name isn't even recorded. What Israel seemed to need was a strong army to face the Philistines, but God doesn't go to the battlefield. He begins <mark>in one woman's womb</mark>. Like Sarah, Rebekah, Rachel, and Hannah, Scripture repeatedly shows God beginning life right where human possibility has been shut.", "The angel of the LORD appears and says, <mark>\"You shall conceive and bear a son.\"</mark> Interestingly, there's no record that she even prayed for a child. Israel didn't cry out; the woman didn't ask. Yet God began salvation first. Salvation begins not with human request, but with God's grace.", "This child will be a Nazirite — one set apart to God. The Nazirite of Numbers 6 set himself apart voluntarily for a time, but Samson was chosen by God before birth, set apart for his whole life. It's not action first — <mark>identity comes first</mark>, and then mission and action follow. And God says, \"He shall <mark>begin</mark> to save Israel from the hand of the Philistines.\" Not complete the rescue. From the start, Samson was a limited, incomplete deliverer."], "points": ["Grace comes before our response. Even where we think we can't begin anything, God can begin His work of life."]}, {"title": "Verses 6–7 · A Nameless Woman Receives the Word", "paragraphs": ["The woman runs to her husband: \"A man of God came to me,\" and she passes on what she heard. She didn't fully understand who he was, but she remembered and shared the word given to her. There are interesting differences in her report. She leaves out the instruction about no razor and the mission of beginning to save Israel, and instead says he'll be <mark>\"a Nazirite to God from the womb to the day of his death.\"</mark> Knowing how Samson's story will end, those words carry weight.", "The person who keeps standing out in this chapter is this unnamed woman. Her name never appears, yet she's the one who first hears God's Word, receives it, and passes it on to her husband. God doesn't only use people whose names are known. Even someone unseen by others, when they hear and obey the Word, can be precious in God's work of salvation."]}, {"title": "Verses 8–14 · Before a New Word, the Word Already Given", "paragraphs": ["Manoah prays, <mark>\"Teach us what we are to do with the child who will be born.\"</mark> What a blessed question — not \"What will this child become?\" but \"How should we raise this child You've given?\" May this be the confession of parents today. Then comes a short but amazing line: <mark>\"And God listened to the voice of Manoah.\"</mark> That the Creator hears one person's prayer is itself grace.", "Yet the angel appears to the wife first again. She doesn't leave her husband out — she hurries to call him. A picture of a blessed couple who are one. Manoah asks again, \"How shall we manage the child, and what is he to do?\" But the angel's answer isn't a new secret: <mark>\"Of all that I said to the woman let her be careful... all that I commanded her let her observe.\"</mark> In effect: \"Keep what I've already told you.\"", "We often ask God, too: \"What's next? What will happen? What about my children?\" But sometimes God's answer isn't new information — it's \"Live the Word I've already given you.\""], "points": ["Faith isn't knowing the whole future in advance — it's walking in obedience to what God has clearly said today."]}, {"title": "Application · Responding to Grace That Has Already Come", "paragraphs": ["Today, Israel didn't cry out. Manoah and his wife couldn't create life. Samson wasn't yet born. And yet God moved first. The gospel is the same. Jesus said, <mark>\"For the Son of Man came to seek and to save the lost.\"</mark> We didn't go looking for Jesus first — Jesus came looking for us when we were lost.", "So our task today isn't to manufacture grace, but to respond to the Word of Jesus who has already come to us. Have you grown used to life without prayer? Does going without the Word no longer bother you? Does compromise with sin no longer hurt? If so, stand before the Word again today. The problem may not be that God isn't speaking, but that we've grown so used to His Word that we no longer hear it."], "points": ["What is the one word God keeps repeating to you right now? Before looking for something new, obey the Word He has already given."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I've grown so used to life without prayer or the Word that it no longer feels uncomfortable."}, {"key": "c2", "text": "I checked whether there's a sin I'm compromising with that no longer even hurts."}, {"key": "c3", "text": "I reflected on whether I'm obeying the Word God has already given before asking for new answers."}, {"key": "c4", "text": "I remembered again today the grace of Jesus, who came looking for me before I ever sought Him."}], "s4heading": "One-Line Reflection", "memoHint": "What is one word God keeps repeating to you, which you've grown so used to that you've been letting it pass by?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Cry Out Again", "value": "Take one problem you've grown used to and pray aloud today, 'God, help me'"}, {"key": "act2", "label": "Obey the Word Already Given", "value": "Turn one verse that's stayed on your heart lately into one concrete action today"}, {"key": "act3", "label": "Ask for Your Children", "value": "Like Manoah, pray for your children (the next generation): 'How should we raise this child?'"}, {"key": "act4", "label": "Encourage Hidden Obedience", "value": "Give thanks and encouragement to one person who serves without being noticed"}, {"key": "act5", "label": "Thank God for Coming First", "value": "Recall one thing God did for you before you even asked, and give thanks"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You for the grace that came first and began salvation even when I wasn't seeking You — thank You, Jesus, for seeking me when I was lost."}, {"key": "p2", "tag": "Repent", "text": "I repent of my numbness — growing used to life without prayer and the Word, and no longer hurting even as I compromise with sin."}, {"key": "p3", "tag": "Ask", "text": "Before I look for anything new, give me ears to hear the Word You've already given and a heart to obey — and let me cry out to You again."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Setyembre 28, Lunes", "ref": "Mga Hukom 13:1–14", "headline": "Bago Pa Natin Siya Hanapin,<br>Ang Diyos ang Unang Humahanap sa Atin", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 13:1-14", "s1heading": "Salita Ngayon", "verse": "\"Sapagkat ang Anak ng Tao ay dumating<br>upang hanapin at iligtas ang nawawala.\"", "verseRef": "Lucas 19:10", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Talata 1 · Apatnapung Taon na Walang Daing", "paragraphs": ["Puno ng paulit-ulit na kamatayan ang kabanata 12 — namatay ang mga Efraimita, si Jefte, si Ibzan, si Elon, at si Abdon. Gaano man kaunlad ang teknolohiya, may isang bagay na hindi kayang lutasin ng tao sa sarili: ang kamatayan. Sa gitna nito, nagsisimula ngayon ang kwento ni Samson. Ngunit ang pangunahing tauhan ng binasa natin ngayon ay hindi si Samson — kundi ang Diyos na unang kumikilos.", "Muling gumawa ng masama ang Israel sa paningin ni Yahweh at namuhay sa ilalim ng Filisteo nang apatnapung taon — ang pinakamahabang pang-aapi sa Mga Hukom. Ngunit may kulang sa siklong ito. Kina Otniel, Ehud, Gideon, at Jefte, laging may <mark>daing sa Diyos</mark>. Ngayon, wala. Kahit naghihirap, walang nagsabing, \"Diyos, iligtas Mo kami.\" Sa kabanata 15, sinabi pa ng mga taga-Juda, \"Hindi mo ba alam na ang mga Filisteo ang namamahala sa atin?\" Ang pang-aapi ay naging karaniwan na lamang.", "Kapag patuloy tayong nagtitiis ng sakit, maaaring hindi na natin makita kung gaano kalala ang ating kalagayan. Ang hindi pagkaramdam ng sakit ay hindi nangangahulugang malusog tayo. Ganoon din ang pananampalataya. Kapag nasanay tayo sa buhay na walang panalangin, walang Salita, at may pakikipagkompromiso sa kasalanan, maaaring sa isang punto ay mawala na maging ang mga salitang \"Diyos, iligtas Mo ako.\""], "points": ["Mas nakakatakot kaysa sa kasalanan ang pagkasanay sa kasalanan. Ang hindi man lamang pagkaramdam ng pangangailangan sa Diyos ay hindi tanda ng espirituwal na kalusugan."]}, {"title": "Talata 2–5 · Walang Humiling — Ngunit Unang Naghanda ang Diyos ng Tagapagligtas", "paragraphs": ["May isang lalaki sa Zora na nagngangalang Manoa, at baog ang kanyang asawa — hindi man lamang naitala ang pangalan nito. Ang tila kailangan ng Israel ay isang malakas na hukbo laban sa Filisteo, ngunit hindi pumunta ang Diyos sa larangan ng digmaan. Nagsimula Siya <mark>sa sinapupunan ng isang babae</mark>. Tulad nina Sara, Rebeka, Raquel, at Ana, paulit-ulit na ipinapakita ng Kasulatan ang Diyos na nagsisimula ng buhay mismo kung saan sarado na ang posibilidad ng tao.", "Nagpakita ang anghel ni Yahweh at sinabi, <mark>\"Ikaw ay maglilihi at manganganak ng isang lalaki.\"</mark> Kapansin-pansin, walang tala na nanalangin man lamang siya para sa anak. Hindi dumaing ang Israel; hindi humiling ang babae. Ngunit ang Diyos ang unang nagsimula ng pagliligtas. Ang pagliligtas ay nagsisimula hindi sa hiling ng tao, kundi sa biyaya ng Diyos.", "Ang batang ito ay magiging isang Nazareo — isang itinalaga sa Diyos. Ang Nazareo sa Mga Bilang 6 ay kusang nagtalaga ng sarili sa loob ng isang panahon, ngunit si Samson ay pinili ng Diyos bago pa ipanganak, itinalaga sa buong buhay niya. Hindi kilos ang una — <mark>ang pagkakakilanlan ang una</mark>, at sumusunod ang misyon at kilos. At sinabi ng Diyos, \"Siya ay <mark>magsisimulang</mark> magligtas sa Israel mula sa kamay ng mga Filisteo.\" Hindi tatapusin ang pagliligtas. Mula sa simula, si Samson ay isang limitado at hindi ganap na tagapagligtas."], "points": ["Nauuna ang biyaya sa ating tugon. Kahit sa lugar na inaakala nating wala tayong masisimulan, kayang simulan ng Diyos ang Kanyang gawain ng buhay."]}, {"title": "Talata 6–7 · Isang Babaeng Walang Pangalan ang Tumanggap ng Salita", "paragraphs": ["Tumakbo ang babae sa kanyang asawa: \"Isang lalaki ng Diyos ang lumapit sa akin,\" at ibinahagi niya ang kanyang narinig. Hindi niya lubos na naunawaan kung sino siya, ngunit naalala at ibinahagi niya ang salitang ibinigay sa kanya. May kapansin-pansing pagkakaiba sa kanyang ulat. Hindi niya binanggit ang tagubilin tungkol sa labaha at ang misyong magsimulang magligtas sa Israel, at sa halip ay sinabing siya'y magiging <mark>\"Nazareo sa Diyos mula sa sinapupunan hanggang sa araw ng kanyang kamatayan.\"</mark> Dahil alam natin kung paano magtatapos ang kwento ni Samson, may bigat ang mga salitang iyon.", "Ang taong patuloy na namumukod sa kabanatang ito ay ang babaeng ito na walang pangalan. Hindi kailanman lumitaw ang kanyang pangalan, ngunit siya ang unang nakarinig ng Salita ng Diyos, tumanggap nito, at ibinahagi ito sa kanyang asawa. Hindi lamang ginagamit ng Diyos ang mga taong kilala ang pangalan. Kahit ang taong hindi nakikita ng iba, kapag nakikinig at sumusunod sa Salita, ay maaaring maging mahalaga sa gawain ng pagliligtas ng Diyos."]}, {"title": "Talata 8–14 · Bago ang Bagong Salita, ang Salitang Naibigay Na", "paragraphs": ["Nanalangin si Manoa, <mark>\"Turuan Mo kami kung ano ang aming gagawin sa batang isisilang.\"</mark> Napakapalad na tanong — hindi \"Ano ang magiging bata?\" kundi \"Paano namin palalakihin ang batang ibinigay Mo?\" Nawa'y ito ang maging pahayag ng mga magulang ngayon. Pagkatapos ay dumating ang isang maikli ngunit kamangha-manghang linya: <mark>\"At dininig ng Diyos ang tinig ni Manoa.\"</mark> Na dinirinig ng Maylalang ang panalangin ng isang tao ay biyaya na mismo.", "Ngunit muling nagpakita ang anghel sa asawa muna. Hindi niya iniwan ang kanyang asawa — nagmadali siyang tawagin ito. Larawan ng isang pinagpalang mag-asawa na iisa. Muling nagtanong si Manoa, \"Paano namin aalagaan ang bata, at ano ang kanyang gagawin?\" Ngunit ang sagot ng anghel ay hindi isang bagong lihim: <mark>\"Mag-ingat siya sa lahat ng sinabi Ko sa babae... lahat ng iniutos Ko sa kanya ay dapat niyang sundin.\"</mark> Sa madaling salita: \"Sundin muna ang naisabi Ko na.\"", "Madalas din tayong magtanong sa Diyos: \"Ano ang susunod? Ano ang mangyayari? Paano ang aking mga anak?\" Ngunit kung minsan, ang sagot ng Diyos ay hindi bagong impormasyon — kundi \"Isabuhay mo muna ang Salitang naibigay Ko na.\""], "points": ["Ang pananampalataya ay hindi pag-alam ng buong hinaharap nang maaga — ito ay paglakad sa pagsunod sa malinaw na sinabi ng Diyos ngayon."]}, {"title": "Aplikasyon · Pagtugon sa Biyayang Dumating Na", "paragraphs": ["Ngayon, hindi dumaing ang Israel. Hindi makalikha ng buhay sina Manoa at ang kanyang asawa. Hindi pa ipinapanganak si Samson. Ngunit ang Diyos ang unang kumilos. Ganoon din ang ebanghelyo. Sinabi ni Jesus, <mark>\"Sapagkat ang Anak ng Tao ay dumating upang hanapin at iligtas ang nawawala.\"</mark> Hindi tayo ang unang humanap kay Jesus — si Jesus ang humanap sa atin noong tayo'y nawawala.", "Kaya ang ating gawain ngayon ay hindi ang lumikha ng biyaya, kundi ang tumugon sa Salita ni Jesus na dumating na sa atin. Nasanay ka na ba sa buhay na walang panalangin? Hindi ka na ba naaabala sa kawalan ng Salita? Hindi na ba masakit ang pakikipagkompromiso sa kasalanan? Kung gayon, tumayo muli sa harap ng Salita ngayon. Maaaring ang problema ay hindi dahil hindi nagsasalita ang Diyos, kundi dahil nasanay na tayo sa Kanyang Salita kaya hindi na natin ito naririnig."], "points": ["Ano ang isang salitang paulit-ulit na sinasabi sa iyo ng Diyos ngayon? Bago maghanap ng bago, sundin muna ang Salitang naibigay na Niya."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung nasanay na ako sa buhay na walang panalangin o Salita kaya hindi na ito nakaaabala sa akin."}, {"key": "c2", "text": "Sinuri ko kung may kasalanang kinokompromiso ko na hindi na man lamang masakit."}, {"key": "c3", "text": "Pinag-isipan ko kung sinusunod ko ang Salitang naibigay na ng Diyos bago humingi ng mga bagong sagot."}, {"key": "c4", "text": "Muli kong naalala ngayon ang biyaya ni Jesus, na humanap sa akin bago ko pa Siya hinanap."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano ang isang salitang paulit-ulit na sinasabi sa iyo ng Diyos, na nasanay ka na kaya hinahayaan mo na lamang itong lumipas?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Dumaing Muli", "value": "Kunin ang isang problemang kinasanayan mo na at manalangin nang malakas ngayon, 'Diyos, tulungan Mo ako'"}, {"key": "act2", "label": "Sundin ang Salitang Naibigay Na", "value": "Gawing isang tiyak na kilos ngayon ang isang talatang nananatili sa iyong puso kamakailan"}, {"key": "act3", "label": "Magtanong para sa Iyong mga Anak", "value": "Tulad ni Manoa, ipanalangin ang iyong mga anak (ang susunod na salinlahi): 'Paano namin palalakihin ang batang ito?'"}, {"key": "act4", "label": "Palakasin ang Tahimik na Pagsunod", "value": "Magpasalamat at magpalakas-loob sa isang taong naglilingkod nang hindi napapansin"}, {"key": "act5", "label": "Magpasalamat sa Diyos na Unang Dumating", "value": "Alalahanin ang isang bagay na ginawa ng Diyos para sa iyo bago mo pa hiningi, at magpasalamat"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat sa biyayang unang dumating at nagsimula ng pagliligtas kahit hindi Kita hinahanap — salamat, Jesus, sa paghahanap sa akin noong ako'y nawawala."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa aking pagkamanhid — pagkasanay sa buhay na walang panalangin at Salita, at hindi na nasasaktan kahit nakikipagkompromiso sa kasalanan."}, {"key": "p3", "tag": "Kahilingan", "text": "Bago ako maghanap ng anumang bago, bigyan Mo ako ng taingang nakikinig sa Salitang naibigay Mo na at pusong sumusunod — at hayaang dumaing akong muli sa Iyo."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
