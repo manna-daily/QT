@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/1(목) 큐티 · 사사기 15장">
+<meta property="og:description" content="왜 우리는 익숙한 속박을 놓지 못할까요">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 1일 목요일", "ref": "사사기 15장 1–20절", "headline": "왜 우리는<br>익숙한 속박을 놓지 못할까요", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 15:1-20", "s1heading": "오늘의 말씀", "verse": "\"너희 원수를 사랑하며<br>너희를 박해하는 자를 위하여 기도하라\"", "verseRef": "마태복음 5:44", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 개인의 갈등이 민족의 충돌로", "paragraphs": ["14장에서 삼손은 수수께끼 내기로 시작된 갈등 끝에 아스글론에서 블레셋 사람 서른 명을 죽이고, 자기 결혼 잔치를 스스로 망친 채 집으로 돌아갔습니다. 그의 모습엔 욕망과 분노와 복수가 뒤섞여 있었습니다. 그러나 14장 4절이 보여주었듯, 그의 잘못조차 하나님의 구원 계획을 막지는 못했습니다. 오늘 15장에서는 그 개인적인 갈등이 이스라엘과 블레셋의 충돌로 커져 갑니다.", "15장을 움직이는 원리는 하나입니다. <mark>\"네가 나에게 한 만큼 나도 너에게 갚아 주리라\"</mark> — 복수입니다. 삼손도, 블레셋도 똑같이 말합니다. 그런데 이 과정에서 더 심각한 문제가 드러납니다. 블레셋이 이스라엘을 압제한다는 것보다, <mark>이스라엘이 그 압제를 너무 당연하게 받아들이고 있다</mark>는 것입니다."], "points": ["오늘 두 가지를 점검해 보십시오. 나는 죄와 잘못된 현실에 너무 익숙해져 있지는 않은가? 나는 상처받았을 때 복수의 원리로 사는가, 은혜의 원리로 사는가?"]}, {"title": "1–3절 · \"이번에는 내게 허물이 없으리라\"", "paragraphs": ["시간이 흐른 뒤 삼손은 염소 새끼를 들고 아내를 찾아갑니다. 화가 나서 떠났지만 결혼을 끝낸 것은 아니었습니다. 그러나 장인은 \"네가 그를 심히 미워하는 줄 알고 네 친구에게 주었노라\"며, 대신 더 예쁜 동생을 취하라고 제안합니다. 여기서도 여인들은 한 인격이 아니라 남자들의 갈등을 해결하는 대상처럼 다뤄집니다.", "삼손이 말합니다. <mark>\"이번에는 내가 블레셋 사람을 해할지라도 그들에게 대하여 허물이 없을 것이니라\"</mark>. 핵심은 \"이번에는\"입니다. 저들이 먼저 잘못했으니 내가 무엇을 해도 정당하다는 논리입니다. 그리고 이 원리가 15장 전체를 움직입니다. 블레셋도 \"그가 우리에게 행한 대로 우리도 그에게 행하려 함이라\"고 말하고, 삼손도 다시 \"그들이 내게 행한 대로 나도 그들에게 행하였노라\"고 말합니다. 당하고, 갚고, 다시 당하고, 더 크게 갚습니다."], "points": ["복수는 '이번 한 번'으로 끝나지 않습니다. 내가 스스로 심판자가 되면 상대도 다시 심판자가 됩니다. 복수의 사슬에는 종착점이 없습니다."]}, {"title": "4–8절 · 불로 시작된 복수가 피의 복수로", "paragraphs": ["삼손은 여우 삼백 마리를 잡아 꼬리와 꼬리를 매고 그 사이에 횃불을 달아 블레셋의 밭으로 보냅니다. 곡식단과 아직 베지 않은 곡식, 포도원과 감람원까지 불탑니다. 한 사람의 상처가 블레셋 사회 전체의 경제적 피해로 번지고, 가정의 갈등이 사실상 전쟁 행위가 됩니다.", "블레셋 사람들은 원인을 알아낸 뒤, 삼손이 아니라 <mark>그의 아내와 장인을 불살라 죽입니다</mark>. 비극적인 아이러니입니다. 14장에서 이 여인이 삼손의 비밀을 알려준 이유는 \"너와 네 아버지의 집을 불사르리라\"는 협박 때문이었습니다. 불에 타 죽지 않으려고 남편을 배신했지만, 결국 가장 피하고 싶던 바로 그 죽음을 맞았습니다.", "삼손은 다시 말합니다. <mark>\"내가 너희에게 원수를 갚은 후에야 그치리라\"</mark>. 그는 이번이 마지막이라고 생각했지만, 상대는 그렇게 생각하지 않았습니다. 삼손이 갚으면 블레셋이 갚고, 블레셋이 갚으면 삼손이 다시 갚습니다. 결국 큰 살육이 일어납니다."], "points": ["보복은 상처를 해결하지 않고, 상처의 주인만 계속 바꿀 뿐입니다."]}, {"title": "9–13절 · 블레셋보다 더 심각한 유다의 영적 무기력", "paragraphs": ["블레셋 군대가 유다 땅에 올라와 진을 칩니다. \"삼손을 결박하여 그가 우리에게 행한 대로 우리도 그에게 행하려 함이라.\" 그런데 예상과 전혀 다른 일이 일어납니다. <mark>유다 사람 삼천 명</mark>이 움직입니다. 블레셋과 싸우러 가는 것이 아니라, 삼손을 잡으러 갑니다. 그리고 말합니다. <mark>\"블레셋 사람이 우리를 다스리는 줄을 알지 못하느냐\"</mark>.", "이 한 문장이 당시 이스라엘의 영적 상태를 보여줍니다. 사사기 1장에서 유다는 하나님이 먼저 가나안과 싸우도록 보내신 지파였습니다. 그런데 이제 유다는 적과 싸우는 대신 구원자를 묶으러 갑니다. 블레셋의 지배를 이상하게 느끼지 않고, 오히려 삼손이 그 '평화'를 깨뜨린 것이 문제라고 생각합니다. 13장에서 이스라엘은 부르짖지도 않았는데, 15장에서는 한 단계 더 내려가 구원자가 나타나자 그를 결박합니다.", "삼손은 저항하지 않습니다. 다만 동족이 직접 자신을 죽이지 않겠다고 맹세하게 합니다. 그리고 새 밧줄 둘로 결박당해 끌려갑니다. 사람의 눈에는 모든 것이 끝난 것처럼 보였습니다."], "points": ["몸이 묶이는 것보다 마음이 속박에 적응하는 것이 더 위험합니다. 죄와 억압에 오래 익숙해지면, 회복조차 불편하게 느껴질 수 있습니다."]}, {"title": "14–20절 · 풀어주시는 하나님, 목마른 구원자", "paragraphs": ["블레셋 사람들이 환호하며 달려오는 순간, <mark>여호와의 영이 삼손에게 갑자기 임하시니 그의 팔 위의 밧줄이 불탄 삼과 같이 떨어집니다</mark>. 선명한 대조입니다. 백성은 삼손의 손을 묶었지만, 하나님은 그 손을 풀어주셨습니다. 백성은 자기 구원자를 적에게 넘겼지만, 하나님은 자신의 구원 계획을 그들의 선택에 맡기지 않으셨습니다. 구원받기를 원하지 않는 백성조차 하나님은 끝까지 포기하지 않으십니다.", "삼손은 나귀의 새 턱뼈로 블레셋 사람을 크게 물리치고 노래합니다. <mark>\"나귀의 턱뼈로 내가 천 명을 죽였도다\"</mark>. 흥미롭게도 그 노래에는 하나님이 나오지 않습니다. 방금 여호와의 영이 임하셨는데, 노래의 중심에는 '내가' 있습니다. 그런데 곧 반전이 일어납니다. 수많은 적을 무찌른 사람이 <mark>심히 목말라</mark> 죽을 위기에 처합니다. 그때 삼손이 처음으로 하나님께 직접 부르짖습니다. <mark>\"주께서 종의 손을 통하여 이 큰 구원을 베푸셨사오나…\"</mark> — \"내가 죽였다\"가 \"주께서 구원하셨다\"로 바뀝니다.", "하나님이 레히의 우묵한 곳을 터뜨려 물을 내시고, 삼손은 마시고 정신을 차립니다. 그곳의 이름은 <mark>엔학고레, '부르짖은 자의 샘'</mark>이 됩니다. 블레셋의 큰 군대는 이겼지만, 자기 힘으로 물 한 방울 만들 수 없었습니다. 구원자 삼손에게도 구원이 필요했습니다. 그리고 본문은 이렇게 끝납니다. \"<mark>블레셋 사람의 때에</mark> 삼손이 이스라엘의 사사로 이십 년을 지냈더라.\" 압제는 끝나지 않았고, \"그 땅이 평온하였더라\"는 말도 없습니다."], "points": ["성령의 능력을 경험한 사람도 오늘 다시 하나님께 의존해야 합니다. 과거의 승리가 오늘 필요한 은혜를 대신하지 못합니다 — 그래서 예수님은 '일용할 양식'을 구하라고 하셨습니다."]}, {"title": "적용 · 복수의 원리가 아니라, 은혜의 원리로", "paragraphs": ["15장을 처음부터 끝까지 움직인 인간의 원리는 \"네가 한 만큼 나도 갚아 주리라\"였습니다. 그러자 불이 남고, 죽음이 남고, 더 큰 보복만 남았습니다. 그러나 예수님은 전혀 다른 원리를 가르치셨습니다. <mark>\"너희 원수를 사랑하며 너희를 박해하는 자를 위하여 기도하라\"</mark>. 삼손은 결박당했을 때 그 줄을 끊고 적을 죽였습니다. 그러나 예수님은 자기 백성에게 붙잡혀 결박당한 채 이방인의 손에 넘겨지셨지만, 그 결박을 끊고 자신을 구하지 않으셨습니다. 오히려 십자가에서 자신을 내어주심으로 원수였던 우리를 구원하셨습니다. 이것이 완전한 구원자의 은혜입니다.", "용서는 잘못을 잘했다고 말하는 것이 아닙니다. 필요한 경계와 정의를 포기하라는 것도 아닙니다. 다만 최종 심판자의 자리를 내가 차지하지 않는 것입니다. 오늘 붙들고 있는 복수의 줄 하나를 내려놓고 하나님께 맡기십시오. 그리고 너무 익숙해져 버린 죄와 잘못된 삶의 방식이 있다면, \"원래 그런 거야\"라고 말하지 말고 하나님께 부르짖으십시오. 하나님은 구원받기를 원하지 않던 이스라엘조차 포기하지 않으셨습니다."], "points": ["예수님의 은혜로 구원받은 사람은 보복의 원리가 아니라 은혜의 원리로 살아갑니다. 익숙한 속박을 당연하게 여기지 말고, 엔학고레의 샘처럼 다시 부르짖으십시오."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "'저 사람이 한 만큼 나도 갚아주겠다'는 계산이 마음에 남아 있지는 않은지 돌아봤다"}, {"key": "c2", "text": "'원래 그런 거야'라며 당연하게 받아들이고 있는 죄나 잘못된 삶의 방식이 없는지 점검했다"}, {"key": "c3", "text": "하나님이 주신 승리나 은혜를 '내가 해냈다'고 말하고 있지는 않은지 돌아봤다"}, {"key": "c4", "text": "어제의 은혜로 오늘을 버티려 하지 않고, 오늘도 하나님께 의존하며 부르짖고 있는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 내가 끊지 못하고 있는 '복수의 줄' 또는 너무 익숙해져 버린 '속박'이 있다면 무엇입니까? 오늘 그것을 하나님께 어떻게 맡기시겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "복수의 줄 내려놓기", "value": "마음속에 갚아주고 싶은 사람 한 명을 떠올리고, 판단을 하나님께 맡기는 기도 드리기"}, {"key": "act2", "label": "원수를 위해 기도하기", "value": "나를 힘들게 한 사람을 위해 오늘 구체적으로 축복하며 기도하기"}, {"key": "act3", "label": "익숙한 속박 깨기", "value": "'원래 그런 거야'라며 내버려 둔 죄나 습관 하나를 적어 하나님께 도움을 구하기"}, {"key": "act4", "label": "'주께서 하셨다' 고백하기", "value": "최근에 잘된 일 하나를 떠올리며 '내가'가 아니라 '주께서' 하셨다고 감사 고백하기"}, {"key": "act5", "label": "엔학고레 기도", "value": "지치고 목마른 영역 하나를 놓고 삼손처럼 하나님께 직접 부르짖어 기도하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "결박을 끊지 않으시고 십자가에서 자신을 내어주셔서 원수였던 저를 구원하신 예수님, 그 완전한 은혜를 감사합니다"}, {"key": "p2", "tag": "회개", "text": "'네가 한 만큼 갚아주겠다'는 마음으로 살았던 것과, 죄와 속박에 익숙해져 부르짖지 않았던 것을 회개합니다"}, {"key": "p3", "tag": "간구", "text": "복수의 원리가 아니라 은혜의 원리로 살게 하시고, 오늘도 목마를 때마다 주님께 부르짖어 새 힘을 얻게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 1, Thursday", "ref": "Judges 15:1–20", "headline": "Why Can't We Let Go<br>of the Bondage We're Used To?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 15:1-20", "s1heading": "Today's Word", "verse": "\"Love your enemies<br>and pray for those who persecute you.\"", "verseRef": "Matthew 5:44", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · A Personal Conflict Becomes a National Clash", "paragraphs": ["In chapter 14, after a conflict that began with a riddle wager, Samson killed thirty Philistines at Ashkelon and went home, having ruined his own wedding feast. Desire, anger, and revenge were all mixed together in him. But as 14:4 showed, even his wrongs couldn't stop God's plan of salvation. In chapter 15, that personal conflict grows into a clash between Israel and the Philistines.", "One principle drives chapter 15: <mark>\"As you did to me, so I will do to you\"</mark> — revenge. Samson says it, and so do the Philistines. But along the way, an even more serious problem surfaces. Worse than the Philistines oppressing Israel is that <mark>Israel had come to accept that oppression as normal</mark>."], "points": ["Examine two things today: Have I grown too used to sin and a wrong reality? When I'm hurt, do I live by the principle of revenge or the principle of grace?"]}, {"title": "Verses 1–3 · \"This Time I Shall Be Blameless\"", "paragraphs": ["After some time, Samson goes to visit his wife with a young goat. He had left in anger, but hadn't ended the marriage. But his father-in-law says, \"I really thought you utterly hated her, so I gave her to your companion,\" and offers her younger, more beautiful sister instead. Here too, the women are treated not as persons but as objects for settling men's conflicts.", "Samson says, <mark>\"This time I shall be innocent in regard to the Philistines, when I do them harm.\"</mark> The key phrase is \"this time.\" They wronged me first, so whatever I do is justified. And this principle drives all of chapter 15. The Philistines say, \"We have come to do to him as he did to us,\" and Samson says again, \"As they did to me, so have I done to them.\" Wronged, repay, wronged again, repay bigger."], "points": ["Revenge never ends with 'just this once.' When I make myself the judge, the other person becomes a judge again too. The chain of revenge has no end."]}, {"title": "Verses 4–8 · Revenge That Began with Fire Becomes Revenge of Blood", "paragraphs": ["Samson catches three hundred foxes, ties them tail to tail with torches between them, and sends them into the Philistines' fields. The stacked grain, the standing grain, the vineyards, and the olive groves all burn. One man's hurt spreads into economic damage for all of Philistine society; a family conflict has effectively become an act of war.", "When the Philistines find out why, they don't burn Samson — they <mark>burn his wife and her father to death</mark>. A tragic irony: in chapter 14, she revealed Samson's secret because of the threat, \"We will burn you and your father's house with fire.\" She betrayed her husband to avoid being burned, yet in the end suffered the very death she most wanted to escape.", "Samson says again, <mark>\"I swear I will be avenged on you, and after that I will quit.\"</mark> He thought this would be the last time, but the other side didn't. When Samson repays, the Philistines repay; when the Philistines repay, Samson repays again. In the end, a great slaughter follows."], "points": ["Retaliation doesn't heal wounds — it just keeps changing who carries them."]}, {"title": "Verses 9–13 · Judah's Spiritual Helplessness — Worse Than the Philistines", "paragraphs": ["The Philistine army comes up and camps in Judah: \"We have come up to bind Samson, to do to him as he did to us.\" Then something completely unexpected happens. <mark>Three thousand men of Judah</mark> set out — not to fight the Philistines, but to capture Samson. And they say, <mark>\"Do you not know that the Philistines are rulers over us?\"</mark>", "This one sentence reveals Israel's spiritual state at the time. In Judges 1, Judah was the tribe God sent first to fight the Canaanites. Now, instead of fighting the enemy, Judah goes to bind the deliverer. They don't find Philistine rule strange — instead, they think the problem is that Samson disturbed the 'peace.' In chapter 13, Israel didn't even cry out; in chapter 15, they go a step lower, binding the deliverer when he appears.", "Samson doesn't resist. He only makes his own people swear they won't kill him themselves. Then he's bound with two new ropes and led away. To human eyes, it looked like everything was over."], "points": ["A heart that has adapted to bondage is more dangerous than a body that is bound. When we grow used to sin and oppression for too long, even restoration can feel uncomfortable."]}, {"title": "Verses 14–20 · The God Who Unbinds, and a Thirsty Deliverer", "paragraphs": ["Just as the Philistines come shouting toward him, <mark>the Spirit of the LORD rushes upon Samson, and the ropes on his arms become like flax burned with fire</mark>. A vivid contrast: the people bound Samson's hands, but God set them free. The people handed their deliverer over to the enemy, but God didn't leave His plan of salvation to their choices. God doesn't give up even on a people who don't want to be saved.", "Samson strikes down the Philistines with a fresh jawbone of a donkey and sings, <mark>\"With the jawbone of a donkey I have struck down a thousand men.\"</mark> Interestingly, God isn't mentioned in the song. The Spirit of the LORD had just come upon him, yet \"I\" is at the center. Then comes the reversal: the man who defeated so many enemies is <mark>very thirsty</mark>, on the verge of dying. For the first time, Samson cries out directly to God: <mark>\"You have granted this great salvation by the hand of Your servant...\"</mark> — \"I struck down\" becomes \"You granted salvation.\"", "God splits open the hollow place at Lehi, water comes out, Samson drinks, and his spirit revives. The place is named <mark>En-hakkore — \"the spring of the one who called.\"</mark> He defeated a great Philistine army, yet couldn't produce a single drop of water by his own strength. Even the deliverer Samson needed deliverance. And the passage ends: \"He judged Israel <mark>in the days of the Philistines</mark> twenty years.\" The oppression didn't end, and there's no \"the land had rest.\""], "points": ["Even those who have experienced the Spirit's power must depend on God again today. Yesterday's victory can't replace the grace we need today — that's why Jesus taught us to ask for 'our daily bread.'"]}, {"title": "Application · Living by the Principle of Grace, Not Revenge", "paragraphs": ["The human principle that drove chapter 15 from start to finish was \"As you did to me, so I'll do to you.\" What remained was fire, death, and ever-bigger retaliation. But Jesus taught a completely different principle: <mark>\"Love your enemies and pray for those who persecute you.\"</mark> When Samson was bound, he broke the ropes and killed his enemies. But Jesus, seized and bound by His own people and handed over to the Gentiles, did not break His bonds to save Himself. Instead, He gave Himself up on the cross and saved us, who were His enemies. This is the grace of the perfect Deliverer.", "Forgiveness doesn't mean saying the wrong was right. Nor does it mean giving up necessary boundaries and justice. It means not taking the seat of final judge for myself. Lay down one rope of revenge you're holding today and entrust it to God. And if there's a sin or wrong way of life you've grown too used to, don't say \"That's just how it is\" — cry out to God. He didn't give up even on an Israel that didn't want to be saved."], "points": ["Those saved by Jesus' grace live by the principle of grace, not retaliation. Don't treat familiar bondage as normal — like the spring of En-hakkore, cry out again."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether a calculation remains in my heart: 'I'll pay them back as much as they did to me.'"}, {"key": "c2", "text": "I checked whether there's a sin or wrong way of life I'm accepting as normal, saying 'that's just how it is.'"}, {"key": "c3", "text": "I reflected on whether I'm saying 'I did it' about victories or grace God has given."}, {"key": "c4", "text": "I checked whether I'm depending on God and crying out to Him today, rather than trying to get by on yesterday's grace."}], "s4heading": "One-Line Reflection", "memoHint": "Is there a 'rope of revenge' you can't cut, or a 'bondage' you've grown too used to? How will you entrust it to God today?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Lay Down the Rope of Revenge", "value": "Think of one person you want to pay back, and pray, entrusting judgment to God"}, {"key": "act2", "label": "Pray for Your Enemy", "value": "Today, specifically bless and pray for someone who has made life hard for you"}, {"key": "act3", "label": "Break Familiar Bondage", "value": "Write down one sin or habit you've let be as 'just how it is,' and ask God for help"}, {"key": "act4", "label": "Confess 'The Lord Did It'", "value": "Recall one thing that went well recently and thank God, confessing 'the Lord' did it, not 'I'"}, {"key": "act5", "label": "The En-hakkore Prayer", "value": "Take one weary, thirsty area of your life and cry out directly to God like Samson"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Jesus, thank You for not breaking Your bonds but giving Yourself up on the cross to save me, who was Your enemy. Thank You for such perfect grace."}, {"key": "p2", "tag": "Repent", "text": "I repent of living with the heart that says 'I'll pay you back as much as you did to me,' and of growing used to sin and bondage without crying out."}, {"key": "p3", "tag": "Ask", "text": "Help me live by the principle of grace, not revenge, and whenever I'm thirsty today, let me cry out to You and receive new strength."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 1, Huwebes", "ref": "Mga Hukom 15:1–20", "headline": "Bakit Hindi Natin Mabitawan<br>ang Pagkaalipin na Kinasanayan Na?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 15:1-20", "s1heading": "Salita Ngayon", "verse": "\"Mahalin ninyo ang inyong mga kaaway<br>at ipanalangin ang mga umuusig sa inyo.\"", "verseRef": "Mateo 5:44", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ang Personal na Alitan ay Naging Sagupaan ng Bansa", "paragraphs": ["Sa kabanata 14, matapos ang alitang nagsimula sa pustahan sa bugtong, pinatay ni Samson ang tatlumpung Filisteo sa Ashkelon at umuwi, sinira mismo ang sariling handaan ng kasal. Magkahalo sa kanya ang pagnanasa, galit, at paghihiganti. Ngunit gaya ng ipinakita ng 14:4, kahit ang kanyang mga kamalian ay hindi napahinto ang plano ng Diyos na pagliligtas. Sa kabanata 15, lumaki ang personal na alitang iyon tungo sa sagupaan ng Israel at ng mga Filisteo.", "Isang prinsipyo ang nagpapatakbo sa kabanata 15: <mark>\"Kung ano ang ginawa mo sa akin, gagawin ko rin sa iyo\"</mark> — paghihiganti. Sinasabi ito ni Samson, at gayundin ng mga Filisteo. Ngunit sa proseso, lumitaw ang mas malubhang problema. Mas malala pa kaysa sa pang-aapi ng Filisteo sa Israel ay ang <mark>pagtanggap ng Israel sa pang-aaping iyon bilang karaniwan</mark>."], "points": ["Suriin ang dalawang bagay ngayon: Labis na ba akong nasanay sa kasalanan at maling realidad? Kapag nasaktan ako, namumuhay ba ako sa prinsipyo ng paghihiganti o sa prinsipyo ng biyaya?"]}, {"title": "Talata 1–3 · \"Sa Pagkakataong Ito ay Wala Akong Kasalanan\"", "paragraphs": ["Makalipas ang ilang panahon, dinalaw ni Samson ang kanyang asawa na may dalang batang kambing. Umalis siya sa galit, ngunit hindi niya tinapos ang kasal. Ngunit sinabi ng kanyang biyenan, \"Talagang akala ko'y lubos mo siyang kinapootan, kaya ibinigay ko siya sa iyong kasama,\" at inalok ang mas bata at mas magandang kapatid nito. Dito rin, ang mga babae ay tinatrato hindi bilang tao kundi bilang bagay na panlutas sa alitan ng mga lalaki.", "Sinabi ni Samson, <mark>\"Sa pagkakataong ito ay wala akong kasalanan sa mga Filisteo kapag sinaktan ko sila.\"</mark> Ang susing parirala ay \"sa pagkakataong ito.\" Sila ang unang nagkamali, kaya anuman ang gawin ko ay makatwiran. At ang prinsipyong ito ang nagpapatakbo sa buong kabanata 15. Sinabi ng mga Filisteo, \"Dumating kami upang gawin sa kanya ang ginawa niya sa amin,\" at muling sinabi ni Samson, \"Kung ano ang ginawa nila sa akin, iyon din ang ginawa ko sa kanila.\" Nasaktan, gumanti, muling nasaktan, gumanti nang mas malaki."], "points": ["Hindi kailanman nagtatapos ang paghihiganti sa 'ngayon lang.' Kapag ginawa ko ang sarili kong hukom, nagiging hukom din muli ang kabila. Walang katapusan ang tanikala ng paghihiganti."]}, {"title": "Talata 4–8 · Paghihiganting Nagsimula sa Apoy ay Naging Paghihiganti ng Dugo", "paragraphs": ["Humuli si Samson ng tatlong daang soro, itinali ang buntot sa buntot na may sulo sa pagitan, at pinakawalan sa mga bukid ng mga Filisteo. Nasunog ang mga binigkis na butil, ang nakatayong butil, ang mga ubasan, at ang mga taniman ng olibo. Kumalat ang sakit ng isang tao tungo sa pinsalang pang-ekonomiya ng buong lipunan ng Filisteo; ang alitan ng pamilya ay halos naging gawaing pandigma.", "Nang malaman ng mga Filisteo ang dahilan, hindi si Samson ang kanilang sinunog — kundi <mark>ang kanyang asawa at ang ama nito</mark>. Isang malungkot na kabalintunaan: sa kabanata 14, ibinunyag niya ang lihim ni Samson dahil sa bantang, \"Susunugin ka namin at ang bahay ng iyong ama.\" Pinagtaksilan niya ang asawa upang hindi masunog, ngunit sa huli ay sinapit niya ang mismong kamatayang pinakagusto niyang takasan.", "Muling sinabi ni Samson, <mark>\"Tiyak na maghihiganti ako sa inyo, at saka ako titigil.\"</mark> Inakala niyang ito na ang huli, ngunit hindi ganoon ang isip ng kabila. Kapag gumanti si Samson, gumaganti ang mga Filisteo; kapag gumanti ang mga Filisteo, muling gumaganti si Samson. Sa huli, nagkaroon ng malaking patayan."], "points": ["Hindi nilulunasan ng paghihiganti ang sugat — pinapalitan lamang nito kung sino ang may dala ng sugat."]}, {"title": "Talata 9–13 · Ang Espirituwal na Kawalang-Lakas ng Juda — Mas Malala pa sa mga Filisteo", "paragraphs": ["Umahon ang hukbo ng Filisteo at nagkampo sa Juda: \"Umahon kami upang gapusin si Samson, upang gawin sa kanya ang ginawa niya sa amin.\" Pagkatapos ay may ganap na hindi inaasahang nangyari. <mark>Tatlong libong lalaki ng Juda</mark> ang lumakad — hindi upang lumaban sa mga Filisteo, kundi upang hulihin si Samson. At sinabi nila, <mark>\"Hindi mo ba alam na ang mga Filisteo ang namamahala sa atin?\"</mark>", "Ipinapakita ng iisang pangungusap na ito ang espirituwal na kalagayan ng Israel noon. Sa Mga Hukom 1, ang Juda ang liping unang isinugo ng Diyos upang lumaban sa mga Cananeo. Ngayon, sa halip na lumaban sa kaaway, pumunta ang Juda upang gapusin ang tagapagligtas. Hindi nila nakikitang kakaiba ang pamamahala ng Filisteo — sa halip, iniisip nilang ang problema ay ginulo ni Samson ang 'kapayapaan.' Sa kabanata 13, hindi man lamang dumaing ang Israel; sa kabanata 15, bumaba pa sila, ginapos ang tagapagligtas nang siya'y lumitaw.", "Hindi lumaban si Samson. Pinasumpa lamang niya ang sariling bayan na hindi nila siya papatayin. Pagkatapos ay ginapos siya ng dalawang bagong lubid at dinala. Sa paningin ng tao, mukhang tapos na ang lahat."], "points": ["Mas mapanganib ang pusong umangkop sa pagkaalipin kaysa sa katawang nakagapos. Kapag labis tayong nasanay sa kasalanan at pang-aapi, maaaring maging di-komportable kahit ang pagpapanumbalik."]}, {"title": "Talata 14–20 · Ang Diyos na Nagpapalaya, at ang Nauuhaw na Tagapagligtas", "paragraphs": ["Habang sumisigaw na lumalapit ang mga Filisteo, <mark>dumaluhong kay Samson ang Espiritu ni Yahweh, at ang mga lubid sa kanyang mga braso ay naging tulad ng linong nasunog ng apoy</mark>. Isang malinaw na kaibahan: ginapos ng bayan ang mga kamay ni Samson, ngunit pinalaya ito ng Diyos. Ibinigay ng bayan sa kaaway ang kanilang tagapagligtas, ngunit hindi iniwan ng Diyos ang Kanyang plano ng pagliligtas sa kanilang mga pagpili. Hindi sumusuko ang Diyos kahit sa bayang ayaw maligtas.", "Pinabagsak ni Samson ang mga Filisteo gamit ang sariwang panga ng asno at umawit, <mark>\"Sa panga ng asno ay pumatay ako ng isang libong lalaki.\"</mark> Kapansin-pansin, hindi binanggit ang Diyos sa awit. Kararating lamang ng Espiritu ni Yahweh sa kanya, ngunit \"ako\" ang nasa gitna. Pagkatapos ay dumating ang pagbaligtad: ang taong nagapi ang napakaraming kaaway ay <mark>lubhang nauhaw</mark>, halos mamatay. Sa unang pagkakataon, direktang dumaing si Samson sa Diyos: <mark>\"Ibinigay Mo ang dakilang pagliligtas na ito sa pamamagitan ng kamay ng Iyong lingkod...\"</mark> — ang \"pumatay ako\" ay naging \"Ikaw ang nagligtas.\"", "Binuksan ng Diyos ang lubak sa Lehi, lumabas ang tubig, uminom si Samson, at nanumbalik ang kanyang lakas. Pinangalanan ang lugar na <mark>En-hakkore — \"ang bukal ng tumawag.\"</mark> Natalo niya ang malaking hukbo ng Filisteo, ngunit hindi siya makalikha ng isang patak ng tubig sa sariling lakas. Kahit ang tagapagligtas na si Samson ay nangangailangan ng pagliligtas. At nagtatapos ang bahagi: \"Naghukom siya sa Israel <mark>sa panahon ng mga Filisteo</mark> nang dalawampung taon.\" Hindi natapos ang pang-aapi, at walang \"namahinga ang lupain.\""], "points": ["Kahit ang mga nakaranas ng kapangyarihan ng Espiritu ay dapat muling umasa sa Diyos ngayon. Hindi mapapalitan ng tagumpay kahapon ang biyayang kailangan natin ngayon — kaya itinuro ni Jesus na humingi ng 'aming kakanin sa araw-araw.'"]}, {"title": "Aplikasyon · Pamumuhay sa Prinsipyo ng Biyaya, Hindi ng Paghihiganti", "paragraphs": ["Ang prinsipyo ng tao na nagpatakbo sa kabanata 15 mula simula hanggang wakas ay \"Kung ano ang ginawa mo sa akin, gagawin ko rin sa iyo.\" Ang natira ay apoy, kamatayan, at palaking paghihiganti. Ngunit itinuro ni Jesus ang isang ganap na ibang prinsipyo: <mark>\"Mahalin ninyo ang inyong mga kaaway at ipanalangin ang mga umuusig sa inyo.\"</mark> Nang gapusin si Samson, pinutol niya ang mga lubid at pinatay ang kanyang mga kaaway. Ngunit si Jesus, na hinuli at ginapos ng sariling bayan at ibinigay sa mga Hentil, ay hindi pinutol ang Kanyang tanikala upang iligtas ang sarili. Sa halip, ibinigay Niya ang Kanyang sarili sa krus at iniligtas tayo, na Kanyang mga kaaway. Ito ang biyaya ng ganap na Tagapagligtas.", "Ang pagpapatawad ay hindi pagsasabing tama ang mali. Hindi rin ito pagsuko ng kinakailangang hangganan at katarungan. Ito ay hindi pag-agaw sa upuan ng huling hukom para sa aking sarili. Bitawan ngayon ang isang lubid ng paghihiganting kinakapitan mo at ipaubaya ito sa Diyos. At kung may kasalanan o maling paraan ng pamumuhay na labis mo nang kinasanayan, huwag sabihing \"Ganyan talaga\" — dumaing sa Diyos. Hindi Niya sinukuan kahit ang Israel na ayaw maligtas."], "points": ["Ang mga iniligtas ng biyaya ni Jesus ay namumuhay sa prinsipyo ng biyaya, hindi ng paghihiganti. Huwag ituring na karaniwan ang pagkaaliping kinasanayan — tulad ng bukal ng En-hakkore, dumaing muli."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung may natitira pang kalkulasyon sa aking puso: 'Gagantihan ko sila kung gaano nila ako sinaktan.'"}, {"key": "c2", "text": "Sinuri ko kung may kasalanan o maling paraan ng pamumuhay na tinatanggap kong karaniwan, sinasabing 'ganyan talaga.'"}, {"key": "c3", "text": "Pinag-isipan ko kung sinasabi kong 'ako ang gumawa' tungkol sa mga tagumpay o biyayang ibinigay ng Diyos."}, {"key": "c4", "text": "Sinuri ko kung umaasa ako sa Diyos at dumaraing sa Kanya ngayon, sa halip na sikaping makaraos sa biyaya kahapon."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "May 'lubid ng paghihiganti' ba na hindi mo maputol, o 'pagkaalipin' na labis mo nang kinasanayan? Paano mo ito ipapaubaya sa Diyos ngayon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Bitawan ang Lubid ng Paghihiganti", "value": "Isipin ang isang taong gusto mong gantihan, at manalangin, ipinapaubaya sa Diyos ang paghatol"}, {"key": "act2", "label": "Ipanalangin ang Iyong Kaaway", "value": "Ngayon, tiyak na pagpalain at ipanalangin ang isang taong nagpahirap sa iyong buhay"}, {"key": "act3", "label": "Basagin ang Kinasanayang Pagkaalipin", "value": "Isulat ang isang kasalanan o ugaling hinayaan mo bilang 'ganyan talaga,' at humingi ng tulong sa Diyos"}, {"key": "act4", "label": "Ipahayag na 'Ang Panginoon ang Gumawa'", "value": "Alalahanin ang isang bagay na naging maayos kamakailan at magpasalamat, ipinapahayag na 'ang Panginoon' ang gumawa, hindi 'ako'"}, {"key": "act5", "label": "Ang Panalangin ng En-hakkore", "value": "Kunin ang isang pagod at nauuhaw na bahagi ng iyong buhay at direktang dumaing sa Diyos tulad ni Samson"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Jesus, salamat sa hindi Mo pagputol ng Iyong tanikala kundi pagbibigay ng Iyong sarili sa krus upang iligtas ako, na Iyong kaaway. Salamat sa napakaganap na biyaya."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pamumuhay na may pusong nagsasabing 'Gagantihan kita kung gaano mo ako sinaktan,' at sa pagkasanay sa kasalanan at pagkaalipin nang hindi dumaraing."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong mamuhay sa prinsipyo ng biyaya, hindi ng paghihiganti, at tuwing ako'y nauuhaw ngayon, hayaang dumaing ako sa Iyo at tumanggap ng bagong lakas."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
