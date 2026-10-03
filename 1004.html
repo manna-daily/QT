@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/4(주일) 큐티 · 사사기 17장">
+<meta property="og:description" content="예배하면서도 하나님을 이용할 수 있습니다">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 4일 주일", "ref": "사사기 17장 1–13절", "headline": "예배하면서도<br>하나님을 이용할 수 있습니다", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 17:1-13", "s1heading": "오늘의 말씀", "verse": "\"너희가 나를 사랑하면<br>나의 계명을 지키리라\"", "verseRef": "요한복음 14:15", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 삼손 한 사람의 문제가 이스라엘 전체의 문화로", "paragraphs": ["사사기 17장은 중요한 전환점입니다. 삼손을 설명하는 대표 문장은 <mark>\"그 여자가 내 눈에 옳으니이다\"</mark>였습니다. 그런데 오늘 6절은 이렇게 말합니다. <mark>\"사람이 각기 자기의 소견에 옳은 대로 행하였더라\"</mark>. 삼손 한 사람의 문제가 이제 이스라엘 전체의 문화가 된 것입니다.", "17장부터는 분위기도 완전히 달라집니다. 더 이상 새로운 사사가 등장하지 않고, 죄–압제–부르짖음–구원의 반복도 나오지 않습니다. 외부의 적도 중심에 없습니다. 문제가 밖이 아니라 안에 있습니다. 카메라는 사사들에게서 평범한 한 가정, 에브라임 산지의 미가에게로 향합니다.", "그런데 더 무서운 것은 이들이 하나님을 버렸다고 생각하지 않는다는 것입니다. 미가의 어머니는 여호와의 이름으로 축복하고, 은을 여호와께 드린다고 말합니다. 신당도, 에봇도, 제사장도, 레위인도 있습니다. 겉으로는 굉장히 종교적입니다. 그런데 모두 하나님의 말씀에서 벗어나 있습니다. 그들은 하나님을 버린 것이 아니라, <mark>하나님을 자기 방식대로 바꾼 것</mark>입니다."], "points": ["나는 정말 하나님을 예배하고 있습니까, 아니면 하나님의 이름을 쓰면서 사실은 내가 원하는 하나님을 만들어 섬기고 있습니까?"]}, {"title": "1–5절 · 내 방식대로 섬기는 하나님", "paragraphs": ["미가는 어머니의 은 천백 개를 훔칩니다. 어머니는 누가 훔쳤는지 모른 채 그 사람을 저주합니다. 그러자 미가가 고백합니다. \"그 은이 내게 있나이다. 내가 그것을 가졌나이다.\" 겉으로는 회개처럼 보이지만, 본문은 그가 죄를 슬퍼해서 돌려줬다고 말하지 않습니다. 저주를 들은 뒤였다는 점에서, 진정한 회개라기보다 저주에 대한 두려움이 동기였을 가능성이 큽니다. 어머니는 곧바로 말합니다. <mark>\"내 아들이 여호와께 복 받기를 원하노라\"</mark>. 저주가 한순간에 축복으로 바뀝니다.", "그리고 어머니가 말합니다. <mark>\"내가 내 아들을 위하여 이 은을 여호와께 거룩히 드려 신상을 새기며 부어 만들리라\"</mark>. 이 말 자체가 모순입니다. 여호와께 거룩히 드린다면서, 하나님께서 금하신 우상을 만듭니다. 게다가 다 드린다더니 실제로는 은 이백 개만 은장색에게 줍니다. 의도는 종교적이고 여호와의 이름도 쓰지만, 방법은 하나님의 말씀과 정면으로 충돌합니다.", "미가는 개인 신당을 만들고, 에봇과 드라빔을 만들고, 자기 아들 하나를 제사장으로 세웁니다. 신당도, 예배 도구도, 제사장도 다 자기가 정합니다. \"내 집이니까 내 방식대로 하나님을 섬기면 된다\" — 이것이 바로 우상화입니다. 우상은 꼭 다른 신의 이름을 부르는 것만이 아닙니다. <mark>하나님을 내 생각과 필요에 맞게 다시 만드는 것</mark>도 우상화입니다."], "points": ["좋은 의도가 잘못된 예배를 옳게 만들지는 않습니다. 하나님을 섬기는 방법까지 하나님이 정하십니다. 하나님을 믿지 않는 것보다, 내가 만든 하나님을 진짜라고 착각하는 신앙이 더 위험할 수 있습니다."]}, {"title": "6절 · 사람마다 자기 소견에 옳은 대로", "paragraphs": ["여기서 저자가 처음으로 이야기를 해석해 줍니다. <mark>\"그 때에는 이스라엘에 왕이 없으므로 사람이 각기 자기의 소견에 옳은 대로 행하였더라\"</mark>. 왜 미가와 그의 어머니는 이런 이상한 일을 하면서도 하나님을 잘 섬긴다고 생각했을까요? 자기 생각이 하나님의 말씀보다 기준이 되었기 때문입니다. 신명기 12장은 이미 \"각기 소견대로 하지 말라\"고 말씀하셨습니다. 이스라엘은 말씀과 언약이 있는 백성이었습니다.", "이 구절은 삼손과 정확히 연결됩니다. 삼손은 \"그 여자가 내 눈에 옳으니\", 미가는 \"이 방식이 내 눈에 옳으니\", 이스라엘은 \"각기 자기 눈에 옳은 대로\". 삼손에게서는 삶의 선택에서 자기 눈이 기준이었다면, 미가에게서는 이제 <mark>예배와 신앙에서도</mark> 자기 눈이 기준이 됩니다. 처음에는 하나님의 말씀을 어기며 살았지만, 이제는 하나님의 이름을 사용하면서 하나님의 말씀을 어깁니다."], "points": ["신앙의 가장 중요한 질문은 \"내가 옳다고 생각하는가\"가 아니라 \"하나님께서 무엇이라 말씀하셨는가\"입니다. 믿음은 하나님을 내 생각에 맞춰 재단하는 것이 아니라, 내 생각을 하나님의 말씀 아래 두는 것입니다."]}, {"title": "7–13절 · 잘못된 신앙을 하나님의 복이라 확신하다", "paragraphs": ["베들레헴을 떠나 머물 곳을 찾던 젊은 레위인이 미가의 집에 이릅니다. 미가에게는 좋은 기회였습니다. 신당도, 에봇도, 드라빔도 있지만 아들은 진짜 레위인이 아니었으니까요. 미가가 말합니다. <mark>\"나와 함께 거주하며 나를 위하여 아버지와 제사장이 되라\"</mark>. 해마다 은 열 개와 옷 한 벌과 먹을 것을 주겠다고 합니다. 레위인은 그 제안을 받아들입니다. 그는 미가의 잘못된 예배를 보고 \"이것은 하나님의 말씀과 다릅니다\"라고 말해야 할 사람이었지만, 오히려 그 시스템 안으로 들어갑니다. 말씀보다 자기 자리와 유익을 택한 것입니다.", "처음엔 \"내 아버지가 되라\"고 했는데, 11절은 이상하게 말합니다. <mark>\"그 청년은 미가의 아들 중 하나같이 됨이라\"</mark>. 돈을 주는 사람도, 신당의 주인도, 제사장을 고용한 사람도 미가였습니다. 겉으로는 영적 권위를 모셔온 것 같지만, 실제로는 자기가 통제할 수 있는 종교인을 고용한 것입니다.", "그리고 13절이 절정입니다. <mark>\"레위인이 내 제사장이 되었으니 이제 여호와께서 내게 복 주실 줄을 아노라\"</mark>. 여기에 \"아멘\" 하시면 안 됩니다. 우상도, 잘못된 신당도, 에봇과 드라빔도, 자기중심적 예배도 그대로입니다. 달라진 것은 레위인 한 명이 추가된 것뿐입니다. 그런데 미가는 이것을 복의 보증으로 여깁니다. 바로 다음 장에서 그가 확신했던 모든 것이 무너지기 시작합니다."], "points": ["종교적인 모양을 갖추었다고 하나님이 기뻐하시는 것은 아닙니다. 예배 참석, 직분, 헌금, 공동체, 성경 지식 자체가 하나님 뜻 안에 산다는 자동 보증은 아닙니다. 중요한 것은 '나는 종교적인가'가 아니라 '나는 말씀에 순종하는가'입니다."]}, {"title": "적용 · 우리에게는 왕이 계십니다", "paragraphs": ["미가의 집에는 없는 것이 별로 없었습니다. 신당, 제사장, 예배, 여호와의 이름까지. 그런데 가장 중요한 것이 없었습니다. <mark>하나님의 말씀에 대한 순종</mark>입니다. 우리도 같은 위험에 빠질 수 있습니다. 내 선택을 늘 이해해 주시는 하나님, 내 성공을 돕는 하나님, 필요할 때 복을 주시는 하나님만 찾는다면, 우리는 하나님을 섬기는 것이 아니라 이용하고 있는 것일 수 있습니다.", "예수님은 말씀하셨습니다. <mark>\"너희가 나를 사랑하면 나의 계명을 지키리라\"</mark>. 예수님을 사랑한다는 것은 감정만이 아니라, 그분의 말씀 아래 내 삶을 두는 것입니다. 17장은 말합니다. \"그 때에는 이스라엘에 왕이 없었다.\" 그래서 사람마다 자기가 왕이 되어 살았습니다. 그러나 우리는 왕이 없는 사람들이 아닙니다. 우리에게는 예수 그리스도라는 왕이 계십니다. 신앙은 예수님을 내 삶에 어떻게 이용할까가 아니라, 왕이신 예수님께 내 삶을 어떻게 맡길까입니다."], "points": ["내 삶의 왕은 정말 예수 그리스도이십니까, 아니면 여전히 내가 왕입니까? 사람마다 자기 소견에 옳은 대로 사는 시대일수록, 더욱 말씀으로 돌아가야 합니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "하나님의 말씀보다 내 생각이 더 옳다고 여기고 있는 영역은 없는지 돌아봤다"}, {"key": "c2", "text": "하나님의 복은 원하면서 정작 말씀에는 순종하지 않고 있는 부분이 없는지 점검했다"}, {"key": "c3", "text": "예배·직분·헌금 같은 종교적인 모양을 순종의 증거로 착각하고 있지는 않은지 돌아봤다"}, {"key": "c4", "text": "나를 불편하게 하더라도 진실을 말해 줄 믿음의 공동체와 연결되어 있는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "내가 '하나님도 이해해 주실 거야'라며 내 방식대로 하고 있는 영역은 어디입니까? 왕이신 예수님은 그 부분에서 무엇이라 말씀하십니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "말씀으로 기준 세우기", "value": "오늘 내리는 결정 하나를 '내 생각'이 아니라 '하나님이 무엇이라 말씀하셨는가'로 점검하기"}, {"key": "act2", "label": "내가 만든 하나님 내려놓기", "value": "'하나님은 이해해 주실 거야'라며 정당화하던 습관 하나를 말씀 앞에 내놓기"}, {"key": "act3", "label": "순종으로 사랑 표현하기", "value": "알고 있지만 미뤄 둔 말씀 하나를 오늘 구체적으로 순종하기"}, {"key": "act4", "label": "진실을 말해줄 사람 찾기", "value": "신앙의 동역자에게 내 삶에서 말씀과 어긋난 부분이 없는지 솔직히 물어보기"}, {"key": "act5", "label": "왕의 자리 드리기", "value": "하루를 시작하며 '오늘 제 삶의 왕은 예수님이십니다'라고 고백하는 기도 드리기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "자기 소견대로 살던 저에게 참된 왕 예수 그리스도를 보내 주시고, 말씀으로 길을 보여 주시는 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "하나님의 이름을 부르면서도 제 방식대로 하나님을 섬기고, 복은 구하면서 말씀에는 순종하지 않았던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "하나님을 이용하는 신앙이 아니라 예배하는 신앙이 되게 하시고, 제 생각을 말씀 아래 두며 예수님을 왕으로 모시게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 4, Lord's Day", "ref": "Judges 17:1–13", "headline": "We Can Worship<br>and Still Use God", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 17:1-13", "s1heading": "Today's Word", "verse": "\"If you love Me,<br>you will keep My commandments.\"", "verseRef": "John 14:15", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · One Man's Problem Becomes a Whole Nation's Culture", "paragraphs": ["Judges 17 is a major turning point. The defining sentence of Samson's life was <mark>\"she is right in my eyes.\"</mark> But today, verse 6 says, <mark>\"Everyone did what was right in his own eyes.\"</mark> What was one man's problem has now become the culture of all Israel.", "From chapter 17 the whole atmosphere changes. No new judge appears, and the cycle of sin–oppression–crying out–deliverance is gone. There's no outside enemy at the center either. The problem isn't outside — it's inside. The camera turns from the judges to one ordinary household: Micah, in the hill country of Ephraim.", "What's even more frightening is that these people don't think they've abandoned God. Micah's mother blesses in the LORD's name and says she's dedicating silver to the LORD. There's a shrine, an ephod, a priest, even a Levite. Outwardly, it's very religious. Yet all of it departs from God's Word. They haven't abandoned God — <mark>they've reshaped God to fit their own way</mark>."], "points": ["Am I truly worshiping God — or am I using His name while actually making and serving a god I want?"]}, {"title": "Verses 1–5 · A God Served My Way", "paragraphs": ["Micah steals eleven hundred pieces of silver from his mother. Not knowing who took it, she utters a curse. Then Micah confesses, \"The silver is with me; I took it.\" It looks like repentance, but the text never says he returned it out of sorrow for sin. Since it came right after the curse, fear of the curse was likely the real motive. His mother immediately says, <mark>\"Blessed be my son by the LORD.\"</mark> In an instant, the curse becomes a blessing.", "Then she says, <mark>\"I dedicate the silver to the LORD from my hand for my son, to make a carved image and a metal image.\"</mark> That's a contradiction in itself: dedicating something holy to the LORD — by making the very idol God forbade. And though she said she'd dedicate it all, she actually gives only two hundred pieces to the silversmith. The intention is religious, and the LORD's name is used, but the method directly collides with God's Word.", "Micah sets up a private shrine, makes an ephod and household gods, and ordains one of his own sons as priest. The shrine, the worship objects, the priest — he decides them all. \"It's my house, so I can serve God my way\" — this is idolatry. Idolatry isn't only calling on another god's name. <mark>Remaking God to fit my thoughts and needs</mark> is idolatry too."], "points": ["Good intentions don't make wrong worship right. God decides even how He is to be served. A faith that mistakes a god of my own making for the real God can be more dangerous than not believing at all."]}, {"title": "Verse 6 · Everyone Did What Was Right in His Own Eyes", "paragraphs": ["Here the author interprets the story for the first time: <mark>\"In those days there was no king in Israel. Everyone did what was right in his own eyes.\"</mark> Why did Micah and his mother think they were serving God well while doing such strange things? Because their own thinking had become the standard above God's Word. Deuteronomy 12 had already said, \"You shall not do... everyone whatever is right in his own eyes.\" Israel was a people with the Word and the covenant.", "This verse connects precisely with Samson. Samson: \"She is right in my eyes.\" Micah: \"This way is right in my eyes.\" Israel: \"Everyone did what was right in his own eyes.\" With Samson, his own eyes were the standard in life choices; with Micah, his own eyes are now the standard <mark>even in worship and faith</mark>. Before, they lived breaking God's Word; now they break God's Word while using God's name."], "points": ["Faith's most important question isn't \"Do I think it's right?\" but \"What has God said?\" Faith doesn't cut God down to fit my thinking — it places my thinking under God's Word."]}, {"title": "Verses 7–13 · Mistaking a Wrong Faith for God's Blessing", "paragraphs": ["A young Levite who had left Bethlehem looking for a place to stay arrives at Micah's house. For Micah, it was a golden opportunity: he had a shrine, an ephod, household gods — but his son wasn't a real Levite. Micah says, <mark>\"Stay with me, and be to me a father and a priest,\"</mark> offering ten pieces of silver a year, a set of clothes, and food. The Levite accepts. He was the one who should have looked at Micah's false worship and said, \"This is not what God's Word says.\" Instead, he steps right into the system — choosing position and gain over the Word.", "At first Micah said, \"Be my father,\" but verse 11 oddly says, <mark>\"The young man became to him like one of his sons.\"</mark> Micah paid the money, owned the shrine, and hired the priest. Outwardly he seemed to bring in spiritual authority; in reality, he hired a religious figure he could control.", "Then verse 13 is the climax: <mark>\"Now I know that the LORD will prosper me, because I have a Levite as priest.\"</mark> Don't say \"Amen\" to this! The idol, the false shrine, the ephod and household gods, the self-centered worship — all still there. The only change is one added Levite. Yet Micah takes it as a guarantee of blessing. In the very next chapter, everything he was so sure of begins to collapse."], "points": ["Having religious form doesn't mean God is pleased. Attending worship, holding a position, giving, belonging to a community, knowing the Bible — none of these automatically guarantee we're living in God's will. The question isn't 'Am I religious?' but 'Am I obeying the Word?'"]}, {"title": "Application · We Have a King", "paragraphs": ["Micah's house lacked very little: a shrine, a priest, worship, even the LORD's name. But the most important thing was missing: <mark>obedience to God's Word</mark>. We can fall into the same danger. If we only seek a God who always understands our choices, helps our success, and blesses us when we need it, we may not be serving God at all — we may be using Him.", "Jesus said, <mark>\"If you love Me, you will keep My commandments.\"</mark> Loving Jesus isn't just a feeling — it's placing my life under His Word. Chapter 17 says, \"In those days there was no king in Israel,\" so everyone lived as their own king. But we are not people without a king. We have a King — Jesus Christ. Faith isn't about how to use Jesus in my life, but how to entrust my life to Jesus the King."], "points": ["Is the King of your life truly Jesus Christ — or are you still the king? In an age when everyone does what is right in their own eyes, we must return all the more to the Word."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether there's an area where I consider my own thinking more right than God's Word."}, {"key": "c2", "text": "I checked whether there's a part of my life where I want God's blessing but am not actually obeying His Word."}, {"key": "c3", "text": "I reflected on whether I've mistaken religious forms — worship, positions, giving — for proof of obedience."}, {"key": "c4", "text": "I checked whether I'm connected to a faith community that will tell me the truth, even when it's uncomfortable."}], "s4heading": "One-Line Reflection", "memoHint": "In what area am I doing things my way, telling myself 'God will understand'? What does Jesus the King say about it?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Set the Standard by the Word", "value": "Check one decision today not by 'what I think' but by 'what God has said'"}, {"key": "act2", "label": "Lay Down the God I Made", "value": "Bring before the Word one habit you've justified by saying 'God will understand'"}, {"key": "act3", "label": "Express Love Through Obedience", "value": "Concretely obey today one word you know but have been putting off"}, {"key": "act4", "label": "Find Someone Who Tells the Truth", "value": "Honestly ask a fellow believer whether there's any area of your life out of line with the Word"}, {"key": "act5", "label": "Give Jesus the Throne", "value": "Start the day with a prayer confessing, 'Today, Jesus is the King of my life'"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "God, thank You for sending Jesus Christ, the true King, to me who lived by my own judgment, and for showing me the way through Your Word."}, {"key": "p2", "tag": "Repent", "text": "I repent of calling on Your name while serving You my own way, and of seeking Your blessing without obeying Your Word."}, {"key": "p3", "tag": "Ask", "text": "Make my faith one that worships You, not one that uses You. Help me place my thinking under Your Word and receive Jesus as my King."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 4, Araw ng Panginoon", "ref": "Mga Hukom 17:1–13", "headline": "Maaari Tayong Sumamba<br>Habang Ginagamit ang Diyos", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 17:1-13", "s1heading": "Salita Ngayon", "verse": "\"Kung iniibig ninyo Ako,<br>tutuparin ninyo ang Aking mga utos.\"", "verseRef": "Juan 14:15", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ang Problema ng Isang Tao ay Naging Kultura ng Buong Bansa", "paragraphs": ["Ang Mga Hukom 17 ay isang mahalagang punto ng pagbabago. Ang pangungusap na naglalarawan sa buhay ni Samson ay <mark>\"siya'y tama sa aking paningin.\"</mark> Ngunit ngayon, sinasabi ng talata 6, <mark>\"Ginawa ng bawat isa ang tama sa kanyang sariling paningin.\"</mark> Ang dating problema ng isang tao ay naging kultura na ng buong Israel.", "Mula kabanata 17, ganap na nagbago ang kapaligiran. Wala nang bagong hukom na lumitaw, at nawala na ang siklo ng kasalanan–pang-aapi–pagdaing–pagliligtas. Wala ring kaaway sa labas na nasa gitna. Ang problema ay wala sa labas — nasa loob. Lumipat ang kamera mula sa mga hukom patungo sa isang karaniwang sambahayan: si Mikas, sa maburol na lupain ng Efraim.", "Ang mas nakakatakot ay hindi nila iniisip na tinalikuran nila ang Diyos. Nagbabasbas ang ina ni Mikas sa pangalan ni Yahweh at sinasabing itinatalaga niya ang pilak kay Yahweh. May dambana, epod, saserdote, at pati isang Levita. Sa panlabas, napakarelihiyoso nito. Ngunit lahat ay lumilihis sa Salita ng Diyos. Hindi nila tinalikuran ang Diyos — <mark>binago nila ang Diyos upang umangkop sa sarili nilang paraan</mark>."], "points": ["Tunay ko bang sinasamba ang Diyos — o ginagamit ko ang Kanyang pangalan habang ang totoo'y gumagawa at naglilingkod ako sa diyos na gusto ko?"]}, {"title": "Talata 1–5 · Isang Diyos na Pinaglilingkuran sa Aking Paraan", "paragraphs": ["Ninakaw ni Mikas ang isang libo't isang daang pirasong pilak ng kanyang ina. Hindi alam kung sino ang kumuha, nagbitiw ng sumpa ang ina. Pagkatapos ay umamin si Mikas, \"Nasa akin ang pilak; ako ang kumuha.\" Mukha itong pagsisisi, ngunit hindi sinasabi ng teksto na ibinalik niya ito dahil sa kalungkutan sa kasalanan. Dahil ito'y kasunod mismo ng sumpa, ang takot sa sumpa ang malamang na tunay na motibo. Agad na sinabi ng kanyang ina, <mark>\"Pagpalain nawa ni Yahweh ang aking anak.\"</mark> Sa isang iglap, ang sumpa ay naging pagpapala.", "Pagkatapos ay sinabi niya, <mark>\"Itinatalaga ko ang pilak kay Yahweh mula sa aking kamay para sa aking anak, upang gumawa ng isang inukit na larawan at isang hinulmang larawan.\"</mark> Iyon mismo ay isang kontradiksyon: nagtatalaga ng banal kay Yahweh — sa pamamagitan ng paggawa ng mismong diyus-diyosang ipinagbawal ng Diyos. At bagaman sinabi niyang itatalaga niya ang lahat, dalawang daang piraso lamang ang talagang ibinigay niya sa panday-pilak. Relihiyoso ang intensyon, at ginamit ang pangalan ni Yahweh, ngunit direktang sumasalungat ang paraan sa Salita ng Diyos.", "Nagtayo si Mikas ng pribadong dambana, gumawa ng epod at mga diyus-diyosan ng sambahayan, at inordenahan ang isa sa sarili niyang mga anak bilang saserdote. Ang dambana, ang mga kasangkapan sa pagsamba, ang saserdote — siya ang nagpasya sa lahat. \"Bahay ko ito, kaya maaari kong paglingkuran ang Diyos sa aking paraan\" — ito ay idolatriya. Ang idolatriya ay hindi lamang pagtawag sa pangalan ng ibang diyos. <mark>Ang muling paghubog sa Diyos upang umangkop sa aking isip at pangangailangan</mark> ay idolatriya rin."], "points": ["Hindi ginagawang tama ng mabuting intensyon ang maling pagsamba. Ang Diyos ang nagpapasya kahit kung paano Siya dapat paglingkuran. Ang pananampalatayang napagkakamalang tunay ang diyos na gawa ko ay maaaring mas mapanganib kaysa sa hindi paniniwala."]}, {"title": "Talata 6 · Ginawa ng Bawat Isa ang Tama sa Kanyang Sariling Paningin", "paragraphs": ["Dito, sa unang pagkakataon, ipinaliwanag ng may-akda ang kwento: <mark>\"Nang mga araw na iyon ay walang hari sa Israel. Ginawa ng bawat isa ang tama sa kanyang sariling paningin.\"</mark> Bakit inakala nina Mikas at ng kanyang ina na mabuti ang kanilang paglilingkod sa Diyos habang gumagawa ng ganitong kakaibang bagay? Dahil naging pamantayan na ang sarili nilang isip na higit pa sa Salita ng Diyos. Sinabi na ng Deuteronomio 12, \"Huwag ninyong gawin... ang bawat isa ayon sa tama sa kanyang sariling paningin.\" Ang Israel ay bayang may Salita at tipan.", "Eksaktong konektado ang talatang ito kay Samson. Samson: \"Siya'y tama sa aking paningin.\" Mikas: \"Ang paraang ito ay tama sa aking paningin.\" Israel: \"Ginawa ng bawat isa ang tama sa kanyang sariling paningin.\" Kay Samson, ang sariling mata ang pamantayan sa mga pagpili sa buhay; kay Mikas, ang sariling mata ay pamantayan na <mark>kahit sa pagsamba at pananampalataya</mark>. Dati, namuhay silang lumalabag sa Salita ng Diyos; ngayon, nilalabag nila ang Salita ng Diyos habang ginagamit ang Kanyang pangalan."], "points": ["Ang pinakamahalagang tanong ng pananampalataya ay hindi \"Sa tingin ko ba'y tama ito?\" kundi \"Ano ang sinabi ng Diyos?\" Hindi tinatabas ng pananampalataya ang Diyos upang umangkop sa aking isip — inilalagay nito ang aking isip sa ilalim ng Salita ng Diyos."]}, {"title": "Talata 7–13 · Pinagkakamalang Pagpapala ng Diyos ang Maling Pananampalataya", "paragraphs": ["Isang batang Levita na umalis sa Betlehem upang maghanap ng matitirhan ang dumating sa bahay ni Mikas. Para kay Mikas, isa itong ginintuang pagkakataon: may dambana siya, epod, mga diyus-diyosan ng sambahayan — ngunit hindi tunay na Levita ang kanyang anak. Sinabi ni Mikas, <mark>\"Manatili ka sa akin, at maging ama at saserdote ka sa akin,\"</mark> na nag-aalok ng sampung pirasong pilak bawat taon, isang pares ng damit, at pagkain. Tinanggap ito ng Levita. Siya sana ang dapat tumingin sa maling pagsamba ni Mikas at magsabing, \"Hindi ito ang sinasabi ng Salita ng Diyos.\" Sa halip, pumasok siya mismo sa sistema — pinili ang posisyon at pakinabang kaysa sa Salita.", "Sa simula, sinabi ni Mikas, \"Maging ama ka sa akin,\" ngunit kakaibang sinasabi ng talata 11, <mark>\"Ang binata ay naging tulad ng isa sa kanyang mga anak.\"</mark> Si Mikas ang nagbayad, nagmay-ari ng dambana, at umupa ng saserdote. Sa panlabas, tila nagdala siya ng espirituwal na awtoridad; sa totoo, umupa siya ng relihiyosong tao na kaya niyang kontrolin.", "Pagkatapos, ang talata 13 ang rurok: <mark>\"Ngayon ay alam kong pagpapalain ako ni Yahweh, sapagkat may Levita akong saserdote.\"</mark> Huwag kang mag-\"Amen\" dito! Nariyan pa rin ang diyus-diyosan, ang maling dambana, ang epod at mga diyus-diyosan, ang makasariling pagsamba. Ang tanging pagbabago ay isang Levitang nadagdag. Ngunit itinuring ito ni Mikas na garantiya ng pagpapala. Sa kasunod na kabanata, ang lahat ng tiyak niya ay magsisimulang gumuho."], "points": ["Ang pagkakaroon ng relihiyosong anyo ay hindi nangangahulugang nalulugod ang Diyos. Ang pagdalo sa pagsamba, paghawak ng tungkulin, pagbibigay, pagiging bahagi ng komunidad, pagkaalam sa Biblia — wala sa mga ito ang kusang garantiya na namumuhay tayo sa kalooban ng Diyos. Ang tanong ay hindi 'Relihiyoso ba ako?' kundi 'Sinusunod ko ba ang Salita?'"]}, {"title": "Aplikasyon · May Hari Tayo", "paragraphs": ["Kakaunti ang kulang sa bahay ni Mikas: dambana, saserdote, pagsamba, at maging ang pangalan ni Yahweh. Ngunit ang pinakamahalaga ay wala: <mark>ang pagsunod sa Salita ng Diyos</mark>. Maaari tayong mahulog sa parehong panganib. Kung hinahanap lamang natin ang Diyos na laging umuunawa sa ating mga pagpili, tumutulong sa ating tagumpay, at nagpapala kapag kailangan natin, maaaring hindi natin naglilingkuran ang Diyos — maaaring ginagamit natin Siya.", "Sinabi ni Jesus, <mark>\"Kung iniibig ninyo Ako, tutuparin ninyo ang Aking mga utos.\"</mark> Ang pag-ibig kay Jesus ay hindi lamang damdamin — ito ay paglalagay ng aking buhay sa ilalim ng Kanyang Salita. Sinasabi ng kabanata 17, \"Nang mga araw na iyon ay walang hari sa Israel,\" kaya't namuhay ang bawat isa bilang sariling hari. Ngunit hindi tayo mga taong walang hari. May Hari tayo — si Jesu-Cristo. Ang pananampalataya ay hindi tungkol sa kung paano gagamitin si Jesus sa aking buhay, kundi kung paano ipagkakatiwala ang aking buhay kay Jesus na Hari."], "points": ["Si Jesu-Cristo ba talaga ang Hari ng iyong buhay — o ikaw pa rin ang hari? Sa panahong ginagawa ng bawat isa ang tama sa sariling paningin, lalo tayong dapat bumalik sa Salita."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung may bahaging itinuturing kong mas tama ang sarili kong isip kaysa sa Salita ng Diyos."}, {"key": "c2", "text": "Sinuri ko kung may bahagi ng aking buhay na gusto ko ang pagpapala ng Diyos ngunit hindi ko talaga sinusunod ang Kanyang Salita."}, {"key": "c3", "text": "Pinag-isipan ko kung napagkamalan kong patunay ng pagsunod ang mga relihiyosong anyo — pagsamba, tungkulin, pagbibigay."}, {"key": "c4", "text": "Sinuri ko kung konektado ako sa isang komunidad ng pananampalataya na magsasabi sa akin ng totoo, kahit hindi komportable."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa anong bahagi ako gumagawa ayon sa sarili kong paraan, sinasabi sa sarili 'Mauunawaan naman ng Diyos'? Ano ang sinasabi ni Jesus na Hari tungkol dito?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Itakda ang Pamantayan sa Salita", "value": "Suriin ang isang desisyon ngayon hindi ayon sa 'iniisip ko' kundi ayon sa 'sinabi ng Diyos'"}, {"key": "act2", "label": "Bitawan ang Diyos na Ginawa Ko", "value": "Dalhin sa harap ng Salita ang isang ugaling binigyang-katwiran mo ng 'Mauunawaan naman ng Diyos'"}, {"key": "act3", "label": "Ipahayag ang Pag-ibig sa Pagsunod", "value": "Tiyak na sundin ngayon ang isang salitang alam mo ngunit ipinagpapaliban"}, {"key": "act4", "label": "Hanapin ang Magsasabi ng Totoo", "value": "Tapat na tanungin ang isang kapwa mananampalataya kung may bahagi ng iyong buhay na hindi ayon sa Salita"}, {"key": "act5", "label": "Ibigay kay Jesus ang Trono", "value": "Simulan ang araw sa panalanging nagpapahayag, 'Ngayon, si Jesus ang Hari ng aking buhay'"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Diyos, salamat sa pagsugo kay Jesu-Cristo, ang tunay na Hari, sa akin na namuhay ayon sa sariling paghatol, at sa pagpapakita ng daan sa pamamagitan ng Iyong Salita."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagtawag sa Iyong pangalan habang naglilingkod sa Iyo sa sarili kong paraan, at sa paghahanap ng Iyong pagpapala nang hindi sumusunod sa Iyong Salita."}, {"key": "p3", "tag": "Kahilingan", "text": "Gawin Mong pananampalatayang sumasamba sa Iyo ang aking pananampalataya, hindi gumagamit sa Iyo. Tulungan Mo akong ilagay ang aking isip sa ilalim ng Iyong Salita at tanggapin si Jesus bilang aking Hari."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
