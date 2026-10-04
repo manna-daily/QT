@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/5(월) 큐티 · 사사기 18:1–20">
+<meta property="og:description" content="모든 열린 문이 하나님의 뜻일까요">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 5일 월요일", "ref": "사사기 18장 1–20절", "headline": "모든 열린 문이<br>하나님의 뜻일까요", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 18:1-20", "s1heading": "오늘의 말씀", "verse": "\"너는 마음을 다하여 여호와를 신뢰하고 네 명철을 의지하지 말라<br>너는 범사에 그를 인정하라 그리하면 네 길을 지도하시리라\"", "verseRef": "잠언 3:5–6", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 한 가정의 타락이 한 지파로", "paragraphs": ["17장에서 미가는 어머니의 은으로 신상을 만들고, 개인 신당과 에봇과 드라빔을 두고, 떠돌던 젊은 레위인을 개인 제사장으로 고용했습니다. 모양은 종교적이었지만 방식은 하나님의 말씀을 떠나 있었습니다. 그리고 18장에서는 그 문제가 더 커집니다. 한 가정의 잘못된 신앙이 레위인에게, 그리고 <mark>단 지파 전체</mark>로 퍼져 갑니다.", "단 지파는 땅을 받지 못한 사람들이 아니었습니다. 여호수아 때 이미 분배를 받았지만, 사사기 1장에서 보듯 아모리 사람들의 저항으로 그 땅을 제대로 차지하지 못했습니다. 그래서 하나님이 주신 어려운 자리를 붙들기보다, 좀 더 쉽게 차지할 수 있는 다른 땅을 찾아 나섭니다. 그리고 레위인에게 묻습니다. <mark>\"우리가 가는 길이 형통할지를 우리가 알 수 있게 하라\"</mark>. \"이 길이 하나님의 뜻입니까\"가 아니라, \"이미 정한 이 길이 잘되겠습니까\"입니다."], "points": ["하나님의 뜻을 묻는 것과, 이미 결정한 일에 하나님의 승인을 받으려는 것은 전혀 다릅니다. 우리는 상황에서 하나님의 뜻을 만들어내는 사람이 아니라, 말씀으로 하나님의 뜻을 분별하는 사람이어야 합니다."]}, {"title": "1–6절 · 길은 이미 정해 놓고, 승인만 구하다", "paragraphs": ["18장은 <mark>\"그 때에 이스라엘에 왕이 없었고\"</mark>로 시작합니다. 17장 6절에서 이 말 뒤에 \"사람이 각기 자기의 소견에 옳은 대로 행하였더라\"가 이어졌던 것을 기억하면, 무슨 일이 일어날지 짐작할 수 있습니다. 단 지파는 다섯 명을 보내 땅을 정탐하게 합니다. 민수기 13장의 정탐과 비슷해 보이지만 결정적인 차이가 있습니다. 민수기에서는 하나님이 정탐꾼을 보내라고 명하셨지만, 여기서는 <mark>하나님의 명령이 없습니다</mark>. 모든 것이 그들의 판단과 계획으로 시작됩니다.", "정탐꾼들이 미가의 집에서 레위인을 알아보고 묻습니다. \"누가 너를 이리로 인도하였으며, 여기서 무엇을 하느냐?\" 레위인의 대답은 이렇습니다. <mark>\"미가가 나를 고용하여 나를 자기의 제사장으로 삼았느니라\"</mark>. 그는 \"하나님이 나를 보내셨다\"고 말하지 않습니다. 그에게 제사장직은 점점 부르심이 아니라 직업과 자리가 되어 가고 있었습니다.", "그리고 레위인은 너무 쉽게 대답합니다. <mark>\"평안히 가라. 너희가 가는 길은 여호와 앞에 있느니라\"</mark>. 이 말도 모호합니다. 본문은 하나님이 그에게 말씀하셨다고도, 그가 어떻게 하나님께 여쭈었는지도 기록하지 않습니다. 그러니 이것을 곧바로 하나님의 승인이라고 단정할 수 없습니다."], "points": ["겉모양이 성경적이라고 반드시 순종은 아닙니다. 믿음은 내 계획에 하나님을 초대하는 것이 아니라, 하나님의 계획에 순종함으로 참여하는 것입니다."]}, {"title": "7–10절 · 쉬워 보이는 라이스, \"하나님이 주셨다\"", "paragraphs": ["다섯 정탐꾼은 라이스에 이릅니다. 그곳 사람들은 시돈 사람들처럼 평온하고 안전하게 살고 있었고, 멀리 떨어져 있어 도와줄 동맹도 없었습니다. 정복하기 쉬워 보이는, 단 지파에게는 아주 매력적인 목표였습니다. 조심스럽게 말하면, 그들이 발견한 것은 하나님이 \"너희에게 주겠다\"고 하신 땅이라기보다, <mark>자기들 보기에 쉽게 차지할 수 있는 땅</mark>이었습니다.", "정탐꾼들은 돌아와 말합니다. <mark>\"우리가 그 땅을 본즉 매우 좋더라… 하나님이 그 땅을 너희 손에 넘겨주셨나니\"</mark>. 생각의 흐름은 이렇습니다. 땅이 좋다 → 사람들이 약해 보인다 → 정복하기 쉽다 → 그러므로 하나님이 주셨다. 그러나 본문 어디에서도 하나님이 직접 라이스를 단에게 주겠다고 말씀하지 않으십니다. 레위인의 말과 자신들에게 유리하게 펼쳐지는 상황이 그런 해석을 만들었을 뿐입니다."], "points": ["성공은 하나님의 승인과 같지 않습니다. 일이 잘 풀리고 길이 열린다고 해서 자동으로 하나님의 뜻이라 말할 수는 없습니다. 상황으로 말씀을 해석하는 것이 아니라, 말씀으로 상황을 분별해야 합니다."]}, {"title": "11–20절 · 우상도, 제사장도 내 것으로", "paragraphs": ["이제 다섯 명이 아니라 <mark>무장한 육백 명</mark>이 움직여 다시 미가의 집에 이릅니다. 다섯 정탐꾼이 말합니다. \"이 집에 에봇과 드라빔과 새긴 신상과 부어 만든 신상이 있는 줄을 너희가 아느냐? 그런즉 이제 <mark>너희가 마땅히 행할 것을 생각하라</mark>.\" 아이러니한 말입니다. 하나님의 말씀대로라면 우상을 발견했을 때 마땅히 해야 할 일은 제거하는 것입니다. 그런데 그들은 정반대로, 그것들을 가져갑니다. \"이것을 버려야 한다\"가 아니라 \"우리도 이것을 가지면 좋겠다\"입니다.", "다섯 사람이 들어가 신상과 에봇과 드라빔을 들고 나오고, 문밖에는 무기를 든 육백 명이 서 있습니다. 제사장이 \"너희가 무엇을 하느냐\" 묻자, 그들은 <mark>\"잠잠하라\"</mark>고 합니다. 신앙적인 대화가 아니라, 힘을 배경으로 남의 것을 빼앗는 것입니다. 그리고 레위인에게 제안합니다. \"네가 한 사람의 집의 제사장이 되는 것과 이스라엘의 한 지파 한 족속의 제사장이 되는 것 중에 어느 것이 낫겠느냐?\"", "17장에서 미가가 \"내 아버지와 제사장이 되라\"고 했던 것처럼, 단 지파도 \"우리의 아버지와 제사장이 되라\"고 합니다. 다만 규모가 다릅니다. 한 가정에서 한 지파로, 더 큰 자리와 더 큰 영향력입니다. 그리고 20절은 짧게 말합니다. <mark>\"그 제사장이 마음에 기뻐하여\"</mark> — 하나님의 뜻을 새로 발견해서가 아니라, 더 큰 자리가 생겼기 때문에 기뻐합니다. 그는 에봇과 드라빔과 신상을 들고 그들과 함께 떠납니다."], "points": ["더 큰 기회가 반드시 더 큰 부르심은 아닙니다. 중요한 것은 어디가 더 커 보이는가가 아니라, 하나님께서 나를 어디로 부르셨는가입니다. 잘못된 신앙은 전염되고, 개인의 타협이 반복되면 공동체의 문화가 됩니다."]}, {"title": "적용 · 내 계획에 하나님을 초대하지 말고, 하나님의 계획에 들어가십시오", "paragraphs": ["겉으로 보면 단 지파에게는 모든 것이 잘 풀립니다. 땅을 발견하고, 라이스는 쉬워 보이고, 육백 명이 모이고, 우상과 제사장까지 얻고, 제사장은 '승진'합니다. 계속 성공의 문이 열립니다. 그러나 그들의 문제는 하나님을 전혀 찾지 않았다는 것만이 아니었습니다. 더 교묘했습니다. <mark>자기 길을 먼저 정해 놓고, 제사장에게 성공 여부를 묻고, 좋은 상황을 판단한 뒤, \"하나님이 주셨다\"고 말했습니다</mark>.", "예수님은 가장 편한 길을 선택하지 않으셨습니다. 광야에서 사탄은 고난 없이 영광을 얻는 길, 십자가 없이 세상 권세를 얻는 쉬운 길을 제시했지만 예수님은 거절하셨습니다. 그리고 십자가를 앞두고 겟세마네에서 기도하셨습니다. <mark>\"나의 원대로 마옵시고 아버지의 원대로 하옵소서\"</mark>. 단 지파의 기도는 사실상 \"우리가 가려는 길이 잘되게 해 주십시오\"였지만, 예수님의 기도는 \"아버지께서 원하시는 것을 따르겠습니다\"였습니다.", "그러니 스스로에게 물어보십시오. 이미 결론을 내려놓고 하나님께 승인만 받고 있지는 않습니까? 상황이 잘 풀린다는 이유로 너무 빨리 \"하나님의 뜻\"이라 말하고 있지는 않습니까? 하나님이 맡기신 어려운 순종을 피해 더 편한 길을 찾고 있지는 않습니까? 더 큰 자리를 하나님의 부르심이라 착각하고 있지는 않습니까?"], "points": ["모든 열린 문을 따라가지 마십시오. 모든 성공을 하나님의 승인이라 부르지 마십시오. \"주님, 제 뜻을 이루어 주십시오\"가 아니라 \"제 뜻보다 주님의 뜻이 이루어지게 하소서\" — 이것이 하나님의 뜻을 찾는 믿음입니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "이미 결론을 내려놓고 하나님께 승인만 받으려 하고 있지는 않은지 돌아봤다"}, {"key": "c2", "text": "일이 잘 풀린다는 이유만으로 너무 빨리 '하나님의 뜻'이라고 단정하고 있지는 않은지 점검했다"}, {"key": "c3", "text": "하나님이 맡기신 어려운 자리를 피해 더 쉬운 길을 '인도하심'이라 부르고 있지는 않은지 돌아봤다"}, {"key": "c4", "text": "더 큰 자리·더 좋은 기회를 하나님의 부르심과 혼동하고 있지는 않은지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 내 앞에 열려 있는 '문' 가운데, 말씀으로 다시 분별해야 할 것은 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "질문 바꾸기", "value": "앞둔 결정 하나를 '잘될까요?'가 아니라 '이것이 주님의 뜻입니까?'라고 다시 묻고 기도하기"}, {"key": "act2", "label": "말씀으로 분별하기", "value": "열린 기회 하나를 놓고 관련된 말씀을 찾아 읽으며 상황이 아니라 말씀으로 점검하기"}, {"key": "act3", "label": "맡겨진 자리 지키기", "value": "피하고 싶었던 어려운 책임 하나를 오늘 믿음으로 다시 붙들기"}, {"key": "act4", "label": "겟세마네 기도", "value": "'제 뜻보다 주님의 뜻이 이루어지게 하소서'라고 오늘 하루 세 번 기도하기"}, {"key": "act5", "label": "작은 타협 끊기", "value": "가정이나 공동체로 번질 수 있는 나의 작은 타협 하나를 찾아 오늘 멈추기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "편한 길이 아니라 십자가의 길을 택하시고 '아버지의 원대로'를 기도하신 예수님, 그 순종으로 저를 구원하심을 감사합니다"}, {"key": "p2", "tag": "회개", "text": "제 길을 먼저 정해 놓고 하나님의 이름으로 승인받으려 했던 것과, 열린 문과 성공을 너무 쉽게 주님의 뜻이라 불렀던 것을 회개합니다"}, {"key": "p3", "tag": "간구", "text": "상황이 아니라 말씀으로 분별하게 하시고, 더 큰 자리보다 주님이 부르신 자리를 지키며, 제 뜻보다 주님의 뜻을 구하게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 5, Monday", "ref": "Judges 18:1–20", "headline": "Is Every Open Door<br>God's Will?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 18:1-20", "s1heading": "Today's Word", "verse": "\"Trust in the LORD with all your heart, and do not lean on your own understanding.<br>In all your ways acknowledge Him, and He will make straight your paths.\"", "verseRef": "Proverbs 3:5–6", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · One Household's Corruption Spreads to a Whole Tribe", "paragraphs": ["In chapter 17, Micah made an idol from his mother's silver, set up a private shrine with an ephod and household gods, and hired a wandering young Levite as his personal priest. It looked religious, but it departed from God's Word. In chapter 18, the problem grows. One household's distorted faith passes to the Levite, and then to <mark>the entire tribe of Dan</mark>.", "The tribe of Dan hadn't been left without land. They received their allotment under Joshua, but as Judges 1 shows, they couldn't fully take it because of the Amorites' resistance. So rather than holding on to the difficult place God had given them, they set out to find other land that would be easier to take. And they ask the Levite, <mark>\"Inquire of God, please, that we may know whether the journey on which we are setting out will succeed.\"</mark> Not \"Is this God's will?\" but \"Will the path we've already chosen go well?\""], "points": ["Asking for God's will is entirely different from seeking God's approval for a decision already made. We are not to manufacture God's will from circumstances, but to discern it through His Word."]}, {"title": "Verses 1–6 · The Path Already Chosen — Only Approval Sought", "paragraphs": ["Chapter 18 opens with <mark>\"In those days there was no king in Israel.\"</mark> Remembering that in 17:6 these words were followed by \"everyone did what was right in his own eyes,\" we can guess what's coming. The tribe of Dan sends five men to spy out the land. It resembles the spying in Numbers 13, but with a crucial difference: in Numbers, God commanded the spies to be sent; here, <mark>there's no command from God</mark>. Everything begins with their own judgment and planning.", "The spies recognize the Levite at Micah's house and ask, \"Who brought you here? What are you doing in this place?\" The Levite answers, <mark>\"Micah has hired me, and I have become his priest.\"</mark> He doesn't say, \"God sent me.\" For him, the priesthood was increasingly becoming not a calling but a job and a position.", "Then the Levite answers far too easily: <mark>\"Go in peace. The journey on which you go is under the eye of the LORD.\"</mark> Even this is ambiguous. The text doesn't record that God spoke to him, nor how he inquired of God. So we can't simply call this God's approval."], "points": ["Biblical-looking form doesn't necessarily mean obedience. Faith is not inviting God into my plans, but joining God's plan through obedience."]}, {"title": "Verses 7–10 · Laish Looks Easy — \"God Has Given It\"", "paragraphs": ["The five spies reach Laish. Its people lived quiet and secure, like the Sidonians, and far away, with no allies to help them. It looked easy to conquer — a very attractive target for Dan. To put it carefully, what they found wasn't land God had said \"I will give you,\" but <mark>land that looked easy to take in their own eyes</mark>.", "The spies return and say, <mark>\"We have seen the land, and behold, it is very good... God has given it into your hands.\"</mark> Their reasoning goes: the land is good → the people look weak → it's easy to conquer → therefore God has given it. But nowhere in the text does God Himself say He's giving Laish to Dan. The Levite's words and circumstances unfolding in their favor simply produced that interpretation."], "points": ["Success is not the same as God's approval. Things going well and doors opening don't automatically mean it's God's will. We must not interpret the Word by circumstances, but discern circumstances by the Word."]}, {"title": "Verses 11–20 · Taking the Idols and the Priest Too", "paragraphs": ["Now not five men but <mark>six hundred armed men</mark> set out, arriving again at Micah's house. The five spies say, \"Do you know that in these houses there are an ephod, household gods, a carved image, and a metal image? Now therefore <mark>consider what you will do</mark>.\" What irony. According to God's Word, what you ought to do when you find idols is destroy them. They do the exact opposite — they take them. Not \"This must be removed,\" but \"We'd like to have these too.\"", "Five men go in and bring out the carved image, ephod, and household gods, while six hundred armed men stand at the gate. When the priest asks, \"What are you doing?\" they reply, <mark>\"Keep quiet.\"</mark> This isn't a conversation of faith — it's taking what belongs to another, backed by force. Then they make the Levite an offer: \"Is it better for you to be priest to the house of one man, or to be priest to a tribe and clan in Israel?\"", "Just as Micah had said in chapter 17, \"Be to me a father and a priest,\" the Danites now say, \"Be to us a father and a priest.\" Only the scale is different: from a household to a tribe, a bigger position, more influence. And verse 20 says briefly, <mark>\"And the priest's heart was glad.\"</mark> Not because he discovered God's will, but because a bigger position opened up. He takes the ephod, the household gods, and the carved image and leaves with them."], "points": ["A bigger opportunity is not necessarily a bigger calling. What matters is not what looks bigger, but where God has called me. Distorted faith is contagious — when personal compromise repeats, it becomes the culture of a community."]}, {"title": "Application · Don't Invite God into Your Plans — Enter God's Plan", "paragraphs": ["On the surface, everything goes well for Dan. They find land, Laish looks easy, six hundred men gather, they gain idols and a priest, and the priest gets 'promoted.' Door after door of success opens. But their problem wasn't just that they didn't seek God at all. It was more subtle: <mark>they decided their path first, asked the priest whether it would succeed, judged the circumstances favorable, and then said, \"God has given it.\"</mark>", "Jesus didn't choose the easiest path. In the wilderness Satan offered Him easy roads — glory without suffering, worldly power without the cross — and Jesus refused. Then, facing the cross in Gethsemane, He prayed, <mark>\"Not as I will, but as You will.\"</mark> Dan's prayer was essentially, \"Make the path we've chosen go well.\" Jesus' prayer was, \"I will follow what the Father wills.\"", "So ask yourself: Have I already reached my conclusion and am only seeking God's approval? Am I too quick to call something \"God's will\" just because things are going smoothly? Am I avoiding the difficult obedience God has entrusted to me by looking for an easier way? Am I mistaking a bigger position for God's calling?"], "points": ["Don't follow every open door. Don't call every success God's approval. Not \"Lord, accomplish my will,\" but \"Let Your will be done rather than mine\" — this is the faith that seeks God's will."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I've already reached a conclusion and am only trying to get God's approval."}, {"key": "c2", "text": "I checked whether I'm too quick to declare something 'God's will' just because things are going well."}, {"key": "c3", "text": "I reflected on whether I'm calling an easier path 'guidance' to avoid the difficult place God entrusted to me."}, {"key": "c4", "text": "I checked whether I'm confusing a bigger position or better opportunity with God's calling."}], "s4heading": "One-Line Reflection", "memoHint": "Among the 'doors' open before me right now, which one do I need to discern again by the Word?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Change the Question", "value": "For one upcoming decision, pray again — not 'Will it go well?' but 'Is this Your will, Lord?'"}, {"key": "act2", "label": "Discern by the Word", "value": "For one open opportunity, find and read related Scripture, testing it by the Word rather than circumstances"}, {"key": "act3", "label": "Stay at Your Post", "value": "By faith, take hold again today of one difficult responsibility you've wanted to avoid"}, {"key": "act4", "label": "The Gethsemane Prayer", "value": "Pray three times today: 'Let Your will be done rather than mine'"}, {"key": "act5", "label": "Stop a Small Compromise", "value": "Find one small compromise of yours that could spread into your family or community, and stop it today"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Jesus, thank You for choosing not the easy road but the way of the cross, praying 'as the Father wills' — and saving me through that obedience."}, {"key": "p2", "tag": "Repent", "text": "I repent of deciding my path first and seeking approval in Your name, and of calling open doors and success Your will far too easily."}, {"key": "p3", "tag": "Ask", "text": "Help me discern by Your Word, not by circumstances; keep me at the place You've called me rather than chasing bigger positions; and let me seek Your will above mine."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 5, Lunes", "ref": "Mga Hukom 18:1–20", "headline": "Kalooban Ba ng Diyos<br>ang Bawat Bukas na Pinto?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 18:1-20", "s1heading": "Salita Ngayon", "verse": "\"Magtiwala ka kay Yahweh nang buong puso, at huwag kang manalig sa sarili mong unawa.<br>Sa lahat ng iyong lakad ay kilalanin mo Siya, at itutuwid Niya ang iyong mga landas.\"", "verseRef": "Kawikaan 3:5–6", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ang Katiwalian ng Isang Sambahayan ay Kumalat sa Isang Buong Lipi", "paragraphs": ["Sa kabanata 17, gumawa si Mikas ng diyus-diyosan mula sa pilak ng kanyang ina, nagtayo ng pribadong dambana na may epod at mga diyus-diyosan ng sambahayan, at umupa ng isang palaboy na batang Levita bilang personal na saserdote. Mukha itong relihiyoso, ngunit lumihis ito sa Salita ng Diyos. Sa kabanata 18, lumaki ang problema. Ang baluktot na pananampalataya ng isang sambahayan ay naipasa sa Levita, at pagkatapos ay sa <mark>buong lipi ni Dan</mark>.", "Hindi naiwang walang lupain ang lipi ni Dan. Natanggap nila ang kanilang bahagi sa ilalim ni Josue, ngunit gaya ng ipinakita ng Mga Hukom 1, hindi nila ito lubos na nasakop dahil sa paglaban ng mga Amorita. Kaya sa halip na kumapit sa mahirap na lugar na ibinigay ng Diyos, naghanap sila ng ibang lupaing mas madaling sakupin. At tinanong nila ang Levita, <mark>\"Magtanong ka sa Diyos, upang malaman namin kung magtatagumpay ang lakad na aming tatahakin.\"</mark> Hindi \"Kalooban ba ito ng Diyos?\" kundi \"Magiging maayos ba ang landas na napili na namin?\""], "points": ["Ang pagtatanong sa kalooban ng Diyos ay lubos na naiiba sa paghingi ng pagsang-ayon ng Diyos sa desisyong nagawa na. Hindi tayo dapat lumikha ng kalooban ng Diyos mula sa mga kalagayan, kundi kilalanin ito sa pamamagitan ng Kanyang Salita."]}, {"title": "Talata 1–6 · Napili na ang Landas — Pagsang-ayon na Lamang ang Hinahanap", "paragraphs": ["Nagbubukas ang kabanata 18 sa <mark>\"Nang mga araw na iyon ay walang hari sa Israel.\"</mark> Kung aalalahanin nating sa 17:6 ay sinundan ang mga salitang ito ng \"ginawa ng bawat isa ang tama sa kanyang sariling paningin,\" mahuhulaan natin ang darating. Nagpadala ang lipi ni Dan ng limang lalaki upang manmanan ang lupain. Kahawig ito ng paniniktik sa Mga Bilang 13, ngunit may mahalagang pagkakaiba: sa Mga Bilang, iniutos ng Diyos na magpadala ng mga tiktik; dito, <mark>walang utos mula sa Diyos</mark>. Nagsimula ang lahat sa sarili nilang paghatol at plano.", "Nakilala ng mga tiktik ang Levita sa bahay ni Mikas at nagtanong, \"Sino ang nagdala sa iyo rito? Ano ang ginagawa mo sa lugar na ito?\" Sumagot ang Levita, <mark>\"Inupahan ako ni Mikas, at ako'y naging kanyang saserdote.\"</mark> Hindi niya sinabing, \"Isinugo ako ng Diyos.\" Para sa kanya, lalong nagiging hindi pagkatawag ang pagkasaserdote kundi trabaho at posisyon.", "Pagkatapos, napakadaling sumagot ng Levita: <mark>\"Humayo kayo nang payapa. Ang lakad na inyong tatahakin ay nasa harap ng paningin ni Yahweh.\"</mark> Malabo rin ito. Hindi itinala ng teksto na nagsalita sa kanya ang Diyos, ni kung paano siya nagtanong sa Diyos. Kaya hindi natin ito basta matatawag na pagsang-ayon ng Diyos."], "points": ["Ang anyong mukhang biblikal ay hindi kinakailangang pagsunod. Ang pananampalataya ay hindi pag-anyaya sa Diyos sa aking mga plano, kundi pakikibahagi sa plano ng Diyos sa pamamagitan ng pagsunod."]}, {"title": "Talata 7–10 · Mukhang Madali ang Lais — \"Ibinigay Ito ng Diyos\"", "paragraphs": ["Narating ng limang tiktik ang Lais. Payapa at ligtas na namumuhay ang mga tao roon, tulad ng mga Sidonio, at malayo, walang kakamping tutulong sa kanila. Mukha itong madaling sakupin — isang napakakaakit-akit na target para kay Dan. Sa maingat na pananalita, ang natagpuan nila ay hindi lupaing sinabi ng Diyos na \"ibibigay Ko sa inyo,\" kundi <mark>lupaing mukhang madaling kunin sa sarili nilang paningin</mark>.", "Bumalik ang mga tiktik at nagsabi, <mark>\"Nakita namin ang lupain, at narito, ito'y napakabuti... ibinigay ito ng Diyos sa inyong mga kamay.\"</mark> Ganito ang kanilang pangangatwiran: mabuti ang lupain → mukhang mahina ang mga tao → madaling sakupin → kaya ibinigay ito ng Diyos. Ngunit wala saanman sa teksto na sinabi mismo ng Diyos na ibinibigay Niya ang Lais kay Dan. Ang mga salita lamang ng Levita at ang mga kalagayang pumapabor sa kanila ang lumikha ng ganoong pagpapakahulugan."], "points": ["Ang tagumpay ay hindi katulad ng pagsang-ayon ng Diyos. Ang pagiging maayos ng mga bagay at pagbukas ng mga pinto ay hindi kusang nangangahulugang kalooban ito ng Diyos. Hindi natin dapat ipaliwanag ang Salita batay sa mga kalagayan, kundi kilalanin ang mga kalagayan sa pamamagitan ng Salita."]}, {"title": "Talata 11–20 · Kinuha Pati ang mga Diyus-diyosan at ang Saserdote", "paragraphs": ["Ngayon, hindi limang lalaki kundi <mark>animnaraang armadong lalaki</mark> ang lumakad, at muling dumating sa bahay ni Mikas. Sinabi ng limang tiktik, \"Alam ba ninyo na sa mga bahay na ito ay may epod, mga diyus-diyosan ng sambahayan, isang inukit na larawan, at isang hinulmang larawan? Kaya ngayon, <mark>isipin ninyo kung ano ang dapat ninyong gawin</mark>.\" Napakabalintuna. Ayon sa Salita ng Diyos, ang dapat gawin kapag nakakita ng diyus-diyosan ay wasakin ito. Ginawa nila ang eksaktong kabaligtaran — kinuha nila. Hindi \"Dapat itong alisin,\" kundi \"Gusto rin naming magkaroon nito.\"", "Pumasok ang limang lalaki at inilabas ang inukit na larawan, epod, at mga diyus-diyosan, habang nakatayo sa pintuan ang animnaraang armadong lalaki. Nang tanungin ng saserdote, \"Ano ang ginagawa ninyo?\" sumagot sila, <mark>\"Tumahimik ka.\"</mark> Hindi ito usapan ng pananampalataya — ito ay pag-agaw ng pag-aari ng iba, sa likod ng lakas. Pagkatapos ay nag-alok sila sa Levita: \"Alin ang mas mabuti para sa iyo, ang maging saserdote ng sambahayan ng isang tao, o maging saserdote ng isang lipi at angkan sa Israel?\"", "Kung paanong sinabi ni Mikas sa kabanata 17, \"Maging ama at saserdote ka sa akin,\" sinasabi ngayon ng mga Danita, \"Maging ama at saserdote ka sa amin.\" Ang laki lamang ang kaiba: mula sambahayan tungo sa lipi, mas malaking posisyon, mas malaking impluwensya. At maikling sinasabi ng talata 20, <mark>\"At natuwa ang puso ng saserdote.\"</mark> Hindi dahil natuklasan niya ang kalooban ng Diyos, kundi dahil nagbukas ang mas malaking posisyon. Kinuha niya ang epod, mga diyus-diyosan, at inukit na larawan at sumama sa kanila."], "points": ["Ang mas malaking pagkakataon ay hindi kinakailangang mas malaking pagkatawag. Ang mahalaga ay hindi kung ano ang mukhang mas malaki, kundi kung saan ako tinawag ng Diyos. Nakahahawa ang baluktot na pananampalataya — kapag paulit-ulit ang personal na kompromiso, nagiging kultura ito ng komunidad."]}, {"title": "Aplikasyon · Huwag Anyayahan ang Diyos sa Iyong mga Plano — Pumasok sa Plano ng Diyos", "paragraphs": ["Sa panlabas, naging maayos ang lahat para kay Dan. Nakakita sila ng lupain, mukhang madali ang Lais, nagtipon ang animnaraang lalaki, nakakuha sila ng mga diyus-diyosan at saserdote, at 'na-promote' ang saserdote. Sunod-sunod na nagbukas ang mga pinto ng tagumpay. Ngunit ang kanilang problema ay hindi lamang ang hindi nila paghahanap sa Diyos. Mas pino pa ito: <mark>pinagpasyahan muna nila ang kanilang landas, tinanong ang saserdote kung magtatagumpay ito, hinusgahang pabor ang mga kalagayan, at saka sinabing, \"Ibinigay ito ng Diyos.\"</mark>", "Hindi pinili ni Jesus ang pinakamadaling landas. Sa ilang, inalok Siya ni Satanas ng madadaling daan — kaluwalhatian nang walang paghihirap, kapangyarihan sa mundo nang walang krus — at tumanggi si Jesus. Pagkatapos, nahaharap sa krus sa Getsemani, nanalangin Siya, <mark>\"Hindi ang kalooban Ko, kundi ang Iyo.\"</mark> Ang panalangin ni Dan ay sa esensya, \"Pagtagumpayin Mo ang landas na pinili namin.\" Ang panalangin ni Jesus ay, \"Susundin Ko ang kalooban ng Ama.\"", "Kaya tanungin mo ang iyong sarili: Nakagawa na ba ako ng konklusyon at pagsang-ayon na lamang ng Diyos ang hinahanap ko? Masyado ba akong mabilis tumawag ng isang bagay na \"kalooban ng Diyos\" dahil lamang maayos ang takbo? Iniiwasan ko ba ang mahirap na pagsunod na ipinagkatiwala sa akin ng Diyos sa paghahanap ng mas madaling daan? Napagkakamalan ko bang pagkatawag ng Diyos ang mas malaking posisyon?"], "points": ["Huwag sundan ang bawat bukas na pinto. Huwag tawaging pagsang-ayon ng Diyos ang bawat tagumpay. Hindi \"Panginoon, tuparin Mo ang aking kalooban,\" kundi \"Mangyari nawa ang Iyong kalooban sa halip na ang akin\" — ito ang pananampalatayang naghahanap sa kalooban ng Diyos."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung nakagawa na ako ng konklusyon at pagsang-ayon na lamang ng Diyos ang sinusubukan kong makuha."}, {"key": "c2", "text": "Sinuri ko kung masyado akong mabilis magdeklarang 'kalooban ng Diyos' ang isang bagay dahil lamang maayos ang takbo."}, {"key": "c3", "text": "Pinag-isipan ko kung tinatawag kong 'paggabay' ang mas madaling landas upang iwasan ang mahirap na lugar na ipinagkatiwala sa akin ng Diyos."}, {"key": "c4", "text": "Sinuri ko kung napagkakamalan kong pagkatawag ng Diyos ang mas malaking posisyon o mas magandang pagkakataon."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa mga 'pinto' na bukas sa harap ko ngayon, alin ang kailangan kong kilalaning muli sa pamamagitan ng Salita?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Baguhin ang Tanong", "value": "Para sa isang paparating na desisyon, manalangin muli — hindi 'Magiging maayos ba?' kundi 'Ito ba ang Iyong kalooban, Panginoon?'"}, {"key": "act2", "label": "Kilalanin sa Salita", "value": "Para sa isang bukas na pagkakataon, maghanap at magbasa ng kaugnay na Kasulatan, sinusubok ito sa Salita sa halip na sa kalagayan"}, {"key": "act3", "label": "Manatili sa Iyong Puwesto", "value": "Sa pananampalataya, kumapit muli ngayon sa isang mahirap na responsibilidad na gusto mong iwasan"}, {"key": "act4", "label": "Ang Panalangin sa Getsemani", "value": "Manalangin nang tatlong beses ngayon: 'Mangyari nawa ang Iyong kalooban sa halip na ang akin'"}, {"key": "act5", "label": "Ihinto ang Maliit na Kompromiso", "value": "Hanapin ang isang maliit mong kompromisong maaaring kumalat sa iyong pamilya o komunidad, at ihinto ito ngayon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Jesus, salamat sa pagpili hindi sa madaling daan kundi sa daan ng krus, nananalanging 'ayon sa kalooban ng Ama' — at sa pagliligtas sa akin sa pamamagitan ng pagsunod na iyon."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagpapasya muna ng aking landas at paghingi ng pagsang-ayon sa Iyong pangalan, at sa napakadaling pagtawag sa mga bukas na pinto at tagumpay bilang Iyong kalooban."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong kumilala sa pamamagitan ng Iyong Salita, hindi ng kalagayan; panatilihin Mo ako sa lugar na itinawag Mo sa akin sa halip na humabol sa mas malaking posisyon; at hayaang hanapin ko ang Iyong kalooban higit sa akin."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
