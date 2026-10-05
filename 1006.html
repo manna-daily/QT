@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/6(화) 큐티 · 사사기 18:21–31">
+<meta property="og:description" content="성공했지만 하나님에게서 멀어질 수 있습니다">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 6일 화요일", "ref": "사사기 18장 21–31절", "headline": "성공했지만<br>하나님에게서 멀어질 수 있습니다", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 18:21-31", "s1heading": "오늘의 말씀", "verse": "\"내가 곧 길이요 진리요 생명이니<br>나로 말미암지 않고는 아버지께로 올 자가 없느니라\"", "verseRef": "요한복음 14:6", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 죄도 겉으로는 성공할 수 있습니다", "paragraphs": ["앞선 본문에서 단 지파는 이미 갈 길을 정해 놓고 \"이 길이 형통하겠느냐\"고 물었습니다. 쉬워 보이는 라이스를 발견하고는 \"하나님이 넘겨주셨다\"고 말했고, 미가의 신상과 제사장까지 빼앗아 갔습니다. 겉으로 보면 모든 일이 너무 잘 풀렸습니다. 오늘 21절 이후에서는 바로 그 <mark>성공의 실체</mark>가 드러납니다.", "단 지파는 실제로 성공합니다. 미가의 추격을 뿌리치고, 라이스를 차지하고, 자기들의 도시를 세우고, 제사장과 신당을 세우고, 그 종교 체계는 오랫동안 이어집니다. 그런데 성경은 그것을 하나님의 축복이라고 평가하지 않습니다. 이 이야기의 무서운 역설은, <mark>하나님 없이도 종교적으로 성공할 수 있다</mark>는 것입니다. 종교 시설도, 제사장도, 많은 사람도, 오랜 전통도 생길 수 있습니다. 그러나 우리가 만든 종교는 성공할 수는 있어도 우리를 구원할 수는 없습니다."], "points": ["나는 하나님이 주신 소명을 따라 살고 있습니까, 아니면 성공을 향해 달려가며 거기에 하나님의 이름을 붙이고 있습니까?"]}, {"title": "21–26절 · \"이제 내게 오히려 남은 것이 무엇이냐\"", "paragraphs": ["단 지파는 어린아이와 가축과 재물을 앞세우고 무장한 사람들이 뒤를 지키며 이동합니다. 곧 미가가 이웃을 모아 추격해 옵니다. 그러자 단 사람들이 돌아서서 묻습니다. <mark>\"네가 무슨 일로 이같이 모아 가지고 왔느냐?\"</mark> 참 아이러니합니다. 자기들이 미가의 물건을 훔치고 제사장까지 데려갔으면서, 아무 일도 없었던 사람처럼 묻습니다.", "미가가 외칩니다. <mark>\"내가 지은 신들과 제사장을 빼앗아 갔으니 이제 내게 오히려 남은 것이 무엇이냐\"</mark>. 이 말 자체가 우상숭배의 실체를 드러냅니다. 신이라면 사람을 지켜야 하는데, 이 신은 사람이 만들고, 사람이 옮기고, 사람이 지켜야 하며, 다른 사람이 훔쳐갈 수도 있습니다. 17장에서 미가는 \"이제 여호와께서 내게 복 주실 줄 아노라\"며 자신만만했지만, 신상과 제사장이 사라지자 \"내게 아무것도 남지 않았다\"고 말합니다. 그가 실제로 의지한 것은 하나님 자신이 아니라, 자기가 통제할 수 있는 종교적 장치였던 것입니다.", "단 자손은 말합니다. <mark>\"네 목소리를 우리에게 들리게 하지 말라. 노한 자들이 너희를 쳐서 네 생명과 네 가족의 생명을 잃게 할까 하노라.\"</mark> 미가는 그들이 자기보다 강한 것을 보고 집으로 돌아갑니다. 단 사람들이 옳아서가 아니라 더 강했기 때문입니다. 하나님의 말씀이 기준에서 사라지면, 누가 옳은가보다 누가 힘이 있는가가 기준이 되기 쉽습니다."], "points": ["내가 하나님이라 여기며 붙들고 있는 것이 사라졌을 때 삶 전체가 무너진다면, 그것은 하나님의 선물이 아니라 내가 만든 우상일 수 있습니다. 내가 만든 신은 나를 구원하지 못합니다."]}, {"title": "27–29절 · 라이스를 차지했지만, 가나안의 방식이 단을 차지했다", "paragraphs": ["단 지파는 라이스에 이릅니다. 본문은 그곳 사람들을 다시 <mark>\"한가하고 걱정 없이 사는 백성\"</mark>이라 묘사합니다. 단 사람들은 그들을 칼날로 치고 성읍을 불사릅니다. 저자는 이 전쟁을 영웅적인 승리처럼 그리지 않습니다. 오히려 라이스가 얼마나 고립되고 방어하기 어려웠는지를 다시 강조합니다.", "그리고 28절에 의미심장한 표현이 나옵니다. <mark>\"그들을 구원할 자가 없었더라\"</mark>. 사사기 앞부분에서는 이스라엘이 압제를 당하면 하나님이 구원자를 일으키셨습니다. 그런데 이제 상황이 뒤집혔습니다. 구원받던 백성이 다른 사람들을 압제하고, 그들에게는 구원할 자가 없습니다. 구원받은 백성이 하나님의 성품과 사명을 잃으면, 자신이 당했던 일을 다른 사람에게 똑같이 행할 수 있습니다.", "단 지파는 성읍을 다시 세우고 이름을 '단'이라 바꿉니다. 드디어 땅도, 도시도, 지파의 이름을 붙일 중심지도 생겼습니다. 그러나 사사기는 이 성공을 축복으로 평가하지 않습니다. 하나님이 주신 기업을 향해 전진한 것이 아니라, 그 기업에서 물러나 더 쉬운 상대를 택했고, 하나님이 명하지 않은 종교까지 만들었습니다. <mark>단은 라이스를 차지했지만, 가나안의 방식이 단을 차지했습니다</mark>."], "points": ["성공했다고 옳은 것은 아닙니다. 일이 잘되는 것과 하나님께서 기뻐하시는 것은 같은 뜻이 아닙니다. 그들은 땅을 얻었지만 하나님이 주신 사명을 잃었습니다."]}, {"title": "30–31절 · 제도가 된 우상, 모세의 후손 요나단", "paragraphs": ["단 지파는 미가에게서 가져온 신상을 세웁니다. 17장부터의 흐름을 보면, 미가의 어머니가 우상을 만들 생각을 하고, 미가는 개인 신당을 만들고, 레위인은 돈과 자리를 위해 참여하고, 정탐꾼들은 그 종교를 자기 계획의 승인으로 이용하고, 단 지파는 그것을 무력으로 가져가 마침내 <mark>'단'이라는 우상숭배 도시에서 제도화</mark>합니다. 한 가정에서 시작된 잘못된 신앙이 한 지파의 종교가 되었습니다.", "그리고 이름 없던 레위인의 정체가 드디어 공개됩니다. <mark>\"모세의 손자요 게르솜의 아들인 요나단\"</mark>. 매우 충격적입니다. 하나님의 말씀을 이스라엘에게 전했던 모세의 후손이 우상숭배의 제사장이 되어 있었습니다. 신앙의 유산은 자동으로 전달되지 않습니다. 부모의 믿음은 귀한 유산이지만, 자녀의 믿음을 대신할 수는 없습니다. 각 세대가 다시 하나님을 알고, 말씀을 배우고, 자기 믿음으로 결단하며 순종해야 합니다.", "이 종교는 잠깐 유행하고 끝나지 않았습니다. 요나단과 그의 자손이 \"그 땅 백성이 사로잡히는 날까지\" 제사장이 되었습니다. 그리고 본문은 이렇게 끝납니다. <mark>\"하나님의 집이 실로에 있을 동안에 미가가 만든 바 새긴 신상이 단 자손에게 있었더라\"</mark>. 하나님의 집이 없어서가 아니었습니다. 하나님의 집은 이미 실로에 있었습니다. 이야기는 사람이 만든 종교와 하나님이 정하신 예배를 대조하며 끝납니다."], "points": ["오래되었다고, 전통이 되었다고, 많은 사람이 따른다고, 세대를 이어간다고 해서 그것이 자동으로 진리가 되지는 않습니다. 나에게 편한 신앙은 쉽게 왜곡될 수 있습니다."]}, {"title": "적용 · 우리에게 필요한 것은 성공이 아니라 예수님입니다", "paragraphs": ["사사기 18장을 끝까지 읽으면 이상한 사실을 발견합니다. 단 지파는 실패하지 않습니다. 오히려 성공합니다. 그런데 바로 그것이 비극입니다. 교회처럼 보일 수도 있고, 신앙의 언어를 쓸 수도 있고, 사람이 많이 모이고 규모가 커지고 오래 지속될 수도 있습니다. 그러나 그것이 하나님과 연결되어 있다는 보장은 아닙니다. 단 지파는 <mark>땅은 얻었지만 사명을 잃었고, 도시는 얻었지만 참된 예배를 잃었고, 종교는 얻었지만 하나님에게서 멀어졌습니다</mark>.", "우리에게 가장 먼저 필요한 것은 이 땅의 성공이 아니라 구원입니다. 그리고 그 구원은 우리가 만든 신에게서 오지 않습니다. 참된 하나님이 우리를 먼저 찾아오셨습니다. 예수님은 말씀하셨습니다. <mark>\"내가 곧 길이요 진리요 생명이니\"</mark>. 단 지파는 자기 길을 스스로 만들었지만, 예수님은 \"내가 길이다\"라고 하십니다. 단 지파는 자기가 원하는 신을 만들었지만, 예수님은 \"내가 진리다\"라고 하십니다. 단 지파는 성공을 구원처럼 여겼지만, 예수님은 \"내가 생명이다\"라고 하십니다.", "예수님과 연결되어 있을 때, 우리는 \"어디가 더 쉽습니까?\"가 아니라 \"주님이 나를 어디에 부르셨습니까?\"를 묻게 됩니다. \"어디서 더 성공할 수 있습니까?\"가 아니라 \"어디서 더 순종할 수 있습니까?\"를 묻게 됩니다."], "points": ["모든 것을 얻더라도 예수님과의 관계를 잃는다면, 그것을 정말 성공이라 부를 수 있겠습니까? 우리에게 필요한 것은 내가 만든 우상이 아니라, 우리를 찾아오신 예수 그리스도입니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "내가 지금 쫓고 있는 성공 때문에 하나님이 맡기신 소명을 놓치고 있지는 않은지 돌아봤다"}, {"key": "c2", "text": "그것이 사라지면 신앙까지 흔들릴 만큼, 하나님보다 더 의지하는 종교적 장치나 안정감이 없는지 점검했다"}, {"key": "c3", "text": "내가 편리하게 만든 신앙을 다음 세대에게 '믿음'이라고 물려주고 있지는 않은지 돌아봤다"}, {"key": "c4", "text": "종교적인 모양만 붙들고 있는 것이 아니라, 예수님과 실제로 연결되어 있는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 내가 '성공'이라 부르며 달려가는 것 중, 예수님과의 관계를 멀어지게 하는 것은 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "소명 다시 묻기", "value": "'어디가 더 성공적인가'가 아니라 '주님이 나를 어디에 부르셨는가'를 놓고 오늘 기도하기"}, {"key": "act2", "label": "내가 만든 신 점검", "value": "사라지면 신앙까지 흔들릴 것 같은 것 하나를 적어 보고 하나님 앞에 내려놓기"}, {"key": "act3", "label": "다음 세대에 믿음 전하기", "value": "자녀나 다음 세대와 오늘 말씀 한 구절을 함께 읽고 짧게 나누기"}, {"key": "act4", "label": "힘이 아니라 옳음으로", "value": "관계나 갈등에서 '누가 강한가'가 아니라 '무엇이 옳은가'로 오늘 한 가지 결정하기"}, {"key": "act5", "label": "길·진리·생명 고백", "value": "요한복음 14:6을 외우며 '예수님이 내 길, 진리, 생명이십니다'라고 고백하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "우리가 만든 신이 아니라, 우리를 먼저 찾아오신 길과 진리와 생명이신 예수님을 보내 주신 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "성공을 향해 달려가며 하나님의 이름을 붙이고, 하나님보다 종교적 장치와 안정감을 더 의지했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "땅을 얻고 사명을 잃는 삶이 아니라, 성공보다 부르심을 붙들고 예수님과 연결된 삶을 살게 하시며, 그 믿음을 다음 세대에 바르게 전하게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 6, Tuesday", "ref": "Judges 18:21–31", "headline": "We Can Succeed<br>Yet Drift Far from God", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 18:21-31", "s1heading": "Today's Word", "verse": "\"I am the way, and the truth, and the life.<br>No one comes to the Father except through Me.\"", "verseRef": "John 14:6", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Even Sin Can Look Successful", "paragraphs": ["In the previous passage, the tribe of Dan had already chosen its path and asked, \"Will this journey succeed?\" Finding Laish, which looked easy, they declared, \"God has given it,\" and even took Micah's idols and priest. On the surface, everything went remarkably well. From verse 21 on, the <mark>reality behind that success</mark> comes to light.", "The tribe of Dan does succeed. They shake off Micah's pursuit, take Laish, build their own city, set up a priest and shrine, and their religious system lasts a long time. Yet Scripture never calls it God's blessing. The frightening paradox of this story is that <mark>one can succeed religiously without God</mark>. Religious buildings, priests, crowds, long traditions — all can exist. But a religion we make may succeed; it cannot save us."], "points": ["Am I living by the calling God has given me — or racing toward success and attaching God's name to it?"]}, {"title": "Verses 21–26 · \"What Have I Left?\"", "paragraphs": ["The Danites move on, putting their children, livestock, and goods in front, with armed men guarding the rear. Soon Micah gathers his neighbors and pursues them. The Danites turn around and ask, <mark>\"What is the matter with you, that you come with such a company?\"</mark> How ironic — they stole Micah's things and took his priest, yet ask as if nothing happened.", "Micah cries out, <mark>\"You take my gods that I made and the priest, and go away, and what have I left?\"</mark> These words expose idolatry for what it is. A god should protect people — but this god had to be made by people, carried by people, guarded by people, and could even be stolen. In chapter 17, Micah confidently said, \"Now I know that the LORD will prosper me,\" but once his idol and priest are gone, he says, \"I have nothing left.\" What he truly relied on wasn't God Himself, but religious devices he could control.", "The Danites reply, <mark>\"Do not let your voice be heard among us, lest angry fellows fall upon you, and you lose your life with the lives of your household.\"</mark> Seeing they were too strong for him, Micah turns back home. Not because the Danites were right, but because they were stronger. When God's Word disappears as the standard, 'who is stronger' easily replaces 'who is right.'"], "points": ["If my whole life collapses when something I treat as God disappears, it may not be God's gift but an idol I've made. A god I make cannot save me."]}, {"title": "Verses 27–29 · Dan Took Laish — But Canaan's Ways Took Dan", "paragraphs": ["The Danites reach Laish. The text again describes its people as <mark>\"quiet and unsuspecting.\"</mark> The Danites strike them with the sword and burn the city. The author doesn't portray this as a heroic victory; instead he stresses again how isolated and defenseless Laish was.", "Then verse 28 has a telling phrase: <mark>\"And there was no deliverer.\"</mark> Earlier in Judges, when Israel was oppressed, God raised up deliverers. Now the situation is reversed: the people once delivered are the oppressors, and their victims have no deliverer. When a saved people lose God's character and mission, they can do to others exactly what was once done to them.", "The Danites rebuild the city and rename it 'Dan.' At last they have land, a city, and a center bearing their tribe's name. But Judges doesn't call this success a blessing. They didn't advance toward the inheritance God gave; they retreated from it, chose an easier target, and even created a religion God never commanded. <mark>Dan took Laish, but the ways of Canaan took Dan.</mark>"], "points": ["Success doesn't make something right. Things going well and God being pleased are not the same. They gained land but lost the mission God gave them."]}, {"title": "Verses 30–31 · An Idol Made Institutional — Jonathan, Descendant of Moses", "paragraphs": ["The Danites set up the carved image taken from Micah. Look at the flow since chapter 17: Micah's mother planned an idol, Micah built a private shrine, the Levite joined for money and position, the spies used that religion as approval for their plans, and the Danites took it by force and finally <mark>institutionalized it in an idol-worshiping city named Dan</mark>. A distorted faith that began in one household became the religion of a whole tribe.", "And the nameless Levite's identity is finally revealed: <mark>\"Jonathan the son of Gershom, son of Moses.\"</mark> It's shocking. A descendant of Moses — who delivered God's Word to Israel — had become a priest of idolatry. A legacy of faith isn't passed down automatically. Parents' faith is a precious inheritance, but it cannot replace their children's faith. Each generation must know God anew, learn the Word, and decide to obey in its own faith.", "This religion wasn't a passing trend. Jonathan and his sons served as priests \"until the day of the captivity of the land.\" And the passage ends: <mark>\"So they set up Micah's carved image that he made, as long as the house of God was at Shiloh.\"</mark> It wasn't because there was no house of God — the house of God was already at Shiloh. The story closes by contrasting a man-made religion with the worship God appointed."], "points": ["Being old, becoming tradition, being followed by many, lasting for generations — none of these automatically make something true. A faith built for my convenience is easily distorted."]}, {"title": "Application · What We Need Is Not Success, but Jesus", "paragraphs": ["Read Judges 18 to the end and you notice something strange: Dan doesn't fail. They succeed. And that's the tragedy. Something can look like a church, use the language of faith, draw crowds, grow, and last a long time — and still not be connected to God. Dan <mark>gained land but lost its mission, gained a city but lost true worship, gained a religion but drifted from God</mark>.", "What we need first isn't success in this world — it's salvation. And that salvation doesn't come from a god we make. The true God came looking for us first. Jesus said, <mark>\"I am the way, and the truth, and the life.\"</mark> Dan made its own way — Jesus says, \"I am the way.\" Dan made the god it wanted — Jesus says, \"I am the truth.\" Dan treated success as salvation — Jesus says, \"I am the life.\"", "When we're connected to Jesus, we stop asking, \"Where is it easier?\" and start asking, \"Where has the Lord called me?\" Not \"Where can I succeed more?\" but \"Where can I obey more?\""], "points": ["If we gain everything but lose our relationship with Jesus, can we really call it success? What we need isn't an idol we've made, but Jesus Christ, who came looking for us."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether the success I'm chasing is causing me to miss the calling God has entrusted to me."}, {"key": "c2", "text": "I checked whether there's a religious device or sense of security I rely on more than God — so much that my faith would shake if it disappeared."}, {"key": "c3", "text": "I reflected on whether I'm passing down a faith built for my convenience to the next generation and calling it 'faith.'"}, {"key": "c4", "text": "I checked whether I'm truly connected to Jesus, not just holding onto religious form."}], "s4heading": "One-Line Reflection", "memoHint": "Among the things I'm chasing and calling 'success,' which one is drawing me away from my relationship with Jesus?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Ask About Your Calling Again", "value": "Pray today not about 'where is more successful' but 'where has the Lord called me'"}, {"key": "act2", "label": "Check for a God You've Made", "value": "Write down one thing that would shake your faith if it disappeared, and lay it before God"}, {"key": "act3", "label": "Pass Faith to the Next Generation", "value": "Read one verse of Scripture with your children or someone from the next generation today and briefly share"}, {"key": "act4", "label": "By What's Right, Not Who's Strong", "value": "In a relationship or conflict, make one decision today based on 'what's right,' not 'who's stronger'"}, {"key": "act5", "label": "Confess the Way, Truth, and Life", "value": "Memorize John 14:6 and confess, 'Jesus is my way, my truth, and my life'"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "God, thank You for sending not a god we made, but Jesus — the way, the truth, and the life — who came looking for us first."}, {"key": "p2", "tag": "Repent", "text": "I repent of racing toward success and attaching Your name to it, and of relying more on religious devices and security than on You."}, {"key": "p3", "tag": "Ask", "text": "Don't let me gain land and lose my mission. Help me hold onto Your calling above success, stay connected to Jesus, and pass this faith rightly to the next generation."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 6, Martes", "ref": "Mga Hukom 18:21–31", "headline": "Maaari Tayong Magtagumpay<br>Ngunit Lumayo sa Diyos", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 18:21-31", "s1heading": "Salita Ngayon", "verse": "\"Ako ang daan, ang katotohanan, at ang buhay.<br>Walang makapupunta sa Ama kundi sa pamamagitan Ko.\"", "verseRef": "Juan 14:6", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Kahit ang Kasalanan ay Maaaring Magmukhang Matagumpay", "paragraphs": ["Sa nakaraang bahagi, napili na ng lipi ni Dan ang kanilang landas at nagtanong, \"Magtatagumpay ba ang lakad na ito?\" Nang matagpuan ang Lais na mukhang madali, ipinahayag nila, \"Ibinigay ito ng Diyos,\" at kinuha pa ang mga diyus-diyosan at saserdote ni Mikas. Sa panlabas, kahanga-hangang naging maayos ang lahat. Mula talata 21, nahayag ang <mark>katotohanan sa likod ng tagumpay na iyon</mark>.", "Tunay na nagtagumpay ang lipi ni Dan. Natakasan nila ang paghabol ni Mikas, nasakop ang Lais, nagtayo ng sariling lungsod, nagtalaga ng saserdote at dambana, at nagtagal ang kanilang sistemang panrelihiyon. Ngunit hindi ito kailanman tinawag ng Kasulatan na pagpapala ng Diyos. Ang nakakatakot na kabalintunaan ng kwentong ito ay na <mark>maaaring magtagumpay sa relihiyon nang walang Diyos</mark>. Maaaring magkaroon ng mga gusaling panrelihiyon, mga saserdote, maraming tao, mahahabang tradisyon. Ngunit ang relihiyong ginawa natin ay maaaring magtagumpay; hindi tayo nito maliligtas."], "points": ["Namumuhay ba ako ayon sa pagkatawag na ibinigay sa akin ng Diyos — o tumatakbo patungo sa tagumpay at ikinakabit dito ang pangalan ng Diyos?"]}, {"title": "Talata 21–26 · \"Ano Pa ang Natira sa Akin?\"", "paragraphs": ["Nagpatuloy ang mga Danita, inilagay sa unahan ang kanilang mga anak, hayop, at ari-arian, habang binabantayan ng mga armadong lalaki ang likuran. Hindi nagtagal, tinipon ni Mikas ang kanyang mga kapitbahay at hinabol sila. Lumingon ang mga Danita at nagtanong, <mark>\"Ano ang nangyari sa iyo at dumating ka na may ganitong pangkat?\"</mark> Napakabalintuna — ninakaw nila ang mga gamit ni Mikas at kinuha ang kanyang saserdote, ngunit nagtatanong na parang walang nangyari.", "Sumigaw si Mikas, <mark>\"Kinuha ninyo ang mga diyos na ginawa ko at ang saserdote, at umalis kayo — ano pa ang natira sa akin?\"</mark> Inilalantad ng mga salitang ito kung ano talaga ang idolatriya. Ang isang diyos ay dapat nagpoprotekta sa tao — ngunit ang diyos na ito ay kailangang gawin ng tao, buhatin ng tao, bantayan ng tao, at maaari pang nakawin. Sa kabanata 17, kumpiyansang sinabi ni Mikas, \"Ngayon ay alam kong pagpapalain ako ni Yahweh,\" ngunit nang mawala ang kanyang diyus-diyosan at saserdote, sinabi niya, \"Wala nang natira sa akin.\" Ang tunay niyang inasahan ay hindi ang Diyos Mismo, kundi ang mga kasangkapang panrelihiyon na kaya niyang kontrolin.", "Sumagot ang mga Danita, <mark>\"Huwag mong iparinig ang iyong tinig sa amin, baka salakayin ka ng mga galit na lalaki, at mawala ang iyong buhay at ang buhay ng iyong sambahayan.\"</mark> Nang makitang mas malakas sila sa kanya, umuwi si Mikas. Hindi dahil tama ang mga Danita, kundi dahil mas malakas sila. Kapag nawala ang Salita ng Diyos bilang pamantayan, madaling pumalit ang 'sino ang mas malakas' sa 'sino ang tama.'"], "points": ["Kung gumuguho ang buong buhay ko kapag nawala ang isang bagay na itinuturing kong Diyos, maaaring hindi ito kaloob ng Diyos kundi diyus-diyosang ginawa ko. Hindi ako maliligtas ng diyos na gawa ko."]}, {"title": "Talata 27–29 · Sinakop ni Dan ang Lais — Ngunit Sinakop ng Paraan ng Canaan si Dan", "paragraphs": ["Narating ng mga Danita ang Lais. Muling inilarawan ng teksto ang mga tao roon bilang <mark>\"tahimik at walang hinala.\"</mark> Pinatay sila ng mga Danita sa tabak at sinunog ang lungsod. Hindi inilarawan ng may-akda ito bilang isang magiting na tagumpay; sa halip, muli niyang idiniin kung gaano kahiwalay at walang depensa ang Lais.", "Pagkatapos, may makahulugang parirala sa talata 28: <mark>\"At walang tagapagligtas.\"</mark> Noong una sa Mga Hukom, kapag inaapi ang Israel, nagbabangon ang Diyos ng mga tagapagligtas. Ngayon, bumaligtad ang sitwasyon: ang bayang dating iniligtas ay siya nang mang-aapi, at walang tagapagligtas ang kanilang mga biktima. Kapag nawala sa isang bayang iniligtas ang pagkatao at misyon ng Diyos, maaari nilang gawin sa iba ang eksaktong ginawa sa kanila noon.", "Muling itinayo ng mga Danita ang lungsod at pinangalanang 'Dan.' Sa wakas, may lupain na sila, lungsod, at sentrong may pangalan ng kanilang lipi. Ngunit hindi tinawag ng Mga Hukom na pagpapala ang tagumpay na ito. Hindi sila sumulong patungo sa manang ibinigay ng Diyos; umatras sila mula rito, pumili ng mas madaling target, at lumikha pa ng relihiyong hindi kailanman iniutos ng Diyos. <mark>Sinakop ni Dan ang Lais, ngunit sinakop ng paraan ng Canaan si Dan.</mark>"], "points": ["Hindi ginagawang tama ng tagumpay ang isang bagay. Ang pagiging maayos ng takbo at ang kaluguran ng Diyos ay hindi magkapareho. Nakakuha sila ng lupain ngunit nawala ang misyong ibinigay sa kanila ng Diyos."]}, {"title": "Talata 30–31 · Isang Diyus-diyosang Ginawang Institusyon — Si Jonatan, Inapo ni Moises", "paragraphs": ["Itinayo ng mga Danita ang inukit na larawang kinuha kay Mikas. Tingnan ang daloy mula kabanata 17: binalak ng ina ni Mikas ang isang diyus-diyosan, nagtayo si Mikas ng pribadong dambana, sumali ang Levita para sa pera at posisyon, ginamit ng mga tiktik ang relihiyong iyon bilang pagsang-ayon sa kanilang plano, at kinuha ito ng mga Danita sa lakas at sa huli ay <mark>ginawang institusyon sa isang lungsod ng idolatriya na tinawag na Dan</mark>. Ang baluktot na pananampalatayang nagsimula sa isang sambahayan ay naging relihiyon ng isang buong lipi.", "At sa wakas, nahayag ang pagkakakilanlan ng walang-pangalang Levita: <mark>\"Si Jonatan na anak ni Gersom, na anak ni Moises.\"</mark> Nakagugulat ito. Ang isang inapo ni Moises — na naghatid ng Salita ng Diyos sa Israel — ay naging saserdote ng idolatriya. Ang pamana ng pananampalataya ay hindi kusang naipapasa. Mahalagang pamana ang pananampalataya ng mga magulang, ngunit hindi nito mapapalitan ang pananampalataya ng kanilang mga anak. Ang bawat salinlahi ay dapat muling makilala ang Diyos, matuto ng Salita, at magpasyang sumunod sa sarili nitong pananampalataya.", "Hindi panandaliang uso ang relihiyong ito. Naglingkod si Jonatan at ang kanyang mga anak bilang mga saserdote \"hanggang sa araw ng pagkabihag ng lupain.\" At nagtatapos ang bahagi: <mark>\"Kaya itinayo nila ang inukit na larawang ginawa ni Mikas, habang ang bahay ng Diyos ay nasa Silo.\"</mark> Hindi dahil walang bahay ng Diyos — nasa Silo na ang bahay ng Diyos. Nagtatapos ang kwento sa paghahambing ng relihiyong gawa ng tao at ng pagsambang itinakda ng Diyos."], "points": ["Ang pagiging luma, pagiging tradisyon, pagiging sinusundan ng marami, pagtagal sa maraming salinlahi — wala sa mga ito ang kusang nagpapatotoo sa isang bagay. Madaling mabaluktot ang pananampalatayang ginawa para sa aking kaginhawahan."]}, {"title": "Aplikasyon · Ang Kailangan Natin ay Hindi Tagumpay, Kundi si Jesus", "paragraphs": ["Basahin ang Mga Hukom 18 hanggang sa wakas at may mapapansin kang kakaiba: hindi nabigo si Dan. Nagtagumpay sila. At iyon ang trahedya. Maaaring magmukhang iglesia ang isang bagay, gumamit ng wika ng pananampalataya, makahikayat ng maraming tao, lumaki, at magtagal — at hindi pa rin konektado sa Diyos. Si Dan ay <mark>nakakuha ng lupain ngunit nawala ang misyon, nakakuha ng lungsod ngunit nawala ang tunay na pagsamba, nakakuha ng relihiyon ngunit lumayo sa Diyos</mark>.", "Ang una nating kailangan ay hindi tagumpay sa mundong ito — kundi kaligtasan. At ang kaligtasang iyon ay hindi nagmumula sa diyos na ginawa natin. Ang tunay na Diyos ang unang humanap sa atin. Sinabi ni Jesus, <mark>\"Ako ang daan, ang katotohanan, at ang buhay.\"</mark> Gumawa si Dan ng sariling daan — sinabi ni Jesus, \"Ako ang daan.\" Gumawa si Dan ng diyos na gusto nila — sinabi ni Jesus, \"Ako ang katotohanan.\" Itinuring ni Dan ang tagumpay na kaligtasan — sinabi ni Jesus, \"Ako ang buhay.\"", "Kapag konektado tayo kay Jesus, titigil tayo sa pagtatanong ng \"Saan mas madali?\" at magsisimulang magtanong ng \"Saan ako tinawag ng Panginoon?\" Hindi \"Saan ako mas magtatagumpay?\" kundi \"Saan ako mas makasusunod?\""], "points": ["Kung makukuha natin ang lahat ngunit mawawala ang ating relasyon kay Jesus, matatawag ba talaga nating tagumpay iyon? Ang kailangan natin ay hindi diyus-diyosang ginawa natin, kundi si Jesu-Cristo, na humanap sa atin."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung ang tagumpay na hinahabol ko ay nagiging dahilan upang makaligtaan ko ang pagkatawag na ipinagkatiwala sa akin ng Diyos."}, {"key": "c2", "text": "Sinuri ko kung may kasangkapang panrelihiyon o pakiramdam ng seguridad na mas inaasahan ko kaysa sa Diyos — kaya't matitinag ang aking pananampalataya kung ito'y mawala."}, {"key": "c3", "text": "Pinag-isipan ko kung ipinapasa ko sa susunod na salinlahi ang pananampalatayang ginawa para sa aking kaginhawahan at tinatawag itong 'pananampalataya.'"}, {"key": "c4", "text": "Sinuri ko kung tunay akong konektado kay Jesus, hindi lamang kumakapit sa relihiyosong anyo."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa mga bagay na hinahabol ko at tinatawag na 'tagumpay,' alin ang naglalayo sa akin sa aking relasyon kay Jesus?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Itanong Muli ang Iyong Pagkatawag", "value": "Manalangin ngayon hindi tungkol sa 'saan mas matagumpay' kundi 'saan ako tinawag ng Panginoon'"}, {"key": "act2", "label": "Suriin ang Diyos na Ginawa Mo", "value": "Isulat ang isang bagay na magpapatinag sa iyong pananampalataya kung ito'y mawala, at ilapag ito sa harap ng Diyos"}, {"key": "act3", "label": "Ipasa ang Pananampalataya sa Susunod na Salinlahi", "value": "Magbasa ng isang talata ng Kasulatan kasama ang iyong mga anak o isang tao mula sa susunod na salinlahi ngayon at magbahagi nang maikli"}, {"key": "act4", "label": "Ayon sa Tama, Hindi sa Malakas", "value": "Sa isang relasyon o alitan, gumawa ng isang desisyon ngayon batay sa 'ano ang tama,' hindi sa 'sino ang mas malakas'"}, {"key": "act5", "label": "Ipahayag ang Daan, Katotohanan, at Buhay", "value": "Isaulo ang Juan 14:6 at ipahayag, 'Si Jesus ang aking daan, katotohanan, at buhay'"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Diyos, salamat sa pagsugo hindi ng diyos na ginawa namin, kundi kay Jesus — ang daan, ang katotohanan, at ang buhay — na unang humanap sa amin."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagtakbo patungo sa tagumpay at pagkabit dito ng Iyong pangalan, at sa mas pag-asa sa mga kasangkapang panrelihiyon at seguridad kaysa sa Iyo."}, {"key": "p3", "tag": "Kahilingan", "text": "Huwag Mo akong hayaang makakuha ng lupain ngunit mawalan ng misyon. Tulungan Mo akong kumapit sa Iyong pagkatawag higit sa tagumpay, manatiling konektado kay Jesus, at maipasa nang tama ang pananampalatayang ito sa susunod na salinlahi."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
