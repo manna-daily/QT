@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/7(수) 큐티 · 사사기 19:1–10">
+<meta property="og:description" content="사람의 마음을 놓치고 있지는 않습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 7일 수요일", "ref": "사사기 19장 1–10절", "headline": "사람의 마음을<br>놓치고 있지는 않습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 19:1-10", "s1heading": "오늘의 말씀", "verse": "\"네 마음을 다하고 목숨을 다하고 뜻을 다하여<br>주 너의 하나님을 사랑하라 …<br>네 이웃을 네 자신 같이 사랑하라\"", "verseRef": "마태복음 22:37, 39", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 하나님 사랑이 무너지면 이웃 사랑도 무너집니다", "paragraphs": ["17장과 18장에서 우리는 미가 한 가정의 종교적 타락이 단 지파 전체의 타락으로 번지는 것을 보았습니다. 겉으로는 하나님을 예배하는 것처럼 보였지만, 실제로는 하나님을 자기 필요와 성공을 위해 이용하는 신앙이었습니다. 17–18장이 <mark>'하나님을 어떻게 예배하는가'의 붕괴</mark>를 보여 주었다면, 19장부터는 <mark>'사람을 어떻게 대하는가'의 붕괴</mark>가 시작됩니다.", "십계명의 앞부분은 하나님을 어떻게 사랑하고 예배할지를, 뒷부분은 이웃을 어떻게 대할지를 가르칩니다. 예수님도 율법의 핵심을 하나님 사랑과 이웃 사랑으로 정리하셨습니다. 이 둘은 분리되지 않습니다. 하나님과의 관계가 무너지면 사람을 바라보는 마음과 눈도 함께 무너집니다.", "오늘 이야기는 자신을 떠난 여인을 찾아 베들레헴으로 가는 평범한 가족 이야기처럼 시작합니다. 그러나 이 작은 관계의 균열이 한 여인의 죽음과 기브아의 폭력, 그리고 한 지파가 거의 사라질 만큼의 내전으로 확대됩니다. <mark>사사기의 마지막 붕괴는 전쟁이 아니라, 한 사람의 마음을 제대로 보지 못하는 데서 시작</mark>됩니다."], "points": ["하나님과의 관계가 흔들릴 때, 나의 가정과 교회와 관계 속에서는 어떤 균열이 시작되고 있습니까?"]}, {"title": "1–2절 · \"그때에 이스라엘에 왕이 없을 때에\"", "paragraphs": ["19장은 단순히 '어떤 레위 사람이 있었다'로 시작하지 않습니다. 저자는 의도적으로 <mark>\"이스라엘에 왕이 없을 때에\"</mark>라는 말을 넣습니다. 17:6, 18:1에 이어 다시 등장하는 이 말은 앞으로의 사건을 해석하는 열쇠입니다. 다만 '인간 왕 한 명만 있었으면 다 해결되었을 것'이라고 단순화해서는 안 됩니다. 더 깊은 문제는 하나님의 백성이 하나님의 말씀과 통치를 삶의 기준으로 받아들이지 않은 것, 곧 <mark>각자가 자기 삶의 왕이 되어 살던 시대</mark>였다는 데 있습니다.", "그리고 또 한 명의 레위인이 등장합니다. 17장의 레위인은 베들레헴에서 에브라임 산지로 갔고, 19장의 레위인은 반대로 에브라임 산지에서 베들레헴으로 갑니다. 두 사람 모두 이름이 없습니다. 이것은 한 특이한 개인의 문제가 아니라, <mark>하나님의 말씀과 예배를 섬겨야 할 사람들까지 시대의 혼란에 휩쓸려 있었음</mark>을 보여 줍니다.", "레위인에게는 베들레헴 출신의 첩이 있었습니다. 혼인 관계 안에 있지만 일반 아내보다 사회적 지위가 낮은 여성이었습니다. 2절은 그 여인이 '행음하고' 남편을 떠났다고 번역하지만, 본문만으로 성적 부정을 확정하기는 어렵습니다. 고대 번역 중에는 '남편에게 화가 났다', '그를 거부했다'로 읽는 전승도 있습니다. 확실한 것은 두 사람 사이에 심각한 갈등이 있었고, 여인이 친정으로 돌아가 <mark>넉 달 동안 관계가 끊어진 상태</mark>였다는 사실입니다."], "points": ["공동체의 붕괴는 언제나 거대한 사건으로 시작되지 않습니다. 한 사람을 존중하지 않는 작은 선택과 작은 균열에서 시작될 수 있습니다."]}, {"title": "3절 · \"그 여자의 마음에 말하려고\"", "paragraphs": ["넉 달 뒤 레위인이 베들레헴으로 갑니다. 성경은 그 목적을 아름답게 표현합니다. <mark>\"그 여자에게 다정하게 말하고 그를 데려오고자\"</mark>. 원문을 직역하면 <mark>'그녀의 마음에 말하려고'</mark>입니다. 출발할 때의 목적은 분명 긍정적이었습니다. 억지로 끌어오려는 것이 아니라, 말하고 설득해서 관계를 회복하려고 찾아간 것입니다. 하인과 나귀 두 마리까지 데려간 것을 보면 그녀를 다시 데려올 준비도 했습니다.", "여인은 그를 아버지의 집으로 데리고 들어가고, 아버지도 그를 반갑게 맞이합니다. 겉으로는 관계가 회복되는 것처럼 보입니다. 그런데 중요한 질문이 남습니다. <mark>그는 정말 그녀의 마음에 말했습니까?</mark> 본문은 그 대화를 기록하지 않습니다.", "'같이 돌아가기로 했다'는 것과 '관계가 정말 회복되었다'는 것은 같은 말이 아닙니다. 관계를 회복한다는 것은 사람을 다시 데려오는 것보다 <mark>그 사람의 마음을 듣는 데서 시작</mark>합니다. 누군가를 위해 결정한다고 말하면서도 정작 그의 마음은 듣지 않을 수 있습니다. 가정에서도, 교회에서도, 리더십에서도 그렇습니다."], "points": ["사람은 이야기의 중심에 있으면서도 사람으로 대우받지 못할 수 있습니다. 나는 상대를 '데려오는 것'에 만족하고, 그의 마음을 듣는 일은 건너뛰고 있지 않습니까?"]}, {"title": "4–10절 · 남자들의 마음은 즐거웠지만, 여인의 목소리는 사라졌습니다", "paragraphs": ["여인의 아버지는 레위인을 붙잡습니다. 사흘 동안 먹고 마시고 머뭅니다. 넷째 날 떠나려 하자 \"떡을 조금 먹고 그대의 기력을 돋운 후에 가라\", 또 \"이 밤을 유숙하여 그대의 마음을 즐겁게 하라\"고 합니다. 이렇게 길게 기록한 한 가지 이유는 <mark>환대</mark>입니다. 베들레헴의 장인은 계속 '더 있다 가라, 먹고 가라'고 말합니다. 그러나 조금 뒤 기브아에서는 정반대로, 나그네가 광장에 앉아 있어도 아무도 집으로 들이지 않습니다. 베들레헴의 따뜻한 환대가 기브아의 냉담함을 더 선명하게 만듭니다.", "원어로 보면 반복되는 단어가 하나 있습니다. <mark>'마음(레브)'</mark>입니다. 3절에서 레위인은 '그녀의 마음'에 말하려고 왔습니다. 그런데 5, 6, 8, 9절에서는 '그대의 마음을 든든하게 하라', '그대의 마음을 즐겁게 하라'가 반복됩니다. 처음 여행의 목적은 여인의 마음이었는데, 시간이 지나면서 이야기의 중심에는 남자들이 먹고 마시고 마음을 즐겁게 하는 장면만 남습니다. 저자의 의도를 지나치게 단정할 필요는 없지만, 아이러니는 분명합니다. <mark>관계를 회복하러 갔지만, 정작 회복해야 할 사람의 마음은 이야기에서 점점 사라집니다</mark>.", "1–3절에서는 여인이 이야기의 중심이었습니다. 그러나 4절 이후에는 아버지와 레위인이 먹고, 마시고, 머물지 떠날지를 결정합니다. 정작 이 여행의 이유였던 여인은 한마디도 하지 않습니다. 사람의 존엄은 한순간에 무너지지 않습니다. <mark>먼저 목소리를 듣지 않고, 그다음 의견을 묻지 않고, 어느 순간 그 사람을 한 인격이 아니라 내 결정에 필요한 존재처럼 대하게 됩니다</mark>. 이것이 19장 뒤에서 더 비극적인 형태로 드러납니다.", "본문은 시간도 자세히 기록합니다. 넷째 날 아침, 다섯째 날 아침, 그리고 해가 기웁니다. 이것은 이후 사건을 준비하는 시계입니다. 아버지는 \"날이 저물어 가니 이 밤도 유숙하고 내일 일찍 가라\"고 합리적으로 권하지만, 이번에는 레위인이 거절하고 늦은 오후에 길을 떠나 <mark>여부스(예루살렘) 맞은편</mark>에 이릅니다. 이 늦은 출발이 기브아의 밤과 이어집니다."], "points": ["한 사람의 마음을 듣지 않는 것, 목소리를 무시하는 것, 내 편의와 판단을 앞세우는 작은 선택이 반복되면 공동체 전체의 붕괴로 이어질 수 있습니다."]}, {"title": "적용 · 예배는 내가 만나는 한 사람을 대하는 방식으로 이어집니다", "paragraphs": ["17–18장에서 사람들은 하나님을 자기 방식대로 예배했습니다. 19장에 들어서자 이제 다른 사람까지 자기 방식대로 대하기 시작합니다. 이 둘은 서로 다른 문제가 아닙니다. <mark>하나님을 내 필요에 맞추기 시작하면, 결국 사람도 내 필요와 판단에 맞추어 대하게 됩니다</mark>. 그래서 예배와 삶은 분리되지 않습니다. 주일에 하나님을 예배하면서 월요일에 사람을 함부로 대할 수 없고, 하나님을 사랑한다고 말하면서 가장 가까운 사람의 마음을 무시할 수 없습니다.", "한 율법사가 가장 큰 계명을 묻자 예수님은 <mark>\"네 마음을 다하고 목숨을 다하고 뜻을 다하여 주 너의 하나님을 사랑하라\"</mark>고 하시고, 곧바로 <mark>\"네 이웃을 네 자신 같이 사랑하라\"</mark>고 하셨습니다. 하나님을 사랑하는 사람은 하나님이 사랑하시는 사람을 함부로 대할 수 없기 때문입니다.", "가까운 사람일수록 더 조심해야 합니다. 익숙하다는 이유로 배우자의 말을 듣지 않고, 자녀의 마음을 묻지 않고, 부모의 마음을 당연하게 여기고, 함께 섬기는 사람들을 사역의 도구처럼 대할 수 있습니다. 그러나 <mark>사람은 사역을 위한 도구가 아니라 하나님께서 사랑하시는 사람</mark>입니다. 예수님은 사람들이 지나치던 한 사람 앞에 멈추셨고, 목소리 없는 이들의 말을 들으셨고, 소외된 사람을 가까이 부르셨으며, 마침내 우리를 위해 생명을 내어 주셨습니다.", "참된 예배는 주일 예배당 안에서 끝나지 않습니다. 오늘 내가 만나는 한 사람을 어떻게 대하는가로 계속됩니다. <mark>하나님 사랑과 이웃 사랑은 두 개의 신앙이 아닙니다</mark>. 한 하나님을 사랑하는 한 마음이, 예배에서는 하나님을 향하고 관계에서는 이웃을 향해 나타나는 것입니다."], "points": ["하나님을 사랑한다고 고백한다면, 오늘 가장 가까운 한 사람의 마음부터 다시 들여다보십시오. 내 옆의 한 사람을 하나님의 형상을 지닌 사람으로 다시 바라보십시오."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "가족이나 가까운 사람의 마음을 정말 듣고 있는지, 익숙함 때문에 당연하게 여기고 있지는 않은지 돌아봤다"}, {"key": "c2", "text": "누군가를 위한다고 하면서 정작 그 사람의 의견은 묻지 않고 결정하지는 않았는지 점검했다"}, {"key": "c3", "text": "교회와 공동체에서 나보다 약하고 목소리가 작은 사람을 한 인격으로 존중하고 있는지 돌아봤다"}, {"key": "c4", "text": "주일의 예배와 평일에 사람을 대하는 나의 모습이 분리되어 있지 않은지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "요즘 내가 마음을 듣지 못하고 '데려오기만' 하려 했던 가까운 한 사람은 누구입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "마음에 말하기", "value": "가까운 한 사람에게 '요즘 마음이 어때요?'라고 묻고, 끝까지 끊지 않고 들어 주기"}, {"key": "act2", "label": "결정 전에 묻기", "value": "가족이나 동료와 관련된 결정을 하기 전에 먼저 그들의 생각을 물어보기"}, {"key": "act3", "label": "작은 목소리 듣기", "value": "공동체에서 목소리가 작거나 소외된 한 사람에게 먼저 다가가 안부 전하기"}, {"key": "act4", "label": "따뜻한 환대", "value": "오늘 한 사람에게 식사나 차 한 잔, 혹은 따뜻한 말 한마디로 환대하기"}, {"key": "act5", "label": "두 계명 외우기", "value": "마태복음 22:37–39를 외우며 하나님 사랑과 이웃 사랑을 하나로 고백하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "지나치던 한 사람 앞에 멈추시고, 목소리 없는 이들의 말을 들으시며, 우리를 위해 생명을 내어 주신 예수님의 사랑에 감사합니다"}, {"key": "p2", "tag": "회개", "text": "하나님을 사랑한다 말하면서도 가장 가까운 사람의 마음을 듣지 않고, 사람을 내 결정과 사역의 도구처럼 대했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "제 예배가 예배당 안에서 끝나지 않게 하시고, 오늘 만나는 한 사람을 하나님의 형상을 지닌 존재로 존중하며 그의 마음에 말하는 사람이 되게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 7, Wednesday", "ref": "Judges 19:1–10", "headline": "Are We Missing<br>Someone's Heart?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 19:1-10", "s1heading": "Today's Word", "verse": "\"You shall love the Lord your God with all your heart<br>and with all your soul and with all your mind …<br>You shall love your neighbor as yourself.\"", "verseRef": "Matthew 22:37, 39", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · When Love for God Collapses, Love for Neighbor Collapses Too", "paragraphs": ["In chapters 17 and 18, we saw how the religious corruption of Micah's household spread to the whole tribe of Dan. It looked like worship of God, but in reality it was a faith that used God for one's own needs and success. If chapters 17–18 showed the collapse of <mark>'how we worship God,'</mark> chapter 19 begins the collapse of <mark>'how we treat people.'</mark>", "The first part of the Ten Commandments teaches how to love and worship God; the rest teaches how to treat our neighbor. Jesus also summed up the Law as love for God and love for neighbor. The two cannot be separated. When our relationship with God breaks down, the heart and eyes with which we see people break down too.", "Today's story begins like an ordinary family story — a man going to Bethlehem to find the woman who left him. But this small crack in a relationship grows into a woman's death, the violence at Gibeah, and a civil war that nearly wipes out a whole tribe. <mark>The final collapse in Judges begins not with war, but with failing to truly see one person's heart.</mark>"], "points": ["When my relationship with God wavers, what cracks begin to appear in my home, my church, and my relationships?"]}, {"title": "Verses 1–2 · \"In Those Days, When There Was No King in Israel\"", "paragraphs": ["Chapter 19 doesn't simply begin, 'There was a certain Levite.' The author deliberately adds, <mark>\"In those days, when there was no king in Israel.\"</mark> Repeated after 17:6 and 18:1, this phrase is the key to interpreting what follows. Yet we shouldn't oversimplify it as 'if only there had been a human king, everything would have been fine.' The deeper problem was that God's people didn't accept His Word and rule as the standard for their lives — <mark>an age when everyone lived as the king of his own life</mark>.", "And another Levite appears. The Levite in chapter 17 went from Bethlehem to the hill country of Ephraim; the Levite in chapter 19 goes the other way, from Ephraim to Bethlehem. Neither has a name. This isn't the problem of one odd individual — it shows that <mark>even those meant to serve God's Word and worship were swept up in the chaos of the age</mark>.", "The Levite had a concubine from Bethlehem — a woman within a marriage, but of lower social status than an ordinary wife. Verse 2 is often translated that she 'was unfaithful' and left him, but the text alone can't confirm sexual infidelity. Some ancient translations read it as 'she became angry with him' or 'she rejected him.' What is certain is that there was serious conflict between them, and she returned to her father's house, where <mark>the relationship stayed broken for four months</mark>."], "points": ["A community's collapse doesn't always start with a huge event. It can start with small choices and small cracks — failing to honor one person."]}, {"title": "Verse 3 · \"To Speak to Her Heart\"", "paragraphs": ["After four months, the Levite goes to Bethlehem. Scripture describes his purpose beautifully: <mark>\"to speak kindly to her and bring her back.\"</mark> Literally, the original says <mark>'to speak to her heart.'</mark> At the outset, his purpose was clearly good. He didn't go to drag her back by force, but to talk, persuade, and restore the relationship. Bringing a servant and two donkeys shows he was prepared to bring her home.", "She brings him into her father's house, and her father welcomes him gladly. On the surface, the relationship seems restored. But an important question remains: <mark>did he really speak to her heart?</mark> The text doesn't record that conversation.", "'We decided to go back together' is not the same as 'the relationship is truly restored.' Restoring a relationship begins not with bringing someone back, but with <mark>listening to that person's heart</mark>. We can say we're deciding things for someone's sake and still never hear their heart — at home, in church, and in leadership."], "points": ["A person can be at the center of the story and still not be treated as a person. Am I content just to 'bring them back' while skipping the work of hearing their heart?"]}, {"title": "Verses 4–10 · The Men's Hearts Were Merry, but the Woman's Voice Disappeared", "paragraphs": ["The woman's father detains the Levite. For three days they eat, drink, and stay. When he tries to leave on the fourth day, the father says, \"Strengthen your heart with a morsel of bread, and after that you may go,\" and again, \"Spend the night, and let your heart be merry.\" One reason this is recorded at such length is <mark>hospitality</mark>. The father in Bethlehem keeps saying, 'Stay longer, eat before you go.' But soon in Gibeah it's the exact opposite: travelers sit in the town square, and no one takes them in. Bethlehem's warm hospitality makes Gibeah's coldness all the clearer.", "In the original language, one word keeps repeating: <mark>'heart' (lev)</mark>. In verse 3, the Levite came to speak to 'her heart.' But in verses 5, 6, 8, and 9 we hear again and again, 'strengthen your heart,' 'let your heart be merry.' The journey's purpose was the woman's heart, yet as time passes, what fills the story are scenes of men eating, drinking, and making their hearts merry. We needn't overstate the author's intent, but the irony is clear: <mark>he went to restore a relationship, yet the heart of the very person to be restored gradually vanishes from the story</mark>.", "In verses 1–3, the woman was at the center of the story. But from verse 4 on, the father and the Levite eat, drink, and decide whether to stay or go. The woman — the very reason for the trip — says not a single word. Human dignity doesn't collapse all at once. <mark>First we stop listening to someone's voice; then we stop asking their opinion; and at some point we treat them not as a person but as something needed for our decisions.</mark> Later in chapter 19, this appears in a far more tragic form.", "The text also records time in detail: the morning of the fourth day, the morning of the fifth day, and then the day declining. It's a clock preparing for what follows. The father reasonably urges, \"The day is drawing to a close; stay this night, and tomorrow rise early and go,\" but this time the Levite refuses, sets out late in the afternoon, and comes <mark>opposite Jebus (that is, Jerusalem)</mark>. This late departure leads into the night at Gibeah."], "points": ["Not listening to someone's heart, ignoring their voice, putting my convenience and judgment first — when such small choices repeat, they can lead to the collapse of an entire community."]}, {"title": "Application · Worship Continues in How I Treat the One Person in Front of Me", "paragraphs": ["In chapters 17–18, people worshiped God their own way. Entering chapter 19, they begin treating other people their own way too. These aren't separate problems. <mark>Once we start fitting God to our needs, we end up fitting people to our needs and judgments as well.</mark> So worship and life cannot be separated. We can't worship God on Sunday and treat people carelessly on Monday; we can't say we love God and ignore the heart of the person closest to us.", "When a lawyer asked about the greatest commandment, Jesus said, <mark>\"You shall love the Lord your God with all your heart and with all your soul and with all your mind,\"</mark> and immediately added, <mark>\"You shall love your neighbor as yourself.\"</mark> For whoever loves God cannot treat carelessly the people God loves.", "We need to be more careful with those closest to us. Because we're used to them, we can stop listening to our spouse, stop asking about our children's hearts, take our parents' hearts for granted, and treat those we serve alongside as tools for ministry. But <mark>people are not tools for ministry — they are people God loves</mark>. Jesus stopped for the one everyone else passed by, listened to the voiceless, drew the marginalized close, and finally gave His life for us.", "True worship doesn't end inside the sanctuary on Sunday. It continues in how I treat the one person I meet today. <mark>Love for God and love for neighbor are not two separate faiths.</mark> It is one heart loving one God — turned toward God in worship, and toward our neighbor in our relationships."], "points": ["If you confess that you love God, start today by looking again into the heart of the person closest to you. See the one beside you once more as someone who bears the image of God."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I truly listen to the hearts of my family and those close to me, or take them for granted because they're familiar."}, {"key": "c2", "text": "I checked whether I've made decisions 'for someone's sake' without ever asking for their opinion."}, {"key": "c3", "text": "I reflected on whether I honor those in my church and community who are weaker or quieter than me as full persons."}, {"key": "c4", "text": "I checked whether my Sunday worship and the way I treat people during the week have become separated."}], "s4heading": "One-Line Reflection", "memoHint": "Who is the one person close to me whom I've tried to 'bring back' lately without really hearing their heart?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Speak to Their Heart", "value": "Ask someone close to you, 'How is your heart these days?' and listen to the end without interrupting"}, {"key": "act2", "label": "Ask Before Deciding", "value": "Before making a decision that involves family or coworkers, ask what they think first"}, {"key": "act3", "label": "Hear the Quiet Voice", "value": "Reach out first to someone in your community who is quiet or overlooked and check in on them"}, {"key": "act4", "label": "Warm Hospitality", "value": "Show hospitality to one person today — a meal, a cup of tea, or a warm word"}, {"key": "act5", "label": "Memorize the Two Commandments", "value": "Memorize Matthew 22:37–39 and confess love for God and love for neighbor as one"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You for the love of Jesus, who stopped for the one others passed by, listened to the voiceless, and gave His life for us."}, {"key": "p2", "tag": "Repent", "text": "I repent that while saying I love You, I failed to hear the hearts of those closest to me and treated people as tools for my decisions and ministry."}, {"key": "p3", "tag": "Ask", "text": "Don't let my worship end inside the sanctuary. Make me someone who honors each person I meet today as one who bears Your image, and who speaks to their heart."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 7, Miyerkules", "ref": "Mga Hukom 19:1–10", "headline": "Nakaliligtaan Ba Natin<br>ang Puso ng Kapwa?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 19:1-10", "s1heading": "Salita Ngayon", "verse": "\"Ibigin mo ang Panginoon mong Diyos nang buong puso,<br>nang buong kaluluwa, at nang buong pag-iisip …<br>Ibigin mo ang iyong kapwa gaya ng iyong sarili.\"", "verseRef": "Mateo 22:37, 39", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Kapag Gumuho ang Pag-ibig sa Diyos, Gumuguho rin ang Pag-ibig sa Kapwa", "paragraphs": ["Sa mga kabanata 17 at 18, nakita natin kung paano kumalat sa buong lipi ni Dan ang pagkabulok na panrelihiyon ng sambahayan ni Mikas. Mukha itong pagsamba sa Diyos, ngunit sa totoo ay pananampalatayang gumagamit sa Diyos para sa sariling pangangailangan at tagumpay. Kung ipinakita ng kabanata 17–18 ang pagguho ng <mark>'kung paano natin sinasamba ang Diyos,'</mark> sa kabanata 19 naman nagsisimula ang pagguho ng <mark>'kung paano natin tinatrato ang kapwa.'</mark>", "Itinuturo ng unang bahagi ng Sampung Utos kung paano ibigin at sambahin ang Diyos; itinuturo naman ng natitira kung paano tratuhin ang ating kapwa. Ibinuod din ni Jesus ang Kautusan bilang pag-ibig sa Diyos at pag-ibig sa kapwa. Hindi mapaghihiwalay ang dalawa. Kapag nasira ang ating relasyon sa Diyos, nasisira rin ang puso at mata na ginagamit natin sa pagtingin sa tao.", "Nagsisimula ang kwento ngayon na parang ordinaryong kwento ng pamilya — isang lalaking pumunta sa Betlehem upang hanapin ang babaeng umalis sa kanya. Ngunit ang maliit na lamat na ito sa relasyon ay lumaki hanggang sa kamatayan ng isang babae, sa karahasan sa Gibea, at sa digmaang sibil na halos pumawi sa isang buong lipi. <mark>Ang huling pagguho sa Mga Hukom ay hindi nagsimula sa digmaan, kundi sa hindi tunay na pagkakita sa puso ng isang tao.</mark>"], "points": ["Kapag umuuga ang aking relasyon sa Diyos, anong mga lamat ang nagsisimulang lumitaw sa aking tahanan, iglesia, at mga relasyon?"]}, {"title": "Talata 1–2 · \"Nang mga Araw na Iyon, Nang Walang Hari sa Israel\"", "paragraphs": ["Hindi lamang nagsisimula ang kabanata 19 sa 'May isang Levita.' Sadyang idinagdag ng may-akda, <mark>\"Nang mga araw na iyon, nang walang hari sa Israel.\"</mark> Inulit ito pagkatapos ng 17:6 at 18:1, at ito ang susi sa pag-unawa sa mga susunod na pangyayari. Gayunman, hindi natin dapat pasimplehin ito bilang 'kung may haring tao lamang, maaayos na sana ang lahat.' Ang mas malalim na problema ay hindi tinanggap ng bayan ng Diyos ang Kanyang Salita at paghahari bilang pamantayan ng kanilang buhay — <mark>isang panahong ang bawat isa ay namuhay bilang hari ng sariling buhay</mark>.", "At may isa pang Levitang lumitaw. Ang Levita sa kabanata 17 ay pumunta mula Betlehem patungo sa kaburulan ng Efraim; ang Levita sa kabanata 19 ay pumunta sa kabaligtarang direksyon, mula Efraim patungo sa Betlehem. Parehong walang pangalan. Hindi ito problema ng isang kakaibang indibidwal — ipinapakita nitong <mark>maging ang mga dapat naglilingkod sa Salita at pagsamba ng Diyos ay natangay ng kaguluhan ng panahon</mark>.", "May babae (asawang-lingkod) ang Levita mula sa Betlehem — isang babaeng nasa loob ng kasal ngunit mas mababa ang katayuan sa lipunan kaysa sa karaniwang asawa. Madalas isalin ang talata 2 na siya ay 'naging di-tapat' at umalis, ngunit hindi ito mapapatunayan ng teksto lamang. May mga sinaunang salin na bumabasa nitong 'nagalit siya sa kanya' o 'tinanggihan niya siya.' Ang tiyak ay may malubhang alitan sa pagitan nila, at umuwi siya sa bahay ng kanyang ama, kung saan <mark>nanatiling sira ang relasyon nang apat na buwan</mark>."], "points": ["Hindi laging nagsisimula sa malaking pangyayari ang pagguho ng isang komunidad. Maaari itong magsimula sa maliliit na pasya at maliliit na lamat — sa hindi paggalang sa isang tao."]}, {"title": "Talata 3 · \"Upang Magsalita sa Kanyang Puso\"", "paragraphs": ["Pagkaraan ng apat na buwan, pumunta ang Levita sa Betlehem. Maganda ang paglalarawan ng Kasulatan sa kanyang layunin: <mark>\"upang kausapin siya nang malumanay at ibalik siya.\"</mark> Sa literal na orihinal, <mark>'upang magsalita sa kanyang puso.'</mark> Sa simula, malinaw na mabuti ang kanyang layunin. Hindi siya pumunta upang sapilitang kaladkarin siya pabalik, kundi upang makipag-usap, manghikayat, at ibalik ang relasyon. Ang pagdadala niya ng isang lingkod at dalawang asno ay nagpapakitang handa siyang iuwi siya.", "Dinala siya ng babae sa bahay ng kanyang ama, at masayang tinanggap siya ng ama. Sa panlabas, mukhang naibalik ang relasyon. Ngunit may mahalagang tanong na natitira: <mark>talaga bang nagsalita siya sa kanyang puso?</mark> Hindi itinala ng teksto ang usapang iyon.", "Ang 'nagpasya kaming bumalik nang magkasama' ay hindi kapareho ng 'tunay nang naibalik ang relasyon.' Ang pagpapanumbalik ng relasyon ay nagsisimula hindi sa pagbabalik sa isang tao, kundi sa <mark>pakikinig sa puso ng taong iyon</mark>. Maaari nating sabihing nagpapasya tayo para sa kapakanan ng isang tao at hindi pa rin marinig ang kanyang puso — sa tahanan, sa iglesia, at sa pamumuno."], "points": ["Maaaring nasa gitna ng kwento ang isang tao at hindi pa rin tratuhin bilang tao. Kontento na ba ako sa 'pagbabalik' sa kanila habang nilalampasan ang pakikinig sa kanilang puso?"]}, {"title": "Talata 4–10 · Masaya ang Puso ng mga Lalaki, Ngunit Naglaho ang Tinig ng Babae", "paragraphs": ["Pinigilan ng ama ng babae ang Levita. Tatlong araw silang kumain, uminom, at nanatili. Nang subukan niyang umalis sa ikaapat na araw, sinabi ng ama, \"Palakasin mo ang iyong puso sa kaunting tinapay, pagkatapos ay umalis ka,\" at muli, \"Magpalipas ka ng gabi at pasayahin mo ang iyong puso.\" Isang dahilan kung bakit ito itinala nang mahaba ay ang <mark>pagkamapagpatuloy</mark>. Paulit-ulit na sinasabi ng ama sa Betlehem, 'Manatili ka pa, kumain ka muna.' Ngunit di-nagtagal sa Gibea, eksaktong kabaligtaran: nakaupo ang mga manlalakbay sa plasa, at walang nagpatuloy sa kanila. Lalong pinalinaw ng mainit na pagtanggap sa Betlehem ang lamig ng Gibea.", "Sa orihinal na wika, may isang salitang paulit-ulit: <mark>'puso' (lev)</mark>. Sa talata 3, dumating ang Levita upang magsalita sa 'kanyang puso' (ng babae). Ngunit sa talata 5, 6, 8, at 9, paulit-ulit nating naririnig, 'palakasin mo ang iyong puso,' 'pasayahin mo ang iyong puso.' Ang layunin ng paglalakbay ay ang puso ng babae, ngunit habang lumilipas ang panahon, ang pumupuno sa kwento ay mga eksena ng mga lalaking kumakain, umiinom, at nagpapasaya ng kanilang puso. Hindi natin kailangang palakihin ang intensyon ng may-akda, ngunit malinaw ang kabalintunaan: <mark>pumunta siya upang ibalik ang relasyon, ngunit unti-unting naglaho sa kwento ang puso ng mismong taong dapat ibalik</mark>.", "Sa talata 1–3, ang babae ang nasa gitna ng kwento. Ngunit mula talata 4, ang ama at ang Levita ang kumakain, umiinom, at nagpapasya kung mananatili o aalis. Ang babae — ang mismong dahilan ng paglalakbay — ay hindi nagsalita kahit isang salita. Hindi biglang gumuguho ang dignidad ng tao. <mark>Una, tumitigil tayong makinig sa kanyang tinig; sunod, tumitigil tayong itanong ang kanyang opinyon; at sa isang punto, tinatrato na natin siya hindi bilang tao kundi bilang bagay na kailangan sa ating mga desisyon.</mark> Sa bandang huli ng kabanata 19, lilitaw ito sa mas trahedyang anyo.", "Detalyado ring itinala ng teksto ang oras: umaga ng ikaapat na araw, umaga ng ikalimang araw, at paglubog ng araw. Isa itong orasang naghahanda sa susunod na mangyayari. Makatwirang hinimok ng ama, \"Gumagabi na; magpalipas ka ng gabing ito, at bukas ay gumising nang maaga at umalis,\" ngunit sa pagkakataong ito ay tumanggi ang Levita, umalis sa hapon, at dumating <mark>sa tapat ng Jebus (na siyang Jerusalem)</mark>. Ang huling pag-alis na ito ang humantong sa gabi sa Gibea."], "points": ["Ang hindi pakikinig sa puso ng isang tao, ang pagbalewala sa kanyang tinig, ang pag-uuna sa sarili kong kaginhawahan at paghatol — kapag naulit ang maliliit na pasyang ito, maaari itong humantong sa pagguho ng buong komunidad."]}, {"title": "Aplikasyon · Nagpapatuloy ang Pagsamba sa Paraan ng Pagtrato Ko sa Taong Kaharap Ko", "paragraphs": ["Sa kabanata 17–18, sinamba ng mga tao ang Diyos ayon sa sarili nilang paraan. Pagpasok ng kabanata 19, sinimulan na rin nilang tratuhin ang kapwa ayon sa sarili nilang paraan. Hindi ito magkahiwalay na problema. <mark>Kapag sinimulan nating iakma ang Diyos sa ating pangangailangan, iaakma rin natin ang tao sa ating pangangailangan at paghatol.</mark> Kaya hindi mapaghihiwalay ang pagsamba at ang buhay. Hindi tayo maaaring sumamba sa Diyos tuwing Linggo at tratuhin nang basta-basta ang tao tuwing Lunes; hindi natin masasabing iniibig natin ang Diyos habang binabalewala ang puso ng taong pinakamalapit sa atin.", "Nang itanong ng isang dalubhasa sa Kautusan kung alin ang pinakadakilang utos, sinabi ni Jesus, <mark>\"Ibigin mo ang Panginoon mong Diyos nang buong puso, nang buong kaluluwa, at nang buong pag-iisip,\"</mark> at agad na idinagdag, <mark>\"Ibigin mo ang iyong kapwa gaya ng iyong sarili.\"</mark> Sapagkat ang umiibig sa Diyos ay hindi maaaring tratuhin nang basta-basta ang mga taong iniibig ng Diyos.", "Kailangan nating maging mas maingat sa mga pinakamalapit sa atin. Dahil sanay na tayo sa kanila, maaari tayong tumigil sa pakikinig sa ating asawa, tumigil sa pagtatanong tungkol sa puso ng ating mga anak, ipagwalang-bahala ang puso ng ating mga magulang, at tratuhin ang mga kasama nating naglilingkod bilang kasangkapan sa ministeryo. Ngunit <mark>ang tao ay hindi kasangkapan sa ministeryo — sila ay mga taong iniibig ng Diyos</mark>. Huminto si Jesus para sa taong nilalampasan ng iba, nakinig sa mga walang tinig, inilapit ang mga itinataboy, at sa huli ay ibinigay ang Kanyang buhay para sa atin.", "Ang tunay na pagsamba ay hindi nagtatapos sa loob ng santuwaryo tuwing Linggo. Nagpapatuloy ito sa paraan ng pagtrato ko sa isang taong makakasalamuha ko ngayon. <mark>Ang pag-ibig sa Diyos at pag-ibig sa kapwa ay hindi dalawang magkahiwalay na pananampalataya.</mark> Ito ay iisang pusong umiibig sa iisang Diyos — nakaharap sa Diyos sa pagsamba, at nakaharap sa kapwa sa ating mga relasyon."], "points": ["Kung ipinapahayag mong iniibig mo ang Diyos, magsimula ngayon sa muling pagtingin sa puso ng taong pinakamalapit sa iyo. Tingnan muli ang katabi mo bilang taong nagdadala ng larawan ng Diyos."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung tunay akong nakikinig sa puso ng aking pamilya at mga malalapit sa akin, o ipinagwawalang-bahala ko sila dahil sanay na ako sa kanila."}, {"key": "c2", "text": "Sinuri ko kung nagpasya ako 'para sa kapakanan' ng isang tao nang hindi man lang itinatanong ang kanyang opinyon."}, {"key": "c3", "text": "Pinag-isipan ko kung iginagalang ko bilang buong tao ang mga mas mahina o mas tahimik kaysa sa akin sa aking iglesia at komunidad."}, {"key": "c4", "text": "Sinuri ko kung nagkahiwalay na ang aking pagsamba tuwing Linggo at ang paraan ng pagtrato ko sa tao sa buong linggo."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sino ang isang taong malapit sa akin na sinubukan kong 'ibalik' kamakailan nang hindi talaga naririnig ang kanyang puso?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Magsalita sa Kanilang Puso", "value": "Tanungin ang isang malapit sa iyo, 'Kumusta ang puso mo nitong mga araw?' at makinig hanggang dulo nang hindi sumasabad"}, {"key": "act2", "label": "Magtanong Bago Magpasya", "value": "Bago gumawa ng desisyong may kinalaman sa pamilya o katrabaho, itanong muna ang kanilang iniisip"}, {"key": "act3", "label": "Pakinggan ang Tahimik na Tinig", "value": "Unang lapitan ang isang tahimik o nakaliligtaang tao sa iyong komunidad at kumustahin siya"}, {"key": "act4", "label": "Mainit na Pagtanggap", "value": "Magpakita ng pagkamapagpatuloy sa isang tao ngayon — isang pagkain, isang tasa ng tsaa, o isang mainit na salita"}, {"key": "act5", "label": "Isaulo ang Dalawang Utos", "value": "Isaulo ang Mateo 22:37–39 at ipahayag ang pag-ibig sa Diyos at pag-ibig sa kapwa bilang iisa"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat sa pag-ibig ni Jesus, na huminto para sa taong nilalampasan ng iba, nakinig sa mga walang tinig, at ibinigay ang Kanyang buhay para sa amin."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako na habang sinasabi kong iniibig Kita, hindi ko napakinggan ang puso ng mga pinakamalapit sa akin at tinrato ko ang tao bilang kasangkapan sa aking mga desisyon at ministeryo."}, {"key": "p3", "tag": "Kahilingan", "text": "Huwag Mong hayaang magtapos sa loob ng santuwaryo ang aking pagsamba. Gawin Mo akong taong gumagalang sa bawat makakasalamuha ko ngayon bilang nagdadala ng Iyong larawan, at nagsasalita sa kanilang puso."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
