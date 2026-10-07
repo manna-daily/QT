@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/8(목) 큐티 · 사사기 19:11–21">
+<meta property="og:description" content="하나님의 백성인데 왜 아무도 문을 열지 않았을까요?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 8일 목요일", "ref": "사사기 19장 11–21절", "headline": "하나님의 백성인데<br>왜 아무도 문을 열지 않았을까요?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 19:11-21", "s1heading": "오늘의 말씀", "verse": "\"너희는 세상의 빛이라 …<br>이같이 너희 빛이 사람 앞에 비치게 하여<br>그들로 너희 착한 행실을 보고<br>하늘에 계신 너희 아버지께 영광을 돌리게 하라\"", "verseRef": "마태복음 5:14, 16", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 이방인의 도시를 피했는데, 하나님의 백성의 도시가 더 차가웠습니다", "paragraphs": ["레위인은 장인의 집에서 출발이 계속 늦어졌고, 해가 기울기 시작한 뒤에야 에브라임 산지로 돌아가는 길에 나섰습니다. 해 질 무렵 여부스 근처에 이르자 종이 \"여기서 유숙합시다\"라고 하지만, 레위인은 거절합니다. 여부스는 아직 이방 사람들이 사는 성읍이었기 때문입니다. 그는 <mark>이방인의 도시보다 이스라엘 사람들이 사는 성읍이 더 안전하다</mark>고 생각하고 기브아로 갑니다. 이 판단 자체는 충분히 이해할 만합니다.", "그런데 도착해 보니 정반대였습니다. 베들레헴에서는 떠나려 해도 \"더 있다 가라\"고 붙잡았는데, 기브아에서는 나그네가 밤에 광장에 앉아 있어도 아무도 바라보지 않고, 아무도 묻지 않고, <mark>아무도 문을 열어 주지 않았습니다</mark>. 결국 그들을 받아 준 사람은 기브아 사람이 아니라 그곳에 나그네처럼 살던 한 노인이었습니다.", "그들에게는 먹을 것도, 나귀의 꼴도, 포도주도 있었습니다. 필요한 것은 하룻밤 안전하게 머물 공간뿐이었습니다. 그러므로 <mark>문제는 돈이 아니라 마음</mark>이었습니다. 오늘 본문은 묻습니다. 하나님의 백성이라는 정체성은 무엇으로 증명됩니까? 이름이나 소속이 아니라, 하나님의 성품을 드러내는 삶으로 나타나야 합니다."], "points": ["나는 이름만 하나님의 백성인 그리스도인입니까, 아니면 내 삶을 통해 하나님의 성품을 드러내고 있습니까?"]}, {"title": "11–14절 · 여부스를 지나 기브아로 — 이스라엘이 가나안처럼 되었습니다", "paragraphs": ["여부스 가까이 이르렀을 때 날은 이미 저물어 가고 있었습니다. 종의 제안은 현실적으로 합리적이었습니다. 그러나 레위인은 <mark>\"이스라엘 자손에게 속하지 아니한 이방 사람의 성읍으로 들어갈 것이 아니니 기브아로 나아가리라\"</mark>고 말합니다. 그의 생각은 분명했습니다. 여부스는 이방인의 도시니 위험할 수 있고, 기브아는 이스라엘의 도시니 안전할 것이다.", "저자는 바로 이 기대를 뒤집습니다. 그가 피한 곳은 이방인의 도시였지만, <mark>실제 위험은 하나님의 백성이 사는 도시 안에 있었습니다</mark>. 이것이 사사기 후반부의 충격입니다. 문제는 더 이상 가나안 사람들이 아닙니다. 이스라엘이 가나안처럼 되어 버렸습니다. 17–18장에서는 가나안처럼 예배하기 시작했고, 19장에서는 가나안처럼 살아가기 시작합니다.", "사사기의 흐름은 이렇습니다. 가나안을 몰아내지 못했고, 가나안과 함께 살았고, 가나안의 방식을 받아들였고, 결국 가나안 사람처럼 되었습니다. 하나님의 백성이 사명과 구별됨을 잃으면 주변의 가치에 동화될 수밖에 없습니다. <mark>가장 위험한 것은 세상이 교회 같아지는 것이 아니라, 하나님의 백성이 세상과 다르지 않게 되는 것</mark>입니다.", "그들이 기브아 가까이 이르렀을 때 해가 졌습니다. 넷째 날, 다섯째 날, 해가 기울고, 이제는 해가 졌습니다. 작은 결정과 지체가 쌓여 그들을 기브아의 밤으로 데려왔습니다. 다만 늦은 출발은 사건의 배경일 뿐, 이후 기브아에서 벌어질 죄의 원인은 아닙니다. <mark>폭력의 책임은 폭력을 행한 사람들에게 있습니다</mark>."], "points": ["교회가 세상을 변화시키지 못하고 오히려 세상의 가치가 교회를 바꾸어 놓고 있지는 않습니까? 나는 어느 부분에서 세상과 다르지 않게 살고 있습니까?"]}, {"title": "15절 · \"영접하여 유숙하게 하는 자가 없었더라\"", "paragraphs": ["그들은 기브아 성읍에 들어가 광장에 앉습니다. 성경은 짧지만 무거운 말을 남깁니다. <mark>\"그들을 집으로 영접하여 유숙하게 하는 자가 없었더라\"</mark>. 베들레헴과 비교해 보십시오. 그곳에서는 떠나려는 사람을 붙잡고, 먹이고, 마시게 하고, 하룻밤 더 자고 가라고 했습니다. 기브아에서는 밤이 되었고, 나그네가 광장에 앉아 있는데 아무도 관심을 두거나 문을 열지 않습니다.", "이것은 단순히 불친절한 동네 이야기가 아닙니다. 공동체가 이미 안에서부터 무너지고 있다는 표시입니다. 더 무서운 것은 아직 아무도 그들을 해치지 않았다는 사실입니다. 아직 폭력은 없습니다. 그저 무관심만 있습니다. 그런데 <mark>바로 그 무관심이 다음에 이어질 끔찍한 폭력의 전조</mark>가 됩니다.", "신앙의 붕괴는 환대의 붕괴로 나타납니다. 17–18장에서는 예배가 무너졌고, 19장에서는 사람을 대하는 방식이 무너집니다. 이 둘은 따로 있지 않습니다. 하나님을 사랑한다고 말하면서 낯선 사람과 약한 사람을 외면한다면, 예배의 문제는 이미 우리의 관계 속에서 드러나고 있는 것입니다."], "points": ["공동체가 무너지기 시작하면 가장 먼저 사라지는 것 중 하나가 '나와 상관없는 사람을 돌보는 마음'입니다. 나는 누구를 '나와 상관없는 사람'으로 여기고 있습니까?"]}, {"title": "16–21절 · 눈을 든 한 노인, 문을 연 나그네", "paragraphs": ["드디어 한 노인이 등장합니다. 밭일을 마치고 돌아오던 사람입니다. 저자는 굳이 그의 출신을 밝힙니다. 그는 <mark>에브라임 산지 사람으로 기브아에 거류하던 사람</mark>이었고, \"그곳 사람들은 베냐민 자손이더라\"고 덧붙입니다. 기브아 토박이 베냐민 사람들은 아무도 나그네를 받아 주지 않았는데, 받아 준 사람은 그곳에서 나그네처럼 살던 사람이었습니다.", "17절은 그의 첫 행동을 이렇게 기록합니다. <mark>\"노인이 눈을 들어 성읍 광장에 나그네가 있는 것을 본지라\"</mark>. 기브아 사람들이 그들을 물리적으로 못 본 것은 아닙니다. 다만 관심을 두지 않았습니다. 노인은 보았고, 그리고 물었습니다. \"어디로 가며 어디서 왔느냐?\" <mark>환대는 집 문을 열기 전에 먼저 눈을 여는 데서 시작</mark>됩니다. 무관심의 시작은 보지 않는 것이고, 사랑의 시작은 보는 것입니다. 선한 사마리아인 비유에서도 종교적인 사람들은 보고 지나갔지만, 사마리아인은 보고 불쌍히 여겼습니다.", "레위인은 \"나를 집으로 영접하는 사람이 없나이다\"라고 말합니다. 이스라엘 사람이 이스라엘의 성읍에서 하는 슬픈 말입니다. 그는 첩을 \"당신의 여종\"이라 부르는데, 고대의 정중한 대화에서는 자신과 일행을 낮추어 그렇게 말하기도 했으므로 곧바로 노예 취급이라 단정할 수는 없습니다. 그러나 이 여인은 점점 이름도, 목소리도, 결정권도 잃어 갑니다. 원문에서 15절은 '그들을' 영접할 자가 없었다고 복수로 쓰지만, 21절은 노인이 <mark>'그를'</mark> 집으로 데려갔다고 단수로 씁니다. 문법 하나로 큰 교훈을 만들 필요는 없지만, 여인이 계속 주변으로 밀려나는 효과는 분명합니다.", "노인은 말합니다. <mark>\"그대는 안심하라(샬롬). 그대의 쓸 것은 모두 내가 담당하리니 광장에서는 유숙하지 말라\"</mark>. 기브아 전체에서 찾을 수 없던 평안의 말이 한 나그네의 입에서 나옵니다. 레위인은 필요한 것이 다 있다고 했지만, 노인은 그래도 필요한 것은 내가 책임지겠다고 합니다. 이것이 환대입니다. 부담을 먼저 계산하기보다 지금 이 사람에게 무엇이 필요한지를 봅니다. 그는 그들을 집으로 데려가 나귀에게 먹이를 주고, 발을 씻게 하고, 먹고 마시게 합니다. 잠시 안심이 되지만, 본문은 바로 다음 절에서 시작될 폭풍 직전에 멈춥니다."], "points": ["하나님 나라의 사람은 지나치는 사람이 아니라 보는 사람이며, 보는 데서 멈추지 않고 문을 여는 사람입니다."]}, {"title": "적용 · 하나님의 백성다움은 이름이 아니라 삶으로 드러납니다", "paragraphs": ["오늘 본문의 구조를 다시 보십시오. 베들레헴은 지나칠 정도로 환대했습니다. 여부스는 이방인의 도시라 위험하다며 지나쳤습니다. 기브아는 하나님의 백성의 도시였지만 아무도 환대하지 않았습니다. 그리고 유일하게 문을 연 사람은 또 다른 나그네였습니다. <mark>이스라엘이라는 이름이 이스라엘다운 삶을 보장하지 않습니다</mark>.", "이름도, 지파도, 성읍도 남아 있었습니다. 겉으로는 여전히 하나님의 백성이었습니다. 그러나 삶에서 하나님의 성품이 사라졌습니다. 왜 그렇게 되었습니까? <mark>사명을 잃었기 때문</mark>입니다. 하나님은 이스라엘을 이름만 다른 민족으로 부르신 것이 아니라, 하나님이 어떤 분이신지를 삶으로 보여 주도록 부르셨습니다. 사명을 잃자 구별됨은 이름만 남고, 삶은 주변 세상과 똑같아졌습니다.", "교회라는 이름이 있다고 자동으로 세상과 다른 것이 아닙니다. 성경을 들고 예배하고 찬양해도, 외로운 사람을 돌보지 않고 낯선 사람을 외면하고 약한 사람에게 문을 닫는다면, 겉모양은 구별되어도 실제 삶은 세상보다 더 차가울 수 있습니다. 예수님은 <mark>\"너희는 세상의 빛이라\"</mark>고 하셨습니다. 빛은 \"나는 빛이다\"라고 계속 말하지 않습니다. 그저 비춥니다.", "선한 사마리아인 비유 끝에 예수님은 물으셨습니다. <mark>\"누가 강도 만난 자의 이웃이 되겠느냐?\"</mark> 같은 민족, 같은 종교, 같은 공동체가 마지막 기준이 아니었습니다. 누가 그를 보고, 가까이 가고, 돌보았는가가 중요했습니다. 기브아 사람들은 같은 이스라엘 사람이었지만 문을 닫았고, 노인은 외지인이었지만 보았고, 다가갔고, 문을 열었습니다."], "points": ["내가 매일 지나치고 있는 사람은 누구입니까? 나는 누구에게 문을 닫고 있습니까? 예수님을 따라 사명을 다시 붙든다면, 세상이 지나치는 사람을 보고 세상이 닫는 문을 열 수 있습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "교회에 속해 있다는 사실만으로 만족하고, 삶으로 하나님의 성품을 드러내는 일은 소홀히 하지 않았는지 돌아봤다"}, {"key": "c2", "text": "내 주변에서 매일 보면서도 관심 없이 지나치고 있는 사람이 누구인지 떠올려 봤다"}, {"key": "c3", "text": "부담을 먼저 계산하느라 낯선 사람이나 약한 사람에게 마음의 문을 닫지 않았는지 점검했다"}, {"key": "c4", "text": "내 삶의 어느 부분이 세상의 가치에 동화되어 세상과 다르지 않게 되었는지 돌아봤다"}], "s4heading": "묵상 한 줄", "memoHint": "오늘 내가 '눈을 들어' 바라보고 문을 열어야 할 한 사람은 누구입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "눈을 들어 보기", "value": "오늘 평소 지나치던 한 사람을 의식적으로 바라보고 이름이나 안부를 물어보기"}, {"key": "act2", "label": "먼저 묻기", "value": "노인처럼 '어디서 왔고 어디로 가세요?' 하고 낯선 사람이나 새 신자에게 먼저 말 걸기"}, {"key": "act3", "label": "문 열기", "value": "집이나 시간, 식사 자리를 한 사람에게 열어 작은 환대를 실천하기"}, {"key": "act4", "label": "샬롬 전하기", "value": "불안하거나 외로운 한 사람에게 '안심하세요, 함께할게요'라는 평안의 말 건네기"}, {"key": "act5", "label": "빛으로 살기", "value": "마태복음 5:14–16을 묵상하며, 말보다 행동으로 하나님을 드러낼 한 가지를 정해 실천하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "길가에 쓰러진 우리를 지나치지 않고 보시고, 가까이 오셔서 문을 열어 주신 예수님의 사랑에 감사합니다"}, {"key": "p2", "tag": "회개", "text": "하나님의 백성이라는 이름에 만족하면서, 낯선 사람과 약한 사람을 보고도 지나치고 마음의 문을 닫았던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "세상과 다르지 않게 사는 이름뿐인 신앙이 아니라, 지나치던 사람을 보고 문을 여는 빛 된 삶으로 하나님의 성품을 드러내게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 8, Thursday", "ref": "Judges 19:11–21", "headline": "God's People —<br>So Why Did No One Open the Door?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 19:11-21", "s1heading": "Today's Word", "verse": "\"You are the light of the world …<br>In the same way, let your light shine before others,<br>so that they may see your good works<br>and give glory to your Father who is in heaven.\"", "verseRef": "Matthew 5:14, 16", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · He Avoided a Foreign City — but the City of God's People Was Colder", "paragraphs": ["The Levite's departure from his father-in-law's house kept being delayed, and only after the sun began to decline did he set out for the hill country of Ephraim. Near Jebus at sunset, his servant says, \"Let's spend the night here,\" but the Levite refuses, because Jebus was still a city of foreigners. He thinks <mark>a city of Israelites will be safer than a foreign one</mark>, and goes on to Gibeah. That judgment is quite understandable.", "But when they arrive, it's the exact opposite. In Bethlehem, he was urged, \"Stay a little longer,\" even as he tried to leave. In Gibeah, travelers sit in the square at night, and no one looks, no one asks, and <mark>no one opens a door</mark>. In the end, the one who takes them in isn't a man of Gibeah, but an old man who was himself living there as a sojourner.", "They had food, fodder for the donkeys, and wine. All they needed was a safe place for one night. So <mark>the problem wasn't money — it was the heart</mark>. Today's passage asks: what proves our identity as God's people? Not a name or a membership, but a life that reveals God's character."], "points": ["Am I a Christian who belongs to God's people in name only — or am I revealing God's character through my life?"]}, {"title": "Verses 11–14 · Past Jebus to Gibeah — Israel Had Become Like Canaan", "paragraphs": ["As they neared Jebus, the day was already far spent. The servant's suggestion was realistic. But the Levite says, <mark>\"We will not turn aside into the city of foreigners, who do not belong to the people of Israel, but we will pass on to Gibeah.\"</mark> His reasoning was clear: Jebus is a foreign city, so it may be dangerous; Gibeah is an Israelite city, so it will be safe.", "The author overturns exactly that expectation. He avoided a foreign city, but <mark>the real danger lay inside the city of God's people</mark>. This is the shock of the latter part of Judges. The problem is no longer the Canaanites. Israel has become like Canaan. In chapters 17–18, they began to worship like Canaan; in chapter 19, they begin to live like Canaan.", "The flow of Judges is this: they failed to drive out Canaan, lived alongside Canaan, adopted Canaan's ways, and finally became like Canaanites. When God's people lose their mission and distinctiveness, they inevitably assimilate into the values around them. <mark>The greatest danger isn't the world becoming like the church, but God's people becoming no different from the world.</mark>", "As they near Gibeah, the sun goes down. The fourth day, the fifth day, the declining sun — and now sunset. Small decisions and delays added up and brought them into the night at Gibeah. Yet the late departure is only the backdrop to what follows, not the cause of the sin committed in Gibeah. <mark>Responsibility for violence lies with those who commit it.</mark>"], "points": ["Instead of the church changing the world, are the world's values changing the church? In what area of my life am I no different from the world?"]}, {"title": "Verse 15 · \"No One Took Them into His House to Spend the Night\"", "paragraphs": ["They enter Gibeah and sit down in the town square. Scripture leaves a short but heavy line: <mark>\"No one took them into his house to spend the night.\"</mark> Compare Bethlehem. There, they held back the one who wanted to leave, fed him, gave him drink, and urged him to stay one more night. In Gibeah, night has fallen, travelers sit in the square, and no one pays attention or opens a door.", "This isn't just a story about an unfriendly town. It's a sign the community was already collapsing from within. What's more frightening is that no one has harmed them yet. There's no violence yet — only indifference. But <mark>that very indifference is the forerunner of the terrible violence to come</mark>.", "The collapse of faith shows up as the collapse of hospitality. In chapters 17–18, worship collapsed; in chapter 19, the way people are treated collapses. These don't exist separately. If we say we love God but turn away from strangers and the weak, the problem in our worship is already showing in our relationships."], "points": ["When a community begins to collapse, one of the first things to vanish is the heart that cares for 'people who have nothing to do with me.' Whom do I regard as having nothing to do with me?"]}, {"title": "Verses 16–21 · An Old Man Who Lifted His Eyes, a Sojourner Who Opened His Door", "paragraphs": ["At last an old man appears, coming home from work in the field. The author makes a point of telling us where he's from: he was <mark>from the hill country of Ephraim, sojourning in Gibeah</mark> — and adds, \"The men of the place were Benjaminites.\" None of Gibeah's native Benjaminites took in the travelers; the one who did was himself living there as a sojourner.", "Verse 17 records his first action: <mark>\"He lifted up his eyes and saw the traveler in the open square of the city.\"</mark> The people of Gibeah didn't physically fail to see them — they simply didn't care. The old man saw, and then asked, \"Where are you going? Where do you come from?\" <mark>Hospitality begins by opening our eyes before opening our doors.</mark> Indifference begins with not seeing; love begins with seeing. In the parable of the Good Samaritan, too, the religious men saw and passed by, but the Samaritan saw and had compassion.", "The Levite says, \"No one has taken me into his house\" — a sad sentence from an Israelite in an Israelite town. He refers to his concubine as \"your female servant\"; in polite ancient speech, people humbled themselves and their companions this way, so we can't immediately conclude he treated her as a slave. Yet this woman keeps losing her name, her voice, and her say. In the original, verse 15 says no one received <mark>'them'</mark> (plural), but verse 21 says the old man brought <mark>'him'</mark> (singular) into his house. We needn't build a big lesson on one grammatical shift, but the effect of the woman being pushed to the margins is clear.", "The old man says, <mark>\"Peace be to you (shalom); I will care for all your wants. Only, do not spend the night in the square.\"</mark> The word of peace that couldn't be found anywhere in Gibeah comes from the mouth of a sojourner. The Levite said they had everything they needed, but the old man says, 'Even so, I'll take care of what you need.' That is hospitality: not first calculating the burden, but seeing what this person needs now. He brings them home, feeds the donkeys, has them wash their feet, and gives them food and drink. For a moment we feel relieved — but the passage stops just before the storm that begins in the very next verse."], "points": ["People of God's kingdom are not those who pass by, but those who see — and who don't stop at seeing, but open the door."]}, {"title": "Application · Being God's People Shows in Our Lives, Not Our Name", "paragraphs": ["Look again at the structure of today's passage. Bethlehem was hospitable almost to excess. Jebus was passed by as a dangerous foreign city. Gibeah was a city of God's people, yet no one showed hospitality. And the only one who opened a door was another sojourner. <mark>The name 'Israel' does not guarantee a life worthy of Israel.</mark>", "The name, the tribe, the town all remained. Outwardly they were still God's people. But God's character had vanished from their lives. Why? <mark>Because they had lost their mission.</mark> God didn't call Israel to be a nation that was different in name only, but to show through their lives who God is. Once they lost that mission, their distinctiveness remained only in name, and their lives became just like the world around them.", "Having the name 'church' doesn't automatically make us different from the world. We may carry Bibles, worship, and sing praise — but if we don't care for the lonely, turn away from strangers, and shut our doors to the weak, we may look distinct while our actual lives are colder than the world's. Jesus said, <mark>\"You are the light of the world.\"</mark> Light doesn't keep announcing, \"I am light.\" It simply shines.", "At the end of the parable of the Good Samaritan, Jesus asked, <mark>\"Which of these proved to be a neighbor to the man who fell among the robbers?\"</mark> The final standard wasn't the same nation, religion, or community. What mattered was who saw him, came near, and cared for him. The people of Gibeah were fellow Israelites, yet they shut their doors; the old man was an outsider, yet he saw, drew near, and opened his door."], "points": ["Whom do I pass by every day? To whom am I shutting my door? If we follow Jesus and take up our mission again, we can see those the world passes by and open the doors the world shuts."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I've been content just to belong to a church while neglecting to reveal God's character with my life."}, {"key": "c2", "text": "I thought about who I see every day around me yet pass by without care."}, {"key": "c3", "text": "I checked whether I've shut the door of my heart to strangers or the weak because I calculated the burden first."}, {"key": "c4", "text": "I reflected on which areas of my life have been absorbed by the world's values until I'm no different from the world."}], "s4heading": "One-Line Reflection", "memoHint": "Who is the one person I need to 'lift my eyes' to see and open my door to today?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Lift Your Eyes", "value": "Today, intentionally notice one person you usually pass by, and ask their name or how they're doing"}, {"key": "act2", "label": "Ask First", "value": "Like the old man, be the first to speak to a stranger or newcomer: 'Where are you from? Where are you headed?'"}, {"key": "act3", "label": "Open the Door", "value": "Open your home, your time, or a meal to one person as a small act of hospitality"}, {"key": "act4", "label": "Speak Shalom", "value": "Say a word of peace to someone anxious or lonely: 'Don't worry — I'm with you'"}, {"key": "act5", "label": "Live as Light", "value": "Meditate on Matthew 5:14–16 and choose one action, not just words, that reveals God today"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You for the love of Jesus, who did not pass us by as we lay wounded on the road, but saw us, came near, and opened the door to us."}, {"key": "p2", "tag": "Repent", "text": "I repent that, content with the name 'God's people,' I saw strangers and the weak yet passed them by and shut the door of my heart."}, {"key": "p3", "tag": "Ask", "text": "Instead of a faith in name only that lives no differently from the world, let me reveal Your character through a life of light — one that sees the overlooked and opens the door."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 8, Huwebes", "ref": "Mga Hukom 19:11–21", "headline": "Bayan ng Diyos —<br>Bakit Walang Nagbukas ng Pinto?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 19:11-21", "s1heading": "Salita Ngayon", "verse": "\"Kayo ang ilaw ng sanlibutan …<br>Gayundin naman, paliwanagin ninyo ang inyong ilaw sa harap ng mga tao,<br>upang makita nila ang inyong mabubuting gawa<br>at luwalhatiin ang inyong Ama na nasa langit.\"", "verseRef": "Mateo 5:14, 16", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Iniwasan Niya ang Lungsod ng mga Dayuhan — Ngunit Mas Malamig ang Lungsod ng Bayan ng Diyos", "paragraphs": ["Paulit-ulit na naantala ang pag-alis ng Levita mula sa bahay ng kanyang biyenan, at nang lumulubog na ang araw saka lamang siya umalis patungo sa kaburulan ng Efraim. Malapit sa Jebus sa paglubog ng araw, sinabi ng kanyang lingkod, \"Dito na tayo magpalipas ng gabi,\" ngunit tumanggi ang Levita, dahil lungsod pa rin ng mga dayuhan ang Jebus. Inisip niyang <mark>mas ligtas ang lungsod ng mga Israelita kaysa sa lungsod ng mga dayuhan</mark>, at nagpatuloy sa Gibea. Lubos na nauunawaan ang pasyang iyon.", "Ngunit pagdating nila, eksaktong kabaligtaran. Sa Betlehem, pinipigilan siya, \"Manatili ka pa,\" kahit paalis na siya. Sa Gibea, nakaupo ang mga manlalakbay sa plasa sa gabi, at walang tumitingin, walang nagtatanong, at <mark>walang nagbubukas ng pinto</mark>. Sa huli, ang tumanggap sa kanila ay hindi taga-Gibea, kundi isang matandang lalaking nakikipamayan lamang doon.", "May pagkain sila, kumpay para sa mga asno, at alak. Ang kailangan lamang nila ay ligtas na lugar para sa isang gabi. Kaya <mark>ang problema ay hindi pera — kundi ang puso</mark>. Nagtatanong ang talata ngayon: ano ang nagpapatunay ng ating pagkakakilanlan bilang bayan ng Diyos? Hindi pangalan o pagiging miyembro, kundi isang buhay na naghahayag ng pagkatao ng Diyos."], "points": ["Ako ba ay Kristiyanong kabilang sa bayan ng Diyos sa pangalan lamang — o inihahayag ko ba ang pagkatao ng Diyos sa pamamagitan ng aking buhay?"]}, {"title": "Talata 11–14 · Lumampas sa Jebus Patungo sa Gibea — Naging Gaya ng Canaan ang Israel", "paragraphs": ["Nang malapit na sila sa Jebus, gumagabi na. Makatotohanan ang mungkahi ng lingkod. Ngunit sinabi ng Levita, <mark>\"Hindi tayo liliko sa lungsod ng mga dayuhan na hindi kabilang sa bayan ng Israel; magpapatuloy tayo sa Gibea.\"</mark> Malinaw ang kanyang pangangatwiran: lungsod ng dayuhan ang Jebus, kaya maaaring mapanganib; lungsod ng Israel ang Gibea, kaya magiging ligtas.", "Eksaktong ang inaasahang iyon ang binaligtad ng may-akda. Iniwasan niya ang lungsod ng dayuhan, ngunit <mark>ang tunay na panganib ay nasa loob ng lungsod ng bayan ng Diyos</mark>. Ito ang pagkagulat sa huling bahagi ng Mga Hukom. Hindi na ang mga Cananeo ang problema. Naging gaya ng Canaan ang Israel. Sa kabanata 17–18, nagsimula silang sumamba gaya ng Canaan; sa kabanata 19, nagsimula silang mamuhay gaya ng Canaan.", "Ganito ang daloy ng Mga Hukom: hindi nila napalayas ang Canaan, namuhay silang kasama ng Canaan, tinanggap ang paraan ng Canaan, at sa huli ay naging gaya ng mga Cananeo. Kapag nawala sa bayan ng Diyos ang kanilang misyon at pagkakaiba, tiyak na makikihalo sila sa mga pinahahalagahan sa paligid. <mark>Ang pinakamalaking panganib ay hindi ang pagiging gaya ng iglesia ng mundo, kundi ang bayan ng Diyos na hindi na naiiba sa mundo.</mark>", "Paglapit nila sa Gibea, lumubog ang araw. Ikaapat na araw, ikalimang araw, palubog na araw — at ngayon, takipsilim. Ang maliliit na pasya at pagkaantala ay nagdagdag-dagdag at nagdala sa kanila sa gabi sa Gibea. Gayunman, ang huling pag-alis ay tagpuan lamang ng mga susunod na pangyayari, hindi sanhi ng kasalanang gagawin sa Gibea. <mark>Ang pananagutan sa karahasan ay nasa mga gumawa nito.</mark>"], "points": ["Sa halip na baguhin ng iglesia ang mundo, binabago ba ng mga pinahahalagahan ng mundo ang iglesia? Sa anong bahagi ng aking buhay ako hindi naiiba sa mundo?"]}, {"title": "Talata 15 · \"Walang Tumanggap sa Kanila sa Kanyang Bahay upang Magpalipas ng Gabi\"", "paragraphs": ["Pumasok sila sa Gibea at naupo sa plasa ng bayan. Nag-iwan ang Kasulatan ng maikli ngunit mabigat na linya: <mark>\"Walang tumanggap sa kanila sa kanyang bahay upang magpalipas ng gabi.\"</mark> Ihambing sa Betlehem. Doon, pinigilan nila ang gustong umalis, pinakain, pinainom, at hinimok na manatili pa ng isang gabi. Sa Gibea, gabi na, nakaupo ang mga manlalakbay sa plasa, at walang pumapansin o nagbubukas ng pinto.", "Hindi lamang ito kwento ng isang di-palakaibigang bayan. Tanda ito na gumuguho na ang komunidad mula sa loob. Ang mas nakakatakot ay wala pang nananakit sa kanila. Wala pang karahasan — kawalang-pakialam lamang. Ngunit <mark>ang kawalang-pakialam na iyon mismo ang pasimula ng kakila-kilabot na karahasang darating</mark>.", "Ang pagguho ng pananampalataya ay lumilitaw bilang pagguho ng pagkamapagpatuloy. Sa kabanata 17–18, gumuho ang pagsamba; sa kabanata 19, gumuho ang paraan ng pagtrato sa tao. Hindi magkahiwalay ang dalawa. Kung sinasabi nating iniibig natin ang Diyos ngunit tinatalikuran ang mga dayuhan at mahihina, lumilitaw na sa ating mga relasyon ang problema ng ating pagsamba."], "points": ["Kapag nagsisimulang gumuho ang isang komunidad, isa sa mga unang nawawala ay ang pusong nagmamalasakit sa 'mga taong walang kinalaman sa akin.' Sino ang itinuturing kong walang kinalaman sa akin?"]}, {"title": "Talata 16–21 · Isang Matandang Tumingala, Isang Dayuhang Nagbukas ng Pinto", "paragraphs": ["Sa wakas, lumitaw ang isang matandang lalaki, pauwi mula sa pagtatrabaho sa bukid. Sinadya ng may-akda na sabihin kung taga-saan siya: siya ay <mark>taga-kaburulan ng Efraim na nakikipamayan sa Gibea</mark> — at idinagdag, \"Ang mga tao sa lugar na iyon ay mga Benjamita.\" Walang katutubong Benjamita sa Gibea ang tumanggap sa mga manlalakbay; ang tumanggap ay isang taong nakikipamayan lamang doon.", "Itinala ng talata 17 ang kanyang unang ginawa: <mark>\"Tumingala siya at nakita ang manlalakbay sa plasa ng lungsod.\"</mark> Hindi naman pisikal na hindi nakita ng mga taga-Gibea ang mga ito — wala lang silang pakialam. Ang matanda ay nakakita, at pagkatapos ay nagtanong, \"Saan ka pupunta? Saan ka nanggaling?\" <mark>Nagsisimula ang pagkamapagpatuloy sa pagbubukas ng mata bago ang pagbubukas ng pinto.</mark> Ang kawalang-pakialam ay nagsisimula sa hindi pagtingin; ang pag-ibig ay nagsisimula sa pagtingin. Sa talinghaga ng Mabuting Samaritano rin, nakita at nilampasan ng mga relihiyosong tao, ngunit nakita at kinahabagan ng Samaritano.", "Sinabi ng Levita, \"Walang tumanggap sa akin sa kanyang bahay\" — malungkot na pangungusap ng isang Israelita sa isang bayan ng Israel. Tinawag niya ang kanyang babae na \"iyong aliping babae\"; sa magalang na pananalita noong sinaunang panahon, ganito nagpapakumbaba ang mga tao para sa sarili at kasama, kaya hindi agad masasabing tinrato niya siyang alipin. Gayunman, patuloy na nawawala sa babaeng ito ang kanyang pangalan, tinig, at karapatang magpasya. Sa orihinal, sinasabi ng talata 15 na walang tumanggap <mark>'sa kanila'</mark> (maramihan), ngunit sinasabi ng talata 21 na dinala ng matanda <mark>'siya'</mark> (isahan) sa bahay. Hindi natin kailangang bumuo ng malaking aral sa isang pagbabago sa gramatika, ngunit malinaw ang epekto ng patuloy na pagtulak sa babae sa gilid.", "Sinabi ng matanda, <mark>\"Kapayapaan sa iyo (shalom); ako ang bahala sa lahat ng iyong kailangan. Huwag ka lamang magpalipas ng gabi sa plasa.\"</mark> Ang salita ng kapayapaang hindi matagpuan saanman sa Gibea ay lumabas sa bibig ng isang dayuhan. Sinabi ng Levita na nasa kanila ang lahat ng kailangan, ngunit sinabi ng matanda, 'Gayunman, ako ang bahala sa kailangan mo.' Iyan ang pagkamapagpatuloy: hindi muna kinukuwenta ang pasanin, kundi tinitingnan kung ano ang kailangan ng taong ito ngayon. Dinala niya sila sa bahay, pinakain ang mga asno, pinahugasan ang kanilang mga paa, at binigyan sila ng pagkain at inumin. Sandali tayong nakahinga — ngunit huminto ang talata bago ang bagyong magsisimula sa mismong susunod na talata."], "points": ["Ang mga tao ng kaharian ng Diyos ay hindi yaong lumalampas, kundi yaong tumitingin — at hindi humihinto sa pagtingin, kundi nagbubukas ng pinto."]}, {"title": "Aplikasyon · Ang Pagiging Bayan ng Diyos ay Nakikita sa Buhay, Hindi sa Pangalan", "paragraphs": ["Tingnan muli ang balangkas ng talata ngayon. Halos labis ang pagkamapagpatuloy ng Betlehem. Nilampasan ang Jebus bilang mapanganib na lungsod ng dayuhan. Lungsod ng bayan ng Diyos ang Gibea, ngunit walang nagpakita ng pagkamapagpatuloy. At ang tanging nagbukas ng pinto ay isa pang dayuhan. <mark>Hindi ginagarantiya ng pangalang 'Israel' ang buhay na karapat-dapat sa Israel.</mark>", "Nanatili ang pangalan, ang lipi, ang bayan. Sa panlabas, bayan pa rin sila ng Diyos. Ngunit naglaho sa kanilang buhay ang pagkatao ng Diyos. Bakit? <mark>Dahil nawala ang kanilang misyon.</mark> Hindi tinawag ng Diyos ang Israel upang maging bansang naiiba sa pangalan lamang, kundi upang ipakita sa kanilang buhay kung sino ang Diyos. Nang mawala ang misyong iyon, naiwan na lamang sa pangalan ang kanilang pagkakaiba, at naging katulad ng mundo sa paligid ang kanilang buhay.", "Ang pagkakaroon ng pangalang 'iglesia' ay hindi awtomatikong nagpapaiba sa atin sa mundo. Maaari tayong magdala ng Bibliya, sumamba, at umawit ng papuri — ngunit kung hindi natin inaalagaan ang malungkot, tinatalikuran ang dayuhan, at isinasara ang pinto sa mahihina, maaaring mukha tayong naiiba habang mas malamig pa ang tunay nating buhay kaysa sa mundo. Sinabi ni Jesus, <mark>\"Kayo ang ilaw ng sanlibutan.\"</mark> Hindi paulit-ulit na ipinapahayag ng ilaw, \"Ako ay ilaw.\" Basta ito nagliliwanag.", "Sa wakas ng talinghaga ng Mabuting Samaritano, nagtanong si Jesus, <mark>\"Sino sa tatlong ito ang naging kapwa ng taong hinarang ng mga tulisan?\"</mark> Hindi ang parehong bansa, relihiyon, o komunidad ang huling pamantayan. Ang mahalaga ay kung sino ang nakakita sa kanya, lumapit, at nag-alaga sa kanya. Kapwa Israelita ang mga taga-Gibea, ngunit isinara nila ang pinto; dayuhan ang matanda, ngunit nakakita siya, lumapit, at nagbukas ng pinto."], "points": ["Sino ang nilalampasan ko araw-araw? Kanino ko isinasara ang aking pinto? Kung susundin natin si Jesus at muling hahawakan ang ating misyon, makikita natin ang mga nilalampasan ng mundo at mabubuksan ang mga pintong isinasara ng mundo."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung kontento na ako sa pagiging kabilang sa iglesia habang pinababayaan ang paghahayag ng pagkatao ng Diyos sa aking buhay."}, {"key": "c2", "text": "Inisip ko kung sino ang nakikita ko araw-araw sa paligid ko ngunit nilalampasan nang walang malasakit."}, {"key": "c3", "text": "Sinuri ko kung isinara ko ang pinto ng aking puso sa mga dayuhan o mahihina dahil inuna kong kuwentahin ang pasanin."}, {"key": "c4", "text": "Pinag-isipan ko kung aling mga bahagi ng aking buhay ang nahigop na ng mga pinahahalagahan ng mundo hanggang sa hindi na ako naiiba rito."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sino ang isang taong kailangan kong 'tingalain' at pagbuksan ng pinto ngayon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Tumingala", "value": "Ngayon, sadyang pansinin ang isang taong karaniwan mong nilalampasan, at itanong ang kanyang pangalan o kumustahin siya"}, {"key": "act2", "label": "Unang Magtanong", "value": "Tulad ng matanda, unang kausapin ang isang dayuhan o bagong dalo: 'Taga-saan ka? Saan ka papunta?'"}, {"key": "act3", "label": "Buksan ang Pinto", "value": "Buksan ang iyong tahanan, oras, o hapag sa isang tao bilang maliit na gawa ng pagkamapagpatuloy"}, {"key": "act4", "label": "Ihatid ang Shalom", "value": "Magsabi ng salita ng kapayapaan sa isang balisa o malungkot: 'Huwag kang mag-alala — kasama mo ako'"}, {"key": "act5", "label": "Mamuhay Bilang Ilaw", "value": "Pagnilayan ang Mateo 5:14–16 at pumili ng isang gawa, hindi lang salita, na maghahayag sa Diyos ngayon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat sa pag-ibig ni Jesus, na hindi kami nilampasan habang sugatan kami sa daan, kundi nakita kami, lumapit, at binuksan ang pinto para sa amin."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako na, kontento sa pangalang 'bayan ng Diyos,' nakita ko ang mga dayuhan at mahihina ngunit nilampasan ko sila at isinara ang pinto ng aking puso."}, {"key": "p3", "tag": "Kahilingan", "text": "Sa halip na pananampalatayang pangalan lamang na hindi naiiba sa mundo, ipahayag Mo ang Iyong pagkatao sa pamamagitan ng aking buhay na ilaw — buhay na nakakakita sa mga nilalampasan at nagbubukas ng pinto."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
