@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/11(주일) 큐티 · 사사기 20:8–28">
+<meta property="og:description" content="하나님의 뜻이라면, 내 계획을 멈출 수 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 11일 주일", "ref": "사사기 20장 8–28절", "headline": "하나님의 뜻이라면,<br>내 계획을 멈출 수 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 20:8-28", "s1heading": "오늘의 말씀", "verse": "\"내 아버지여 만일 할 만하시거든<br>이 잔을 내게서 지나가게 하옵소서<br>그러나 나의 원대로 마시옵고<br>아버지의 원대로 하옵소서\"", "verseRef": "마태복음 26:39", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 하나님께 묻기 전에, 이미 결론을 정해 놓았습니다", "paragraphs": ["앞선 본문에서 이스라엘은 미스바에 \"한 사람같이\" 모였습니다. 그러나 그 하나됨에는 이미 문제가 있었습니다. <mark>베냐민 지파가 빠져 있었고, 자기 책임이 빠진 레위인의 한쪽 이야기만 들었고, 여호와 앞에 모였지만 여호와께 묻지 않았습니다</mark>. 칼을 든 대군까지 모인 상태였습니다. 질문의 중심은 '하나님은 무엇을 원하시는가'보다 '우리가 어떻게 할 것인가'에 가까웠습니다.", "우리도 비슷합니다. 하나님의 이름으로 모이고, 기도하고, 뜻을 구한다고 말합니다. 그러나 이미 마음속으로 원하는 답을 정해 놓고 <mark>\"이 일을 해야 합니까?\"보다 \"이 일이 잘되려면 어떻게 해야 합니까?\"</mark>를 물을 수 있습니다.", "오늘 이스라엘은 하나님께 세 번 묻습니다. 처음에는 <mark>\"누가 먼저 올라갈까요?\"</mark> 두 번째는 <mark>\"다시 나가 싸울까요?\"</mark> 그리고 세 번째에야 <mark>\"싸울까요, 그만둘까요?\"</mark> 처음으로 '멈춤'이 질문 안에 들어오고, 그제서야 하나님은 승리를 약속하십니다. 본문이 두 번의 패배 이유를 직접 설명하지 않으므로 하나님이 일부러 패하게 하셨다고 단정할 수는 없습니다. 그러나 패배를 지나며 그들의 질문이 변한 것은 분명합니다."], "points": ["참된 순종은 하나님께 내 계획을 축복해 달라고 요청하는 것이 아니라, 하나님이 원하시면 내 계획 자체를 멈출 준비가 되어 있는 것입니다."]}, {"title": "8–17절 · 형제를 치기 위해 하나가 되다 — 정의는 보복으로, 충성은 죄의 보호로", "paragraphs": ["20장에서 <mark>'한 사람같이'</mark>가 반복됩니다. 1절에서 한 사람같이 모였고, 8절에서 한 사람같이 일어났고, 11절에서 한 사람같이 기브아를 치려고 집결합니다. 그러나 중요한 것은 하나가 되었는가보다 <mark>무엇을 위해 하나가 되었는가</mark>입니다. 그들은 서로를 살리기 위해서가 아니라 자기 형제를 치기 위해 하나가 되어 갑니다. 예수님 시대에도 부활을 믿는 바리새인과 믿지 않는 사두개인, 대제사장들과 헤롯 당원들이 평소엔 달랐지만 예수님을 제거하는 일에서는 하나가 되었습니다. 공동의 적이 사람을 하나로 만들 수 있지만, 그것이 하나님 나라의 연합은 아닙니다.", "그들은 제비를 뽑고 백성의 십분의 일을 택해 군량을 준비하게 합니다. 매우 조직적이고 신중합니다. 그러나 중요한 질문이 빠져 있습니다. <mark>\"우리가 이 전쟁을 해야 하는가?\"</mark> 계획이 치밀하다고 순종인 것은 아닙니다. 진리 없는 하나됨은 힘이 커질수록 더 위험해질 수 있습니다.", "그래도 이스라엘은 곧바로 베냐민 전체를 공격하지 않고 사람을 보내 <mark>\"기브아 사람들 곧 그 불량배들을 우리에게 넘겨주어 우리가 그들을 죽여 이스라엘 중에서 악을 제거하게 하라\"</mark>고 요구합니다. 이 요구에는 정당한 부분이 있습니다. 그러나 베냐민은 듣지 않고 오히려 기브아로 모여 싸울 준비를 합니다. 몇몇 불량배의 죄가 성읍의 문제가 되고, 한 지파의 문제로 커집니다. <mark>내가 직접 죄를 짓지 않았어도 죄를 보호하기 시작하면 그 죄에 참여하게 될 수 있습니다</mark>. 동시에 이스라엘도 '우리가 듣지 못한 것이 있는가'를 다시 살필 수 있었지만, 양쪽 모두 굳어집니다. 이스라엘은 '정의'라는 이름으로, 베냐민은 '지파 충성'이라는 이름으로.", "베냐민은 수적으로 훨씬 적었지만(칼 빼는 자 이만 육천 명과 기브아의 칠백 명) 정예병이 있었습니다. 특히 <mark>왼손잡이 칠백 명은 물매로 돌을 던지면 조금도 틀림이 없었습니다</mark>. 사사기 초반의 베냐민 사람 왼손잡이 에훗이 떠오릅니다. 에훗의 능력은 이스라엘을 외부 압제자에게서 구하는 데 쓰였지만, 이제 베냐민의 뛰어난 능력은 이스라엘 형제를 죽이는 데 쓰입니다. 능력이 있다고 방향까지 옳은 것은 아닙니다."], "points": ["은사보다 중요한 것은 그 은사가 누구의 통치 아래 쓰이는가입니다. 정의와 충성이 하나님 말씀 아래 있지 않으면, 정의는 보복이 되고 충성은 죄를 보호하는 도구가 될 수 있습니다."]}, {"title": "18–25절 · 두 번 묻고, 두 번 패하다", "paragraphs": ["18절에서 드디어 이스라엘이 벧엘로 올라가 하나님께 묻습니다. <mark>\"우리 중에 누가 먼저 올라가서 베냐민 자손과 싸우리이까?\"</mark> 그들은 '우리가 싸워야 합니까?'라는 근본적인 질문을 하지 않습니다. 이미 싸우기로 결정했고, 하나님께는 순서만 묻습니다. 우리의 기도에도 이런 모습이 있습니다. '제가 이것을 해야 합니까?'가 아니라 '이미 하기로 했으니 축복해 주시고, 어떻게 하면 잘할 수 있을까요?' <mark>하나님께 물었다는 사실보다 무엇을 물었는지가 중요합니다</mark>. 기도의 존재가 순종을 보장하지는 않습니다.", "이 장면은 사사기 1장을 떠올리게 합니다. 여호수아가 죽은 후 이스라엘은 \"누가 먼저 올라가서 가나안 족속과 싸우리이까?\"라고 물었고, 하나님은 \"유다가 올라갈지니라 내가 이 땅을 그의 손에 넘겨주었노라\"고 하셨습니다. 20장에서도 거의 똑같이 묻고, 대답도 \"유다가 먼저 갈지니라\"입니다. 그러나 결정적인 차이가 있습니다. <mark>1장의 적은 가나안이었지만, 20장의 적은 형제 베냐민</mark>입니다. 가나안을 몰아내지 못한 이스라엘은 결국 가나안처럼 되어 자기 형제를 가나안처럼 대합니다. 또 1장에는 승리의 약속이 있었지만, 20:18에는 단지 \"유다가 먼저 갈지니라\"뿐입니다. 이 대답을 전쟁의 모든 동기와 방법에 대한 전면적인 허락으로 읽어서는 안 됩니다.", "첫 전투에서 이스라엘은 이만 이천 명이 쓰러지는 충격적인 패배를 당합니다. 압도적인 수와 결속력, 종교적 확신, 하나님의 응답까지 있었는데도 패했습니다. <mark>수가 많다고, 하나가 되었다고, 하나님께 질문했다고 내 계획 전체가 허락된 것은 아닙니다</mark>.", "이스라엘은 여호와 앞에서 저물도록 울며 다시 묻습니다. <mark>\"내가 다시 나아가서 내 형제 베냐민 자손과 싸우리이까?\"</mark> 질문이 조금 변했습니다. '누가 먼저'에서 '다시 가도 됩니까'로. 그리고 처음으로 <mark>'내 형제 베냐민'</mark>이라는 표현이 나옵니다. 패배를 겪고서야 상대가 가나안이 아니라 형제라는 사실이 보이기 시작합니다. 그러나 묻기 전에 이미 다시 전열을 정비했고, 아직 완전히 내려놓지는 못했습니다. 하나님은 \"올라가서 치라\"고 하시지만 이번에도 승리의 약속은 없었고, 두 번째 전투에서도 만 팔천 명이 쓰러집니다."], "points": ["패배가 언제나 하나님이 우리를 버리셨다는 뜻은 아닙니다. 때로 하나님은 우리의 환경보다 먼저 우리의 질문을 바꾸십니다."]}, {"title": "26–28절 · \"싸우리이까 말리이까\" — 마침내 계획을 내려놓다", "paragraphs": ["세 번째는 모습 자체가 달라집니다. <mark>\"이에 온 이스라엘 자손 모든 백성이 올라가 벧엘에 이르러 울며 거기서 여호와 앞에 앉아서 그 날이 저물도록 금식하고 번제와 화목제를 여호와 앞에 드리고\"</mark>. 금식은 회개뿐 아니라 애통과 간구에도 쓰이므로 이것을 곧바로 완전한 회개라고 단정할 수는 없습니다. 그러나 처음의 자신만만함은 사라졌습니다. 첫 번째는 군대를 준비해 놓고 순서만 물었고, 두 번째는 전열을 정비한 뒤 울며 물었고, 세 번째는 울고, 앉고, 금식하고, 제사를 드린 뒤 묻습니다. 이제 자신들을 하나님 앞에 내려놓기 시작합니다.", "그때 하나님의 언약궤가 그곳에 있었고, 아론의 손자 비느하스가 섬기고 있었습니다. 그리고 세 번째 질문이 나옵니다. <mark>\"우리가 다시 나가 우리 형제 베냐민 자손과 싸우리이까 말리이까?\"</mark> 이것이 결정적인 변화입니다. 처음으로 자신들이 세운 계획을 포기할 가능성까지 하나님 앞에 내놓습니다. <mark>하나님의 뜻을 구한다는 것은 '어떻게 할까요'만이 아니라 '하지 말아야 합니까'까지 물을 수 있는 것</mark>입니다.", "그리고 이때 처음으로 하나님이 말씀하십니다. <mark>\"올라가라 내일은 내가 그를 네 손에 넘겨주리라\"</mark>. 처음으로 분명한 승리의 약속이 나옵니다. 그러나 여기서도 조심해야 합니다. 하나님이 베냐민을 넘겨주신다고 하셨다고 해서, 이후 이스라엘이 베냐민을 거의 멸절할 정도로 행한 모든 폭력을 허락하신 것은 아닙니다. <mark>하나님의 승리 허락은 무제한적인 보복 허가가 아닙니다</mark>."], "points": ["하나님께 맡겼다는 가장 분명한 증거 중 하나는 하나님이 멈추라고 하실 때 멈출 수 있는 것입니다. 내 계획의 성공 방법만 묻는다면, 아직 그 계획의 주인은 나일 수 있습니다."]}, {"title": "적용 · \"제 뜻이 아니라 주님의 뜻이 이루어지게 하옵소서\"", "paragraphs": ["오늘 이스라엘의 질문은 이렇게 변했습니다. <mark>'누가 먼저 갑니까?'</mark>(이미 결론을 내림) → <mark>'다시 가도 됩니까?'</mark>(조금 흔들림) → <mark>'다시 갈까요, 그만둘까요?'</mark>(계획 자체를 하나님 앞에 올려놓음). 우리는 기도하면서도 여전히 내가 주인일 수 있습니다. 내가 결정하고, 계획하고, 방향을 정한 뒤 하나님께 마지막 서명만 부탁할 수 있습니다. \"하나님, 제가 결정했으니 잘되게 해 주십시오.\"", "그러나 순종은 다릅니다. 예수님은 겟세마네에서 아버지께 자신의 뜻을 관철해 달라고 요구하지 않으셨습니다. <mark>\"나의 원대로 마시옵고 아버지의 원대로 하옵소서\"</mark>. 예수님의 순종은 '내 계획을 성공시켜 주십시오'가 아니라 '아버지의 뜻이라면 내 뜻을 내려놓겠습니다'였습니다. 이것이 하나님 나라의 순종입니다.", "오늘 본문은 또 하나를 보여 줍니다. 이스라엘은 한 사람같이 모였지만, 그것은 공동의 적을 만드는 하나됨이었습니다. 오늘 교회도 조심해야 합니다. 교회 밖 세상에 복음을 전하기보다, 신학 때문에, 세대 때문에, 사역 방식 때문에, '내가 옳다'는 확신 때문에 <mark>형제를 가나안 사람처럼 대하며 서로 싸울 수 있습니다</mark>. 사사기 1장에서 이스라엘이 싸워야 했던 대상은 가나안이었는데, 20장에서는 이스라엘이 이스라엘과 싸우고 있습니다. 사명을 잃으면 우리의 능력도, 열심도, 연합도 교회와 가정 안에서 서로를 무너뜨리는 도구가 될 수 있습니다. 그것은 복음을 위해 받은 힘의 낭비입니다.", "그리스도인의 연합은 공동의 적을 만드는 것으로 이루어지지 않습니다. <mark>자기를 내어 주신 예수 그리스도를 중심으로, 모두가 그분의 통치 아래 내려가는 것으로 이루어집니다</mark>. 우리의 기도도 \"주님, 제 뜻을 이루어 주옵소서\"가 아니라 \"주님, 제 뜻이 아니라 주님의 뜻이 이루어지게 하옵소서\"까지 가야 합니다. 그때 비로소 하나님은 우리의 계획을 돕는 분이 아니라 우리 삶의 진짜 주인이 되십니다."], "points": ["내가 하나님의 일이라고 믿고 있는 그 일도, 하나님이 멈추라고 하시면 멈출 수 있습니까?"]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "기도할 때 '이 일을 해야 합니까?'보다 '이미 정한 일을 축복해 주세요'라고만 묻고 있지 않은지 돌아봤다"}, {"key": "c2", "text": "계획이 치밀하고 많은 사람이 동의한다는 이유로 그것을 하나님의 뜻이라고 여기지 않았는지 점검했다"}, {"key": "c3", "text": "교회나 가정에서 '내가 옳다'는 확신 때문에 형제를 적처럼 대하고 있지 않은지 돌아봤다"}, {"key": "c4", "text": "내가 하나님의 일이라 믿는 일도 하나님이 멈추라 하시면 멈출 준비가 되어 있는지 정직하게 물었다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 하나님께 '어떻게 하면 잘될까요?'만 묻고 있는 내 계획 중, '해도 될까요, 멈출까요?'를 물어야 할 것은 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "질문 바꾸기", "value": "진행 중인 계획 하나를 놓고 '주님, 이것을 계속할까요, 멈출까요?'라고 열린 마음으로 기도하기"}, {"key": "act2", "label": "형제 다시 보기", "value": "의견 차이로 '적'처럼 느껴졌던 교회나 가정의 한 사람을 '내 형제'로 다시 부르며 축복 기도하기"}, {"key": "act3", "label": "은사의 방향", "value": "내 재능과 능력이 누구를 세우는 데 쓰이고 있는지, 누군가를 무너뜨리는 데 쓰이고 있지 않은지 점검하기"}, {"key": "act4", "label": "멈춤 연습", "value": "오늘 하려던 일 중 하나님 앞에서 확신이 없는 일 하나를 잠시 멈추고 다시 기도하기"}, {"key": "act5", "label": "겟세마네 기도", "value": "마태복음 26:39를 외우며 '나의 원대로 마시옵고 아버지의 원대로 하옵소서'를 오늘의 기도로 드리기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "겟세마네에서 자기 뜻이 아니라 아버지의 뜻을 따르시고, 자기를 내어 주셔서 우리를 하나 되게 하신 예수님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "이미 결론을 정해 놓고 하나님께 순서와 방법만 묻고, '내가 옳다'는 확신으로 형제를 적처럼 대했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "제 계획의 주도권까지 주님께 드리게 하시고, 주님이 멈추라 하시면 멈출 수 있는 순종과, 공동의 적이 아닌 예수님을 중심으로 한 하나됨을 허락하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 11, Lord's Day", "ref": "Judges 20:8–28", "headline": "If It's God's Will,<br>Can I Stop My Own Plans?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 20:8-28", "s1heading": "Today's Word", "verse": "\"My Father, if it be possible,<br>let this cup pass from Me;<br>nevertheless, not as I will,<br>but as You will.\"", "verseRef": "Matthew 26:39", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · They Had Already Decided Before They Asked God", "paragraphs": ["In the previous passage, Israel gathered at Mizpah \"as one man.\" But that unity already had problems: <mark>the tribe of Benjamin was missing; they heard only the Levite's one-sided account with his own responsibility left out; and though they gathered before the LORD, they did not inquire of the LORD</mark>. A large army with drawn swords had already assembled. The focus was less 'What does God want?' and more 'What shall we do?'", "We can be similar. We gather in God's name, pray, and say we seek His will. Yet with our desired answer already settled in our hearts, we may ask <mark>\"How can I make this succeed?\" rather than \"Should I do this?\"</mark>", "Today Israel asks God three times. First: <mark>\"Who shall go up first?\"</mark> Second: <mark>\"Shall we go out to battle again?\"</mark> And only the third time: <mark>\"Shall we go out again, or shall we cease?\"</mark> For the first time, 'stopping' enters the question — and only then does God promise victory. Since the text doesn't directly explain the two defeats, we can't conclude God deliberately caused them. But it's clear that through defeat, their question changed."], "points": ["True obedience isn't asking God to bless my plan; it's being ready to stop the plan itself if God so desires."]}, {"title": "Verses 8–17 · United to Strike a Brother — Justice Becomes Revenge, Loyalty Shields Sin", "paragraphs": ["Chapter 20 keeps repeating <mark>'as one man'</mark>: they assembled as one man (v.1), arose as one man (v.8), and gathered against Gibeah as one man (v.11). But what matters isn't whether they were united, but <mark>what they were united for</mark>. They were becoming one not to save each other, but to strike their own brother. In Jesus' day, too, Pharisees who believed in the resurrection and Sadducees who didn't, chief priests and Herodians — normally at odds — united to get rid of Jesus. A common enemy can unite people, but that isn't the unity of God's kingdom.", "They cast lots and chose a tenth of the people to supply provisions — very organized and careful. But a crucial question was missing: <mark>\"Should we fight this war at all?\"</mark> A meticulous plan is not the same as obedience. Unity without truth grows more dangerous as its power grows.", "Still, Israel didn't immediately attack all of Benjamin. They sent men to demand, <mark>\"Give up the men, the worthless fellows in Gibeah, that we may put them to death and purge evil from Israel.\"</mark> There was something legitimate in this demand. But Benjamin refused and instead gathered at Gibeah to fight. The sin of a few worthless men became a town's problem, then a whole tribe's. <mark>Even if I didn't commit a sin myself, once I start protecting it, I can become a participant in it.</mark> At the same time, Israel could have asked, 'Is there something we haven't heard?' — but both sides hardened: Israel in the name of 'justice,' Benjamin in the name of 'tribal loyalty.'", "Benjamin was far smaller (26,000 swordsmen plus 700 men of Gibeah), but it had elite troops — especially <mark>700 left-handed men who could sling a stone at a hair and not miss</mark>. This recalls Ehud, the left-handed Benjaminite early in Judges. Ehud's skill was used to deliver Israel from a foreign oppressor; now Benjamin's remarkable skill is used to kill fellow Israelites. Having ability doesn't mean the direction is right."], "points": ["More important than a gift is whose rule it's used under. If justice and loyalty aren't under God's Word, justice can become revenge and loyalty a tool for protecting sin."]}, {"title": "Verses 18–25 · They Asked Twice — and Lost Twice", "paragraphs": ["In verse 18, Israel finally goes up to Bethel and inquires of God: <mark>\"Which of us shall go up first to battle against the people of Benjamin?\"</mark> They don't ask the fundamental question, 'Should we fight?' They had already decided to fight; they only asked God about the order. Our prayers can look like this too: not 'Should I do this?' but 'I've already decided — please bless it and show me how to do it well.' <mark>What we ask matters more than the fact that we asked.</mark> Prayer itself doesn't guarantee obedience.", "This scene recalls Judges 1. After Joshua's death, Israel asked, \"Who shall go up first for us against the Canaanites?\" and God said, \"Judah shall go up; behold, I have given the land into his hand.\" In chapter 20 they ask almost the same thing, and the answer is again, \"Judah shall go up first.\" But there's a decisive difference: <mark>in chapter 1 the enemy was Canaan; in chapter 20 it is their brother Benjamin</mark>. Having failed to drive out Canaan, Israel became like Canaan and treated its own brother like Canaan. Also, chapter 1 included a promise of victory; 20:18 says only, \"Judah shall go up first.\" We shouldn't read this answer as blanket approval of every motive and method of the war.", "In the first battle Israel suffers a shocking defeat — 22,000 fall. Despite overwhelming numbers, unity, religious conviction, and even an answer from God, they lost. <mark>Being many, being united, and having asked God doesn't mean my whole plan has been approved.</mark>", "Israel weeps before the LORD until evening and asks again: <mark>\"Shall we again draw near to fight against our brothers, the people of Benjamin?\"</mark> The question has shifted slightly — from 'who first' to 'may we go again.' And for the first time we hear <mark>'our brother Benjamin.'</mark> Only after defeat do they begin to see that the enemy isn't Canaan but their own brother. Yet they had already re-formed their battle lines before asking; they hadn't fully let go. God says, \"Go up against them,\" but again there's no promise of victory, and in the second battle 18,000 more fall."], "points": ["Defeat doesn't always mean God has abandoned us. Sometimes God changes our questions before He changes our circumstances."]}, {"title": "Verses 26–28 · \"Shall We Go, or Shall We Cease?\" — At Last, Laying the Plan Down", "paragraphs": ["The third time, their very posture changes: <mark>\"Then all the people of Israel, the whole army, went up and came to Bethel and wept. They sat there before the LORD and fasted that day until evening, and offered burnt offerings and peace offerings before the LORD.\"</mark> Fasting can express mourning and petition as well as repentance, so we can't immediately call this full repentance. But their initial self-confidence is gone. The first time, they had the army ready and asked only about order; the second, they re-formed their lines and then asked in tears; the third, they wept, sat, fasted, and offered sacrifices before asking. They're beginning to lay themselves down before God.", "The ark of the covenant of God was there, and Phinehas, Aaron's grandson, ministered before it. Then the third question comes: <mark>\"Shall we go out once more to battle against our brothers, the people of Benjamin, or shall we cease?\"</mark> This is the decisive change. For the first time, they lay before God even the possibility of abandoning their own plan. <mark>Seeking God's will means being able to ask not only 'How should we do this?' but also 'Should we not do this at all?'</mark>", "And only now does God say, <mark>\"Go up, for tomorrow I will give them into your hand.\"</mark> For the first time, a clear promise of victory. But even here we must be careful. God saying He would give Benjamin into their hand doesn't mean He approved all the violence that followed, as Israel nearly wiped Benjamin out. <mark>God's permission for victory is not an unlimited license for revenge.</mark>"], "points": ["One of the clearest signs that I've entrusted something to God is being able to stop when He says stop. If I only ask how to make my plan succeed, I may still be its master."]}, {"title": "Application · \"Not My Will, but Yours Be Done\"", "paragraphs": ["Israel's question changed like this: <mark>'Who goes first?'</mark> (conclusion already made) → <mark>'May we go again?'</mark> (beginning to waver) → <mark>'Shall we go, or shall we cease?'</mark> (the plan itself placed before God). We can pray and still be the master. We decide, plan, and set the direction, then ask God only for a final signature: \"God, I've decided — please make it go well.\"", "But obedience is different. In Gethsemane, Jesus didn't demand that the Father carry out His own will. <mark>\"Not as I will, but as You will.\"</mark> Jesus' obedience wasn't 'Make my plan succeed,' but 'If it is Your will, I lay down mine.' That is the obedience of God's kingdom.", "Today's passage shows one more thing. Israel gathered as one man, but it was a unity built on a common enemy. The church today must be careful too. Instead of bringing the gospel to the world outside, we can fight among ourselves — over theology, generations, ministry styles, or the conviction that 'I'm right' — <mark>treating our brothers and sisters like Canaanites</mark>. In Judges 1, Israel's fight was against Canaan; in chapter 20, Israel is fighting Israel. When we lose our mission, our abilities, zeal, and unity can become tools that tear one another down in church and at home. That wastes the strength we were given for the gospel.", "Christian unity isn't formed by creating a common enemy. <mark>It's formed as everyone bows beneath the rule of Jesus Christ, who gave Himself for us, with Him at the center.</mark> Our prayers must go beyond \"Lord, accomplish my will\" to \"Lord, not my will but Yours be done.\" Only then does God become not merely the helper of our plans, but the true Lord of our lives."], "points": ["Even the work I believe is God's work — if God tells me to stop, can I stop?"]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether my prayers only ask God to 'bless what I've already decided' rather than asking 'Should I do this?'"}, {"key": "c2", "text": "I checked whether I've assumed something is God's will just because the plan is thorough and many people agree."}, {"key": "c3", "text": "I reflected on whether, in church or at home, I'm treating a brother or sister like an enemy because I'm convinced I'm right."}, {"key": "c4", "text": "I honestly asked whether I'm ready to stop even the work I believe is God's, if God tells me to stop."}], "s4heading": "One-Line Reflection", "memoHint": "Among my plans where I only ask God 'How can this go well?', which one should I instead ask 'Should I continue, or stop?'", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Change the Question", "value": "Take one plan in progress and pray with an open heart: 'Lord, should I continue this, or stop?'"}, {"key": "act2", "label": "See Your Brother Again", "value": "Call someone in your church or family who has felt like an 'enemy' over a disagreement 'my brother/sister' again, and pray a blessing over them"}, {"key": "act3", "label": "Direction of Your Gifts", "value": "Check whether your talents and abilities are building someone up — not tearing someone down"}, {"key": "act4", "label": "Practice Stopping", "value": "Pause one thing you planned today that you're not confident about before God, and pray again"}, {"key": "act5", "label": "The Gethsemane Prayer", "value": "Memorize Matthew 26:39 and offer 'Not as I will, but as You will' as today's prayer"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Jesus, for following the Father's will rather than Your own in Gethsemane, and for giving Yourself to make us one."}, {"key": "p2", "tag": "Repent", "text": "I repent of settling my conclusions in advance and asking You only about order and method, and of treating my brothers and sisters like enemies out of conviction that I'm right."}, {"key": "p3", "tag": "Ask", "text": "Let me surrender even the control of my plans to You. Give me obedience that can stop when You say stop, and a unity centered not on a common enemy but on Jesus."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 11, Araw ng Panginoon", "ref": "Mga Hukom 20:8–28", "headline": "Kung Kalooban ng Diyos,<br>Kaya Ko Bang Ihinto ang Aking Plano?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 20:8-28", "s1heading": "Salita Ngayon", "verse": "\"Ama Ko, kung maaari,<br>ilayo Mo sa Akin ang sarong ito;<br>gayunma'y hindi ang kalooban Ko,<br>kundi ang kalooban Mo.\"", "verseRef": "Mateo 26:39", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Bago Pa Sila Nagtanong sa Diyos, May Pasya na Sila", "paragraphs": ["Sa nakaraang bahagi, nagtipon ang Israel sa Mizpa \"gaya ng iisang tao.\" Ngunit may problema na ang pagkakaisang iyon: <mark>wala ang lipi ni Benjamin; ang narinig lamang nila ay ang isang-panig na salaysay ng Levita na inalis ang sarili niyang pananagutan; at bagaman nagtipon sila sa harap ni Yahweh, hindi sila nagtanong kay Yahweh</mark>. Nakatipon na rin ang malaking hukbong may hawak na tabak. Ang sentro ng tanong ay hindi gaanong 'Ano ang nais ng Diyos?' kundi 'Ano ang gagawin natin?'", "Maaari tayong maging katulad nila. Nagtitipon tayo sa pangalan ng Diyos, nananalangin, at sinasabing hinahanap natin ang Kanyang kalooban. Ngunit habang nakatakda na sa ating puso ang sagot na gusto natin, maaari nating itanong ang <mark>\"Paano ito magtatagumpay?\" sa halip na \"Dapat ko ba itong gawin?\"</mark>", "Ngayon, tatlong beses nagtanong ang Israel sa Diyos. Una: <mark>\"Sino ang unang aakyat?\"</mark> Ikalawa: <mark>\"Lalabas ba kaming muli sa digmaan?\"</mark> At sa ikatlo lamang: <mark>\"Lalabas ba kaming muli, o titigil na?\"</mark> Sa unang pagkakataon, pumasok sa tanong ang 'paghinto' — at saka lamang nangako ang Diyos ng tagumpay. Dahil hindi tuwirang ipinaliwanag ng teksto ang dalawang pagkatalo, hindi natin masasabing sinadya ito ng Diyos. Ngunit malinaw na sa pagdaan sa pagkatalo, nagbago ang kanilang tanong."], "points": ["Ang tunay na pagsunod ay hindi paghiling sa Diyos na pagpalain ang aking plano; ito ay pagiging handang ihinto ang plano mismo kung iyon ang nais ng Diyos."]}, {"title": "Talata 8–17 · Nagkaisa upang Salakayin ang Kapatid — Naging Paghihiganti ang Katarungan, Naging Panangga ng Kasalanan ang Katapatan", "paragraphs": ["Paulit-ulit sa kabanata 20 ang <mark>'gaya ng iisang tao'</mark>: nagtipon sila gaya ng iisang tao (t.1), bumangon gaya ng iisang tao (t.8), at nagtipon laban sa Gibea gaya ng iisang tao (t.11). Ngunit ang mahalaga ay hindi kung nagkaisa sila, kundi <mark>para saan sila nagkaisa</mark>. Nagkakaisa sila hindi upang iligtas ang isa't isa, kundi upang salakayin ang sarili nilang kapatid. Noong panahon ni Jesus, ang mga Pariseong naniniwala sa pagkabuhay na mag-uli at ang mga Saduseong hindi naniniwala, ang mga punong saserdote at mga Herodiano — na karaniwang magkasalungat — ay nagkaisa upang alisin si Jesus. Kayang pag-isahin ng iisang kaaway ang mga tao, ngunit hindi iyon ang pagkakaisa ng kaharian ng Diyos.", "Nagpalabunutan sila at pumili ng ikasampung bahagi ng bayan upang maghanda ng pagkain — napakaayos at maingat. Ngunit may mahalagang tanong na nawawala: <mark>\"Dapat ba talaga naming ipaglaban ang digmaang ito?\"</mark> Ang masusing plano ay hindi kapareho ng pagsunod. Lalong nagiging mapanganib ang pagkakaisang walang katotohanan habang lumalaki ang kapangyarihan nito.", "Gayunman, hindi agad sinalakay ng Israel ang buong Benjamin. Nagsugo sila upang hilingin, <mark>\"Ibigay ninyo sa amin ang mga lalaki, ang mga walang-kwentang tao sa Gibea, upang sila'y aming patayin at alisin ang kasamaan sa Israel.\"</mark> May katwiran ang kahilingang ito. Ngunit tumanggi ang Benjamin at sa halip ay nagtipon sa Gibea upang lumaban. Ang kasalanan ng ilang walang-kwentang lalaki ay naging problema ng isang bayan, pagkatapos ay ng isang buong lipi. <mark>Kahit hindi ako mismo ang nagkasala, kapag sinimulan kong protektahan ang kasalanan, maaari akong maging kalahok dito.</mark> Kasabay nito, maaari sanang itinanong ng Israel, 'May hindi ba kami narinig?' — ngunit tumigas ang dalawang panig: ang Israel sa pangalan ng 'katarungan,' ang Benjamin sa pangalan ng 'katapatan sa lipi.'", "Higit na maliit ang Benjamin (26,000 manananggol na may tabak at 700 lalaki ng Gibea), ngunit may piling kawal sila — lalo na ang <mark>700 kaliweteng lalaking kayang tumirador ng bato sa isang buhok nang hindi sumasala</mark>. Ipinapaalala nito si Ehud, ang kaliweteng Benjamita sa simula ng Mga Hukom. Ginamit ang kakayahan ni Ehud upang iligtas ang Israel mula sa dayuhang mang-aapi; ngayon, ginagamit ang pambihirang kakayahan ng Benjamin upang patayin ang kapwa Israelita. Ang pagkakaroon ng kakayahan ay hindi nangangahulugang tama ang direksyon."], "points": ["Higit na mahalaga kaysa sa kaloob ay kung kaninong paghahari ito ginagamit. Kung wala sa ilalim ng Salita ng Diyos ang katarungan at katapatan, maaaring maging paghihiganti ang katarungan at maging kasangkapan sa pagprotekta sa kasalanan ang katapatan."]}, {"title": "Talata 18–25 · Dalawang Beses Nagtanong — Dalawang Beses Natalo", "paragraphs": ["Sa talata 18, sa wakas ay umakyat ang Israel sa Bethel at nagtanong sa Diyos: <mark>\"Sino sa amin ang unang aakyat upang makipaglaban sa mga Benjamita?\"</mark> Hindi nila itinanong ang pangunahing tanong, 'Dapat ba kaming makipaglaban?' Nagpasya na silang lumaban; ang itinanong lamang nila sa Diyos ay ang pagkakasunod-sunod. Maaari ring ganito ang ating mga panalangin: hindi 'Dapat ko ba itong gawin?' kundi 'Nagpasya na ako — pakipagpala Mo at ipakita kung paano ito gagawin nang mahusay.' <mark>Mas mahalaga kung ano ang itinanong natin kaysa sa katotohanang nagtanong tayo.</mark> Hindi ginagarantiya ng panalangin mismo ang pagsunod.", "Ipinapaalala ng eksenang ito ang Mga Hukom 1. Pagkamatay ni Josue, nagtanong ang Israel, \"Sino ang unang aakyat para sa amin laban sa mga Cananeo?\" at sinabi ng Diyos, \"Si Juda ang aakyat; ibinigay Ko na ang lupain sa kanyang kamay.\" Sa kabanata 20, halos pareho ang kanilang tanong, at muli ang sagot ay, \"Si Juda ang unang aakyat.\" Ngunit may mapagpasyang pagkakaiba: <mark>sa kabanata 1, ang kaaway ay ang Canaan; sa kabanata 20, ang kanilang kapatid na Benjamin</mark>. Dahil hindi napalayas ang Canaan, naging gaya ng Canaan ang Israel at tinrato ang sarili nitong kapatid na parang Canaan. Bukod dito, may pangako ng tagumpay sa kabanata 1; sa 20:18, \"Si Juda ang unang aakyat\" lamang. Hindi natin dapat basahin ang sagot na ito bilang ganap na pagsang-ayon sa lahat ng motibo at paraan ng digmaan.", "Sa unang labanan, nakaranas ang Israel ng nakagugulat na pagkatalo — 22,000 ang nabuwal. Sa kabila ng napakaraming bilang, pagkakaisa, paniniwalang panrelihiyon, at maging sagot mula sa Diyos, natalo sila. <mark>Ang pagiging marami, pagiging nagkakaisa, at pagtatanong sa Diyos ay hindi nangangahulugang inaprubahan na ang buong plano ko.</mark>", "Umiyak ang Israel sa harap ni Yahweh hanggang gabi at muling nagtanong: <mark>\"Lalapit ba kaming muli upang makipaglaban sa aming mga kapatid, ang mga Benjamita?\"</mark> Bahagyang nagbago ang tanong — mula sa 'sino ang una' tungo sa 'maaari ba kaming bumalik.' At sa unang pagkakataon, narinig natin ang <mark>'aming kapatid na Benjamin.'</mark> Pagkatapos lamang ng pagkatalo nila nagsimulang makita na ang kaaway ay hindi Canaan kundi sarili nilang kapatid. Gayunman, inayos na nilang muli ang kanilang hanay bago pa nagtanong; hindi pa sila ganap na bumibitaw. Sinabi ng Diyos, \"Umakyat kayo laban sa kanila,\" ngunit muli ay walang pangako ng tagumpay, at sa ikalawang labanan ay 18,000 pa ang nabuwal."], "points": ["Hindi laging nangangahulugan ang pagkatalo na iniwan na tayo ng Diyos. Minsan, binabago muna ng Diyos ang ating mga tanong bago Niya baguhin ang ating sitwasyon."]}, {"title": "Talata 26–28 · \"Lalaban Ba Kami, o Titigil?\" — Sa Wakas, Ibinaba ang Plano", "paragraphs": ["Sa ikatlong pagkakataon, nagbago maging ang kanilang tindig: <mark>\"Nang magkagayo'y umakyat ang lahat ng Israelita, ang buong hukbo, at dumating sa Bethel at umiyak. Naupo sila roon sa harap ni Yahweh at nag-ayuno nang araw na iyon hanggang gabi, at naghandog ng mga handog na susunugin at handog pangkapayapaan sa harap ni Yahweh.\"</mark> Ang pag-aayuno ay maaaring pagpapahayag ng pagdadalamhati at pagsusumamo bukod sa pagsisisi, kaya hindi agad natin ito matatawag na ganap na pagsisisi. Ngunit nawala na ang kanilang dating pagtitiwala sa sarili. Sa una, handa na ang hukbo at pagkakasunod-sunod lamang ang itinanong; sa ikalawa, inayos muli ang hanay at saka nagtanong nang lumuluha; sa ikatlo, umiyak, naupo, nag-ayuno, at naghandog bago nagtanong. Nagsisimula na silang ibaba ang kanilang sarili sa harap ng Diyos.", "Naroon ang kaban ng tipan ng Diyos, at si Finehas, apo ni Aaron, ang naglilingkod sa harap nito. Pagkatapos ay dumating ang ikatlong tanong: <mark>\"Lalabas ba kaming muli upang makipaglaban sa aming mga kapatid, ang mga Benjamita, o titigil na kami?\"</mark> Ito ang mapagpasyang pagbabago. Sa unang pagkakataon, inilapag nila sa harap ng Diyos maging ang posibilidad na talikuran ang sarili nilang plano. <mark>Ang paghahanap sa kalooban ng Diyos ay nangangahulugang kaya nating itanong hindi lamang 'Paano namin ito gagawin?' kundi pati 'Hindi ba namin ito dapat gawin?'</mark>", "At ngayon lamang nagsabi ang Diyos, <mark>\"Umakyat kayo, sapagkat bukas ay ibibigay Ko sila sa inyong kamay.\"</mark> Sa unang pagkakataon, isang malinaw na pangako ng tagumpay. Ngunit kahit dito, dapat tayong mag-ingat. Ang pagsasabi ng Diyos na ibibigay Niya ang Benjamin ay hindi nangangahulugang inaprubahan Niya ang lahat ng karahasang sumunod, nang halos lipulin ng Israel ang Benjamin. <mark>Ang pahintulot ng Diyos para sa tagumpay ay hindi walang-hangganang lisensya para sa paghihiganti.</mark>"], "points": ["Isa sa pinakamalinaw na tanda na ipinagkatiwala ko ang isang bagay sa Diyos ay ang kakayahang huminto kapag sinabi Niyang huminto. Kung paraan lamang ng pagtatagumpay ng aking plano ang itinatanong ko, maaaring ako pa rin ang panginoon nito."]}, {"title": "Aplikasyon · \"Hindi ang Kalooban Ko, Kundi ang Kalooban Mo ang Mangyari\"", "paragraphs": ["Ganito nagbago ang tanong ng Israel: <mark>'Sino ang unang aakyat?'</mark> (may konklusyon na) → <mark>'Maaari ba kaming bumalik?'</mark> (nagsisimulang mag-alinlangan) → <mark>'Lalaban ba kami, o titigil?'</mark> (inilapag ang plano mismo sa harap ng Diyos). Maaari tayong manalangin at manatiling panginoon pa rin. Tayo ang nagpapasya, nagpaplano, at nagtatakda ng direksyon, at pagkatapos ay huling pirma na lamang ang hinihingi sa Diyos: \"Diyos, nagpasya na ako — pakipagtagumpayin Mo.\"", "Ngunit iba ang pagsunod. Sa Getsemani, hindi hiningi ni Jesus sa Ama na ipatupad ang sarili Niyang kalooban. <mark>\"Hindi ang kalooban Ko, kundi ang kalooban Mo.\"</mark> Ang pagsunod ni Jesus ay hindi 'Pagtagumpayin Mo ang aking plano,' kundi 'Kung kalooban Mo, ibinababa Ko ang Akin.' Iyan ang pagsunod ng kaharian ng Diyos.", "May isa pang ipinapakita ang talata ngayon. Nagtipon ang Israel gaya ng iisang tao, ngunit iyon ay pagkakaisang itinayo sa iisang kaaway. Dapat ding mag-ingat ang iglesia ngayon. Sa halip na dalhin ang ebanghelyo sa mundo sa labas, maaari tayong mag-away-away — dahil sa teolohiya, henerasyon, istilo ng ministeryo, o paniniwalang 'ako ang tama' — <mark>tinatrato ang ating mga kapatid na parang mga Cananeo</mark>. Sa Mga Hukom 1, laban sa Canaan ang laban ng Israel; sa kabanata 20, Israel laban sa Israel. Kapag nawala ang ating misyon, maaaring maging kasangkapan ang ating kakayahan, sigasig, at pagkakaisa upang sirain ang isa't isa sa iglesia at sa tahanan. Pag-aaksaya iyon ng lakas na ibinigay sa atin para sa ebanghelyo.", "Ang pagkakaisang Kristiyano ay hindi nabubuo sa paglikha ng iisang kaaway. <mark>Nabubuo ito habang ang lahat ay yumuyuko sa ilalim ng paghahari ni Jesu-Cristo, na nagbigay ng Kanyang sarili para sa atin, at Siya ang nasa gitna.</mark> Ang ating mga panalangin ay dapat lumampas sa \"Panginoon, tuparin Mo ang aking kalooban\" tungo sa \"Panginoon, hindi ang kalooban ko kundi ang kalooban Mo ang mangyari.\" Saka lamang magiging hindi lamang katulong sa ating mga plano ang Diyos, kundi ang tunay na Panginoon ng ating buhay."], "points": ["Kahit ang gawaing pinaniniwalaan kong gawain ng Diyos — kung sabihin ng Diyos na huminto ako, kaya ko bang huminto?"]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung ang aking mga panalangin ay humihiling lamang sa Diyos na 'pagpalain ang napagpasyahan ko na' sa halip na itanong ang 'Dapat ko ba itong gawin?'"}, {"key": "c2", "text": "Sinuri ko kung inakala kong kalooban ng Diyos ang isang bagay dahil lamang masusi ang plano at marami ang sumasang-ayon."}, {"key": "c3", "text": "Pinag-isipan ko kung, sa iglesia o sa tahanan, tinatrato ko ang isang kapatid na parang kaaway dahil kumbinsido akong ako ang tama."}, {"key": "c4", "text": "Tapat kong itinanong kung handa akong ihinto maging ang gawaing pinaniniwalaan kong sa Diyos, kung sabihin Niyang huminto."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa aking mga planong 'Paano ito magtatagumpay?' lamang ang itinatanong ko sa Diyos, alin ang dapat kong itanong ng 'Itutuloy ko ba, o ihihinto?'", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Baguhin ang Tanong", "value": "Kumuha ng isang planong kasalukuyang ginagawa at manalangin nang bukas ang puso: 'Panginoon, itutuloy ko ba ito, o ihihinto?'"}, {"key": "act2", "label": "Tingnan Muli ang Kapatid", "value": "Tawagin muling 'aking kapatid' ang isang tao sa iglesia o pamilya na naramdaman mong 'kaaway' dahil sa hindi pagkakasundo, at ipanalangin siya ng pagpapala"}, {"key": "act3", "label": "Direksyon ng Iyong mga Kaloob", "value": "Suriin kung ang iyong mga talento at kakayahan ay nagpapatibay sa isang tao — hindi nagpapabagsak sa kanya"}, {"key": "act4", "label": "Sanayin ang Paghinto", "value": "Ihinto sandali ang isang bagay na binalak mo ngayon na wala kang katiyakan sa harap ng Diyos, at manalangin muli"}, {"key": "act5", "label": "Ang Panalangin sa Getsemani", "value": "Isaulo ang Mateo 26:39 at ialay ang 'Hindi ang kalooban ko, kundi ang kalooban Mo' bilang panalangin ngayon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Jesus, sa pagsunod Mo sa kalooban ng Ama sa halip na sa Iyong sarili sa Getsemani, at sa pagbibigay ng Iyong sarili upang kami'y maging isa."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagtatakda ng aking konklusyon nang maaga at pagtatanong lamang sa Iyo tungkol sa pagkakasunod-sunod at paraan, at sa pagtrato sa aking mga kapatid na parang kaaway dahil sa paniniwalang ako ang tama."}, {"key": "p3", "tag": "Kahilingan", "text": "Hayaan Mong isuko ko sa Iyo maging ang kontrol ng aking mga plano. Bigyan Mo ako ng pagsunod na kayang huminto kapag sinabi Mong huminto, at ng pagkakaisang nakasentro hindi sa iisang kaaway kundi kay Jesus."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
