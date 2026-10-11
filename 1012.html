@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/12(월) 큐티 · 사사기 20:29–48">
+<meta property="og:description" content="승리한 뒤에도 멈출 수 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 12일 월요일", "ref": "사사기 20장 29–48절", "headline": "승리한 뒤에도<br>멈출 수 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 20:29-48", "s1heading": "오늘의 말씀", "verse": "\"나는 너희에게 이르노니<br>너희 원수를 사랑하며<br>너희를 박해하는 자를 위하여 기도하라\"", "verseRef": "마태복음 5:44", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 승리를 주셨다고, 모든 행동이 옳은 것은 아닙니다", "paragraphs": ["이 이야기에는 깨끗한 의인이 없습니다. 레위인은 책임을 감췄고, 기브아는 끔찍한 죄를 지었고, 베냐민은 죄인을 감쌌고, 이스라엘의 정의에도 분노와 복수심이 섞여 들어갑니다. 하나님은 마침내 승리를 약속하셨지만, <mark>하나님이 승리를 주셨다는 것과 이스라엘의 모든 행동이 옳았다는 것은 같은 말이 아닙니다</mark>.", "사사기 1장은 이스라엘이 가나안을 몰아내는 전쟁으로 시작했는데, 20장에서는 <mark>이스라엘이 이스라엘을 몰아내는 전쟁</mark>을 합니다. 정의는 하나님의 기준과 한계 아래 있지만, 복수는 내 분노를 따라 점점 더 멀리 갑니다. <mark>정의는 죄가 끝나기를 원하지만, 복수는 사람이 끝나기를 원합니다</mark>."], "points": ["나는 누군가의 잘못을 바로잡는다며 싸우면서, 죄가 아니라 그 사람이 없어지기를 바라고 있지는 않습니까?"]}, {"title": "29–35절 · \"여호와께서 베냐민을 치시매\"", "paragraphs": ["이번에 이스라엘은 기브아 주위에 매복합니다. 여호수아 8장 아이성 전투와 똑같은 전략입니다. 그러나 그때 공격받은 곳은 가나안의 아이성이었고, 지금은 <mark>이스라엘의 성읍 기브아</mark>입니다. 두 번 이긴 베냐민은 \"그들이 처음과 같이 우리 앞에서 패한다\"며 성 밖으로 끌려 나옵니다. <mark>과거의 성공이 오늘의 분별력을 마비시킬 수 있습니다</mark>.", "35절은 전투 전체를 이렇게 해석합니다. <mark>\"여호와께서 베냐민을 이스라엘 앞에서 치시매\"</mark>. 전략도, 숫자도, 정예병도 있었지만 최종 승리의 원인은 하나님이셨습니다. 그러나 하나님이 승리를 주셨다고 승리한 사람이 하는 모든 일이 하나님의 뜻은 아닙니다."], "points": ["일이 잘되었다고, 사역이 성장했다고, 내 결정대로 결과가 나왔다고 해서 그것이 '내가 옳다'는 증거는 아닙니다."]}, {"title": "36–47절 · 승리의 신호가, 형제에게는 재앙의 연기였습니다", "paragraphs": ["36절은 시선을 바꿔 <mark>\"베냐민 자손이 자기가 패한 것을 보고\"</mark>라고 말합니다. 본문은 패배하는 베냐민의 눈으로도 전쟁을 보게 합니다. 매복군이 기브아에서 올린 연기는 이스라엘에게 승리의 신호였지만, 베냐민에게는 자기 집이 무너지는 신호였습니다. 레위인이 '이방 성읍'을 피해 택했던 기브아가 이제 아이성처럼 불타고 있습니다.", "베냐민은 도망하고 이스라엘은 끝까지 추격합니다. 만 팔천 명, 오천 명, 이천 명이 차례로 쓰러지고 <mark>육백 명만 림몬 바위로 도망해 살아남습니다</mark>. 본문은 그들을 '용사'라 부릅니다. 이스라엘을 위해 쓰일 수도 있었던 형제들이었습니다. 누가 이기든 하나님의 백성은 잃고 있었습니다."], "points": ["심판이 아직 보이지 않는다고 심판이 없는 것은 아닙니다. 반복되는 성공이 잘못된 안전감을 줄 수 있습니다."]}, {"title": "48절 · 전쟁은 끝났지만, 폭력은 멈추지 않았습니다", "paragraphs": ["하나님이 약속하신 승리는 이미 이루어졌습니다. 그런데 <mark>\"이스라엘 사람들이 베냐민 자손에게로 돌아와서 성읍에 있는 사람들과 가축과 만나는 자를 다 칼날로 치고 닥치는 성읍은 모두 불살랐더라\"</mark>. 본문은 이 광범위한 파괴까지 하나님이 명령하셨다고 말하지 않습니다. 처음엔 '기브아의 불량배를 넘기라'였는데, 마지막엔 사람과 가축과 모든 것으로 번졌습니다. <mark>여기서 정의가 복수로 넘어갑니다</mark>.", "더 아이러니한 것은, 전쟁 전에 \"싸우리이까 말리이까\"라고 물었던 그들이 <mark>승리한 뒤에는 멈추지 못했다</mark>는 것입니다. 실패했을 때는 울고 금식하고 하나님께 물었지만, 성공한 뒤에는 자기 분노를 통제하지 못했습니다."], "points": ["실패보다 성공한 뒤가 더 위험할 수 있습니다. 순종은 싸울 줄 아는 것만이 아니라, 하나님이 허락하신 자리에서 멈출 줄 아는 것입니다."]}, {"title": "적용 · 죄가 끝나기를 원합니까, 사람이 끝나기를 원합니까?", "paragraphs": ["처음에는 기브아의 악을 제거하겠다고 시작했지만, 마지막에는 베냐민 지파 자체를 거의 멸절시킵니다. 죄를 없애겠다고 시작했는데 어느 순간 사람을 없애려 합니다. <mark>바로 이것이 인간의 정의가 복수로 변하는 지점</mark>입니다. 우리에게도 이런 싸움이 있습니다. 가정에서 배우자와, 자녀와 갈등할 수 있고, 교회에서 다른 성도와 의견이 다를 수 있습니다. 누군가 분명히 잘못했을 수도 있고, 바로잡아야 할 때도 있습니다. 그러나 그 순간 반드시 물어야 합니다. <mark>\"나는 지금 이 죄가 끝나기를 원하는가, 아니면 저 사람이 무너지기를 원하는가?\"</mark>", "예수님은 죄를 가볍게 여기신 분도, 하나님의 정의를 포기하신 분도 아닙니다. 그러나 예수님은 죄인을 없애서 정의를 이루지 않으셨습니다. 십자가에서, <mark>하나님이신 자신이 대가를 담당하는 방식</mark>으로 하나님의 정의를 이루셨습니다. 사사기 19장에서 레위인은 자기를 살리려고 여인을 희생시켰고, 20장에서 이스라엘은 자기들의 정의를 이루려고 형제를 희생시킵니다. 예수님은 정반대로 우리를 살리기 위해 자신을 내어 주셨습니다.", "그래서 예수님은 원수를 대하는 방식까지 다르게 가르치셨습니다. <mark>\"너희 원수를 사랑하며 너희를 박해하는 자를 위하여 기도하라\"</mark>. 악을 악이 아니라고 하라는 뜻도, 죄를 내버려 두라는 뜻도 아닙니다. 사람과 죄를 구분하라는 것입니다. <mark>죄에는 단호하되, 사람을 향해서는 회복을 포기하지 말라</mark>는 것입니다. 가정에서 싸울 때 목표는 배우자를 이기는 것이 아니라 가정을 무너뜨리는 죄와 이기심이 끝나는 것이어야 합니다. 교회에서 갈등할 때 목표는 상대를 몰아내는 것이 아니라 공동체를 병들게 하는 교만과 거짓이 끝나는 것이어야 합니다.", "교회는 서로 싸우느라 힘을 소모하는 공동체가 아니라, 십자가와 부활의 복음 안에서 하나 되어 그 힘으로 세상을 향해 나아가는 공동체입니다. <mark>우리의 적은 사람이 아니라 죄와 악입니다</mark>. 그러므로 죄에는 단호하되 먼저 내 죄부터 볼 수 있어야 하고, 사람은 포기하지 마십시오. 정의를 구하되 내 분노를 정의라고 착각하지 마십시오. 그리고 하나님이 멈추라고 하시는 자리에서는 멈추십시오."], "points": ["순종은 싸움을 시작할 줄 아는 것만이 아니라, 하나님의 마음으로 어디에서 멈춰야 하는지를 아는 것입니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "일이 잘된 결과를 '하나님이 내가 옳다고 인정하신 증거'로 여기고 있지 않은지 돌아봤다"}, {"key": "c2", "text": "누군가의 잘못을 바로잡는다며, 죄가 아니라 그 사람이 무너지기를 바라고 있지 않은지 점검했다"}, {"key": "c3", "text": "실패할 때만 하나님을 찾고, 성공한 뒤에는 내 분노와 욕심을 멈추지 못하고 있지 않은지 돌아봤다"}, {"key": "c4", "text": "갈등 속에서 내 분노를 정의라고 착각하지 않았는지, 먼저 내 죄부터 보았는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 내가 '바로잡겠다'며 싸우고 있는 관계에서, 하나님이 '여기서 멈추라' 하시는 자리는 어디입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "목표 바꾸기", "value": "갈등 중인 한 사람을 떠올리며 '저 사람이 지는 것'이 아니라 '이 죄가 끝나는 것'을 목표로 다시 기도하기"}, {"key": "act2", "label": "멈춤 실천", "value": "이미 할 말을 다 했는데도 계속하고 싶은 비판이나 논쟁 하나를 오늘은 멈추기"}, {"key": "act3", "label": "원수를 위한 기도", "value": "나를 힘들게 하는 한 사람의 이름을 부르며 그를 위해 축복 기도하기"}, {"key": "act4", "label": "성공 후 점검", "value": "최근 잘된 일 하나를 놓고 '이 과정에서 내가 넘어선 선은 없었는가'를 말씀 앞에서 돌아보기"}, {"key": "act5", "label": "말씀 암송", "value": "마태복음 5:44를 외우며 '죄에는 단호하게, 사람에게는 회복의 소망을' 붙들기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "죄인을 없애지 않으시고, 십자가에서 친히 대가를 담당하셔서 하나님의 정의와 사랑을 함께 이루신 예수님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "정의를 말하면서 내 분노를 앞세우고, 죄가 아니라 사람이 무너지기를 바랐으며, 성공한 뒤에 멈추지 못했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "죄에는 단호하되 사람은 포기하지 않게 하시고, 가정과 교회에서 받은 힘을 서로를 무너뜨리는 데가 아니라 세우는 데 쓰게 하시며, 주님이 멈추라 하실 때 멈추게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 12, Monday", "ref": "Judges 20:29–48", "headline": "Can We Stop<br>Even After Victory?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 20:29-48", "s1heading": "Today's Word", "verse": "\"But I say to you,<br>Love your enemies<br>and pray for those who persecute you.\"", "verseRef": "Matthew 5:44", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · God Gave Victory — but That Doesn't Make Every Action Right", "paragraphs": ["As we keep reading this story, one thing becomes clear: the text doesn't present anyone as cleanly righteous. The Levite gave up his concubine to save his own life and reported the event to all Israel while hiding his own responsibility. The wicked men of Gibeah committed a horrific sin. The tribe of Benjamin chose to fight alongside those sinners rather than hand them over. And the rest of Israel rose up to correct evil — but human anger and a desire for revenge began to mix into their justice.", "Previously, Israel had already decided on war and asked God only who should go first. They lost twice. Only then did their question change to \"Shall we go, or shall we cease?\" — and God promised, \"Tomorrow I will give them into your hand.\" But we must be very careful here. <mark>God giving victory and everything Israel did being right are not the same thing.</mark> God using a person or community doesn't automatically justify all their thoughts and actions. The tragedy of today's passage is that God allowed judgment on Benjamin, but Israel couldn't stop even after winning.", "Seen in the big picture of Judges, this is even more shocking. Judges 1 began with Israel driving out Canaan; in chapter 20, <mark>Israel is driving out Israel</mark>. In chapter 1 Canaanite cities were judged; in chapter 20, the Israelite city of Gibeah is destroyed like a Canaanite city. Here we see the difference between justice and revenge. Justice stays under God's standard and God's limits; revenge, centered on my anger, keeps going further. <mark>Justice wants the sin to end; revenge wants the person to end.</mark>"], "points": ["While fighting to correct someone's wrong at home or in church, am I wishing not for the sin to end, but for that person to disappear?"]}, {"title": "Verses 29–35 · \"The LORD Defeated Benjamin\"", "paragraphs": ["Verse 29 begins, \"So Israel set men in ambush around Gibeah.\" The strategy has changed from the previous two battles. This scene closely resembles the battle of Ai in Joshua 8: after a first defeat, an ambush is set, the main army deliberately retreats to draw the enemy out, and then the city is attacked. But there's a crucial difference. In Joshua 8, the city attacked was Canaanite Ai; here, it is <mark>the Israelite town of Gibeah</mark>. The conquest tactics once used against Canaanite cities are now repeated inside Israel.", "When Israel pulls back, the Benjaminites say, <mark>\"They are routed before us, as at the first.\"</mark> Why? Because they had already won twice, they assumed the third time would be the same. But this time Israel wasn't really fleeing; it was luring Benjamin away from the city. Even about thirty Israelites actually die, which only reinforces Benjamin's illusion. <mark>Past success can numb our discernment today.</mark> Winning twice was not proof that Benjamin was right. Likewise, a household going well, a ministry growing, or results matching my decision cannot be used as proof that God has endorsed me. Success and God's approval are not the same thing.", "Israel draws Benjamin out of Gibeah and attacks from front and rear; Benjamin is trapped. Verse 34 says the fighting was still fierce — human strategy alone hadn't decided the outcome. Then verse 35 interprets the whole battle: <mark>\"And the LORD defeated Benjamin before Israel.\"</mark> Israel planned, fought, and labored, but the ultimate cause of victory was God. And here we must remember: God granting victory does not mean everything the victor does is God's will."], "points": ["Winning is not proof that I'm right. Neither past success, present results, nor having been used by God justifies all my judgments. The more successful we are, the more we must examine ourselves before the Word."]}, {"title": "Verses 36–47 · A Victory Signal for Israel — Smoke of Disaster for Their Brothers", "paragraphs": ["Verse 36 says, <mark>\"So the people of Benjamin saw that they were defeated.\"</mark> The viewpoint shifts. The text makes us see the war not only from Israel's side as winners, but also from the side of Benjamin as losers. This matters, because Benjamin isn't Canaan — they are Israel's brothers. Even amid the excitement of victory, the text won't let us forget that this is a civil war of brothers killing brothers.", "The ambush enters Gibeah, strikes the city, and sends up a signal of smoke. For Israel's main army, that smoke meant the plan had succeeded. But for Benjamin, the moment they looked back, it meant their own home had fallen. The smoke also recalls the burning of Ai: Gibeah is becoming like a Canaanite city. In chapter 19 the Levite passed by Jebus because it was a foreign city and chose Gibeah, a city of God's people — and now that Gibeah is being destroyed like Canaan. Having taken on Canaan's ways, Israel is receiving the judgment meant for Canaan. In verse 34, Benjamin didn't know disaster was near; in verse 41, they saw that disaster had come upon them. <mark>Judgment that isn't yet visible is not judgment that doesn't exist.</mark>", "Now Benjamin is the one truly fleeing, and Israel pursues to the end. Eighteen thousand fall, then five thousand, then two thousand. <mark>Only six hundred flee to the rock of Rimmon and survive.</mark> The text calls the fallen Benjaminites \"men of valor\" — not just enemy numbers to be eliminated, but Israel's brothers who could have served the community, now falling by one another's swords. So this war feels strange: there's victory, but no joy. Whoever wins, God's people are losing."], "points": ["Repeated success can give a false sense of security. We must not conclude, 'Things keep going well, so God must be fine with it.'"]}, {"title": "Verse 48 · The War Was Over — but the Violence Didn't Stop", "paragraphs": ["The war is effectively over. Benjamin's army has collapsed, and the remaining six hundred have fled to the rock of Rimmon. The victory God promised has already been fulfilled. Yet Israel doesn't stop. <mark>\"And the men of Israel turned back against the people of Benjamin and struck them with the edge of the sword, the city, men and beasts and all that they found. And all the towns that they found they set on fire.\"</mark>", "There's an important distinction here. In verse 28 God said, \"Tomorrow I will give them into your hand,\" and verse 35 shows that promise fulfilled. But the text does not say God commanded the widespread destruction of verse 48. Instead, it expands beyond the battle into a destruction of Benjamin's towns as if under the ban. <mark>This is where justice crosses over into revenge.</mark> What did Israel first demand (20:13)? \"Give up the worthless men of Gibeah.\" They wanted to purge evil. But by the end, the judgment that began with the criminals spreads to Benjamin's army, to Benjamin's towns, and finally to people, livestock, and everything. Justice seeks to correct sin; human revenge drags more and more people into paying for it. Hating sin and wanting to destroy people are different things.", "And here is the irony: in 20:28 Israel finally asked, \"Shall we go out again… or shall we cease?\" — they asked whether to stop, and God promised victory. Yet <mark>after winning, they couldn't stop</mark>. When they failed, they wept, fasted, inquired of God, and offered sacrifices. But after succeeding, they couldn't control their anger. The time after success can be more dangerous than failure."], "points": ["As important as seeking God in defeat is knowing how to stop within God's limits in victory. Obedience is not only knowing how to fight, but knowing how to stop where God allows."]}, {"title": "Application · Do You Want the Sin to End — or the Person?", "paragraphs": ["They began by saying they would remove Gibeah's evil, but they ended by nearly wiping out the tribe of Benjamin itself. They began wanting to end sin, and at some point they wanted to end people. <mark>That is exactly where human justice turns into revenge.</mark> We have fights like this too. We may clash with a spouse or children at home, or disagree with another believer at church. Someone may clearly be in the wrong, and there are times it must be corrected. But in that moment we must ask: <mark>\"Do I want this sin to end — or do I want that person to fall?\"</mark>", "Jesus never took sin lightly, nor did He abandon God's justice. But He didn't accomplish justice by destroying sinners. On the cross He fulfilled God's justice in an astonishing way — <mark>God Himself bearing the cost</mark>. Human justice easily sacrifices others, but at the cross God's justice appeared as the King, God Himself, paying the price. In Judges 19 the Levite sacrificed a woman to save himself; in Judges 20 Israel sacrifices its brothers to achieve its own justice. Jesus is the opposite: He gave Himself to save us.", "So Jesus taught a different way even toward enemies: <mark>\"Love your enemies and pray for those who persecute you.\"</mark> This doesn't mean calling evil not evil, or simply leaving sin alone. It means distinguishing between the person and the sin — <mark>being resolute against sin, but never giving up on the restoration of the person</mark>. When we fight at home, our goal must not be to defeat our spouse, but for the sin and selfishness destroying the home to end. When we have conflict at church, our goal must not be to drive the other person out, but for the pride, deceit, and sin that sicken the community to end.", "We must no longer use the strength and abilities given for the gospel to attack and tear one another down in the church or at home. The church is not a community that exhausts itself fighting internally, but one united in the gospel of the cross and resurrection, moving out toward the world with that strength. <mark>Our enemy is not people, but sin and evil.</mark> So be resolute against sin — beginning by seeing your own. But don't give up on people. Seek justice, but don't mistake your anger for justice. And where God tells you to stop, stop."], "points": ["Obedience is not only knowing how to start a fight, but knowing — with God's heart — where to stop."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I treat good results as 'proof that God has approved me.'"}, {"key": "c2", "text": "I checked whether, while correcting someone's wrong, I'm wishing not for the sin to end but for that person to fall."}, {"key": "c3", "text": "I reflected on whether I seek God only in failure, but can't stop my anger or greed after success."}, {"key": "c4", "text": "I checked whether I've mistaken my anger for justice in a conflict, and whether I looked at my own sin first."}], "s4heading": "One-Line Reflection", "memoHint": "In a relationship where I'm fighting to 'set things right,' where is God telling me, 'Stop here'?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Change the Goal", "value": "Think of someone you're in conflict with and pray again with the goal not of 'them losing' but of 'this sin ending'"}, {"key": "act2", "label": "Practice Stopping", "value": "Stop one criticism or argument today that you want to keep pressing even though you've already said what you needed to"}, {"key": "act3", "label": "Pray for an Enemy", "value": "Say the name of someone who makes life hard for you and pray a blessing over them"}, {"key": "act4", "label": "Check After Success", "value": "Take one recent success and ask before the Word, 'Did I cross any line in the process?'"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Matthew 5:44 and hold onto 'resolute against sin, hopeful for the person's restoration'"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Jesus, for not destroying sinners, but bearing the cost Yourself on the cross and fulfilling both God's justice and His love."}, {"key": "p2", "tag": "Repent", "text": "I repent of putting my anger first while speaking of justice, of wishing for people rather than sin to fall, and of being unable to stop after success."}, {"key": "p3", "tag": "Ask", "text": "Make me resolute against sin but never giving up on people. Let me use the strength You've given me at home and in church to build up rather than tear down, and to stop when You say stop."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 12, Lunes", "ref": "Mga Hukom 20:29–48", "headline": "Kaya Ba Nating Huminto<br>Kahit Pagkatapos Manalo?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 20:29-48", "s1heading": "Salita Ngayon", "verse": "\"Ngunit sinasabi Ko sa inyo,<br>ibigin ninyo ang inyong mga kaaway<br>at ipanalangin ang mga umuusig sa inyo.\"", "verseRef": "Mateo 5:44", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Nagbigay ang Diyos ng Tagumpay — Ngunit Hindi Nito Ginagawang Tama ang Bawat Gawa", "paragraphs": ["Habang patuloy nating binabasa ang kwentong ito, isang bagay ang lumilinaw: walang ipinapakitang ganap na matuwid ang teksto. Isinuko ng Levita ang kanyang babae upang iligtas ang sariling buhay at iniulat ang pangyayari sa buong Israel habang itinatago ang sarili niyang pananagutan. Gumawa ng kakila-kilabot na kasalanan ang masasamang tao ng Gibea. Pinili ng lipi ni Benjamin na lumaban kasama ng mga makasalanang iyon sa halip na isuko sila. At bumangon ang ibang bahagi ng Israel upang ituwid ang kasamaan — ngunit nagsimulang mahaluan ng galit ng tao at pagnanasang maghiganti ang kanilang katarungan.", "Noong una, nagpasya na ang Israel na makipagdigma at itinanong lamang sa Diyos kung sino ang mauuna. Dalawang beses silang natalo. Saka lamang nagbago ang kanilang tanong tungo sa \"Lalaban ba kami, o titigil?\" — at nangako ang Diyos, \"Bukas ay ibibigay Ko sila sa inyong kamay.\" Ngunit dapat tayong maging maingat dito. <mark>Ang pagbibigay ng Diyos ng tagumpay at ang pagiging tama ng lahat ng ginawa ng Israel ay hindi magkapareho.</mark> Ang paggamit ng Diyos sa isang tao o komunidad ay hindi awtomatikong nagbibigay-katwiran sa lahat ng kanilang iniisip at ginagawa. Ang trahedya ng talata ngayon ay pinahintulutan ng Diyos ang paghatol sa Benjamin, ngunit hindi nakahinto ang Israel kahit nanalo na.", "Sa malaking larawan ng Mga Hukom, lalo itong nakagugulat. Nagsimula ang Mga Hukom 1 sa pagpapalayas ng Israel sa Canaan; sa kabanata 20, <mark>pinalalayas ng Israel ang Israel</mark>. Sa kabanata 1, hinatulan ang mga lungsod ng Canaan; sa kabanata 20, winasak ang lungsod ng Israel na Gibea na parang lungsod ng Canaan. Dito natin nakikita ang pagkakaiba ng katarungan at paghihiganti. Nananatili ang katarungan sa ilalim ng pamantayan at hangganan ng Diyos; ang paghihiganti, na nakasentro sa aking galit, ay patuloy na lumalayo. <mark>Nais ng katarungan na matapos ang kasalanan; nais ng paghihiganti na matapos ang tao.</mark>"], "points": ["Habang nakikipaglaban ako upang ituwid ang pagkakamali ng isang tao sa tahanan o iglesia, hinahangad ko ba hindi ang pagtatapos ng kasalanan, kundi ang pagkawala ng taong iyon?"]}, {"title": "Talata 29–35 · \"Tinalo ni Yahweh ang Benjamin\"", "paragraphs": ["Nagsimula ang talata 29, \"Kaya naglagay ang Israel ng mga tambangan sa palibot ng Gibea.\" Nagbago ang estratehiya mula sa dalawang naunang labanan. Halos kapareho ng eksenang ito ang labanan sa Ai sa Josue 8: pagkatapos ng unang pagkatalo, naglagay ng tambangan, sadyang umatras ang pangunahing hukbo upang ilabas ang kaaway, at saka sinalakay ang lungsod. Ngunit may mahalagang pagkakaiba. Sa Josue 8, ang sinalakay ay ang lungsod ng Cananeong Ai; dito, ito ay <mark>ang bayan ng Israel na Gibea</mark>. Ang mga taktika ng pananakop na dating ginamit laban sa mga lungsod ng Canaan ay inuulit ngayon sa loob ng Israel.", "Nang umatras ang Israel, sinabi ng mga Benjamita, <mark>\"Natatalo sila sa harap natin, gaya ng una.\"</mark> Bakit? Dahil dalawang beses na silang nanalo, inakala nilang ganoon din ang ikatlo. Ngunit sa pagkakataong ito, hindi talaga tumatakas ang Israel; inaakit nito ang Benjamin palayo sa lungsod. Mga tatlumpung Israelita pa nga ang talagang namatay, na lalo lamang nagpatibay sa ilusyon ng Benjamin. <mark>Maaaring mamanhid ang ating pagkilala ngayon dahil sa nakaraang tagumpay.</mark> Ang dalawang beses na pagkapanalo ay hindi patunay na tama ang Benjamin. Gayundin, ang maayos na takbo ng tahanan, paglago ng ministeryo, o pagtugma ng resulta sa aking pasya ay hindi magagamit na patunay na sinang-ayunan ako ng Diyos. Hindi magkapareho ang tagumpay at ang pagsang-ayon ng Diyos.", "Inilabas ng Israel ang Benjamin mula sa Gibea at sinalakay mula sa harap at likod; nakulong ang Benjamin. Sinasabi ng talata 34 na mabangis pa rin ang labanan — hindi pa napagpapasyahan ng estratehiya ng tao lamang ang resulta. Pagkatapos, ipinapaliwanag ng talata 35 ang buong labanan: <mark>\"At tinalo ni Yahweh ang Benjamin sa harap ng Israel.\"</mark> Nagplano, lumaban, at nagpagal ang Israel, ngunit ang Diyos ang pangunahing sanhi ng tagumpay. At dito dapat nating tandaan: ang pagbibigay ng Diyos ng tagumpay ay hindi nangangahulugang kalooban ng Diyos ang lahat ng ginagawa ng nanalo."], "points": ["Ang pagkapanalo ay hindi patunay na tama ako. Hindi binibigyang-katwiran ng nakaraang tagumpay, kasalukuyang resulta, o ng pagiging ginamit ng Diyos ang lahat ng aking paghatol. Habang lalo tayong nagtatagumpay, lalo nating dapat suriin ang sarili sa harap ng Salita."]}, {"title": "Talata 36–47 · Hudyat ng Tagumpay sa Israel — Usok ng Sakuna sa Kanilang mga Kapatid", "paragraphs": ["Sinasabi ng talata 36, <mark>\"Nakita ng mga Benjamita na sila'y natalo.\"</mark> Nagbago ang pananaw. Pinatitingnan tayo ng teksto sa digmaan hindi lamang mula sa panig ng Israel bilang nanalo, kundi pati mula sa panig ng Benjamin bilang natalo. Mahalaga ito, sapagkat hindi Canaan ang Benjamin — mga kapatid sila ng Israel. Kahit sa gitna ng kasabikan ng tagumpay, hindi tayo hinahayaan ng teksto na makalimot na ito ay digmaang sibil ng magkakapatid na nagpapatayan.", "Pumasok ang tambangan sa Gibea, sinalakay ang lungsod, at nagpailanglang ng usok bilang hudyat. Para sa pangunahing hukbo ng Israel, nangangahulugan ang usok na nagtagumpay ang plano. Ngunit para sa Benjamin, sa sandaling lumingon sila, nangangahulugan itong bumagsak na ang sarili nilang tahanan. Ipinapaalala rin ng usok ang pagsunog sa Ai: nagiging parang lungsod ng Canaan ang Gibea. Sa kabanata 19, nilampasan ng Levita ang Jebus dahil lungsod ito ng dayuhan at pinili ang Gibea, lungsod ng bayan ng Diyos — at ngayon ang Gibeang iyon ay winawasak na parang Canaan. Dahil tinanggap ang paraan ng Canaan, tinatanggap ng Israel ang hatol na para sana sa Canaan. Sa talata 34, hindi alam ng Benjamin na malapit na ang sakuna; sa talata 41, nakita nilang dumating na ito sa kanila. <mark>Ang paghatol na hindi pa nakikita ay hindi paghatol na wala.</mark>", "Ngayon, ang Benjamin na ang talagang tumatakas, at hinahabol sila ng Israel hanggang sa dulo. Labing-walong libo ang nabuwal, pagkatapos ay limang libo, pagkatapos ay dalawang libo. <mark>Anim na raan lamang ang nakatakas sa bato ng Rimon at nakaligtas.</mark> Tinawag ng teksto ang mga nabuwal na Benjamita na \"magigiting na lalaki\" — hindi lamang bilang ng kaaway na dapat alisin, kundi mga kapatid ng Israel na maaari sanang naglingkod sa komunidad, na ngayo'y nabubuwal sa tabak ng isa't isa. Kaya kakaiba ang digmaang ito: may tagumpay, ngunit walang kagalakan. Sinuman ang manalo, natatalo ang bayan ng Diyos."], "points": ["Maaaring magbigay ng maling pakiramdam ng kaligtasan ang paulit-ulit na tagumpay. Hindi natin dapat isiping, 'Patuloy namang maayos, kaya ayos lang ito sa Diyos.'"]}, {"title": "Talata 48 · Tapos na ang Digmaan — Ngunit Hindi Huminto ang Karahasan", "paragraphs": ["Halos tapos na ang digmaan. Bumagsak na ang hukbo ng Benjamin, at tumakas na sa bato ng Rimon ang natitirang anim na raan. Natupad na ang tagumpay na ipinangako ng Diyos. Gayunman, hindi huminto ang Israel. <mark>\"Bumalik ang mga lalaki ng Israel laban sa mga Benjamita at sinaktan sila ng talim ng tabak — ang lungsod, mga tao at hayop, at lahat ng kanilang natagpuan. At sinunog nila ang lahat ng bayang kanilang natagpuan.\"</mark>", "May mahalagang pagkakaiba rito. Sa talata 28, sinabi ng Diyos, \"Bukas ay ibibigay Ko sila sa inyong kamay,\" at ipinapakita ng talata 35 ang katuparan ng pangakong iyon. Ngunit hindi sinasabi ng teksto na iniutos ng Diyos ang malawakang pagwasak sa talata 48. Sa halip, lumawak ito lampas sa labanan tungo sa pagwasak sa mga bayan ng Benjamin na parang lubusang pagpuksa. <mark>Dito tumatawid ang katarungan tungo sa paghihiganti.</mark> Ano ang unang hiniling ng Israel (20:13)? \"Ibigay ninyo ang mga walang-kwentang lalaki ng Gibea.\" Nais nilang alisin ang kasamaan. Ngunit sa huli, ang paghatol na nagsimula sa mga kriminal ay kumalat sa hukbo ng Benjamin, sa mga bayan ng Benjamin, at sa wakas ay sa mga tao, hayop, at lahat. Hinahangad ng katarungan na ituwid ang kasalanan; hinihila ng paghihiganti ng tao ang parami nang paraming tao upang magbayad dito. Magkaiba ang pagkapoot sa kasalanan at ang pagnanais na lipulin ang tao.", "At narito ang kabalintunaan: sa 20:28, sa wakas ay nagtanong ang Israel, \"Lalabas ba kaming muli… o titigil na?\" — itinanong nila kung dapat huminto, at nangako ang Diyos ng tagumpay. Gayunman, <mark>pagkatapos manalo, hindi sila nakahinto</mark>. Nang mabigo sila, umiyak sila, nag-ayuno, nagtanong sa Diyos, at naghandog. Ngunit pagkatapos magtagumpay, hindi nila napigilan ang kanilang galit. Maaaring mas mapanganib ang panahon pagkatapos ng tagumpay kaysa sa pagkabigo."], "points": ["Kasinghalaga ng paghahanap sa Diyos sa pagkatalo ang marunong huminto sa loob ng hangganan ng Diyos sa tagumpay. Ang pagsunod ay hindi lamang marunong lumaban, kundi marunong ding huminto kung saan pinahihintulutan ng Diyos."]}, {"title": "Aplikasyon · Gusto Mo Bang Matapos ang Kasalanan — o ang Tao?", "paragraphs": ["Nagsimula sila sa pagsasabing aalisin nila ang kasamaan ng Gibea, ngunit nagtapos sa halos paglipol sa mismong lipi ni Benjamin. Nagsimula silang nagnanais na tapusin ang kasalanan, at sa isang punto ay ninais na nilang tapusin ang tao. <mark>Iyan mismo ang punto kung saan nagiging paghihiganti ang katarungan ng tao.</mark> May ganitong mga laban din tayo. Maaari tayong makipagtalo sa asawa o mga anak sa tahanan, o hindi magkasundo sa ibang mananampalataya sa iglesia. Maaaring malinaw na mali ang isang tao, at may mga panahong kailangan itong ituwid. Ngunit sa sandaling iyon, dapat nating itanong: <mark>\"Gusto ko bang matapos ang kasalanang ito — o gusto kong bumagsak ang taong iyon?\"</mark>", "Hindi kailanman binalewala ni Jesus ang kasalanan, ni tinalikuran ang katarungan ng Diyos. Ngunit hindi Niya tinupad ang katarungan sa paglipol sa mga makasalanan. Sa krus, tinupad Niya ang katarungan ng Diyos sa kamangha-manghang paraan — <mark>ang Diyos Mismo ang nagbayad ng halaga</mark>. Madaling isakripisyo ng katarungan ng tao ang iba, ngunit sa krus, lumitaw ang katarungan ng Diyos bilang ang Hari, ang Diyos Mismo, na nagbabayad ng halaga. Sa Mga Hukom 19, isinakripisyo ng Levita ang isang babae upang iligtas ang sarili; sa Mga Hukom 20, isinakripisyo ng Israel ang kanilang mga kapatid upang makamit ang sarili nilang katarungan. Kabaligtaran si Jesus: ibinigay Niya ang Kanyang sarili upang iligtas tayo.", "Kaya nagturo si Jesus ng ibang paraan maging sa mga kaaway: <mark>\"Ibigin ninyo ang inyong mga kaaway at ipanalangin ang mga umuusig sa inyo.\"</mark> Hindi ito nangangahulugang sabihing hindi masama ang masama, o pabayaan lamang ang kasalanan. Nangangahulugan itong ihiwalay ang tao sa kasalanan — <mark>maging matatag laban sa kasalanan, ngunit huwag kailanman sukuan ang pagpapanumbalik ng tao</mark>. Kapag nag-aaway tayo sa tahanan, ang layunin ay hindi talunin ang asawa, kundi matapos ang kasalanan at pagkamakasarili na sumisira sa tahanan. Kapag may alitan sa iglesia, ang layunin ay hindi palayasin ang kabila, kundi matapos ang kapalaluan, panlilinlang, at kasalanang nagpapasakit sa komunidad.", "Hindi na natin dapat gamitin ang lakas at kakayahang ibinigay para sa ebanghelyo upang salakayin at sirain ang isa't isa sa iglesia o tahanan. Ang iglesia ay hindi komunidad na nauubos sa pakikipag-away sa loob, kundi nagkakaisa sa ebanghelyo ng krus at muling pagkabuhay, at lumalabas patungo sa mundo dala ang lakas na iyon. <mark>Ang ating kaaway ay hindi tao, kundi kasalanan at kasamaan.</mark> Kaya maging matatag laban sa kasalanan — simula sa pagkakita sa sarili mong kasalanan. Ngunit huwag sukuan ang tao. Hanapin ang katarungan, ngunit huwag mapagkamalang katarungan ang iyong galit. At kung saan sinasabi ng Diyos na huminto, huminto."], "points": ["Ang pagsunod ay hindi lamang marunong magsimula ng laban, kundi marunong — taglay ang puso ng Diyos — kung saan dapat huminto."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung itinuturing ko ang magandang resulta bilang 'patunay na sinang-ayunan ako ng Diyos.'"}, {"key": "c2", "text": "Sinuri ko kung, habang itinutuwid ang pagkakamali ng isang tao, hinahangad ko hindi ang pagtatapos ng kasalanan kundi ang pagbagsak ng taong iyon."}, {"key": "c3", "text": "Pinag-isipan ko kung hinahanap ko lamang ang Diyos sa pagkabigo, ngunit hindi ko mapigilan ang aking galit o kasakiman pagkatapos ng tagumpay."}, {"key": "c4", "text": "Sinuri ko kung napagkamalan kong katarungan ang aking galit sa isang alitan, at kung tiningnan ko muna ang sarili kong kasalanan."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa isang relasyong ipinaglalaban kong 'ituwid,' saan sinasabi sa akin ng Diyos, 'Huminto ka rito'?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Baguhin ang Layunin", "value": "Isipin ang taong kaalitan mo at manalangin muli na ang layunin ay hindi 'ang pagkatalo niya' kundi 'ang pagtatapos ng kasalanang ito'"}, {"key": "act2", "label": "Sanayin ang Paghinto", "value": "Ihinto ngayon ang isang puna o pagtatalo na gusto mo pang ipilit kahit nasabi mo na ang kailangan"}, {"key": "act3", "label": "Ipanalangin ang Kaaway", "value": "Banggitin ang pangalan ng taong nagpapahirap sa iyo at ipanalangin siya ng pagpapala"}, {"key": "act4", "label": "Suriin Pagkatapos ng Tagumpay", "value": "Kumuha ng isang kamakailang tagumpay at itanong sa harap ng Salita, 'May linya ba akong nilampasan sa proseso?'"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Mateo 5:44 at panghawakan ang 'matatag laban sa kasalanan, may pag-asa para sa pagpapanumbalik ng tao'"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Jesus, na hindi Mo nilipol ang mga makasalanan, kundi Ikaw Mismo ang nagbayad ng halaga sa krus at tinupad ang katarungan at pag-ibig ng Diyos."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pag-uuna sa aking galit habang nagsasalita tungkol sa katarungan, sa paghahangad na bumagsak ang tao sa halip na ang kasalanan, at sa hindi paghinto pagkatapos ng tagumpay."}, {"key": "p3", "tag": "Kahilingan", "text": "Gawin Mo akong matatag laban sa kasalanan ngunit hindi sumusuko sa tao. Hayaan Mong gamitin ko ang lakas na ibinigay Mo sa tahanan at iglesia upang magpatibay at hindi magpabagsak, at huminto kapag sinabi Mong huminto."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
