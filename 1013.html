@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/13(화) 큐티 · 사사기 21:1–12">
+<meta property="og:description" content="후회하고도 같은 길을 걷고 있지는 않습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 13일 화요일", "ref": "사사기 21장 1–12절", "headline": "후회하고도<br>같은 길을 걷고 있지는 않습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 사사기 21:1-12", "s1heading": "오늘의 말씀", "verse": "\"외식하는 자여 먼저 네 눈 속에서 들보를 빼어라<br>그 후에야 밝히 보고<br>형제의 눈 속에서 티를 빼리라\"", "verseRef": "마태복음 7:5", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 후회와 회개는 같지 않습니다", "paragraphs": ["이스라엘은 승리를 복수로 확대했고, 베냐민에는 림몬 바위로 도망한 남자 육백 명만 남았습니다. 한 지파가 사라질 위기 앞에서 이스라엘은 뒤늦게 크게 웁니다. 그러나 <mark>후회는 결과가 아파서 우는 것이고, 회개는 그 결과를 만든 내 죄와 책임을 보고 방향을 돌이키는 것</mark>입니다.", "하나님이 대답하지 않으시자 이스라엘은 다시 자기들끼리 해결책을 찾습니다. 베냐민을 살리기 위해 야베스 길르앗을 희생시킵니다. 레위인이 자기를 살리려 여인을 희생시켰듯, <mark>사람을 하나님의 형상이 아니라 문제 해결의 수단으로 보는 일</mark>이 반복됩니다."], "points": ["문제가 생겼을 때 나는 먼저 하나님을 탓합니까, 아니면 '이 일에 나의 책임은 무엇입니까?'라고 묻습니까?"]}, {"title": "1–4절 · \"어찌하여 한 지파가 없어지게 하시나이까\"", "paragraphs": ["이스라엘은 미스바에서 <mark>\"우리 중에 누구든지 딸을 베냐민 사람에게 아내로 주지 아니하리라\"</mark>고 맹세했었습니다. 하나님이 명하신 적 없는, 분노 속에서 스스로 내린 맹세였습니다. 가나안 사람과는 혼인하던 그들이 형제에게는 딸을 주지 않겠다고 합니다. 하나님께 묻지 않은 성급한 결정은 나중에 우리를 묶는 족쇄가 될 수 있습니다.", "그들은 벧엘에서 저녁까지 크게 울며 묻습니다. <mark>\"어찌하여 오늘 이스라엘 중에 한 지파가 없어지게 하시나이까\"</mark>. 영적인 질문처럼 보이지만, 베냐민을 거의 멸절한 것은 그들 자신이었습니다. 물어야 할 질문은 \"우리가 어떻게 여기까지 왔습니까?\"였습니다. 제단을 쌓고 번제와 화목제를 드렸지만, 이번에는 하나님의 응답이 기록되지 않습니다."], "points": ["예배 행위가 회개를 대신할 수는 없습니다. 하나님의 침묵은 내 마음대로 해도 된다는 허락이 아니라, 멈추고 내 책임을 돌아보라는 자리일 수 있습니다."]}, {"title": "5–9절 · 스스로 만든 맹세에 갇히다", "paragraphs": ["이제 그들은 하나님께 묻지 않고 자기들끼리 묻습니다. 그리고 또 하나의 맹세가 드러납니다. <mark>미스바 총회에 오지 않은 자는 반드시 죽이겠다</mark>는 맹세입니다. 이스라엘은 두 개의 자기 맹세 안에 갇혀, 그 규칙 안에서 빠져나갈 방법을 찾습니다. 하나님의 뜻을 묻는 것과 내가 만든 규칙의 빈틈을 찾는 것은 다릅니다.", "\"형제 베냐민을 위하여 뉘우쳤다\"는 것은 하나님을 향한 회개라기보다 베냐민을 안타까워했다는 뜻에 가깝습니다. 분노가 식자 다시 형제가 보이기 시작한 것은 의미가 있지만, 문제는 그 방법입니다. 야베스 길르앗이 오지 않은 이유를 <mark>묻지도, 확인하지도, 설명할 기회를 주지도 않고</mark> 곧장 '죽여야 한다'는 결론으로 갑니다."], "points": ["사사기의 백성은 빨리 판단하고 늦게 후회합니다. 나도 이유를 묻기도 전에 누군가의 행동만 보고 판단하고 있지는 않습니까?"]}, {"title": "10–12절 · 한 지파를 살리려고 또 다른 공동체를 희생시키다", "paragraphs": ["이스라엘은 용사 만 이천 명을 보내 야베스 길르앗을 치게 하고, 젊은 처녀들만 살려 두라고 명령합니다. 베냐민 남자들에게 아내로 주기 위해서입니다. 가나안 진멸 전쟁의 언어가 이제 자기 동족에게 쓰입니다. 남자도, 결혼한 여자도 죽이지만 젊은 처녀는 살립니다. <mark>왜입니까? 그들의 문제를 해결하는 데 쓸모가 있기 때문입니다</mark>.", "결국 사백 명의 처녀를 실로 진영으로 데려옵니다. 본문은 굳이 <mark>\"이 곳은 가나안 땅이더라\"</mark>고 덧붙입니다. 약속의 땅, 예배의 중심지 실로였지만 그들의 삶의 방식은 점점 가나안과 다르지 않게 되었습니다. 자기 소견으로 만든 문제를 다시 자기 소견으로 풀면, 해결책이 새로운 피해자를 만듭니다."], "points": ["좋은 목적이라고 나쁜 방법이 선해지지 않습니다. 사람을 하나님의 형상으로 보지 못하면, 결국 내 문제를 해결하는 도구로 보게 됩니다."]}, {"title": "적용 · \"이 일 속에서 내가 무엇을 회개해야 합니까?\"", "paragraphs": ["오늘 이스라엘은 슬피 울고, 예배도 드리고, 하나님의 이름도 부릅니다. 그러나 가장 중요한 것이 빠져 있습니다. <mark>자기 책임을 정직하게 보는 것</mark>입니다. 그들은 \"하나님, 왜 한 지파가 없어지게 되었습니까?\"라고 물었지만, 먼저 \"우리가 무엇을 했습니까?\"라고 물었어야 했습니다. 우리도 마찬가지입니다. 가정에 문제가 생겼을 때 \"왜 내 배우자가 이럴까?\"라고 묻기 전에 \"나는 무엇을 돌이켜야 할까?\"를, 교회에 갈등이 생겼을 때 \"왜 저 사람이 문제일까?\"보다 먼저 \"내 안의 교만과 분노와 자기 의는 무엇일까?\"를 보아야 합니다.", "예수님은 말씀하셨습니다. <mark>\"먼저 네 눈 속에서 들보를 빼어라 그 후에야 밝히 보고 형제의 눈 속에서 티를 빼리라\"</mark>. 다른 사람의 죄를 보지 말라는 것이 아니라 먼저 나를 보라는 것입니다. 다른 사람의 죄를 해결하기 전에 자기 눈의 들보를 보고, 하나님을 탓하기 전에 자기 책임을 인정하고, 자기 방식의 해결책을 만들기 전에 하나님의 뜻 앞에서 멈추는 것. <mark>이것이 회개와 돌이킴과 회복의 시작</mark>입니다.", "사사기의 사람들은 계속 누군가를 살리기 위해 더 약한 누군가를 희생시켰습니다. 그러나 예수님은 정반대의 길을 보여 주셨습니다. <mark>\"인자가 온 것은 섬김을 받으려 함이 아니라 도리어 섬기려 하고 자기 목숨을 많은 사람의 대속물로 주려 함이니라\"</mark>. 사사기의 세상은 \"문제를 해결하기 위해 네가 희생하라\"고 말하지만, 예수님은 \"너를 살리기 위해 내가 나를 내어 주겠다\"고 말씀하십니다. 이것이 하나님 나라의 방식입니다.", "그러므로 오늘 우리가 붙들어야 할 것은 단순한 후회가 아니라 회개입니다. 눈물에서 멈추지 말고 책임을 보고 방향을 바꾸십시오. 서두른 해결책보다 하나님의 뜻을 기다리십시오. 사람을 문제 해결의 수단이 아니라 <mark>하나님의 형상을 지닌 사람</mark>으로 바라보십시오. \"하나님, 왜 이런 일이 내게 생겼습니까?\"가 아니라 \"이 일 속에서 내가 무엇을 회개하고 어디로 돌이켜야 합니까?\" 이 질문이 참된 회복의 시작입니다."], "points": ["눈물은 회개의 시작일 수 있지만, 참된 회개는 눈물에서 끝나지 않고 방향의 변화까지 나아갑니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "어려운 결과 앞에서 '하나님, 왜?'보다 '이 일에 나의 책임은 무엇인가?'를 먼저 물었다"}, {"key": "c2", "text": "결과를 슬퍼하는 후회에 머물러 있는지, 실제로 방향을 바꾸는 회개로 나아가고 있는지 돌아봤다"}, {"key": "c3", "text": "분노 속에서 하나님께 묻지 않고 내린 결정이나 말이 지금 나를 묶고 있지는 않은지 점검했다"}, {"key": "c4", "text": "이유를 묻기 전에 누군가를 판단하거나, 사람을 내 문제를 해결하는 도구처럼 대하지 않았는지 돌아봤다"}], "s4heading": "묵상 한 줄", "memoHint": "요즘 내가 '왜 이런 일이?'라고 탓하고 있는 문제 속에서, 내가 회개하고 돌이켜야 할 한 가지는 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "들보 먼저", "value": "최근 갈등 하나를 놓고 상대의 잘못보다 내 잘못을 먼저 한 가지 적고 하나님께 고백하기"}, {"key": "act2", "label": "이유 묻기", "value": "이해되지 않는 행동을 한 사람에게 판단하기 전에 먼저 '무슨 사정이 있었나요?' 하고 물어보기"}, {"key": "act3", "label": "성급한 맹세 풀기", "value": "화가 나서 했던 말이나 결심 중 하나님 뜻과 맞지 않는 것을 찾아 내려놓고 필요하면 사과하기"}, {"key": "act4", "label": "기다림 연습", "value": "서둘러 내 방식으로 해결하려던 문제 하나를 오늘은 멈추고 하나님의 뜻을 구하며 기다리기"}, {"key": "act5", "label": "말씀 암송", "value": "마태복음 7:5를 외우며 다른 사람을 보기 전에 먼저 나를 비추어 보기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "누군가를 희생시켜 문제를 해결하지 않으시고, 우리를 살리기 위해 자기 목숨을 내어 주신 예수님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "결과만 슬퍼하며 하나님을 탓하고, 내 눈의 들보는 보지 않은 채 서둘러 내 방식으로 해결하려 했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "후회에 머물지 않고 방향을 바꾸는 참된 회개로 나아가게 하시고, 사람을 문제 해결의 도구가 아니라 하나님의 형상을 지닌 존재로 바라보게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 13, Tuesday", "ref": "Judges 21:1–12", "headline": "Regretting —<br>Yet Walking the Same Path?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Judges 21:1-12", "s1heading": "Today's Word", "verse": "\"You hypocrite, first take the log out of your own eye,<br>and then you will see clearly<br>to take the speck out of your brother's eye.\"", "verseRef": "Matthew 7:5", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Regret and Repentance Are Not the Same", "paragraphs": ["We've been watching the incident of a Levite and his concubine grow into a civil war across all Israel. The Levite handed his concubine over to the worthless men of Gibeah to save himself, then divided her body and sent it to the tribes. Israel demanded that Benjamin hand over Gibeah's wicked men, but Benjamin protected them, and brothers went to war. God granted victory over Benjamin, but Israel expanded that victory into their own anger and revenge. In the end, only 600 men of Benjamin who fled to the rock of Rimmon remained, and the tribe itself faced extinction.", "Now in chapter 21, Israel comes weeping in belated regret. But we must distinguish something here: <mark>regret and repentance are not the same</mark>. Regret is weeping because the results hurt. Repentance is seeing my own sin and responsibility that produced those results, and turning around. Israel sees that Benjamin is about to vanish and weeps loudly, asking, \"O LORD, the God of Israel, why has this happened, that today there should be one tribe lacking in Israel?\" But we already know why: Israel itself had nearly wiped Benjamin out. The question they needed to ask first wasn't \"God, why did this happen?\" but <mark>\"How did we get here?\"</mark>", "Even more striking, this time no response from God is recorded. Israel weeps, builds an altar, and offers burnt and peace offerings — but God's answer is not recorded. And when God doesn't answer, they again look for solutions among themselves, sacrificing another Israelite community, Jabesh-gilead, to save the tribe. The pattern keeps repeating in the latter part of Judges: the Levite sacrificed a woman to save himself; Israel nearly destroyed Benjamin in the name of justice; and now, to save Benjamin, they sacrifice another town and its women. <mark>They have begun seeing people not as people, but as means to solve their own problems.</mark>"], "points": ["When problems arise, do I first blame God — or do I ask, 'What is my responsibility in this?' Do I stop at regretting the results, or move on to repentance that truly changes direction?"]}, {"title": "Verses 1–4 · \"Why Should There Be One Tribe Lacking?\"", "paragraphs": ["Verse 1 belatedly reveals something else that happened at Mizpah before the war: <mark>\"Now the men of Israel had sworn at Mizpah, 'No one of us shall give his daughter in marriage to Benjamin.'\"</mark> This wasn't merely a private promise not to marry. Marriage then was a key bond linking communities, so this was essentially a declaration: 'We will no longer relate to Benjamin as one community.' And there's a great irony: earlier in Judges, Israel actually intermarried with the Canaanites — yet now they swear not to give their daughters to their own brother Benjamin. Nowhere does the text say God commanded this oath. It was a decision Israel made in anger. <mark>A rash decision made without asking God can later become a shackle that keeps us from moving according to God's will.</mark>", "In verse 2, Israel goes to Bethel, sits before God until evening, and weeps aloud, asking, <mark>\"O LORD, the God of Israel, why has this happened in Israel, that today there should be one tribe lacking in Israel?\"</mark> At first glance it seems a very spiritual question. But think a little and it's strange. Why was a tribe on the verge of vanishing? Because they themselves had nearly annihilated Benjamin. The question they truly needed was a self-examining one: 'How did we get here?' The whole latter part of Judges answers it. Why did Micah worship his own way? Why did Dan choose its path and then attach God's name? Why did Gibeah become like Sodom? Why did Israel nearly wipe out its own brother? The root problem is the same: everyone did what was right in his own eyes. The first step of repentance is asking not 'Why did this happen?' but 'What is my responsibility in this?'", "Israel clearly grieves, but the direction of their actions hasn't changed. We shouldn't call these tears repentance too quickly. In verse 4 they rise early, build an altar, and offer burnt and peace offerings — similar to 20:26. But there's a big difference: in chapter 20 God answered; in chapter 21, no response is recorded. Religious acts don't oblige God to give the answer we want. <mark>Acts of worship cannot replace repentance.</mark> More important than how much we worship is whether, through worship, we are actually turning back before God. And God's silence is not permission to do as we please; it may be a place to stop, look back, own our responsibility, and wait for God's will."], "points": ["Regret grieves the results; repentance owns my responsibility and changes direction. True repentance doesn't end in tears but goes on to a change of direction."]}, {"title": "Verses 5–9 · Trapped in Their Own Oaths", "paragraphs": ["From verse 5 the direction of the question shifts: rather than asking God, they ask one another. <mark>\"Which of all the tribes of Israel did not come up in the assembly to the LORD?\"</mark> And another oath surfaces: they had sworn that anyone who didn't come to the assembly at Mizpah would surely be put to death. Israel is now trapped within two self-made oaths — 'We won't give our daughters to Benjamin' and 'Whoever didn't come to Mizpah will die' — and they try to use these oaths to solve the problem they created. <mark>Asking God's will is different from looking for a loophole within rules I made myself.</mark>", "Verse 6 says, \"The people of Israel had compassion for Benjamin their brother and said, 'One tribe is cut off from Israel this day.'\" The word here is closer to pitying and grieving over Benjamin than to repenting before God. Once their anger and revenge had cooled, they began to see 'our brother Benjamin' again. That change is meaningful. The problem is the method of their compassion. They ask, \"What shall we do for wives for those who are left?\" They identified the problem correctly — but instead of waiting on how God would act, they again try to solve it their own way.", "Upon investigation, no one from Jabesh-gilead had come to the assembly at Mizpah. The text doesn't say why. Whether they didn't know, whether it was distance, or whether they deliberately refused cannot be determined from the text. But Israel <mark>didn't ask why, didn't verify, and didn't give them a chance to explain</mark>. They simply concluded: they didn't come, so they broke the oath, so they must die."], "points": ["The people in Judges judge quickly and regret slowly. Am I judging someone by their actions alone before even asking the reason?"]}, {"title": "Verses 10–12 · Sacrificing One Community to Save Another", "paragraphs": ["In verses 10–11, Israel sends 12,000 valiant men with orders to strike Jabesh-gilead with the sword — killing the men and the married women, but sparing the young virgins. Why spare them? To give them as wives to the men of Benjamin. Here the tragedy of Judges repeats itself: <mark>sacrificing one group of people to save another</mark>. In chapter 19, the Levite gave up a woman to protect his life. In chapter 20, they nearly wiped out all of Benjamin in the name of justice. In chapter 21, to save Benjamin, they now sacrifice Jabesh-gilead. The command uses language from the wars of devotion to destruction against Canaan — their own kinsmen are being treated like Canaanites. Being able to solve problems doesn't make it God's wisdom. A good purpose doesn't make a bad method good.", "What's even more horrifying here is the standard by which people are viewed. The men are killed. The married women are killed. But the young virgins are spared. Why? <mark>Because they are useful for solving their problem.</mark> The same problem as chapter 19 repeats. There, the woman became a means for the Levite's safety, and her body became a means to summon all Israel. In chapter 21, the young women of Jabesh-gilead become a means to preserve the tribe of Benjamin. When we fail to see people as bearers of God's image, we end up seeing them as tools for solving our problems.", "In the end they find 400 young women and bring them to the camp at Shiloh. And verse 12 meaningfully adds, <mark>\"which is in the land of Canaan.\"</mark> Israel was already in the promised land, and Shiloh was an important center of worship — yet the text deliberately calls it the land of Canaan. We shouldn't over-interpret this, but it fits the flow of the end of Judges all too well. Israel failed to drive out Canaan, and over time they began to act like Canaan. Gibeah became like Sodom, Benjamin was attacked like a Canaanite city, and now Jabesh-gilead is treated as an object of destruction. Israel lived in the promised land, but its way of life became less and less different from Canaan's."], "points": ["When we solve problems created by our own opinions with more of our own opinions, the solution can create new victims."]}, {"title": "Application · \"What Must I Repent of in This?\"", "paragraphs": ["Today Israel weeps bitterly, worships, and calls on God's name. But the most important thing is missing: <mark>honestly facing their own responsibility</mark>. They asked, \"God, why has a tribe been lost?\" — but they should first have asked, \"What have we done?\" It's the same for us. When problems arise at home, before asking \"Why is my spouse like this?\" we must ask, \"What do I need to turn from?\" When conflict arises at church, before saying \"Why is that person the problem?\" we must first see, \"What pride, anger, and self-righteousness are in me?\"", "Jesus said, <mark>\"First take the log out of your own eye, and then you will see clearly to take the speck out of your brother's eye.\"</mark> He wasn't saying not to look at others' sins, but to look at ourselves first. That's what the people of Judges needed most: to see the log — the sin and responsibility — in their own eye before solving others' sins; to acknowledge their own responsibility before blaming God; and to stop before God's will before devising their own solutions. <mark>This is the beginning of repentance, turning, and restoration.</mark>", "The people of Judges kept sacrificing someone weaker to save someone else. But Jesus showed the opposite way. He said, <mark>\"The Son of Man came not to be served but to serve, and to give His life as a ransom for many.\"</mark> The world of Judges says, 'To solve the problem, you be sacrificed.' But Jesus says, 'To save you, I will give Myself.' This is the way of God's kingdom.", "So what we must hold onto today is not mere regret, but repentance. Don't stop at tears — see your responsibility and change direction. Wait for God's will rather than rushing to a solution. See people not as means to solve problems, but as <mark>those who bear the image of God</mark>. The question we need most today is not \"God, why has this happened to me?\" but \"God, in this situation, what must I repent of, and where must I turn?\" That question is the beginning of true restoration."], "points": ["Tears may be the start of repentance, but true repentance doesn't end in tears — it goes on to a change of direction."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "Facing a hard outcome, I asked 'What is my responsibility in this?' before 'God, why?'"}, {"key": "c2", "text": "I reflected on whether I'm stuck in regret over results, or moving into repentance that actually changes direction."}, {"key": "c3", "text": "I checked whether words or decisions I made in anger, without asking God, are binding me now."}, {"key": "c4", "text": "I reflected on whether I've judged someone before asking the reason, or treated people as tools for solving my problems."}], "s4heading": "One-Line Reflection", "memoHint": "In a problem I've been blaming with 'Why did this happen?', what is one thing I need to repent of and turn from?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "The Log First", "value": "Take one recent conflict and write down one of your own faults before the other person's, then confess it to God"}, {"key": "act2", "label": "Ask the Reason", "value": "Before judging someone whose actions you don't understand, first ask, 'What was going on?'"}, {"key": "act3", "label": "Undo a Rash Vow", "value": "Find something you said or resolved in anger that doesn't fit God's will, lay it down, and apologize if needed"}, {"key": "act4", "label": "Practice Waiting", "value": "Pause one problem you've been rushing to solve your own way, and wait while seeking God's will"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Matthew 7:5 and look at yourself first before looking at others"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Jesus, for not solving problems by sacrificing someone else, but giving Your own life to save us."}, {"key": "p2", "tag": "Repent", "text": "I repent of grieving only the results and blaming You, of ignoring the log in my own eye, and of rushing to fix things my own way."}, {"key": "p3", "tag": "Ask", "text": "Don't let me stay in regret; lead me into true repentance that changes direction. Help me see people not as tools for my problems but as bearers of Your image."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 13, Martes", "ref": "Mga Hukom 21:1–12", "headline": "Nagsisisi —<br>Ngunit Tinatahak Pa Rin ang Parehong Daan?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Mga Hukom 21:1-12", "s1heading": "Salita Ngayon", "verse": "\"Mapagkunwari, alisin mo muna ang troso sa iyong sariling mata,<br>at saka mo makikitang mabuti<br>upang alisin ang puwing sa mata ng iyong kapatid.\"", "verseRef": "Mateo 7:5", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Hindi Magkapareho ang Panghihinayang at Pagsisisi", "paragraphs": ["Nasaksihan natin kung paano lumaki ang pangyayari sa isang Levita at sa kanyang babae tungo sa digmaang sibil sa buong Israel. Isinuko ng Levita ang kanyang babae sa mga walang-kwentang lalaki ng Gibea upang iligtas ang sarili, saka hinati ang katawan nito at ipinadala sa mga lipi. Hiniling ng Israel sa Benjamin na isuko ang masasamang tao ng Gibea, ngunit pinrotektahan sila ng Benjamin, at nagdigmaan ang magkakapatid. Pinagkalooban ng Diyos ng tagumpay laban sa Benjamin, ngunit pinalawak ito ng Israel tungo sa sarili nilang galit at paghihiganti. Sa huli, anim na raang lalaki lamang ng Benjamin na tumakas sa bato ng Rimon ang natira, at nanganib na mapawi ang buong lipi.", "Ngayon sa kabanata 21, dumating ang Israel na umiiyak sa huling panghihinayang. Ngunit dapat nating makilala ang isang bagay dito: <mark>hindi magkapareho ang panghihinayang at ang pagsisisi</mark>. Ang panghihinayang ay pag-iyak dahil masakit ang resulta. Ang pagsisisi ay pagkakita sa sarili kong kasalanan at pananagutan na nagbunga ng resultang iyon, at pagbabalik-loob. Nakita ng Israel na malapit nang mawala ang Benjamin at malakas na umiyak, nagtatanong, \"O Yahweh, Diyos ng Israel, bakit nangyari ito, na ngayon ay may isang liping nawawala sa Israel?\" Ngunit alam na natin kung bakit: ang Israel mismo ang halos lumipol sa Benjamin. Ang tanong na dapat muna nilang itinanong ay hindi \"Diyos, bakit nangyari ito?\" kundi <mark>\"Paano kami umabot dito?\"</mark>", "Mas kapansin-pansin pa, sa pagkakataong ito ay walang naitalang tugon mula sa Diyos. Umiyak ang Israel, nagtayo ng dambana, at naghandog ng handog na susunugin at pangkapayapaan — ngunit hindi naitala ang sagot ng Diyos. At nang hindi sumagot ang Diyos, muli silang naghanap ng solusyon sa kanilang sarili, isinakripisyo ang isa pang komunidad ng Israel, ang Jabes-gilead, upang iligtas ang lipi. Paulit-ulit ang ganitong padron sa huling bahagi ng Mga Hukom: isinakripisyo ng Levita ang isang babae upang iligtas ang sarili; halos nilipol ng Israel ang Benjamin sa pangalan ng katarungan; at ngayon, upang iligtas ang Benjamin, isinakripisyo nila ang isa pang bayan at ang mga babae roon. <mark>Nagsimula na silang tingnan ang tao hindi bilang tao, kundi bilang kasangkapan upang lutasin ang sarili nilang problema.</mark>"], "points": ["Kapag may problema, sinisisi ko ba muna ang Diyos — o itinatanong ko, 'Ano ang aking pananagutan dito?' Humihinto ba ako sa panghihinayang sa resulta, o nagpapatuloy sa pagsisising tunay na nagbabago ng direksyon?"]}, {"title": "Talata 1–4 · \"Bakit May Isang Liping Mawawala?\"", "paragraphs": ["Huling ibinunyag ng talata 1 ang isa pang nangyari sa Mizpa bago ang digmaan: <mark>\"Nanumpa ang mga lalaki ng Israel sa Mizpa, 'Walang sinuman sa amin ang magbibigay ng kanyang anak na babae upang maging asawa ng isang Benjamita.'\"</mark> Hindi lamang ito pribadong pangakong hindi mag-aasawa. Ang kasal noon ay mahalagang ugnayang nagdudugtong sa mga komunidad, kaya sa esensya ay pahayag ito na: 'Hindi na kami makikitungo sa Benjamin bilang iisang komunidad.' At may malaking kabalintunaan: noong una sa Mga Hukom, nakipag-asawahan pa ang Israel sa mga Cananeo — ngunit ngayon ay nanunumpa silang hindi ibibigay ang kanilang mga anak na babae sa sarili nilang kapatid na Benjamin. Walang sinasabi ang teksto na iniutos ng Diyos ang panunumpang ito. Pasya ito ng Israel sa gitna ng galit. <mark>Ang padalos-dalos na pasyang hindi itinanong sa Diyos ay maaaring maging tanikala sa kalaunan na pipigil sa ating kumilos ayon sa kalooban ng Diyos.</mark>", "Sa talata 2, pumunta ang Israel sa Bethel, naupo sa harap ng Diyos hanggang gabi, at malakas na umiyak, nagtatanong, <mark>\"O Yahweh, Diyos ng Israel, bakit nangyari ito sa Israel, na ngayon ay may isang liping nawawala sa Israel?\"</mark> Sa unang tingin, mukhang napaka-espirituwal na tanong. Ngunit pag-isipan nang kaunti at kakaiba ito. Bakit nanganganib mawala ang isang lipi? Dahil sila mismo ang halos lumipol sa Benjamin. Ang tanong na tunay nilang kailangan ay pagsusuri sa sarili: 'Paano kami umabot dito?' Sinasagot ito ng buong huling bahagi ng Mga Hukom. Bakit sumamba si Mikas sa sarili niyang paraan? Bakit pinili ng Dan ang landas nito at saka ikinabit ang pangalan ng Diyos? Bakit naging gaya ng Sodoma ang Gibea? Bakit halos nilipol ng Israel ang sarili nitong kapatid? Iisa ang ugat na problema: ginawa ng bawat isa ang tama sa sarili niyang paningin. Ang unang hakbang ng pagsisisi ay ang pagtatanong hindi ng 'Bakit nangyari ito?' kundi ng 'Ano ang aking pananagutan dito?'", "Tunay na nagdadalamhati ang Israel, ngunit hindi nagbago ang direksyon ng kanilang mga kilos. Hindi natin dapat agad tawaging pagsisisi ang mga luhang ito. Sa talata 4, maaga silang bumangon, nagtayo ng dambana, at naghandog ng handog na susunugin at pangkapayapaan — katulad ng 20:26. Ngunit may malaking pagkakaiba: sa kabanata 20, sumagot ang Diyos; sa kabanata 21, walang naitalang tugon. Hindi inoobliga ng mga gawaing panrelihiyon ang Diyos na ibigay ang sagot na gusto natin. <mark>Hindi mapapalitan ng mga gawa ng pagsamba ang pagsisisi.</mark> Higit na mahalaga kaysa sa dami ng ating pagsamba ay kung, sa pamamagitan ng pagsamba, tayo ba ay tunay na bumabalik sa harap ng Diyos. At ang pananahimik ng Diyos ay hindi pahintulot na gawin ang gusto natin; maaari itong maging lugar upang huminto, lumingon, akuin ang ating pananagutan, at hintayin ang kalooban ng Diyos."], "points": ["Ang panghihinayang ay nagdadalamhati sa resulta; ang pagsisisi ay umaako ng aking pananagutan at nagbabago ng direksyon. Ang tunay na pagsisisi ay hindi nagtatapos sa luha kundi nagpapatuloy sa pagbabago ng direksyon."]}, {"title": "Talata 5–9 · Nakulong sa Sarili Nilang mga Panunumpa", "paragraphs": ["Mula talata 5, nagbago ang direksyon ng tanong: sa halip na magtanong sa Diyos, nagtanungan sila sa isa't isa. <mark>\"Alin sa lahat ng lipi ng Israel ang hindi umakyat sa kapulungan kay Yahweh?\"</mark> At lumitaw ang isa pang panunumpa: nanumpa silang ang sinumang hindi dumalo sa kapulungan sa Mizpa ay tiyak na papatayin. Nakulong na ngayon ang Israel sa dalawang panunumpang gawa nila — 'Hindi namin ibibigay ang aming mga anak na babae sa Benjamin' at 'Ang hindi dumating sa Mizpa ay mamamatay' — at sinusubukan nilang gamitin ang mga ito upang lutasin ang problemang sila mismo ang lumikha. <mark>Iba ang pagtatanong sa kalooban ng Diyos kaysa sa paghahanap ng butas sa loob ng mga patakarang ako mismo ang gumawa.</mark>", "Sinasabi ng talata 6, \"Nahabag ang mga Israelita sa Benjamin na kanilang kapatid at sinabi, 'Isang lipi ang naputol sa Israel sa araw na ito.'\" Mas malapit ang salita rito sa pagkahabag at pagdadalamhati para sa Benjamin kaysa sa pagsisisi sa harap ng Diyos. Nang lumamig ang kanilang galit at paghihiganti, nagsimula silang makitang muli ang 'aming kapatid na Benjamin.' May kahulugan ang pagbabagong iyon. Ang problema ay ang paraan ng kanilang pagkahabag. Nagtanong sila, \"Paano kami makakukuha ng mga asawa para sa mga natira?\" Tama ang problemang natukoy nila — ngunit sa halip na hintayin kung paano kikilos ang Diyos, muli nilang sinubukang lutasin ito sa sarili nilang paraan.", "Nang suriin, walang sinuman mula sa Jabes-gilead ang dumalo sa kapulungan sa Mizpa. Hindi sinasabi ng teksto kung bakit. Kung hindi nila alam, kung dahil sa layo, o kung sadyang tumanggi sila ay hindi matitiyak mula sa teksto. Ngunit ang Israel ay <mark>hindi nagtanong kung bakit, hindi nag-usisa, at hindi nagbigay sa kanila ng pagkakataong magpaliwanag</mark>. Basta nilang hinatulan: hindi sila dumating, kaya nilabag nila ang panunumpa, kaya dapat silang mamatay."], "points": ["Mabilis humatol at mabagal manghinayang ang mga tao sa Mga Hukom. Hinahatulan ko ba ang isang tao batay lamang sa kanyang kilos bago man lang itanong ang dahilan?"]}, {"title": "Talata 10–12 · Pagsasakripisyo sa Isang Komunidad upang Iligtas ang Iba", "paragraphs": ["Sa talata 10–11, nagsugo ang Israel ng 12,000 magigiting na lalaki na may utos na salakayin ang Jabes-gilead sa tabak — patayin ang mga lalaki at ang mga babaeng may asawa, ngunit iligtas ang mga batang dalaga. Bakit sila iniligtas? Upang ibigay sila bilang asawa sa mga lalaki ng Benjamin. Dito, inuulit ang trahedya ng Mga Hukom: <mark>pagsasakripisyo sa isang grupo ng tao upang iligtas ang iba</mark>. Sa kabanata 19, isinuko ng Levita ang isang babae upang protektahan ang sarili niyang buhay. Sa kabanata 20, halos nilipol nila ang buong Benjamin sa pangalan ng katarungan. Sa kabanata 21, upang iligtas ang Benjamin, isinasakripisyo nila ngayon ang Jabes-gilead. Gumagamit ang utos ng wika mula sa mga digmaan ng lubusang pagpuksa laban sa Canaan — ang sarili nilang kalahi ay tinatrato na parang mga Cananeo. Ang kakayahang lumutas ng problema ay hindi nangangahulugang karunungan ito ng Diyos. Hindi nagiging mabuti ang masamang paraan dahil lamang mabuti ang layunin.", "Mas kakila-kilabot pa rito ang pamantayan sa pagtingin sa tao. Pinatay ang mga lalaki. Pinatay ang mga babaeng may asawa. Ngunit iniligtas ang mga batang dalaga. Bakit? <mark>Dahil kapaki-pakinabang sila sa paglutas ng kanilang problema.</mark> Inuulit ang parehong problema ng kabanata 19. Doon, naging kasangkapan ang babae para sa kaligtasan ng Levita, at naging kasangkapan ang kanyang katawan upang tipunin ang buong Israel. Sa kabanata 21, naging kasangkapan ang mga kabataang babae ng Jabes-gilead upang mapanatili ang lipi ni Benjamin. Kapag hindi natin nakikita ang tao bilang nagdadala ng larawan ng Diyos, nauuwi tayong tingnan sila bilang kasangkapan sa paglutas ng ating mga problema.", "Sa huli, nakakita sila ng 400 kabataang babae at dinala sila sa kampo sa Silo. At makahulugang idinagdag ng talata 12, <mark>\"na nasa lupain ng Canaan.\"</mark> Nasa lupang pangako na ang Israel, at mahalagang sentro ng pagsamba ang Silo — gayunman, sadyang tinawag ito ng teksto na lupain ng Canaan. Hindi natin dapat labis na bigyang-kahulugan ito, ngunit lubos itong tumutugma sa daloy ng wakas ng Mga Hukom. Hindi napalayas ng Israel ang Canaan, at sa paglipas ng panahon ay nagsimula silang kumilos na gaya ng Canaan. Naging gaya ng Sodoma ang Gibea, sinalakay ang Benjamin na parang lungsod ng Canaan, at ngayon ay tinatrato ang Jabes-gilead bilang layon ng pagpuksa. Nanirahan ang Israel sa lupang pangako, ngunit ang kanilang pamumuhay ay lalong hindi naiiba sa Canaan."], "points": ["Kapag nilulutas natin ang mga problemang gawa ng sarili nating opinyon gamit ang mas marami pang sariling opinyon, maaaring lumikha ang solusyon ng mga bagong biktima."]}, {"title": "Aplikasyon · \"Ano ang Dapat Kong Pagsisihan Dito?\"", "paragraphs": ["Ngayon, mapait na umiyak ang Israel, sumamba, at tumawag sa pangalan ng Diyos. Ngunit nawawala ang pinakamahalaga: <mark>ang tapat na pagharap sa sarili nilang pananagutan</mark>. Nagtanong sila, \"Diyos, bakit nawala ang isang lipi?\" — ngunit dapat muna nilang itinanong, \"Ano ang ginawa namin?\" Ganoon din tayo. Kapag may problema sa tahanan, bago itanong ang \"Bakit ganito ang aking asawa?\" dapat nating itanong ang \"Ano ang kailangan kong talikuran?\" Kapag may alitan sa iglesia, bago sabihing \"Bakit siya ang problema?\" dapat muna nating makita, \"Anong kapalaluan, galit, at pagmamatuwid sa sarili ang nasa akin?\"", "Sinabi ni Jesus, <mark>\"Alisin mo muna ang troso sa iyong sariling mata, at saka mo makikitang mabuti upang alisin ang puwing sa mata ng iyong kapatid.\"</mark> Hindi Niya sinasabing huwag tingnan ang kasalanan ng iba, kundi tingnan muna ang ating sarili. Iyan ang pinakakailangan ng mga tao sa Mga Hukom: makita ang troso — ang kasalanan at pananagutan — sa sarili nilang mata bago lutasin ang kasalanan ng iba; akuin ang sarili nilang pananagutan bago sisihin ang Diyos; at huminto sa harap ng kalooban ng Diyos bago gumawa ng sarili nilang solusyon. <mark>Ito ang simula ng pagsisisi, pagbabalik-loob, at pagpapanumbalik.</mark>", "Paulit-ulit na isinakripisyo ng mga tao sa Mga Hukom ang isang mas mahina upang iligtas ang iba. Ngunit ipinakita ni Jesus ang kabaligtarang daan. Sinabi Niya, <mark>\"Ang Anak ng Tao ay hindi pumarito upang paglingkuran, kundi upang maglingkod, at ibigay ang Kanyang buhay bilang pantubos sa marami.\"</mark> Sinasabi ng mundo ng Mga Hukom, 'Upang malutas ang problema, ikaw ang isakripisyo.' Ngunit sinasabi ni Jesus, 'Upang iligtas ka, ibibigay Ko ang Aking sarili.' Ito ang paraan ng kaharian ng Diyos.", "Kaya ang dapat nating panghawakan ngayon ay hindi lamang panghihinayang, kundi pagsisisi. Huwag huminto sa luha — tingnan ang iyong pananagutan at baguhin ang direksyon. Hintayin ang kalooban ng Diyos sa halip na magmadali sa solusyon. Tingnan ang tao hindi bilang kasangkapan upang lutasin ang problema, kundi bilang <mark>mga nagdadala ng larawan ng Diyos</mark>. Ang tanong na pinakakailangan natin ngayon ay hindi \"Diyos, bakit nangyari ito sa akin?\" kundi \"Diyos, sa sitwasyong ito, ano ang dapat kong pagsisihan, at saan ako dapat bumaling?\" Ang tanong na iyon ang simula ng tunay na pagpapanumbalik."], "points": ["Maaaring simula ng pagsisisi ang luha, ngunit ang tunay na pagsisisi ay hindi nagtatapos sa luha — nagpapatuloy ito sa pagbabago ng direksyon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Sa harap ng mahirap na resulta, itinanong ko muna ang 'Ano ang aking pananagutan dito?' bago ang 'Diyos, bakit?'"}, {"key": "c2", "text": "Pinag-isipan ko kung nakatigil ako sa panghihinayang sa resulta, o nagpapatuloy sa pagsisising tunay na nagbabago ng direksyon."}, {"key": "c3", "text": "Sinuri ko kung ang mga salita o pasyang ginawa ko sa galit, nang hindi nagtatanong sa Diyos, ay nagtatali sa akin ngayon."}, {"key": "c4", "text": "Pinag-isipan ko kung nahatulan ko ang isang tao bago itanong ang dahilan, o tinrato ang tao bilang kasangkapan sa paglutas ng aking problema."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa isang problemang sinisisi ko ng 'Bakit nangyari ito?', ano ang isang bagay na kailangan kong pagsisihan at talikuran?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Ang Troso Muna", "value": "Kumuha ng isang kamakailang alitan at isulat ang isa sa sarili mong pagkakamali bago ang sa iba, saka ipagtapat ito sa Diyos"}, {"key": "act2", "label": "Itanong ang Dahilan", "value": "Bago hatulan ang isang taong hindi mo maintindihan ang kilos, itanong muna, 'Ano ang nangyari?'"}, {"key": "act3", "label": "Bawiin ang Padalos-dalos na Pangako", "value": "Hanapin ang isang bagay na sinabi o ipinasya mo sa galit na hindi tugma sa kalooban ng Diyos, bitawan ito, at humingi ng tawad kung kailangan"}, {"key": "act4", "label": "Sanayin ang Paghihintay", "value": "Ihinto ang isang problemang minamadali mong lutasin sa sarili mong paraan, at maghintay habang hinahanap ang kalooban ng Diyos"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Mateo 7:5 at tingnan muna ang iyong sarili bago tingnan ang iba"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Jesus, na hindi Mo nilutas ang problema sa pagsasakripisyo sa iba, kundi ibinigay Mo ang sarili Mong buhay upang iligtas kami."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagdadalamhati lamang sa resulta at pagsisi sa Iyo, sa pagbalewala sa troso sa sarili kong mata, at sa pagmamadaling ayusin ang mga bagay sa sarili kong paraan."}, {"key": "p3", "tag": "Kahilingan", "text": "Huwag Mo akong hayaang manatili sa panghihinayang; akayin Mo ako sa tunay na pagsisising nagbabago ng direksyon. Tulungan Mo akong tingnan ang tao hindi bilang kasangkapan sa aking problema kundi bilang nagdadala ng Iyong larawan."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
