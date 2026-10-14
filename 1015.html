@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/15(목) 큐티 · 야고보서 1:1–11">
+<meta property="og:description" content="형편이 흔들릴 때, 나는 누구입니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 15일 목요일", "ref": "야고보서 1장 1–11절", "headline": "형편이 흔들릴 때,<br>나는 누구입니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 야고보서 1:1-11", "s1heading": "오늘의 말씀", "verse": "\"내 형제들아 너희가 여러 가지 시험을 만나거든<br>온전히 기쁘게 여기라<br>이는 너희 믿음의 시련이<br>인내를 만들어 내는 줄 너희가 앎이라\"", "verseRef": "야고보서 1:2–3", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 믿음이 삶으로 드러나는 편지, 야고보서", "paragraphs": ["오늘부터 야고보서를 읽습니다. 저자 야고보는 전통적으로 <mark>예수님의 동생이자 예루살렘 교회의 지도자</mark>로 이해됩니다. 처음엔 형제들도 예수님을 믿지 않았지만(요 7:5), 부활하신 예수님이 야고보에게 나타나셨고(고전 15:7), 그는 예수님을 '주'로 고백하는 사람이 되었습니다. 이 편지는 가난과 억압, 공동체 안의 차별 속에 흩어져 살던 성도들에게 보낸 것입니다.", "야고보서는 <mark>믿음이 삶으로 나타나야 한다</mark>고 말합니다. 행위가 구원의 근거라는 뜻이 아닙니다. 야고보도 \"하나님이 진리의 말씀으로 우리를 낳으셨다\"(1:18)고 말합니다. 은혜로 시작된 믿음이 말과 선택과 관계에서 드러나야 한다는 것입니다. 말씀을 듣고 행하는 사람은 비바람에도 무너지지 않는 반석 위의 집과 같습니다."], "points": ["삶의 형편이 흔들릴 때, 나는 무엇을 의지하며 누구에게 속한 사람으로 살아가고 있습니까?"]}, {"title": "1절 · 형편보다 먼저, 누구에게 속했는가", "paragraphs": ["예루살렘 교회의 중요한 지도자였던 야고보는 자신을 <mark>\"하나님과 주 예수 그리스도의 종\"</mark>이라고 소개합니다. '종'이라는 말에는 소속과 순종과 사명이 담겨 있습니다. 그는 자신부터 주님의 권위 아래 서서, 같은 주님을 섬기는 성도들에게 권면합니다. 그래서 앞으로 나올 인내와 지혜와 행함은 모두 예수님을 주님으로 섬기는 삶과 연결됩니다.", "그는 독자들을 <mark>\"흩어져 있는 열두 지파\"</mark>라고 부릅니다. '흩어져 있는'은 그들의 현실을, '열두 지파'는 그들이 하나님의 백성이라는 정체성을 보여 줍니다. 우리는 \"나는 일이 잘 안 풀리는 사람\", \"가진 게 별로 없는 사람\"처럼 형편으로 자신을 설명할 때가 많습니다. 그러나 삶의 자리가 흩어져 있어도 하나님께 속한 백성이라는 사실은 사라지지 않습니다."], "points": ["하나님 나라의 백성은 형편보다 왕과의 관계로 자신을 이해합니다. 내가 처한 자리가 나의 전부는 아닙니다."]}, {"title": "2–4절 · 시험을 온전히 기쁘게 — 인내의 목표는 온전함", "paragraphs": ["야고보는 \"내 형제들아\"라고 부르며 <mark>\"여러 가지 시험을 만나거든 온전히 기쁘게 여기라\"</mark>고 합니다. 고통을 즐기거나 슬픔을 감추라는 말이 아니라, 시험을 바라보는 판단의 기준을 바꾸라는 권면입니다. 믿음의 시련이 인내를 만들고, 인내가 온전함을 이루기 때문입니다. 평안할 때는 하나님을 의지하는 것과 안정된 환경을 의지하는 것이 비슷해 보이지만, <mark>어려움은 믿음의 크기뿐 아니라 믿음의 대상을 드러냅니다</mark>.", "인내는 이를 악물고 버티는 것만이 아니라, 억울해도 잔인해지지 않고, 손해가 있어도 거짓을 택하지 않고, 응답이 늦어도 기도를 포기하지 않는 것입니다. 야고보가 \"인내를 온전히 이루라\"고 명령하는 것은 <mark>고난의 유익이 저절로 생기지 않기 때문</mark>입니다. 고난 속에서 원망과 냉소가 굳어질 수도 있습니다. 목표는 믿음과 삶이 일관되게 연결되는 '온전함'입니다."], "points": ["고난의 경험이 곧 성숙은 아닙니다. 그 속에서 이어가는 신뢰와 순종을 돌아보아야 합니다."]}, {"title": "5–8절 · 꾸짖지 않으시는 하나님께 지혜를 구하라", "paragraphs": ["시험 속에서 우리는 어떻게 반응해야 할지 모를 때가 많습니다. 그래서 <mark>\"지혜가 부족하거든 모든 사람에게 후히 주시고 꾸짖지 아니하시는 하나님께 구하라\"</mark>고 합니다. 이 지혜는 정보나 성공 비결이 아니라, 지금 상황에서 하나님의 뜻을 분별하고 실천하게 하는 지혜입니다. 고난의 이유를 다 알지 못해도 오늘 순종할 길은 구할 수 있습니다. 사람은 도움과 함께 핀잔을 줄 때가 있지만, 하나님은 부족함을 안고 나오는 우리를 밀어내지 않으십니다.", "\"의심하는 자\", <mark>\"두 마음을 품은 자\"</mark>는 잠시 불안해하거나 질문하는 사람이 아니라, 하나님을 향한 신뢰와 충성이 나뉜 사람입니다. 하나님의 지혜를 구하면서도 내 이익과 부딪히면 따르지 않고, 결정의 최종 기준은 세상의 가치에 둡니다. 그러면 기도와 행동이 바람에 밀리는 물결처럼 서로 다른 방향으로 갑니다."], "points": ["나는 하나님의 뜻을 구하고 있습니까, 아니면 이미 정한 내 계획에 하나님의 허락을 구하고 있습니까?"]}, {"title": "9–11절 · 물질을 하나님의 기준으로", "paragraphs": ["경제적인 형편은 믿음이 시험받는 구체적인 자리입니다. 가난하면 하나님께 잊힌 것 같고, 부유하면 하나님 없이도 괜찮을 것 같습니다. 야고보는 <mark>\"낮은 형제는 자기의 높음을 자랑하라\"</mark>고 합니다. 재산이 늘어난다는 약속이 아니라, 하나님께 속한 백성으로 받은 존귀함과 소망을 보라는 것입니다. 그렇다면 교회도 그 형제를 존귀하게 대하고, 실제 필요를 외면하지 말아야 합니다.", "<mark>\"부한 자는 자기의 낮아짐을 자랑할지니\"</mark>. 해가 돋고 뜨거운 바람이 불면 풀의 꽃이 떨어지듯, 재물뿐 아니라 부한 사람 자신도 일하는 도중에 쇠잔할 수 있습니다. 부한 자를 신자로 보든 억압하는 불신자로 보든, <mark>재물은 사람을 하나님 앞에서 안전하게 만들지 못합니다</mark>. 일하고 계획하되, 그것을 생명의 보증으로 삼아서는 안 됩니다."], "points": ["소유가 나의 가치를 정하게 두면, 소유의 변화가 나의 믿음까지 흔들게 됩니다."]}, {"title": "적용 · 흔들리는 형편이 아니라, 왕께 속한 사람으로", "paragraphs": ["고난이 찾아오면 우리는 그것을 해석하려 합니다. \"왜 나에게 이런 일이?\" \"하나님이 나를 잊으셨나?\" \"이렇게 어려우니 나는 실패한 사람일까?\" 오늘 말씀은 그 질문 앞에서 무엇을 먼저 붙들어야 하는지 보여 줍니다. <mark>우리는 주님께 속한 사람입니다</mark>. 형편이 흔들려도 그 관계 안에서 자신과 현실을 바라보아야 합니다.", "하나님이 주시는 지혜는 고난의 이유를 모두 설명하는 능력이라기보다, <mark>그 안에서 바르게 살아가도록 이끄는 믿음의 지혜</mark>입니다. 모든 이유를 알지 못해도 오늘의 말과 선택을 주님께 맡길 수 있습니다. 삶의 시험은 믿음의 크기뿐 아니라 믿음의 대상을 돌아보게 합니다. 우리의 부족함은 하나님께 나아갈 이유가 되지만, 하나님과 세상 사이에 나뉜 마음은 돌이켜야 합니다.", "그리고 이 관계는 우리가 인내를 잘해서 얻어 낸 자격이 아닙니다. 예수님이 우리를 위해 죽으시고 부활하셨고, <mark>\"하나님이 진리의 말씀으로 우리를 낳으셨다\"</mark>는 말씀처럼 우리의 새 생명은 하나님의 은혜에서 시작되었습니다. 그러므로 우리의 인내는 구원을 얻기 위한 대가가 아니라, 이미 받은 은혜 안에서 드리는 응답입니다.", "우리를 구원하신 주님을 믿기에 지혜를 구합니다. 그분께 속한 사람이기에 어려움 속에서도 순종을 이어 갑니다. 재물이 생명을 보장하지 못해도 <mark>부활하신 주님 안에서 소망을 품습니다</mark>. 지금 나는 흔들리는 형편으로 나를 설명하고 있습니까, 아니면 나를 구원하신 왕께 속한 사람으로 오늘을 살아가고 있습니까?"], "points": ["나의 정체성은 소유의 크기나 형편이 아니라, 하나님의 은혜와 그분께 속한 관계에 있습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "요즘 나를 '형편'으로 설명하고 있는지, '주님께 속한 사람'으로 이해하고 있는지 돌아봤다"}, {"key": "c2", "text": "지금 겪는 어려움 속에서 원망과 냉소가 굳어지고 있지는 않은지, 신뢰와 순종을 이어가고 있는지 점검했다"}, {"key": "c3", "text": "하나님께 지혜를 구하면서도 내 이익과 부딪히면 따르지 않는 '두 마음'이 없는지 돌아봤다"}, {"key": "c4", "text": "내 가치나 안전을 재물과 형편에 두고 있지는 않은지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "요즘 나를 흔드는 형편은 무엇이며, 그 속에서 '나는 주님께 속한 사람'이라는 사실이 어떤 차이를 만듭니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "정체성 선포", "value": "어려운 상황을 떠올리며 '나는 하나님과 주 예수 그리스도께 속한 사람입니다'라고 소리 내어 고백하기"}, {"key": "act2", "label": "지혜 구하기", "value": "지금 막막한 문제 하나를 놓고 이유보다 '오늘 순종할 길'을 하나님께 구하는 기도 드리기"}, {"key": "act3", "label": "인내의 열매", "value": "억울하거나 손해 보는 상황에서 거짓이나 거친 말 대신 정직과 온유를 택하기"}, {"key": "act4", "label": "낮은 형제 존중", "value": "공동체 안에서 형편이 어려운 한 사람에게 존중과 실제적인 도움을 함께 전하기"}, {"key": "act5", "label": "말씀 암송", "value": "야고보서 1:2–3을 외우며 오늘 만나는 시험을 하나님의 기준으로 바라보기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "진리의 말씀으로 우리를 낳으시고, 흔들리는 형편 속에서도 우리를 주님께 속한 백성으로 붙드시는 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "형편으로 나를 판단하고, 하나님께 지혜를 구하면서도 두 마음을 품으며, 재물을 생명의 보증처럼 의지했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "꾸짖지 않으시고 후히 주시는 하나님, 시험 속에서 오늘 순종할 지혜를 주시고, 인내를 온전히 이루어 믿음이 삶 전체에 드러나게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 15, Thursday", "ref": "James 1:1–11", "headline": "When My Circumstances Shake,<br>Who Am I?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · James 1:1-11", "s1heading": "Today's Word", "verse": "\"Count it all joy, my brothers,<br>when you meet trials of various kinds,<br>for you know that the testing of your faith<br>produces steadfastness.\"", "verseRef": "James 1:2–3", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · James — A Letter About Faith Shown in Life", "paragraphs": ["Today we begin the letter of James. James asks what we believe and how we live by that faith. Three pieces of background help. First, <mark>James watched Jesus' life more closely than almost anyone — as family</mark>. The writer is traditionally understood to be James, the brother of Jesus and a leader of the Jerusalem church. Being recognized by family isn't easy, because family knows not only what we show outside but our everyday words and actions. Yet living close to Jesus didn't automatically create faith: John 7:5 tells us that at first even His brothers did not believe in Him. But 1 Corinthians 15 records that the risen Jesus appeared to James, and afterward James appears as a leader of the church. And how does he introduce himself? As \"a servant of God and of the Lord Jesus Christ.\"", "Second, James is a letter to believers scattered in difficult realities. He calls his readers \"the twelve tribes in the dispersion\" — likely Jewish Christians living scattered in many regions. Their hardships were concrete: despised for poverty, denied wages for their work, oppressed by the powerful, and facing discrimination and quarrels even within the community. To such people James says to count trials as joy — not because pain is trivial, but because faith can be refined in it and mature through endurance.", "Third, James says <mark>faith in Jesus must show up in life</mark>. His exhortations to hear and do the Word, to show mercy, and to make peace are deeply rooted in Jesus' teaching. If we tell a hungry brother or sister 'Go in peace' but share nothing, how is that faith appearing in life? Our works are not the basis of salvation — James himself says in 1:18 that God brought us forth by the word of truth. Rather, faith that began by God's grace must appear in our words, choices, and relationships. Jesus compared the one who hears and does His words to a wise man who built his house on the rock: rain fell and winds blew, yet it did not fall."], "points": ["When the circumstances of my life shake, what am I relying on — and to whom do I belong?"]}, {"title": "Verse 1 · Before My Circumstances: To Whom Do I Belong?", "paragraphs": ["The letter opens simply with the name James — assuming the readers will recognize him. Though he was an important leader of the Jerusalem church, he calls himself <mark>\"a servant of God and of the Lord Jesus Christ.\"</mark> The word 'servant' carries belonging and obedience: it declares whom he belongs to and whose will he follows. It also carries mission — carrying out the work God has entrusted. James first places himself under the Lord's authority, then exhorts believers who serve the same Lord. So the endurance, wisdom, and action that follow are all connected to a life of serving Jesus as Lord. Enduring trials and using money must both be placed under the Lord's rule.", "He calls the recipients <mark>\"the twelve tribes in the dispersion.\"</mark> 'In the dispersion' shows their reality; 'the twelve tribes' leads us to see them as God's people. We can't be certain exactly where they lived or whether they were scattered by the same event. But it's clear James did not see them as people pushed outside God's promises. Even when their places in life are scattered, the fact that they belong to God does not disappear.", "We often describe ourselves by our circumstances: 'I'm someone whose life never works out.' 'I'm someone who doesn't have much.' But James first makes us see to whom we belong. <mark>People of God's kingdom understand themselves by their relationship with the King rather than by their circumstances.</mark> The place I'm in is not the whole of who I am. Even there, declare that you belong to the Lord."], "points": ["The place I'm in now is not all that I am. In that very place, I am someone who belongs to the Lord."]}, {"title": "Verses 2–4 · Count It All Joy — Endurance Aims at Wholeness", "paragraphs": ["In verse 2, James begins his exhortation about trials by saying, \"My brothers.\" This isn't someone evaluating sufferers from a distance, but a heart toward family who believe in the same Lord. Believers also face various trials — financial hardship, injustice, relational conflict — difficulties we didn't want. Yet James says, <mark>\"Count it all joy.\"</mark> This doesn't mean enjoying pain or hiding sorrow. It's an exhortation to change the standard by which we judge trials.", "Verses 3–4 explain why: <mark>the testing of faith produces endurance, and endurance brings wholeness</mark>. Believers don't know the reason for every suffering, but we know faith can be refined even in suffering. When life is calm, relying on God and relying on a stable environment can look similar. But when the environment shakes, we can examine what was really holding us up: Was I trusting God — or just at ease because everything was going my way? This question isn't for judging the faith of those who suffer; it's for examining where our own faith is rooted. <mark>Hardship reveals not only the size of our faith but its object.</mark> And in that process, endurance grows. Endurance isn't just gritting our teeth; it's continuing to trust and obey God even as hardship continues — not becoming cruel to others when wronged, not choosing lies when we suffer loss, not giving up prayer when answers are delayed.", "In verse 4 James commands, \"Let steadfastness have its full effect.\" This shows that the benefits of suffering don't come automatically. Hurting a lot doesn't necessarily make us mature; resentment and cynicism can harden in suffering. We must look not only at how much we've suffered, but at what faith and obedience we continue in it. The goal is that we may be \"perfect and complete, lacking in nothing\" — not a promise that money, health, and living conditions will all become abundant, but a maturity in which faith appears consistently across all of life: our confession of faith connected to how we treat people, our prayers connected to our choices, our worship connected to how we use money."], "points": ["The experience of suffering is not itself maturity. We must look at the trust and obedience we continue in the midst of it."]}, {"title": "Verses 5–8 · Ask God, Who Gives Generously Without Reproach", "paragraphs": ["The 'lacking' of verse 4 continues into verse 5: <mark>\"If any of you lacks wisdom, let him ask God, who gives generously to all without reproach.\"</mark> We must head toward wholeness, yet we always know our lack — especially in trials, when we often don't know how to respond. This wisdom isn't just having lots of information or knowing how to succeed. It's wisdom that helps us discern and practice God's will in our present situation. How should I speak when I'm wronged? What must I hold onto even in financial difficulty? How can I hold truth and love together in conflict? We may ask God the reasons for our suffering, but we must also seek the way to live rightly within it. <mark>Even if we don't yet know every reason, we can ask for today's path of obedience.</mark>", "James tells us what kind of God we ask: one who gives generously to all and does not reproach. When we ask people for help, we sometimes receive insult along with help: 'You still don't get it?' 'How many times do I have to help you?' But God doesn't push away believers who come lacking wisdom. We can admit our lack and ask again and again. And the promise 'it will be given' must be understood rightly: it isn't a promise that everything will turn out as we want or every question will be answered immediately. It's a promise that He will give wisdom.", "Verses 6–8 say to ask in faith without doubting, and describe such a person as <mark>\"double-minded.\"</mark> This shouldn't be read as God rejecting the prayers of those who feel anxious for a moment or ask questions. The text warns against a divided trust and loyalty toward God — seeking God's wisdom but refusing to follow it when it clashes with my interests; saying I rely on God while keeping the world's values as my final standard for decisions. Then my direction shifts with circumstances and profit, and like a wave of the sea driven by the wind, my prayers and actions go in different directions."], "points": ["Am I seeking God's will — or seeking God's permission for a plan I've already made? Don't hide your lack; ask God. And repent of a divided heart."]}, {"title": "Verses 9–11 · Seeing Wealth by God's Standard", "paragraphs": ["Having spoken of trials and wisdom, James turns to poverty and wealth, because our financial situation is a concrete place where faith is tested. When poor, we can feel forgotten by God; when rich, we can think we can protect ourselves without God. So believers need wisdom to see their circumstances by God's standard. James calls the believer in humble circumstances \"brother\" — though the world may rate him low, he is family in the same Lord. And he says, <mark>\"Let the lowly brother boast in his exaltation.\"</mark> This isn't a promise that his wealth will soon grow, but a call to see the honor and hope he has received as one of God's people. James 2:5 says God has chosen those who are poor in the world to be rich in faith and heirs of the kingdom He promised. If so, the church must also treat that brother with honor. We must not speak of heavenly hope while ignoring real needs.", "In verse 10, <mark>\"the rich in his humiliation.\"</mark> The 'rich' here is read two ways: as a wealthy believer, or as an unbelieving rich person who oppresses believers. The text alone can't settle it. Read as a wealthy believer, it's an exhortation to acknowledge one's limits before God and need for grace. Read as an oppressive unbelieving rich man, it's a warning that his present exaltation won't last. Either way, it shows that wealth cannot make a person secure before God. Even great wealth cannot guarantee one's life. And in the church, being rich doesn't make someone more honorable than a poor brother.", "When the sun rises with scorching heat, the grass withers and its flower falls, and its beauty perishes. The text doesn't say only wealth fades — it says the rich man himself will fade away. He doesn't die only after completing all his plans; he can meet the end of life in the midst of growing assets, expanding work, and preparing for the future. So work and plan — but don't make these the guarantee of your life. Money matters in our lives, but finances don't determine our worth before God."], "points": ["People of God's kingdom find their identity and honor in belonging to the King, not in the size of their possessions. If possessions define my worth, changes in possessions will shake even my faith."]}, {"title": "Application · Not Defined by Shaking Circumstances, but Belonging to the King", "paragraphs": ["When suffering comes, we try to interpret it. 'Why has this happened to me?' 'Has God forgotten me?' 'With things this hard, am I a failure?' Today's Word shows what we must hold onto first in the face of these questions: <mark>we are people who belong to the Lord</mark>. Even when our circumstances shake, we must view ourselves and our reality within that relationship.", "The wisdom God gives is less an ability to explain every reason for suffering and more <mark>the wisdom of faith that leads us to live rightly within it</mark>. Even without knowing every reason, we can entrust today's words and choices to the Lord. Life's trials make us examine not only the size of our faith but its object. Our lack becomes a reason to come to God — but a heart divided between God and the world must turn back.", "And this relationship is not a qualification we earned by enduring well. Jesus died and rose again for us. As James says, <mark>\"God brought us forth by the word of truth\"</mark> — our new life began in God's grace. So our endurance is not a price paid to obtain salvation, but a response offered within grace already received.", "Because we believe in the Lord who saved us, we ask for wisdom. Because we belong to Him, we continue to obey even in difficulty. Even though wealth cannot guarantee our lives, <mark>we hold hope in the risen Lord</mark>. Right now, are you explaining yourself by your shaking circumstances — or are you living today as someone who belongs to the King who saved you?"], "points": ["My identity lies not in the size of my possessions or my circumstances, but in God's grace and my belonging to Him."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I've been describing myself by my 'circumstances' or understanding myself as 'someone who belongs to the Lord.'"}, {"key": "c2", "text": "I checked whether resentment and cynicism are hardening in my current hardship, or whether I'm continuing in trust and obedience."}, {"key": "c3", "text": "I reflected on whether I have a 'double mind' that asks God for wisdom but won't follow it when it clashes with my interests."}, {"key": "c4", "text": "I checked whether I've placed my worth or security in money and circumstances."}], "s4heading": "One-Line Reflection", "memoHint": "What circumstances are shaking me these days, and what difference does 'I belong to the Lord' make in the middle of them?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Declare Your Identity", "value": "Thinking of a hard situation, confess aloud: 'I belong to God and the Lord Jesus Christ'"}, {"key": "act2", "label": "Ask for Wisdom", "value": "For one overwhelming problem, pray asking not for the reason but for 'today's path of obedience'"}, {"key": "act3", "label": "Fruit of Endurance", "value": "When wronged or at a loss, choose honesty and gentleness instead of lies or harsh words"}, {"key": "act4", "label": "Honor the Lowly", "value": "Offer both respect and practical help to someone in your community who is struggling financially"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize James 1:2–3 and view today's trials by God's standard"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for bringing us forth by the word of truth and holding us as Your people even in shaking circumstances."}, {"key": "p2", "tag": "Repent", "text": "I repent of judging myself by my circumstances, of asking for Your wisdom with a divided heart, and of relying on wealth as if it guaranteed my life."}, {"key": "p3", "tag": "Ask", "text": "God who gives generously without reproach, give me wisdom to obey today in my trials, and let endurance have its full effect so my faith shows in all of my life."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 15, Huwebes", "ref": "Santiago 1:1–11", "headline": "Kapag Umuuga ang Aking Kalagayan,<br>Sino Ako?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Santiago 1:1-11", "s1heading": "Salita Ngayon", "verse": "\"Mga kapatid, ituring ninyong lubos na kagalakan<br>kapag dumaranas kayo ng iba't ibang pagsubok,<br>sapagkat alam ninyong ang pagsubok sa inyong pananampalataya<br>ay nagbubunga ng pagtitiis.\"", "verseRef": "Santiago 1:2–3", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Santiago — Isang Sulat Tungkol sa Pananampalatayang Nakikita sa Buhay", "paragraphs": ["Ngayon ay sisimulan natin ang sulat ni Santiago. Itinatanong ng Santiago kung ano ang ating pinaniniwalaan at kung paano tayo namumuhay sa pananampalatayang iyon. May tatlong kaalamang makatutulong. Una, <mark>nasaksihan ni Santiago ang buhay ni Jesus nang mas malapit kaysa halos sinuman — bilang pamilya</mark>. Ang sumulat ay tradisyonal na kinikilalang si Santiago, kapatid ni Jesus at pinuno ng iglesia sa Jerusalem. Hindi madaling kilalanin ng sariling pamilya, dahil alam nila hindi lamang ang ipinapakita natin sa labas kundi pati ang ating araw-araw na salita at kilos. Gayunman, ang pamumuhay malapit kay Jesus ay hindi awtomatikong nagbunga ng pananampalataya: sinasabi ng Juan 7:5 na noong una, maging ang Kanyang mga kapatid ay hindi naniwala sa Kanya. Ngunit itinala ng 1 Corinto 15 na nagpakita ang muling nabuhay na si Jesus kay Santiago, at pagkatapos ay lumitaw si Santiago bilang pinuno ng iglesia. At paano niya ipinakilala ang sarili? Bilang \"alipin ng Diyos at ng Panginoong Jesu-Cristo.\"", "Ikalawa, ang Santiago ay sulat sa mga mananampalatayang nakakalat sa mahihirap na kalagayan. Tinawag niya ang kanyang mga mambabasa na \"ang labindalawang lipi na nakakalat\" — malamang mga Hudyong Kristiyanong nakatira sa iba't ibang lugar. Kongkreto ang kanilang mga paghihirap: hinahamak dahil sa kahirapan, hindi binabayaran sa kanilang trabaho, inaapi ng makapangyarihan, at may diskriminasyon at alitan pati sa loob ng komunidad. Sa ganitong mga tao, sinabi ni Santiago na ituring na kagalakan ang mga pagsubok — hindi dahil walang halaga ang sakit, kundi dahil maaaring madalisay ang pananampalataya rito at tumanda sa pamamagitan ng pagtitiis.", "Ikatlo, sinasabi ng Santiago na <mark>dapat makita sa buhay ang pananampalataya kay Jesus</mark>. Ang kanyang mga payo na pakinggan at gawin ang Salita, magpakita ng habag, at gumawa ng kapayapaan ay malalim na nakaugat sa turo ni Jesus. Kung sasabihin natin sa nagugutom na kapatid, 'Humayo ka nang payapa,' ngunit wala tayong ibinabahagi, paano nakikita sa buhay ang pananampalatayang iyon? Ang ating mga gawa ay hindi batayan ng kaligtasan — si Santiago mismo ang nagsabi sa 1:18 na ipinanganak tayo ng Diyos sa pamamagitan ng salita ng katotohanan. Sa halip, ang pananampalatayang nagsimula sa biyaya ng Diyos ay dapat makita sa ating mga salita, pasya, at relasyon. Inihambing ni Jesus ang taong nakikinig at gumagawa ng Kanyang salita sa isang matalinong nagtayo ng bahay sa bato: bumuhos ang ulan at humihip ang hangin, ngunit hindi ito bumagsak."], "points": ["Kapag umuuga ang kalagayan ng aking buhay, saan ako umaasa — at kanino ako kabilang?"]}, {"title": "Talata 1 · Bago ang Aking Kalagayan: Kanino Ako Kabilang?", "paragraphs": ["Simpleng nagsimula ang sulat sa pangalang Santiago — inaasahang makikilala siya ng mga mambabasa. Bagaman mahalagang pinuno siya ng iglesia sa Jerusalem, tinawag niya ang sarili na <mark>\"alipin ng Diyos at ng Panginoong Jesu-Cristo.\"</mark> Ang salitang 'alipin' ay may dalang pagkakabilang at pagsunod: ipinapahayag nito kung kanino siya kabilang at kaninong kalooban ang sinusunod niya. May dala rin itong misyon — ang pagtupad sa gawaing ipinagkatiwala ng Diyos. Una munang inilagay ni Santiago ang sarili sa ilalim ng awtoridad ng Panginoon, saka pinayuhan ang mga mananampalatayang naglilingkod sa parehong Panginoon. Kaya ang pagtitiis, karunungan, at gawang susunod ay pawang nakaugnay sa buhay na naglilingkod kay Jesus bilang Panginoon. Ang pagtitiis sa pagsubok at paggamit ng pera ay kapwa dapat ilagay sa ilalim ng paghahari ng Panginoon.", "Tinawag niya ang mga tatanggap na <mark>\"ang labindalawang lipi na nakakalat.\"</mark> Ipinapakita ng 'nakakalat' ang kanilang realidad; inaakay naman tayo ng 'labindalawang lipi' na tingnan sila bilang bayan ng Diyos. Hindi natin matiyak kung saan eksakto sila nakatira o kung iisang pangyayari ang nagpakalat sa kanila. Ngunit malinaw na hindi sila itinuring ni Santiago na mga taong itinulak palabas ng mga pangako ng Diyos. Kahit nakakalat ang kanilang lugar sa buhay, hindi naglalaho ang katotohanang kabilang sila sa Diyos.", "Madalas nating ilarawan ang sarili ayon sa ating kalagayan: 'Ako'y taong hindi kailanman nagtatagumpay.' 'Ako'y taong walang gaanong pag-aari.' Ngunit una munang ipinakikita ni Santiago kung kanino tayo kabilang. <mark>Nauunawaan ng mga tao ng kaharian ng Diyos ang kanilang sarili ayon sa kanilang relasyon sa Hari sa halip na sa kanilang kalagayan.</mark> Ang lugar na kinalalagyan ko ay hindi ang kabuuan ng aking pagkatao. Kahit doon, ipahayag na ikaw ay kabilang sa Panginoon."], "points": ["Ang kinalalagyan ko ngayon ay hindi ang lahat ng kung sino ako. Sa mismong lugar na iyon, ako ay kabilang sa Panginoon."]}, {"title": "Talata 2–4 · Ituring na Lubos na Kagalakan — Layunin ng Pagtitiis ang Kabuuan", "paragraphs": ["Sa talata 2, sinimulan ni Santiago ang kanyang payo tungkol sa mga pagsubok sa pagsasabing, \"Mga kapatid ko.\" Hindi ito pagsusuri sa mga nagdurusa mula sa malayo, kundi puso para sa pamilyang naniniwala sa iisang Panginoon. Dumaranas din ang mga mananampalataya ng iba't ibang pagsubok — kahirapang pinansyal, kawalang-katarungan, alitan sa relasyon — mga paghihirap na hindi natin ginusto. Gayunman, sinabi ni Santiago, <mark>\"Ituring ninyong lubos na kagalakan.\"</mark> Hindi ito nangangahulugang tamasahin ang sakit o itago ang lungkot. Ito ay payo na baguhin ang pamantayan ng ating paghatol sa mga pagsubok.", "Ipinaliliwanag ng talata 3–4 kung bakit: <mark>ang pagsubok sa pananampalataya ay nagbubunga ng pagtitiis, at ang pagtitiis ay nagdadala ng kabuuan</mark>. Hindi alam ng mga mananampalataya ang dahilan ng bawat pagdurusa, ngunit alam nating maaaring madalisay ang pananampalataya kahit sa pagdurusa. Kapag payapa ang buhay, magkamukha ang pag-asa sa Diyos at ang pag-asa sa matatag na kapaligiran. Ngunit kapag umuga ang kapaligiran, masusuri natin kung ano talaga ang umaalalay sa atin: Nagtitiwala ba ako sa Diyos — o panatag lamang dahil ayon sa gusto ko ang lahat? Hindi ang tanong na ito para hatulan ang pananampalataya ng nagdurusa; ito ay upang suriin kung saan nakaugat ang sarili nating pananampalataya. <mark>Inihahayag ng paghihirap hindi lamang ang laki ng ating pananampalataya kundi pati ang layon nito.</mark> At sa prosesong iyon, lumalago ang pagtitiis. Ang pagtitiis ay hindi lamang pagkagat ng ngipin; ito ay patuloy na pagtitiwala at pagsunod sa Diyos kahit nagpapatuloy ang paghihirap — hindi nagiging malupit sa iba kapag inaapi, hindi pumipili ng kasinungalingan kapag nalulugi, hindi sumusuko sa panalangin kapag naaantala ang sagot.", "Sa talata 4, nag-utos si Santiago, \"Hayaang ganap na gumawa ang pagtitiis.\" Ipinapakita nitong hindi awtomatikong dumarating ang pakinabang ng pagdurusa. Ang labis na pagkasaktan ay hindi tiyak na nagpapatanda sa atin; maaaring tumigas ang hinanakit at pagkamapang-uyam sa pagdurusa. Dapat nating tingnan hindi lamang kung gaano tayo nagdusa, kundi kung anong pananampalataya at pagsunod ang ipinagpapatuloy natin dito. Ang layunin ay maging \"ganap at buo, walang anumang kakulangan\" — hindi pangakong magiging sagana ang pera, kalusugan, at kalagayan ng pamumuhay, kundi pagkahinog kung saan palagiang nakikita ang pananampalataya sa buong buhay: ang ating pagpapahayag ng pananampalataya ay konektado sa pagtrato natin sa tao, ang ating panalangin sa ating mga pasya, ang ating pagsamba sa ating paggamit ng pera."], "points": ["Ang karanasan ng pagdurusa ay hindi mismong pagkahinog. Dapat nating tingnan ang pagtitiwala at pagsunod na ipinagpapatuloy natin sa gitna nito."]}, {"title": "Talata 5–8 · Humingi sa Diyos na Nagbibigay nang Sagana at Hindi Nanunumbat", "paragraphs": ["Ang 'kakulangan' sa talata 4 ay nagpapatuloy sa talata 5: <mark>\"Kung ang sinuman sa inyo ay kulang sa karunungan, humingi siya sa Diyos na nagbibigay nang sagana sa lahat at hindi nanunumbat.\"</mark> Dapat tayong tumungo sa kabuuan, ngunit lagi nating alam ang ating kakulangan — lalo na sa mga pagsubok, kung kailan madalas ay hindi natin alam kung paano tutugon. Ang karunungang ito ay hindi lamang maraming impormasyon o kaalaman kung paano magtagumpay. Ito ay karunungang tumutulong sa ating kilalanin at isagawa ang kalooban ng Diyos sa kasalukuyang sitwasyon. Paano ako dapat magsalita kapag inaapi? Ano ang dapat kong panghawakan kahit sa kahirapang pinansyal? Paano ko mahahawakan nang sabay ang katotohanan at pag-ibig sa alitan? Maaari nating itanong sa Diyos ang dahilan ng ating pagdurusa, ngunit dapat din nating hanapin ang paraan ng tamang pamumuhay sa gitna nito. <mark>Kahit hindi pa natin alam ang bawat dahilan, maaari nating hingin ang landas ng pagsunod ngayon.</mark>", "Sinasabi ni Santiago kung anong uri ng Diyos ang hinihingan natin: Siyang nagbibigay nang sagana sa lahat at hindi nanunumbat. Kapag humingi tayo ng tulong sa tao, minsan ay may kasamang insulto ang tulong: 'Hindi mo pa rin alam?' 'Ilang beses pa ba kitang tutulungan?' Ngunit hindi itinataboy ng Diyos ang mga mananampalatayang lumalapit na kulang sa karunungan. Maaari nating aminin ang ating kakulangan at humingi nang paulit-ulit. At dapat nating unawain nang tama ang pangakong 'ibibigay ito': hindi ito pangakong mangyayari ang lahat ayon sa gusto natin o masasagot agad ang bawat tanong. Pangako ito na magbibigay Siya ng karunungan.", "Sinasabi ng talata 6–8 na humingi nang may pananampalataya nang walang pag-aalinlangan, at inilarawan ang gayong tao bilang <mark>\"may dalawang isip.\"</mark> Hindi ito dapat basahin na tinatanggihan ng Diyos ang panalangin ng mga sandaling nababalisa o nagtatanong. Nagbababala ang teksto laban sa nahahating pagtitiwala at katapatan sa Diyos — humihingi ng karunungan ng Diyos ngunit tumatangging sumunod kapag sumasalungat ito sa aking interes; sinasabing umaasa ako sa Diyos habang ang pinahahalagahan ng mundo ang pinal kong pamantayan sa pagpapasya. Kung gayon, nagbabago ang aking direksyon ayon sa sitwasyon at pakinabang, at tulad ng alon ng dagat na itinutulak ng hangin, magkaibang direksyon ang tinatahak ng aking panalangin at kilos."], "points": ["Hinahanap ko ba ang kalooban ng Diyos — o humihingi ng pahintulot ng Diyos sa planong napagpasyahan ko na? Huwag itago ang iyong kakulangan; humingi sa Diyos. At pagsisihan ang nahahating puso."]}, {"title": "Talata 9–11 · Pagtingin sa Kayamanan Ayon sa Pamantayan ng Diyos", "paragraphs": ["Matapos magsalita tungkol sa pagsubok at karunungan, bumaling si Santiago sa kahirapan at kayamanan, dahil ang ating kalagayang pinansyal ay kongkretong lugar kung saan sinusubok ang pananampalataya. Kapag mahirap, maaari nating madamang nakalimutan tayo ng Diyos; kapag mayaman, maaari nating isiping kaya nating protektahan ang sarili nang walang Diyos. Kaya kailangan ng mga mananampalataya ang karunungang tingnan ang kanilang kalagayan ayon sa pamantayan ng Diyos. Tinawag ni Santiago na \"kapatid\" ang mananampalatayang nasa abang kalagayan — bagaman mababa ang pagtingin sa kanya ng mundo, pamilya siya sa iisang Panginoon. At sinabi niya, <mark>\"Ipagmalaki ng abang kapatid ang kanyang pagkakataas.\"</mark> Hindi ito pangakong lalago agad ang kanyang kayamanan, kundi panawagang tingnan ang karangalan at pag-asang tinanggap niya bilang kabilang sa bayan ng Diyos. Sinasabi ng Santiago 2:5 na pinili ng Diyos ang mga dukha sa mundo upang maging mayaman sa pananampalataya at tagapagmana ng kahariang Kanyang ipinangako. Kung gayon, dapat ding tratuhin ng iglesia nang may karangalan ang kapatid na iyon. Hindi tayo dapat magsalita ng makalangit na pag-asa habang binabalewala ang tunay na pangangailangan.", "Sa talata 10, <mark>\"ang mayaman sa kanyang pagkakababa.\"</mark> Binabasa ang 'mayaman' dito sa dalawang paraan: bilang mayamang mananampalataya, o bilang mayamang hindi mananampalataya na umaapi sa mga mananampalataya. Hindi ito matitiyak ng teksto lamang. Kung babasahin bilang mayamang mananampalataya, ito ay payo na kilalanin ang sariling hangganan sa harap ng Diyos at pangangailangan sa biyaya. Kung babasahin bilang mapang-aping mayamang hindi mananampalataya, ito ay babala na hindi magtatagal ang kanyang kasalukuyang pagkakataas. Alinman dito, ipinapakita nitong hindi kayang gawing ligtas ng kayamanan ang tao sa harap ng Diyos. Kahit napakalaking kayamanan ay hindi makagagarantiya ng buhay. At sa iglesia, ang pagiging mayaman ay hindi nagpapadakila sa isang tao nang higit sa dukhang kapatid.", "Kapag sumikat ang araw na may nakapapasong init, nalalanta ang damo at nalalagas ang bulaklak nito, at naglalaho ang ganda nito. Hindi sinasabi ng teksto na ang kayamanan lamang ang naglalaho — sinasabi nitong ang mayaman mismo ay maglalaho. Hindi siya namamatay pagkatapos lamang matapos ang lahat ng kanyang plano; maaari niyang harapin ang wakas ng buhay sa gitna ng pagpapalago ng ari-arian, pagpapalawak ng gawain, at paghahanda para sa hinaharap. Kaya magtrabaho at magplano — ngunit huwag gawing garantiya ng iyong buhay ang mga ito. Mahalaga ang pera sa ating buhay, ngunit hindi ang pananalapi ang nagtatakda ng ating halaga sa harap ng Diyos."], "points": ["Natatagpuan ng mga tao ng kaharian ng Diyos ang kanilang pagkakakilanlan at karangalan sa pagiging kabilang sa Hari, hindi sa laki ng kanilang ari-arian. Kung ang ari-arian ang nagtatakda ng aking halaga, ang pagbabago nito ay yayanig pati sa aking pananampalataya."]}, {"title": "Aplikasyon · Hindi Tinutukoy ng Umuugang Kalagayan, Kundi Kabilang sa Hari", "paragraphs": ["Kapag dumating ang pagdurusa, sinisikap nating bigyan ito ng kahulugan. 'Bakit nangyari ito sa akin?' 'Nakalimutan na ba ako ng Diyos?' 'Sa ganitong hirap, bigo ba ako?' Ipinapakita ng Salita ngayon kung ano ang dapat muna nating panghawakan sa harap ng mga tanong na ito: <mark>tayo ay mga taong kabilang sa Panginoon</mark>. Kahit umuuga ang ating kalagayan, dapat nating tingnan ang ating sarili at realidad sa loob ng relasyong iyon.", "Ang karunungang ibinibigay ng Diyos ay hindi gaanong kakayahang ipaliwanag ang bawat dahilan ng pagdurusa kundi higit na <mark>karunungan ng pananampalatayang umaakay sa ating mamuhay nang tama sa gitna nito</mark>. Kahit hindi natin alam ang bawat dahilan, maaari nating ipagkatiwala sa Panginoon ang ating mga salita at pasya ngayon. Pinasusuri tayo ng mga pagsubok sa buhay hindi lamang sa laki ng ating pananampalataya kundi pati sa layon nito. Nagiging dahilan ang ating kakulangan upang lumapit sa Diyos — ngunit ang pusong nahahati sa Diyos at sa mundo ay dapat magbalik-loob.", "At ang relasyong ito ay hindi kwalipikasyong nakamit natin dahil mahusay tayong nagtiis. Namatay at muling nabuhay si Jesus para sa atin. Gaya ng sinabi ni Santiago, <mark>\"Ipinanganak tayo ng Diyos sa pamamagitan ng salita ng katotohanan\"</mark> — nagsimula ang ating bagong buhay sa biyaya ng Diyos. Kaya ang ating pagtitiis ay hindi bayad upang makamit ang kaligtasan, kundi tugong iniaalay sa loob ng biyayang natanggap na.", "Dahil naniniwala tayo sa Panginoong nagligtas sa atin, humihingi tayo ng karunungan. Dahil kabilang tayo sa Kanya, patuloy tayong sumusunod kahit sa kahirapan. Kahit hindi kayang garantiyahan ng kayamanan ang ating buhay, <mark>may pag-asa tayo sa muling nabuhay na Panginoon</mark>. Ngayon, ipinapaliwanag mo ba ang iyong sarili ayon sa umuugang kalagayan — o namumuhay ka ngayon bilang kabilang sa Haring nagligtas sa iyo?"], "points": ["Ang aking pagkakakilanlan ay wala sa laki ng aking ari-arian o kalagayan, kundi sa biyaya ng Diyos at sa aking pagiging kabilang sa Kanya."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung inilalarawan ko ang sarili ayon sa aking 'kalagayan' o nauunawaan ko ang sarili bilang 'kabilang sa Panginoon.'"}, {"key": "c2", "text": "Sinuri ko kung tumitigas ang hinanakit at pagkamapang-uyam sa kasalukuyan kong paghihirap, o nagpapatuloy ako sa pagtitiwala at pagsunod."}, {"key": "c3", "text": "Pinag-isipan ko kung may 'dalawang isip' ako na humihingi ng karunungan sa Diyos ngunit hindi sumusunod kapag sumasalungat ito sa aking interes."}, {"key": "c4", "text": "Sinuri ko kung inilagay ko ang aking halaga o seguridad sa pera at kalagayan."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Anong kalagayan ang yumayanig sa akin nitong mga araw, at anong pagkakaiba ang dala ng 'Ako'y kabilang sa Panginoon' sa gitna nito?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Ipahayag ang Pagkakakilanlan", "value": "Habang iniisip ang isang mahirap na sitwasyon, ipahayag nang malakas: 'Ako'y kabilang sa Diyos at sa Panginoong Jesu-Cristo'"}, {"key": "act2", "label": "Humingi ng Karunungan", "value": "Para sa isang napakabigat na problema, manalanging humihingi hindi ng dahilan kundi ng 'landas ng pagsunod ngayon'"}, {"key": "act3", "label": "Bunga ng Pagtitiis", "value": "Kapag inaapi o nalulugi, piliin ang katapatan at kahinahunan sa halip na kasinungalingan o masasakit na salita"}, {"key": "act4", "label": "Igalang ang Aba", "value": "Magbigay ng paggalang at praktikal na tulong sa isang taong nahihirapan sa pananalapi sa iyong komunidad"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Santiago 1:2–3 at tingnan ang mga pagsubok ngayon ayon sa pamantayan ng Diyos"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa pagsilang Mo sa amin sa pamamagitan ng salita ng katotohanan at sa paghawak Mo sa amin bilang Iyong bayan kahit sa umuugang kalagayan."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa paghatol sa sarili ayon sa aking kalagayan, sa paghingi ng Iyong karunungan nang may nahahating puso, at sa pag-asa sa kayamanan na parang ito ang garantiya ng aking buhay."}, {"key": "p3", "tag": "Kahilingan", "text": "Diyos na nagbibigay nang sagana at hindi nanunumbat, bigyan Mo ako ng karunungang sumunod ngayon sa aking mga pagsubok, at hayaang ganap na gumawa ang pagtitiis upang makita ang aking pananampalataya sa buong buhay ko."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
