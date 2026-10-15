@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/16(금) 큐티 · 야고보서 1:12–18">
+<meta property="og:description" content="시련 속에서 내 마음에는 무엇이 자라고 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 16일 금요일", "ref": "야고보서 1장 12–18절", "headline": "시련 속에서<br>내 마음에는 무엇이 자라고 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 야고보서 1:12-18", "s1heading": "오늘의 말씀", "verse": "\"시험을 참는 자는 복이 있나니<br>이는 시련을 견디어 낸 자가<br>주께서 자기를 사랑하는 자들에게 약속하신<br>생명의 면류관을 얻을 것이기 때문이라\"", "verseRef": "야고보서 1:12", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 시련 속에서 시험받는 것은 형편만이 아닙니다", "paragraphs": ["야고보는 가난과 차별과 부당한 대우 속에 흩어져 살던 성도들에게 시험을 기쁘게 여기라고 권면했습니다. 시련이 인내를, 인내가 온전함을 만들기 때문입니다. 그러나 어려움을 겪는다고 모두 저절로 성숙해지지는 않습니다. 상처가 깊어지고 마음이 굳어질 수도 있습니다. 그렇다고 아직 아파하는 사람을 믿음이 부족하다고 판단해서는 안 됩니다.", "오늘 본문은 그 흐름을 이어 갑니다. 어려움 속에서 하나님을 신뢰하며 견딜 수도 있지만, <mark>그 어려움을 핑계로 죄를 정당화할 수도 있습니다</mark>. 경제적 어려움 속에서 하나님께 도움을 구할 수도 있지만, \"지금은 어쩔 수 없다\"며 거짓이나 부당한 이익을 택할 수도 있습니다. 고난 속에서는 <mark>형편만이 아니라 하나님을 향한 생각과 마음의 방향도 시험받습니다</mark>."], "points": ["예수님도 광야에서 배고픔과 시험을 겪으셨지만, 바로 그곳에서 아버지를 신뢰하고 말씀에 순종하셨습니다. 이 시련 속에서 내 마음에는 무엇이 자라고 있습니까?"]}, {"title": "12절 · 시험을 참는 자에게 약속된 생명의 면류관", "paragraphs": ["야고보는 먼저 <mark>\"시험을 참는 자는 복이 있나니\"</mark>라고 선언합니다. 여기서 '복'은 지금 기쁜 감정을 뜻하지 않습니다. 여전히 힘들고 억울하고 손해를 볼 수 있습니다. 그래도 복이 있는 이유는 하나님이 약속하신 끝을 바라보기 때문입니다. 견딘다는 것은 감정을 누르고 침묵하는 것이 아니라, <mark>어려움 속에서도 하나님을 향한 믿음과 충성을 지키는 것</mark>입니다. 울면서 기도할 수 있고, 도움을 구할 수 있고, 불의를 바로잡으려 행동할 수도 있습니다.", "'생명의 면류관'은 경기의 승리자에게 주던 관을 떠올리게 합니다. \"지금 잘 견디면 사업이 잘될 것\"이라는 뜻이 아니라, <mark>죽음도 빼앗지 못하는 생명</mark>을 주신다는 약속입니다. 야고보는 그들을 \"자기를 사랑하는 자들\"이라 부릅니다. 인내는 \"지금은 이해하기 어렵지만 하나님을 떠나고 싶지 않습니다\"라는 사랑의 고백입니다."], "points": ["인내는 생명을 얻기 위한 값이 아닙니다. 생명은 하나님이 약속하신 선물이며, 은혜를 받은 믿음이 하나님을 사랑하며 견디는 삶으로 나타납니다."]}, {"title": "13–15절 · 시험은 내 욕심에서 시작되어 죄와 사망으로", "paragraphs": ["12절과 13절에 같은 계열의 단어가 쓰이지만, 12절은 믿음을 단련하는 '시련'이고 13절은 악으로 끌어들이는 '유혹'입니다. 가난의 시련 속에서 거짓의 유혹을, 부당한 대우의 시련 속에서 보복의 유혹을 만날 수 있습니다. 그래서 야고보는 <mark>\"내가 하나님께 시험을 받는다 하지 말지니\"</mark>라고 합니다. 아담이 \"하나님이 주신 여자가…\"라며 책임을 돌렸듯, 우리도 \"저 사람이 먼저\", \"하나님이 이 상황에 두셨으니\"라고 핑계를 찾습니다. 내가 겪은 불의는 바로잡아야 하지만, 그 억울함이 나의 거짓과 보복을 정당화하지는 않습니다.", "<mark>\"각 사람이 시험을 받는 것은 자기 욕심에 끌려 미혹됨이니\"</mark>. 먹고 쉬고 안전하게 살고 싶은 모든 욕구가 죄라는 뜻이 아니라, 하나님의 뜻을 거슬러서라도 원하는 것을 얻으려는 마음을 말합니다. 그리고 <mark>\"욕심이 잉태한즉 죄를 낳고 죄가 장성한즉 사망을 낳느니라\"</mark>. \"이번 한 번만\"이 \"내가 얼마나 손해를 봤는데\"가 되고, 반복되면 익숙한 삶의 방식이 됩니다. 유혹은 미끼처럼 눈앞의 만족만 크게 보여 주고 그 끝은 감춥니다."], "points": ["유혹을 느끼는 것 자체가 죄는 아닙니다. 그러나 '아직 행동하지 않았으니 괜찮다'며 악한 마음을 키워서도 안 됩니다. 이 마음이 계속 자라면 나는 어디에 이르게 될까요?"]}, {"title": "16–18절 · 변함없이 선하신 하나님이 말씀으로 우리를 낳으셨습니다", "paragraphs": ["<mark>\"내 사랑하는 형제들아 속지 말라\"</mark>. 죄의 책임을 분명히 말하면서도, 성도를 밀어내려는 말이 아니라 하나님을 오해해 생명에서 멀어지지 않도록 붙드는 사랑의 경고입니다. 시련 속에서는 눈앞의 형편이 하나님을 판단하는 유일한 기준이 되기 쉽습니다. 이해되지 않는 현실을 들고 하나님께 나아갈 수는 있지만, 그렇다고 하나님이 우리를 악으로 이끄신다고 결론 내려서는 안 됩니다.", "<mark>\"온갖 좋은 은사와 온전한 선물이 다 위로부터 빛들의 아버지께로부터 내려오나니 그는 변함도 없으시고 회전하는 그림자도 없으시니라\"</mark>. 해와 달과 별은 움직이고 그림자는 변하지만, 하나님은 변하지 않으십니다. 그리고 그 선하심은 18절에서 분명히 드러납니다. <mark>\"자기의 뜻을 따라 진리의 말씀으로 우리를 낳으셨느니라\"</mark>. 15절에서 죄는 사망을 낳지만, 18절에서 하나님은 말씀으로 새 생명을 낳으십니다. 우리를 피조물 중 '첫 열매'로 삼으셔서, 앞으로 이루실 더 큰 회복을 미리 보여 주는 존재가 되게 하셨습니다."], "points": ["죄를 발견했을 때 끝없는 자기 혐오에 머물 필요는 없습니다. 책임을 인정하고 회개하며, 생명을 주신 하나님께 돌아가면 됩니다."]}, {"title": "적용 · 두 가지 출생 — 욕심이 낳는 사망, 말씀이 낳는 생명", "paragraphs": ["오늘 본문은 두 가지 출생을 보여 줍니다. 욕심에서 자란 죄는 사망을 낳습니다. 그러나 선하신 하나님은 <mark>진리의 말씀으로 우리를 낳으셨다</mark>고 선언하십니다. 이 새 생명은 공동체 안에서도 드러나야 합니다. 욕심 때문에 서로를 착취하던 자리에서 어려운 이를 돌보고, 말로 상처 주던 자리에서 진실과 사랑으로 말하고, 다른 사람의 넘어짐을 비난하던 자리에서 함께 믿음을 지키는 것입니다.", "예수님의 삶을 보면 시련 속에서 아버지를 신뢰한다는 것이 무엇인지 알 수 있습니다. 광야에서 예수님은 배고프셨지만, 그 배고픔을 하나님의 뜻을 벗어나는 핑계로 삼지 않으셨습니다. 고난 속에서 아픔을 숨기지 않고 기도하시며 자기 뜻을 아버지께 맡기셨습니다. <mark>예수님의 순종은 아픔이 없어서가 아니라 아버지를 신뢰하셨기에 가능했습니다</mark>. 그리고 예수님은 본을 보이시는 데서 멈추지 않고, 우리 죄를 위해 십자가에서 죽으시고 부활하셔서 죽음의 현실 한가운데 구원의 길을 여셨습니다.", "그러므로 우리의 소망은 내 욕심을 완벽하게 통제할 수 있다는 자신감에 있지 않습니다. <mark>우리에게 생명을 주신 주님께 있습니다</mark>. 우리는 시험받을 때 우리의 연약함을 아시고 도우시는 주님께 나아갈 수 있습니다. 오늘 어떤 어려움을 겪고 계십니까? 그 아픔을 숨기지 말고 하나님께 가져가십시오. 도움을 구하고, 바로잡아야 할 것은 바로잡으십시오.", "동시에 그 과정에서 내 안에 무엇이 자라고 있는지 살펴보십시오. 고난이 왜 왔는지 다 알 수 없어도, 그 고난을 핑계로 내 욕심을 키울 것인지, 생명을 주신 하나님께 가져갈 것인지는 말씀 앞에서 돌아볼 수 있습니다. 지금 내 마음과 선택 속에서 <mark>사망으로 이끄는 욕심이 자라고 있습니까, 아니면 하나님이 주신 새 생명의 순종과 사랑이 드러나고 있습니까?</mark>"], "points": ["주님 안에서의 인내는 생명을 얻기 위한 수단이 아니라, 은혜로 하나님을 사랑하며 살아가는 응답입니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "지금 겪는 어려움을 핑계로 거짓이나 보복, 부당한 이익을 정당화하고 있지 않은지 돌아봤다"}, {"key": "c2", "text": "내 잘못의 책임을 하나님이나 다른 사람, 상황에 돌리고 있지는 않은지 점검했다"}, {"key": "c3", "text": "'이번 한 번만'이라며 키우고 있는 욕심이 있다면, 그것이 계속 자랄 때 어디에 이를지 생각해 봤다"}, {"key": "c4", "text": "형편이 흔들려도 변함없이 선하신 하나님과 말씀으로 나를 낳으신 은혜를 붙들었다"}], "s4heading": "묵상 한 줄", "memoHint": "요즘의 시련 속에서 내 마음에 자라고 있는 것은 무엇이며, 그것을 하나님께 어떻게 가져가겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "아픔을 기도로", "value": "지금 겪는 어려움 하나를 숨기지 말고 솔직한 말로 하나님께 기도로 올려 드리기"}, {"key": "act2", "label": "핑계 내려놓기", "value": "'상황 때문에 어쩔 수 없었다'며 정당화해 온 잘못 하나를 찾아 하나님 앞에 인정하기"}, {"key": "act3", "label": "끝을 보는 지혜", "value": "오늘 유혹이 될 만한 선택 앞에서 '이것이 계속 자라면 어디에 이를까?'를 먼저 묻기"}, {"key": "act4", "label": "새 생명의 열매", "value": "상처 주던 말 대신 진실과 사랑의 말을, 비난 대신 격려를 한 사람에게 건네기"}, {"key": "act5", "label": "말씀 암송", "value": "야고보서 1:12를 외우며 생명의 면류관을 약속하신 하나님을 바라보기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "변함도 회전하는 그림자도 없이 선하시며, 자기 뜻을 따라 진리의 말씀으로 우리를 새 생명으로 낳으신 빛들의 아버지께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "어려움을 핑계로 내 욕심을 키우고, 잘못의 책임을 하나님과 다른 사람에게 돌렸던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "시련 속에서도 아픔을 주님께 가져가며 끝까지 하나님을 사랑하게 하시고, 제 마음과 선택 속에서 말씀이 낳은 새 생명의 순종과 사랑이 자라게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 16, Friday", "ref": "James 1:12–18", "headline": "In the Midst of Trials,<br>What Is Growing in My Heart?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · James 1:12-18", "s1heading": "Today's Word", "verse": "\"Blessed is the man who remains steadfast under trial,<br>for when he has stood the test<br>he will receive the crown of life,<br>which God has promised to those who love Him.\"", "verseRef": "James 1:12", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · In Trials, More Than Our Circumstances Is Tested", "paragraphs": ["The book of James is a letter to Christians scattered throughout the world. Among them were believers who suffered economic hardship, faced discrimination due to poverty, and didn't receive fair wages despite working. There were also disputes within the community stemming from the gap between rich and poor. James exhorted them to consider it joy whenever they faced various trials. This isn't an easy exhortation. It's not because trials themselves are enjoyable, but because the testing of faith produces patience, and through that patience believers can become whole and mature.", "However, it's not the case that everyone matures automatically just because they experience difficulties. Wounds may deepen; hearts may harden. Yet we must not judge those still suffering as lacking faith. What we need is wisdom to discern what to hold onto and how to live amid trials. So James said that if we lack wisdom, we should ask God who gives generously. He also addressed poverty and wealth, because our economic circumstances reveal where we place our values and what we rely on.", "Today's passage continues this theme. While we may endure by trusting God amid difficulties, <mark>we may also try to justify sin using those difficulties as an excuse</mark>. Facing economic hardship, we may seek wisdom and help from God — but in the same struggle, we might blame God, or choose lies or unjust gain, claiming it's unavoidable right now. <mark>In suffering, not only our circumstances but the direction of our thoughts and hearts toward God are tested.</mark> Jesus, too, experienced hunger and temptation in the wilderness, and in that very place He trusted the Father and obeyed His Word."], "points": ["Before the Word today, let us ask together: In this time of trial, what is growing in my heart?"]}, {"title": "Verse 12 · The Crown of Life Promised to Those Who Endure", "paragraphs": ["Verse 12 first declares that the person who endures trials is <mark>blessed</mark>. 'Blessed' here doesn't mean feeling joy right now. That person may still be struggling and feeling wronged; you may suffer loss for believing in God. Yet James says there is blessing, because they look toward the end God has promised, not only at their present circumstances. It recalls Jesus' words declaring the blessings of God's kingdom. God's blessing doesn't always coincide with the peace or success the world talks about. To stand firm doesn't mean merely suppressing emotions and enduring in silence. <mark>It means maintaining faith and loyalty toward God even amid difficulties.</mark> You can pray while weeping. You can ask for help. You can act to rectify injustice. Patience isn't the ability to feel no pain, but the faith that holds onto God in the midst of pain.", "The phrase \"when he has stood the test\" means being recognized as genuine through testing. Verse 3 described the process of faith being tested; here we look to those whose sincere faith has been revealed by enduring that process. What matters is not only how much one has suffered, but how one responded to God amid that suffering. As situations grow harder, one may be tempted to abandon the truth to get what one wants — or one can acknowledge one's limits and seek wisdom from God. This doesn't mean only those who never waver are approved; it means returning to God and continuing in faith even amid wavering.", "The end of verse 12 speaks of a crown, recalling the wreath given to the winner of a competition. <mark>The crown of life means receiving life itself like a victor's crown.</mark> So we must not misread this: 'If I endure my difficulties well, my business will surely prosper,' or 'If I persevere in faith, I'll regain everything I lost.' The promise doesn't lie in every problem being solved on earth, but in God granting a life that even death cannot take away. Verses 10–11 said even the rich fade like the flower of the grass; the life God promises transcends that limit. And James calls those who receive the promise \"those who love Him.\" He spoke of faith and patience; now he speaks of love. Those who believe in God love Him, and that love shows in holding onto Him amid difficulty — with the confession, 'It's hard to understand right now, but I don't want to leave God.'"], "points": ["Patience is not the price for life. Life is a gift God has promised, and faith that has received that grace shows itself in a life of loving God and enduring. Present suffering does not determine the end of my life."]}, {"title": "Verses 13–15 · Temptation Begins with Our Own Desire and Leads to Sin and Death", "paragraphs": ["The same family of words appears in verses 12 and 13, but their meanings differ by context. Verse 12 deals with <mark>trials</mark> that test faith; verse 13 addresses <mark>temptations</mark> that draw us into evil. Both can be experienced together: amid the trial of poverty, we may meet the temptation to lie; amid the trial of unfair treatment, the temptation to retaliate. God causing faith to grow in trials doesn't mean He tempts us to sin. James draws this distinction and warns against shifting blame for sin onto God. When we do wrong, we look for reasons: 'That person ignored me first.' 'I've suffered so much loss.' 'God put me in this situation, so I can't help it.' In Genesis 3, Adam also mentioned the woman God had made while explaining his disobedience — a tendency to shift responsibility rather than own our choices.", "Of course, responsibility for wrongs others commit lies with them, and we must not ignore the injustice we've suffered. But that sense of injustice does not justify our lies and retaliation. We must seek to correct the wrongs done to us, and in that process learn to control the greed growing within us. It's fine to groan and question God; what James warns against is not bringing our pain to God, but shifting responsibility for our sin onto Him. So verse 13 says, <mark>\"Let no one say when he is tempted, 'I am being tempted by God,' for God cannot be tempted with evil, and He Himself tempts no one.\"</mark>", "Verse 14: <mark>\"Each person is tempted when he is lured and enticed by his own desire.\"</mark> This doesn't mean every desire to eat, rest, or live safely is sin. In context, it's the heart that seeks to get what it wants even against God's will. Wanting recognition isn't wrong — but if we start exaggerating facts and belittling others to get it, that desire is dragging us along. Demanding fair treatment isn't wrong — but if we can only be satisfied by destroying others, we must examine ourselves. Like bait, temptation makes the immediate satisfaction look grand and hides the final outcome. So ask honestly: What am I trying to gain by laying down obedience right now? Verse 15 uses the image of pregnancy and birth: <mark>\"Desire when it has conceived gives birth to sin, and sin when it is fully grown brings forth death.\"</mark> At first, 'Just this once won't matter.' Then a reason is added: 'Look how much I've lost.' Repeated, wrong choices become a familiar way of life — and the end is death, which stands in contrast to the life of verse 12."], "points": ["Feeling tempted is not the same as choosing sin — Jesus too was tempted. But we can't deliberately nurture an evil heart and say, 'It's fine because I haven't acted yet.' If this heart keeps growing, where will I end up?"]}, {"title": "Verses 16–18 · The Unchangingly Good God Gave Us New Life Through His Word", "paragraphs": ["Verse 16: <mark>\"Do not be deceived, my beloved brothers.\"</mark> While clearly naming responsibility for sin, this isn't meant to push believers away or abandon them. It's a loving warning to hold on, so we don't misunderstand God and drift from life. In trials, the circumstances before our eyes easily become the sole criterion for judging God: 'If God is good, why is my life like this?' We can bring that question to God. But we must not conclude that God is leading us into evil just because we don't fully understand our reality. We can approach the good God even with a reality we can't comprehend.", "Verse 17: <mark>\"Every good gift and every perfect gift is from above, coming down from the Father of lights, with whom there is no variation or shadow due to change.\"</mark> He is the same God who gives wisdom in the previous verses; the wisdom to discern amid trials and the help to keep faith are part of His good giving. Not everything we desire is a good gift, nor can we simply call every evil we experience God's good gift. This passage leads us to trust the God who gives good things even amid evil and suffering. He is called the Father of lights — the Creator of sun, moon, and stars. The heavenly lights move and their shadows change, but God does not. He isn't one who gives life yesterday and seeks to make us fall today. Even when our emotions and circumstances change, God's goodness and faithfulness remain.", "Where can we see God's goodness clearly? Verse 18: <mark>\"Of His own will He brought us forth by the word of truth, that we should be a kind of firstfruits of His creatures.\"</mark> It's not life given reluctantly after seeing our merits, but the complete grace God willed and carried out. In context, the word of truth can be understood as the gospel of salvation. Two births stand in contrast: in verse 15, sin brings forth death; in verse 18, God brings us forth by the Word — new life. Because God gave us life first, we're called to turn from a life driven by desire and to obey the Word. And God made us firstfruits: the firstfruits belong to God and point ahead to the harvest to come. Renewed believers foreshadow the greater restoration God will accomplish."], "points": ["When we discover our sin, there's no need to dwell in endless self-loathing. We acknowledge responsibility, repent, and return to the God who gives life."]}, {"title": "Application · Two Births — Death Born of Desire, Life Born of the Word", "paragraphs": ["Today's passage shows us two births. Sin, growing from desire, gives birth to death. But the good God declares that <mark>He has brought us forth by the word of truth</mark>. That new life must also show in community: caring for those in need where we once exploited one another out of greed; speaking with truth and love where we once wounded with words; keeping faith together where we once criticized others' falls. The people of God's kingdom reveal the King's goodness in their choices. Don't stop at acknowledging your sin — return to the God who brought you forth by the Word, and live out together the life you've received.", "Looking at Jesus' life, we see what it means to trust the Father amid trials. In the wilderness Jesus was hungry, yet He didn't use that hunger as an excuse to step outside God's will. In suffering He didn't hide His pain, but prayed and entrusted His will to the Father. <mark>Jesus' obedience wasn't possible because He was free from pain, but because He trusted the Father.</mark> And Jesus didn't stop at setting an example. He died on the cross for our sins and rose again; in the midst of the reality of death, God opened the way of salvation through Jesus Christ.", "So our hope doesn't lie in confidence that we can perfectly control our own desires. <mark>It lies in the Lord who gave us life.</mark> When we're tested, we can come to the Lord who knows our weakness and helps us. What difficulties are you facing today? Don't hide that pain — bring it to God. Seek help, and correct what needs correcting.", "At the same time, examine what is growing within you in that process. Even if you can't know every reason suffering has come, you can reflect before the Word on whether you'll use it as an excuse to feed your desires, or bring it to the God who gave you life. Right now, in my heart and choices, <mark>is desire that leads to death growing — or is the obedience and love of the new life God has given being revealed?</mark>"], "points": ["Patience in the Lord is not merely a means to obtain life; it is the response of living in love with God out of grace."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I'm using my current hardship as an excuse to justify lies, retaliation, or unjust gain."}, {"key": "c2", "text": "I checked whether I'm shifting responsibility for my wrongs onto God, other people, or circumstances."}, {"key": "c3", "text": "If there's a desire I'm feeding with 'just this once,' I considered where it will lead if it keeps growing."}, {"key": "c4", "text": "Even as my circumstances shake, I held onto the unchangingly good God and the grace that brought me forth by His Word."}], "s4heading": "One-Line Reflection", "memoHint": "In my current trials, what is growing in my heart — and how will I bring it to God?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Pain into Prayer", "value": "Don't hide one difficulty you're facing — bring it to God in honest words of prayer"}, {"key": "act2", "label": "Lay Down Excuses", "value": "Find one wrong you've justified with 'I had no choice because of the situation' and acknowledge it before God"}, {"key": "act3", "label": "Wisdom to See the End", "value": "Before a tempting choice today, first ask, 'If this keeps growing, where will it lead?'"}, {"key": "act4", "label": "Fruit of New Life", "value": "Offer someone words of truth and love instead of hurtful words, and encouragement instead of criticism"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize James 1:12 and look to the God who promised the crown of life"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Father of lights, who is good without variation or shadow of change, and who of Your own will brought us forth to new life by the word of truth."}, {"key": "p2", "tag": "Repent", "text": "I repent of using hardship as an excuse to feed my desires, and of shifting the blame for my wrongs onto You and others."}, {"key": "p3", "tag": "Ask", "text": "In my trials, help me bring my pain to You and love You to the end. Let the obedience and love of the new life born of Your Word grow in my heart and choices."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 16, Biyernes", "ref": "Santiago 1:12–18", "headline": "Sa Gitna ng mga Pagsubok,<br>Ano ang Lumalago sa Aking Puso?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Santiago 1:12-18", "s1heading": "Salita Ngayon", "verse": "\"Mapalad ang taong nagtitiis sa pagsubok,<br>sapagkat kapag napatunayan na siya,<br>tatanggapin niya ang korona ng buhay<br>na ipinangako ng Diyos sa mga umiibig sa Kanya.\"", "verseRef": "Santiago 1:12", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Sa mga Pagsubok, Higit pa sa Ating Kalagayan ang Sinusubok", "paragraphs": ["Ang aklat ng Santiago ay sulat sa mga Kristiyanong nakakalat sa buong mundo. Kabilang sa kanila ang mga mananampalatayang nagdusa sa kahirapang pang-ekonomiya, hinamak dahil sa kahirapan, at hindi nakatanggap ng makatarungang sahod kahit nagtrabaho. May mga alitan din sa loob ng komunidad dahil sa agwat ng mayaman at mahirap. Pinayuhan sila ni Santiago na ituring na kagalakan ang anumang pagsubok. Hindi ito madaling payo. Hindi dahil kasiya-siya ang mga pagsubok, kundi dahil ang pagsubok sa pananampalataya ay nagbubunga ng pagtitiis, at sa pagtitiis na iyon ay maaaring maging buo at hinog ang mga mananampalataya.", "Gayunman, hindi awtomatikong humihinog ang lahat dahil lamang dumaranas sila ng paghihirap. Maaaring lumalim ang sugat; maaaring tumigas ang puso. Ngunit hindi natin dapat hatulan na kulang sa pananampalataya ang mga nagdurusa pa. Ang kailangan natin ay karunungang kilalanin kung ano ang dapat panghawakan at kung paano mamuhay sa gitna ng pagsubok. Kaya sinabi ni Santiago na kung kulang tayo sa karunungan, humingi tayo sa Diyos na nagbibigay nang sagana. Tinalakay rin niya ang kahirapan at kayamanan, dahil inihahayag ng ating kalagayang pang-ekonomiya kung saan natin inilalagay ang ating pinahahalagahan at kung ano ang ating inaasahan.", "Ipinagpapatuloy ng talata ngayon ang temang ito. Bagaman maaari tayong magtiis sa pagtitiwala sa Diyos sa gitna ng paghihirap, <mark>maaari rin nating subukang bigyang-katwiran ang kasalanan gamit ang paghihirap na iyon bilang dahilan</mark>. Sa harap ng kahirapang pang-ekonomiya, maaari tayong humingi ng karunungan at tulong sa Diyos — ngunit sa parehong pakikibaka, maaari nating sisihin ang Diyos, o pumili ng kasinungalingan o di-makatarungang pakinabang, sinasabing hindi ito maiiwasan ngayon. <mark>Sa pagdurusa, hindi lamang ang ating kalagayan kundi pati ang direksyon ng ating isip at puso tungo sa Diyos ang sinusubok.</mark> Si Jesus din ay nakaranas ng gutom at tukso sa ilang, at sa mismong lugar na iyon ay nagtiwala Siya sa Ama at sumunod sa Kanyang Salita."], "points": ["Sa harap ng Salita ngayon, sama-sama nating itanong: Sa panahong ito ng pagsubok, ano ang lumalago sa aking puso?"]}, {"title": "Talata 12 · Ang Korona ng Buhay na Ipinangako sa mga Nagtitiis", "paragraphs": ["Unang ipinahayag ng talata 12 na ang taong nagtitiis sa pagsubok ay <mark>mapalad</mark>. Ang 'mapalad' dito ay hindi nangangahulugang nakadarama ng kagalakan ngayon. Maaaring nahihirapan pa rin ang taong iyon at nadaramang inaapi; maaari kang malugi dahil sa paniniwala sa Diyos. Gayunman, sinasabi ni Santiago na may pagpapala, dahil tinitingnan nila ang wakas na ipinangako ng Diyos, hindi lamang ang kasalukuyang kalagayan. Ipinapaalala nito ang mga salita ni Jesus na nagpapahayag ng mga pagpapala ng kaharian ng Diyos. Ang pagpapala ng Diyos ay hindi laging tumutugma sa kapayapaan o tagumpay na sinasabi ng mundo. Ang pagtindig nang matatag ay hindi lamang pagsupil sa damdamin at tahimik na pagtitiis. <mark>Ito ay pagpapanatili ng pananampalataya at katapatan sa Diyos kahit sa gitna ng paghihirap.</mark> Maaari kang manalangin habang umiiyak. Maaari kang humingi ng tulong. Maaari kang kumilos upang ituwid ang kawalang-katarungan. Ang pagtitiis ay hindi kakayahang hindi makaramdam ng sakit, kundi pananampalatayang kumakapit sa Diyos sa gitna ng sakit.", "Ang pariralang \"kapag napatunayan na siya\" ay nangangahulugang kinikilalang tapat sa pamamagitan ng pagsubok. Inilarawan ng talata 3 ang proseso ng pagsubok sa pananampalataya; dito ay tinitingnan natin ang mga taong nahayag ang tapat na pananampalataya sa pagtitiis sa prosesong iyon. Ang mahalaga ay hindi lamang kung gaano kalaki ang pagdurusa, kundi kung paano tumugon sa Diyos sa gitna nito. Habang humihirap ang sitwasyon, maaaring matukso ang isang tao na talikuran ang katotohanan upang makuha ang gusto — o maaaring aminin ang sariling hangganan at humingi ng karunungan sa Diyos. Hindi ito nangangahulugang ang mga hindi kailanman umuuga lamang ang kinikilala; ito ay pagbabalik sa Diyos at pagpapatuloy sa pananampalataya kahit sa gitna ng pag-uga.", "Binabanggit ng wakas ng talata 12 ang isang korona, na nagpapaalala sa koronang ibinibigay sa nagwagi sa paligsahan. <mark>Ang korona ng buhay ay ang pagtanggap sa buhay mismo bilang korona ng tagumpay.</mark> Kaya hindi natin ito dapat basahin nang mali: 'Kung titiisin ko nang mabuti ang aking paghihirap, tiyak na uunlad ang aking negosyo,' o 'Kung magpapatuloy ako sa pananampalataya, mababawi ko ang lahat ng nawala.' Ang pangako ay hindi sa paglutas ng bawat problema sa lupa, kundi sa pagbibigay ng Diyos ng buhay na hindi kayang agawin kahit ng kamatayan. Sinabi ng talata 10–11 na maging ang mayaman ay naglalaho gaya ng bulaklak ng damo; nilalampasan ng buhay na ipinangako ng Diyos ang hangganang iyon. At tinawag ni Santiago ang mga tumatanggap ng pangako na \"mga umiibig sa Kanya.\" Nagsalita siya tungkol sa pananampalataya at pagtitiis; ngayon ay pag-ibig. Ang mga naniniwala sa Diyos ay umiibig sa Kanya, at nakikita ang pag-ibig na iyon sa pagkapit sa Kanya sa gitna ng paghihirap — kasama ang pagpapahayag na, 'Mahirap unawain ngayon, ngunit ayaw kong iwan ang Diyos.'"], "points": ["Ang pagtitiis ay hindi bayad para sa buhay. Ang buhay ay kaloob na ipinangako ng Diyos, at ang pananampalatayang tumanggap sa biyayang iyon ay nakikita sa buhay na umiibig sa Diyos at nagtitiis. Hindi ang kasalukuyang pagdurusa ang nagtatakda ng wakas ng aking buhay."]}, {"title": "Talata 13–15 · Nagsisimula ang Tukso sa Sariling Pagnanasa at Humahantong sa Kasalanan at Kamatayan", "paragraphs": ["Lumilitaw ang magkaugnay na salita sa talata 12 at 13, ngunit magkaiba ang kahulugan ayon sa konteksto. Tinutukoy ng talata 12 ang mga <mark>pagsubok</mark> na sumusubok sa pananampalataya; tinutukoy ng talata 13 ang mga <mark>tukso</mark> na humihila sa atin sa kasamaan. Maaaring maranasan nang sabay ang dalawa: sa pagsubok ng kahirapan, maaari nating harapin ang tuksong magsinungaling; sa pagsubok ng di-makatarungang pagtrato, ang tuksong gumanti. Ang pagpapalago ng Diyos sa pananampalataya sa gitna ng pagsubok ay hindi nangangahulugang tinutukso Niya tayong magkasala. Ginawa ni Santiago ang pagkakaibang ito at nagbabala laban sa paglilipat ng sisi sa kasalanan sa Diyos. Kapag nagkakamali tayo, naghahanap tayo ng dahilan: 'Siya ang unang hindi pumansin sa akin.' 'Napakalaki na ng nawala sa akin.' 'Inilagay ako ng Diyos sa sitwasyong ito, kaya wala akong magagawa.' Sa Genesis 3, binanggit din ni Adan ang babaeng ginawa ng Diyos habang ipinaliliwanag ang kanyang pagsuway — isang hilig na ilipat ang pananagutan sa halip na akuin ang sariling pasya.", "Siyempre, ang pananagutan sa mga maling ginawa ng iba ay nasa kanila, at hindi natin dapat balewalain ang kawalang-katarungang dinanas natin. Ngunit hindi binibigyang-katwiran ng damdaming inaapi ang ating mga kasinungalingan at paghihiganti. Dapat nating sikaping ituwid ang mga maling ginawa sa atin, at sa prosesong iyon ay matutong supilin ang kasakimang lumalago sa loob natin. Ayos lamang ang dumaing at magtanong sa Diyos; ang binabalaan ni Santiago ay hindi ang pagdadala ng ating sakit sa Diyos, kundi ang paglilipat sa Kanya ng pananagutan sa ating kasalanan. Kaya sinasabi ng talata 13, <mark>\"Huwag sabihin ninuman kapag siya'y tinutukso, 'Tinutukso ako ng Diyos,' sapagkat ang Diyos ay hindi matutukso ng kasamaan, at Siya mismo ay hindi nanunukso ng sinuman.\"</mark>", "Talata 14: <mark>\"Ang bawat tao ay natutukso kapag siya'y nahihila at naaakit ng sarili niyang pagnanasa.\"</mark> Hindi ito nangangahulugang kasalanan ang bawat pagnanais na kumain, magpahinga, o mamuhay nang ligtas. Sa konteksto, ito ang pusong naghahangad na makuha ang gusto kahit laban sa kalooban ng Diyos. Hindi masama ang pagnanais na kilalanin — ngunit kung nagsisimula tayong magpalaki ng katotohanan at maliitin ang iba upang makamit ito, hinihila na tayo ng pagnanasang iyon. Hindi masama ang paghingi ng makatarungang pagtrato — ngunit kung masisiyahan lamang tayo sa pagsira sa iba, dapat nating suriin ang sarili. Tulad ng pain, pinalalaki ng tukso ang agarang kasiyahan at itinatago ang huling kahihinatnan. Kaya tapat na itanong: Ano ang sinisikap kong makamit sa pagbitaw sa pagsunod ngayon? Ginagamit ng talata 15 ang larawan ng pagbubuntis at panganganak: <mark>\"Kapag naglihi ang pagnanasa, nagsisilang ito ng kasalanan, at kapag lumaki na ang kasalanan, nagsisilang ito ng kamatayan.\"</mark> Sa una, 'Isang beses lang, hindi mahalaga.' Pagkatapos ay may idinadagdag na dahilan: 'Tingnan mo kung gaano kalaki ang nawala sa akin.' Kapag naulit, nagiging pamilyar na paraan ng pamumuhay ang maling pasya — at ang wakas ay kamatayan, na kabaligtaran ng buhay sa talata 12."], "points": ["Ang pakiramdam ng tukso ay hindi kapareho ng pagpili ng kasalanan — si Jesus din ay tinukso. Ngunit hindi natin maaaring sadyang palaguin ang masamang puso at sabihing, 'Ayos lang dahil hindi pa ako kumikilos.' Kung patuloy na lalago ang pusong ito, saan ako hahantong?"]}, {"title": "Talata 16–18 · Ang Diyos na Walang Pagbabagong Mabuti ay Nagsilang sa Atin sa Bagong Buhay sa Pamamagitan ng Kanyang Salita", "paragraphs": ["Talata 16: <mark>\"Huwag kayong padaya, mga minamahal kong kapatid.\"</mark> Bagaman malinaw na binabanggit ang pananagutan sa kasalanan, hindi ito upang itaboy o pabayaan ang mga mananampalataya. Ito ay mapagmahal na babala upang kumapit, upang hindi natin mapagkamalan ang Diyos at mapalayo sa buhay. Sa mga pagsubok, madaling maging tanging pamantayan sa paghatol sa Diyos ang kalagayan sa harap natin: 'Kung mabuti ang Diyos, bakit ganito ang buhay ko?' Maaari nating dalhin sa Diyos ang tanong na iyon. Ngunit hindi natin dapat isiping inaakay tayo ng Diyos sa kasamaan dahil lamang hindi natin lubos na nauunawaan ang ating realidad. Maaari tayong lumapit sa mabuting Diyos kahit may realidad tayong hindi maintindihan.", "Talata 17: <mark>\"Bawat mabuting kaloob at bawat ganap na regalo ay mula sa itaas, bumababa mula sa Ama ng mga ilaw, na sa Kanya'y walang pagbabago o anino ng pag-iiba.\"</mark> Siya rin ang Diyos na nagbibigay ng karunungan sa mga naunang talata; ang karunungang kumilala sa gitna ng pagsubok at ang tulong upang manatili sa pananampalataya ay bahagi ng Kanyang mabuting pagbibigay. Hindi lahat ng ninanais natin ay mabuting kaloob, ni hindi natin basta matatawag na mabuting kaloob ng Diyos ang bawat kasamaang nararanasan natin. Inaakay tayo ng talatang ito na magtiwala sa Diyos na nagbibigay ng mabubuting bagay kahit sa gitna ng kasamaan at pagdurusa. Tinawag Siyang Ama ng mga ilaw — ang Lumikha ng araw, buwan, at mga bituin. Gumagalaw ang mga ilaw sa langit at nagbabago ang kanilang anino, ngunit hindi nagbabago ang Diyos. Hindi Siya nagbibigay ng buhay kahapon at naghahangad na ipabagsak tayo ngayon. Kahit nagbabago ang ating damdamin at kalagayan, nananatili ang kabutihan at katapatan ng Diyos.", "Saan natin malinaw na makikita ang kabutihan ng Diyos? Talata 18: <mark>\"Ayon sa Kanyang sariling kalooban, isinilang Niya tayo sa pamamagitan ng salita ng katotohanan, upang tayo'y maging parang mga unang bunga ng Kanyang mga nilalang.\"</mark> Hindi ito buhay na atubiling ibinigay matapos makita ang ating mga merito, kundi ganap na biyayang ninais at isinagawa ng Diyos. Sa konteksto, ang salita ng katotohanan ay mauunawaan bilang ebanghelyo ng kaligtasan. Magkasalungat ang dalawang pagsilang: sa talata 15, nagsisilang ang kasalanan ng kamatayan; sa talata 18, isinisilang tayo ng Diyos sa pamamagitan ng Salita — bagong buhay. Dahil ang Diyos ang unang nagbigay sa atin ng buhay, tinatawag tayong talikuran ang buhay na pinapatakbo ng pagnanasa at sumunod sa Salita. At ginawa tayo ng Diyos na mga unang bunga: ang mga unang bunga ay pag-aari ng Diyos at tumuturo sa aning darating. Ang mga binagong mananampalataya ay paunang larawan ng mas malaking pagpapanumbalik na gagawin ng Diyos."], "points": ["Kapag natuklasan natin ang ating kasalanan, hindi kailangang manatili sa walang-katapusang pagkamuhi sa sarili. Aminin ang pananagutan, magsisi, at bumalik sa Diyos na nagbibigay ng buhay."]}, {"title": "Aplikasyon · Dalawang Pagsilang — Kamatayang Isinilang ng Pagnanasa, Buhay na Isinilang ng Salita", "paragraphs": ["Ipinapakita sa atin ng talata ngayon ang dalawang pagsilang. Ang kasalanang lumalago mula sa pagnanasa ay nagsisilang ng kamatayan. Ngunit ipinapahayag ng mabuting Diyos na <mark>isinilang Niya tayo sa pamamagitan ng salita ng katotohanan</mark>. Dapat ding makita ang bagong buhay na iyon sa komunidad: pag-aalaga sa nangangailangan kung saan dati'y pinagsasamantalahan natin ang isa't isa dahil sa kasakiman; pagsasalita nang may katotohanan at pag-ibig kung saan dati'y nanakit tayo sa salita; sama-samang pag-iingat ng pananampalataya kung saan dati'y pinupuna natin ang pagkakadapa ng iba. Inihahayag ng mga tao ng kaharian ng Diyos ang kabutihan ng Hari sa kanilang mga pasya. Huwag huminto sa pag-amin ng kasalanan — bumalik sa Diyos na nagsilang sa iyo sa pamamagitan ng Salita, at sama-samang isabuhay ang buhay na tinanggap mo.", "Sa pagtingin sa buhay ni Jesus, nakikita natin kung ano ang ibig sabihin ng pagtitiwala sa Ama sa gitna ng pagsubok. Sa ilang, nagutom si Jesus, ngunit hindi Niya ginamit ang gutom na iyon bilang dahilan upang lumabas sa kalooban ng Diyos. Sa pagdurusa, hindi Niya itinago ang Kanyang sakit, kundi nanalangin at ipinagkatiwala ang Kanyang kalooban sa Ama. <mark>Naging posible ang pagsunod ni Jesus hindi dahil wala Siyang sakit, kundi dahil nagtiwala Siya sa Ama.</mark> At hindi huminto si Jesus sa pagbibigay ng halimbawa. Namatay Siya sa krus para sa ating mga kasalanan at muling nabuhay; sa gitna ng realidad ng kamatayan, binuksan ng Diyos ang daan ng kaligtasan sa pamamagitan ni Jesu-Cristo.", "Kaya ang ating pag-asa ay wala sa pagtitiwalang kaya nating lubos na kontrolin ang sarili nating pagnanasa. <mark>Nasa Panginoong nagbigay sa atin ng buhay.</mark> Kapag sinusubok tayo, maaari tayong lumapit sa Panginoong nakaaalam ng ating kahinaan at tumutulong sa atin. Anong mga paghihirap ang hinaharap mo ngayon? Huwag itago ang sakit na iyon — dalhin ito sa Diyos. Humingi ng tulong, at ituwid ang dapat ituwid.", "Kasabay nito, suriin kung ano ang lumalago sa loob mo sa prosesong iyon. Kahit hindi mo malaman ang bawat dahilan kung bakit dumating ang pagdurusa, maaari mong pagnilayan sa harap ng Salita kung gagamitin mo ito bilang dahilan upang pakainin ang iyong pagnanasa, o dadalhin mo ito sa Diyos na nagbigay sa iyo ng buhay. Ngayon, sa aking puso at mga pasya, <mark>lumalago ba ang pagnanasang humahantong sa kamatayan — o nahahayag ang pagsunod at pag-ibig ng bagong buhay na ibinigay ng Diyos?</mark>"], "points": ["Ang pagtitiis sa Panginoon ay hindi lamang paraan upang makamit ang buhay; ito ang tugon ng pamumuhay sa pag-ibig sa Diyos dahil sa biyaya."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung ginagamit ko ang kasalukuyan kong paghihirap bilang dahilan upang bigyang-katwiran ang kasinungalingan, paghihiganti, o di-makatarungang pakinabang."}, {"key": "c2", "text": "Sinuri ko kung inililipat ko ang pananagutan sa aking mga pagkakamali sa Diyos, sa ibang tao, o sa sitwasyon."}, {"key": "c3", "text": "Kung may pagnanasang pinakakain ko sa 'isang beses lang,' pinag-isipan ko kung saan ito hahantong kung patuloy itong lalago."}, {"key": "c4", "text": "Kahit umuuga ang aking kalagayan, kumapit ako sa Diyos na walang pagbabagong mabuti at sa biyayang nagsilang sa akin sa pamamagitan ng Kanyang Salita."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa aking mga pagsubok ngayon, ano ang lumalago sa aking puso — at paano ko ito dadalhin sa Diyos?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Sakit Tungo sa Panalangin", "value": "Huwag itago ang isang paghihirap na hinaharap mo — dalhin ito sa Diyos sa tapat na mga salita ng panalangin"}, {"key": "act2", "label": "Bitawan ang mga Dahilan", "value": "Hanapin ang isang maling binigyang-katwiran mo ng 'wala akong magagawa dahil sa sitwasyon' at aminin ito sa harap ng Diyos"}, {"key": "act3", "label": "Karunungang Makita ang Wakas", "value": "Bago ang isang nakatutuksong pasya ngayon, itanong muna, 'Kung patuloy itong lalago, saan ito hahantong?'"}, {"key": "act4", "label": "Bunga ng Bagong Buhay", "value": "Magbigay sa isang tao ng salita ng katotohanan at pag-ibig sa halip na nakasasakit na salita, at pagpapalakas-loob sa halip na pagpuna"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Santiago 1:12 at tumingin sa Diyos na nangako ng korona ng buhay"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Ama ng mga ilaw, na mabuti nang walang pagbabago o anino ng pag-iiba, at ayon sa Iyong sariling kalooban ay isinilang Mo kami sa bagong buhay sa pamamagitan ng salita ng katotohanan."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa paggamit ng paghihirap bilang dahilan upang pakainin ang aking pagnanasa, at sa paglilipat ng sisi sa aking mga pagkakamali sa Iyo at sa iba."}, {"key": "p3", "tag": "Kahilingan", "text": "Sa aking mga pagsubok, tulungan Mo akong dalhin ang aking sakit sa Iyo at ibigin Ka hanggang sa wakas. Hayaang lumago sa aking puso at mga pasya ang pagsunod at pag-ibig ng bagong buhay na isinilang ng Iyong Salita."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-09-16';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
