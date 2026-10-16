@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/17(토) 큐티 · 야고보서 1:19–27">
+<meta property="og:description" content="말씀을 잘 아는 것과 잘 믿는 것은 같을까요?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 17일 토요일", "ref": "야고보서 1장 19–27절", "headline": "말씀을 잘 아는 것과<br>잘 믿는 것은 같을까요?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 야고보서 1:19-27", "s1heading": "오늘의 말씀", "verse": "\"너희는 말씀을 행하는 자가 되고<br>듣기만 하여 자신을 속이는 자가 되지 말라\"", "verseRef": "야고보서 1:22", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 자신을 속이는 신앙을 경계하라", "paragraphs": ["앞에서 야고보는 하나님에 관하여 \"속지 말라\"고 했습니다. 하나님은 좋은 것을 주시며 진리의 말씀으로 우리를 낳으신 분입니다. 여기서 순서가 중요합니다. <mark>하나님이 먼저 새 생명을 주셨고, 그 은혜를 받은 우리에게 순종을 기대하십니다</mark>. 오늘 본문은 그 새 생명이 삶에서 어떻게 드러나는지를 묻습니다.", "이번에는 <mark>자신을 속이는 신앙</mark>을 경고합니다. 말씀을 듣기만 하면서 잘 믿고 있다고 생각할 수 있고, 혀를 다스리지 않으면서도 자신을 경건하다고 여길 수 있습니다. 말씀을 잘 안다는 것과 말씀에 순종한다는 것은 구분해서 살펴야 합니다."], "points": ["내가 들은 하나님의 말씀은 오늘 내 말과 선택과 이웃을 대하는 태도에 어떻게 나타나고 있습니까?"]}, {"title": "19–21절 · 분노와 악을 버리고, 말씀을 온유함으로 받으라", "paragraphs": ["<mark>\"듣기는 속히 하고 말하기는 더디 하며 성내기도 더디 하라\"</mark>. 이 셋은 연결됩니다. 충분히 듣지 않으면 성급하게 판단하고, 그 판단은 거친 말이 되고, 거친 말은 분노와 갈등을 키웁니다. 나는 상대를 이해하려고 듣고 있습니까, 내 말 할 차례만 기다리고 있습니까? <mark>\"사람이 성내는 것이 하나님의 의를 이루지 못함이라\"</mark>. 옳은 문제를 지적한다는 이유로 사람을 모욕하는 방식까지 정당화할 수는 없습니다. 불의를 바로잡는 일에도 하나님의 다스림이 필요합니다.", "그러므로 <mark>\"마음에 심어진 말씀을 온유함으로 받으라\"</mark>. 온유함은 말씀 앞에서 내가 고쳐질 수 있도록 마음을 여는 태도입니다. \"이 말씀은 저 사람이 들어야 하는데\"가 아니라 \"하나님, 제가 버려야 할 것은 무엇입니까?\"라고 묻는 것입니다. 우리를 낳으신 말씀(18절)이 이제 우리 안에 심어져 계속 삶을 다스리십니다."], "points": ["하나님의 뜻을 이루고 싶다면, 그 일을 하는 나의 말과 태도부터 하나님의 다스림을 받아야 합니다."]}, {"title": "22–25절 · 듣기만 하지 말고 행하라", "paragraphs": ["<mark>\"너희는 말씀을 행하는 자가 되고 듣기만 하여 자신을 속이는 자가 되지 말라\"</mark>. 말씀을 듣고 공부하는 일은 중요하지만 순종을 대신할 수는 없습니다. 프랜시스 챈 목사는 이렇게 비유했습니다. 아버지가 딸에게 방을 치우라고 했는데, 딸이 그 말을 외우고 헬라어로도 말할 수 있으며 친구들과 방 치우는 법을 공부하겠다고 합니다. 아버지가 물을 말은 하나입니다. <mark>\"그래서, 방은 치웠니?\"</mark>", "야고보는 거울을 보고 돌아서서 자기 모습을 잊어버리는 사람을 말합니다. 문제는 대충 본 것이 아니라 <mark>보고 떠나서 잊어버린 것</mark>입니다. 반면 <mark>\"자유롭게 하는 온전한 율법\"</mark>을 들여다보고 실천하는 사람은 복을 받습니다. 화가 나서 말을 멈출 수 없다면 분노가, 손해가 두려워 거짓을 멈출 수 없다면 욕심이 나를 지배하는 것입니다. 말씀은 듣고, 말을 멈추고, 진실을 택하고, 다른 사람을 돌볼 수 있는 참된 자유로 이끕니다."], "points": ["이번 말씀에서 무엇을 새롭게 알았습니까? 그리고 그 말씀 때문에 무엇을 바꾸시겠습니까?"]}, {"title": "26–27절 · 혀를 다스리고, 약한 이웃을 돌보고, 세속에 물들지 않는 경건", "paragraphs": ["<mark>\"스스로 경건하다 생각하며 자기 혀를 재갈 물리지 아니하고 자기 마음을 속이면 이 사람의 경건은 헛것이라\"</mark>. 22절에서는 듣는다는 사실로, 26절에서는 경건하다는 생각으로 자신을 속입니다. 한 번 실수했다고 모든 신앙이 거짓이라는 뜻이 아니라, 말을 다스리지 않는 삶을 그대로 두면서 경건하다고 여기는 태도가 문제입니다. \"나는 원래 말투가 이래\"라며 덮어 둔 말버릇은 없습니까?", "하나님 아버지 앞에서 참된 경건은 <mark>\"고아와 과부를 그 환난 중에 돌보고 또 자기를 지켜 세속에 물들지 아니하는 것\"</mark>입니다. 돌본다는 것은 어려움을 아는 데서 끝나지 않고 찾아가 필요를 채우는 것입니다. 세속은 돈과 지위로 사람을 평가하고 이익을 위해 거짓을 택하며 약한 사람을 무시하는 가치입니다. <mark>거룩함과 긍휼은 함께 갑니다</mark>."], "points": ["나는 내게 도움이 될 사람에게만 관심을 기울이고 있지는 않습니까? 하나님의 사랑은 보답을 기대하기 어려운 관계에서도 나타나야 합니다."]}, {"title": "적용 · 들은 말씀이 내 말과 선택과 이웃 앞에서 드러나도록", "paragraphs": ["오늘 본문은 \"내가 들은 말씀은 내 삶에서 어떻게 나타나고 있는가?\"라는 질문을 세 자리로 가져옵니다. <mark>내 입에서 나오는 말, 말씀을 들은 뒤의 나의 선택, 그리고 어려운 이웃을 대하는 태도</mark>입니다. 설교자도, 성도도, 강단과 예배당을 나선 뒤 그 말씀대로 살아가는지를 살펴야 합니다. 말씀을 오래 보는 것과 말씀 안에 머무는 것은 다릅니다. 말씀 안에 머무는 사람은 일상의 선택에서도 그 말씀을 따릅니다.", "예수님은 사랑을 가르치셨을 뿐 아니라 실제로 사랑하셨습니다. 사람들이 외면하던 이들에게 다가가셨고, 제자들의 발을 씻기셨습니다. 원수를 사랑하라 가르치신 주님은 고난 받으실 때 보복하지 않으시고 의롭게 심판하시는 하나님께 맡기셨습니다. 그리고 <mark>십자가에서 죽임을 당하시고 부활하셔서</mark>, 말씀을 듣고도 순종하지 못하는 우리를 구원하시고 새 생명으로 살아갈 길을 주셨습니다.", "그러므로 오늘 말씀을 듣고 나의 부족함을 발견했다면, 그것을 감추거나 그럴듯하게 설명하려 하지 말고 <mark>하나님께 고백하고 성령의 도우심을 구하며 깨달은 말씀에 순종합시다</mark>. 사과할 사람이 있다면 사과하고, 미뤄 둔 돌봄이 있다면 연락하고, 이익 때문에 타협하려던 일이 있다면 말씀에 따라 다시 결정하는 것입니다.", "우리의 순종은 하나님의 자녀가 되기 위해 치르는 값이 아닙니다. <mark>말씀으로 우리를 낳으신 아버지의 은혜에 대한 응답</mark>입니다. 오늘 이 말씀을 듣고 돌아가는 나는, 누구에게 하는 말과 누구를 향한 행동을 바꾸겠습니까?"], "points": ["하나님께 속한 사람의 경건은 우리가 하는 말과, 돌보는 이웃과, 거절하는 악에서 드러납니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "대화할 때 상대를 이해하려고 듣는지, 내 말 할 차례만 기다리는지 돌아봤다"}, {"key": "c2", "text": "옳은 일을 한다는 이유로 분노와 거친 말을 정당화하고 있지 않은지 점검했다"}, {"key": "c3", "text": "말씀을 알고 있다는 것으로 순종했다고 여기며 실제 삶은 그대로 두고 있지 않은지 돌아봤다"}, {"key": "c4", "text": "'원래 말투가 이렇다'며 덮어 둔 말버릇과, 미뤄 둔 이웃 돌봄이 없는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "오늘 들은 말씀 때문에, 나는 누구에게 하는 말이나 누구를 향한 행동을 바꾸겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "먼저 듣기", "value": "오늘 한 사람과 대화할 때 끝까지 듣고, 내 생각을 말하기 전에 '그러니까 이런 뜻이죠?' 하고 확인하기"}, {"key": "act2", "label": "성내기 더디", "value": "화가 나는 순간 바로 말하지 말고 잠시 멈춰 짧게 기도한 뒤 말하기"}, {"key": "act3", "label": "방 치우기", "value": "최근 말씀에서 깨달았지만 미뤄 둔 순종 하나를 오늘 실제로 행동에 옮기기"}, {"key": "act4", "label": "약한 이웃 돌봄", "value": "도움이 필요하지만 보답을 기대하기 어려운 한 사람에게 연락하거나 필요를 채우기"}, {"key": "act5", "label": "말씀 암송", "value": "야고보서 1:22를 외우며 '듣기만 하는 자'가 아니라 '행하는 자'가 되기를 결단하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "진리의 말씀으로 우리를 낳으시고, 그 말씀을 우리 마음에 심어 날마다 삶을 다스려 주시는 아버지 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "말씀을 듣고 아는 것으로 만족하며 순종은 미루고, 혀를 다스리지 않으면서도 스스로 경건하다 여겼던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "성령님, 듣기는 속히 하고 말하기와 성내기는 더디 하게 하시고, 들은 말씀이 제 말과 선택과 약한 이웃을 돌보는 손길로 드러나게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 17, Saturday", "ref": "James 1:19–27", "headline": "Knowing the Word Well —<br>Is It the Same as Believing Well?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · James 1:19-27", "s1heading": "Today's Word", "verse": "\"But be doers of the word,<br>and not hearers only,<br>deceiving yourselves.\"", "verseRef": "James 1:22", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Beware of a Faith That Deceives Itself", "paragraphs": ["In the previous passage, James urged us not to misunderstand God in suffering. God doesn't tempt us toward evil; He gives good gifts and brought us forth by the word of truth. Today's passage explains how people born of that Word should live. The order matters: <mark>God first gave new life, and He expects and calls for obedience from us who have received that grace</mark>. Today's Word asks how that new life is concretely showing up in our lives.", "If the previous passage said, 'Do not be deceived about God,' today's passage warns against <mark>a faith that deceives itself</mark>. We can think we believe well while only hearing the Word, and consider ourselves devout while not governing our tongue. The preacher confesses that this Word makes him look at himself first: preparing a sermon matters, but so does whether he lives by it after stepping down from the pulpit. You too have learned much from reading Scripture and hearing sermons. But knowing the Word well and obeying the Word must be examined separately. Jesus compared those who hear and do His words to a man who built his house on the rock."], "points": ["How is the Word of God I've heard showing up today in my words, my choices, and how I treat my neighbor?"]}, {"title": "Verses 19–21 · Put Away Anger and Evil; Receive the Word with Meekness", "paragraphs": ["In verse 19 James exhorts his beloved brothers: <mark>\"Let every person be quick to hear, slow to speak, slow to anger.\"</mark> These three are connected. If we don't listen enough, we judge hastily; that judgment comes out as harsh words; and harsh words fuel anger and conflict. So James says to listen first — truly hard. The 'hearing' here needn't be limited to God's Word; it also concerns how we listen to one another in community. 'Slow to speak' doesn't mean never saying what's needed, but listening to the other and weighing our own judgment before speaking. In conversations with a spouse at home, or in decision-making meetings at church, we must ask: Am I listening to understand, or just waiting for my turn to talk?", "Verse 20 gives the reason: <mark>\"For the anger of man does not produce the righteousness of God.\"</mark> God's righteousness here suggests the right life and relationships God desires — and our anger can't produce them. Sometimes, because we're pointing out a real problem, we think our methods are justified too. We may want to protect the church, defend truth, or correct wrong. But if in the process we insult and wound people, our words and attitudes must be examined again before the Word. This doesn't mean ignoring injustice; it means that correcting injustice also needs God's rule. Before calling our anger 'righteous,' we should see what it's producing: Is it bringing truth to light — or trying to break down someone who won't accept my will?", "So verse 21 begins with \"Therefore\": put away all filthiness and rampant wickedness and <mark>receive with meekness the implanted word, which is able to save your souls</mark>. Meekness is the posture of opening our hearts so the Word can correct us. Listening to sermons, we often think, 'This isn't for me — that person needs to hear it.' But those who receive with meekness ask first, 'God, what must I put away?' Why receive again a word already implanted? Because having received new life through the Word doesn't make later obedience unnecessary. The Word that brought us forth (v.18) now appears as the Word implanted in us (v.21) — God, who gave us life, continues to rule our lives through it. So this command isn't 'become perfect by your own strength first,' but God's invitation to acknowledge our sin and return under the authority of the Word that gave us life."], "points": ["If I want to accomplish God's will, my own words and attitudes in doing that work must first come under God's rule."]}, {"title": "Verses 22–25 · Don't Just Hear — Do", "paragraphs": ["What does receiving the Word mean? Verse 22 is clear: <mark>\"Be doers of the word, and not hearers only, deceiving yourselves.\"</mark> Hearing and studying the Word matters, but it can't replace obedience. We can be moved by a sermon on love and still pass by someone in need. We can teach about restraint in speech and still speak harshly to our family. Pastor Francis Chan once illustrated this with cleaning a room. A father tells his daughter to clean her room. She comes back and says she has memorized his command, can say it in Greek, and will gather with friends to study what a clean room might look like. What would a parent say? Before praising her memorization, the first question would be: <mark>\"So — did you clean your room?\"</mark> It makes us laugh, but it also makes us look at ourselves. God told us to love, and we're satisfied that we've studied love; He told us to forgive, and because we can explain forgiveness, we think we've obeyed. When we treat 'I know the Word well' and 'I obey well' as the same, we deceive ourselves.", "Verses 23–24 describe someone who looks in a mirror, walks away, and forgets what he looks like. We can't assume he glanced carelessly — he may have looked closely. <mark>The problem is what happens after: he looks, leaves, and forgets.</mark> We can study the Word carefully and still live apart from it. We may realize what needs changing in our lives and repeat the same words and actions the very next moment. So the text doesn't only ask how long we've looked at Scripture, but how we lived after looking. Remembering the Word goes beyond recalling verses; it means deciding and obeying according to the Word at the moment it's needed.", "Verse 25 shows a different person: one who looks into <mark>\"the perfect law, the law of liberty,\"</mark> and perseveres in it as a doer. The first looks and leaves; this one lives the Word. The Word is called 'law' here, showing that the Word that gives us life is also God's will we must follow. Why 'the law of liberty'? Saying whatever we want may feel like freedom. But if I can't stop talking when angry, anger is actually ruling me. If I can't stop lying for fear of loss, greed is holding my choices. The Word leads us into a life of loving God and neighbor — the freedom to listen, to stop speaking, to choose truth, and to care for others. James says such a doer will be blessed — not a promise that everything will go well, but the blessing of a life God delights in and approves."], "points": ["What did I newly learn from this Word? And what will I change because of it? Looking at the Word for a long time is different from abiding in it."]}, {"title": "Verses 26–27 · Religion That Bridles the Tongue, Cares for the Vulnerable, and Stays Unstained", "paragraphs": ["Now James gives concrete examples of living out the Word. First, governing the tongue: <mark>\"If anyone thinks he is religious and does not bridle his tongue but deceives his heart, this person's religion is worthless.\"</mark> In verse 22, people deceived themselves by the fact that they heard; in verse 26, by the thought that they're devout. We can't evaluate our faith only by our worship and prayer; we must also look at how we treat people with our mouths. We must not speak carelessly to those close to us, spread unverified stories, and still think our faith is fine. This doesn't mean one slip makes all faith false. The problem is leaving an ungoverned tongue as it is while considering ourselves devout. Is there something you've covered up with 'That's just how I talk'? Before the Word, even old speech habits must be examined.", "In verse 27 the standard becomes even clearer, moving from the religion I imagine to religion before God the Father: <mark>\"Religion that is pure and undefiled before God the Father is this: to visit orphans and widows in their affliction, and to keep oneself unstained from the world.\"</mark> In that day, orphans and widows easily lost family protection and economic support. 'Visiting' doesn't end with knowing their difficulty; it means going to them, seeing their situation, and giving needed help. A community that calls God 'Father' must show the Father's care. Faith isn't only about whether my heart feels at peace; it asks how I respond to the pain of those around me. We too must look after those who have lost spouses and children who need protection, and widen our concern to neighbors who've lost their support. And ask yourself: Am I paying attention only to people who can benefit me? God's love must appear even in relationships where we can't expect anything back.", "Alongside caring for the vulnerable, James says to keep oneself unstained from the world. 'The world' here means values and ways of life opposed to God — judging people by money and status, choosing lies for profit, ignoring the weak. So holiness must not be thought of merely as not doing a few things. If we claim to live cleanly yet turn away from suffering neighbors, we must re-examine our religion. Conversely, we must not justify greed and dishonesty because we help others. <mark>Holiness and compassion go together.</mark> A church unstained by the world's values treats as precious the very people the world neglects."], "points": ["The religion of those who belong to God shows in the words we speak, the neighbors we care for, and the evil we refuse."]}, {"title": "Application · Letting the Word I've Heard Show in My Words, Choices, and Care for Neighbors", "paragraphs": ["At the start we asked: How is the Word I've heard showing up in my life? Today's passage brings that question to three places: <mark>the words that come from my mouth, my choices after hearing the Word, and how I treat neighbors in need</mark>. Preacher and congregation alike must examine whether we live by the Word after we leave the pulpit and the sanctuary. Looking at the Word for a long time is different from abiding in it; those who abide in the Word follow it in everyday choices.", "Jesus not only taught love; He actually loved. He went to those others avoided and washed His disciples' feet. The Lord who taught us to love our enemies did not retaliate when He suffered, but entrusted Himself to God who judges justly. And <mark>He was put to death on the cross and rose again</mark>, saving us who hear the Word yet fail to obey, and giving us a way to live in new life.", "So if hearing today's Word has revealed your shortcomings, don't hide them or try to explain them away — <mark>confess them to God, seek the Holy Spirit's help, and obey the Word you've understood</mark>. If there's someone to apologize to, apologize. If there's care you've postponed, reach out. If there's something you were about to compromise on for profit, decide again according to the Word.", "Our obedience is not the price we pay to become God's children. <mark>It is our response to the grace of the Father who brought us forth by His Word.</mark> As I go out having heard this Word today, whose words and whose actions toward whom will I change?"], "points": ["Our obedience is not the price of becoming God's children, but our response to the Father's grace."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether, in conversation, I listen to understand the other person or just wait for my turn to talk."}, {"key": "c2", "text": "I checked whether I'm justifying anger and harsh words because I'm 'doing the right thing.'"}, {"key": "c3", "text": "I reflected on whether I consider myself obedient because I know the Word, while leaving my actual life unchanged."}, {"key": "c4", "text": "I checked for speech habits I've covered with 'that's just how I talk,' and for care for neighbors I've put off."}], "s4heading": "One-Line Reflection", "memoHint": "Because of the Word I heard today, whose words or actions toward whom will I change?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Listen First", "value": "In a conversation today, listen to the end and confirm 'So you mean…?' before sharing your own thoughts"}, {"key": "act2", "label": "Slow to Anger", "value": "When anger rises, don't speak right away — pause, pray briefly, then speak"}, {"key": "act3", "label": "Clean the Room", "value": "Take one act of obedience you've realized from the Word but postponed, and actually do it today"}, {"key": "act4", "label": "Care for the Vulnerable", "value": "Contact or meet the need of someone who needs help but can't repay you"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize James 1:22 and resolve to be not a hearer only, but a doer"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God our Father, for bringing us forth by the word of truth and planting that Word in our hearts to rule our lives each day."}, {"key": "p2", "tag": "Repent", "text": "I repent of being satisfied with hearing and knowing the Word while postponing obedience, and of considering myself devout while not bridling my tongue."}, {"key": "p3", "tag": "Ask", "text": "Holy Spirit, make me quick to hear, slow to speak, and slow to anger, and let the Word I've heard show in my words, my choices, and my care for vulnerable neighbors."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 17, Sabado", "ref": "Santiago 1:19–27", "headline": "Ang Pagkakilala sa Salita —<br>Kapareho Ba ng Tunay na Pananampalataya?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Santiago 1:19-27", "s1heading": "Salita Ngayon", "verse": "\"Maging tagatupad kayo ng salita,<br>at hindi tagapakinig lamang,<br>na dinadaya ang inyong sarili.\"", "verseRef": "Santiago 1:22", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Mag-ingat sa Pananampalatayang Dinadaya ang Sarili", "paragraphs": ["Sa nakaraang bahagi, pinayuhan tayo ni Santiago na huwag mapagkamalan ang Diyos sa gitna ng pagdurusa. Hindi tayo tinutukso ng Diyos sa kasamaan; nagbibigay Siya ng mabubuting kaloob at isinilang tayo sa pamamagitan ng salita ng katotohanan. Ipinaliliwanag ng talata ngayon kung paano dapat mamuhay ang mga isinilang ng Salitang iyon. Mahalaga ang pagkakasunod-sunod: <mark>unang nagbigay ang Diyos ng bagong buhay, at inaasahan at hinihingi Niya ang pagsunod mula sa atin na tumanggap ng biyayang iyon</mark>. Itinatanong ng Salita ngayon kung paano kongkretong nakikita ang bagong buhay na iyon sa ating buhay.", "Kung sinabi ng nakaraang bahagi na, 'Huwag kayong padaya tungkol sa Diyos,' nagbababala naman ang talata ngayon laban sa <mark>pananampalatayang dinadaya ang sarili</mark>. Maaari nating isiping mahusay tayong naniniwala habang nakikinig lamang sa Salita, at ituring ang sarili na banal habang hindi pinipigilan ang dila. Inaamin ng mangangaral na pinatitingin muna siya ng Salitang ito sa sarili: mahalaga ang paghahanda ng sermon, ngunit gayundin kung isinasabuhay niya ito pagbaba sa pulpito. Marami ka ring natutunan sa pagbasa ng Kasulatan at pakikinig ng sermon. Ngunit dapat suriin nang hiwalay ang mahusay na pagkakilala sa Salita at ang pagsunod sa Salita. Inihambing ni Jesus ang mga nakikinig at gumagawa ng Kanyang salita sa taong nagtayo ng bahay sa bato."], "points": ["Paano nakikita ngayon ang Salita ng Diyos na narinig ko sa aking mga salita, mga pasya, at pagtrato sa aking kapwa?"]}, {"title": "Talata 19–21 · Itakwil ang Galit at Kasamaan; Tanggapin ang Salita nang may Kaamuan", "paragraphs": ["Sa talata 19, pinayuhan ni Santiago ang kanyang minamahal na mga kapatid: <mark>\"Ang bawat tao ay maging maagap sa pakikinig, mabagal sa pagsasalita, mabagal sa pagkagalit.\"</mark> Magkakaugnay ang tatlong ito. Kapag hindi tayo sapat na nakikinig, padalos-dalos tayong humahatol; lumalabas ang paghatol na iyon bilang masasakit na salita; at pinalalaki ng masasakit na salita ang galit at alitan. Kaya sinabi ni Santiago na makinig muna — tunay na mahirap. Ang 'pakikinig' dito ay hindi lamang sa Salita ng Diyos; may kinalaman din ito sa kung paano tayo nakikinig sa isa't isa sa komunidad. Ang 'mabagal sa pagsasalita' ay hindi nangangahulugang huwag sabihin ang kailangan, kundi pakinggan ang kabila at timbangin ang sariling paghatol bago magsalita. Sa usapan sa asawa sa tahanan, o sa mga pulong ng pagpapasya sa iglesia, dapat nating itanong: Nakikinig ba ako upang umunawa, o naghihintay lamang ng aking pagkakataong magsalita?", "Ibinibigay ng talata 20 ang dahilan: <mark>\"Sapagkat ang galit ng tao ay hindi nagbubunga ng katuwiran ng Diyos.\"</mark> Ang katuwiran ng Diyos dito ay tumutukoy sa tamang pamumuhay at relasyong nais ng Diyos — at hindi ito kayang ibunga ng ating galit. Minsan, dahil may tunay tayong problemang itinuturo, iniisip nating makatwiran din ang ating paraan. Maaaring nais nating protektahan ang iglesia, ipagtanggol ang katotohanan, o ituwid ang mali. Ngunit kung sa proseso ay iniinsulto at sinusugatan natin ang tao, dapat muling suriin ang ating mga salita at saloobin sa harap ng Salita. Hindi ito nangangahulugang balewalain ang kawalang-katarungan; nangangahulugan itong kailangan din ng paghahari ng Diyos ang pagtutuwid ng kawalang-katarungan. Bago tawaging 'matuwid' ang ating galit, tingnan muna kung ano ang ibinubunga nito: Inilalantad ba nito ang katotohanan — o sinisikap nitong ibagsak ang taong ayaw tumanggap sa aking kalooban?", "Kaya nagsisimula ang talata 21 sa \"Kaya nga\": itakwil ang lahat ng karumihan at laganap na kasamaan at <mark>tanggapin nang may kaamuan ang salitang itinanim, na may kakayahang magligtas sa inyong kaluluwa</mark>. Ang kaamuan ay ang saloobing nagbubukas ng puso upang maituwid tayo ng Salita. Habang nakikinig ng sermon, madalas nating isipin, 'Hindi ito para sa akin — siya ang dapat makarinig nito.' Ngunit ang tumatanggap nang may kaamuan ay unang nagtatanong, 'Diyos, ano ang dapat kong itakwil?' Bakit muling tatanggapin ang salitang naitanim na? Dahil ang pagtanggap ng bagong buhay sa pamamagitan ng Salita ay hindi nagpapawalang-saysay sa pagsunod pagkatapos. Ang Salitang nagsilang sa atin (t.18) ay lumilitaw ngayon bilang Salitang itinanim sa atin (t.21) — ang Diyos na nagbigay sa atin ng buhay ay patuloy na naghahari sa ating buhay sa pamamagitan nito. Kaya ang utos na ito ay hindi 'maging ganap muna sa sariling lakas,' kundi paanyaya ng Diyos na aminin ang ating kasalanan at bumalik sa ilalim ng awtoridad ng Salitang nagbigay sa atin ng buhay."], "points": ["Kung nais kong tuparin ang kalooban ng Diyos, ang sarili kong mga salita at saloobin sa paggawa nito ay dapat munang pumailalim sa paghahari ng Diyos."]}, {"title": "Talata 22–25 · Huwag Lamang Makinig — Gawin", "paragraphs": ["Ano ang ibig sabihin ng pagtanggap sa Salita? Malinaw ang talata 22: <mark>\"Maging tagatupad kayo ng salita, at hindi tagapakinig lamang, na dinadaya ang inyong sarili.\"</mark> Mahalaga ang pakikinig at pag-aaral ng Salita, ngunit hindi nito mapapalitan ang pagsunod. Maaari tayong maantig ng sermon tungkol sa pag-ibig at lampasan pa rin ang nangangailangan. Maaari tayong magturo tungkol sa pagpipigil sa pananalita at magsalita pa rin nang marahas sa pamilya. Minsang inilarawan ito ni Pastor Francis Chan gamit ang paglilinis ng kuwarto. Sinabihan ng ama ang kanyang anak na babae na linisin ang kanyang kuwarto. Bumalik ang anak at sinabing naisaulo niya ang utos ng ama, kaya niya itong sabihin sa wikang Griyego, at makikipagtipon siya sa mga kaibigan upang pag-aralan kung ano ang hitsura ng malinis na kuwarto. Ano ang sasabihin ng magulang? Bago purihin ang pagsasaulo, ang unang tanong ay: <mark>\"Kaya — nilinis mo na ba ang kuwarto mo?\"</mark> Natatawa tayo, ngunit pinatitingin din tayo nito sa sarili. Sinabi ng Diyos na umibig, at kontento na tayong pinag-aralan ang pag-ibig; sinabi Niyang magpatawad, at dahil kaya nating ipaliwanag ang pagpapatawad, inaakala nating sumunod na tayo. Kapag itinuring nating pareho ang 'Kilala ko nang mabuti ang Salita' at 'Mahusay akong sumusunod,' dinadaya natin ang ating sarili.", "Inilalarawan ng talata 23–24 ang taong tumingin sa salamin, umalis, at nakalimutan ang kanyang hitsura. Hindi natin masasabing pahapyaw lamang ang kanyang pagtingin — maaaring tinitigan pa niya. <mark>Ang problema ay ang nangyari pagkatapos: tumingin siya, umalis, at nakalimot.</mark> Maaari nating pag-aralang mabuti ang Salita at mamuhay pa ring malayo rito. Maaari nating mapagtanto ang kailangang baguhin sa ating buhay at ulitin ang parehong salita at kilos sa mismong susunod na sandali. Kaya hindi lamang itinatanong ng teksto kung gaano katagal tayong tumingin sa Kasulatan, kundi kung paano tayo namuhay pagkatapos tumingin. Ang pag-alala sa Salita ay higit pa sa pagbanggit ng mga talata; ito ay pagpapasya at pagsunod ayon sa Salita sa sandaling kailangan ito.", "Ipinapakita ng talata 25 ang ibang tao: isang tumitingin sa <mark>\"ganap na kautusan, ang kautusan ng kalayaan,\"</mark> at nagpapatuloy dito bilang tagatupad. Ang una ay tumitingin at umaalis; ang isang ito ay isinasabuhay ang Salita. Tinawag dito na 'kautusan' ang Salita, na nagpapakitang ang Salitang nagbibigay-buhay ay siya ring kalooban ng Diyos na dapat nating sundin. Bakit 'kautusan ng kalayaan'? Maaaring parang kalayaan ang pagsasabi ng lahat ng gusto natin. Ngunit kung hindi ko mapigilan ang pagsasalita kapag galit, ang galit talaga ang naghahari sa akin. Kung hindi ko mapigilan ang pagsisinungaling dahil takot akong malugi, kasakiman ang humahawak sa aking mga pasya. Inaakay tayo ng Salita sa buhay na umiibig sa Diyos at sa kapwa — ang kalayaang makinig, tumigil sa pagsasalita, piliin ang katotohanan, at alagaan ang iba. Sinasabi ni Santiago na pagpapalain ang gayong tagatupad — hindi pangakong magiging maayos ang lahat, kundi pagpapala ng buhay na kinalulugdan at sinasang-ayunan ng Diyos."], "points": ["Ano ang bagong natutunan ko sa Salitang ito? At ano ang babaguhin ko dahil dito? Iba ang matagal na pagtingin sa Salita sa pananatili rito."]}, {"title": "Talata 26–27 · Relihiyong Pumipigil sa Dila, Nag-aalaga sa Mahihina, at Hindi Nadudungisan", "paragraphs": ["Ngayon ay nagbigay si Santiago ng kongkretong halimbawa ng pagsasabuhay ng Salita. Una, ang pagpigil sa dila: <mark>\"Kung inaakala ng sinuman na siya'y relihiyoso ngunit hindi pinipigilan ang kanyang dila at dinadaya ang kanyang puso, walang kabuluhan ang relihiyon ng taong iyon.\"</mark> Sa talata 22, dinaya ng mga tao ang sarili sa katotohanang sila'y nakinig; sa talata 26, sa akalang sila'y banal. Hindi natin masusuri ang ating pananampalataya sa pamamagitan lamang ng pagsamba at panalangin; dapat din nating tingnan kung paano natin tinatrato ang tao gamit ang ating bibig. Hindi tayo dapat magsalita nang padalos-dalos sa mga malapit sa atin, magkalat ng di-tiyak na kwento, at isiping ayos pa rin ang ating pananampalataya. Hindi ito nangangahulugang ang isang pagkakamali ay ginagawang huwad ang lahat ng pananampalataya. Ang problema ay ang pagpapabaya sa dilang hindi napipigilan habang itinuturing ang sarili na banal. May tinakpan ka bang 'Ganito lang talaga ako magsalita'? Sa harap ng Salita, dapat suriin maging ang matatagal nang ugali sa pananalita.", "Sa talata 27, lalong lumilinaw ang pamantayan, mula sa relihiyong inaakala ko tungo sa relihiyon sa harap ng Diyos Ama: <mark>\"Ang relihiyong dalisay at walang dungis sa harap ng Diyos Ama ay ito: ang dalawin ang mga ulila at mga balo sa kanilang kapighatian, at ingatan ang sarili na walang dungis mula sa sanlibutan.\"</mark> Noong panahong iyon, madaling mawalan ng proteksyon ng pamilya at suportang pang-ekonomiya ang mga ulila at balo. Ang 'pagdalaw' ay hindi natatapos sa pagkaalam ng kanilang paghihirap; ito ay pagpunta sa kanila, pagtingin sa kanilang kalagayan, at pagbibigay ng kailangang tulong. Ang komunidad na tumatawag sa Diyos na 'Ama' ay dapat magpakita ng pag-aalaga ng Ama. Ang pananampalataya ay hindi lamang tungkol sa kung payapa ang aking puso; itinatanong nito kung paano ako tumutugon sa sakit ng mga nasa paligid ko. Dapat din nating alagaan ang mga nawalan ng asawa at ang mga batang nangangailangan ng proteksyon, at palawakin ang malasakit sa mga kapwang nawalan ng suporta. At tanungin ang sarili: Sa mga taong may pakinabang lamang ba sa akin ako nagbibigay-pansin? Dapat makita ang pag-ibig ng Diyos kahit sa mga relasyong hindi tayo makaaasa ng anumang kapalit.", "Kasabay ng pag-aalaga sa mahihina, sinasabi ni Santiago na ingatan ang sarili na walang dungis mula sa sanlibutan. Ang 'sanlibutan' dito ay mga pinahahalagahan at pamumuhay na salungat sa Diyos — paghatol sa tao ayon sa pera at katayuan, pagpili ng kasinungalingan para sa pakinabang, pagbalewala sa mahihina. Kaya hindi dapat isipin ang kabanalan bilang hindi lamang paggawa ng ilang bagay. Kung sinasabi nating malinis tayong namumuhay ngunit tinatalikuran ang nagdurusang kapwa, dapat nating muling suriin ang ating relihiyon. Sa kabilang banda, hindi natin dapat bigyang-katwiran ang kasakiman at kawalang-katapatan dahil tumutulong tayo sa iba. <mark>Magkasamang lumalakad ang kabanalan at habag.</mark> Ang iglesiang hindi nadudungisan ng pinahahalagahan ng mundo ay pinahahalagahan ang mismong mga taong pinababayaan ng mundo."], "points": ["Nakikita ang relihiyon ng mga kabilang sa Diyos sa mga salitang ating binibigkas, sa kapwang ating inaalagaan, at sa kasamaang ating tinatanggihan."]}, {"title": "Aplikasyon · Hayaang Makita ang Narinig na Salita sa Aking mga Salita, Pasya, at Pag-aalaga sa Kapwa", "paragraphs": ["Sa simula, nagtanong tayo: Paano nakikita ang Salitang narinig ko sa aking buhay? Dinadala ng talata ngayon ang tanong na iyon sa tatlong lugar: <mark>ang mga salitang lumalabas sa aking bibig, ang aking mga pasya pagkatapos marinig ang Salita, at ang pagtrato ko sa nangangailangang kapwa</mark>. Ang mangangaral at kongregasyon ay kapwa dapat magsuri kung isinasabuhay natin ang Salita paglabas natin sa pulpito at santuwaryo. Iba ang matagal na pagtingin sa Salita sa pananatili rito; ang mga nananatili sa Salita ay sumusunod dito sa araw-araw na mga pasya.", "Hindi lamang nagturo si Jesus ng pag-ibig; tunay Siyang umibig. Pinuntahan Niya ang mga iniiwasan ng iba at hinugasan ang paa ng Kanyang mga alagad. Ang Panginoong nagturong ibigin ang ating mga kaaway ay hindi gumanti nang Siya'y magdusa, kundi ipinagkatiwala ang sarili sa Diyos na humahatol nang makatarungan. At <mark>pinatay Siya sa krus at muling nabuhay</mark>, upang iligtas tayong nakaririnig ng Salita ngunit nabibigong sumunod, at bigyan tayo ng daan upang mamuhay sa bagong buhay.", "Kaya kung inihayag ng pagdinig sa Salita ngayon ang iyong mga pagkukulang, huwag itago o subukang ipaliwanag ang mga ito — <mark>ipagtapat ang mga ito sa Diyos, humingi ng tulong ng Banal na Espiritu, at sundin ang Salitang naunawaan mo</mark>. Kung may taong dapat mong hingan ng tawad, humingi ng tawad. Kung may pag-aalagang ipinagpaliban mo, makipag-ugnayan. Kung may bagay na muntik mo nang ikompromiso para sa pakinabang, magpasyang muli ayon sa Salita.", "Ang ating pagsunod ay hindi bayad upang maging anak ng Diyos. <mark>Ito ang ating tugon sa biyaya ng Amang nagsilang sa atin sa pamamagitan ng Kanyang Salita.</mark> Paglabas ko ngayon matapos marinig ang Salitang ito, kaninong mga salita at anong mga kilos tungo kanino ang aking babaguhin?"], "points": ["Ang ating pagsunod ay hindi bayad upang maging anak ng Diyos, kundi tugon sa biyaya ng Ama."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung, sa pakikipag-usap, nakikinig ako upang umunawa o naghihintay lamang ng aking pagkakataong magsalita."}, {"key": "c2", "text": "Sinuri ko kung binibigyang-katwiran ko ang galit at masasakit na salita dahil 'tama naman ang ginagawa ko.'"}, {"key": "c3", "text": "Pinag-isipan ko kung itinuturing kong masunurin ang sarili dahil kilala ko ang Salita, habang hindi nagbabago ang tunay kong buhay."}, {"key": "c4", "text": "Sinuri ko kung may ugali ako sa pananalitang tinakpan ng 'ganito lang talaga ako magsalita,' at pag-aalaga sa kapwang ipinagpaliban ko."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Dahil sa Salitang narinig ko ngayon, kaninong mga salita o anong mga kilos tungo kanino ang aking babaguhin?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Makinig Muna", "value": "Sa isang usapan ngayon, makinig hanggang dulo at kumpirmahin ang 'Ibig mo bang sabihin…?' bago ibahagi ang iyong iniisip"}, {"key": "act2", "label": "Mabagal sa Pagkagalit", "value": "Kapag umusbong ang galit, huwag agad magsalita — huminto, manalangin nang maikli, saka magsalita"}, {"key": "act3", "label": "Linisin ang Kuwarto", "value": "Kumuha ng isang pagsunod na naunawaan mo mula sa Salita ngunit ipinagpaliban, at gawin ito ngayon"}, {"key": "act4", "label": "Alagaan ang Mahihina", "value": "Makipag-ugnayan o tugunan ang pangangailangan ng isang taong nangangailangan ngunit hindi makagaganti"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Santiago 1:22 at magpasyang maging hindi lamang tagapakinig, kundi tagatupad"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos Ama, sa pagsilang Mo sa amin sa pamamagitan ng salita ng katotohanan at sa pagtatanim ng Salitang iyon sa aming puso upang maghari sa aming buhay araw-araw."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagiging kontento sa pakikinig at pagkaalam ng Salita habang ipinagpapaliban ang pagsunod, at sa pagturing sa sarili na banal habang hindi pinipigilan ang aking dila."}, {"key": "p3", "tag": "Kahilingan", "text": "Banal na Espiritu, gawin Mo akong maagap sa pakikinig, mabagal sa pagsasalita, at mabagal sa pagkagalit, at hayaang makita ang Salitang narinig ko sa aking mga salita, pasya, at pag-aalaga sa mahihinang kapwa."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-17';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
