@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/19(월) 큐티 · 야고보서 2:14–26">
+<meta property="og:description" content="내가 아는 말씀, 어떻게 삶이 되고 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 19일 월요일", "ref": "야고보서 2장 14–26절", "headline": "내가 아는 말씀,<br>어떻게 삶이 되고 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 야고보서 2:14-26", "s1heading": "오늘의 말씀", "verse": "\"영혼 없는 몸이 죽은 것 같이<br>행함이 없는 믿음은 죽은 것이니라\"", "verseRef": "야고보서 2:26", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 말씀을 많이 접하는 것과 말씀대로 사는 것", "paragraphs": ["앞에서 야고보는 가난한 사람을 차별하는 교회를 책망하고, 긍휼 없는 삶을 하나님이 어떻게 보시는지 경고했습니다. 오늘 본문은 같은 문제를 <mark>믿음의 진실성</mark>이라는 관점에서 묻습니다. 어려운 형제자매에게 긍휼을 베풀지 않으면서 믿음이 있다고 말한다면, 그 믿음은 살아 있는 믿음입니까?", "우리는 핸드폰만 열면 설교가 나오고 궁금한 것은 언제든 검색할 수 있는 시대에 삽니다. 그러나 <mark>말씀을 많이 접한다는 사실이 곧 말씀대로 산다는 뜻은 아닙니다</mark>. 모태신앙, 좋은 교회, 많은 성경 지식도 모두 귀한 배움의 기회이지만, 그 말씀에 응답하는 일은 각자의 몫입니다."], "points": ["나는 무엇을 알고 있습니까? 그리고 알고 있는 그 말씀 때문에 실제로 무엇을 하고 있습니까?"]}, {"title": "14–17절 · 이웃의 필요를 외면하는 믿음은 죽은 믿음입니다", "paragraphs": ["<mark>\"사람이 믿음이 있노라 하고 행함이 없으면 무슨 유익이 있으리요 그 믿음이 능히 자기를 구원하겠느냐\"</mark>. 야고보는 믿음의 중요성을 낮추는 것이 아니라, 우리가 믿음이라고 부르는 것이 정말 하나님을 신뢰하는 믿음인지 묻습니다. 헐벗고 굶주린 형제자매에게 \"평안히 가라, 덥게 하라, 배부르게 하라\"고 말만 하고 필요한 것은 주지 않는다면, 말은 따뜻해도 그 사람은 여전히 춥고 배고픕니다.", "수술 후 혼자 식사를 챙기기 어렵다는 성도에게 \"잘 드셔야 빨리 회복하시죠, 기도할게요\"라는 말로만 끝난다면 어떻겠습니까? 기도는 귀합니다. 그러나 <mark>하나님께 도움을 구하는 내가 그 도움을 전하는 사람이 될 수도 있습니다</mark>. 모든 사람의 문제를 혼자 해결하라는 것이 아니라, 내가 할 수 있는 범위 안에서 필요를 알면서도 좋은 말만 남기고 돌아서는 태도를 지적하는 것입니다. 그래서 <mark>\"행함이 없는 믿음은 그 자체가 죽은 것이라\"</mark>."], "points": ["야고보가 말하는 행함은 막연히 교회 일을 더 많이 하는 것이 아니라, 지금 내 앞에 있는 사람의 필요에 응답하는 것입니다."]}, {"title": "18–20절 · 귀신들도 믿고 떱니다", "paragraphs": ["<mark>\"행함이 없는 네 믿음을 내게 보이라 나는 행함으로 내 믿음을 너에게 보이리라\"</mark>. 사람마다 은사와 역할은 다를 수 있지만, \"나는 말씀을 공부하는 사람이고, 이웃을 돕는 일은 다른 사람 몫\"이라고 사랑의 책임까지 나눌 수는 없습니다.", "<mark>\"네가 하나님은 한 분이신 줄을 믿느냐 잘하는도다 귀신들도 믿고 떠느니라\"</mark>. 바른 지식은 중요하지만, 하나님에 관한 사실을 인정하는 것과 그 말씀을 신뢰하며 따르는 것은 다릅니다. 용서에 관한 말씀을 설명하면서도 미움을 붙들 수 있고, 사랑에 관한 설교에 감동하면서도 도움이 필요한 사람을 지나칠 수 있습니다."], "points": ["말씀을 들은 뒤에는 '오늘 무엇을 깨달았는가'와 함께 '그 말씀 때문에 무엇을 바꾸겠는가'를 물어야 합니다."]}, {"title": "21–26절 · 아브라함과 라합 — 순종으로 온전해진 믿음", "paragraphs": ["아브라함은 가장 소중한 아들 이삭이 걸린 시험 앞에서도 하나님을 신뢰하며 순종했습니다. <mark>\"믿음이 그의 행함과 함께 일하고 행함으로 믿음이 온전하게 되었느니라\"</mark>. 순종은 이미 가진 믿음을 보여 주는 일이며, 그 믿음이 자라는 과정이기도 합니다. \"믿음이 더 좋아지면, 마음에 여유가 생기면 순종하겠다\"며 순종을 미루면서 믿음이 자라기만 기다릴 수는 없습니다. \"행함으로 의롭다 하심을 받는다\"는 말도, 선행을 쌓아 구원을 이룬다는 뜻이 아닙니다. 야고보는 이미 <mark>하나님이 진리의 말씀으로 우리를 낳으셨다</mark>(1:18)고 했습니다. 우리는 순종으로 은혜를 얻어 내는 사람이 아니라, 받은 은혜에 순종으로 응답하는 사람입니다.", "이스라엘의 조상 아브라함과 여리고의 이방 여인 라합은 배경이 전혀 달랐지만, 믿음이 행동으로 나타났다는 점은 같습니다. 라합은 위험을 감수하며 정탐꾼을 숨기고 다른 길로 보내 자신이 믿는 하나님 편에 섰습니다. <mark>아브라함의 존경받는 위치도 순종을 대신하지 못했고, 라합의 과거도 믿음으로 응답하는 길을 막지 못했습니다</mark>. 그리고 결론은 이것입니다. \"영혼 없는 몸이 죽은 것 같이 행함이 없는 믿음은 죽은 것이니라\"."], "points": ["신앙의 연수가 50년, 70년이어도 그것이 오늘의 순종을 대신하지 못합니다. 반대로 믿은 지 얼마 되지 않았거나 실패가 많았어도, 오늘 알고 있는 말씀에 응답하는 자리에서 시작하면 됩니다."]}, {"title": "적용 · 이미 알고 있는 말씀 하나에 오늘 응답하십시오", "paragraphs": ["한 번 실패했다고 믿음 전체가 거짓이라는 뜻은 아닙니다. 아브라함에게도 연약함과 넘어짐이 있었습니다. 그러나 <mark>실패를 인정하고 하나님께 돌아오는 것과, 순종하지 않아도 괜찮다고 여기는 것은 전혀 다릅니다</mark>. 살아 있는 믿음은 넘어져도 말씀 앞으로 돌아와 다시 순종의 길을 걷는 것입니다.", "예수님은 말씀을 듣고 행하는 사람을 반석 위에 집을 지은 사람에, 듣고도 행하지 않는 사람을 모래 위에 집을 지은 사람에 비유하셨습니다. 두 사람은 같은 말씀을 들었습니다. <mark>차이는 들은 뒤의 삶에 있었습니다</mark>. 우리도 말씀에 익숙해질 수 있지만, 익숙함이 곧 성숙함은 아닙니다. 아는 말씀이 일상의 결정과 관계로 이어질 때 믿음은 그 자리에서 자랍니다.", "우리의 정체성은 하나님의 은혜로 그분께 속해 있다는 데 있고, 우리가 누구에게 속해 있는지는 그분의 말씀에 응답하는 삶, 곧 열매로 드러납니다. 예수님은 \"사랑한다\"는 말만 남기지 않으셨습니다. <mark>실제로 십자가에서 자신의 생명을 내어 주셨고, 부활하셔서 새 생명의 길을 열어 주셨습니다</mark>. 우리는 그 사랑을 받은 사람으로 살아갑니다.", "오늘은 많은 결심을 하지 않아도 됩니다. <mark>이미 알고 있는 말씀 하나에 구체적으로 응답해 보십시오</mark>. 도움이 필요한 사람에게 무엇이 필요한지 물어보십시오. 사과해야 할 사람이 있다면 먼저 연락해 보십시오. 나눌 수 있는 것이 있다면 작은 것이라도 나누십시오. 말씀이 내 삶과 만나는 그 자리에서 믿음이 자라납니다."], "points": ["오늘 내가 이미 알고 있는 말씀 가운데, 이제는 순종으로 답해야 할 말씀은 무엇입니까?"]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "말씀을 많이 듣고 아는 것으로 내 믿음이 살아 있다고 여기고 있지 않은지 돌아봤다"}, {"key": "c2", "text": "어려운 사람에게 좋은 말과 '기도할게요'만 남기고 돌아선 일은 없는지 점검했다"}, {"key": "c3", "text": "'믿음이 더 생기면, 여유가 생기면' 하며 미뤄 둔 순종이 있는지 돌아봤다"}, {"key": "c4", "text": "신앙의 배경이나 연수를 오늘의 순종 대신 내세우고 있지 않은지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "이미 알고 있지만 아직 순종하지 않은 말씀 하나는 무엇이며, 오늘 그것에 어떻게 응답하겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "필요 묻기", "value": "도움이 필요해 보이는 한 사람에게 '지금 무엇이 가장 필요하세요?' 하고 구체적으로 물어보기"}, {"key": "act2", "label": "기도 + 행동", "value": "기도하고 있는 사람 한 명을 위해 오늘 내가 할 수 있는 작은 행동(식사, 연락, 방문) 하나 실천하기"}, {"key": "act3", "label": "먼저 연락", "value": "사과해야 할 사람이 있다면 미루지 말고 오늘 먼저 연락하기"}, {"key": "act4", "label": "작은 나눔", "value": "내가 가진 것 중 작은 것이라도 필요한 사람과 나누기"}, {"key": "act5", "label": "말씀 암송", "value": "야고보서 2:26을 외우며 아는 말씀을 오늘의 순종으로 옮기기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "사랑한다는 말만 남기지 않으시고 십자가에서 생명을 내어 주시며, 부활하셔서 새 생명의 길을 열어 주신 예수님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "말씀을 많이 알면서도 순종은 미루고, 이웃의 필요 앞에서 좋은 말만 남기고 돌아섰으며, 신앙의 배경을 순종 대신 내세웠던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "넘어져도 말씀 앞으로 돌아오게 하시고, 이미 알고 있는 말씀 하나에 오늘 구체적으로 순종하여 저의 믿음이 살아 있는 믿음으로 자라게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 19, Monday", "ref": "James 2:14–26", "headline": "The Word I Know —<br>How Is It Becoming My Life?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · James 2:14-26", "s1heading": "Today's Word", "verse": "\"For as the body apart from the spirit is dead,<br>so also faith apart from works is dead.\"", "verseRef": "James 2:26", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Hearing a Lot of the Word vs. Living by It", "paragraphs": ["In the previous passage, James rebuked a church that believed in Jesus Christ yet discriminated against the poor. He urged them to love their neighbors as themselves and warned how God views a life without mercy. Today's passage asks the same question from the angle of <mark>the genuineness of faith</mark>: If someone says they have faith but shows no mercy to struggling brothers and sisters, is that faith truly alive? Is your faith alive?", "We live in an age when the Word is easy to access. Open your phone and sermons appear; you can search any question anytime; you can easily find words that comfort you or match your thinking. But <mark>having lots of exposure to the Word doesn't mean we're living by it</mark>. Being fluent in religious expressions and good at talking about faith doesn't, by itself, explain what kind of believer I am. A 'born-into-faith' background can't replace my obedience. Neither can attending a good church, having much Bible knowledge, or even holding a theology doctorate. All are precious opportunities to learn, but responding to the Word is each person's own part."], "points": ["So today, along with 'What do I know?', let's ask: 'Because of the Word I know, what am I actually doing?'"]}, {"title": "Verses 14–17 · Faith That Ignores a Neighbor's Needs Is Dead", "paragraphs": ["In verse 14 James exposes someone who says he has faith but has no works, and asks bluntly, <mark>\"What good is it, my brothers, if someone says he has faith but does not have works? Can that faith save him?\"</mark> The key is that he says he has faith: the claim about his faith and what shows up in his life are heading in different directions. James isn't lowering the importance of faith. He's asking whether what we call faith is really faith that trusts God. If we say we believe God yet keep ignoring His Word — no obedience, no action, no response — we must seriously re-examine our confession.", "In verse 15 James paints a scene: a brother or sister lacks clothing and daily food. Someone says, <mark>\"Go in peace, be warmed and filled,\"</mark> but gives them nothing they need. The words are warm, yet the person remains cold and hungry. This may feel familiar. In a church small group, a member says that after surgery they're struggling to manage meals alone. We say, 'You need to eat well to recover — we'll pray for you.' What if our words stop at mere concern? Prayer is truly precious. But while praying, we should also look at what we can do — because <mark>I, who ask God for help, may be the very one to deliver that help</mark>. The text doesn't demand that we solve everyone's problems alone. But it clearly confronts the attitude of knowing a brother or sister's need, within the range of what I can do and what God stirs in me, and walking away leaving only kind words. So verse 17 declares: <mark>\"So also faith by itself, if it does not have works, is dead.\"</mark> The 'works' James speaks of isn't vaguely doing more church activities; it's responding to the needs of the person in front of me right now."], "points": ["The works James means is not simply more church activity, but responding to the need of the person right in front of me."]}, {"title": "Verses 18–20 · Even the Demons Believe — and Shudder", "paragraphs": ["In verse 18 James declares that faith and works cannot be separated: <mark>\"Show me your faith apart from your works, and I will show you my faith by my works.\"</mark> People's gifts and roles may differ. But we can't split up the responsibility of love by saying, 'I'm the one who studies the Word; helping neighbors is someone else's job.'", "Verse 19 gives an even more startling example: <mark>\"You believe that God is one; you do well. Even the demons believe — and shudder!\"</mark> Right knowledge matters. But acknowledging facts about God is different from trusting and following His Word. Even demons know God's Word. We can explain the Word on forgiveness while holding onto hatred. We can be moved by a sermon on love while passing by someone who needs help. So after hearing the Word, we must always ask not only 'How much new truth did I learn today?' but also 'What will I change because of this Word?' Whether my faith is alive shows not only in the faith stories I tell, but in how I respond to my neighbor's needs."], "points": ["Whether my faith is alive shows not only in what I say about faith, but in how I respond to my neighbor's needs."]}, {"title": "Verses 21–26 · Abraham and Rahab — Faith Made Complete Through Obedience", "paragraphs": ["In verse 21 James recalls Abraham offering his son Isaac on the altar. Abraham believed God's promise, and even facing a test involving his most precious son, he trusted and obeyed God. God stopped his hand and spared Isaac. Verse 22 explains: <mark>\"You see that faith was active along with his works, and faith was completed by his works.\"</mark> This is important. Obedience both shows the faith we already have and is the process by which that faith grows. We often think, 'When my faith gets stronger, then I'll obey' — 'I'll share when I have more room,' 'I'll follow when I'm confident enough.' But Abraham's story says faith is made complete in the very process of trusting and obeying God. We can't postpone obedience and just wait for faith to grow.", "Verse 23 quotes, \"Abraham believed God, and it was counted to him as righteousness\" — and that faith was later concretely fulfilled in his obedience. Verse 24's \"a person is justified by works\" must be read within this flow. James isn't saying we achieve salvation by piling up good deeds. He already said in 1:18 that <mark>God, of His own will, brought us forth by the word of truth</mark>. New life always begins in God's grace. But we can't confess that grace while saying obedience is unnecessary. What James keeps warning against is a claim of faith detached from action. We aren't people who earn God's grace by obedience, but people who respond with obedience to the abundant grace we've already received.", "Verse 25 brings in Rahab. Abraham, the ancestor of Israel, and Rahab, a Gentile woman of Jericho, had completely different backgrounds — yet they're alike in that their faith in God showed in action. Rahab heard what Israel's God had done and acknowledged Him. She welcomed the spies and sent them out another way, risking danger to stand on the side of the God she believed. <mark>Abraham's honored position couldn't replace obedience, and Rahab's past couldn't block the way of responding in faith.</mark> In verse 26 James concludes: \"For as the body apart from the spirit is dead, so also faith apart from works is dead.\""], "points": ["Even fifty or seventy years of faith cannot replace today's obedience. And even if you're new to faith or have failed often, you can begin right where you respond to the Word you already know."]}, {"title": "Application · Respond Today to One Word You Already Know", "paragraphs": ["Failing once doesn't mean one's whole faith is false. Abraham, too, had weaknesses and stumbled. But <mark>acknowledging failure and returning to God is completely different from thinking it's fine not to obey</mark>. Living faith is coming back to the Word even after falling, and walking the path of obedience again. A faith background cannot replace obedience. Have you believed for fifty years, seventy years? That cannot replace your obedience. Remember: today's small obedience becomes the place where faith grows.", "Jesus compared those who hear and do His words to a man who built his house on the rock, and those who hear but don't do to a man who built on sand that would collapse. Both heard the same words. <mark>The difference was in their lives after hearing.</mark> We too can grow used to hearing the Word — but familiarity is not maturity. When the Word we know connects to everyday decisions and relationships, faith grows right there.", "Our identity lies in belonging to God by His grace, and whom we belong to shows in a life that responds to His Word — that is the fruit. Jesus didn't just leave the words 'I love you.' <mark>He actually gave His life on the cross and rose again, truly opening the way of new life for us.</mark> We live as people who have received that love.", "You don't need to make many resolutions today. <mark>Just respond concretely to one Word you already know.</mark> Ask someone who needs help what they need. If there's someone you should apologize to, reach out first. If you have something to share, share it, even if it's small. Faith grows right where the Word meets my life."], "points": ["Among the words I already know today, which one must I now answer with obedience?"]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I consider my faith alive simply because I hear and know a lot of the Word."}, {"key": "c2", "text": "I checked whether I've walked away from someone in need, leaving only kind words and 'I'll pray for you.'"}, {"key": "c3", "text": "I reflected on whether there's obedience I've postponed with 'when I have more faith' or 'when I have more room.'"}, {"key": "c4", "text": "I checked whether I'm putting forward my faith background or years of faith in place of today's obedience."}], "s4heading": "One-Line Reflection", "memoHint": "What is one Word I already know but haven't yet obeyed, and how will I respond to it today?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Ask About the Need", "value": "Ask someone who seems to need help, 'What do you need most right now?'"}, {"key": "act2", "label": "Prayer + Action", "value": "For someone you're praying for, do one small thing you can today (a meal, a call, a visit)"}, {"key": "act3", "label": "Reach Out First", "value": "If there's someone you need to apologize to, don't delay — reach out first today"}, {"key": "act4", "label": "Small Sharing", "value": "Share something you have, even something small, with someone in need"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize James 2:26 and turn the Word you know into today's obedience"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Jesus, for not leaving only words of love, but giving Your life on the cross and rising again to open the way of new life."}, {"key": "p2", "tag": "Repent", "text": "I repent of knowing much of the Word yet postponing obedience, of walking away from my neighbor's needs with only kind words, and of putting forward my faith background instead of obeying."}, {"key": "p3", "tag": "Ask", "text": "Even when I fall, bring me back to Your Word. Help me obey concretely today one Word I already know, so that my faith grows into a living faith."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 19, Lunes", "ref": "Santiago 2:14–26", "headline": "Ang Salitang Alam Ko —<br>Paano Ito Nagiging Aking Buhay?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Santiago 2:14-26", "s1heading": "Salita Ngayon", "verse": "\"Sapagkat kung paanong patay ang katawang walang espiritu,<br>gayundin naman, patay ang pananampalatayang walang gawa.\"", "verseRef": "Santiago 2:26", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Maraming Naririnig na Salita vs. Pamumuhay Ayon Dito", "paragraphs": ["Sa nakaraang bahagi, sinaway ni Santiago ang iglesiang naniniwala kay Jesu-Cristo ngunit nagtatangi laban sa dukha. Pinayuhan niya silang ibigin ang kapwa gaya ng sarili at nagbabala kung paano tinitingnan ng Diyos ang buhay na walang habag. Itinatanong ng talata ngayon ang parehong isyu mula sa pananaw ng <mark>katapatan ng pananampalataya</mark>: Kung sinasabi ng isang tao na may pananampalataya siya ngunit hindi nagpapakita ng habag sa nahihirapang kapatid, buhay ba talaga ang pananampalatayang iyon? Buhay ba ang iyong pananampalataya?", "Nabubuhay tayo sa panahong madaling ma-access ang Salita. Buksan ang telepono at lilitaw ang mga sermon; maaari mong hanapin ang anumang tanong kahit kailan; madali kang makahahanap ng salitang umaaliw sa iyo o tugma sa iniisip mo. Ngunit <mark>ang maraming pagkakalantad sa Salita ay hindi nangangahulugang namumuhay tayo ayon dito</mark>. Ang pagiging bihasa sa mga pananalitang panrelihiyon at mahusay magsalita tungkol sa pananampalataya ay hindi, sa sarili nito, nagpapaliwanag kung anong uri ng mananampalataya ako. Hindi mapapalitan ng pagiging 'ipinanganak sa pananampalataya' ang aking pagsunod. Gayundin ang pagdalo sa mabuting iglesia, pagkakaroon ng maraming kaalaman sa Bibliya, o kahit doktorado sa teolohiya. Lahat ay mahahalagang pagkakataon upang matuto, ngunit ang pagtugon sa Salita ay bahagi ng bawat isa."], "points": ["Kaya ngayon, kasama ng 'Ano ang alam ko?', itanong natin: 'Dahil sa Salitang alam ko, ano ang talagang ginagawa ko?'"]}, {"title": "Talata 14–17 · Patay ang Pananampalatayang Binabalewala ang Pangangailangan ng Kapwa", "paragraphs": ["Sa talata 14, inilantad ni Santiago ang taong nagsasabing may pananampalataya ngunit walang gawa, at tahasang nagtanong, <mark>\"Ano ang pakinabang, mga kapatid ko, kung sinasabi ng isang tao na may pananampalataya siya ngunit walang gawa? Maililigtas ba siya ng pananampalatayang iyon?\"</mark> Ang susi ay sinasabi niyang may pananampalataya siya: ang pahayag tungkol sa kanyang pananampalataya at ang nakikita sa kanyang buhay ay magkaiba ang direksyon. Hindi binababa ni Santiago ang kahalagahan ng pananampalataya. Itinatanong niya kung ang tinatawag nating pananampalataya ay tunay na pananampalatayang nagtitiwala sa Diyos. Kung sinasabi nating naniniwala tayo sa Diyos ngunit patuloy na binabalewala ang Kanyang Salita — walang pagsunod, walang gawa, walang tugon — dapat nating seryosong suriin muli ang ating pagpapahayag.", "Sa talata 15, naglarawan si Santiago ng eksena: may kapatid na lalaki o babae na kulang sa damit at pang-araw-araw na pagkain. May nagsabing, <mark>\"Humayo ka nang payapa, magpainit ka at magpakabusog,\"</mark> ngunit walang ibinigay na kailangan niya. Mainit ang salita, ngunit nananatiling giniginaw at gutom ang tao. Maaaring pamilyar ito. Sa isang maliit na grupo sa iglesia, sinabi ng isang miyembro na pagkatapos ng operasyon ay nahihirapan siyang maghanda ng pagkain nang mag-isa. Sinabi natin, 'Kailangan mong kumain nang mabuti para gumaling — ipapanalangin ka namin.' Paano kung huminto lamang sa malasakit ang ating salita? Tunay na mahalaga ang panalangin. Ngunit habang nananalangin, dapat din nating tingnan kung ano ang magagawa natin — dahil <mark>ako, na humihingi ng tulong sa Diyos, ay maaaring siya mismong maghatid ng tulong na iyon</mark>. Hindi hinihingi ng teksto na lutasin natin nang mag-isa ang problema ng lahat. Ngunit malinaw nitong hinaharap ang saloobing alam ang pangangailangan ng kapatid, sa saklaw ng kaya ko at ng pinupukaw ng Diyos sa akin, at umaalis na mabubuting salita lamang ang iniiwan. Kaya ipinapahayag ng talata 17: <mark>\"Gayundin ang pananampalataya; kung walang gawa, ito ay patay.\"</mark>"], "points": ["Ang gawang tinutukoy ni Santiago ay hindi basta mas maraming gawain sa iglesia, kundi pagtugon sa pangangailangan ng taong nasa harap ko ngayon."]}, {"title": "Talata 18–20 · Kahit ang mga Demonyo ay Naniniwala — at Nanginginig", "paragraphs": ["Sa talata 18, ipinapahayag ni Santiago na hindi mapaghihiwalay ang pananampalataya at gawa: <mark>\"Ipakita mo sa akin ang iyong pananampalatayang walang gawa, at ipapakita ko sa iyo ang aking pananampalataya sa pamamagitan ng aking mga gawa.\"</mark> Maaaring magkaiba ang kaloob at tungkulin ng bawat isa. Ngunit hindi natin mahahati ang pananagutan ng pag-ibig sa pagsasabing, 'Ako ang nag-aaral ng Salita; trabaho ng iba ang pagtulong sa kapwa.'", "Nagbibigay ang talata 19 ng mas nakagugulat na halimbawa: <mark>\"Naniniwala kang iisa ang Diyos; mabuti iyan. Kahit ang mga demonyo ay naniniwala — at nanginginig!\"</mark> Mahalaga ang tamang kaalaman. Ngunit iba ang pagkilala sa mga katotohanan tungkol sa Diyos kaysa sa pagtitiwala at pagsunod sa Kanyang Salita. Kahit ang mga demonyo ay alam ang Salita ng Diyos. Maaari nating ipaliwanag ang Salita tungkol sa pagpapatawad habang kumakapit sa poot. Maaari tayong maantig ng sermon tungkol sa pag-ibig habang nilalampasan ang nangangailangan. Kaya pagkatapos marinig ang Salita, dapat nating laging itanong hindi lamang 'Gaano karaming bagong katotohanan ang natutunan ko ngayon?' kundi pati 'Ano ang babaguhin ko dahil sa Salitang ito?' Kung buhay ang aking pananampalataya ay nakikita hindi lamang sa mga kwento ng pananampalatayang sinasabi ko, kundi sa kung paano ako tumutugon sa pangangailangan ng aking kapwa."], "points": ["Kung buhay ang aking pananampalataya ay nakikita hindi lamang sa sinasabi ko tungkol sa pananampalataya, kundi sa pagtugon ko sa pangangailangan ng kapwa."]}, {"title": "Talata 21–26 · Abraham at Rahab — Pananampalatayang Naging Ganap sa Pagsunod", "paragraphs": ["Sa talata 21, inalala ni Santiago si Abraham na naghandog ng kanyang anak na si Isaac sa dambana. Naniwala si Abraham sa pangako ng Diyos, at kahit sa harap ng pagsubok na may kinalaman sa kanyang pinakamamahal na anak, nagtiwala at sumunod siya sa Diyos. Pinigilan ng Diyos ang kanyang kamay at iniligtas si Isaac. Ipinaliliwanag ng talata 22: <mark>\"Nakikita mong gumawa ang pananampalataya kasama ng kanyang mga gawa, at naging ganap ang pananampalataya sa pamamagitan ng mga gawa.\"</mark> Mahalaga ito. Ang pagsunod ay kapwa nagpapakita ng pananampalatayang taglay na natin at proseso ng paglago ng pananampalatayang iyon. Madalas nating isipin, 'Kapag lumakas na ang aking pananampalataya, saka ako susunod' — 'Magbabahagi ako kapag may sobra na,' 'Susunod ako kapag sapat na ang aking katiyakan.' Ngunit sinasabi ng kwento ni Abraham na nagiging ganap ang pananampalataya sa mismong proseso ng pagtitiwala at pagsunod sa Diyos. Hindi natin maaaring ipagpaliban ang pagsunod at basta maghintay na lumago ang pananampalataya.", "Sinisipi ng talata 23, \"Naniwala si Abraham sa Diyos, at ito'y ibinilang sa kanya na katuwiran\" — at kongkretong natupad ang pananampalatayang iyon sa kanyang pagsunod pagkatapos. Ang \"inaaring-ganap ang tao sa pamamagitan ng gawa\" sa talata 24 ay dapat basahin sa loob ng daloy na ito. Hindi sinasabi ni Santiago na nakakamit natin ang kaligtasan sa pagtitipon ng mabubuting gawa. Sinabi na niya sa 1:18 na <mark>ayon sa sariling kalooban ng Diyos, isinilang Niya tayo sa pamamagitan ng salita ng katotohanan</mark>. Laging nagsisimula sa biyaya ng Diyos ang bagong buhay. Ngunit hindi natin maaaring ipahayag ang biyayang iyon habang sinasabing hindi kailangan ang pagsunod. Ang paulit-ulit na binabalaan ni Santiago ay ang pahayag ng pananampalatayang hiwalay sa gawa. Hindi tayo mga taong nagkakamit ng biyaya ng Diyos sa pamamagitan ng pagsunod, kundi mga taong tumutugon sa pagsunod sa saganang biyayang natanggap na natin.", "Ipinapasok ng talata 25 si Rahab. Si Abraham, ninuno ng Israel, at si Rahab, isang Hentil na babae ng Jerico, ay may lubos na magkaibang pinagmulan — ngunit magkatulad sila sa pagkakitang ang kanilang pananampalataya sa Diyos ay nakita sa gawa. Narinig ni Rahab ang ginawa ng Diyos ng Israel at kinilala Siya. Tinanggap niya ang mga tiktik at pinalabas sila sa ibang daan, isinapanganib ang sarili upang pumanig sa Diyos na kanyang pinaniniwalaan. <mark>Hindi napalitan ng iginagalang na posisyon ni Abraham ang pagsunod, at hindi nahadlangan ng nakaraan ni Rahab ang daan ng pagtugon sa pananampalataya.</mark> Sa talata 26, nagtapos si Santiago: \"Sapagkat kung paanong patay ang katawang walang espiritu, gayundin naman, patay ang pananampalatayang walang gawa.\""], "points": ["Kahit limampu o pitumpung taon ng pananampalataya ay hindi mapapalitan ang pagsunod ngayon. At kahit bago ka pa lamang sa pananampalataya o madalas nang nabigo, maaari kang magsimula mismo sa pagtugon sa Salitang alam mo na."]}, {"title": "Aplikasyon · Tumugon Ngayon sa Isang Salitang Alam Mo Na", "paragraphs": ["Ang isang beses na pagkabigo ay hindi nangangahulugang huwad na ang buong pananampalataya. Si Abraham din ay may kahinaan at nadapa. Ngunit <mark>ang pag-amin sa pagkabigo at pagbabalik sa Diyos ay lubos na iba sa pag-iisip na ayos lang ang hindi sumunod</mark>. Ang buhay na pananampalataya ay pagbabalik sa Salita kahit pagkatapos madapa, at muling paglakad sa landas ng pagsunod. Hindi mapapalitan ng pinagmulang pananampalataya ang pagsunod. Limampung taon, pitumpung taon ka na bang naniniwala? Hindi nito mapapalitan ang iyong pagsunod. Tandaan: ang maliit na pagsunod ngayon ay nagiging lugar kung saan lumalago ang pananampalataya.", "Inihambing ni Jesus ang mga nakikinig at gumagawa ng Kanyang salita sa taong nagtayo ng bahay sa bato, at ang mga nakikinig ngunit hindi gumagawa sa taong nagtayo sa buhanging guguho. Pareho silang nakarinig ng parehong salita. <mark>Ang pagkakaiba ay nasa kanilang buhay pagkatapos makinig.</mark> Maaari rin tayong masanay sa pakikinig ng Salita — ngunit ang pagkasanay ay hindi pagkahinog. Kapag nakaugnay ang Salitang alam natin sa araw-araw na pasya at relasyon, doon mismo lumalago ang pananampalataya.", "Ang ating pagkakakilanlan ay nasa pagiging kabilang sa Diyos dahil sa Kanyang biyaya, at kung kanino tayo kabilang ay nakikita sa buhay na tumutugon sa Kanyang Salita — iyon ang bunga. Hindi lamang nag-iwan si Jesus ng salitang 'Iniibig kita.' <mark>Tunay Niyang ibinigay ang Kanyang buhay sa krus at muling nabuhay, tunay na binuksan ang daan ng bagong buhay para sa atin.</mark> Namumuhay tayo bilang mga taong tumanggap ng pag-ibig na iyon.", "Hindi mo kailangang gumawa ng maraming pasya ngayon. <mark>Tumugon lamang nang kongkreto sa isang Salitang alam mo na.</mark> Tanungin ang taong nangangailangan ng tulong kung ano ang kailangan niya. Kung may taong dapat mong hingan ng tawad, unang makipag-ugnayan. Kung may maibabahagi ka, ibahagi ito, kahit maliit. Lumalago ang pananampalataya mismo kung saan nagtatagpo ang Salita at ang aking buhay."], "points": ["Sa mga salitang alam ko na ngayon, alin ang dapat kong sagutin na ng pagsunod?"]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung itinuturing kong buhay ang aking pananampalataya dahil lamang marami akong naririnig at alam na Salita."}, {"key": "c2", "text": "Sinuri ko kung iniwan ko ang isang nangangailangan na mabubuting salita at 'ipapanalangin kita' lamang ang dala."}, {"key": "c3", "text": "Pinag-isipan ko kung may pagsunod akong ipinagpaliban sa 'kapag mas may pananampalataya na ako' o 'kapag may sobra na ako.'"}, {"key": "c4", "text": "Sinuri ko kung inihaharap ko ang aking pinagmulang pananampalataya o tagal ng pananampalataya kapalit ng pagsunod ngayon."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano ang isang Salitang alam ko na ngunit hindi ko pa sinusunod, at paano ako tutugon dito ngayon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Itanong ang Pangangailangan", "value": "Tanungin ang isang mukhang nangangailangan ng tulong, 'Ano ang pinakakailangan mo ngayon?'"}, {"key": "act2", "label": "Panalangin + Gawa", "value": "Para sa isang taong ipinapanalangin mo, gumawa ng isang maliit na bagay na kaya mo ngayon (pagkain, tawag, pagdalaw)"}, {"key": "act3", "label": "Unang Makipag-ugnayan", "value": "Kung may taong dapat mong hingan ng tawad, huwag nang ipagpaliban — unang makipag-ugnayan ngayon"}, {"key": "act4", "label": "Maliit na Pagbabahagi", "value": "Ibahagi ang isang bagay na mayroon ka, kahit maliit, sa isang nangangailangan"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Santiago 2:26 at gawing pagsunod ngayon ang Salitang alam mo"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Jesus, na hindi lamang salita ng pag-ibig ang iniwan Mo, kundi ibinigay Mo ang Iyong buhay sa krus at muling nabuhay upang buksan ang daan ng bagong buhay."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagkaalam ng maraming Salita habang ipinagpapaliban ang pagsunod, sa pag-iwan sa pangangailangan ng kapwa na mabubuting salita lamang, at sa paghaharap ng aking pinagmulang pananampalataya kapalit ng pagsunod."}, {"key": "p3", "tag": "Kahilingan", "text": "Kahit madapa ako, ibalik Mo ako sa Iyong Salita. Tulungan Mo akong sundin nang kongkreto ngayon ang isang Salitang alam ko na, upang lumago ang aking pananampalataya tungo sa buhay na pananampalataya."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-19';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
