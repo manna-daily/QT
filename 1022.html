@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/22(목) 큐티 · 야고보서 4:1–12">
+<meta property="og:description" content="기도하면서도 내 뜻만 고집하고 있나요?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 22일 목요일", "ref": "야고보서 4장 1–12절", "headline": "기도하면서도<br>내 뜻만 고집하고 있나요?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 야고보서 4:1-12", "s1heading": "오늘의 말씀", "verse": "\"그런즉 너희는 하나님께 복종할지어다<br>마귀를 대적하라 그리하면 너희를 피하리라<br>하나님을 가까이하라<br>그리하면 너희를 가까이하시리라\"", "verseRef": "야고보서 4:7–8", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 주인의 자리를 하나님께 내어 드리십시오", "paragraphs": ["앞에서 야고보는 시기와 이기적인 욕심은 혼란을 낳고, 하나님께 받은 지혜는 화평을 낳는다고 했습니다. 그런데 실제 공동체에는 다툼이 있었습니다. 오늘은 <mark>그 다툼 안에 숨은 욕심</mark>을 드러내며 하나님께 돌아오라고 부릅니다. 교회를 위해 말하면서도 내 뜻대로 되어야 한다고 고집할 수 있고, 기도하면서도 내 생각을 바꿀 마음은 없을 수 있습니다.", "오늘 말씀을 한 가지로 붙들겠습니다. <mark>주인의 자리를 하나님께 내어 드리십시오</mark>. 이미 우리의 주인이신 하나님을 인정하고, 내 욕심과 판단을 말씀 아래 두라는 뜻입니다. 하나님은 더 큰 은혜로 돌아오라고 부르시고, 그 돌아옴은 이웃을 대하는 말에서 확인됩니다."], "points": ["지금 내 삶의 주인은 누구입니까? 하나님이십니까, 아니면 내 뜻과 욕심입니까?"]}, {"title": "1–3절 · 욕심이 다툼을 일으키고, 기도의 동기까지 굽게 합니다", "paragraphs": ["<mark>\"너희 중에 싸움이 어디로부터, 다툼이 어디로부터 나느냐 너희 지체 중에서 싸우는 정욕으로부터 나는 것이 아니냐\"</mark>. 갈등 속에서는 상대의 잘못이 먼저 보이지만, 야고보는 내 욕심을 살피게 합니다. 여기서 정욕은 인정받고 싶은 마음, 내 의견을 관철하려는 마음, 영향력을 잃지 않으려는 마음까지 포함합니다. 지금 갈등 중이라면 물어야 합니다. <mark>\"나는 무엇을 얻거나 지키기 위해 이 사람을 공격하고 있습니까?\"</mark>", "<mark>\"구하여도 받지 못함은 정욕으로 쓰려고 잘못 구하기 때문이니라\"</mark>. \"하나님, 이 일이 잘되게 해 주세요\"라고 기도하면서 사실은 내가 옳았다는 것을 증명하고 싶을 수 있습니다. 예수님은 주기도문에서 양식을 구하기 전에 먼저 하나님의 나라와 뜻을 구하게 하셨습니다. 모든 응답의 지연이 죄 때문이라는 뜻은 아니지만, <mark>기도의 동기는 하나님이 다른 길을 보여 주실 때 드러납니다</mark>."], "points": ["내 계획을 바꾸어도 주님을 따를 수 있습니까? 구하는 마음도 주님 앞에서 바뀌어야 합니다."]}, {"title": "4–6절 · 나뉜 마음을 책망하시되, 더 큰 은혜로 부르십니다", "paragraphs": ["<mark>\"간음한 여인들아 세상과 벗된 것이 하나님과 원수 됨을 알지 못하느냐\"</mark>. 야고보는 하나님과 백성의 관계를 부부 관계에 빗대어, 하나님을 믿으면서 그분을 배반하는 삶을 책망합니다. 세상과 벗이 된다는 것은 하나님보다 내 욕심과 이익을 삶의 기준으로 삼는 것입니다. 교회 안에서도 교회 식구를 경쟁자로 여기고, 영향력을 위해 편을 만들고, 원하는 결과를 얻으려고 사람을 이용할 수 있습니다.", "그러나 야고보는 곧바로 선포합니다. <mark>\"그러나 더욱 큰 은혜를 주시나니… 하나님이 교만한 자를 물리치시고 겸손한 자에게 은혜를 주신다\"</mark>. 우리의 죄가 드러난 자리에 하나님의 은혜가 선포됩니다. 바울도 욕심을 따라 살던 우리를 긍휼이 풍성하신 하나님이 그리스도와 함께 살리셨다고 말합니다(엡 2장). <mark>회개는 이 은혜에 대한 응답</mark>입니다."], "points": ["은혜를 신뢰할수록 자신의 잘못을 인정할 용기가 생깁니다. 주님이 회복시키신다는 소망이 있기에 정직하게 돌아갈 수 있습니다."]}, {"title": "7–10절 · 회개는 삶의 주도권을 하나님께 돌려 드리는 것입니다", "paragraphs": ["<mark>\"하나님께 복종할지어다 마귀를 대적하라… 하나님을 가까이하라 그리하면 너희를 가까이하시리라\"</mark>. 복종한다는 것은 내 생각과 욕심을 하나님 말씀 아래 두는 것이고, 마귀를 대적한다는 것은 시기와 교만과 분열의 유혹을 거절하는 것입니다. 하나님은 가까이 나오는 사람을 맞아 주십니다. <mark>\"손을 깨끗이 하라\"</mark>는 실제 죄를 멈추라는 뜻이고, <mark>\"마음을 성결하게 하라\"</mark>는 하나님과 욕심 사이에 나뉜 마음을 돌이키라는 뜻입니다. 기도하며 잘못을 인정했다면 이제 하던 뒷말을 멈추고 잘못 전한 이야기도 바로잡아야 합니다.", "<mark>\"웃음을 애통으로… 바꿀지어다\"</mark>. 내가 이겼다고 기뻐한 자리에서 다른 사람은 상처받았을 수 있습니다. 회개는 그 아픔을 정직하게 인정하고 죄를 가볍게 여기지 않는 것입니다. <mark>\"주 앞에서 낮추라 그리하면 주께서 너희를 높이시리라\"</mark>. 겸손하면 반드시 성공한다는 뜻이 아니라, 스스로를 높이려는 집착을 내려놓고 나를 세우시는 하나님을 신뢰하라는 말씀입니다."], "points": ["기도의 자리에서 낮아진 마음은 사과하고 바로잡는 행동으로 이어져야 합니다."]}, {"title": "11–12절 · 하나님 앞에서 낮아진 사람은 이웃을 함부로 판단하지 않습니다", "paragraphs": ["<mark>\"형제들아 서로 비방하지 말라 형제를 비방하는 자나 형제를 판단하는 자는 곧 율법을 비방하고 율법을 판단하는 것이라\"</mark>. 하나님은 이웃을 사랑하라고 하셨는데, 이웃을 깎아내리면서 정당하다고 주장한다면 그 말씀을 내 판단 아래 두는 셈입니다. 말씀을 지킬 사람이 말씀의 적용 여부를 결정하려는 것입니다.", "<mark>\"입법자와 재판관은 오직 한 분이시니… 너는 누구이기에 이웃을 판단하느냐\"</mark>. 바울도 \"남의 하인을 판단하는 너는 누구냐\"(롬 14:4)고 묻습니다. 잘못을 바로잡고 책임을 묻는 일은 중요하지만, <mark>상대를 멸시하며 그 사람 전체를 판결하려는 교만</mark>은 내려놓아야 합니다. 내 가치를 하나님께 맡길수록 남을 깎아내려 나를 증명할 필요가 줄어들고, 권면의 목적도 상대를 이기는 데서 회복을 돕는 데로 바뀝니다."], "points": ["하나님께 자신을 맡긴 사람은 재판관의 자리를 탐내지 않고, 이웃을 사랑할 책임을 감당합니다."]}, {"title": "적용 · 지금 내 삶의 주인은 누구입니까?", "paragraphs": ["욕심과 기도, 회개와 말에 대한 가르침을 하나로 묶는 질문은 이것입니다. <mark>\"지금 내 삶의 주인은 누구입니까?\"</mark> 갈등은 내가 무엇을 지나치게 붙들고 있는지 드러냅니다. 그 자리에서 내 마음의 주인이 누구인지 살펴야 합니다.", "예수님은 겟세마네에서 자신의 고통을 아버지께 아뢰면서도 <mark>아버지의 뜻에 자신을 맡기셨습니다</mark>. 바울은 빌립보서 2장에서 \"다툼이나 허영으로 아무 일도 하지 말고 겸손한 마음으로\" 하라고 권하며, 예수님의 마음을 품으라고 말했습니다. 예수님은 자신을 낮추어 십자가에 죽기까지 순종하셨고, 하나님은 그분을 지극히 높이셨습니다.", "그 십자가가 우리가 하나님께 돌아갈 길을 열어 주었습니다. 에베소서 2장은 <mark>멀리 있던 우리가 그리스도의 피로 가까워졌고, 십자가로 하나님과 화목하게 되었다</mark>고 말합니다. 우리가 돌아갈 수 있는 것은 우리가 잘해서가 아니라, 하나님이 더 큰 은혜를 주시기 때문입니다.", "오늘 <mark>지나치게 붙들고 있는 한 가지를 주님 앞에 내려놓으십시오</mark>. 그 은혜를 의지해 비방을 멈추고, 상처 준 사람에게 용서를 구하며, 주님이 맡기신 이웃 사랑에 순종하십시오. 주인의 자리를 하나님께 내어 드리십시오. 하나님 앞에서 낮아진 믿음이 이웃을 사랑하는 삶으로 이어지기를 바랍니다."], "points": ["주인의 자리를 하나님께 내어 드릴 때, 기도의 동기도, 다툼의 자리도, 이웃을 향한 말도 새로워집니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "지금 겪는 갈등 속에서 내가 얻거나 지키려는 것이 무엇인지 정직하게 돌아봤다"}, {"key": "c2", "text": "기도하면서도 하나님이 다른 길을 보이시면 따를 마음이 있는지 점검했다"}, {"key": "c3", "text": "기도로 잘못을 인정한 뒤 뒷말을 멈추고 잘못 전한 이야기를 바로잡았는지 돌아봤다"}, {"key": "c4", "text": "누군가를 비방하며 하나님만 앉으실 재판관의 자리에 앉아 있지는 않은지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "오늘 주님 앞에 내려놓아야 할, 내가 지나치게 붙들고 있는 한 가지는 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "기도의 동기 점검", "value": "오늘 드리는 기도 하나를 '주님의 뜻이라면 내 계획을 바꾸겠습니다'라는 고백으로 마무리하기"}, {"key": "act2", "label": "내려놓기", "value": "지나치게 붙들고 있는 한 가지(인정, 의견, 영향력)를 적고 하나님께 맡기는 기도하기"}, {"key": "act3", "label": "손을 깨끗이", "value": "최근 누군가에 대해 했던 뒷말이 있다면 멈추고, 잘못 전한 이야기는 바로잡기"}, {"key": "act4", "label": "용서 구하기", "value": "이기려다 상처를 준 사람에게 먼저 다가가 용서를 구하기"}, {"key": "act5", "label": "말씀 암송", "value": "야고보서 4:7–8을 외우며 하나님께 복종하고 가까이 나아가기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "욕심을 따라 살던 우리를 더 큰 은혜로 부르시고, 십자가의 피로 가까이 오게 하셔서 하나님과 화목하게 하신 은혜에 감사합니다"}, {"key": "p2", "tag": "회개", "text": "기도하면서도 내 뜻만 고집하고, 인정과 영향력을 지키려고 다투며, 하나님만 앉으실 재판관의 자리에서 이웃을 비방했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "제 삶의 주인의 자리를 하나님께 내어 드리게 하시고, 하나님 앞에서 낮아진 마음이 사과와 바로잡음과 이웃 사랑의 행동으로 이어지게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 22, Thursday", "ref": "James 4:1–12", "headline": "Praying —<br>Yet Insisting on My Own Way?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · James 4:1-12", "s1heading": "Today's Word", "verse": "\"Submit yourselves therefore to God.<br>Resist the devil, and he will flee from you.<br>Draw near to God,<br>and He will draw near to you.\"", "verseRef": "James 4:7–8", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Give the Master's Seat Back to God", "paragraphs": ["In the previous passage, James said that jealousy and selfish ambition produce disorder, while wisdom from God produces peace. Yet in the actual community there were quarrels. If chapter 3 examined the power of speech and the wisdom guiding it, today's passage exposes <mark>the desires hidden within those quarrels</mark> and calls us back to God. We can speak 'for the church' while insisting that things go our way. We can pray while having no intention of changing our minds.", "Let's hold onto today's Word in one sentence: <mark>Give the master's seat back to God.</mark> That means acknowledging God, who is already our Master, and placing our desires and judgments under His Word. God calls us to return with greater grace — and that return is confirmed in how we speak to our neighbors. Following this one theme, we'll look at the passage in four parts."], "points": ["Who is the master of my life right now — God, or my own will and desires?"]}, {"title": "Verses 1–3 · Desire Stirs Up Quarrels and Twists Even the Motives of Prayer", "paragraphs": ["Verse 1: <mark>\"What causes quarrels and what causes fights among you? Is it not this, that your passions are at war within you?\"</mark> In conflict, the other person's faults show first. James makes us examine our own desires at that moment. 'Passions' here aren't only sexual desires; they include wanting recognition, wanting to push our opinion through, and not wanting to lose influence. When a hope to accomplish something becomes something we must protect even by attacking others, that desire begins to rule us. In verse 2, interpretations of 'murder' differ, but the warning is clear: desire can lead to serious sin that harms our neighbor. Are you in conflict at church right now? Then ask: <mark>'What am I trying to gain or protect by attacking this person?'</mark> It's a question that puts my reaction, along with the other's wrong, before the Word.", "Verse 3: <mark>\"You ask and do not receive, because you ask wrongly, to spend it on your passions.\"</mark> James rebukes both not praying and praying only for self-satisfaction. We may pray, 'God, make this go well,' while actually wanting to prove that we were right. In the Lord's Prayer, Jesus had us seek God's kingdom and will before asking for daily bread — placing our needs and hopes under His will. <mark>The motive of prayer is revealed when God shows us a different path.</mark> This doesn't mean every delayed answer is due to sin; it rebukes prayer captured by desire. Conflict reveals what I'm clinging to too tightly, and there I must examine who is master of my heart."], "points": ["Can I follow the Lord even if it means changing my plans? Even the heart that asks must be changed before the Lord."]}, {"title": "Verses 4–6 · God Rebukes the Divided Heart — and Calls Us with Greater Grace", "paragraphs": ["Verse 4 compares the relationship between God and His people to marriage, rebuking a life that believes in God yet betrays Him: <mark>\"You adulterous people! Do you not know that friendship with the world is enmity with God?\"</mark> Friendship with the world means making my desires and interests, rather than God, the standard of my life. Even in church we can treat fellow members as competitors, form factions for our influence, and use people to get the results we want. The world's way shows up in how we treat people inside the church. Verse 5 is interpreted in different ways, but it conveys that the Spirit God made to dwell in us yearns jealously. Read with verse 4, it calls us to examine whether we are giving God whole-hearted love and loyalty.", "In verse 6 James says, <mark>\"But He gives more grace. Therefore it says, 'God opposes the proud but gives grace to the humble.'\"</mark> Where our sin is exposed, God's grace is proclaimed. Paul also says in Ephesians 2 that though we lived according to our passions, God, rich in mercy, made us alive together with Christ. The hope of returning to God lies within His grace. God opposes the proud and gives grace to the humble — to those who return to Him. <mark>Repentance is our response to this grace</mark>: relying on God's forgiveness and help to acknowledge wrong and return. In short, a self-centered life breaks down loyalty to God, but God gives grace to those who humbly return. The more we trust grace, the more courage we have to admit our wrongs."], "points": ["Because we hope that the Lord restores, we can honestly return and repent."]}, {"title": "Verses 7–10 · Repentance Is Giving the Lead of Our Lives Back to God", "paragraphs": ["Verse 7: <mark>\"Submit yourselves therefore to God. Resist the devil, and he will flee from you.\"</mark> Submitting to God means placing our thoughts and desires under His Word. We must resist the devil, refusing the temptations of envy, pride, and division — and there's a promise that he will flee. <mark>\"Draw near to God, and He will draw near to you\"</mark> — the grace of God welcoming those who return. <mark>\"Cleanse your hands\"</mark> means actually stop sinning; <mark>\"purify your hearts, you double-minded\"</mark> means turning a heart divided between God and our desires. If we've acknowledged our wrong in prayer, we must now stop the gossip we were spreading and correct stories we passed on wrongly.", "Verses 9–10: <mark>\"Let your laughter be turned to mourning.\"</mark> Where we rejoiced at winning, others may have been hurt. Repentance honestly acknowledges that pain; the call to mourn is a call not to take sin lightly. <mark>\"Humble yourselves before the Lord, and He will exalt you.\"</mark> This doesn't mean humility guarantees success or high position. It means letting go of our obsession with exalting ourselves and trusting the God who receives and establishes us. In summary: repentance is submitting to God, turning both actions and heart, and gladly entrusting ourselves to the Lord who establishes us. The fruit of repentance that draws near to God shows up again among people."], "points": ["A heart humbled in prayer must lead to actions of apology and correction."]}, {"title": "Verses 11–12 · Those Humbled Before God Don't Judge Their Neighbors Carelessly", "paragraphs": ["Verse 11: <mark>\"Do not speak evil against one another, brothers. The one who speaks against a brother or judges his brother, speaks evil against the law and judges the law.\"</mark> Repentance must also show in how we speak to our neighbors. God told us to love our neighbor. If we tear our neighbor down while insisting we're justified, we place that command under our own judgment — the one who should keep the Word is deciding whether it applies.", "Verse 12: <mark>\"There is only one lawgiver and judge, He who is able to save and to destroy. But who are you to judge your neighbor?\"</mark> Paul likewise asks in Romans 14, \"Who are you to pass judgment on the servant of another?\" — for it is the Lord who makes him stand, and we will all stand before God's judgment seat. James and Paul share the same root of faith: God is the master of both me and my neighbor. Of course, correcting wrongs and holding people responsible matters. But <mark>the pride that despises someone and tries to pass verdict on their whole person</mark> must be laid down. The more we entrust our worth to God, the less we need to prove ourselves by tearing others down; and the purpose of our counsel shifts from defeating the other to helping them be restored."], "points": ["Those who have entrusted themselves to God don't covet the judge's seat, but take up the responsibility of loving their neighbor."]}, {"title": "Application · Who Is the Master of My Life Right Now?", "paragraphs": ["The question that ties together the teachings on desire and prayer, repentance and speech is this: <mark>'Who is the master of my life right now?'</mark> Conflict reveals what I'm clinging to too tightly. In that place, I must examine who is master of my heart.", "In Gethsemane, Jesus poured out His anguish to the Father, yet <mark>entrusted Himself to the Father's will</mark>. In Philippians 2, Paul urges us to do nothing from rivalry or conceit but in humility, and to have the mind of Christ. Jesus humbled Himself and became obedient to the point of death on a cross, and God highly exalted Him.", "That cross opened the way for us to return to God. Ephesians 2 says that <mark>we who were far off have been brought near by the blood of Christ, and reconciled to God through the cross</mark>. We can return not because we've done well, but because God gives greater grace.", "Today, <mark>lay down before the Lord one thing you've been clinging to too tightly</mark>. Relying on that grace, stop the slander, ask forgiveness from those you've hurt, and obey the call to love the neighbors the Lord has entrusted to you. Give the master's seat back to God. May faith humbled before God lead to a life of loving your neighbor."], "points": ["When we give the master's seat back to God, the motives of our prayers, the places of our quarrels, and our words toward neighbors are all made new."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I honestly reflected on what I'm trying to gain or protect in the conflict I'm facing."}, {"key": "c2", "text": "I checked whether, while praying, I'm willing to follow if God shows me a different path."}, {"key": "c3", "text": "I reflected on whether, after admitting wrong in prayer, I've stopped the gossip and corrected stories I passed on wrongly."}, {"key": "c4", "text": "I checked whether I'm sitting in the judge's seat — which belongs to God alone — by slandering someone."}], "s4heading": "One-Line Reflection", "memoHint": "What is one thing I'm clinging to too tightly that I need to lay down before the Lord today?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Check Prayer Motives", "value": "End one prayer today with the confession: 'If it's Your will, Lord, I'll change my plans'"}, {"key": "act2", "label": "Lay It Down", "value": "Write down one thing you're clinging to too tightly (recognition, opinion, influence) and pray, entrusting it to God"}, {"key": "act3", "label": "Cleanse Your Hands", "value": "If you've recently gossiped about someone, stop, and correct any story you passed on wrongly"}, {"key": "act4", "label": "Ask Forgiveness", "value": "Go first to someone you hurt while trying to win, and ask their forgiveness"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize James 4:7–8 and submit to God, drawing near to Him"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You for calling us, who lived by our desires, with greater grace, and for bringing us near by the blood of the cross and reconciling us to God."}, {"key": "p2", "tag": "Repent", "text": "I repent of insisting on my own way even while praying, of quarreling to protect recognition and influence, and of slandering my neighbor from the judge's seat that belongs to God alone."}, {"key": "p3", "tag": "Ask", "text": "Help me give the master's seat of my life back to You, and let a heart humbled before You lead to actions of apology, correction, and love for my neighbor."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 22, Huwebes", "ref": "Santiago 4:1–12", "headline": "Nananalangin —<br>Ngunit Ipinipilit ang Sariling Kalooban?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Santiago 4:1-12", "s1heading": "Salita Ngayon", "verse": "\"Kaya't pasakop kayo sa Diyos.<br>Labanan ninyo ang diyablo, at tatakas siya sa inyo.<br>Lumapit kayo sa Diyos,<br>at lalapit Siya sa inyo.\"", "verseRef": "Santiago 4:7–8", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ibalik sa Diyos ang Upuan ng Panginoon", "paragraphs": ["Sa nakaraang bahagi, sinabi ni Santiago na ang inggit at makasariling ambisyon ay nagbubunga ng kaguluhan, samantalang ang karunungang mula sa Diyos ay nagbubunga ng kapayapaan. Ngunit sa tunay na komunidad ay may mga away. Kung sinuri ng kabanata 3 ang kapangyarihan ng pananalita at ang karunungang gumagabay rito, inilalantad naman ng talata ngayon <mark>ang mga pagnanasang nakatago sa loob ng mga away na iyon</mark> at tinatawag tayong bumalik sa Diyos. Maaari tayong magsalita 'para sa iglesia' habang ipinipilit na masunod ang ating kagustuhan. Maaari tayong manalangin nang walang balak na baguhin ang ating isip.", "Hawakan natin ang Salita ngayon sa isang pangungusap: <mark>Ibalik sa Diyos ang upuan ng Panginoon.</mark> Ibig sabihin, kilalanin ang Diyos na siya nang ating Panginoon, at ilagay ang ating mga pagnanasa at paghatol sa ilalim ng Kanyang Salita. Tinatawag tayo ng Diyos na bumalik nang may higit na biyaya — at ang pagbabalik na iyon ay napatutunayan sa paraan ng pagsasalita natin sa kapwa. Sa pagsunod sa iisang temang ito, titingnan natin ang talata sa apat na bahagi."], "points": ["Sino ang panginoon ng aking buhay ngayon — ang Diyos, o ang sarili kong kalooban at pagnanasa?"]}, {"title": "Talata 1–3 · Pinupukaw ng Pagnanasa ang Away at Binabaluktot Pati ang Motibo ng Panalangin", "paragraphs": ["Talata 1: <mark>\"Saan nagmumula ang mga away at alitan sa inyo? Hindi ba sa inyong mga pagnanasang naglalaban sa loob ninyo?\"</mark> Sa alitan, unang nakikita ang mali ng iba. Pinasusuri tayo ni Santiago sa sarili nating pagnanasa sa sandaling iyon. Ang 'pagnanasa' dito ay hindi lamang sekswal na pagnanasa; kasama ang pagnanais na kilalanin, pagpipilit ng sariling opinyon, at ayaw mawalan ng impluwensya. Kapag ang pag-asang makamit ang isang bagay ay naging isang bagay na dapat ipagtanggol kahit sa pag-atake sa iba, nagsisimulang maghari sa atin ang pagnanasang iyon. Sa talata 2, magkakaiba ang interpretasyon sa 'pagpatay,' ngunit malinaw ang babala: maaaring humantong ang pagnanasa sa malubhang kasalanang nakasasakit sa kapwa. May alitan ka ba sa iglesia ngayon? Kung gayon, itanong: <mark>'Ano ang sinisikap kong makamit o ipagtanggol sa pag-atake sa taong ito?'</mark> Inilalagay ng tanong na ito sa harap ng Salita ang aking reaksyon, kasama ng mali ng iba.", "Talata 3: <mark>\"Humihingi kayo ngunit hindi tumatanggap, sapagkat mali ang inyong paghingi, upang gugulin sa inyong mga pagnanasa.\"</mark> Sinasaway ni Santiago kapwa ang hindi pananalangin at ang pananalangin para lamang sa sariling kasiyahan. Maaari tayong manalangin, 'Diyos, pagtagumpayin Mo ito,' habang ang totoo'y gusto nating patunayang tama tayo. Sa Panalangin ng Panginoon, pinahanap muna tayo ni Jesus ng kaharian at kalooban ng Diyos bago humingi ng pang-araw-araw na tinapay — inilalagay ang ating pangangailangan at pag-asa sa ilalim ng Kanyang kalooban. <mark>Nahahayag ang motibo ng panalangin kapag ipinakita ng Diyos ang ibang daan.</mark> Hindi ito nangangahulugang dahil sa kasalanan ang bawat naantalang sagot; sinasaway nito ang panalanging nabihag ng pagnanasa. Inihahayag ng alitan kung ano ang labis kong kinakapitan, at doon ko dapat suriin kung sino ang panginoon ng aking puso."], "points": ["Masusunod ko ba ang Panginoon kahit baguhin ang aking plano? Kahit ang pusong humihingi ay dapat mabago sa harap ng Panginoon."]}, {"title": "Talata 4–6 · Sinasaway ng Diyos ang Nahahating Puso — at Tumatawag nang may Higit na Biyaya", "paragraphs": ["Inihahambing ng talata 4 ang relasyon ng Diyos at ng Kanyang bayan sa pag-aasawa, sinasaway ang buhay na naniniwala sa Diyos ngunit nagtataksil sa Kanya: <mark>\"Kayong mga mapangalunya! Hindi ba ninyo alam na ang pakikipagkaibigan sa sanlibutan ay pakikipag-away sa Diyos?\"</mark> Ang pakikipagkaibigan sa sanlibutan ay paggawa sa aking pagnanasa at interes, sa halip na sa Diyos, bilang pamantayan ng aking buhay. Kahit sa iglesia, maaari nating ituring na karibal ang kapwa miyembro, bumuo ng pangkatin para sa ating impluwensya, at gamitin ang tao upang makuha ang resultang gusto natin. Lumilitaw ang paraan ng mundo sa pagtrato natin sa tao sa loob ng iglesia. Iba-iba ang interpretasyon sa talata 5, ngunit ipinahahayag nitong ang Espiritung pinatira ng Diyos sa atin ay naninibugho sa pananabik. Kapag binasa kasama ng talata 4, tinatawag tayo nitong suriin kung buong-pusong pag-ibig at katapatan ang ibinibigay natin sa Diyos.", "Sa talata 6, sinabi ni Santiago, <mark>\"Ngunit nagbibigay Siya ng higit na biyaya. Kaya sinasabi, 'Sinasalungat ng Diyos ang mapagmataas ngunit nagbibigay ng biyaya sa mapagpakumbaba.'\"</mark> Kung saan nahahayag ang ating kasalanan, doon ipinapahayag ang biyaya ng Diyos. Sinasabi rin ni Pablo sa Efeso 2 na bagaman namuhay tayo ayon sa ating pagnanasa, ang Diyos na mayaman sa habag ay binuhay tayong kasama ni Cristo. Nasa loob ng Kanyang biyaya ang pag-asang makabalik sa Diyos. Sinasalungat ng Diyos ang mapagmataas at nagbibigay ng biyaya sa mapagpakumbaba — sa mga bumabalik sa Kanya. <mark>Ang pagsisisi ay ating tugon sa biyayang ito</mark>: umaasa sa kapatawaran at tulong ng Diyos upang umamin ng mali at bumalik. Sa madaling salita, sinisira ng makasariling buhay ang katapatan sa Diyos, ngunit nagbibigay ang Diyos ng biyaya sa mga mapagpakumbabang bumabalik. Habang lalo tayong nagtitiwala sa biyaya, lalo tayong nagkakaroon ng lakas ng loob na umamin ng mali."], "points": ["Dahil umaasa tayong nagpapanumbalik ang Panginoon, maaari tayong tapat na bumalik at magsisi."]}, {"title": "Talata 7–10 · Ang Pagsisisi ay Pagbabalik sa Diyos ng Pamumuno sa Ating Buhay", "paragraphs": ["Talata 7: <mark>\"Kaya't pasakop kayo sa Diyos. Labanan ninyo ang diyablo, at tatakas siya sa inyo.\"</mark> Ang pagpapasakop sa Diyos ay paglalagay ng ating isip at pagnanasa sa ilalim ng Kanyang Salita. Dapat nating labanan ang diyablo, tinatanggihan ang tukso ng inggit, kapalaluan, at pagkakahati — at may pangakong tatakas siya. <mark>\"Lumapit kayo sa Diyos, at lalapit Siya sa inyo\"</mark> — ang biyaya ng Diyos na tumatanggap sa mga bumabalik. Ang <mark>\"Linisin ninyo ang inyong mga kamay\"</mark> ay nangangahulugang tunay na itigil ang pagkakasala; ang <mark>\"dalisayin ninyo ang inyong puso, kayong may dalawang isip\"</mark> ay nangangahulugang ibaling ang pusong nahahati sa Diyos at sa ating pagnanasa. Kung inamin na natin ang ating mali sa panalangin, dapat na nating itigil ang tsismis na ating ikinakalat at ituwid ang mga kwentong mali nating naipasa.", "Talata 9–10: <mark>\"Gawin ninyong pagdadalamhati ang inyong pagtawa.\"</mark> Kung saan tayo nagalak sa pagkapanalo, maaaring may nasaktan. Tapat na inaamin ng pagsisisi ang sakit na iyon; ang panawagang magdalamhati ay panawagang huwag balewalain ang kasalanan. <mark>\"Magpakumbaba kayo sa harap ng Panginoon, at itataas Niya kayo.\"</mark> Hindi ito nangangahulugang ginagarantiya ng kababaang-loob ang tagumpay o mataas na posisyon. Nangangahulugan itong bitawan ang pagkahumaling na itaas ang sarili at magtiwala sa Diyos na tumatanggap at nagpapatatag sa atin. Sa buod: ang pagsisisi ay pagpapasakop sa Diyos, pagbabago ng kilos at puso, at masayang pagpapaubaya ng sarili sa Panginoong nagpapatatag sa atin. Ang bunga ng pagsisising lumalapit sa Diyos ay muling lumilitaw sa gitna ng mga tao."], "points": ["Ang pusong nagpakumbaba sa panalangin ay dapat humantong sa mga gawa ng paghingi ng tawad at pagtutuwid."]}, {"title": "Talata 11–12 · Ang mga Nagpakumbaba sa Harap ng Diyos ay Hindi Basta Humahatol sa Kapwa", "paragraphs": ["Talata 11: <mark>\"Huwag kayong magsalita ng masama laban sa isa't isa, mga kapatid. Ang nagsasalita laban sa kapatid o humahatol sa kanyang kapatid ay nagsasalita ng masama laban sa kautusan at humahatol sa kautusan.\"</mark> Dapat ding makita ang pagsisisi sa paraan ng ating pakikipag-usap sa kapwa. Sinabi ng Diyos na ibigin ang ating kapwa. Kung pinababagsak natin ang ating kapwa habang ipinipilit na makatwiran tayo, inilalagay natin ang utos na iyon sa ilalim ng ating paghatol — ang dapat tumutupad sa Salita ang nagpapasya kung naaangkop ito.", "Talata 12: <mark>\"Iisa lamang ang tagapagbigay ng kautusan at hukom, Siyang may kakayahang magligtas at magpahamak. Ngunit sino ka upang humatol sa iyong kapwa?\"</mark> Gayundin, nagtatanong si Pablo sa Roma 14, \"Sino ka upang humatol sa lingkod ng iba?\" — sapagkat ang Panginoon ang nagpapatayo sa kanya, at tayong lahat ay haharap sa hukuman ng Diyos. Iisa ang ugat ng pananampalataya nina Santiago at Pablo: ang Diyos ang Panginoon kapwa ko at ng aking kapwa. Siyempre, mahalaga ang pagtutuwid ng mali at paghingi ng pananagutan. Ngunit <mark>ang kapalaluang humahamak sa isang tao at sinusubukang hatulan ang kanyang buong pagkatao</mark> ay dapat bitawan. Habang lalo nating ipinagkakatiwala sa Diyos ang ating halaga, lalong nababawasan ang pangangailangang patunayan ang sarili sa pagpapabagsak sa iba; at nagbabago ang layunin ng ating payo mula sa pagtalo sa kabila tungo sa pagtulong sa kanyang pagpapanumbalik."], "points": ["Ang mga nagpaubaya ng sarili sa Diyos ay hindi nag-iimbot sa upuan ng hukom, kundi inaako ang pananagutang ibigin ang kapwa."]}, {"title": "Aplikasyon · Sino ang Panginoon ng Aking Buhay Ngayon?", "paragraphs": ["Ang tanong na nagbubuklod sa mga turo tungkol sa pagnanasa at panalangin, pagsisisi at pananalita ay ito: <mark>'Sino ang panginoon ng aking buhay ngayon?'</mark> Inihahayag ng alitan kung ano ang labis kong kinakapitan. Doon, dapat kong suriin kung sino ang panginoon ng aking puso.", "Sa Getsemani, ibinuhos ni Jesus ang Kanyang hapis sa Ama, ngunit <mark>ipinagkatiwala ang sarili sa kalooban ng Ama</mark>. Sa Filipos 2, hinihimok tayo ni Pablo na huwag gumawa ng anuman dahil sa tunggalian o kahambugan kundi sa kababaang-loob, at taglayin ang pag-iisip ni Cristo. Nagpakumbaba si Jesus at naging masunurin hanggang sa kamatayan sa krus, at itinaas Siya ng Diyos nang lubos.", "Binuksan ng krus na iyon ang daan para sa ating pagbabalik sa Diyos. Sinasabi ng Efeso 2 na <mark>tayong dating malayo ay inilapit sa pamamagitan ng dugo ni Cristo, at ipinagkasundo sa Diyos sa pamamagitan ng krus</mark>. Makababalik tayo hindi dahil mahusay tayo, kundi dahil nagbibigay ang Diyos ng higit na biyaya.", "Ngayon, <mark>ilapag sa harap ng Panginoon ang isang bagay na labis mong kinakapitan</mark>. Sa pag-asa sa biyayang iyon, itigil ang paninira, humingi ng tawad sa mga nasaktan mo, at sundin ang panawagang ibigin ang kapwang ipinagkatiwala sa iyo ng Panginoon. Ibalik sa Diyos ang upuan ng Panginoon. Nawa'y humantong sa buhay na umiibig sa kapwa ang pananampalatayang nagpakumbaba sa harap ng Diyos."], "points": ["Kapag ibinalik natin sa Diyos ang upuan ng Panginoon, nababago ang motibo ng ating panalangin, ang lugar ng ating mga away, at ang ating mga salita sa kapwa."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Tapat kong pinag-isipan kung ano ang sinisikap kong makamit o ipagtanggol sa alitang hinaharap ko."}, {"key": "c2", "text": "Sinuri ko kung, habang nananalangin, handa akong sumunod kung ipakita ng Diyos ang ibang daan."}, {"key": "c3", "text": "Pinag-isipan ko kung, matapos umamin ng mali sa panalangin, itinigil ko na ang tsismis at itinuwid ang mga kwentong mali kong naipasa."}, {"key": "c4", "text": "Sinuri ko kung nakaupo ako sa upuan ng hukom — na sa Diyos lamang — sa paninira sa isang tao."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano ang isang bagay na labis kong kinakapitan na kailangan kong ilapag sa harap ng Panginoon ngayon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Suriin ang Motibo ng Panalangin", "value": "Tapusin ang isang panalangin ngayon sa pagpapahayag na: 'Kung ito ang kalooban Mo, Panginoon, babaguhin ko ang aking plano'"}, {"key": "act2", "label": "Bitawan", "value": "Isulat ang isang bagay na labis mong kinakapitan (pagkilala, opinyon, impluwensya) at ipanalanging ipinagkakatiwala ito sa Diyos"}, {"key": "act3", "label": "Linisin ang Kamay", "value": "Kung nagtsismis ka kamakailan tungkol sa isang tao, itigil ito, at ituwid ang anumang kwentong mali mong naipasa"}, {"key": "act4", "label": "Humingi ng Tawad", "value": "Unang lapitan ang taong nasaktan mo habang sinisikap manalo, at humingi ng tawad"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Santiago 4:7–8 at magpasakop sa Diyos, lumalapit sa Kanya"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat sa pagtawag Mo nang may higit na biyaya sa amin na namuhay ayon sa aming pagnanasa, at sa paglalapit Mo sa amin sa pamamagitan ng dugo ng krus at pagkakasundo sa Diyos."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagpipilit ng sarili kong kalooban kahit habang nananalangin, sa pakikipag-away upang ipagtanggol ang pagkilala at impluwensya, at sa paninira sa aking kapwa mula sa upuan ng hukom na sa Diyos lamang."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong ibalik sa Iyo ang upuan ng panginoon ng aking buhay, at hayaang humantong ang pusong nagpakumbaba sa harap Mo sa mga gawa ng paghingi ng tawad, pagtutuwid, at pag-ibig sa aking kapwa."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-22';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
