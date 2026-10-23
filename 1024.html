@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/24(토) 큐티 · 야고보서 5:7–12">
+<meta property="og:description" content="기다림이 길어질 때, 무엇을 붙들어야 할까요?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 24일 토요일", "ref": "야고보서 5장 7–12절", "headline": "기다림이 길어질 때,<br>무엇을 붙들어야 할까요?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 야고보서 5:7-12", "s1heading": "오늘의 말씀", "verse": "\"그러므로 형제들아 주께서 강림하시기까지 길이 참으라<br>보라 농부가 땅에서 나는 귀한 열매를 바라고 길이 참아…<br>너희도 길이 참고 마음을 굳건하게 하라<br>주의 강림이 가까우니라\"", "verseRef": "야고보서 5:7–8", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 공장장의 마음이 아니라 농부의 마음으로", "paragraphs": ["오늘 본문은 <mark>\"그러므로\"</mark>로 시작합니다. 앞에서 야고보는 품삯을 가로채고 무고한 사람을 억압한 부자들에게 심판을 경고했고, 하나님은 억울한 이들의 부르짖음을 이미 들으셨다고 했습니다. 그러나 성도들의 현실은 여전히 고통스러웠습니다. 바로 그 자리에서 \"그러므로\" 주님을 신뢰하며 인내하라고 합니다. 이 인내는 부당한 일을 덮으라는 뜻이 아니라, <mark>최종 심판을 하나님께 맡기고 믿음의 길을 계속 걷는 것</mark>입니다.", "우리는 신앙생활까지 공장의 생산 일정표처럼 대할 때가 있습니다. \"이만큼 기도했으니 응답이 나와야 하고, 이만큼 섬겼으니 사람이 달라져야 한다.\" 정해 놓은 시간에 성과를 내라고 재촉하는 <mark>공장장의 마음</mark>입니다. 그런 우리에게 야고보는 <mark>농부</mark>를 보여 줍니다. 농부는 씨를 심고 돌보지만, 비가 오는 때와 곡식이 자라는 것은 마음대로 정할 수 없습니다."], "points": ["결과와 때는 하나님께 맡기고, 오늘의 순종을 계속하십시오. 이것이 농부의 마음으로 살아가는 인내입니다."]}, {"title": "7–8절 · 농부처럼 기다리며 마음을 굳건하게 하라", "paragraphs": ["<mark>\"주께서 강림하시기까지 길이 참으라\"</mark>. 우리의 기다림에는 분명한 소망이 있습니다. 예수님이 다시 오셔서 악을 심판하시고 공의를 드러내실 것입니다. 지금 힘 있는 사람이 마지막 판단까지 쥐고 있는 것이 아닙니다. 농부도 마음이 급하지만, 파종을 돕는 이른 비와 결실을 돕는 늦은 비를 기다립니다. 자녀의 변화를 위해 기도하고 있다면 <mark>오늘 그 아이의 말을 들어 주십시오</mark>. 공동체의 회복을 바란다면 오늘 내가 해야 할 사과와 섬김을 계속하십시오.", "<mark>\"마음을 굳건하게 하라\"</mark>. 상황이 오래 달라지지 않으면 \"이렇게 살아서 무엇하나\" 하는 생각이 듭니다. 그때마다 주님의 약속으로 마음을 돌려 다시 신뢰하기로 선택하는 것입니다. 이 약속은 내가 원하는 결과를 정해진 날짜에 받는다는 뜻이 아니라, <mark>주님이 다시 오시며 그분의 공의가 이루어진다</mark>는 확신입니다."], "points": ["결과를 재촉하다가 지금 해야 할 사랑을 놓치지 마십시오."]}, {"title": "9절 · 인내는 곁에 있는 사람을 대하는 태도에서도 드러납니다", "paragraphs": ["<mark>\"형제들아 서로 원망하지 말라\"</mark>. 어려움이 길어지면 가장 가까운 사람이 원망의 대상이 되기 쉽습니다. 밖에서 받은 상처를 집에 와서 가족에게 쏟고, 일이 뜻대로 안 되면 가장 편한 사람을 탓합니다. \"당신 때문에 이렇게 됐잖아.\" 내가 기다림에 지쳤다는 이유로 <mark>함께 기다리는 사람까지 아프게 할 수 있습니다</mark>. 하나님께 아픔을 아뢰고 사람에게 도움을 청하는 것은 필요하지만, 내 고통이 다른 사람을 함부로 대할 이유가 될 수는 없습니다.", "<mark>\"보라 심판주가 문 밖에 서 계시니라\"</mark>. 억압하는 사람을 심판하실 주님이 우리의 말과 태도도 살피십니다. 같은 주님의 오심이 우리에게 위로를 주면서 동시에 우리 자신을 돌아보게 합니다. 함께 기다리는 그 사람도 지쳐 있을 수 있습니다."], "points": ["오늘 가까운 사람에게 날카로운 말을 했다면 이렇게 고백해 보십시오. \"제가 힘들다는 이유로 당신에게 화를 냈습니다. 미안합니다.\""]}, {"title": "10–11절 · 인내의 힘은 주님의 성품을 신뢰하는 데서 나옵니다", "paragraphs": ["<mark>\"주의 이름으로 말한 선지자들을 고난과 오래 참음의 본으로 삼으라\"</mark>. 하나님께 순종해도 어려움은 찾아옵니다. 선지자들은 그 속에서도 맡겨진 말씀을 전하고 불의를 지적하며 백성에게 돌아오라고 외쳤습니다. 그들의 인내는 계속되는 순종이었습니다. 그리고 <mark>욥</mark>은 모든 것을 조용히 받아들인 사람이 아니었습니다. 깊이 탄식하고, 이해할 수 없는 현실 앞에서 하나님께 질문하며 씨름했습니다. 울고 있다고 인내하지 못하는 것이 아니고, 질문이 많다고 믿음이 없는 것이 아닙니다. <mark>눈물을 흘리면서도, 질문을 품고서도 하나님을 붙들 수 있습니다</mark>.", "<mark>\"주는 가장 자비하시고 긍휼히 여기시는 이시니라\"</mark>. 욥이 회복되었다고 모든 고난 뒤에 같은 방식의 보상이 온다고 약속할 수는 없습니다. 본문이 붙들게 하는 것은 고통받는 자기 백성을 긍휼히 여기시는 주님입니다. 우리는 지금 일어나는 일의 이유도, 해결될 때도 다 알지 못합니다. 그러나 <mark>누구를 기다리는지는 압니다</mark>."], "points": ["믿음은 결말을 다 알기 전에 하나님의 성품을 붙들게 합니다. 고통받는 사람에게 '믿음으로 참으세요'라는 말만 건네기보다, 그 아픔을 함께 듣고 하나님께 가져가십시오."]}, {"title": "12절 · 정직한 말이 신뢰를 자라게 합니다", "paragraphs": ["<mark>\"맹세하지 말지니… 오직 너희가 그렇다 하는 것은 그렇다 하고 아니라 하는 것은 아니라 하여\"</mark>. 당시 사람들은 하늘이나 땅을 걸고 맹세하며 자기 말을 보증하려 했습니다. 야고보는 예수님의 산상수훈처럼(마 5장), 맹세에 기대지 않아도 <mark>그렇다와 아니라가 그대로 믿을 만한 말</mark>이 되어야 한다고 가르칩니다.", "마음이 급하면 사실을 부풀리고, 지킬 수 있을지 모르는 약속을 쉽게 하고, 인정받기 위해 확인하지 않은 내용을 확신하듯 말할 수 있습니다. 그러나 신뢰는 평소의 정직함으로 자랍니다. <mark>모르는 것은 모른다고 말하고, 잘못한 것은 바로잡고, 작은 약속을 지키는 것</mark>입니다. 농부가 열매를 기다리듯, 관계 속 신뢰도 꾸준히 가꾸어야 합니다."], "points": ["말의 무게는 목소리의 크기가 아니라, 그 말을 지키며 살아온 삶의 무게에서 생깁니다."]}, {"title": "적용 · 주님이 다시 오시므로, 나는 오늘의 순종을 포기하지 않겠습니다", "paragraphs": ["처음의 <mark>\"그러므로\"</mark>로 돌아가 봅시다. 우리가 기다릴 수 있는 근거는 어디에 있습니까? 예수님은 죽음을 앞두고 \"한 알의 밀이 땅에 떨어져 죽으면 많은 열매를 맺는다\"고 말씀하셨고, 우리를 살리시려고 실제로 십자가의 길을 걸으셨습니다. 베드로전서는 예수님이 <mark>모욕을 받으셔도 모욕으로 갚지 않으시고, 공의로 심판하시는 하나님께 맡기셨다</mark>고 말합니다. 그분의 입에는 거짓이 없었고, 우리 죄를 친히 담당하셔서 우리가 의롭게 살 길을 여셨습니다.", "예수님은 우리에게 인내를 명령하시는 분이며, <mark>먼저 그 길을 걸어 우리를 구원하신 분</mark>입니다. 그리고 죽음을 이기시고 부활하셨습니다. 우리가 기다리는 분은 바로 그 주님입니다. 그래서 이렇게 고백할 수 있습니다. \"주님이 나를 위해 십자가를 지셨으므로, 주님이 부활하셨으므로, 주님이 다시 오실 것이므로, <mark>나는 오늘의 순종을 포기하지 않겠습니다</mark>.\" 이것이 우리 삶의 \"그러므로\"가 되어야 합니다.", "결과가 보이지 않는다는 이유로 중단하려 했던 <mark>선한 일 하나를 다시 시작하십시오</mark>. 함께 기다리는 사람에게 쏟아 놓았던 원망을 거두고 사과하십시오. 지키지 않은 약속이 있다면 연락해서 바로잡으십시오. 하나님의 때를 기다린다고 하면서 오늘 해야 할 순종까지 미루고 있지는 않습니까?", "하나님께 맡겨야 할 결과는 맡기십시오. 그리고 지금 맡기신 사랑과 정직은 오늘 행하십시오. <mark>열매를 재촉하느라 사람을 상하게 하는 손을 멈추고, 오늘 사랑을 심는 손을 내미십시오</mark>. 주님이 다시 오십니다. 그러므로 농부의 마음으로 끝까지 믿음의 자리를 지키십시오."], "points": ["결과는 하나님께, 오늘의 사랑과 정직은 나의 순종으로."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "기도와 섬김의 결과를 정해진 시간 안에 내라고 재촉하는 '공장장의 마음'이 없는지 돌아봤다"}, {"key": "c2", "text": "기다림에 지쳐 가장 가까운 사람에게 원망과 날카로운 말을 쏟고 있지 않은지 점검했다"}, {"key": "c3", "text": "눈물과 질문 속에서도 자비하시고 긍휼히 여기시는 주님의 성품을 붙들고 있는지 돌아봤다"}, {"key": "c4", "text": "사실을 부풀리거나 지키지 못할 약속을 쉽게 하지 않고, 작은 약속을 지키고 있는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "결과가 보이지 않아 멈추려 했지만, 농부의 마음으로 오늘 다시 시작할 선한 일은 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "다시 심기", "value": "결과가 보이지 않아 멈췄던 선한 일(기도, 섬김, 연락) 하나를 오늘 다시 시작하기"}, {"key": "act2", "label": "원망 거두기", "value": "힘들다는 이유로 날카롭게 대한 가족이나 교회 식구에게 '미안합니다'라고 사과하기"}, {"key": "act3", "label": "함께 듣기", "value": "오래 고통 중에 있는 한 사람의 이야기를 조언 없이 끝까지 듣고 함께 기도하기"}, {"key": "act4", "label": "정직한 말", "value": "지키지 못한 약속이 있다면 연락해서 바로잡고, 모르는 것은 모른다고 말하기"}, {"key": "act5", "label": "말씀 암송", "value": "야고보서 5:7–8을 외우며 결과와 때를 주님께 맡기기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "모욕을 받으셔도 모욕으로 갚지 않으시고 먼저 십자가의 길을 걸어 우리를 구원하시며, 부활하셔서 다시 오실 주님을 기다리게 하시니 감사합니다"}, {"key": "p2", "tag": "회개", "text": "기도와 섬김의 결과를 재촉하며 조급해하고, 기다림에 지쳐 가까운 사람을 원망하며, 사실을 부풀리고 약속을 가볍게 여겼던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "자비하시고 긍휼히 여기시는 주님, 결과와 때는 주님께 맡기고 오늘의 사랑과 정직을 심게 하시며, 농부의 마음으로 끝까지 믿음의 자리를 지키게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 24, Saturday", "ref": "James 5:7–12", "headline": "When the Wait Grows Long,<br>What Should We Hold Onto?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · James 5:7-12", "s1heading": "Today's Word", "verse": "\"Be patient, therefore, brothers, until the coming of the Lord.<br>See how the farmer waits for the precious fruit of the earth…<br>You also, be patient. Establish your hearts,<br>for the coming of the Lord is at hand.\"", "verseRef": "James 5:7–8", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Not a Factory Manager's Heart, but a Farmer's", "paragraphs": ["Today's passage begins with <mark>\"therefore.\"</mark> Our lives need a 'therefore' too — we must be clear about what we believe that makes us live this way, and what the root of our choices is. In the previous passage, James warned of judgment on the rich who withheld workers' wages and oppressed the innocent; God had already heard the cries of the wronged. Yet the believers who heard that Word were still living in painful realities. Right there comes the 'therefore': God will judge evil, so trust the Lord and be patient. James first addressed those who cause the cries, so this call to patience must not be taken as covering up injustice. It means <mark>entrusting final judgment to God and continuing to walk the path of faith</mark>. Patience runs through all of James: chapter 1 said endurance matures faith in trials; now chapter 5 urges us to endure to the end, looking to the Lord's coming.", "But we sometimes treat even our faith like a factory production schedule: 'I've prayed this much, so an answer should come. I've served this much, so people should change.' There's a <mark>factory manager's heart</mark> in us that demands results by a set deadline. To us, James shows <mark>a farmer</mark>. A farmer plants and tends the seed but cannot decide when the rain comes or how the crop grows. He does his part and waits."], "points": ["Entrust the outcome and the timing to God, and keep up today's obedience. This is the patience of living with a farmer's heart."]}, {"title": "Verses 7–8 · Wait Like a Farmer, and Establish Your Hearts", "paragraphs": ["Verse 7 says, <mark>\"Be patient, therefore, brothers, until the coming of the Lord.\"</mark> Our waiting has a clear hope: Jesus will return to judge evil and reveal His justice. The powerful of this age don't hold the final verdict. The fruit a farmer waits for is his family's livelihood. He too feels urgency, yet he waits for the early rain needed for sowing and the late rain that helps the harvest. Applied to our lives: if you're praying for your child to change, <mark>listen to that child today</mark>. If you long for your community's restoration, keep up the apology and service you need to give today. Don't let your push for results make you miss the love you need to show now.", "Verse 8 says, <mark>\"Establish your hearts.\"</mark> When a situation doesn't change for a long time, we think, 'What's the point of living like this?' Each time, we turn our hearts back to the Lord's promise and choose to trust Him again. This promise doesn't mean receiving the outcome I want on a set date. What we're sure of is that <mark>the Lord will come again and His justice will be accomplished</mark>. A farmer's heart faithfully does today's work and entrusts to God the timing that our hands cannot determine."], "points": ["Don't let your push for results make you miss the love you need to show right now."]}, {"title": "Verse 9 · Patience Shows in How We Treat Those Beside Us", "paragraphs": ["In verse 9 James urges, <mark>\"Do not grumble against one another, brothers.\"</mark> When hardship drags on and irritation builds, those closest to us easily become targets of resentment. We pour out on our family the wounds we received outside; when things don't go our way, we blame the people we're most comfortable with: 'This happened because of you!' 'Why can't you even do this?' Because I'm tired of waiting, <mark>I can hurt even those who are waiting alongside me</mark>. What the text forbids is grumbling against one another. Telling God our pain and asking people for help are necessary. But my suffering can't be a reason to treat others carelessly.", "James warns, <mark>\"Behold, the Judge is standing at the door.\"</mark> The Lord who will judge oppressors will also examine our words and attitudes. The same coming of the Lord that comforts us also makes us look at ourselves. Don't let your push for results make you miss the pain of those waiting with you — they too may be exhausted."], "points": ["If you spoke sharply today to family or church members, try confessing: 'I took out my frustration on you because I was struggling. I'm sorry.' Patience also shows in treating those beside us with love while we endure."]}, {"title": "Verses 10–11 · The Strength of Patience Comes from Trusting the Lord's Character", "paragraphs": ["Verse 10 tells us to take the prophets as <mark>an example of suffering and patience</mark>. They spoke in the Lord's name, yet they suffered. Even when we obey God, hardship can still come. The prophets kept delivering the Word entrusted to them, pointing out injustice and calling the people to return to God. Their patience was a life of continued obedience. Verse 11 mentions <mark>Job</mark>. Job wasn't someone who quietly accepted everything. He lamented deeply and questioned God in the face of an incomprehensible reality — and in the process he wrestled, seeking God's answer. That struggle in life matters. So don't conclude you lack patience just because you're crying. Don't decide you have no faith because you have many questions. <mark>You can hold onto God while shedding tears and carrying many questions.</mark> And rather than only telling suffering people, 'Be patient in faith,' we should listen to their pain with them and bring it to God.", "At the end of Job's story, James shows the Lord's character: <mark>\"The Lord is compassionate and merciful.\"</mark> Because Job was restored, we can't promise that the same kind of material reward comes after every suffering. What the text has us hold onto is the Lord who has compassion on His suffering people. We don't know all the reasons for what's happening now, or when it will be resolved. But <mark>we know whom we're waiting for</mark>: Jesus, the Lord who is full of compassion. Faith holds onto God's character before knowing the ending. Don't conclude that God has turned away from you just because the fruit isn't visible yet."], "points": ["Today, tell the Lord your pain again and continue the obedience entrusted to you. The Lord's mercy that holds us becomes the strength of our patience."]}, {"title": "Verse 12 · Honest Words Grow Trust", "paragraphs": ["Verse 12 gives a new exhortation about oaths and honesty: <mark>\"Do not swear, either by heaven or by earth or by any other oath, but let your 'yes' be yes and your 'no' be no.\"</mark> People then swore by heaven or earth to guarantee their words' credibility. James forbids this and teaches that our yes and no should be trustworthy as they are. Jesus also taught in the Sermon on the Mount (Matthew 5) truthful speech that doesn't lean on oaths.", "Applied to a life of patience, this makes us examine how we gain people's trust. When we're in a hurry, we exaggerate facts, make promises we may not keep, or speak with certainty about things we haven't verified to get recognized now. But trust grows through everyday honesty: <mark>saying 'I don't know' when we don't know, correcting what we got wrong, and keeping small promises</mark>. Even if it takes time, we must walk that process faithfully. Just as a farmer waits for fruit, we must steadily tend the trust in our relationships. Take responsibility today for the words you say."], "points": ["The weight of our words comes not from the volume of our voice, but from the weight of a life that has kept those words."]}, {"title": "Application · Because the Lord Will Come Again, I Will Not Give Up Today's Obedience", "paragraphs": ["Let's return to that first <mark>\"therefore.\"</mark> Where is the ground for our waiting? Facing His death, Jesus said, \"Unless a grain of wheat falls into the earth and dies… but if it dies, it bears much fruit\" — and to save us He actually walked the way of the cross. 1 Peter says that when Jesus was reviled, <mark>He did not revile in return, but entrusted Himself to Him who judges justly</mark>. No deceit was in His mouth; He bore our sins Himself and opened the way for us to live righteously.", "Jesus is the One who commands us to be patient, and <mark>the One who first walked that path and saved us</mark>. And He conquered death and rose again. The One we're waiting for is that very Lord. So we can confess: 'Because the Lord bore the cross for me, because the Lord rose again, because the Lord will come again — <mark>I will not give up today's obedience.</mark>' This must become the 'therefore' of our lives.", "Restart today <mark>one good work you were about to quit</mark> because you couldn't see results. Withdraw the resentment you poured out on those waiting with you, and apologize. If there's a promise you haven't kept, reach out and make it right. Are you postponing even today's obedience while saying you're waiting for God's timing?", "Entrust to God the outcomes that are His. And do today the love and honesty He has entrusted to you now. <mark>Stop the hands that hurt people while pushing for fruit, and reach out hands that sow love today.</mark> The Lord is coming again. Therefore, with a farmer's heart, hold your place of faith to the end."], "points": ["Outcomes to God; today's love and honesty to my obedience."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I have a 'factory manager's heart' that demands results from my prayers and service by a set time."}, {"key": "c2", "text": "I checked whether, tired of waiting, I'm pouring resentment and sharp words onto those closest to me."}, {"key": "c3", "text": "I reflected on whether I'm holding onto the Lord's compassionate and merciful character even amid tears and questions."}, {"key": "c4", "text": "I checked whether I avoid exaggerating facts or making promises I can't keep, and whether I'm keeping small promises."}], "s4heading": "One-Line Reflection", "memoHint": "What good work, which I was about to stop because I saw no results, will I start again today with a farmer's heart?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Plant Again", "value": "Restart today one good work (prayer, service, reaching out) you had stopped because you saw no results"}, {"key": "act2", "label": "Withdraw Resentment", "value": "Say 'I'm sorry' to a family or church member you spoke sharply to because you were struggling"}, {"key": "act3", "label": "Listen Together", "value": "Listen to the end, without advice, to someone who has been suffering a long time, and pray with them"}, {"key": "act4", "label": "Honest Words", "value": "If there's a promise you haven't kept, reach out to make it right; say 'I don't know' when you don't"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize James 5:7–8 and entrust the outcome and timing to the Lord"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Lord, who when reviled did not revile in return, who first walked the way of the cross to save us, and who rose again — and for letting us wait for Your return."}, {"key": "p2", "tag": "Repent", "text": "I repent of growing impatient and pushing for results from my prayers and service, of grumbling against those close to me when tired of waiting, and of exaggerating and taking promises lightly."}, {"key": "p3", "tag": "Ask", "text": "Compassionate and merciful Lord, help me entrust outcomes and timing to You, sow love and honesty today, and hold my place of faith to the end with a farmer's heart."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 24, Sabado", "ref": "Santiago 5:7–12", "headline": "Kapag Tumatagal ang Paghihintay,<br>Ano ang Dapat Nating Panghawakan?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Santiago 5:7-12", "s1heading": "Salita Ngayon", "verse": "\"Kaya nga, mga kapatid, magtiyaga kayo hanggang sa pagdating ng Panginoon.<br>Tingnan ninyo kung paano naghihintay ang magsasaka sa mahalagang bunga ng lupa…<br>Kayo rin ay magtiyaga. Patatagin ninyo ang inyong puso,<br>sapagkat malapit na ang pagdating ng Panginoon.\"", "verseRef": "Santiago 5:7–8", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Hindi Puso ng Tagapamahala ng Pabrika, Kundi Puso ng Magsasaka", "paragraphs": ["Nagsisimula ang talata ngayon sa <mark>\"kaya nga.\"</mark> Kailangan din ng ating buhay ang isang 'kaya nga' — dapat malinaw sa atin kung ano ang ating pinaniniwalaan na nagpapamuhay sa atin nang ganito, at kung ano ang ugat ng ating mga pasya. Sa nakaraang bahagi, nagbabala si Santiago ng paghatol sa mga mayamang nagkait ng sahod ng manggagawa at nang-api sa walang-sala; narinig na ng Diyos ang daing ng mga inaapi. Ngunit ang mga mananampalatayang nakarinig ng Salitang iyon ay namumuhay pa rin sa masakit na realidad. Doon mismo dumating ang 'kaya nga': hahatulan ng Diyos ang kasamaan, kaya magtiwala sa Panginoon at magtiyaga. Unang tinukoy ni Santiago ang mga nagpapaiyak sa iba, kaya hindi dapat ituring ang panawagang ito na pagtatakip sa kawalang-katarungan. Nangangahulugan ito ng <mark>pagpapaubaya sa Diyos ng huling paghatol at patuloy na paglakad sa landas ng pananampalataya</mark>. Dumadaloy ang pagtitiyaga sa buong Santiago: sinabi ng kabanata 1 na pinahihinog ng pagtitiis ang pananampalataya sa pagsubok; ngayon, hinihimok tayo ng kabanata 5 na magtiis hanggang wakas habang tumitingin sa pagdating ng Panginoon.", "Ngunit minsan ay tinatrato natin pati ang ating pananampalataya na parang iskedyul ng produksyon sa pabrika: 'Ganito na karami ang aking panalangin, kaya dapat may sagot na. Ganito na karami ang aking paglilingkod, kaya dapat nagbago na ang tao.' May <mark>puso ng tagapamahala ng pabrika</mark> sa atin na humihingi ng resulta sa takdang oras. Sa atin, ipinapakita ni Santiago ang <mark>isang magsasaka</mark>. Nagtatanim at nag-aalaga ang magsasaka ng binhi ngunit hindi niya mapagpapasyahan kung kailan uulan o paano lalago ang pananim. Ginagawa niya ang kanyang bahagi at naghihintay."], "points": ["Ipagkatiwala sa Diyos ang resulta at ang panahon, at ipagpatuloy ang pagsunod ngayon. Ito ang pagtitiyaga ng pamumuhay na may puso ng magsasaka."]}, {"title": "Talata 7–8 · Maghintay Tulad ng Magsasaka, at Patatagin ang Inyong Puso", "paragraphs": ["Sinasabi ng talata 7, <mark>\"Kaya nga, mga kapatid, magtiyaga kayo hanggang sa pagdating ng Panginoon.\"</mark> May malinaw na pag-asa ang ating paghihintay: babalik si Jesus upang hatulan ang kasamaan at ihayag ang Kanyang katarungan. Hindi hawak ng mga makapangyarihan ng panahong ito ang huling hatol. Ang bungang hinihintay ng magsasaka ay kabuhayan ng kanyang pamilya. Nagmamadali rin siya, ngunit hinihintay niya ang maagang ulan na kailangan sa paghahasik at ang huling ulan na tumutulong sa pag-aani. Sa ating buhay: kung ipinapanalangin mo ang pagbabago ng iyong anak, <mark>pakinggan mo ang batang iyon ngayon</mark>. Kung nananabik ka sa pagpapanumbalik ng iyong komunidad, ipagpatuloy ang paghingi ng tawad at paglilingkod na dapat mong gawin ngayon. Huwag hayaang ang pagmamadali sa resulta ay magpalampas sa iyo ng pag-ibig na dapat mong ipakita ngayon.", "Sinasabi ng talata 8, <mark>\"Patatagin ninyo ang inyong puso.\"</mark> Kapag matagal nang hindi nagbabago ang sitwasyon, naiisip natin, 'Ano pa ang saysay ng ganitong pamumuhay?' Sa bawat pagkakataon, ibinabaling natin ang puso pabalik sa pangako ng Panginoon at muling pinipiling magtiwala sa Kanya. Hindi nangangahulugan ang pangakong ito na matatanggap ko ang resultang gusto ko sa takdang araw. Ang tiyak sa atin ay <mark>babalik ang Panginoon at matutupad ang Kanyang katarungan</mark>. Ginagawa nang tapat ng puso ng magsasaka ang gawain ngayon at ipinagkakatiwala sa Diyos ang panahong hindi kayang itakda ng ating kamay."], "points": ["Huwag hayaang ang pagmamadali sa resulta ay magpalampas sa iyo ng pag-ibig na dapat mong ipakita ngayon."]}, {"title": "Talata 9 · Nakikita ang Pagtitiyaga sa Paraan ng Pagtrato sa Mga Nasa Tabi Natin", "paragraphs": ["Sa talata 9, hinihimok ni Santiago, <mark>\"Huwag kayong magreklamo laban sa isa't isa, mga kapatid.\"</mark> Kapag nagtatagal ang paghihirap at naiipon ang inis, madaling maging tampulan ng sama ng loob ang mga pinakamalapit sa atin. Ibinubuhos natin sa ating pamilya ang mga sugat na natanggap sa labas; kapag hindi nangyayari ang gusto, sinisisi natin ang mga taong pinakakomportable tayo: 'Dahil sa iyo kaya nangyari ito!' 'Bakit hindi mo man lang ito magawa?' Dahil pagod na akong maghintay, <mark>maaari kong saktan pati ang mga naghihintay kasama ko</mark>. Ang ipinagbabawal ng teksto ay ang pagrereklamo laban sa isa't isa. Kailangan ang pagsasabi sa Diyos ng ating sakit at paghingi ng tulong sa tao. Ngunit hindi maaaring maging dahilan ang aking pagdurusa upang tratuhin nang basta-basta ang iba.", "Nagbabala si Santiago, <mark>\"Narito, ang Hukom ay nakatayo sa pintuan.\"</mark> Ang Panginoong hahatol sa mga mang-aapi ay susuri rin sa ating mga salita at saloobin. Ang parehong pagdating ng Panginoon na umaaliw sa atin ay nagpapatingin din sa atin sa ating sarili. Huwag hayaang ang pagmamadali sa resulta ay magpalampas sa iyo ng sakit ng mga naghihintay kasama mo — maaaring pagod din sila."], "points": ["Kung nagsalita ka nang matalim ngayon sa pamilya o kapwa sa iglesia, subukang ipahayag: 'Naibunton ko sa iyo ang aking inis dahil nahihirapan ako. Patawad.' Nakikita rin ang pagtitiyaga sa pagtrato nang may pag-ibig sa mga nasa tabi natin habang nagtitiis tayo."]}, {"title": "Talata 10–11 · Nagmumula ang Lakas ng Pagtitiyaga sa Pagtitiwala sa Pagkatao ng Panginoon", "paragraphs": ["Sinasabi ng talata 10 na gawin nating <mark>halimbawa ng pagdurusa at pagtitiyaga</mark> ang mga propeta. Nagsalita sila sa pangalan ng Panginoon, ngunit nagdusa. Kahit sumusunod tayo sa Diyos, maaari pa ring dumating ang paghihirap. Patuloy na inihatid ng mga propeta ang Salitang ipinagkatiwala sa kanila, itinuturo ang kawalang-katarungan at tinatawag ang bayan na bumalik sa Diyos. Ang kanilang pagtitiyaga ay buhay ng patuloy na pagsunod. Binabanggit ng talata 11 si <mark>Job</mark>. Hindi si Job ang taong tahimik na tumanggap ng lahat. Malalim siyang dumaing at nagtanong sa Diyos sa harap ng di-maunawaang realidad — at sa proseso ay nakipagbuno siya, hinahanap ang sagot ng Diyos. Mahalaga ang pakikibakang iyon sa buhay. Kaya huwag isiping wala kang pagtitiyaga dahil lamang umiiyak ka. Huwag ipasyang wala kang pananampalataya dahil marami kang tanong. <mark>Maaari kang kumapit sa Diyos habang lumuluha at may dalang maraming tanong.</mark> At sa halip na sabihin lamang sa nagdurusa, 'Magtiis ka sa pananampalataya,' dapat nating pakinggan ang kanilang sakit kasama nila at dalhin ito sa Diyos.", "Sa wakas ng kwento ni Job, ipinakita ni Santiago ang pagkatao ng Panginoon: <mark>\"Ang Panginoon ay mahabagin at maawain.\"</mark> Dahil naibalik si Job, hindi natin maipapangakong darating ang parehong uri ng materyal na gantimpala pagkatapos ng bawat pagdurusa. Ang ipinahahawak ng teksto ay ang Panginoong nahahabag sa Kanyang nagdurusang bayan. Hindi natin alam ang lahat ng dahilan ng nangyayari ngayon, o kung kailan ito malulutas. Ngunit <mark>alam natin kung sino ang ating hinihintay</mark>: si Jesus, ang Panginoong puno ng habag. Kumakapit ang pananampalataya sa pagkatao ng Diyos bago pa malaman ang wakas. Huwag isiping tinalikuran ka na ng Diyos dahil lamang hindi pa nakikita ang bunga."], "points": ["Ngayon, sabihin muli sa Panginoon ang iyong sakit at ipagpatuloy ang pagsunod na ipinagkatiwala sa iyo. Ang habag ng Panginoong humahawak sa atin ang nagiging lakas ng ating pagtitiyaga."]}, {"title": "Talata 12 · Pinalalago ng Tapat na Salita ang Tiwala", "paragraphs": ["Nagbibigay ang talata 12 ng bagong payo tungkol sa panunumpa at katapatan: <mark>\"Huwag kayong manumpa, maging sa langit, sa lupa, o sa anumang ibang panunumpa, kundi hayaang ang inyong 'oo' ay oo at ang inyong 'hindi' ay hindi.\"</mark> Nanunumpa noon ang mga tao sa langit o lupa upang garantiyahan ang katapatan ng kanilang salita. Ipinagbabawal ito ni Santiago at itinuturong dapat mapagkatiwalaan ang ating oo at hindi kung ano mismo ang mga ito. Nagturo rin si Jesus sa Sermon sa Bundok (Mateo 5) ng tapat na pananalitang hindi umaasa sa panunumpa.", "Kapag inilapat sa buhay ng pagtitiyaga, pinasusuri tayo nito kung paano natin nakukuha ang tiwala ng tao. Kapag nagmamadali tayo, pinalalaki natin ang katotohanan, nangangako ng maaaring hindi natin matupad, o nagsasalita nang may katiyakan tungkol sa hindi natin napatunayan upang kilalanin agad. Ngunit lumalago ang tiwala sa araw-araw na katapatan: <mark>pagsasabing 'Hindi ko alam' kapag hindi natin alam, pagtutuwid sa mali natin, at pagtupad sa maliliit na pangako</mark>. Kahit matagal, dapat nating lakaran nang tapat ang prosesong iyon. Tulad ng paghihintay ng magsasaka sa bunga, dapat nating patuloy na alagaan ang tiwala sa ating mga relasyon. Panagutan ngayon ang mga salitang sinasabi mo."], "points": ["Ang bigat ng ating salita ay hindi nagmumula sa lakas ng ating tinig, kundi sa bigat ng buhay na tumupad sa mga salitang iyon."]}, {"title": "Aplikasyon · Dahil Babalik ang Panginoon, Hindi Ko Isusuko ang Pagsunod Ngayon", "paragraphs": ["Bumalik tayo sa unang <mark>\"kaya nga.\"</mark> Nasaan ang batayan ng ating paghihintay? Sa harap ng Kanyang kamatayan, sinabi ni Jesus, \"Malibang mahulog sa lupa at mamatay ang butil ng trigo… ngunit kung mamatay ito, mamumunga ito nang marami\" — at upang iligtas tayo, tunay Niyang nilakaran ang daan ng krus. Sinasabi ng 1 Pedro na nang laitin si Jesus, <mark>hindi Siya gumanti ng lait, kundi ipinagkatiwala ang sarili sa Kanya na humahatol nang makatarungan</mark>. Walang daya sa Kanyang bibig; Siya mismo ang nagpasan ng ating mga kasalanan at nagbukas ng daan upang mamuhay tayo nang matuwid.", "Si Jesus ang nag-uutos sa atin na magtiyaga, at <mark>Siya ang unang lumakad sa landas na iyon at nagligtas sa atin</mark>. At nagtagumpay Siya sa kamatayan at muling nabuhay. Ang hinihintay natin ay ang mismong Panginoong iyon. Kaya maipapahayag natin: 'Dahil pinasan ng Panginoon ang krus para sa akin, dahil muling nabuhay ang Panginoon, dahil babalik ang Panginoon — <mark>hindi ko isusuko ang pagsunod ngayon.</mark>' Ito ang dapat maging 'kaya nga' ng ating buhay.", "Simulan muli ngayon <mark>ang isang mabuting gawaing muntik mo nang itigil</mark> dahil hindi mo makita ang resulta. Bawiin ang sama ng loob na ibinuhos mo sa mga naghihintay kasama mo, at humingi ng tawad. Kung may pangakong hindi mo natupad, makipag-ugnayan at ituwid ito. Ipinagpapaliban mo ba pati ang pagsunod ngayon habang sinasabing hinihintay mo ang panahon ng Diyos?", "Ipagkatiwala sa Diyos ang mga resultang sa Kanya. At gawin ngayon ang pag-ibig at katapatang ipinagkatiwala Niya sa iyo ngayon. <mark>Itigil ang mga kamay na nakasasakit ng tao habang minamadali ang bunga, at iabot ang mga kamay na naghahasik ng pag-ibig ngayon.</mark> Babalik ang Panginoon. Kaya nga, taglay ang puso ng magsasaka, manatili sa iyong lugar ng pananampalataya hanggang wakas."], "points": ["Ang resulta ay sa Diyos; ang pag-ibig at katapatan ngayon ay sa aking pagsunod."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung may 'puso ng tagapamahala ng pabrika' ako na humihingi ng resulta sa aking panalangin at paglilingkod sa takdang oras."}, {"key": "c2", "text": "Sinuri ko kung, pagod sa paghihintay, ibinubuhos ko ang sama ng loob at matatalim na salita sa mga pinakamalapit sa akin."}, {"key": "c3", "text": "Pinag-isipan ko kung kumakapit ako sa mahabagin at maawaing pagkatao ng Panginoon kahit sa gitna ng luha at tanong."}, {"key": "c4", "text": "Sinuri ko kung iniiwasan kong palakihin ang katotohanan o mangako ng hindi ko matutupad, at kung tinutupad ko ang maliliit na pangako."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Anong mabuting gawain, na muntik ko nang itigil dahil walang nakikitang resulta, ang sisimulan ko muli ngayon taglay ang puso ng magsasaka?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Magtanim Muli", "value": "Simulan muli ngayon ang isang mabuting gawain (panalangin, paglilingkod, pakikipag-ugnayan) na itinigil mo dahil walang nakitang resulta"}, {"key": "act2", "label": "Bawiin ang Sama ng Loob", "value": "Sabihin ang 'Patawad' sa isang kapamilya o kapwa sa iglesia na nasagot mo nang matalim dahil nahihirapan ka"}, {"key": "act3", "label": "Makinig nang Sama-sama", "value": "Pakinggan hanggang dulo, nang walang payo, ang isang taong matagal nang nagdurusa, at manalangin kasama niya"}, {"key": "act4", "label": "Tapat na Salita", "value": "Kung may pangakong hindi mo natupad, makipag-ugnayan upang ituwid ito; sabihing 'Hindi ko alam' kapag hindi mo alam"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Santiago 5:7–8 at ipagkatiwala sa Panginoon ang resulta at panahon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Panginoon, na nang laitin ay hindi gumanti ng lait, na unang lumakad sa daan ng krus upang iligtas kami, at muling nabuhay — at sa pagpapahintay Mo sa amin sa Iyong pagbabalik."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagiging mainipin at pagmamadali sa resulta ng aking panalangin at paglilingkod, sa pagrereklamo laban sa mga malapit sa akin kapag pagod na sa paghihintay, at sa pagpapalaki ng katotohanan at pagbalewala sa mga pangako."}, {"key": "p3", "tag": "Kahilingan", "text": "Mahabagin at maawaing Panginoon, tulungan Mo akong ipagkatiwala sa Iyo ang resulta at panahon, maghasik ng pag-ibig at katapatan ngayon, at manatili sa aking lugar ng pananampalataya hanggang wakas taglay ang puso ng magsasaka."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-24';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
