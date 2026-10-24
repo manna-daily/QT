@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/25(주일) 큐티 · 야고보서 5:13–20">
+<meta property="og:description" content="믿음의 길, 혼자 버티고 있나요?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 25일 주일", "ref": "야고보서 5장 13–20절", "headline": "믿음의 길,<br>혼자 버티고 있나요?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 야고보서 5:13-20", "s1heading": "오늘의 말씀", "verse": "\"그러므로 너희 죄를 서로 고백하며<br>병이 낫기를 위하여 서로 기도하라<br>의인의 간구는 역사하는 힘이 큼이니라\"", "verseRef": "야고보서 5:16", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 살아 있는 믿음은 서로를 붙듭니다", "paragraphs": ["오늘은 야고보서의 마지막 말씀입니다. 야고보서는 시련 속에서 믿음이 자라는 이야기로 시작해, 그 믿음이 <mark>이웃을 돕는 행동, 사람을 대하는 말, 욕심과 재물을 다루는 태도</mark>에서 드러나야 한다고 가르쳤습니다. 행동으로 은혜를 사라는 뜻이 아니라, 살아 있는 믿음은 반드시 삶에서 열매를 맺는다는 것입니다. 앞에서 고난 중에 인내하라고 했다면, 이제는 <mark>기도하며 서로를 붙들라</mark>고 권합니다.", "하나님은 우리가 믿음의 길을 혼자 걷지 않도록 함께 걸을 사람들, 곧 교회 식구들을 주셨습니다. 야고보는 사람을 해치는 말을 거듭 경계했는데, 이제 그 입으로 <mark>기도하고, 찬송하고, 죄를 고백하고, 길 잃은 사람에게 돌아오라고 말하게</mark> 합니다. 배운 말씀이 사람을 살리는 행동으로 이어지는 것입니다."], "points": ["살아 있는 믿음은 하나님을 의지하며, 서로의 회복을 돕는 삶으로 이어집니다. 나의 믿음은 누구를 위해 움직이고 있습니까?"]}, {"title": "13절 · 고난에는 기도하고, 기쁨에는 찬송하라", "paragraphs": ["<mark>\"너희 중에 고난당하는 자가 있느냐 그는 기도할 것이요 즐거워하는 자가 있느냐 그는 찬송할지니라\"</mark>. 우리는 어려울 때는 하나님을 찾다가도 일이 잘되면 하나님을 잊기 쉽습니다. 그러나 하나님은 아픔을 맡기는 분이시며, 기쁨을 함께 나누고 감사드리는 분입니다. 여기서 즐거움은 모든 문제가 해결된 상태만이 아니라, 어려움 가운데서도 하나님이 주시는 용기와 기쁨입니다.", "야고보서 1장은 시련 속에서 하나님께 지혜를 구하라고 했고, 마지막 장도 같은 방향을 가리킵니다. <mark>어렵든 기쁘든, 삶의 모든 형편을 하나님께 가져가라</mark>는 것입니다. 상황에 따라 기도의 내용은 달라져도 하나님을 향하는 삶의 방향은 이어져야 합니다."], "points": ["오늘 힘든 일이 있다면 그대로 하나님께 아뢰십시오. 감사한 일이 있다면 그냥 지나치지 말고 찬송으로 올려 드리십시오."]}, {"title": "14–18절 · 병든 이를 돌보고, 서로 죄를 고백하며 기도하라", "paragraphs": ["<mark>\"병든 자가 있느냐 그는 교회의 장로들을 청할 것이요\"</mark>. 본문의 중심은 기름 자체가 아니라 병든 사람을 주님의 돌보심에 맡기며 드리는 기도입니다. <mark>도움을 요청하는 것도 믿음의 행동</mark>입니다. 다른 사람을 돕는 데는 익숙해도 내 어려움을 말하기는 힘들 수 있지만, \"저를 위해 기도해 주세요\"라고 말할 수 있어야 합니다. <mark>\"믿음의 기도는 병든 자를 구원하리니 주께서 그를 일으키시리라\"</mark>. 일으키시는 분은 주님이시므로, 회복이 더디다고 환자의 믿음을 탓해서는 안 됩니다. 또 모든 병이 특정한 죄 때문이라는 뜻도 아닙니다. 치유를 기대하며 기도하고, 때와 방식은 주님께 맡기며, 필요한 치료와 돌봄도 함께 이어 갑니다.", "<mark>\"그러므로 너희 죄를 서로 고백하며 병이 낫기를 위하여 서로 기도하라\"</mark>. 장로들이 한 사람을 위해 기도하던 장면이 온 공동체가 '서로' 기도하는 삶으로 넓어집니다. \"제가 그 말을 퍼뜨렸습니다. 잘못했습니다.\" 고백한 내용이 소문이 되면 사람들은 숨지만, 듣고 기도하며 바로잡도록 도울 때 회복의 길이 열립니다. 엘리야는 <mark>\"우리와 성정이 같은 사람\"</mark>이었지만 기도했고, 하나님이 응답하셨습니다."], "points": ["기도의 힘은 우리가 대단해서가 아니라, 하나님이 들으시고 일하시기 때문에 있습니다. 나의 연약함 때문에 기도를 포기할 필요가 없습니다."]}, {"title": "19–20절 · 진리를 떠난 사람을 외면하지 말라", "paragraphs": ["<mark>\"너희 중에 미혹되어 진리를 떠난 자를 누가 돌아서게 하면\"</mark>. 진리를 떠났다는 것은 단지 출석이 줄었다는 뜻이 아니라, 복음의 진리를 버리거나 그 가르침을 거슬러 사는 것입니다. 그를 돌아오게 돕는 일은 지도자만의 일이 아닙니다. 그 사람의 잘못을 다른 사람들에게 말하기 전에 <mark>먼저 그를 위해 기도하고 직접 다가가</mark> 이야기를 듣고, 필요한 말씀을 온유하게 전하며, 하나님께 돌아올 길을 함께 찾아야 합니다.", "그 일은 <mark>\"그의 영혼을 사망에서 구원할 것이며 허다한 죄를 덮을 것\"</mark>입니다. 야고보서 1장은 죄가 자라면 사망을 낳는다고 했고, 마지막에는 그 길에서 돌아오도록 서로 돕게 합니다. 구원하시는 분은 하나님이시며, 우리의 권면과 돌봄을 통해 사람을 돌아오게 하십니다. 죄를 덮는다는 것은 잘못을 감추는 것이 아니라, <mark>회개한 사람이 하나님의 용서를 받는 것</mark>입니다."], "points": ["진리를 사랑하는 마음은, 진리에서 떠난 사람의 회복을 구하는 행동으로 나타나야 합니다."]}, {"title": "적용 · 야고보서 읽기는 마치지만, 말씀을 살아내는 일은 계속됩니다", "paragraphs": ["예수님은 베드로가 자신을 부인할 것을 아시면서도 말씀하셨습니다. <mark>\"내가 너를 위하여 네 믿음이 떨어지지 않기를 기도하였노니 너는 돌이킨 후에 네 형제를 굳게 하라\"</mark>(눅 22:32). 예수님은 넘어질 제자를 위해 먼저 기도하셨고, 그가 돌아온 뒤에는 다른 형제들을 붙들어 주게 하셨습니다. 우리를 위해 자신을 내어 주신 주님의 은혜가 이제 우리를 통해 다른 사람에게 전해지는 것입니다.", "야고보서를 통해 우리는 많은 권면을 들었습니다. 성경을 공부하고 암송하고 함께 예배하는 일은 참 귀합니다. 그러나 어찌 보면 오늘의 교회에는 말씀과 예배가 넘쳐납니다. 정작 중요한 것은 <mark>넉넉히 들은 그 말씀이 배우자와의 관계, 자녀와의 관계, 어려움 속에서, 내 뜻이 이루어지지 않는 자리에서 삶으로 이어지는 것</mark>입니다. 이웃 사랑을 배웠다면 다가가고, 말의 죄를 깨달았다면 사과하고, 기도를 배웠다면 실제로 누군가를 위해 기도해야 합니다.", "로마서 12장 1절은 하나님의 자비를 받은 우리에게 <mark>\"너희 몸을 하나님이 기뻐하시는 거룩한 산 제물로 드리라 이는 너희가 드릴 영적 예배니라\"</mark>고 권합니다. 예배에서 고백한 믿음이 일상의 순종으로 이어지는 것입니다.", "오늘 <mark>한 사람의 이름을 떠올려 보십시오</mark>. 아픈 사람일 수도, 내가 상처 준 사람일 수도, 믿음의 길에서 멀어진 사람일 수도 있습니다. 그를 위해 기도하고, 연락하고, 지금 할 수 있는 돌봄을 한 가지 실천하십시오. 그리고 도움이 필요한 사람이 나 자신이라면, <mark>주저하지 말고 기도를 요청하십시오</mark>. 야고보서 읽기는 마치지만, 그 말씀을 살아내는 일은 계속되어야 합니다."], "points": ["오늘 우리의 믿음이 서로를 살리는 행동으로 드러나기를 바랍니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "어려울 때만이 아니라 기쁘고 감사할 때도 하나님께 찬송으로 나아가고 있는지 돌아봤다"}, {"key": "c2", "text": "혼자 감당하기 어려운 일을 숨기지 않고 '저를 위해 기도해 주세요'라고 요청할 수 있는지 점검했다"}, {"key": "c3", "text": "다른 사람의 고백이나 연약함을 소문으로 만들지 않고 기도로 품었는지 돌아봤다"}, {"key": "c4", "text": "믿음의 길에서 멀어진 사람을 비판하기 전에 먼저 기도하고 다가갔는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "오늘 떠오르는 한 사람(아픈 사람, 상처 준 사람, 멀어진 사람)은 누구이며, 그를 위해 무엇을 하겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "기도와 찬송", "value": "오늘 힘든 일은 기도로, 감사한 일은 찬송 한 곡으로 하나님께 올려 드리기"}, {"key": "act2", "label": "기도 요청", "value": "혼자 붙들고 있던 어려움을 믿을 만한 교회 식구에게 나누고 기도를 요청하기"}, {"key": "act3", "label": "병든 이 곁에", "value": "아픈 성도에게 연락하거나 찾아가 함께 기도하고, 필요한 돌봄 한 가지 실천하기"}, {"key": "act4", "label": "돌아오게 돕기", "value": "믿음의 길에서 멀어진 한 사람을 위해 기도하고 먼저 안부 연락하기"}, {"key": "act5", "label": "말씀 암송", "value": "야고보서 5:16을 외우며 서로 고백하고 서로 기도하는 공동체 되기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "넘어질 베드로를 위해 먼저 기도하셨듯 우리를 위해 기도하시고, 믿음의 길을 함께 걸을 교회 식구들을 주신 주님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "기쁠 때는 하나님을 잊고, 어려움은 혼자 숨기며, 다른 사람의 연약함을 소문으로 만들고, 진리를 떠난 이를 외면했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "야고보서의 말씀이 제 대화와 선택과 관계에서 살아나게 하시고, 서로 고백하고 서로 기도하며 길 잃은 이를 돌아오게 돕는 산 제물의 삶을 살게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 25, Lord's Day", "ref": "James 5:13–20", "headline": "On the Path of Faith,<br>Are You Holding On Alone?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · James 5:13-20", "s1heading": "Today's Word", "verse": "\"Therefore, confess your sins to one another<br>and pray for one another, that you may be healed.<br>The prayer of a righteous person<br>has great power as it is working.\"", "verseRef": "James 5:16", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Living Faith Holds One Another Up", "paragraphs": ["Today is the final passage of James. The letter began by describing how faith grows through trials, then gave concrete teaching that this faith must show in <mark>actions that help neighbors, words we use toward people, and how we handle desire and wealth</mark>. This never meant buying God's grace with deeds; it means that if faith in God is alive, it will surely bear fruit in life. The final words lead us on that same path. If earlier we were told to be patient in suffering, now we're urged to <mark>pray and hold one another up</mark>.", "God has given us people to walk the path of faith together — our church family. Today's central message: <mark>living faith relies on God and leads to a life that helps one another be restored.</mark> James repeatedly warned against words that harm people. Now he has that same mouth <mark>pray, sing praise, confess sin, and call those who've strayed to return</mark>. The Word we've learned leads to actions that give life. Through three exhortations today, let's examine whom our faith is moving for."], "points": ["Living faith relies on God and leads to a life that helps one another be restored. For whom is my faith moving?"]}, {"title": "Verse 13 · Pray in Suffering, Sing Praise in Joy", "paragraphs": ["Verse 13: <mark>\"Is anyone among you suffering? Let him pray. Is anyone cheerful? Let him sing praise.\"</mark> We tend to seek God when things are hard and forget Him when things go well. But God is the One we entrust our pain to, and the One with whom we share our joy and to whom we give thanks. 'Cheerful' here doesn't only mean every problem has been solved; even amid ongoing hardship there is courage and joy that God gives — and then too we remember the Lord and sing praise.", "James 1 told us to ask God for wisdom when we meet trials, and the last chapter points the same way: <mark>bring every circumstance of life to God, whether hard or joyful</mark>. Circumstances change, but the direction of our lives stays the same — toward God. If something is hard today, tell it to God as it is. If something is worth thanking Him for, don't let it slip by; offer it up with thanksgiving and praise. The content of our prayers may change with circumstances, but the direction of a life turned toward God must continue."], "points": ["If something is hard today, tell it to God as it is. If something calls for thanks, don't pass it by — offer it up in praise."]}, {"title": "Verses 14–18 · Care for the Sick, Confess Your Sins to One Another, and Pray", "paragraphs": ["Verse 14 tells the sick to <mark>call for the elders of the church</mark>, who come to pray over them, anointing them with oil in the Lord's name. Interpretations of the oil differ, but the center of the text isn't the oil — it's prayer that entrusts the sick person to the Lord's care. And there's an attitude to learn here: <mark>asking for help is also an act of faith</mark>. We may be used to helping others but find it hard to speak of our own difficulties. Yet when something is too much to bear alone, we must be able to say, 'Please pray for me.' And the community must hear that request and come alongside. Verse 15: <mark>\"The prayer of faith will save the one who is sick, and the Lord will raise him up.\"</mark> The church should believe the Lord can truly heal and pray earnestly — but only the Lord raises up. So we must never blame a patient's faith because recovery is slow. We pray expecting healing and entrust the timing and manner of the answer to the Lord, while continuing needed treatment and care. The verse also speaks of forgiveness of sins, but this doesn't mean every illness comes from a particular personal sin. Rather than searching out a sick person's hidden sins, we should stand beside them, relying on the Lord together.", "Verse 16 begins with \"therefore\": since the Lord raises up the sick and forgives sins, <mark>\"confess your sins to one another and pray for one another, that you may be healed.\"</mark> The scene of elders praying for one person widens into a whole community praying for one another. The key word is 'one another': I too must admit my wrongs and receive prayer, and when I hear another's confession, I must pray for them. Have you ever confessed like this? 'I spread that story. I was wrong.' 'My stubbornness hurt you. Please forgive me.' We should honestly apologize to the one we wronged and seek restoration within a trustworthy community. When confessions become gossip, people hide. When we listen, pray, and help set things right, the way to restoration opens. In verses 17–18, Elijah's story encourages such prayer: James stresses that Elijah was <mark>\"a man with a nature like ours\"</mark> — a man with weaknesses — yet he prayed, and God answered."], "points": ["The power of prayer isn't in how great we are, but in the God who hears and works. We need not give up prayer because of our weakness."]}, {"title": "Verses 19–20 · Don't Turn Away from Those Who Wander from the Truth", "paragraphs": ["Verse 19: <mark>\"My brothers, if anyone among you wanders from the truth and someone brings him back…\"</mark> Wandering from the truth doesn't simply mean attending church less. It means abandoning the truth of the gospel or living against its teaching. When there is such a person, James urges us to help them return. This isn't a task only for leaders; all of us must look after and help one another's faith. Before telling others about that person's wrong, <mark>we should first pray for them and go to them directly</mark> — listening to their story, gently sharing the Word they need, and seeking together the way back to God.", "Verse 20 says this act <mark>\"will save his soul from death and will cover a multitude of sins.\"</mark> James 1 said that sin, when fully grown, brings forth death; at the end, James has us help one another turn back from that road. It is God who saves, and He brings people back through our counsel and care. 'Covering sins' doesn't mean hiding wrongs; it means that <mark>a repentant person receives God's forgiveness</mark>."], "points": ["A heart that loves the truth must show itself in action that seeks the restoration of those who have wandered from it."]}, {"title": "Application · Our Reading of James Ends — Living It Out Continues", "paragraphs": ["Jesus knew Peter would deny Him, yet He said, <mark>\"I have prayed for you that your faith may not fail. And when you have turned again, strengthen your brothers\"</mark> (Luke 22:32). Jesus prayed first for the disciple who would fall, and after he returned, had him hold up his brothers. The grace of the Lord who gave Himself for us is passed on to others through us.", "Through James we've heard many exhortations. Studying Scripture, memorizing it, and worshiping together are truly precious. Yet in a sense, today's church overflows with sermons, worship services, and memorized verses. What really matters now is that <mark>the Word we've heard so abundantly carries over into life — in our relationships with spouses and children, in hardship, and where our own will isn't being done</mark>. God's Word and will must be revealed in our lives with living power. If we've learned to love our neighbor, we go to them; if we've realized our sins of speech, we apologize; if we've learned about prayer, we actually pray for someone.", "Romans 12:1 urges those who have received God's mercy: <mark>\"present your bodies as a living sacrifice, holy and acceptable to God, which is your spiritual worship.\"</mark> The faith confessed in worship continues as everyday obedience.", "Today, <mark>bring one person's name to mind</mark> — someone who is sick, someone you've hurt, or someone who has drifted from the path of faith. Pray for them, reach out, and do one act of care you can do now. And if the one who needs help is you, <mark>don't hesitate — ask for prayer</mark>. Our reading of James is ending, but living out its Word must continue."], "points": ["May our faith show itself today in actions that give life to one another."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I come to God with praise not only in hard times, but also when I'm joyful and thankful."}, {"key": "c2", "text": "I checked whether I can say 'Please pray for me' instead of hiding what's too much to carry alone."}, {"key": "c3", "text": "I reflected on whether I've held others' confessions and weaknesses in prayer rather than turning them into gossip."}, {"key": "c4", "text": "I checked whether I've prayed for and approached someone who drifted from faith before criticizing them."}], "s4heading": "One-Line Reflection", "memoHint": "Who is the one person who comes to mind today (someone sick, someone I've hurt, someone who has drifted), and what will I do for them?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Prayer and Praise", "value": "Offer today's hard things to God in prayer, and today's blessings in a song of praise"}, {"key": "act2", "label": "Ask for Prayer", "value": "Share a difficulty you've been carrying alone with a trustworthy church member and ask them to pray"}, {"key": "act3", "label": "Beside the Sick", "value": "Contact or visit a sick believer, pray together, and do one practical act of care"}, {"key": "act4", "label": "Help Them Return", "value": "Pray for someone who has drifted from faith and reach out first to check on them"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize James 5:16 and become a community that confesses to and prays for one another"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Lord, for praying for us as You prayed first for Peter who would fall, and for giving us a church family to walk the path of faith together."}, {"key": "p2", "tag": "Repent", "text": "I repent of forgetting You when times are good, hiding my struggles alone, turning others' weaknesses into gossip, and turning away from those who wandered from the truth."}, {"key": "p3", "tag": "Ask", "text": "Let the Word of James come alive in my conversations, choices, and relationships, and help me live as a living sacrifice — confessing to and praying for one another, and helping the lost return."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 25, Araw ng Panginoon", "ref": "Santiago 5:13–20", "headline": "Sa Landas ng Pananampalataya,<br>Mag-isa Ka Bang Nagtitiis?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Santiago 5:13-20", "s1heading": "Salita Ngayon", "verse": "\"Kaya ipahayag ninyo ang inyong mga kasalanan sa isa't isa<br>at ipanalangin ang isa't isa upang kayo'y gumaling.<br>Malaki ang kapangyarihan ng panalangin<br>ng taong matuwid habang ito'y gumagawa.\"", "verseRef": "Santiago 5:16", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ang Buhay na Pananampalataya ay Umaalalay sa Isa't Isa", "paragraphs": ["Ngayon ang huling bahagi ng Santiago. Nagsimula ang sulat sa paglalarawan kung paano lumalago ang pananampalataya sa pagsubok, at nagbigay ng kongkretong turo na dapat makita ang pananampalatayang ito sa <mark>mga gawang tumutulong sa kapwa, mga salitang ginagamit natin sa tao, at paraan ng paghawak natin sa pagnanasa at kayamanan</mark>. Hindi kailanman nangahulugan ito ng pagbili ng biyaya ng Diyos sa pamamagitan ng gawa; nangangahulugan ito na kung buhay ang pananampalataya sa Diyos, tiyak itong mamumunga sa buhay. Inaakay tayo ng huling mga salita sa parehong landas. Kung dati'y sinabihan tayong magtiyaga sa pagdurusa, ngayon ay hinihimok tayong <mark>manalangin at alalayan ang isa't isa</mark>.", "Binigyan tayo ng Diyos ng mga taong kasama sa paglalakad sa landas ng pananampalataya — ang ating pamilya sa iglesia. Ang pangunahing mensahe ngayon: <mark>ang buhay na pananampalataya ay umaasa sa Diyos at humahantong sa buhay na tumutulong sa pagpapanumbalik ng isa't isa.</mark> Paulit-ulit na nagbabala si Santiago laban sa mga salitang nakasasakit. Ngayon, pinagagamit niya ang parehong bibig upang <mark>manalangin, umawit ng papuri, magtapat ng kasalanan, at tawagin pabalik ang mga naligaw</mark>. Humahantong ang Salitang natutunan natin sa mga gawang nagbibigay-buhay. Sa pamamagitan ng tatlong payo ngayon, suriin natin kung para kanino kumikilos ang ating pananampalataya."], "points": ["Ang buhay na pananampalataya ay umaasa sa Diyos at humahantong sa buhay na tumutulong sa pagpapanumbalik ng isa't isa. Para kanino kumikilos ang aking pananampalataya?"]}, {"title": "Talata 13 · Manalangin sa Pagdurusa, Umawit ng Papuri sa Kagalakan", "paragraphs": ["Talata 13: <mark>\"May nagdurusa ba sa inyo? Manalangin siya. May masaya ba? Umawit siya ng papuri.\"</mark> Madalas nating hanapin ang Diyos kapag mahirap at kalimutan Siya kapag maayos. Ngunit ang Diyos ang pinagkakatiwalaan natin ng ating sakit, at Siya rin ang kasama nating nagbabahagi ng kagalakan at pinasasalamatan. Ang 'masaya' dito ay hindi lamang nangangahulugang nalutas na ang bawat problema; kahit sa gitna ng patuloy na paghihirap ay may lakas ng loob at kagalakang ibinibigay ng Diyos — at doon din ay inaalala natin ang Panginoon at umaawit ng papuri.", "Sinabi ng Santiago 1 na humingi ng karunungan sa Diyos kapag dumaranas ng pagsubok, at ganoon din ang direksyon ng huling kabanata: <mark>dalhin sa Diyos ang bawat kalagayan ng buhay, mahirap man o masaya</mark>. Nagbabago ang kalagayan, ngunit nananatili ang direksyon ng ating buhay — patungo sa Diyos. Kung may mahirap ngayon, sabihin ito sa Diyos kung ano ito. Kung may dapat ipagpasalamat, huwag itong palampasin; ialay ito nang may pasasalamat at papuri. Maaaring magbago ang laman ng ating panalangin ayon sa kalagayan, ngunit dapat magpatuloy ang direksyon ng buhay na nakaharap sa Diyos."], "points": ["Kung may mahirap ngayon, sabihin ito sa Diyos kung ano ito. Kung may dapat ipagpasalamat, huwag itong lampasan — ialay ito sa papuri."]}, {"title": "Talata 14–18 · Alagaan ang May Sakit, Ipahayag ang Kasalanan sa Isa't Isa, at Manalangin", "paragraphs": ["Sinasabi ng talata 14 sa may sakit na <mark>tawagin ang matatanda ng iglesia</mark>, na darating upang ipanalangin siya, pinapahiran ng langis sa pangalan ng Panginoon. Iba-iba ang interpretasyon sa langis, ngunit ang sentro ng teksto ay hindi ang langis — kundi ang panalanging ipinagkakatiwala ang may sakit sa pag-aalaga ng Panginoon. At may saloobing dapat matutunan dito: <mark>ang paghingi ng tulong ay gawa rin ng pananampalataya</mark>. Maaaring sanay tayong tumulong sa iba ngunit nahihirapang magsalita tungkol sa sarili nating paghihirap. Gayunman, kapag sobrang bigat nang pasanin nang mag-isa, dapat nating masabing, 'Pakiusap, ipanalangin mo ako.' At dapat itong marinig ng komunidad at lumapit. Talata 15: <mark>\"Ililigtas ng panalangin ng pananampalataya ang may sakit, at ibabangon siya ng Panginoon.\"</mark> Dapat maniwala ang iglesia na tunay na makapagpapagaling ang Panginoon at manalangin nang taimtim — ngunit ang Panginoon lamang ang nagbabangon. Kaya hindi natin dapat sisihin ang pananampalataya ng pasyente dahil mabagal ang paggaling. Nananalangin tayo nang umaasa sa paggaling at ipinagkakatiwala sa Panginoon ang panahon at paraan ng sagot, habang ipinagpapatuloy ang kinakailangang gamutan at pag-aalaga. Binabanggit din ng talata ang kapatawaran ng kasalanan, ngunit hindi ito nangangahulugang ang bawat sakit ay mula sa isang partikular na personal na kasalanan. Sa halip na hanapin ang nakatagong kasalanan ng may sakit, dapat tayong tumayo sa tabi niya, sama-samang umaasa sa Panginoon.", "Nagsisimula ang talata 16 sa \"kaya\": dahil ibinabangon ng Panginoon ang may sakit at pinatatawad ang kasalanan, <mark>\"ipahayag ninyo ang inyong mga kasalanan sa isa't isa at ipanalangin ang isa't isa upang kayo'y gumaling.\"</mark> Lumalawak ang eksena ng matatandang nananalangin para sa isang tao tungo sa buong komunidad na nananalangin para sa isa't isa. Ang susing salita ay 'isa't isa': ako rin ay dapat umamin ng mali at tumanggap ng panalangin, at kapag narinig ko ang pagtatapat ng iba, dapat ko siyang ipanalangin. Nakapagtapat ka na ba nang ganito? 'Ako ang nagkalat ng kwentong iyon. Mali ako.' 'Nasaktan kita dahil sa aking katigasan ng ulo. Patawarin mo ako.' Dapat tayong tapat na humingi ng tawad sa ating nagawan ng mali at hanapin ang pagpapanumbalik sa loob ng mapagkakatiwalaang komunidad. Kapag naging tsismis ang pagtatapat, nagtatago ang tao. Kapag nakikinig tayo, nananalangin, at tumutulong na ituwid ang mga bagay, nabubuksan ang daan ng pagpapanumbalik. Sa talata 17–18, hinihikayat ng kwento ni Elias ang ganitong panalangin: idiniin ni Santiago na si Elias ay <mark>\"taong may likas na tulad natin\"</mark> — taong may kahinaan — ngunit nanalangin siya, at sumagot ang Diyos."], "points": ["Ang kapangyarihan ng panalangin ay wala sa kung gaano tayo kadakila, kundi sa Diyos na nakikinig at gumagawa. Hindi natin kailangang isuko ang panalangin dahil sa ating kahinaan."]}, {"title": "Talata 19–20 · Huwag Talikuran ang mga Lumalayo sa Katotohanan", "paragraphs": ["Talata 19: <mark>\"Mga kapatid ko, kung ang sinuman sa inyo ay lumayo sa katotohanan at may nagpabalik sa kanya…\"</mark> Ang paglayo sa katotohanan ay hindi lamang nangangahulugang madalang nang dumalo sa iglesia. Nangangahulugan itong pagtalikod sa katotohanan ng ebanghelyo o pamumuhay na salungat sa turo nito. Kapag may ganitong tao, hinihimok tayo ni Santiago na tulungan siyang bumalik. Hindi ito gawain ng mga pinuno lamang; lahat tayo ay dapat mag-alaga at tumulong sa pananampalataya ng isa't isa. Bago ikuwento sa iba ang mali ng taong iyon, <mark>dapat muna natin siyang ipanalangin at lapitan nang tuwiran</mark> — pakinggan ang kanyang kwento, mahinahong ibahagi ang Salitang kailangan niya, at sama-samang hanapin ang daan pabalik sa Diyos.", "Sinasabi ng talata 20 na ang gawang ito ay <mark>\"magliligtas sa kanyang kaluluwa mula sa kamatayan at magtatakip sa maraming kasalanan.\"</mark> Sinabi ng Santiago 1 na ang kasalanan, kapag lumaki na, ay nagsisilang ng kamatayan; sa wakas, pinatutulong tayo ni Santiago sa isa't isa na tumalikod sa daang iyon. Ang Diyos ang nagliligtas, at ibinabalik Niya ang tao sa pamamagitan ng ating payo at pag-aalaga. Ang 'pagtatakip sa kasalanan' ay hindi pagtatago ng mali; nangangahulugan itong <mark>tumatanggap ng kapatawaran ng Diyos ang taong nagsisi</mark>."], "points": ["Ang pusong umiibig sa katotohanan ay dapat makita sa gawang naghahangad ng pagpapanumbalik ng mga lumayo rito."]}, {"title": "Aplikasyon · Natatapos ang Pagbasa Natin sa Santiago — Nagpapatuloy ang Pagsasabuhay Nito", "paragraphs": ["Alam ni Jesus na itatatwa Siya ni Pedro, ngunit sinabi Niya, <mark>\"Ipinanalangin kita na hindi manghina ang iyong pananampalataya. At kapag nagbalik-loob ka na, palakasin mo ang iyong mga kapatid\"</mark> (Lucas 22:32). Unang ipinanalangin ni Jesus ang alagad na madadapa, at pagkatapos niyang bumalik, pinaalalayan siya sa kanyang mga kapatid. Naipapasa sa iba sa pamamagitan natin ang biyaya ng Panginoong nagbigay ng Kanyang sarili para sa atin.", "Sa pamamagitan ng Santiago, nakarinig tayo ng maraming payo. Tunay na mahalaga ang pag-aaral ng Kasulatan, pagsasaulo nito, at sama-samang pagsamba. Gayunman, sa isang banda, umaapaw sa sermon, pagsamba, at isinaulong talata ang iglesia ngayon. Ang tunay na mahalaga ngayon ay <mark>madala sa buhay ang Salitang saganang narinig natin — sa relasyon sa asawa at mga anak, sa paghihirap, at kung saan hindi nangyayari ang ating kalooban</mark>. Dapat maihayag sa ating buhay ang Salita at kalooban ng Diyos nang may buhay na kapangyarihan. Kung natutunan nating ibigin ang kapwa, lalapitan natin sila; kung napagtanto natin ang ating kasalanan sa pananalita, hihingi tayo ng tawad; kung natutunan natin ang panalangin, tunay nating ipapanalangin ang isang tao.", "Hinihimok ng Roma 12:1 ang mga tumanggap ng habag ng Diyos: <mark>\"ihandog ninyo ang inyong katawan bilang buhay na handog, banal at kalugud-lugod sa Diyos, na siyang inyong espirituwal na pagsamba.\"</mark> Nagpapatuloy bilang araw-araw na pagsunod ang pananampalatayang ipinahayag sa pagsamba.", "Ngayon, <mark>alalahanin ang pangalan ng isang tao</mark> — isang may sakit, isang nasaktan mo, o isang lumayo sa landas ng pananampalataya. Ipanalangin siya, makipag-ugnayan, at gumawa ng isang gawa ng pag-aalaga na kaya mo ngayon. At kung ikaw mismo ang nangangailangan ng tulong, <mark>huwag mag-atubili — humingi ng panalangin</mark>. Natatapos ang ating pagbasa sa Santiago, ngunit dapat magpatuloy ang pagsasabuhay ng Salita nito."], "points": ["Nawa'y makita ngayon ang ating pananampalataya sa mga gawang nagbibigay-buhay sa isa't isa."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung lumalapit ako sa Diyos nang may papuri hindi lamang sa mahihirap na panahon, kundi pati kapag masaya at nagpapasalamat."}, {"key": "c2", "text": "Sinuri ko kung kaya kong sabihing 'Pakiusap, ipanalangin mo ako' sa halip na itago ang sobrang bigat na pasanin nang mag-isa."}, {"key": "c3", "text": "Pinag-isipan ko kung hinawakan ko sa panalangin ang pagtatapat at kahinaan ng iba sa halip na gawing tsismis."}, {"key": "c4", "text": "Sinuri ko kung ipinanalangin at nilapitan ko muna ang taong lumayo sa pananampalataya bago siya punahin."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sino ang isang taong naaalala ko ngayon (may sakit, nasaktan ko, lumayo), at ano ang gagawin ko para sa kanya?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Panalangin at Papuri", "value": "Ialay sa Diyos ang mahihirap ngayon sa panalangin, at ang mga pagpapala ngayon sa isang awit ng papuri"}, {"key": "act2", "label": "Humingi ng Panalangin", "value": "Ibahagi sa isang mapagkakatiwalaang kapwa sa iglesia ang paghihirap na mag-isa mong pinapasan at hilinging ipanalangin ka"}, {"key": "act3", "label": "Sa Tabi ng May Sakit", "value": "Makipag-ugnayan o dalawin ang isang may sakit na mananampalataya, manalangin nang sama-sama, at gumawa ng isang praktikal na pag-aalaga"}, {"key": "act4", "label": "Tulungang Bumalik", "value": "Ipanalangin ang isang lumayo sa pananampalataya at unang makipag-ugnayan upang kumustahin siya"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Santiago 5:16 at maging komunidad na nagtatapat at nananalangin para sa isa't isa"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Panginoon, sa pananalangin Mo para sa amin gaya ng una Mong pananalangin kay Pedro na madadapa, at sa pagbibigay sa amin ng pamilya sa iglesia na kasama sa paglalakad sa landas ng pananampalataya."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa paglimot sa Iyo kapag maayos ang panahon, sa pagtatago ng aking pakikibaka nang mag-isa, sa paggawa ng tsismis sa kahinaan ng iba, at sa pagtalikod sa mga lumayo sa katotohanan."}, {"key": "p3", "tag": "Kahilingan", "text": "Hayaang mabuhay ang Salita ng Santiago sa aking mga usapan, pasya, at relasyon, at tulungan Mo akong mamuhay bilang buhay na handog — nagtatapat at nananalangin para sa isa't isa, at tumutulong sa mga naligaw na bumalik."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-25';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
