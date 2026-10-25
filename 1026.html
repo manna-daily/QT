@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/26(월) 큐티 · 시편 16:1–11">
+<meta property="og:description" content="나는 무엇을 가장 큰 복으로 여기고 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 26일 월요일", "ref": "시편 16편 1–11절", "headline": "나는 무엇을<br>가장 큰 복으로 여기고 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 16:1-11", "s1heading": "오늘의 말씀", "verse": "\"내가 여호와께 아뢰되<br>주는 나의 주님이시오니<br>주 밖에는 나의 복이 없다 하였나이다\"", "verseRef": "시편 16:2", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 모든 것이 흔들릴 때에도 우리를 붙드는 복", "paragraphs": ["여러분은 무엇이 있을 때 \"나는 참 복 있는 사람이다\"라고 생각하십니까? 건강할 때, 일이 잘 풀릴 때, 사랑하는 가족이 평안할 때일 것입니다. 모두 감사한 복입니다. 그런데 그것들이 흔들릴 때에도 우리를 붙들어 줄 복은 무엇일까요? 오늘 시편의 중심은 분명합니다. <mark>하나님 자신이 우리의 가장 큰 복이십니다</mark>.", "시편 15편이 누가 하나님 앞에 머물 수 있는지 묻고 그의 정직한 말과 삶을 보여 준다면, 16편은 <mark>하나님 앞에 사는 사람이 누구를 의지하며 무엇을 기뻐하는지</mark>를 보여 줍니다. 다윗은 \"나를 지켜 주소서\"라는 기도로 시작해, 하나님을 자신의 기업이라 고백하고, 마침내 하나님 앞의 영원한 기쁨을 바라봅니다."], "points": ["나는 지금 무엇을 나의 가장 큰 복으로 여기며 살고 있습니까?"]}, {"title": "1–4절 · \"주 밖에는 나의 복이 없다\"", "paragraphs": ["<mark>\"하나님이여 나를 지켜 주소서 내가 주께 피하나이다\"</mark>. 믿음이 있어도 위협을 느끼고 두려울 수 있습니다. 다윗은 그 자리에서 하나님께 피합니다. 그리고 고백합니다. <mark>\"주는 나의 주님이시오니 주 밖에는 나의 복이 없다\"</mark>. 보호를 구하던 사람이 하나님 자신을 복이라 선언합니다. 하나님께 받은 선물도 귀하지만, 그 선물의 근원이신 하나님과 함께하는 것이 가장 큰 복입니다. 우리의 기도도 문제 해결을 구하는 데서, 그 문제 속에서 <mark>나를 붙드시는 하나님이 어떤 분인지 배워 가는 데까지</mark> 깊어질 수 있습니다.", "다윗은 하나님의 백성을 <mark>\"존귀한 자들\"</mark>로 여기며 기뻐하고, 다른 신에게 예배하는 일은 거절합니다. 하나님이 주님이시라는 고백이 관계와 예배와 선택으로 나타나는 것입니다. 함께 믿는 사람을 비교하고 평가하기 쉽지만, 하나님을 복으로 여긴다면 하나님이 귀히 여기시는 사람도 귀하게 대해야 합니다. 또 돈이나 사람의 인정이 내 삶을 최종적으로 보장해 줄 것처럼 <mark>하나님 자리에 놓고 있지 않은지</mark> 살펴야 합니다."], "points": ["하나님께 속한 것을 기뻐하는 마음이, 하나님께 충성하는 삶을 자라게 합니다."]}, {"title": "5–6절 · 주님이 나의 기업이시기에 내게 주신 몫을 기뻐합니다", "paragraphs": ["<mark>\"여호와는 나의 산업과 나의 잔의 소득이시니 나의 분깃을 지키시나이다\"</mark>. 산업과 분깃은 자신에게 주어진 몫, 당시로 말하면 먹고 살 기반이자 미래의 터전인 물려받은 땅입니다. 다윗은 그 말로 <mark>하나님이 자신의 삶을 지탱하시는 기업</mark>이라고 고백합니다. 우리는 내가 얼마나 가졌는지를 보며 안심하기도, 불안해하기도 합니다. 그러나 다윗은 자신의 삶을 붙드시는 하나님을 바라봅니다.", "<mark>\"내게 줄로 재어 준 구역은 아름다운 곳에 있음이여 나의 기업이 실로 아름답도다\"</mark>. 모든 환경이 마음에 들었다는 뜻이 아니라, 하나님과 함께하는 삶의 가치를 알기에 자신의 몫을 아름답다고 고백하는 것입니다. 우리도 다른 사람의 몫을 바라보느라 내게 함께하시는 하나님을 잊을 때가 있습니다."], "points": ["만족은 내가 가진 것을 세는 동안에도, 나와 함께하시는 하나님을 기억할 때 더 깊어집니다."]}, {"title": "7–8절 · 주님이 나를 가르치시고 곁에 계시기에 흔들리지 않습니다", "paragraphs": ["<mark>\"나를 훈계하신 여호와를 송축할지라 밤마다 내 양심이 나를 교훈하도다\"</mark>. 하나님은 우리의 필요를 돌보실 뿐 아니라 걸어갈 방향을 가르치십니다. 하나님을 복으로 여기는 사람은 그분의 교훈도 귀하게 받습니다. 내 생각을 돌아보게 하시고 잘못된 길에서 돌이키게 하실 때에도 귀를 기울입니다. 오늘 고민하는 결정 하나를 하나님 앞에 놓고, 무엇이 더 편리하고 이익인지와 함께 <mark>무엇이 하나님이 기뻐하시는 길인지</mark>도 물어보십시오.", "<mark>\"내가 여호와를 항상 내 앞에 모심이여 그가 나의 오른쪽에 계시므로 내가 흔들리지 아니하리로다\"</mark>. 흔들리지 않는 근거는 곁에서 도우시는 하나님입니다. 믿는 사람에게 두려움이나 동요가 전혀 없다는 뜻이 아니라, 흔들리는 상황 속에서도 자신을 붙드시는 하나님만 의지한다는 고백입니다."], "points": ["믿음의 성숙은 내 강함을 증명하는 데서가 아니라, 내가 누구의 도움으로 서 있는지 더 분명히 아는 데서 드러납니다."]}, {"title": "9–11절 · 주님이 나를 버리지 않으시기에 영원한 기쁨을 소망합니다", "paragraphs": ["<mark>\"이러므로 나의 마음이 기쁘고 나의 영도 즐거워하며 내 육체도 안전히 살리니\"</mark>. 하나님이 분깃이시고, 가르치시며, 곁에 계시기에 다윗은 기뻐하고 안전을 확신합니다. 그 이유는 <mark>\"주께서 내 영혼을 스올에 버리지 아니하시며 주의 거룩한 자를 멸망시키지 않으실 것\"</mark>이기 때문입니다. 오늘 자신을 붙드시는 하나님의 신실하심에 미래까지 맡기는 고백입니다. 그리고 이 말씀의 성취는 <mark>예수님의 부활</mark>로 밝히 드러났습니다. 베드로와 바울은 다윗은 죽어 장사되었지만, 예수님은 하나님이 다시 살리셔서 썩음을 당하지 않으셨다고 선포합니다(행 2, 13장).", "<mark>\"주께서 생명의 길을 내게 보이시리니 주의 앞에는 충만한 기쁨이 있고 주의 오른쪽에는 영원한 즐거움이 있나이다\"</mark>. \"나를 지켜 주소서\"로 시작한 시가 하나님 앞의 영원한 기쁨으로 마침표를 찍습니다. 다윗이 바라보는 기쁨의 중심에는 처음부터 끝까지 하나님이 계십니다. 그 기쁨은 <mark>오늘 하나님과 동행하며 누리기 시작하는 기쁨</mark>이며, 부활 안에서 죽음을 넘어 하나님과 함께할 생명을 소망하게 합니다."], "points": ["부활하신 주님께 속한 우리에게도 죽음은 마지막이 아닙니다."]}, {"title": "적용 · \"주님, 주님이 나의 가장 큰 복이십니다\"", "paragraphs": ["처음의 질문으로 돌아가 봅시다. 나는 지금 무엇을 가장 큰 복으로 여기며 살아가고 있습니까? 시편 16편에서 다윗의 대답은 <mark>하나님</mark>입니다. 하나님이 복이시기에 다른 신을 따르지 않았고, 하나님이 기업이시기에 자신의 몫을 기뻐했으며, 하나님이 곁에 계시기에 그 가르침을 따라 걸으며 미래도 맡겼습니다.", "우리에게도 이 고백을 붙들 은혜가 주어졌습니다. <mark>예수님이 우리를 위해 죽으시고 다시 살아나셨습니다</mark>. 그분을 통해 우리는 하나님께 나아가며, 하나님과 함께하는 생명을 누립니다. 그러므로 우리의 순종과 감사는 이 은혜에 대한 응답입니다.", "오늘 내가 마음을 맡기고 있는 것이 무엇인지 살펴보십시오. 건강, 돈, 사람의 인정, 일의 성과가 <mark>하나님의 자리에 있지는 않습니까?</mark> 그것들은 감사한 선물이지만, 흔들릴 때 우리를 끝까지 붙들어 주지는 못합니다. 그 선물의 근원이신 하나님이 우리의 분깃이십니다.", "오늘 감사할 것 하나를 찾아 하나님께 올려 드리고, 그 감사가 <mark>선물을 주신 하나님 자신을 기뻐하는 자리</mark>까지 이어지게 하십시오. 그리고 이렇게 고백하며 하루를 시작하십시오. \"주님, 주님이 나의 가장 큰 복이십니다. 오늘도 주님을 의지하며, 나의 내일도 주님께 맡깁니다.\""], "points": ["주님이 나의 가장 큰 복이시기에, 오늘을 의지하며 살고 내일도 소망할 수 있습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "건강, 돈, 인정, 성과 같은 선물을 하나님보다 더 큰 복으로 여기고 있지 않은지 돌아봤다"}, {"key": "c2", "text": "함께 믿는 사람들을 비교하고 평가하기보다 존귀한 자로 대하고 있는지 점검했다"}, {"key": "c3", "text": "다른 사람의 몫을 부러워하느라 내게 함께하시는 하나님을 잊고 있지 않은지 돌아봤다"}, {"key": "c4", "text": "오늘의 결정 앞에서 편리함과 이익뿐 아니라 하나님이 기뻐하시는 길을 물었는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "요즘 내가 하나님보다 더 의지하거나 기뻐하고 있는 것은 무엇이며, 오늘 그것을 어떻게 하나님 앞에 내려놓겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "하나님이 나의 복", "value": "아침에 '주 밖에는 나의 복이 없습니다'라고 고백하며 하루를 시작하기"}, {"key": "act2", "label": "감사 찾기", "value": "오늘 감사한 일 세 가지를 적고, 그 선물을 주신 하나님 자체를 기뻐하며 기도하기"}, {"key": "act3", "label": "존귀하게 대하기", "value": "비교하거나 평가하던 믿음의 동역자 한 사람에게 존중과 격려의 말 전하기"}, {"key": "act4", "label": "결정 앞에서", "value": "고민 중인 결정 하나를 놓고 '하나님이 기뻐하시는 길은 무엇인가'를 먼저 기도로 묻기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 16:2와 8절을 외우며 흔들리는 순간마다 오른쪽에 계신 주님을 기억하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "나의 분깃이 되시고 오른쪽에서 나를 붙드시며, 예수님의 부활로 죽음을 넘어선 생명의 길을 보여 주시는 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "하나님이 주신 선물을 하나님보다 더 큰 복으로 여기고, 다른 사람의 몫을 부러워하며, 돈과 인정을 하나님 자리에 두었던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "주님만이 나의 가장 큰 복임을 날마다 고백하게 하시고, 주님의 교훈을 따라 흔들림 없이 걸으며, 오늘을 의지하고 내일도 주님께 맡기게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 26, Monday", "ref": "Psalm 16:1–11", "headline": "What Do I Consider<br>My Greatest Blessing?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 16:1-11", "s1heading": "Today's Word", "verse": "\"I say to the LORD,<br>'You are my Lord;<br>I have no good apart from You.'\"", "verseRef": "Psalm 16:2", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · The Blessing That Holds Us When Everything Else Shakes", "paragraphs": ["When do you think, 'I am truly blessed'? When you're healthy? When things are going well? When your loved ones are at peace? All of these are blessings to be thankful for. But what blessing will hold us when those things shake? The center of today's psalm is clear: <mark>God Himself is our greatest blessing.</mark> Because God is our blessing, we can live today relying on Him and hope for tomorrow.", "Psalms 15 and 16 are independent poems, but read side by side, a connection appears. Psalm 15 asks who may dwell in God's presence and shows that person's honest words and life. Psalm 16 shows <mark>whom a person who lives before God relies on and what they delight in</mark>. David prays for God to keep him, but his confession deepens beyond seeking protection: he confesses God as his inheritance and finally looks to everlasting joy in God's presence. Today, ask yourself: What am I living as though it were my greatest blessing? Let's follow David's confession with this question, in four movements."], "points": ["What am I living as though it were my greatest blessing right now?"]}, {"title": "Verses 1–4 · \"I Have No Good Apart from You\"", "paragraphs": ["In verse 1 David prays, <mark>\"Preserve me, O God, for in You I take refuge.\"</mark> Seeking protection means acknowledging that we need God's help. Even with faith we can feel threatened and afraid, and in that place David takes refuge in God. Then in verse 2 he confesses, <mark>\"You are my Lord; I have no good apart from You.\"</mark> The one who asked to be kept now declares that God Himself is his good. The gifts we receive from God are precious — and David knows that being with God, the source of those gifts, is his greatest blessing. Our prayers can deepen in the same way: while asking God to solve a problem, we learn <mark>who God is as He holds us within that problem</mark>.", "In verse 3 David honors and delights in God's people — <mark>\"the saints in the land are the excellent ones.\"</mark> In verse 4 he refuses to worship other gods. The confession that God is his Lord shows up in his relationships, worship, and choices. Loving God also shows in how we treat those who belong to God; the love we receive enables us to love our neighbors. It's easy to compare and evaluate fellow believers. But if we count God as our blessing, we must also treat as precious those God treasures. And we must not put anything else that seems to protect us <mark>in God's place</mark>. Examine whether you've entrusted your heart to the idea that money or people's approval can ultimately guarantee your life."], "points": ["A heart that delights in what belongs to God grows a life of loyalty to God."]}, {"title": "Verses 5–6 · Because the Lord Is My Inheritance, I Delight in the Portion He Gives", "paragraphs": ["Verse 5: <mark>\"The LORD is my chosen portion and my cup; You hold my lot.\"</mark> 'Portion' and 'lot' mean one's allotted share. For people then, inherited land was the foundation for making a living and for the future. David uses that language to confess that <mark>God is the precious inheritance who sustains his life</mark>. We often feel secure or anxious depending on how much we have. But David looks to the God who holds his life, firmly trusting that God cares for his needs and holds his future too.", "Verse 6's <mark>\"The lines have fallen for me in pleasant places; indeed, I have a beautiful inheritance\"</mark> recalls the measuring lines used to mark land boundaries. David calls his inheritance beautiful because he has just confessed that God is his portion. We needn't read this as saying he liked all his circumstances; it's because he knows the worth of a life with God that he calls his inheritance beautiful. We too sometimes forget the God who is with us because we're busy looking at other people's portions. Look today for things to be thankful for — and let that gratitude lead all the way to delighting in the God who gave the gifts."], "points": ["Contentment deepens when, even while counting what I have, I remember the God who is with me."]}, {"title": "Verses 7–8 · Because the Lord Teaches Me and Stands Beside Me, I Will Not Be Shaken", "paragraphs": ["In verse 7 David praises the God who counsels him: <mark>\"I bless the LORD who gives me counsel; in the night also my heart instructs me.\"</mark> Even at night he takes that instruction to heart. God not only cares for our needs but also teaches us the direction to walk. So those who count God as their blessing also receive His instruction as precious. They listen even when He makes them reconsider their thinking or turn from a wrong path. Place before God one decision you're wrestling with today. Along with what's more convenient or profitable, seriously ask <mark>which path pleases God</mark>.", "Verse 8: <mark>\"I have set the LORD always before me; because He is at my right hand, I shall not be shaken.\"</mark> His confidence has a clear basis: God is at his right hand. The God who helps from beside him is the ground of his stability. This doesn't mean believers never feel fear or turmoil; it's a confession of relying only on the God who holds us even in shaking circumstances. Rather than striving to prove our own strength, we must remember by whose help we stand."], "points": ["Spiritual maturity shows not in proving my strength, but in knowing ever more clearly by whose help I stand."]}, {"title": "Verses 9–11 · Because the Lord Will Not Abandon Me, I Hope for Everlasting Joy", "paragraphs": ["Verse 9 begins with <mark>\"Therefore\"</mark>: because God is his portion, teaches him, and stands beside him, David rejoices and is confident of safety — <mark>\"my heart is glad, and my whole being rejoices; my flesh also dwells secure.\"</mark> Verse 10 gives the reason: <mark>\"For You will not abandon my soul to Sheol, or let Your holy one see corruption.\"</mark> This confession expresses trust that God will not leave him to death — entrusting even his future to the faithfulness of the God who holds him today. And the fulfillment of this Word was clearly shown in <mark>the resurrection of Jesus</mark>. Peter and Paul proclaim that David died and was buried, but Jesus, whom God raised, did not see corruption (Acts 2, 13). Our hope rests on the fact that Jesus truly conquered death and rose. For us who belong to the risen Lord, death is not the end either.", "Verse 11: <mark>\"You make known to me the path of life; in Your presence there is fullness of joy; at Your right hand are pleasures forevermore.\"</mark> The psalm that began with 'Preserve me' ends with everlasting joy in God's presence. At the center of the joy David looks to is God, from beginning to end. It is <mark>a joy that begins now as we walk with God</mark>, and in Jesus' resurrection it makes us hope for life with God beyond death. Today's guidance and tomorrow's hope are joined by the faithfulness of the one God, and that hope has been confirmed in Jesus' resurrection."], "points": ["For us who belong to the risen Lord, death is not the end."]}, {"title": "Application · \"Lord, You Are My Greatest Blessing\"", "paragraphs": ["Let's return to the question we began with: What are you living as though it were your greatest blessing? In Psalm 16, David's answer is <mark>God</mark>. Because God was his blessing, he didn't follow other gods. Because God was his inheritance, he rejoiced in his portion. Because God was beside him, he walked by His teaching and entrusted his future to Him.", "We too have been given grace to hold onto this confession. <mark>Jesus died for us and rose again.</mark> Through Him we come to God and enjoy life with God. So our obedience and gratitude are responses to this grace.", "Examine what you're entrusting your heart to today. Are health, money, people's approval, or the results of your work <mark>sitting in God's place</mark>? They are gifts to be grateful for, but when they shake, they can't hold us to the end. The God who is the source of those gifts is our portion.", "Find one thing to be thankful for today and offer it to God, and let that gratitude lead all the way to <mark>delighting in God Himself, the Giver</mark>. And begin your day with this confession: 'Lord, You are my greatest blessing. Today I rely on You, and I entrust my tomorrow to You.'"], "points": ["Because the Lord is my greatest blessing, I can live today relying on Him and hope for tomorrow."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I treat gifts like health, money, approval, or achievement as greater blessings than God."}, {"key": "c2", "text": "I checked whether I treat fellow believers as 'excellent ones' rather than comparing and evaluating them."}, {"key": "c3", "text": "I reflected on whether I'm forgetting the God who is with me because I'm envying others' portions."}, {"key": "c4", "text": "I checked whether, facing today's decisions, I asked not only about convenience and profit but about the path that pleases God."}], "s4heading": "One-Line Reflection", "memoHint": "What am I relying on or delighting in more than God these days, and how will I lay it down before Him today?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "God Is My Good", "value": "Begin the day confessing, 'I have no good apart from You'"}, {"key": "act2", "label": "Find Thanks", "value": "Write down three things you're thankful for today, and pray, delighting in God Himself who gave them"}, {"key": "act3", "label": "Treat as Precious", "value": "Offer words of respect and encouragement to a fellow believer you've been comparing or evaluating"}, {"key": "act4", "label": "Before a Decision", "value": "For a decision you're wrestling with, first ask in prayer, 'What path pleases God?'"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 16:2 and 8, and in every shaken moment remember the Lord at your right hand"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for being my portion, holding me at my right hand, and showing me through Jesus' resurrection the path of life beyond death."}, {"key": "p2", "tag": "Repent", "text": "I repent of treating Your gifts as greater blessings than You, of envying others' portions, and of putting money and approval in Your place."}, {"key": "p3", "tag": "Ask", "text": "Help me confess daily that You alone are my greatest blessing, walk unshaken by Your counsel, rely on You today, and entrust my tomorrow to You."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 26, Lunes", "ref": "Awit 16:1–11", "headline": "Ano ang Itinuturing Kong<br>Pinakadakilang Pagpapala?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 16:1-11", "s1heading": "Salita Ngayon", "verse": "\"Sinabi ko kay Yahweh,<br>'Ikaw ang aking Panginoon;<br>wala akong mabuti maliban sa Iyo.'\"", "verseRef": "Awit 16:2", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ang Pagpapalang Humahawak sa Atin Kapag Umuuga ang Lahat", "paragraphs": ["Kailan mo naiisip na, 'Tunay akong pinagpala'? Kapag malusog ka? Kapag maayos ang takbo ng mga bagay? Kapag payapa ang iyong mga mahal sa buhay? Lahat ng ito ay pagpapalang dapat ipagpasalamat. Ngunit anong pagpapala ang hahawak sa atin kapag umuga ang mga iyon? Malinaw ang sentro ng awit ngayon: <mark>ang Diyos Mismo ang ating pinakadakilang pagpapala.</mark> Dahil ang Diyos ang ating pagpapala, maaari tayong mamuhay ngayon nang umaasa sa Kanya at umasa para sa bukas.", "Magkahiwalay na tula ang Awit 15 at 16, ngunit kapag binasa nang magkatabi, may lumilitaw na ugnayan. Itinatanong ng Awit 15 kung sino ang maaaring manahan sa presensya ng Diyos at ipinapakita ang kanyang tapat na salita at buhay. Ipinapakita ng Awit 16 <mark>kung kanino umaasa at saan nagagalak ang taong namumuhay sa harap ng Diyos</mark>. Nanalangin si David na ingatan siya ng Diyos, ngunit lumalim ang kanyang pagpapahayag lampas sa paghingi ng proteksyon: ipinahayag niya ang Diyos bilang kanyang mana at sa wakas ay tumingin sa walang-hanggang kagalakan sa presensya ng Diyos. Ngayon, tanungin ang sarili: Ano ang itinuturing kong pinakadakilang pagpapala sa aking pamumuhay? Sundan natin ang pagpapahayag ni David dala ang tanong na ito, sa apat na bahagi."], "points": ["Ano ang itinuturing kong pinakadakilang pagpapala sa aking pamumuhay ngayon?"]}, {"title": "Talata 1–4 · \"Wala Akong Mabuti Maliban sa Iyo\"", "paragraphs": ["Sa talata 1, nanalangin si David, <mark>\"Ingatan Mo ako, O Diyos, sapagkat sa Iyo ako nanganganlong.\"</mark> Ang paghingi ng proteksyon ay pag-amin na kailangan natin ang tulong ng Diyos. Kahit may pananampalataya, maaari tayong makadama ng banta at takot, at doon ay nanganganlong si David sa Diyos. Pagkatapos sa talata 2, ipinahayag niya, <mark>\"Ikaw ang aking Panginoon; wala akong mabuti maliban sa Iyo.\"</mark> Ang humiling na ingatan siya ay ngayon nagpapahayag na ang Diyos Mismo ang kanyang mabuti. Mahalaga ang mga kaloob na natatanggap natin mula sa Diyos — at alam ni David na ang pagiging kasama ng Diyos, ang pinagmumulan ng mga kaloob na iyon, ang kanyang pinakadakilang pagpapala. Maaari ding lumalim nang ganito ang ating panalangin: habang hinihiling sa Diyos na lutasin ang problema, natututunan natin <mark>kung sino ang Diyos habang hinahawakan Niya tayo sa loob ng problemang iyon</mark>.", "Sa talata 3, pinararangalan at nagagalak si David sa bayan ng Diyos — <mark>\"ang mga banal sa lupain ay ang mga dakila.\"</mark> Sa talata 4, tumanggi siyang sumamba sa ibang diyos. Nakikita sa kanyang relasyon, pagsamba, at pasya ang pagpapahayag na ang Diyos ang kanyang Panginoon. Nakikita rin ang pag-ibig sa Diyos sa pagtrato natin sa mga kabilang sa Diyos; ang pag-ibig na natatanggap natin ang nagpapaibig sa atin sa kapwa. Madaling ihambing at suriin ang kapwa mananampalataya. Ngunit kung itinuturing nating pagpapala ang Diyos, dapat din nating pahalagahan ang pinahahalagahan ng Diyos. At hindi natin dapat ilagay ang anumang bagay na mukhang nagpoprotekta sa atin <mark>sa lugar ng Diyos</mark>. Suriin kung ipinagkatiwala mo ang iyong puso sa paniniwalang ang pera o pagsang-ayon ng tao ang tuluyang magagarantiya sa iyong buhay."], "points": ["Ang pusong nagagalak sa mga kabilang sa Diyos ay nagpapalago ng buhay ng katapatan sa Diyos."]}, {"title": "Talata 5–6 · Dahil ang Panginoon ang Aking Mana, Nagagalak Ako sa Bahaging Ibinibigay Niya", "paragraphs": ["Talata 5: <mark>\"Si Yahweh ang aking piniling bahagi at aking saro; hawak Mo ang aking kapalaran.\"</mark> Ang 'bahagi' at 'kapalaran' ay nangangahulugang itinakdang bahagi ng isang tao. Para sa mga tao noon, ang minanang lupa ang pundasyon ng kabuhayan at ng kinabukasan. Ginamit ni David ang wikang iyon upang ipahayag na <mark>ang Diyos ang mahalagang manang umaalalay sa kanyang buhay</mark>. Madalas tayong makadama ng seguridad o pagkabalisa depende sa kung gaano karami ang mayroon tayo. Ngunit tumingin si David sa Diyos na humahawak sa kanyang buhay, matatag na nagtitiwalang inaalagaan ng Diyos ang kanyang pangangailangan at hawak din ang kanyang kinabukasan.", "Ang <mark>\"Nahulog sa akin ang mga hangganan sa kaaya-ayang lugar; tunay na maganda ang aking mana\"</mark> sa talata 6 ay nagpapaalala sa mga panukat na lubid na ginagamit sa paghahati ng lupa. Tinawag ni David na maganda ang kanyang mana dahil kapapahayag pa lamang niya na ang Diyos ang kanyang bahagi. Hindi natin kailangang basahin ito na nagustuhan niya ang lahat ng kanyang kalagayan; dahil alam niya ang halaga ng buhay na kasama ang Diyos kaya tinawag niyang maganda ang kanyang mana. Minsan ay nakalilimutan din natin ang Diyos na kasama natin dahil abala tayo sa pagtingin sa bahagi ng iba. Maghanap ngayon ng mga dapat ipagpasalamat — at hayaang humantong ang pasasalamat na iyon sa pagkagalak sa Diyos na nagbigay ng mga kaloob."], "points": ["Lumalalim ang pagkakontento kapag, kahit habang binibilang ang mayroon ako, naaalala ko ang Diyos na kasama ko."]}, {"title": "Talata 7–8 · Dahil Tinuturuan Ako ng Panginoon at Nasa Tabi Ko Siya, Hindi Ako Matitinag", "paragraphs": ["Sa talata 7, pinupuri ni David ang Diyos na nagpapayo sa kanya: <mark>\"Pinagpapala ko si Yahweh na nagbibigay sa akin ng payo; sa gabi rin ay tinuturuan ako ng aking puso.\"</mark> Kahit sa gabi ay isinasapuso niya ang turong iyon. Hindi lamang inaalagaan ng Diyos ang ating pangangailangan kundi itinuturo rin ang direksyong dapat lakaran. Kaya ang mga nagtuturing sa Diyos na kanilang pagpapala ay tumatanggap din sa Kanyang turo bilang mahalaga. Nakikinig sila kahit pinag-iisip Niya silang muli o pinatatalikod sa maling landas. Ilagay sa harap ng Diyos ang isang pasyang pinag-iisipan mo ngayon. Kasama ng kung ano ang mas maginhawa o kapaki-pakinabang, seryosong itanong <mark>kung aling landas ang kalugud-lugod sa Diyos</mark>.", "Talata 8: <mark>\"Inilagay ko si Yahweh palagi sa harap ko; dahil Siya'y nasa aking kanan, hindi ako matitinag.\"</mark> May malinaw na batayan ang kanyang katiyakan: ang Diyos ay nasa kanyang kanan. Ang Diyos na tumutulong mula sa kanyang tabi ang batayan ng kanyang katatagan. Hindi ito nangangahulugang hindi kailanman nakadarama ng takot o kaguluhan ang mananampalataya; pagpapahayag ito ng pag-asa lamang sa Diyos na humahawak sa atin kahit sa umuugang kalagayan. Sa halip na magsikap patunayan ang sariling lakas, dapat nating alalahanin kung sa tulong ng sino tayo nakatayo."], "points": ["Nakikita ang pagkahinog sa pananampalataya hindi sa pagpapatunay ng aking lakas, kundi sa lalong malinaw na pagkaalam kung sa tulong ng sino ako nakatayo."]}, {"title": "Talata 9–11 · Dahil Hindi Ako Pababayaan ng Panginoon, Umaasa Ako sa Walang-Hanggang Kagalakan", "paragraphs": ["Nagsisimula ang talata 9 sa <mark>\"Kaya nga\"</mark>: dahil ang Diyos ang kanyang bahagi, nagtuturo sa kanya, at nasa kanyang tabi, nagagalak si David at nakatitiyak ng kaligtasan — <mark>\"nagagalak ang aking puso, at nagsasaya ang buo kong pagkatao; ang aking laman ay naninirahan din nang panatag.\"</mark> Ibinibigay ng talata 10 ang dahilan: <mark>\"Sapagkat hindi Mo pababayaan ang aking kaluluwa sa Sheol, o hahayaang makakita ng pagkabulok ang Iyong banal.\"</mark> Ipinapahayag ng pagpapahayag na ito ang pagtitiwalang hindi siya iiwan ng Diyos sa kamatayan — ipinagkakatiwala pati ang kanyang kinabukasan sa katapatan ng Diyos na humahawak sa kanya ngayon. At malinaw na naipakita ang katuparan ng Salitang ito sa <mark>muling pagkabuhay ni Jesus</mark>. Ipinahayag nina Pedro at Pablo na si David ay namatay at inilibing, ngunit si Jesus, na muling binuhay ng Diyos, ay hindi nakakita ng pagkabulok (Gawa 2, 13). Nakasalalay ang ating pag-asa sa katotohanang tunay na nagtagumpay si Jesus sa kamatayan at muling nabuhay. Para sa ating kabilang sa muling nabuhay na Panginoon, hindi rin wakas ang kamatayan.", "Talata 11: <mark>\"Ipinapakilala Mo sa akin ang landas ng buhay; sa Iyong presensya ay may lubos na kagalakan; sa Iyong kanan ay may kasiyahan magpakailanman.\"</mark> Ang awit na nagsimula sa 'Ingatan Mo ako' ay nagtatapos sa walang-hanggang kagalakan sa presensya ng Diyos. Nasa sentro ng kagalakang tinitingnan ni David ang Diyos, mula simula hanggang wakas. Ito ay <mark>kagalakang nagsisimula ngayon habang lumalakad tayo kasama ng Diyos</mark>, at sa muling pagkabuhay ni Jesus ay umaasa tayo sa buhay kasama ng Diyos lampas sa kamatayan. Pinag-uugnay ng katapatan ng iisang Diyos ang patnubay ngayon at pag-asa bukas, at napagtibay ang pag-asang iyon sa muling pagkabuhay ni Jesus."], "points": ["Para sa ating kabilang sa muling nabuhay na Panginoon, hindi wakas ang kamatayan."]}, {"title": "Aplikasyon · \"Panginoon, Ikaw ang Aking Pinakadakilang Pagpapala\"", "paragraphs": ["Bumalik tayo sa tanong na pinagsimulan natin: Ano ang itinuturing mong pinakadakilang pagpapala sa iyong pamumuhay? Sa Awit 16, ang sagot ni David ay <mark>ang Diyos</mark>. Dahil ang Diyos ang kanyang pagpapala, hindi siya sumunod sa ibang diyos. Dahil ang Diyos ang kanyang mana, nagalak siya sa kanyang bahagi. Dahil nasa tabi niya ang Diyos, lumakad siya ayon sa Kanyang turo at ipinagkatiwala sa Kanya ang kanyang kinabukasan.", "Binigyan din tayo ng biyaya upang hawakan ang pagpapahayag na ito. <mark>Namatay si Jesus para sa atin at muling nabuhay.</mark> Sa pamamagitan Niya, lumalapit tayo sa Diyos at tinatamasa ang buhay kasama ng Diyos. Kaya ang ating pagsunod at pasasalamat ay tugon sa biyayang ito.", "Suriin kung saan mo ipinagkakatiwala ang iyong puso ngayon. Nakaupo ba <mark>sa lugar ng Diyos</mark> ang kalusugan, pera, pagsang-ayon ng tao, o resulta ng iyong trabaho? Mga kaloob ang mga ito na dapat ipagpasalamat, ngunit kapag umuga, hindi tayo mahahawakan ng mga ito hanggang wakas. Ang Diyos na pinagmumulan ng mga kaloob na iyon ang ating bahagi.", "Maghanap ng isang bagay na dapat ipagpasalamat ngayon at ialay ito sa Diyos, at hayaang humantong ang pasasalamat na iyon sa <mark>pagkagalak sa Diyos Mismo, ang Nagbibigay</mark>. At simulan ang iyong araw sa pagpapahayag na ito: 'Panginoon, Ikaw ang aking pinakadakilang pagpapala. Ngayon ay umaasa ako sa Iyo, at ipinagkakatiwala ko sa Iyo ang aking bukas.'"], "points": ["Dahil ang Panginoon ang aking pinakadakilang pagpapala, maaari akong mamuhay ngayon nang umaasa sa Kanya at umasa para sa bukas."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung itinuturing kong mas dakilang pagpapala kaysa sa Diyos ang mga kaloob tulad ng kalusugan, pera, pagsang-ayon, o tagumpay."}, {"key": "c2", "text": "Sinuri ko kung tinatrato ko ang kapwa mananampalataya bilang 'mga dakila' sa halip na ihambing at suriin sila."}, {"key": "c3", "text": "Pinag-isipan ko kung nakalilimutan ko ang Diyos na kasama ko dahil naiinggit ako sa bahagi ng iba."}, {"key": "c4", "text": "Sinuri ko kung, sa harap ng mga pasya ngayon, itinanong ko hindi lamang ang ginhawa at pakinabang kundi ang landas na kalugud-lugod sa Diyos."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano ang mas inaasahan o kinagagalakan ko kaysa sa Diyos nitong mga araw, at paano ko ito ilalapag sa harap Niya ngayon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Ang Diyos ang Aking Mabuti", "value": "Simulan ang araw sa pagpapahayag na, 'Wala akong mabuti maliban sa Iyo'"}, {"key": "act2", "label": "Maghanap ng Pasasalamat", "value": "Isulat ang tatlong bagay na ipinagpapasalamat mo ngayon, at manalanging nagagalak sa Diyos Mismo na nagbigay ng mga ito"}, {"key": "act3", "label": "Pahalagahan", "value": "Mag-alok ng salita ng paggalang at pagpapalakas-loob sa kapwa mananampalatayang inihahambing o sinusuri mo"}, {"key": "act4", "label": "Bago ang Pasya", "value": "Para sa isang pasyang pinag-iisipan mo, itanong muna sa panalangin, 'Anong landas ang kalugud-lugod sa Diyos?'"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 16:2 at 8, at sa bawat sandali ng pag-uga ay alalahanin ang Panginoon sa iyong kanan"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa pagiging aking bahagi, sa paghawak sa akin sa aking kanan, at sa pagpapakita sa akin sa pamamagitan ng muling pagkabuhay ni Jesus ng landas ng buhay lampas sa kamatayan."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagturing sa Iyong mga kaloob bilang mas dakilang pagpapala kaysa sa Iyo, sa pagkainggit sa bahagi ng iba, at sa paglalagay ng pera at pagsang-ayon sa Iyong lugar."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong ipahayag araw-araw na Ikaw lamang ang aking pinakadakilang pagpapala, lumakad nang hindi natitinag ayon sa Iyong payo, umasa sa Iyo ngayon, at ipagkatiwala sa Iyo ang aking bukas."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-26';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
