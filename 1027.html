@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/27(화) 큐티 · 시편 17:1–15">
+<meta property="og:description" content="억울할 때, 내 마음도 하나님 앞에 내어놓습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 27일 화요일", "ref": "시편 17편 1–15절", "headline": "억울할 때, 내 마음도<br>하나님 앞에 내어놓습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 17:1-15", "s1heading": "오늘의 말씀", "verse": "\"나는 의로운 중에 주의 얼굴을 뵈오리니<br>깰 때에 주의 형상으로<br>만족하리이다\"", "verseRef": "시편 17:15", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 억울할 때 우리는 하나님께 무엇을 구합니까", "paragraphs": ["억울한 일을 당하면 우리는 누군가 내 사정을 정확히 알아주길 바랍니다. 사실과 다른 말이 퍼지고, 나를 힘들게 한 사람이 아무 일 없이 살아갈 때 마음은 더 복잡하고 답답해집니다. 시편 16편에서 하나님을 가장 큰 복이라 고백한 다윗은, 17편에서 자신을 위협하는 사람들 가운데서 그 하나님께 <mark>판단과 보호</mark>를 구합니다.", "본문에는 다윗을 넘어뜨리려고 노려보는 <mark>원수들의 눈</mark>과 공평함을 살피시는 <mark>하나님의 눈</mark>이 함께 등장합니다. 중요한 것은 다윗이 원수의 잘못만 내어놓지 않고 <mark>자신의 마음과 말과 걸음도</mark> 하나님의 살피심 앞에 둔다는 점입니다. \"저 사람의 잘못을 밝혀 주십시오\"라는 기도에는 \"제 안의 잘못도 보게 해 주십시오\"라는 마음이 함께 있어야 합니다."], "points": ["나는 억울할 때, 내 주장이 인정받기를 구하는 만큼 하나님 앞에 바르게 서는 것도 구하고 있습니까?"]}, {"title": "1–5절 · \"주의 눈으로 공평함을 살피소서\"", "paragraphs": ["다윗은 \"들으소서, 주의하소서, 귀를 기울이소서\"라고 거듭 부르짖으며 <mark>\"거짓 되지 아니한 입술\"</mark>로 기도한다고 고백합니다. 인정받으려고 사실을 꾸미거나 상대의 잘못을 부풀리지 않겠다는 것입니다. <mark>\"주께서 나를 판단하시며 주의 눈으로 공평함을 살피소서\"</mark>(2절). 사람의 평가는 사실을 가릴 수 있어도 하나님의 눈은 공평합니다. 다만 <mark>내가 보는 것이 전부는 아님</mark>도 기억해야 합니다.", "3절의 고백은 평생 죄가 없었다는 뜻이 아니라, 지금 당하는 공격이 부당하며 하나님을 속이지 않고 그분의 길을 따라왔다는 뜻입니다. 부족한 사람도 부당한 일을 당할 수 있고, 그 억울함을 하나님께 아뢸 수 있습니다. 그러나 억울하다고 내 모든 생각이 옳아지지는 않습니다. 다윗은 <mark>포악한 자의 길을 피하고 주의 길을 굳게 지켰습니다</mark>(4–5절). 상대가 왜곡하면 과장하고 싶고, 상처를 주면 되갚고 싶은 그 순간에도 말씀은 우리의 입술과 걸음을 인도합니다."], "points": ["정당한 일을 이루려는 사람도, 그 일을 이루는 방식이 정당한지 살펴야 합니다."]}, {"title": "6–9절 · \"나를 눈동자 같이 지키시고\"", "paragraphs": ["다윗은 하나님이 응답하실 분이기에 부르고, <mark>\"주의 기이한 사랑을 나타내소서\"</mark>(7절)라고 구합니다. 여기 쓰인 '헤세드'는 자기 백성을 버리지 않으시는 하나님의 <mark>신실한 언약의 사랑</mark>입니다. 다윗은 자신의 정당함만 반복하지 않고, 주께 피하는 자를 구원하시는 하나님의 성품에 기댑니다. 순종을 소중히 여기되, 그것을 응답을 받아내는 대가로 내세우지 않는 것입니다.", "<mark>\"나를 눈동자 같이 지키시고 주의 날개 그늘 아래에 감추사\"</mark>(8절). 눈동자는 소중하면서도 연약해 세심하게 보호하는 부분이고, 날개 그늘은 새가 새끼를 품는 모습입니다. 다윗은 연약함을 숨기지 않고 실제 위협에서 건져 달라고 구합니다. 우리도 <mark>거짓이 바로잡히고 약한 사람이 보호받도록</mark> 기도할 수 있고, 필요한 도움을 요청하는 일도 믿음과 함께할 수 있습니다."], "points": ["나를 빠짐없이 아시는 하나님께서 신실한 사랑으로 나를 돌보십니다."]}, {"title": "10–12절 · 노려보는 눈 앞에서 하나님의 눈을 의지합니다", "paragraphs": ["원수들은 마음이 <mark>\"기름에 잠겼으며\"</mark> 다른 사람의 고통에 무감각하고, 입으로 교만하게 말합니다. 다윗 일행의 걸음을 에워싸 노려보며 넘어뜨릴 기회를 찾습니다. 움킨 것을 찢으려는 사자처럼 위협적입니다. 다윗은 마음을 하나님 앞에 열지만 원수들은 마음을 닫았고, 다윗은 입술로 범죄하지 않으려 하지만 원수들은 교만하게 말하며, 다윗은 주의 길을 걷지만 원수들은 그 걸음을 막아섭니다.", "우리도 누군가의 평가와 공격에 마음을 빼앗길 때가 있습니다. 그럴 때 기억하십시오. <mark>그 사람의 시선이 내 삶에 대한 마지막 판단은 아닙니다</mark>. 하나님께서 우리의 사정을 아십니다. 넘어뜨리려는 시선 한가운데서도 다윗은 공평함을 살피시는 하나님의 눈을 의지했고, 자신을 품어 주실 <mark>하나님의 날개</mark>를 바라보았습니다."], "points": ["나를 노려보는 눈보다, 나를 바르게 보시는 하나님의 눈이 더 크십니다."]}, {"title": "13–15절 · \"주의 얼굴을 뵈오리니 … 만족하리이다\"", "paragraphs": ["<mark>\"여호와여 일어나 그를 대항하여 넘어뜨리시고 … 나의 영혼을 구원하소서\"</mark>(13절). 다윗은 악을 대수롭지 않게 넘기지 않되, 그 판단과 행동을 하나님께 맡깁니다. 우리도 부당함을 분명히 말할 수 있지만, 생각이 다르다는 이유만으로 누군가를 악인이라 규정해서는 안 됩니다. <mark>정의를 구하는 나도 하나님의 판단 앞에 서 있기 때문입니다</mark>. 14절의 사람들은 현세에서 분깃을 받아 재물과 자녀로 배부릅니다. 그러나 많이 가졌다고 하나님 앞에 옳은 것은 아닙니다.", "<mark>\"나는 의로운 중에 주의 얼굴을 뵈오리니 깰 때에 주의 형상으로 만족하리이다\"</mark>(15절). 14절의 '배부름'과 15절의 '만족'은 같은 어근의 말로, 무엇으로 만족하는지를 비교하게 합니다. '깰 때'는 구원의 아침으로도, 죽음 너머 하나님을 뵙는 소망으로도 읽힙니다. 어느 쪽이든 다윗은 원수의 풍요가 자신의 만족을 결정하게 두지 않고, <mark>원수의 얼굴이 아니라 하나님의 얼굴</mark>을 바라봅니다."], "points": ["여러분은 지금 어떤 얼굴을 바라보고 계십니까?"]}, {"title": "적용 · 억울함도, 내 마음도 하나님 앞에", "paragraphs": ["처음 질문으로 돌아가 봅시다. 나는 억울할 때 내 주장이 인정받기를 구하는 만큼 하나님 앞에 바르게 서는 것도 구하고 있습니까? 다윗은 억울함을 숨기지 않았고, 원수들의 공격을 멈추어 달라고 간절히 기도했습니다. 그리고 <mark>자신의 마음과 걸음도 하나님 앞에 내어놓으며</mark> 그분의 사랑과 은혜를 의지했습니다.", "예수님의 삶에서도 이 모습을 봅니다. <mark>\"욕을 당하시되 맞대어 욕하지 아니하시고 고난을 당하시되 위협하지 아니하시고 오직 공의로 심판하시는 이에게 부탁하시며\"</mark>(벧전 2:23). 예수님은 거짓으로 자신을 지키거나 위협으로 되갚지 않으셨습니다. 그 의로우신 주님께서 우리의 죄를 지시고 죽으셨으며 다시 살아나셨습니다. 그 은혜로 우리는 <mark>자신의 잘못까지 정직하게 내어놓고</mark> 하나님께 나아갈 수 있습니다. 잘못을 인정한다고 하나님께 나아가는 길이 닫히는 것이 아닙니다. 주님의 은혜를 의지해 돌이키고 다시 걸을 수 있습니다.", "오늘 나를 힘들게 하는 일이 있다면 그 사정을 하나님께 <mark>구체적으로, 솔직하게</mark> 아뢰십시오. 필요한 도움을 구하고 사실을 바르게 설명하십시오. 그 과정에서 보복하려는 말은 멈추고, 내 잘못이 있다면 인정하고 바로잡으십시오.", "내 사정을 공평하게 보시는 하나님 앞에서, 오늘 내가 정직하게 선택해야 할 한 가지는 무엇입니까? 그 한 걸음을 내디디며, 나를 아시고 돌보시는 하나님께 <mark>판단과 앞날을 맡기는</mark> 하루가 되십시오."], "points": ["사람의 시선이 아니라 공평하신 하나님의 눈 앞에서, 오늘 정직한 한 걸음을 내딛습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "억울한 사정을 사람에게 쏟기 전에 하나님께 구체적이고 솔직하게 아뢰었다"}, {"key": "c2", "text": "상대의 잘못을 말할 때 사실을 꾸미거나 부풀리지 않았는지 점검했다"}, {"key": "c3", "text": "억울함 속에서도 내 마음의 미움, 과장, 거짓을 하나님 앞에서 살펴보았다"}, {"key": "c4", "text": "다른 사람의 시선과 풍요보다 하나님의 얼굴을 바라보며 만족하려 했는지 돌아봤다"}], "s4heading": "묵상 한 줄", "memoHint": "요즘 억울하거나 답답한 일 앞에서, 하나님께 내어놓아야 할 '상대의 잘못'과 '나의 마음'은 각각 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "솔직하게 아뢰기", "value": "마음을 힘들게 하는 일 하나를 하나님께 구체적으로 적어 기도로 올려 드리기"}, {"key": "act2", "label": "사실대로 말하기", "value": "설명해야 할 일이 있다면 과장 없이 사실대로 차분하게 말하기"}, {"key": "act3", "label": "보복의 말 멈추기", "value": "되갚아 주고 싶은 말이 떠오를 때 한 번 멈추고, 사람을 무너뜨리는 말은 삼가기"}, {"key": "act4", "label": "내 잘못 인정하기", "value": "이 일에서 드러난 내 잘못이 있다면 인정하고 바로잡을 한 가지를 실천하기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 17:8과 15절을 외우며, 사람의 시선 대신 하나님의 얼굴을 바라보기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "나의 사정을 공평하게 살피시고, 신실한 사랑으로 나를 눈동자 같이 지키시며 날개 그늘 아래 품어 주시는 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "억울함을 이유로 사실을 부풀리고, 되갚는 말을 하고, 내 안의 미움과 잘못은 보지 않으려 했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "억울할 때에도 정직하게 주님 앞에 서게 하시고, 판단과 앞날을 공의로 심판하시는 주님께 맡기며, 주의 얼굴로 만족하게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 27, Tuesday", "ref": "Psalm 17:1–15", "headline": "When I Am Wronged, Do I Also<br>Lay My Own Heart Before God?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 17:1-15", "s1heading": "Today's Word", "verse": "\"As for me, I shall behold Your face in righteousness;<br>when I awake, I shall be satisfied<br>with Your likeness.\"", "verseRef": "Psalm 17:15", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · What Do We Ask of God When We Are Treated Unjustly?", "paragraphs": ["When we are wronged, we long for someone to understand our situation exactly as it is. When untrue words spread about us, and the person who hurt us goes on living as if nothing happened, our hearts become even more tangled and heavy. In those moments, what should we ask of God? In Psalm 16, David confessed that God is his greatest blessing. In Psalm 17, surrounded by people who threaten him, he asks that same God for <mark>judgment and protection</mark>. Today's psalm centers on one thing: even when we are wronged, we stand honestly before God and entrust ourselves to His judgment and His love.", "Two sets of eyes appear in this psalm: <mark>the eyes of enemies</mark> glaring at David, looking for a way to bring him down, and <mark>the eyes of God</mark>, who sees what is right. Surrounded by hostile stares, David relies on the God who sees him truly. He asks to be kept as the apple of God's eye, and at the end he says he will be satisfied with seeing God's face. Here is the key point: David does not lay only his enemies' wrongs before God. He also places <mark>his own heart, words, and steps</mark> under God's examination. Our prayers need the same posture. When we pray, 'God, expose that person's wrong,' our hearts must also say, 'Let me see the wrong in me, too.' This does not mean only perfect people may ask for help — all of us can come to God just as we are. It means not hiding the truth about ourselves before Him."], "points": ["When I am wronged, do I ask to stand rightly before God as much as I ask for my case to be vindicated?"]}, {"title": "Verses 1–5 · \"Let Your Eyes Behold the Right\"", "paragraphs": ["In verse 1, David asks God again and again to hear his just cause, attend to his cry, and give ear to his prayer. The repetition shows how urgent his prayer is. He says his prayer comes <mark>\"from lips free of deceit\"</mark> — he will not dress up the facts or exaggerate the other side's wrongs to win God's approval. Then in verse 2: <mark>\"From Your presence let my vindication come! Let Your eyes behold the right!\"</mark> David asks God to examine the truth and make his innocence plain. Human opinion and power can cover up the facts, but God's eyes see what is fair. We too can tell God our painful situation in concrete detail. At the same time, we must remember that <mark>what I see is not the whole picture</mark>. Prayer is the place where we entrust judgment to God, who sees more honestly than we do.", "Verse 3 says God has tried David's heart, visited him by night, and tested him. God knows not only our visible actions but the thoughts and motives behind them. David's confession of integrity here does not mean he never sinned in his life. It means the attack against him now is unjust, and he has not deceived God but has followed His way. So we must never use 'everyone is a sinner' as a reason to dismiss a victim's rightful cry; imperfect people can still be treated unjustly, and they may bring that pain to God. Yet being wronged does not make every thought in us right. As we tell God our situation, we must also examine the hatred, exaggeration, and falsehood in our own hearts. In verses 4–5, David says that by the word of God's lips he <mark>avoided the ways of the violent and held fast to God's paths</mark>. When someone twists the facts, we want to exaggerate too; when someone wounds us, we want to hit back with painful words. Even in that moment, the Word guides our lips and steps. If you need to explain something today, tell the truth. If you must point out a wrong, refrain from words meant to tear a person down. And if a fault of yours comes to light, admit it."], "points": ["Even someone pursuing a just cause must check whether the way they pursue it is just."]}, {"title": "Verses 6–9 · \"Keep Me as the Apple of Your Eye\"", "paragraphs": ["In verse 6, David says he calls on God because God will answer him. Confidence in God's answer and earnest crying out go together. In verse 7 he asks, <mark>\"Wondrously show Your steadfast love.\"</mark> The Hebrew word here, <i>hesed</i>, refers to God's <mark>faithful covenant love</mark> that never abandons His people. David does not simply repeat his own innocence; he leans on the character and covenant of the God who saves those who take refuge in Him. Confessing that we have lived uprightly and relying on grace can go together. We treasure a life of obedience to the Word, but we never present it as payment to extract an answer from God. This is where our confidence lies: the God who knows us completely cares for us with faithful love.", "Verse 8: <mark>\"Keep me as the apple of Your eye; hide me in the shadow of Your wings.\"</mark> The pupil of the eye is precious yet fragile, and so it is guarded with great care. The shadow of wings recalls a bird sheltering its young. David does not hide his weakness. He asks God to treasure him and hold him close. Verse 9 makes the need clear: the wicked are oppressing him, and deadly enemies surround him. 'Hide me' carries an urgent plea to be rescued from a real threat. God cares for our actual lives. So we can pray for <mark>falsehood to be corrected and the vulnerable to be protected</mark>, and seeking the help we need can go hand in hand with faith."], "points": ["The God who knows me completely cares for me with faithful, covenant love."]}, {"title": "Verses 10–12 · Before Glaring Eyes, Relying on God's Eyes", "paragraphs": ["In verse 10, the enemies have <mark>\"closed their hearts to pity\"</mark> — they are numb to others' pain, and their mouths speak arrogantly. They surround David and his companions, setting their eyes to cast them to the ground, looking for a chance to bring them down. They are as threatening as a lion eager to tear its prey, a young lion lurking in ambush. Here David and his enemies stand in sharp contrast. David opens his heart to God's examination; the enemies close theirs. David resolves not to sin with his lips; the enemies speak proudly. David walks in God's paths; the enemies block his steps. Their eyes are fixed on bringing him down.", "We too sometimes let someone's evaluation or attack steal our hearts. When that happens, remember this: <mark>that person's gaze is not the final verdict on your life</mark>. God knows your situation and mine. Before Him we can stand honestly and ask for protection. In the middle of eyes set on toppling him, David relied on the eyes of God who sees what is right, and asked to be kept as the apple of His eye. Even before a lion ready to tear its prey, David looked to <mark>the wings of God</mark> that would shelter him."], "points": ["The eyes of God who sees me rightly are greater than any eyes that glare at me."]}, {"title": "Verses 13–15 · \"I Shall Behold Your Face … and Be Satisfied\"", "paragraphs": ["Verse 13: <mark>\"Arise, O LORD! Confront him, subdue him! Deliver my soul from the wicked by Your sword.\"</mark> The prayer grows more urgent: arise, confront, subdue, deliver. It is a plea for God to actually step in, stop the attack, and rescue his life. David does not treat evil lightly; he prays for it to be broken. Yet he asks God to do the judging and the acting. We too can clearly name injustice. But we must never label someone 'wicked' simply because they disagree with us or displease us, <mark>because I who ask for justice also stand under God's judgment</mark>. Verse 14 describes people whose portion is in this life — full of goods, satisfied with children, leaving wealth to their little ones. For someone who has been wronged, watching the one who hurt them prosper is its own pain. David does not deny that such abundance exists. But having much does not mean being right before God. Success and God's approval are not the same. Wealth and children are not the problem in themselves; the problem is filling all of life with them and never looking to God.", "So in verse 15 David confesses what he will be satisfied with: <mark>\"As for me, I shall behold Your face in righteousness; when I awake, I shall be satisfied with Your likeness.\"</mark> The 'being filled' of verse 14 and the 'being satisfied' of verse 15 come from the same Hebrew root, inviting us to compare what each person is satisfied with. 'When I awake' can be read as waking to a morning of deliverance, or as the hope of seeing God beyond death. Whichever reading we follow, the center is clear: David will enjoy seeing God and His grace and presence. This does not dismiss today's needs — he has just prayed earnestly for his life. Alongside that, he declares where his rescued life will be headed. He will not let his enemies' abundance decide his contentment. At the end of his prayer, the face David looks at is <mark>not his enemy's face, but God's face</mark>."], "points": ["Whose face are you looking at right now?"]}, {"title": "Application · Laying Both My Hurt and My Heart Before God", "paragraphs": ["Let's return to the question we began with: When I am wronged, do I ask to stand rightly before God as much as I ask for my case to be vindicated? David did not hide his hurt. He prayed earnestly for his enemies' attacks to stop. And he <mark>laid his own heart and steps before God</mark>, relying on His love and grace.", "We see this in the life of Jesus too. First Peter 2:23 says, <mark>\"When He was reviled, He did not revile in return; when He suffered, He did not threaten, but continued entrusting Himself to Him who judges justly.\"</mark> Jesus did not protect Himself with lies or answer with threats. That righteous Lord bore our sins, died, and rose again. By that grace we can come to God <mark>honestly bringing even our own wrongs</mark>. Admitting our wrong does not close the way to God. Relying on the Lord's grace, we can turn back and walk again.", "If something is weighing on you today, tell God about it <mark>specifically and honestly</mark>. Ask for the help you need, and explain the facts accurately. Along the way, stop the words that seek revenge, and if there is a fault of your own, admit it and set it right.", "Before the God who sees your situation fairly, what is the one honest choice you need to make today? As you take that step, may today be a day of <mark>entrusting your judgment and your future</mark> to the God who knows you and cares for you."], "points": ["Not before people's eyes, but before the fair eyes of God, I take one honest step today."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "Before pouring out my hurt to people, I told God about it specifically and honestly."}, {"key": "c2", "text": "I checked whether I embellished or exaggerated the facts when speaking of someone else's wrong."}, {"key": "c3", "text": "Even in my hurt, I examined the hatred, exaggeration, and falsehood in my own heart before God."}, {"key": "c4", "text": "I reflected on whether I seek satisfaction in God's face rather than in others' opinions or prosperity."}], "s4heading": "One-Line Reflection", "memoHint": "In a situation that feels unfair right now, what is 'the other person's wrong' and what is 'my own heart' that I need to lay before God?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Tell God Honestly", "value": "Write down one thing that is troubling your heart, in detail, and lift it to God in prayer"}, {"key": "act2", "label": "Speak the Facts", "value": "If you need to explain something, say it calmly and truthfully, without exaggeration"}, {"key": "act3", "label": "Stop Words of Revenge", "value": "When words of payback come to mind, pause once, and refrain from words that tear a person down"}, {"key": "act4", "label": "Own My Part", "value": "If a fault of yours has come to light in this situation, admit it and take one step to set it right"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 17:8 and 15, and look to God's face instead of people's gaze"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for examining my situation fairly, keeping me as the apple of Your eye with faithful love, and sheltering me in the shadow of Your wings."}, {"key": "p2", "tag": "Repent", "text": "I repent of exaggerating the facts because I felt wronged, of speaking words of payback, and of refusing to see the hatred and wrong within me."}, {"key": "p3", "tag": "Ask", "text": "Even when I am wronged, help me stand honestly before You, entrust my judgment and future to You who judge justly, and be satisfied with Your face."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 27, Martes", "ref": "Awit 17:1–15", "headline": "Kapag Ako'y Inaapi, Inilalapag Ko rin ba<br>ang Aking Puso sa Harap ng Diyos?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 17:1-15", "s1heading": "Salita Ngayon", "verse": "\"Ako'y makakakita ng Iyong mukha sa katuwiran;<br>pagkagising ko, ako'y masisiyahan<br>sa Iyong anyo.\"", "verseRef": "Awit 17:15", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ano ang Hinihiling Natin sa Diyos Kapag Tayo'y Inaapi?", "paragraphs": ["Kapag tayo'y nakaranas ng kawalang-katarungan, hinahangad nating may makaunawa sa ating kalagayan nang eksakto kung ano ito. Kapag kumakalat ang mga salitang hindi totoo tungkol sa atin, at ang taong nanakit sa atin ay patuloy na namumuhay na parang walang nangyari, lalong gumugulo at bumibigat ang ating puso. Sa mga sandaling iyon, ano ang dapat nating hilingin sa Diyos? Sa Awit 16, ipinahayag ni David na ang Diyos ang kanyang pinakadakilang pagpapala. Sa Awit 17, napaliligiran ng mga taong nagbabanta sa kanya, hinihiling niya sa Diyos ding iyon ang <mark>paghatol at proteksyon</mark>. Iisa ang sentro ng awit ngayon: kahit tayo'y inaapi, tumatayo tayo nang tapat sa harap ng Diyos at ipinagkakatiwala ang ating sarili sa Kanyang paghatol at pag-ibig.", "Dalawang uri ng mata ang lumilitaw sa awit na ito: <mark>ang mga mata ng mga kaaway</mark> na nakatitig kay David, naghahanap ng paraan upang ibagsak siya, at <mark>ang mga mata ng Diyos</mark> na nakakakita ng tama. Napaliligiran ng mapanlabang tingin, umaasa si David sa Diyos na nakakakita sa kanya nang totoo. Hinihiling niyang ingatan siya bilang balintataw ng mata ng Diyos, at sa huli sinasabi niyang masisiyahan siya sa pagkakita sa mukha ng Diyos. Narito ang mahalagang punto: hindi lamang ang kasalanan ng kaaway ang inilalapag ni David sa harap ng Diyos. Inilalagay din niya ang <mark>sarili niyang puso, salita, at hakbang</mark> sa ilalim ng pagsusuri ng Diyos. Kailangan din ng ating panalangin ang ganitong saloobin. Kapag nananalangin tayo ng, 'Diyos, ilantad Mo ang mali ng taong iyon,' dapat ding sabihin ng ating puso, 'Ipakita Mo rin sa akin ang mali sa loob ko.' Hindi ito nangangahulugang ang perpekto lamang ang maaaring humingi ng tulong — lahat tayo ay maaaring lumapit sa Diyos kung ano tayo. Ang ibig sabihin ay hindi itinatago ang katotohanan tungkol sa ating sarili sa harap Niya."], "points": ["Kapag ako'y inaapi, hinihiling ko bang tumayo nang matuwid sa harap ng Diyos gaya ng paghiling kong mapatunayang tama ako?"]}, {"title": "Talata 1–5 · \"Tingnan ng Iyong mga Mata ang Matuwid\"", "paragraphs": ["Sa talata 1, paulit-ulit na hinihiling ni David sa Diyos na pakinggan ang kanyang matuwid na usapin, pansinin ang kanyang daing, at pakinggan ang kanyang panalangin. Ipinapakita ng pag-uulit kung gaano kaapura ang kanyang panalangin. Sinasabi niyang ang kanyang panalangin ay nagmumula <mark>\"sa mga labing walang daya\"</mark> — hindi niya pagagandahin ang mga katotohanan o palalakihin ang mali ng kabila upang makuha ang pagsang-ayon ng Diyos. Pagkatapos sa talata 2: <mark>\"Mula sa Iyong presensya dumating nawa ang aking pagpapawalang-sala! Tingnan nawa ng Iyong mga mata ang matuwid!\"</mark> Hinihiling ni David na suriin ng Diyos ang katotohanan at gawing malinaw ang kanyang pagiging walang sala. Maaaring takpan ng opinyon at kapangyarihan ng tao ang mga katotohanan, ngunit nakikita ng mga mata ng Diyos kung ano ang patas. Maaari rin nating sabihin sa Diyos nang detalyado ang ating masakit na kalagayan. Kasabay nito, dapat nating tandaan na <mark>hindi buong larawan ang nakikita ko</mark>. Ang panalangin ay lugar kung saan ipinagkakatiwala natin ang paghatol sa Diyos na nakakakita nang mas tapat kaysa sa atin.", "Sinasabi ng talata 3 na sinubok ng Diyos ang puso ni David, dinalaw siya sa gabi, at sinuri siya. Alam ng Diyos hindi lamang ang nakikitang kilos natin kundi ang mga isip at motibo sa likod nito. Ang pagpapahayag ni David ng katapatan dito ay hindi nangangahulugang hindi siya kailanman nagkasala. Ang ibig sabihin ay hindi makatarungan ang pag-atake sa kanya ngayon, at hindi niya nilinlang ang Diyos kundi sinundan ang Kanyang daan. Kaya hindi natin dapat gamitin ang 'lahat ay makasalanan' bilang dahilan upang balewalain ang makatwirang daing ng biktima; maaari pa ring maapi ang mga taong hindi perpekto, at maaari nilang dalhin ang sakit na iyon sa Diyos. Gayunman, hindi ginagawang tama ng pagiging inaapi ang bawat isip sa atin. Habang sinasabi natin sa Diyos ang ating kalagayan, dapat din nating suriin ang poot, pagmamalabis, at kasinungalingan sa ating sariling puso. Sa talata 4–5, sinasabi ni David na sa salita ng mga labi ng Diyos ay <mark>iniwasan niya ang mga daan ng marahas at matatag na sumunod sa mga landas ng Diyos</mark>. Kapag binabaluktot ng iba ang katotohanan, gusto rin nating magmalabis; kapag sinasaktan tayo, gusto nating gumanti ng masasakit na salita. Kahit sa sandaling iyon, ginagabayan ng Salita ang ating mga labi at hakbang. Kung may kailangan kang ipaliwanag ngayon, sabihin ang totoo. Kung kailangan mong ituro ang isang mali, iwasan ang mga salitang naglalayong gibain ang tao. At kung lumitaw ang sarili mong pagkakamali, aminin ito."], "points": ["Kahit ang taong nagsusulong ng matuwid na usapin ay dapat suriin kung matuwid ang paraan ng pagsusulong nito."]}, {"title": "Talata 6–9 · \"Ingatan Mo Ako Bilang Balintataw ng Iyong Mata\"", "paragraphs": ["Sa talata 6, sinasabi ni David na tumatawag siya sa Diyos dahil sasagutin Siya ng Diyos. Magkasama ang pagtitiwala sa sagot ng Diyos at taimtim na pagdaing. Sa talata 7, hinihiling niya, <mark>\"Ipakita Mo nang kahanga-hanga ang Iyong tapat na pag-ibig.\"</mark> Ang salitang Hebreo rito, <i>hesed</i>, ay tumutukoy sa <mark>tapat na pag-ibig ng tipan</mark> ng Diyos na hindi kailanman nag-iiwan sa Kanyang bayan. Hindi lamang inuulit ni David ang kanyang pagiging walang sala; sumasandig siya sa katangian at tipan ng Diyos na nagliligtas sa mga nanganganlong sa Kanya. Maaaring magkasama ang pagpapahayag na tayo'y namuhay nang matuwid at ang pag-asa sa biyaya. Pinahahalagahan natin ang buhay ng pagsunod sa Salita, ngunit hindi natin ito kailanman inihaharap bilang bayad upang makakuha ng sagot mula sa Diyos. Dito nakasalalay ang ating katiyakan: ang Diyos na lubos na nakakakilala sa atin ay nag-aalaga sa atin nang may tapat na pag-ibig.", "Talata 8: <mark>\"Ingatan Mo ako bilang balintataw ng Iyong mata; itago Mo ako sa lilim ng Iyong mga pakpak.\"</mark> Ang balintataw ng mata ay mahalaga ngunit marupok, kaya iniingatan ito nang may labis na pag-iingat. Ang lilim ng mga pakpak ay nagpapaalala sa ibong kumakanlong sa kanyang mga inakay. Hindi itinatago ni David ang kanyang kahinaan. Hinihiling niya sa Diyos na pahalagahan siya at yakapin nang malapit. Malinaw sa talata 9 ang pangangailangan: inaapi siya ng masasama, at pinalilibutan siya ng mga kaaway na nag-aabang sa kanyang buhay. Ang 'itago Mo ako' ay may dalang taimtim na pagsamo na iligtas siya mula sa tunay na banta. Inaalagaan ng Diyos ang ating tunay na buhay. Kaya maaari tayong manalangin na <mark>maitama ang kasinungalingan at maprotektahan ang mahihina</mark>, at ang paghingi ng tulong na kailangan natin ay maaaring sumabay sa pananampalataya."], "points": ["Ang Diyos na lubos na nakakakilala sa akin ay nag-aalaga sa akin nang may tapat na pag-ibig ng tipan."]}, {"title": "Talata 10–12 · Sa Harap ng mga Matang Nakatitig, Umaasa sa mga Mata ng Diyos", "paragraphs": ["Sa talata 10, <mark>\"isinara ng mga kaaway ang kanilang puso sa awa\"</mark> — manhid sila sa sakit ng iba, at nagsasalita nang mayabang ang kanilang bibig. Pinalilibutan nila si David at ang kanyang mga kasama, itinutok ang kanilang mga mata upang ibagsak sila sa lupa, naghahanap ng pagkakataon. Kasing-bangis sila ng leong sabik lumapa ng kanyang biktima, ng batang leong nag-aabang sa pagtatago. Dito, malinaw ang pagkakaiba ni David at ng kanyang mga kaaway. Binubuksan ni David ang kanyang puso sa pagsusuri ng Diyos; isinasara ng mga kaaway ang sa kanila. Nagpasya si David na hindi magkasala sa kanyang labi; nagsasalita nang mayabang ang mga kaaway. Lumalakad si David sa mga landas ng Diyos; hinaharangan ng mga kaaway ang kanyang mga hakbang. Nakatutok ang kanilang mga mata sa pagpapabagsak sa kanya.", "Minsan, hinahayaan din nating nakawin ng pagsusuri o pag-atake ng iba ang ating puso. Kapag nangyari iyon, tandaan ito: <mark>hindi ang tingin ng taong iyon ang huling hatol sa iyong buhay</mark>. Alam ng Diyos ang iyong kalagayan at ang akin. Sa harap Niya, maaari tayong tumayo nang tapat at humingi ng proteksyon. Sa gitna ng mga matang naglalayong ibagsak siya, umasa si David sa mga mata ng Diyos na nakakakita ng tama, at hiniling na ingatan siya bilang balintataw ng Kanyang mata. Kahit sa harap ng leong handang lumapa, tumingin si David sa <mark>mga pakpak ng Diyos</mark> na kakanlong sa kanya."], "points": ["Mas dakila ang mga mata ng Diyos na nakakakita sa akin nang tama kaysa sa anumang matang nakatitig sa akin."]}, {"title": "Talata 13–15 · \"Makikita Ko ang Iyong Mukha … at Masisiyahan\"", "paragraphs": ["Talata 13: <mark>\"Bumangon Ka, O Yahweh! Harapin Mo siya, ibagsak Mo siya! Iligtas Mo ang aking kaluluwa mula sa masama sa pamamagitan ng Iyong tabak.\"</mark> Lalong nagiging apurahan ang panalangin: bumangon, harapin, ibagsak, iligtas. Ito'y pagsamo na tunay na kumilos ang Diyos, pigilan ang pag-atake, at iligtas ang kanyang buhay. Hindi binabalewala ni David ang kasamaan; nananalangin siyang mabali ito. Gayunman, hinihiling niya sa Diyos ang paghatol at pagkilos. Maaari rin nating malinaw na pangalanan ang kawalang-katarungan. Ngunit hindi natin dapat tawaging 'masama' ang isang tao dahil lamang hindi siya sang-ayon sa atin o hindi natin siya gusto, <mark>sapagkat ako na humihingi ng katarungan ay nakatayo rin sa ilalim ng paghatol ng Diyos</mark>. Inilalarawan ng talata 14 ang mga taong ang bahagi ay nasa buhay na ito — busog sa kayamanan, nasisiyahan sa mga anak, nag-iiwan ng yaman sa kanilang mga maliliit. Para sa taong inapi, masakit din ang makitang umuunlad ang nanakit sa kanya. Hindi itinatanggi ni David na may ganitong kasaganaan. Ngunit ang pagkakaroon ng marami ay hindi nangangahulugang tama sa harap ng Diyos. Hindi magkapareho ang tagumpay at ang pagsang-ayon ng Diyos. Hindi problema ang kayamanan at mga anak mismo; ang problema ay punuin ang buong buhay ng mga ito at hindi kailanman tumingin sa Diyos.", "Kaya sa talata 15, ipinahayag ni David kung saan siya masisiyahan: <mark>\"Ako'y makakakita ng Iyong mukha sa katuwiran; pagkagising ko, ako'y masisiyahan sa Iyong anyo.\"</mark> Ang 'pagkabusog' sa talata 14 at ang 'pagkasiya' sa talata 15 ay nagmula sa iisang ugat na Hebreo, na nag-aanyaya sa ating ihambing kung saan nasisiyahan ang bawat isa. Ang 'pagkagising ko' ay maaaring basahin bilang paggising sa umaga ng kaligtasan, o bilang pag-asang makita ang Diyos lampas sa kamatayan. Alinmang pagbasa ang sundin, malinaw ang sentro: tatamasahin ni David ang pagkakita sa Diyos at ang Kanyang biyaya at presensya. Hindi nito binabalewala ang mga pangangailangan ngayon — kasasamo pa lamang niya nang taimtim para sa kanyang buhay. Kasabay nito, ipinapahayag niya kung saan patungo ang kanyang iniligtas na buhay. Hindi niya hahayaang ang kasaganaan ng kaaway ang magtakda ng kanyang kasiyahan. Sa dulo ng kanyang panalangin, ang mukhang tinitingnan ni David ay <mark>hindi mukha ng kaaway, kundi mukha ng Diyos</mark>."], "points": ["Kaninong mukha ang tinitingnan mo ngayon?"]}, {"title": "Aplikasyon · Inilalapag ang Aking Sakit at ang Aking Puso sa Harap ng Diyos", "paragraphs": ["Bumalik tayo sa tanong na pinagsimulan natin: Kapag ako'y inaapi, hinihiling ko bang tumayo nang matuwid sa harap ng Diyos gaya ng paghiling kong mapatunayang tama ako? Hindi itinago ni David ang kanyang sakit. Taimtim siyang nanalangin na tumigil ang pag-atake ng kanyang mga kaaway. At <mark>inilapag niya ang sarili niyang puso at mga hakbang sa harap ng Diyos</mark>, umaasa sa Kanyang pag-ibig at biyaya.", "Nakikita rin natin ito sa buhay ni Jesus. Sinasabi ng 1 Pedro 2:23, <mark>\"Nang Siya'y alipustain, hindi Siya gumanti ng pag-alipusta; nang Siya'y magdusa, hindi Siya nagbanta, kundi ipinagkatiwala ang Kanyang sarili sa Kanya na humahatol nang matuwid.\"</mark> Hindi ipinagtanggol ni Jesus ang Kanyang sarili sa pamamagitan ng kasinungalingan o gumanti ng pagbabanta. Ang matuwid na Panginoong iyon ang nagdala ng ating mga kasalanan, namatay, at muling nabuhay. Sa biyayang iyon, maaari tayong lumapit sa Diyos <mark>nang tapat na dala pati ang sarili nating mga pagkakamali</mark>. Hindi isinasara ng pag-amin sa ating pagkakamali ang daan patungo sa Diyos. Sa pag-asa sa biyaya ng Panginoon, maaari tayong tumalikod at muling lumakad.", "Kung may bumibigat sa iyo ngayon, sabihin ito sa Diyos <mark>nang tiyak at tapat</mark>. Humingi ng tulong na kailangan mo, at ipaliwanag nang wasto ang mga katotohanan. Sa daan, ihinto ang mga salitang naghahangad ng paghihiganti, at kung may sarili kang pagkakamali, aminin ito at itama.", "Sa harap ng Diyos na nakakakita nang patas sa iyong kalagayan, ano ang isang tapat na pasyang kailangan mong gawin ngayon? Habang ginagawa mo ang hakbang na iyon, maging araw nawa ito ng <mark>pagkakatiwala ng paghatol at ng iyong kinabukasan</mark> sa Diyos na nakakakilala at nag-aalaga sa iyo."], "points": ["Hindi sa harap ng mata ng tao, kundi sa harap ng patas na mga mata ng Diyos, gagawin ko ang isang tapat na hakbang ngayon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Bago ibuhos sa mga tao ang aking sakit, sinabi ko muna ito sa Diyos nang tiyak at tapat."}, {"key": "c2", "text": "Sinuri ko kung pinaganda o pinalaki ko ang mga katotohanan nang magsalita tungkol sa mali ng iba."}, {"key": "c3", "text": "Kahit sa aking sakit, sinuri ko sa harap ng Diyos ang poot, pagmamalabis, at kasinungalingan sa aking puso."}, {"key": "c4", "text": "Pinag-isipan ko kung hinahanap ko ang kasiyahan sa mukha ng Diyos sa halip na sa opinyon o kasaganaan ng iba."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa isang sitwasyong pakiramdam ko'y hindi patas ngayon, ano ang 'mali ng iba' at ano ang 'aking sariling puso' na kailangan kong ilapag sa harap ng Diyos?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Sabihin nang Tapat", "value": "Isulat nang detalyado ang isang bagay na bumibigat sa iyong puso, at iangat ito sa Diyos sa panalangin"}, {"key": "act2", "label": "Sabihin ang Totoo", "value": "Kung may kailangan kang ipaliwanag, sabihin ito nang mahinahon at totoo, nang walang pagmamalabis"}, {"key": "act3", "label": "Ihinto ang Paghihiganti", "value": "Kapag may salitang pagganti na pumasok sa isip, huminto muna, at iwasan ang mga salitang gumigiba sa tao"}, {"key": "act4", "label": "Aminin ang Bahagi Ko", "value": "Kung may lumitaw na sarili mong pagkakamali sa sitwasyong ito, aminin ito at gumawa ng isang hakbang upang itama"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 17:8 at 15, at tumingin sa mukha ng Diyos sa halip na sa tingin ng tao"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa patas na pagsusuri sa aking kalagayan, sa pag-iingat sa akin bilang balintataw ng Iyong mata nang may tapat na pag-ibig, at sa pagkanlong sa akin sa lilim ng Iyong mga pakpak."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagpapalaki ng mga katotohanan dahil pakiramdam ko'y inapi ako, sa pagsasalita ng mga salitang pagganti, at sa pagtangging makita ang poot at mali sa loob ko."}, {"key": "p3", "tag": "Kahilingan", "text": "Kahit ako'y inaapi, tulungan Mo akong tumayo nang tapat sa harap Mo, ipagkatiwala ang paghatol at aking kinabukasan sa Iyo na humahatol nang matuwid, at masiyahan sa Iyong mukha."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-27';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
