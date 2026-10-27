@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/28(수) 큐티 · 시편 18:1–15">
+<meta property="og:description" content="고난과 회복의 시간, 나는 누구를 바라봅니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 28일 수요일", "ref": "시편 18편 1–15절", "headline": "고난과 회복의 시간,<br>나는 누구를 바라봅니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 18:1-15", "s1heading": "오늘의 말씀", "verse": "\"나의 힘이신 여호와여<br>내가 주를 사랑하나이다\"", "verseRef": "시편 18:1", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 내 시선은 지금 어디에 머물러 있습니까", "paragraphs": ["여러분의 시선은 지금 어디에 머물러 있습니까? 해결되지 않은 문제입니까, 나를 힘들게 하는 사람입니까, 아니면 어려움을 지나 얻은 좋은 결과입니까? 오늘 말씀의 중심은 이것입니다. <mark>고난 중에는 하나님께 부르짖고, 회복의 자리에서는 하나님께 감사하며, 어떤 상황에서도 시선을 하나님께 두는 것</mark>입니다.", "시편 18편은 50절로 된 긴 감사의 노래입니다. 17편이 \"들으소서\"라는 간구였다면, 18편에서는 <mark>\"하나님께서 들으셨습니다\"</mark>라는 고백이 울려 퍼집니다. 우리는 서로 다른 시간을 지나고 있습니다. 누군가는 아직 고통 가운데 있고, 누군가는 회복의 시간을 보냅니다. 하나님께 시선을 둔다는 것은 상황을 외면하는 것이 아니라, 아플 때 고통을 아뢰고 회복되었을 때 나를 붙드신 하나님을 기억하는 것입니다."], "points": ["나는 지금 무엇을 가장 오래 바라보고 있습니까?"]}, {"title": "1–3절 · \"나의 힘이신 여호와여 내가 주를 사랑하나이다\"", "paragraphs": ["다윗은 <mark>\"내가 주를 사랑하나이다\"</mark>라는 고백으로 노래를 시작합니다. 도우신 하나님을 기억하며 따뜻한 마음을 드리는 것입니다. 그는 하나님을 <mark>\"나의 힘\"</mark>이라 부르며, 자신의 용기와 능력으로 여기까지 왔다고 말하지 않습니다. 이 첫 문장 뒤에는 죽음의 위협과 두려움을 지나온 시간이 있습니다. 그러니 누군가의 감사 고백 뒤에 있었을 고통의 시간을 생각하고, 아직 감사가 어려운 사람은 인내로 기다려 주어야 합니다.", "다윗은 하나님을 반석, 요새, 방패, 구원의 뿔, 산성이라 부르며 <mark>\"나의\"</mark>라는 말을 반복합니다. 하나님은 삶과 동떨어진 지식이 아니라 실제 위험 속에서 의지했던 분입니다. 내가 무너질 것 같았을 때 무엇에 붙들렸는지 돌아보면 익숙한 고백이 나의 고백으로 깊어집니다. 형편이 좋아지면 \"내가 잘 견뎠다\"며 하나님을 잊기 쉽습니다. 다윗은 <mark>회복의 자리에서도 하나님을 바라봅니다</mark>."], "points": ["회복의 자리에서 하나님을 바라본다는 것은, 좋은 결과와 함께 나를 붙드신 은혜를 기억하는 것입니다."]}, {"title": "4–6절 · 죽음이 에워쌌을 때 하나님께서 들으셨습니다", "paragraphs": ["<mark>\"사망의 줄이 나를 얽고 불의의 창수가 나를 두렵게 하였으며\"</mark>(4절). 다윗은 위기를 줄과 급류와 올무로 표현합니다. 묶여 벗어날 수 없고, 거센 물에 휩쓸리고, 덫에 걸린 듯한 시간이었습니다. 하나님을 반석이라 고백한 사람도 죽음 앞에서 두려웠다고 솔직히 말합니다. 우리는 믿음이 있으면 두려워하면 안 된다고 생각해 기도할 때조차 마음을 감추곤 합니다. 그러나 <mark>아픈 것을 아프다, 두려운 것을 두렵다</mark>고 아뢰며 그 현실 속에서 하나님을 의지하는 것이 믿음입니다.", "<mark>\"그가 그의 성전에서 내 소리를 들으심이여\"</mark>(6절). 높이 계신 하나님께서 낮은 곳에서 부르짖는 한 사람의 소리를 들으십니다. 이 들으심이 본문의 전환점입니다. 마음속에서 같은 걱정을 반복하고 있다면 그것을 구체적인 기도로 옮겨 보십시오. 기도의 소망은 내가 얼마나 크게 외쳤는지가 아니라 <mark>나의 소리를 들으시는 하나님께</mark> 있습니다."], "points": ["고난 중에 하나님을 바라본다는 것은, 두려움을 숨기지 않고 하나님께 가지고 나아가는 것입니다."]}, {"title": "7–11절 · 내 기도를 들으신 하나님께서 내려오십니다", "paragraphs": ["6절의 \"들으셨다\" 뒤에 <mark>\"이에 땅이 진동하고 산들의 터도 요동하였으니\"</mark>(7절)가 이어집니다. 앞에서는 다윗을 두렵게 하던 물을 말했다면, 이제는 진노하시며 움직이시는 하나님을 노래합니다. 불과 연기는 악을 향한 하나님의 거룩한 분노입니다. 하나님은 자기 종을 짓누르는 악을 가볍게 보지 않으시며, 그 심판이 위협받는 사람에게는 구원이 됩니다. 다윗의 노래는 <mark>내 고통이 얼마나 컸는지에서 나를 구원하신 하나님이 얼마나 크신지로</mark> 옮겨 갑니다.", "하나님은 하늘을 드리우고 강림하시며, 그룹을 타고 바람 날개로 오십니다. 하나님의 위엄을 드러내는 시적 묘사입니다. 특히 흑암과 구름은 <mark>하나님의 부재가 아니라 임재를 감싸는 모습</mark>입니다. 지금 일어나는 일을 다 이해하지 못해도, 눈앞의 형편만으로 하나님이 나를 버리셨다고 결론 내릴 필요는 없습니다."], "points": ["이해되지 않는 자리에서도, 말씀에 드러난 하나님의 성품을 붙들 수 있습니다."]}, {"title": "12–15절 · 나를 압도하던 물도 하나님의 권세 아래 있습니다", "paragraphs": ["광채와 우박, 우렛소리와 번개가 이어지고, 하나님께서 음성을 발하셔서 대적을 흩으십니다. 출애굽과 시내산에서 나타나셨던 하나님을 떠올리게 합니다. 다윗은 <mark>이스라엘을 구원하신 하나님이 자신의 부르짖음도 들으셨다</mark>고 노래합니다. 성경 속 구원은 나와 무관한 옛이야기가 아닙니다. 하나님께 시선을 둔다는 것은 막연한 긍정이 아니라, 말씀에서 하나님이 어떤 분이신지 확인하고 그 성품을 근거로 오늘을 사는 것입니다.", "15절에서 하나님의 꾸지람 앞에 <mark>물 밑이 드러나고 세상의 터가 나타납니다</mark>. 4절에서 다윗을 두렵게 했던 거센 물도 이제 하나님의 권세 아래 놓입니다. 다윗을 압도하던 힘이 하나님까지 압도할 수는 없습니다. 형편이 어렵다는 사실만으로 하나님께서 하실 수 있는 일까지 제한하지 마십시오. 결과와 시간을 내 뜻대로 정할 수는 없어도 <mark>그분께 맡기며 오늘의 순종을 선택할 수 있습니다</mark>."], "points": ["문제의 크기를 인정하되, 그 문제가 하나님의 능력과 신실하심을 판단하는 기준이 되지 않게 하십시오."]}, {"title": "적용 · 걱정은 기도로, 은혜는 감사로", "paragraphs": ["오늘 다윗의 시선은 자신을 에워싼 죽음에서 자신을 구원하신 하나님께로 옮겨 갔습니다. 고통 속에서는 하나님을 불렀고, 구원을 돌아보면서는 <mark>\"내가 주를 사랑하나이다\"</mark>라고 고백했습니다.", "예수님께서도 고난 가운데 아버지를 바라보셨습니다. 겟세마네에서 괴로움을 숨기지 않고 기도하셨고, <mark>아버지의 뜻에 자신을 맡기셨습니다</mark>. 아버지를 의지하신 예수님은 십자가의 죽음을 통과하셨고, 하나님께서는 그분을 다시 살리셨습니다. 십자가와 부활은 하나님을 바라본다는 것이 무엇인지 더 깊이 보여 줍니다. 원하는 방식으로 상황이 곧바로 바뀌지 않아도, 우리는 <mark>죽음을 넘어 구원하시는 하나님께</mark> 삶을 맡길 수 있습니다.", "그 은혜에 대한 우리의 응답은 구체적입니다. 고난 중이라면 <mark>두려움 하나를 하나님께 솔직하게 아뢰고</mark>, 말씀에 비추어 오늘 감당할 일 하나를 선택하십시오. 회복의 시간을 지나고 있다면 <mark>나를 붙드신 은혜 하나를 기억하고 감사하십시오</mark>. 그리고 감사의 말을 꺼내기 어려운 이웃 곁에서 함께 기다려 주십시오.", "나는 지금 무엇을 가장 오래 바라보고 있습니까? 그 시선을 하나님께 돌리기 위해, 오늘 어떤 걱정을 기도로 옮기고 어떤 은혜를 감사로 고백하시겠습니까?"], "points": ["고난 중에도, 회복 중에도 나의 힘이신 하나님을 바라봅니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "해결되지 않은 문제나 사람보다 하나님께 시선을 두고 있는지 돌아봤다"}, {"key": "c2", "text": "기도할 때조차 두려움과 아픔을 감추고 '괜찮다'고만 말하지 않았는지 점검했다"}, {"key": "c3", "text": "좋아진 결과를 내 판단과 인내의 공로로만 여기고, 나를 붙드신 하나님을 잊지 않았는지 돌아봤다"}, {"key": "c4", "text": "어려운 형편을 근거로 하나님께서 하실 수 있는 일을 제한하고 있지 않은지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "내가 무너질 것 같았던 때, 하나님은 어떻게 나의 반석과 피난처가 되어 주셨습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "걱정을 기도로", "value": "마음속에서 반복되는 걱정 하나를 구체적인 기도 문장으로 적어 하나님께 아뢰기"}, {"key": "act2", "label": "은혜 기억하기", "value": "힘든 시간을 지나며 나를 붙드신 은혜 하나를 떠올리고 감사 기도 드리기"}, {"key": "act3", "label": "나의 고백 만들기", "value": "'하나님은 나의 ○○이십니다'를 내 삶의 경험을 담아 한 문장으로 적어 보기"}, {"key": "act4", "label": "함께 기다려 주기", "value": "아직 고통 가운데 있는 사람에게 섣부른 조언 대신 안부와 기도로 곁을 지켜 주기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 18:1–2을 외우며 하루 중 흔들릴 때마다 '나의 힘, 나의 반석'을 고백하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "나의 힘이시요 반석과 요새가 되시며, 낮은 곳에서 부르짖는 내 소리를 들으시고 권능으로 임하시는 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "고난 중에는 두려움을 감추고, 회복되었을 때는 내 힘으로 견뎠다고 여기며 나를 붙드신 주님을 잊었던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "고난 중에도 회복 중에도 내 시선을 주님께 두게 하시고, 걱정은 기도로, 은혜는 감사로 올려 드리며 주님을 사랑하게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 28, Wednesday", "ref": "Psalm 18:1–15", "headline": "In Times of Trouble and Recovery,<br>Whom Do I Look To?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 18:1-15", "s1heading": "Today's Word", "verse": "\"I love You,<br>O LORD, my strength.\"", "verseRef": "Psalm 18:1", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Where Is My Gaze Resting Right Now?", "paragraphs": ["Where is your gaze resting right now? On a problem that hasn't been solved? On a person who makes life hard for you? Or on a good result you gained after passing through difficulty? Here is the center of today's Word: <mark>in suffering, we cry out to God; in recovery, we give thanks to God; and in every situation, we keep our eyes on God.</mark> Psalm 18 is a long song of thanksgiving, fifty verses in all. Today we look at its opening section. The psalm begins with a personal confession of love and ends by praising God's steadfast love shown to David and his descendants.", "In Psalm 17, surrounded by the stares of those who wanted to harm him, David looked to the God who examines with justice. He asked to be kept from his enemies and ended by saying he would be satisfied with seeing God's face. In Psalm 18, that gaze turns into thanksgiving. Where Psalm 17 pleaded 'Hear me,' Psalm 18 rings out with <mark>'God has heard.'</mark> We can't say for certain the two psalms describe the same event, but we can see plea and thanksgiving flowing into each other. Each of us is passing through a different season. Some are still in pain; others are in a time of recovery. Keeping our eyes on God does not mean ignoring our situation. It means telling God our pain when we hurt, and remembering the God who held us when we have been restored. Let's follow David's confession and examine where our own gaze is turned today, in three movements."], "points": ["What am I looking at the longest right now?"]}, {"title": "Verses 1–3 · \"I Love You, O LORD, My Strength\"", "paragraphs": ["David begins his song with <mark>\"I love You, O LORD, my strength.\"</mark> The word for love here carries warm affection. Remembering that God helped him, he gives his heart to the God who came to his aid. He also calls God <mark>\"my strength\"</mark>. He doesn't explain that he got this far by his own courage and ability; he confesses that God is the One who sustained his life. Behind this first sentence lies a season that was anything but easy. The verses that follow speak of the threat of death, fear, and desperate crying out. Having passed through that time, David sings, 'I love You.' When we hear someone else's testimony of thanks, we too should think of the season of pain and grace that must lie behind it. And those who still find it hard to say words of thanks need the patience and love of people who will wait with them.", "In verse 2, David calls God his rock, fortress, deliverer, shield, horn of salvation, and stronghold. Rock and fortress picture a place to hide in danger; the shield pictures protection from attack; the horn of salvation means strong saving power. Throughout these images the word <mark>\"my\"</mark> repeats. For David, God is not knowledge detached from life but the One he actually ran to and relied on in real danger. We also know familiar words of faith: 'God is my strength. God is my refuge.' Today, try putting your own life into those words. Look back on how you endured when you felt you would collapse, whose help you received, and which Word held you. When you remember that grace, a familiar confession can deepen into your own. In verse 3, the memory of past deliverance becomes trust for the future: <mark>\"I call upon the LORD, who is worthy to be praised, and I am saved from my enemies.\"</mark> When things get better, our eyes easily stay on the result. We think, 'I judged well; I endured well,' and forget the God we once clung to so desperately. David keeps looking to God even in the place of recovery. If you have something to be thankful for today, don't only name what improved; remember the grace you received along the way, and let that thanks lead to a life of loving and continuing to rely on God."], "points": ["Looking to God in recovery means remembering, along with the good result, the grace that held me."]}, {"title": "Verses 4–6 · When Death Surrounded Me, God Heard My Cry", "paragraphs": ["Verse 4: <mark>\"The cords of death encompassed me; the torrents of destruction assailed me.\"</mark> David describes his danger as cords, torrents, and snares — bound with no escape, swept away by raging water, caught as if in death's trap. He doesn't hide the fear he felt. Though he confessed God as his rock, he admits he was afraid in the face of death. We often think that if we have faith, we shouldn't be afraid. So even when it's hard we say 'I'm fine,' and hide our hearts even in prayer. But David brings the pain that overwhelmed him to God just as it was. Keeping our eyes on God does not mean shrinking reality. It means saying <mark>what hurts is painful and what frightens us is frightening</mark>, and relying on God within that reality.", "Verse 6: <mark>\"In my distress I called upon the LORD; to my God I cried for help. From His temple He heard my voice, and my cry to Him reached His ears.\"</mark> From a place where he could not save himself, David called on God — and God heard. Given the heavenly scene that follows, 'temple' here can be understood as the heavenly sanctuary where God reigns. The God who is high above hears the voice of one person crying from below. This hearing is the turning point of the passage. Until now, death surrounded David; from here, the scene unfolds of God answering and acting. Our prayer, too, is the place where we tell God our situation and entrust ourselves to Him. If the same worry keeps repeating in your heart, try turning it into a specific prayer. Tell Him what you fear and what strength you need to bear it. Then seek the help you need and carry out today's tasks one at a time. The hope of prayer does not depend on how loudly or how long I cried out; it rests in <mark>the God who hears my voice</mark>."], "points": ["Looking to God in suffering means not hiding my fear, but carrying it to God."]}, {"title": "Verses 7–11 · The God Who Heard My Prayer Comes Down", "paragraphs": ["Right after verse 6's confession that God heard comes verse 7: <mark>\"Then the earth reeled and rocked; the foundations of the mountains trembled and quaked, because He was angry.\"</mark> The psalm's focus shifts. Earlier David spoke of the waters that terrified him; now he sings of God moving in holy anger. The smoke and fire that follow reveal God's holy wrath against evil. God does not take lightly the evil that crushes His servant, and the judgment that breaks that power becomes salvation for the one under threat. David moves from describing <mark>how great his suffering was to how great the God who saved him is</mark>. We too, as we pour out our pain, must remember who God is. The power we can see and people's judgments do not decide everything. God reigns in justice.", "Verse 9: <mark>\"He bowed the heavens and came down; thick darkness was under His feet.\"</mark> David's cry reached God, and now the scene unfolds of God descending. He rides on a cherub and flies swiftly on the wings of the wind, with darkness and clouds around Him. This is poetic language revealing God's majesty and saving power; we needn't treat every image as a list of natural phenomena David witnessed. What matters is the confession that God truly saved him. Notice especially that the dark clouds in this scene do not signal <mark>God's absence — they surround His coming presence</mark>. We may not understand everything happening to us now. But that does not mean we must conclude from present circumstances alone that God has abandoned us. Even where we cannot understand, we can hold on to God's character as revealed in His Word."], "points": ["Even where I cannot understand, I can hold on to the character of God revealed in His Word."]}, {"title": "Verses 12–15 · Even the Waters That Overwhelmed Me Are Under God's Authority", "paragraphs": ["In verses 12–14, brightness and hailstones, thunder and lightning follow one after another. God utters His voice and scatters His enemies. This scene recalls God's appearing at the Exodus and at Mount Sinai. David sings that <mark>the God who saved Israel also heard his own cry</mark>. We too must not leave the salvation stories of Scripture as old tales unrelated to us. Not every event will repeat in our lives in the same way. But God's faithfulness revealed in that history is the ground on which we can rely today. Keeping our eyes on God is not vaguely turning our minds positive. It is confirming from the Word who God is and living today on the basis of His character.", "In verse 15, at God's rebuke <mark>the channels of the sea are seen and the foundations of the world are laid bare</mark>. In verse 4, raging waters terrified David; now even those waters lie under God's authority. The power that overwhelmed David cannot overwhelm God. And in verse 16, which follows, God draws David out of many waters. The great power shown in today's passage leads to a salvation that cares for one person. So we must not let the mere fact that our circumstances are hard limit what we believe God can do. We cannot set the outcome or the timing as we wish, but <mark>we can entrust them to Him and choose today's obedience</mark>. Keeping our eyes on God means acknowledging the size of the problem while not letting that problem become the measure of God's power and faithfulness."], "points": ["Acknowledge the size of the problem — but don't let it become the measure of God's power and faithfulness."]}, {"title": "Application · Worries into Prayer, Grace into Thanks", "paragraphs": ["Today David's gaze moved from the death that surrounded him to the God who saved him. In pain, he called on God; looking back on his rescue, he confessed, <mark>\"I love You, O LORD.\"</mark>", "Jesus also looked to the Father in suffering. In Gethsemane He did not hide His anguish as He prayed, and He <mark>entrusted Himself to the Father's will</mark>. Relying on the Father, Jesus passed through death on the cross, and God raised Him again. The cross and resurrection show us even more deeply what it means to look to God. Even when our situation doesn't change right away in the way we want, we can entrust our lives to <mark>the God who loves us and saves us beyond death</mark>.", "Our response to that grace is concrete. If you are in suffering, <mark>tell God one fear honestly</mark>, and in light of the Word choose one thing to carry out today. If you are passing through a season of recovery, <mark>remember one grace that held you and give thanks</mark>. And stay beside a neighbor who still finds it hard to speak words of thanks, waiting with them.", "What am I looking at the longest right now? To turn that gaze to God, what worry will you turn into prayer today, and what grace will you confess with thanks?"], "points": ["In suffering and in recovery alike, I look to God, my strength."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether my eyes rest on God rather than on unsolved problems or people."}, {"key": "c2", "text": "I checked whether I hide my fear and pain even in prayer, only saying 'I'm fine.'"}, {"key": "c3", "text": "I reflected on whether I credit good results only to my own judgment and endurance and forget the God who held me."}, {"key": "c4", "text": "I checked whether I'm using hard circumstances as a reason to limit what God can do."}], "s4heading": "One-Line Reflection", "memoHint": "When I felt I would collapse, how did God become my rock and refuge?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Worry into Prayer", "value": "Write one recurring worry as a specific prayer sentence and bring it to God"}, {"key": "act2", "label": "Remember Grace", "value": "Recall one grace that held you through a hard season and pray a prayer of thanks"}, {"key": "act3", "label": "Make It My Confession", "value": "Write one sentence, 'God is my ____,' filled with your own life experience"}, {"key": "act4", "label": "Wait Alongside", "value": "Instead of quick advice, stay beside someone still in pain with a check-in and prayer"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 18:1–2, and confess 'my strength, my rock' whenever you feel shaken today"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, my strength, my rock and fortress, for hearing my cry from below and coming in power."}, {"key": "p2", "tag": "Repent", "text": "I repent of hiding my fear in suffering and, once restored, thinking I endured by my own strength and forgetting the Lord who held me."}, {"key": "p3", "tag": "Ask", "text": "In suffering and in recovery, keep my eyes on You; help me bring my worries as prayer and Your grace as thanks, and love You."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 28, Miyerkules", "ref": "Awit 18:1–15", "headline": "Sa Panahon ng Pagdurusa at Paggaling,<br>Kanino Ako Tumitingin?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 18:1-15", "s1heading": "Salita Ngayon", "verse": "\"Iniibig kita,<br>O Yahweh, aking kalakasan.\"", "verseRef": "Awit 18:1", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Saan Nakatuon ang Aking Paningin Ngayon?", "paragraphs": ["Saan nakatuon ang iyong paningin ngayon? Sa problemang hindi pa nalulutas? Sa taong nagpapahirap sa iyo? O sa magandang resultang natamo mo matapos dumaan sa hirap? Narito ang sentro ng Salita ngayon: <mark>sa pagdurusa, dumadaing tayo sa Diyos; sa paggaling, nagpapasalamat tayo sa Diyos; at sa anumang kalagayan, nakatuon ang ating mata sa Diyos.</mark> Ang Awit 18 ay mahabang awit ng pasasalamat na may limampung talata. Ngayon, titingnan natin ang simula nito. Nagsisimula ang awit sa personal na pagpapahayag ng pag-ibig at nagtatapos sa pagpupuri sa tapat na pag-ibig ng Diyos kay David at sa kanyang mga inapo.", "Sa Awit 17, napaliligiran ng mga tingin ng mga gustong manakit sa kanya, tumingin si David sa Diyos na sumusuri nang may katarungan. Hiniling niyang ingatan siya mula sa kanyang mga kaaway at nagtapos sa pagsasabing masisiyahan siya sa pagkakita sa mukha ng Diyos. Sa Awit 18, ang paninging iyon ay nagiging pasasalamat. Kung ang Awit 17 ay pagsamong 'Pakinggan Mo ako,' ang Awit 18 ay umaalingawngaw ng <mark>'Narinig ng Diyos.'</mark> Hindi natin masasabing tiyak na iisang pangyayari ang inilalarawan ng dalawang awit, ngunit nakikita nating dumadaloy sa isa't isa ang pagsamo at pasasalamat. Bawat isa sa atin ay dumaraan sa magkakaibang panahon. May ilan na nasa sakit pa; ang iba ay nasa panahon ng paggaling. Ang pagtuon ng mata sa Diyos ay hindi pagbabalewala sa ating kalagayan. Ito ay pagsasabi sa Diyos ng ating sakit kapag tayo'y nasasaktan, at pag-alala sa Diyos na humawak sa atin kapag tayo'y naibalik. Sundan natin ang pagpapahayag ni David at suriin kung saan nakatuon ang ating paningin ngayon, sa tatlong bahagi."], "points": ["Ano ang pinakamatagal kong tinitingnan ngayon?"]}, {"title": "Talata 1–3 · \"Iniibig Kita, O Yahweh, Aking Kalakasan\"", "paragraphs": ["Sinimulan ni David ang kanyang awit sa <mark>\"Iniibig kita, O Yahweh, aking kalakasan.\"</mark> Ang salita para sa pag-ibig dito ay may dalang mainit na pagmamahal. Sa pag-alala na tinulungan siya ng Diyos, ibinibigay niya ang kanyang puso sa Diyos na sumaklolo sa kanya. Tinatawag din niya ang Diyos na <mark>\"aking kalakasan\"</mark>. Hindi niya ipinaliliwanag na nakarating siya rito dahil sa sarili niyang tapang at kakayahan; ipinapahayag niyang ang Diyos ang umalalay sa kanyang buhay. Sa likod ng unang pangungusap na ito ay may panahong hindi madaling lampasan. Ang mga sumunod na talata ay nagsasalita ng banta ng kamatayan, takot, at desperadong pagdaing. Matapos dumaan sa panahong iyon, umaawit si David, 'Iniibig kita.' Kapag naririnig natin ang patotoo ng pasasalamat ng iba, dapat din nating isipin ang panahon ng sakit at biyaya sa likod nito. At ang mga nahihirapan pang magsalita ng pasasalamat ay nangangailangan ng pasensya at pag-ibig ng mga taong maghihintay kasama nila.", "Sa talata 2, tinatawag ni David ang Diyos na kanyang bato, kuta, tagapagligtas, kalasag, sungay ng kaligtasan, at moog. Ang bato at kuta ay larawan ng kanlungan sa panganib; ang kalasag ay proteksyon mula sa pag-atake; ang sungay ng kaligtasan ay malakas na kapangyarihang nagliligtas. Sa lahat ng larawang ito, paulit-ulit ang salitang <mark>\"aking\"</mark>. Para kay David, ang Diyos ay hindi kaalamang hiwalay sa buhay kundi ang Isang tunay niyang tinakbuhan at inasahan sa tunay na panganib. Alam din natin ang mga pamilyar na salita ng pananampalataya: 'Ang Diyos ang aking kalakasan. Ang Diyos ang aking kanlungan.' Ngayon, subukang ilagay ang sarili mong buhay sa mga salitang iyon. Balikan kung paano ka nakatiis noong pakiramdam mo'y babagsak ka, kaninong tulong ang natanggap mo, at aling Salita ang humawak sa iyo. Kapag naaalala mo ang biyayang iyon, ang pamilyar na pagpapahayag ay maaaring lumalim at maging iyo. Sa talata 3, ang alaala ng nakaraang pagliligtas ay nagiging pagtitiwala para sa hinaharap: <mark>\"Tumatawag ako kay Yahweh na karapat-dapat purihin, at ako'y naliligtas mula sa aking mga kaaway.\"</mark> Kapag gumanda ang kalagayan, madaling manatili ang ating mata sa resulta. Iniisip natin, 'Mahusay akong nagpasya; mahusay akong nagtiis,' at nalilimutan ang Diyos na minsan nating desperadong kinapitan. Patuloy na tumitingin si David sa Diyos kahit sa lugar ng paggaling. Kung may ipagpapasalamat ka ngayon, huwag lamang banggitin kung ano ang gumanda; alalahanin ang biyayang natanggap mo sa daan, at hayaang humantong ang pasasalamat na iyon sa buhay na umiibig at patuloy na umaasa sa Diyos."], "points": ["Ang pagtingin sa Diyos sa paggaling ay pag-alala, kasama ng magandang resulta, sa biyayang humawak sa akin."]}, {"title": "Talata 4–6 · Nang Palibutan Ako ng Kamatayan, Narinig ng Diyos ang Aking Daing", "paragraphs": ["Talata 4: <mark>\"Pinalibutan ako ng mga tali ng kamatayan; ang mga agos ng kapahamakan ay tumakot sa akin.\"</mark> Inilalarawan ni David ang kanyang panganib bilang mga tali, agos, at bitag — nakagapos na walang matakasan, tinatangay ng rumaragasang tubig, nahuli na parang sa bitag ng kamatayan. Hindi niya itinatago ang takot na kanyang nadama. Kahit ipinahayag niya ang Diyos bilang kanyang bato, inaamin niyang natakot siya sa harap ng kamatayan. Madalas nating isipin na kung may pananampalataya tayo, hindi tayo dapat matakot. Kaya kahit mahirap ay sinasabi nating 'Okay lang ako,' at itinatago ang ating puso kahit sa panalangin. Ngunit dinala ni David sa Diyos ang sakit na dumaig sa kanya kung ano ito. Ang pagtuon ng mata sa Diyos ay hindi pagpapaliit sa realidad. Ito ay pagsasabing <mark>masakit ang masakit at nakatatakot ang nakatatakot</mark>, at pag-asa sa Diyos sa loob ng realidad na iyon.", "Talata 6: <mark>\"Sa aking kagipitan ay tumawag ako kay Yahweh; sa aking Diyos ako dumaing. Mula sa Kanyang templo ay narinig Niya ang aking tinig, at ang aking daing ay umabot sa Kanyang mga tainga.\"</mark> Mula sa lugar na hindi niya kayang iligtas ang sarili, tumawag si David sa Diyos — at narinig ng Diyos. Dahil sa makalangit na tagpong sumunod, ang 'templo' rito ay maaaring unawain bilang makalangit na santuwaryo kung saan naghahari ang Diyos. Ang Diyos na nasa itaas ay nakaririnig sa tinig ng isang taong dumadaing mula sa ibaba. Ang pakikinig na ito ang pagbabago sa takbo ng talata. Hanggang dito, pinalilibutan ng kamatayan si David; mula rito, lumalantad ang tagpo ng Diyos na sumasagot at kumikilos. Ang ating panalangin din ay lugar kung saan sinasabi natin sa Diyos ang ating kalagayan at ipinagkakatiwala ang ating sarili sa Kanya. Kung paulit-ulit sa iyong puso ang iisang alalahanin, subukang gawin itong tiyak na panalangin. Sabihin sa Kanya kung ano ang kinatatakutan mo at anong lakas ang kailangan mo upang pasanin ito. Pagkatapos, humingi ng tulong na kailangan mo at gawin ang mga gawain ngayon nang isa-isa. Ang pag-asa ng panalangin ay hindi nakasalalay sa kung gaano kalakas o katagal akong dumaing; nakasalalay ito sa <mark>Diyos na nakaririnig sa aking tinig</mark>."], "points": ["Ang pagtingin sa Diyos sa pagdurusa ay hindi pagtatago ng takot, kundi pagdadala nito sa Diyos."]}, {"title": "Talata 7–11 · Ang Diyos na Nakarinig sa Aking Panalangin ay Bumababa", "paragraphs": ["Kasunod mismo ng pagpapahayag sa talata 6 na nakinig ang Diyos ay ang talata 7: <mark>\"Nang magkagayo'y yumanig at umuga ang lupa; nanginig ang mga pundasyon ng mga bundok, sapagkat Siya'y nagalit.\"</mark> Nagbabago ang tuon ng awit. Kanina, nagsalita si David tungkol sa mga tubig na tumakot sa kanya; ngayon, umaawit siya tungkol sa Diyos na kumikilos sa banal na galit. Ang usok at apoy na sumunod ay naghahayag ng banal na poot ng Diyos laban sa kasamaan. Hindi binabalewala ng Diyos ang kasamaang dumudurog sa Kanyang lingkod, at ang paghatol na bumabali sa kapangyarihang iyon ay nagiging kaligtasan para sa nanganganib. Lumilipat si David mula sa paglalarawan <mark>kung gaano kalaki ang kanyang pagdurusa tungo sa kung gaano kadakila ang Diyos na nagligtas sa kanya</mark>. Tayo rin, habang ibinubuhos ang ating sakit, ay dapat alalahanin kung sino ang Diyos. Hindi ang nakikitang kapangyarihan at hatol ng tao ang nagtatakda ng lahat. Ang Diyos ay naghahari sa katarungan.", "Talata 9: <mark>\"Iniyuko Niya ang kalangitan at bumaba; makapal na kadiliman ang nasa ilalim ng Kanyang mga paa.\"</mark> Umabot sa Diyos ang daing ni David, at ngayon lumalantad ang tagpo ng Diyos na bumababa. Sumasakay Siya sa kerubin at mabilis na lumilipad sa mga pakpak ng hangin, napaliligiran ng kadiliman at mga ulap. Ito ay makatang wika na naghahayag ng kadakilaan at kapangyarihang nagliligtas ng Diyos; hindi natin kailangang ituring ang bawat larawan bilang listahan ng mga likas na pangyayaring nasaksihan ni David. Ang mahalaga ay ang pagpapahayag na tunay siyang iniligtas ng Diyos. Pansinin lalo na na ang madilim na ulap sa tagpong ito ay hindi tanda ng <mark>pagkawala ng Diyos — binabalot nito ang Kanyang pagdating at presensya</mark>. Maaaring hindi natin naiintindihan ang lahat ng nangyayari sa atin ngayon. Ngunit hindi ibig sabihin na dapat nating ipasya batay lamang sa kasalukuyang kalagayan na pinabayaan na tayo ng Diyos. Kahit sa lugar na hindi natin maunawaan, maaari nating panghawakan ang katangian ng Diyos na inihayag sa Kanyang Salita."], "points": ["Kahit sa lugar na hindi ko maunawaan, maaari kong panghawakan ang katangian ng Diyos na inihayag sa Kanyang Salita."]}, {"title": "Talata 12–15 · Pati ang mga Tubig na Dumaig sa Akin ay Nasa Ilalim ng Kapangyarihan ng Diyos", "paragraphs": ["Sa talata 12–14, sunud-sunod ang liwanag at granizo, kulog at kidlat. Nagpapahayag ng Kanyang tinig ang Diyos at pinangangalat ang Kanyang mga kaaway. Ipinapaalala ng tagpong ito ang pagpapakita ng Diyos sa Exodo at sa Bundok ng Sinai. Umaawit si David na <mark>ang Diyos na nagligtas sa Israel ay nakarinig din sa kanyang sariling daing</mark>. Hindi rin natin dapat iwan ang mga kuwento ng kaligtasan sa Kasulatan bilang lumang kuwentong walang kinalaman sa atin. Hindi lahat ng pangyayari ay mauulit sa ating buhay sa parehong paraan. Ngunit ang katapatan ng Diyos na inihayag sa kasaysayang iyon ang batayang maaasahan natin ngayon. Ang pagtuon ng mata sa Diyos ay hindi basta pagiging positibo ng isip. Ito ay pagkumpirma mula sa Salita kung sino ang Diyos at pamumuhay ngayon batay sa Kanyang katangian.", "Sa talata 15, sa pagsaway ng Diyos <mark>nakita ang mga daluyan ng dagat at nalantad ang mga pundasyon ng mundo</mark>. Sa talata 4, ang rumaragasang tubig ay tumakot kay David; ngayon, pati ang mga tubig na iyon ay nasa ilalim ng kapangyarihan ng Diyos. Ang kapangyarihang dumaig kay David ay hindi makadadaig sa Diyos. At sa talata 16 na kasunod, hinango ng Diyos si David mula sa maraming tubig. Ang dakilang kapangyarihang ipinakita sa talata ngayon ay humahantong sa kaligtasang nag-aalaga sa isang tao. Kaya hindi natin dapat hayaang limitahan ng katotohanang mahirap ang ating kalagayan ang pinaniniwalaan nating kayang gawin ng Diyos. Hindi natin maitatakda ang resulta o ang panahon ayon sa ating gusto, ngunit <mark>maaari nating ipagkatiwala ang mga ito sa Kanya at piliin ang pagsunod ngayon</mark>. Ang pagtuon ng mata sa Diyos ay pagkilala sa laki ng problema habang hindi hinahayaang maging sukatan ang problemang iyon ng kapangyarihan at katapatan ng Diyos."], "points": ["Kilalanin ang laki ng problema — ngunit huwag hayaang maging sukatan ito ng kapangyarihan at katapatan ng Diyos."]}, {"title": "Aplikasyon · Ang Alalahanin ay Gawing Panalangin, ang Biyaya ay Gawing Pasasalamat", "paragraphs": ["Ngayon, lumipat ang paningin ni David mula sa kamatayang pumalibot sa kanya tungo sa Diyos na nagligtas sa kanya. Sa sakit, tumawag siya sa Diyos; sa pagbabalik-tanaw sa kanyang pagkaligtas, ipinahayag niya, <mark>\"Iniibig kita, O Yahweh.\"</mark>", "Tumingin din si Jesus sa Ama sa pagdurusa. Sa Getsemani, hindi Niya itinago ang Kanyang paghihirap habang nananalangin, at <mark>ipinagkatiwala Niya ang Kanyang sarili sa kalooban ng Ama</mark>. Sa pag-asa sa Ama, dumaan si Jesus sa kamatayan sa krus, at muli Siyang binuhay ng Diyos. Ang krus at muling pagkabuhay ay nagpapakita nang mas malalim kung ano ang ibig sabihin ng pagtingin sa Diyos. Kahit hindi agad nagbabago ang ating kalagayan sa paraang gusto natin, maaari nating ipagkatiwala ang ating buhay sa <mark>Diyos na umiibig sa atin at nagliligtas sa atin lampas sa kamatayan</mark>.", "Kongkreto ang ating tugon sa biyayang iyon. Kung ikaw ay nasa pagdurusa, <mark>sabihin nang tapat sa Diyos ang isang takot</mark>, at sa liwanag ng Salita ay pumili ng isang bagay na gagawin ngayon. Kung dumaraan ka sa panahon ng paggaling, <mark>alalahanin ang isang biyayang humawak sa iyo at magpasalamat</mark>. At manatili sa tabi ng kapwang nahihirapan pang magsalita ng pasasalamat, at maghintay kasama niya.", "Ano ang pinakamatagal kong tinitingnan ngayon? Upang ibaling ang paninging iyon sa Diyos, anong alalahanin ang gagawin mong panalangin ngayon, at anong biyaya ang ipahahayag mo nang may pasasalamat?"], "points": ["Sa pagdurusa man o sa paggaling, tumitingin ako sa Diyos, ang aking kalakasan."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung nakatuon ang aking mata sa Diyos sa halip na sa mga problemang hindi pa nalulutas o sa mga tao."}, {"key": "c2", "text": "Sinuri ko kung itinatago ko ang aking takot at sakit kahit sa panalangin, at sinasabi lamang na 'Okay lang ako.'"}, {"key": "c3", "text": "Pinag-isipan ko kung itinuturing kong bunga lamang ng sarili kong pasya at pagtitiis ang magagandang resulta at nalilimutan ang Diyos na humawak sa akin."}, {"key": "c4", "text": "Sinuri ko kung ginagamit ko ang mahirap na kalagayan bilang dahilan upang limitahan ang kayang gawin ng Diyos."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Noong pakiramdam ko'y babagsak ako, paano naging aking bato at kanlungan ang Diyos?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Alalahanin sa Panalangin", "value": "Isulat ang isang paulit-ulit na alalahanin bilang tiyak na pangungusap ng panalangin at dalhin ito sa Diyos"}, {"key": "act2", "label": "Alalahanin ang Biyaya", "value": "Alalahanin ang isang biyayang humawak sa iyo sa mahirap na panahon at manalangin ng pasasalamat"}, {"key": "act3", "label": "Gawing Akin ang Pahayag", "value": "Sumulat ng isang pangungusap, 'Ang Diyos ang aking ____,' na puno ng sarili mong karanasan"}, {"key": "act4", "label": "Maghintay sa Tabi", "value": "Sa halip na madaliang payo, samahan ang taong nasa sakit pa sa pamamagitan ng pangungumusta at panalangin"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 18:1–2, at ipahayag ang 'aking kalakasan, aking bato' tuwing nayayanig ka ngayon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, aking kalakasan, aking bato at kuta, sa pakikinig sa aking daing mula sa ibaba at sa pagdating nang may kapangyarihan."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagtatago ng aking takot sa pagdurusa at, nang maibalik, sa pag-iisip na nakatiis ako sa sarili kong lakas at paglimot sa Panginoong humawak sa akin."}, {"key": "p3", "tag": "Kahilingan", "text": "Sa pagdurusa at sa paggaling, panatilihing nakatuon sa Iyo ang aking mata; tulungan Mo akong dalhin ang aking mga alalahanin bilang panalangin at ang Iyong biyaya bilang pasasalamat, at ibigin Ka."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-28';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
