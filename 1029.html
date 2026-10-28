@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/29(목) 큐티 · 시편 18:16–29">
+<meta property="og:description" content="하나님께 붙들린 나의 손은 무엇을 하고 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 29일 목요일", "ref": "시편 18편 16–29절", "headline": "하나님께 붙들린 나의 손은<br>무엇을 하고 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 18:16-29", "s1heading": "오늘의 말씀", "verse": "\"그가 높은 곳에서 손을 펴사<br>나를 붙잡아 주심이여<br>많은 물에서 나를 건져내셨도다\"", "verseRef": "시편 18:16", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · \"어떻게 견디셨습니까?\"", "paragraphs": ["어려운 시간을 지나온 사람에게 우리는 \"어떻게 견디셨습니까?\"라고 묻곤 합니다. 그 대답에는 그 사람을 붙들어 준 것이 무엇인지 드러납니다. 앞선 본문에서 하늘과 땅을 흔들며 움직이신 하나님의 크신 능력은, 오늘 본문에서 <mark>높은 곳에서 손을 펴 다윗 한 사람을 붙드시는 손길</mark>로 나타납니다.", "그런데 본문은 도움을 받았다는 고백에서 멈추지 않습니다. 16절은 다윗을 붙드신 <mark>하나님의 손</mark>을 말하고, 20절과 24절은 깨끗했던 <mark>다윗의 손</mark>을 말합니다. 하나님의 보호를 고백하면서 자신의 행동도 돌아보는 것입니다. 우리는 하나님께 붙들어 달라고 기도합니다. 그렇다면 그렇게 붙들린 우리의 손은 지금 무엇을 하고 있습니까?"], "points": ["하나님의 손에 붙들린 삶은, 자신의 손으로 무엇을 하는지도 돌아봅니다."]}, {"title": "16–19절 · 하나님의 손이 나를 붙들어 건지셨습니다", "paragraphs": ["<mark>\"그가 높은 곳에서 손을 펴사 나를 붙잡아 주심이여 많은 물에서 나를 건져내셨도다\"</mark>(16절). 다윗은 원수들이 <mark>\"나보다 힘이 세기 때문\"</mark>이라고 솔직히 고백합니다(17절). 자신이 용감해서 이겨 냈다고 말하지 않습니다. 하나님을 의지하는 출발점은 자신의 한계를 인정하는 것입니다. 믿음은 모든 것을 혼자 감당하는 자신감이 아니라, \"하나님, 이 문제는 제 힘으로 감당하기 어렵습니다. 도와주세요\"라고 아뢰며 삶을 맡기는 것입니다.", "재앙의 날에 원수들이 덮쳤지만 <mark>\"여호와께서 나의 의지가 되셨도다\"</mark>(18절). 하나님은 그를 넓은 곳으로 인도하셨고, 그 이유는 <mark>\"나를 기뻐하시므로\"</mark>였습니다(19절). 구원에는 능력과 함께 사랑과 관계가 담겨 있습니다. 누군가에게 거절당하면 내 가치까지 부정당한 듯 느껴지지만, 사람들의 적대가 우리를 향한 하나님의 마음을 결정하지는 않습니다."], "points": ["나를 미워하는 손보다, 나를 붙드시는 하나님의 손이 결정적입니다."]}, {"title": "20–24절 · 붙들린 다윗이 자신의 손을 하나님 앞에 내어놓습니다", "paragraphs": ["<mark>\"여호와께서 내 의를 따라 상 주시며 내 손의 깨끗함을 따라 내게 갚으셨으니\"</mark>(20절). 죄가 전혀 없다거나 착한 일로 구원을 얻었다는 뜻이 아닙니다. 하나님을 향해 지켜 온 정직함과 신실함, 곧 <mark>삶의 방향</mark>을 말하는 것입니다. 그렇다고 이 말씀을 가볍게 여겨서도 안 됩니다. 은혜가 우리의 책임을 덮어 주는 것은 아니며, 손의 깨끗함은 좋은 의도만이 아니라 실제로 무엇을 했는지를 묻습니다.", "다윗의 기준은 자신의 생각이 아니라 <mark>하나님의 말씀</mark>이었습니다(21–22절). 자기 의에 빠진 사람은 스스로 옳다고 느끼면 충분하지만, 신실한 사람은 옳다고 생각하는 선택도 말씀 아래 둡니다. 억울하다고 사실을 부풀리지 않고, 이익이 된다고 남의 몫을 가로채지 않고, 피곤하다고 가족에게 함부로 말하지 않는 것입니다. 하나님은 누가 알아주지 않아도 정직하게 처리한 일과 손해를 감수하며 지킨 약속을 <mark>\"그의 목전에서\"</mark> 보십니다(24절)."], "points": ["중요한 것은 내가 나를 얼마나 옳다고 느끼는가보다, 내 삶을 말씀 아래 두고 있는가입니다."]}, {"title": "25–27절 · 신실하신 하나님은 곤고한 백성을 구원하십니다", "paragraphs": ["하나님은 자비로운 자에게 자비로우심을, 깨끗한 자에게 깨끗하심을 보이시며, <mark>사악한 자에게는 거스르심</mark>을 보이십니다(25–26절). 하나님이 악하게 행하신다는 뜻이 아니라, 간교한 사람이 꾀로 하나님을 이용하거나 공의를 피할 수 없다는 뜻입니다. 하나님의 신실하심에는 자비와 공의가 함께 있습니다. 우리의 잘못을 드러내 돌이키게 하시는 것도 <mark>신실한 돌보심</mark>이니, 잘못을 지적받을 때에도 겸손히 귀를 기울여야 합니다.", "<mark>\"주께서 곤고한 백성은 구원하시고 교만한 눈은 낮추시리이다\"</mark>(27절). 곤고한 자는 고통받고 억눌려 도움이 필요한 사람들이며, 왕인 다윗도 그런 사람으로 하나님 앞에 섭니다. 우리는 도움을 받은 뒤 나도 도움이 필요했던 사람이라는 사실을 잊고 \"왜 그것도 못 견디나\" 하며 남을 쉽게 판단합니다. 하나님께 붙들렸던 사람은 <mark>도움이 필요한 사람에게 손을 내밀어야</mark> 합니다."], "points": ["나를 일으켜 주신 은혜를 기억하는 사람은, 다른 사람의 연약함을 대하는 태도가 달라집니다."]}, {"title": "28–29절 · 주께서 내 등불을 켜시고 다시 나아갈 힘을 주십니다", "paragraphs": ["<mark>\"주께서 나의 등불을 켜심이여 여호와 내 하나님이 내 흑암을 밝히시리이다\"</mark>(28절). 하나님은 꺼져 가는 삶에 다시 생명의 빛을 주십니다. 그리고 다윗은 <mark>\"내가 주를 의뢰하고 적군을 향해 달리며 내 하나님을 의지하고 담을 뛰어넘나이다\"</mark>(29절)라고 고백합니다. 17절에서 원수들이 자신보다 강하다고 했던 그가 이제 그들을 향해 나아갑니다. 약함을 잊은 것이 아니라, 자신을 붙드시는 하나님을 의지해 행동하는 것입니다.", "이것은 원하는 모든 목표를 이룬다는 약속이 아닙니다. 다만 우리는 맡겨진 책임을 하나님께 의지해 감당할 수 있습니다. 미루었던 사과를 건네고, 잘못 처리한 일을 바로잡고, 지친 가족을 돌아보는 데에도 힘이 필요합니다. 하나님을 의지한다는 것은 그 일을 없애 달라고만 구하는 데 머물지 않고, <mark>주시는 힘으로 내가 해야 할 일을 하는 것</mark>입니다."], "points": ["하나님께 붙들린 사람은 강하다고 주장하기보다, 주신 힘으로 다른 사람을 돌보고 맡겨진 일을 감당합니다."]}, {"title": "적용 · 오늘 나의 손은 누구를 붙들고 있습니까", "paragraphs": ["오늘 본문의 시작에는 다윗을 붙드시는 <mark>하나님의 손</mark>이 있었고, 그다음에는 하나님 앞에서 자신의 손을 돌아보는 다윗의 고백이 있었습니다. 하나님의 손에 붙들린 삶은 자신의 손으로 무엇을 하는지도 돌아봅니다.", "예수님은 주님이시면서도 손수 제자들의 발을 씻기시며 낮아져 섬기셨고, 제자들에게도 <mark>서로 발을 씻어 주라</mark>고 말씀하셨습니다(요 13:14). 그리고 십자가에서 자신의 몸을 내어 주심으로 우리를 죄에서 구원하셨습니다. 우리의 구원은 깨끗한 손을 만들어 하나님께 내밀어 얻는 것이 아닙니다. <mark>죄인을 위해 자신을 내어 주신 예수님의 은혜</mark>로 얻습니다. 그 은혜를 받은 우리는 이제 주님의 뜻을 따라 우리의 손을 사용하도록 부름받았습니다.", "오늘 우리의 손을 돌아봅시다. 이익을 위해 움켜쥐고 있는 것은 없습니까? 내가 책임져야 할 일을 다른 사람에게 떠넘기고 있지는 않습니까? 주님의 은혜를 의지해 한 가지를 바꾸십시오. <mark>돌려줄 것은 돌려주고, 바로잡을 것은 바로잡으며, 도움이 필요한 사람에게 손을 내미십시오</mark>. 그것은 은혜를 얻기 위한 대가가 아니라, 이미 받은 은혜에 대한 응답입니다.", "하나님께 붙들어 달라고 기도하는 나의 손은, 오늘 누구를 붙들고 있으며 무엇을 바로잡아야 하겠습니까?"], "points": ["붙들어 주신 은혜에 응답하여, 오늘 내 손으로 한 사람을 붙들고 한 가지를 바로잡습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "내 힘으로 감당할 수 없는 문제를 숨기지 않고 하나님께 '도와주세요'라고 솔직하게 아뢰었다"}, {"key": "c2", "text": "돈을 쓰는 방식, 보내는 문자, 일 처리하는 태도까지 말씀 아래 두고 있는지 돌아봤다"}, {"key": "c3", "text": "잘못을 지적받을 때 방어하기보다 겸손히 귀를 기울였는지 점검했다"}, {"key": "c4", "text": "어려움에 처한 사람을 쉽게 판단하지 않고 손을 내밀었는지 돌아봤다"}], "s4heading": "묵상 한 줄", "memoHint": "하나님께 붙들린 나의 손이 오늘 붙들어야 할 사람은 누구이며, 바로잡아야 할 일은 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "한계 인정하기", "value": "혼자 끌어안고 있던 문제 하나를 '제 힘으로는 어렵습니다'라고 하나님께 아뢰고 필요한 도움 구하기"}, {"key": "act2", "label": "돌려주기", "value": "이익을 위해 움켜쥐고 있던 것이나 남의 몫이 있다면 돌려주기"}, {"key": "act3", "label": "바로잡기", "value": "미루었던 사과를 건네거나 잘못 처리한 일 하나를 바로잡기"}, {"key": "act4", "label": "손 내밀기", "value": "도움이 필요한 사람이나 지친 가족에게 판단 대신 구체적인 도움의 손 내밀기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 18:16과 28절을 외우며 나를 붙드신 하나님의 손을 기억하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "높은 곳에서 손을 펴 많은 물에서 나를 건지시고, 나를 기뻐하셔서 넓은 곳으로 인도하시며, 내 흑암을 밝히시는 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "붙들어 달라고 기도하면서도 내 손으로는 이익을 움켜쥐고, 책임을 떠넘기고, 어려운 사람을 쉽게 판단했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "예수님의 은혜에 응답하여 내 손을 주님의 뜻대로 사용하게 하시고, 주시는 힘으로 돌려줄 것은 돌려주고 바로잡을 것은 바로잡게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 29, Thursday", "ref": "Psalm 18:16–29", "headline": "What Are My Hands Doing,<br>Now That God Holds Me?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 18:16-29", "s1heading": "Today's Word", "verse": "\"He sent from on high, He took me;<br>He drew me out<br>of many waters.\"", "verseRef": "Psalm 18:16", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · \"How Did You Get Through It?\"", "paragraphs": ["When we meet someone going through hardship, or someone who has come through it, we often ask, 'How did you get through it?' The answer reveals what held that person up. Today is our second time in Psalm 18. In the previous passage, David cried out to God in the face of death. God heard his voice, and David described God's movement as a scene of heaven and earth shaking. Today's passage shows where that great power was directed: <mark>God reached down from on high and took hold of one man, David</mark>. As David explains how he survived, he first admits his limits. His enemies were stronger than he was. He confesses that God held him in a place where he could not save himself. Even people who boast of health and ability come to a stop before unexpected weakness. And the gospel reveals an even deeper limit: we cannot resolve our sin or conquer death by our own strength. That is why we need Christ Jesus, who saves us.", "Yet today's passage does not stop at the confession that David was helped. Verse 16 speaks of <mark>God's hand</mark> that took hold of him, and verses 20 and 24 speak of <mark>David's own hands</mark> being clean. As he speaks of God's protection, he also reflects on his own actions. Here is the center we hold on to today: a life held in God's hand also examines what it does with its own hands. We pray, 'God, hold on to me.' If so, what are our hands — the hands He holds — doing right now? Through today's Word, let's look at both our faith that relies on God and the actual actions of our lives, in three movements."], "points": ["A life held in God's hand also examines what it is doing with its own hands."]}, {"title": "Verses 16–19 · God's Hand Took Hold of Me and Drew Me Out", "paragraphs": ["Verse 16: <mark>\"He sent from on high, He took me; He drew me out of many waters.\"</mark> In the previous passage, mountains and earth shook. Now that same great power appears as a hand that grasps one person. God reached out to the specific danger David faced. The 'many waters' show the threat that overwhelmed him. In verse 17 he honestly admits that his enemies <mark>\"were too mighty for me.\"</mark> He doesn't say he overcame everything because he was brave. He confesses that God rescued him where he could not cope by his own strength. This is the starting point of relying on God: admitting our own limits. Sometimes we ask for help yet don't want to admit we are weak. But David doesn't hide his weakness; instead he reveals and praises the help of God that was far more decisive. We too can be honest before God: 'God, this problem is too hard for me to handle in my own strength. Please help me.' Faith is not the self-confidence that we can handle everything alone. It is entrusting our life to the God who holds us.", "On the day of David's calamity, his enemies attacked him — <mark>\"but the LORD was my support\"</mark> (v. 18). In a place where he could only have collapsed, God became the pillar that kept him standing. Verse 19: <mark>\"He brought me out into a broad place; He rescued me, because He delighted in me.\"</mark> David, who had been hemmed in, came out into a wide place — he could breathe again and gained freedom and safety to move. And he confesses the reason: God delighted in him. Even among people who hated him, God treasured him. Salvation carries not only power but love and relationship. When someone rejects us, we sometimes feel that our very worth has been denied. But people's hostility does not determine God's heart toward us. David confesses that God's hand that held him was more decisive than the hands of the enemies who hated him. God's greatness appears as His hand reaching the concrete needs of a weak person and holding them."], "points": ["God's hand that holds me is more decisive than any hand raised against me."]}, {"title": "Verses 20–24 · The One Who Was Held Lays His Own Hands Before God", "paragraphs": ["Verse 20: <mark>\"The LORD dealt with me according to my righteousness; according to the cleanness of my hands He rewarded me.\"</mark> These words may sound a little strange. Is David claiming he has no sin at all? Does he mean he earned salvation by doing many good deeds? We must not read it that way. In the context of the salvation he is confessing, David speaks of the honesty he kept and his faithfulness toward God — he is speaking of <mark>the direction of his life</mark>. It is gratitude that God did not ignore his life but dealt with him fairly. At the same time, we must not lighten the weight of these words. God takes our actual actions seriously. God's grace does not simply cover over our responsibility. Clean hands ask not only about good intentions in our hearts but about what we actually did. In the earlier verses God's hand rescued David; now David speaks of his own hands. This connection makes us reflect, too: those who ask to be held by God's hand must also honestly examine what they are doing to others with their own hands.", "In verses 21–23, David begins to describe his righteousness concretely: he kept the ways of the LORD, did not wickedly depart from his God, kept all His rules before him, and did not put away His statutes. His standard was <mark>not his own thinking but God's Word</mark>. Someone caught in self-righteousness thinks it is enough to feel that they are right. But a faithful person places even the choices they believe are right under the Word. Before we decide something, we too must ask not only 'Is this to my advantage?' but 'Is this honest before God?' — down to how we spend money, the texts we send, and how we handle the work entrusted to us. In verse 23, David says he was blameless before Him and kept himself from his guilt. The wholeness he speaks of is not a state where he no longer needs to watch against sin; it is the posture of guarding himself in order to live truthfully before God. We need such boundaries too: not exaggerating the facts because we feel wronged, not seizing someone else's share because it profits us, not speaking carelessly to our family because we're tired. In verse 24 the phrase 'cleanness of hands' appears again, this time emphasizing <mark>\"in His sight.\"</mark> People may judge by results, but God also sees how we acted on the way to those results. He knows the work you handled honestly though no one noticed, the promise you kept at your own cost, the action you stopped so as not to harm someone. This does not mean that if we are honest, everything will go well immediately. Job suffered, and the sinless Jesus bore the cross. We cannot judge a person's righteousness by present circumstances alone. Yet suffering does not make obedience meaningless either. God truly sees our lives. So whatever our circumstances, we can lay our actions before the Word. What matters is not how right I feel about myself, but whether I am placing my life under God's Word."], "points": ["What matters is not how right I feel, but whether I am placing my life under God's Word."]}, {"title": "Verses 25–27 · The Faithful God Saves the Humble People", "paragraphs": ["In verses 25–26, David confesses that God shows Himself merciful to the merciful, blameless to the blameless, and pure to the pure — and <mark>to the crooked He shows Himself shrewd</mark>. God does not stand by those who sincerely rely on Him only to betray them. At the same time, He sets Himself against the crooked. This does not mean God acts wickedly; it means a scheming person cannot use God through cunning or escape His justice. God's faithfulness holds mercy and justice together. Because He loves us, He never says every action of ours is fine. Exposing our wrongs and turning us back is also <mark>His faithful care</mark>. So a life held in God's hand must listen humbly even when its faults are pointed out. Nor do we need to treat everything that doesn't go our way as proof that God has abandoned us. In that place, we should look to see whether there is a lesson calling us to examine our path.", "Verse 27: <mark>\"For You save a humble people, but the haughty eyes You bring down.\"</mark> The 'humble' or afflicted here do not simply mean people with a modest personality; they are those who suffer, who are oppressed and in need of help. Even David, a king, stands before God as such a person. He knows his position and ability cannot protect everything. After we've been helped, we easily forget that we too were people in need of help. And we readily judge those who are struggling now: 'Why can't they even endure that? Why can't they get it right?' But those who were once held by God's hand must also examine how they treat other people's weakness. Remembering the grace that lifted us up, we must <mark>reach out our hands to those who need help</mark>."], "points": ["Those who remember the grace that lifted them up treat others' weakness differently."]}, {"title": "Verses 28–29 · The Lord Lights My Lamp and Gives Me Strength to Go Forward Again", "paragraphs": ["Verse 28: <mark>\"For it is You who light my lamp; the LORD my God lightens my darkness.\"</mark> God gives renewed life and light to a life that is flickering out. Then in verse 29, David confesses, <mark>\"For by You I can run against a troop, and by my God I can leap over a wall.\"</mark> In verse 17 he said his enemies were stronger than he was. Now he advances toward them. He has not forgotten his weakness. He is acting in reliance on the God who holds him.", "This Word is not a promise that we will surely achieve every goal we want. David is confessing the strength God gave him in a real battle. Following his confession, we today can carry out our entrusted responsibilities by relying on God. It takes strength to offer the apology we've put off, to correct something we handled wrongly, to care for a worn-out family member. Relying on God does not stop at asking Him to make those tasks disappear. It means <mark>doing what I need to do with the strength He gives</mark>. A person held in God's hand doesn't insist on being strong, but with the strength given cares for others and carries out the work entrusted to them."], "points": ["A person held by God doesn't insist on being strong, but uses the strength given to care for others and do the work entrusted."]}, {"title": "Application · Whom Are My Hands Holding Today?", "paragraphs": ["At the start of today's passage was <mark>God's hand</mark> holding David. After that came David's confession as he examined his own hands before God. A life held in God's hand also examines what it does with its own hands.", "Though He was Lord, Jesus humbled Himself and served, washing His disciples' feet with His own hands, and told them that they too <mark>ought to wash one another's feet</mark> (John 13:14). And on the cross He gave His own body to save us from sin. Our salvation is not obtained by making our hands clean and holding them out to God. It is received by <mark>the grace of Jesus, who gave Himself for sinners</mark>. Having received that grace, we are now called to use our hands according to the Lord's will.", "Let's look at our hands today. Is there something you're clutching for your own gain? Are you pushing onto others a responsibility that is yours? Relying on the Lord's grace, change one thing. <mark>Return what should be returned, set right what should be set right, and reach out your hand to someone who needs help.</mark> This is not a payment to earn grace, but a response to the grace already received.", "My hands that pray, 'God, hold on to me' — whom are they holding today, and what do they need to set right?"], "points": ["In response to the grace that held me, today my hands will hold one person and set one thing right."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I didn't hide a problem beyond my strength, but honestly told God, 'Please help me.'"}, {"key": "c2", "text": "I reflected on whether I place even how I spend money, the texts I send, and how I handle work under the Word."}, {"key": "c3", "text": "I checked whether I listened humbly when my faults were pointed out, instead of getting defensive."}, {"key": "c4", "text": "I reflected on whether I reached out to someone struggling rather than quickly judging them."}], "s4heading": "One-Line Reflection", "memoHint": "Whom should my hands — held by God — hold today, and what do they need to set right?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Admit My Limits", "value": "Tell God about one problem you've been carrying alone — 'This is too hard for me' — and seek the help you need"}, {"key": "act2", "label": "Give It Back", "value": "If you're clutching something for gain or holding someone else's share, give it back"}, {"key": "act3", "label": "Set It Right", "value": "Offer an apology you've put off, or correct one thing you handled wrongly"}, {"key": "act4", "label": "Reach Out", "value": "Instead of judging, offer concrete help to someone in need or a worn-out family member"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 18:16 and 28, and remember God's hand that held you"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for reaching down from on high to draw me out of many waters, bringing me into a broad place because You delight in me, and lighting my darkness."}, {"key": "p2", "tag": "Repent", "text": "I repent that while praying for You to hold me, my hands clutched at gain, pushed off responsibility, and quickly judged those who were struggling."}, {"key": "p3", "tag": "Ask", "text": "In response to Jesus' grace, help me use my hands according to Your will; with the strength You give, help me return what should be returned and set right what should be set right."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 29, Huwebes", "ref": "Awit 18:16–29", "headline": "Ano ang Ginagawa ng Aking mga Kamay,<br>Ngayong Hinahawakan Ako ng Diyos?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 18:16-29", "s1heading": "Salita Ngayon", "verse": "\"Mula sa itaas ay iniabot Niya ang Kanyang kamay at hinawakan ako;<br>hinango Niya ako<br>mula sa maraming tubig.\"", "verseRef": "Awit 18:16", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · \"Paano Mo Ito Nalampasan?\"", "paragraphs": ["Kapag nakakatagpo tayo ng taong dumaraan sa hirap, o taong nakalampas na rito, madalas nating itanong, 'Paano mo ito nalampasan?' Inihahayag ng sagot kung ano ang humawak sa taong iyon. Ngayon ang ikalawang pagkakataon natin sa Awit 18. Sa naunang talata, dumaing si David sa Diyos sa harap ng kamatayan. Narinig ng Diyos ang kanyang tinig, at inilarawan ni David ang pagkilos ng Diyos bilang tagpo ng pagyanig ng langit at lupa. Ipinapakita ng talata ngayon kung saan itinuon ang dakilang kapangyarihang iyon: <mark>iniabot ng Diyos ang Kanyang kamay mula sa itaas at hinawakan ang isang tao, si David</mark>. Habang ipinaliliwanag ni David kung paano siya nakaligtas, inamin muna niya ang kanyang mga limitasyon. Mas malakas sa kanya ang kanyang mga kaaway. Ipinahayag niyang hinawakan siya ng Diyos sa lugar na hindi niya kayang iligtas ang sarili. Kahit ang mga taong nagmamalaki sa kalusugan at kakayahan ay napapahinto sa harap ng di-inaasahang kahinaan. At inihahayag ng ebanghelyo ang mas malalim pang limitasyon: hindi natin kayang lutasin ang ating kasalanan o talunin ang kamatayan sa sarili nating lakas. Kaya kailangan natin si Cristo Jesus na nagliligtas sa atin.", "Ngunit hindi humihinto ang talata ngayon sa pagpapahayag na tinulungan si David. Ang talata 16 ay nagsasalita tungkol sa <mark>kamay ng Diyos</mark> na humawak sa kanya, at ang mga talata 20 at 24 ay nagsasalita tungkol sa pagiging malinis ng <mark>sariling mga kamay ni David</mark>. Habang nagsasalita siya tungkol sa proteksyon ng Diyos, sinusuri rin niya ang sarili niyang mga kilos. Narito ang sentrong hahawakan natin ngayon: ang buhay na hawak ng kamay ng Diyos ay sinusuri rin kung ano ang ginagawa nito sa sarili nitong mga kamay. Nananalangin tayo, 'Diyos, hawakan Mo ako.' Kung gayon, ano ang ginagawa ngayon ng ating mga kamay — ang mga kamay na hawak Niya? Sa pamamagitan ng Salita ngayon, tingnan natin kapwa ang ating pananampalatayang umaasa sa Diyos at ang tunay na mga kilos ng ating buhay, sa tatlong bahagi."], "points": ["Ang buhay na hawak ng kamay ng Diyos ay sinusuri rin kung ano ang ginagawa nito sa sarili nitong mga kamay."]}, {"title": "Talata 16–19 · Hinawakan Ako ng Kamay ng Diyos at Hinango", "paragraphs": ["Talata 16: <mark>\"Mula sa itaas ay iniabot Niya ang Kanyang kamay at hinawakan ako; hinango Niya ako mula sa maraming tubig.\"</mark> Sa naunang talata, yumanig ang mga bundok at lupa. Ngayon, ang dakilang kapangyarihang iyon ay lumilitaw bilang kamay na humahawak sa isang tao. Iniabot ng Diyos ang Kanyang kamay sa tiyak na panganib na hinarap ni David. Ang 'maraming tubig' ay nagpapakita ng bantang dumaig sa kanya. Sa talata 17, tapat niyang inamin na ang kanyang mga kaaway ay <mark>\"mas malakas kaysa sa akin.\"</mark> Hindi niya sinasabing nalampasan niya ang lahat dahil matapang siya. Ipinahayag niyang iniligtas siya ng Diyos sa lugar na hindi niya kayang harapin sa sarili niyang lakas. Ito ang simula ng pag-asa sa Diyos: ang pag-amin sa sarili nating mga limitasyon. Minsan humihingi tayo ng tulong ngunit ayaw nating aminin na mahina tayo. Ngunit hindi itinago ni David ang kanyang kahinaan; sa halip, inihayag at pinuri niya ang tulong ng Diyos na mas mapagpasya. Maaari rin tayong maging tapat sa harap ng Diyos: 'Diyos, napakahirap para sa akin ang problemang ito sa sarili kong lakas. Tulungan Mo po ako.' Ang pananampalataya ay hindi ang tiwala sa sariling kaya nating harapin ang lahat nang mag-isa. Ito ay pagkakatiwala ng ating buhay sa Diyos na humahawak sa atin.", "Sa araw ng kapahamakan ni David, inatake siya ng kanyang mga kaaway — <mark>\"ngunit si Yahweh ang aking naging sandigan\"</mark> (t. 18). Sa lugar na babagsak sana siya, ang Diyos ang naging haliging nagpatayo sa kanya. Talata 19: <mark>\"Dinala Niya ako sa malawak na lugar; iniligtas Niya ako, sapagkat Siya'y nalugod sa akin.\"</mark> Si David na dating napaliligiran ay lumabas sa malawak na lugar — nakahinga siyang muli at nagkamit ng kalayaan at kaligtasang kumilos. At ipinahayag niya ang dahilan: nalugod sa kanya ang Diyos. Kahit sa gitna ng mga taong napopoot sa kanya, pinahalagahan siya ng Diyos. Ang kaligtasan ay may dalang hindi lamang kapangyarihan kundi pag-ibig at relasyon. Kapag may tumanggi sa atin, minsan pakiramdam natin ay itinatwa pati ang ating halaga. Ngunit hindi ang pagkapoot ng tao ang nagtatakda ng puso ng Diyos para sa atin. Ipinahayag ni David na mas mapagpasya ang kamay ng Diyos na humawak sa kanya kaysa sa mga kamay ng mga kaaway na napopoot sa kanya. Ang kadakilaan ng Diyos ay lumilitaw bilang Kanyang kamay na umaabot sa tiyak na pangangailangan ng mahinang tao at humahawak sa kanya."], "points": ["Mas mapagpasya ang kamay ng Diyos na humahawak sa akin kaysa sa anumang kamay na nakataas laban sa akin."]}, {"title": "Talata 20–24 · Ang Taong Hinawakan ay Inilalapag ang Sariling mga Kamay sa Harap ng Diyos", "paragraphs": ["Talata 20: <mark>\"Ginantimpalaan ako ni Yahweh ayon sa aking katuwiran; ayon sa kalinisan ng aking mga kamay ay ginantihan Niya ako.\"</mark> Maaaring medyo kakaiba ang tunog ng mga salitang ito. Sinasabi ba ni David na wala siyang kasalanan? Ibig ba niyang sabihin na nakamit niya ang kaligtasan sa paggawa ng maraming mabuti? Hindi natin dapat basahin ito nang ganoon. Sa konteksto ng kaligtasang ipinahahayag niya, nagsasalita si David tungkol sa katapatang iningatan niya at sa kanyang pagiging tapat sa Diyos — nagsasalita siya tungkol sa <mark>direksyon ng kanyang buhay</mark>. Ito ay pasasalamat na hindi binalewala ng Diyos ang kanyang buhay kundi tinrato siya nang patas. Kasabay nito, hindi natin dapat gaanin ang bigat ng mga salitang ito. Sineseryoso ng Diyos ang ating tunay na mga kilos. Hindi basta tinatakpan ng biyaya ng Diyos ang ating pananagutan. Ang malinis na kamay ay nagtatanong hindi lamang tungkol sa mabuting hangarin sa ating puso kundi tungkol sa tunay nating ginawa. Sa mga naunang talata, ang kamay ng Diyos ang humango kay David; ngayon, nagsasalita si David tungkol sa sarili niyang mga kamay. Pinag-iisip din tayo ng ugnayang ito: ang mga humihiling na hawakan sila ng kamay ng Diyos ay dapat ding tapat na suriin kung ano ang ginagawa nila sa iba gamit ang sarili nilang mga kamay.", "Sa talata 21–23, nagsimulang ilarawan ni David nang tiyak ang kanyang katuwiran: iningatan niya ang mga daan ni Yahweh, hindi siya masamang lumayo sa kanyang Diyos, nasa harap niya ang lahat ng Kanyang mga tuntunin, at hindi niya itinakwil ang Kanyang mga batas. Ang kanyang pamantayan ay <mark>hindi ang sarili niyang isip kundi ang Salita ng Diyos</mark>. Ang taong nalulong sa pagmamatuwid sa sarili ay nag-iisip na sapat nang madama niyang tama siya. Ngunit inilalagay ng tapat na tao sa ilalim ng Salita pati ang mga pasyang pinaniniwalaan niyang tama. Bago tayo magpasya, dapat din nating itanong hindi lamang 'Kapaki-pakinabang ba ito sa akin?' kundi 'Tapat ba ito sa harap ng Diyos?' — hanggang sa paraan ng paggastos natin ng pera, sa mga mensaheng ipinapadala natin, at sa paghawak natin sa gawaing ipinagkatiwala sa atin. Sa talata 23, sinasabi ni David na siya'y walang kapintasan sa harap Niya at iningatan ang sarili mula sa kanyang pagkakasala. Ang kabuuang sinasabi niya ay hindi kalagayang hindi na kailangang magbantay laban sa kasalanan; ito ang saloobin ng pag-iingat sa sarili upang mamuhay nang totoo sa harap ng Diyos. Kailangan din natin ang ganitong mga hangganan: hindi pagpapalaki ng katotohanan dahil pakiramdam natin ay inapi tayo, hindi pag-agaw sa bahagi ng iba dahil kapaki-pakinabang ito, hindi pagsasalita nang pabaya sa pamilya dahil pagod tayo. Sa talata 24, muling lumitaw ang pariralang 'kalinisan ng mga kamay,' na ngayon ay nagbibigay-diin sa <mark>\"sa Kanyang paningin.\"</mark> Maaaring humatol ang tao batay sa resulta, ngunit nakikita rin ng Diyos kung paano tayo kumilos patungo sa mga resultang iyon. Alam Niya ang gawaing tapat mong hinawakan kahit walang nakapansin, ang pangakong tinupad mo kahit ikaw ang nalugi, ang kilos na pinigilan mo upang hindi makasakit ng iba. Hindi ito nangangahulugang kung tapat tayo, agad na magiging maayos ang lahat. Nagdusa si Job, at pinasan ng walang-kasalanang si Jesus ang krus. Hindi natin mahahatulan ang katuwiran ng isang tao batay lamang sa kasalukuyang kalagayan. Gayunman, hindi rin ginagawang walang kabuluhan ng pagdurusa ang pagsunod. Tunay na nakikita ng Diyos ang ating buhay. Kaya anuman ang ating kalagayan, maaari nating ilapag ang ating mga kilos sa harap ng Salita. Ang mahalaga ay hindi kung gaano ko nadaramang tama ako, kundi kung inilalagay ko ang aking buhay sa ilalim ng Salita ng Diyos."], "points": ["Ang mahalaga ay hindi kung gaano ko nadaramang tama ako, kundi kung inilalagay ko ang aking buhay sa ilalim ng Salita ng Diyos."]}, {"title": "Talata 25–27 · Ang Tapat na Diyos ay Nagliligtas sa Mapagpakumbabang Bayan", "paragraphs": ["Sa talata 25–26, ipinahayag ni David na ipinapakita ng Diyos ang Kanyang awa sa maawain, ang Kanyang kawalang-kapintasan sa walang kapintasan, at ang Kanyang kalinisan sa malinis — at <mark>sa baluktot ay ipinapakita Niya ang Kanyang pagsalungat</mark>. Hindi tinatalikuran ng Diyos ang mga taimtim na umaasa sa Kanya. Kasabay nito, sumasalungat Siya sa mga baluktot. Hindi ito nangangahulugang gumagawa ng masama ang Diyos; ibig sabihin, hindi magagamit ng tusong tao ang Diyos sa pamamagitan ng katusuhan o matatakasan ang Kanyang katarungan. Magkasama sa katapatan ng Diyos ang awa at katarungan. Dahil iniibig Niya tayo, hindi Niya kailanman sinasabing ayos lang ang bawat kilos natin. Ang paglalantad sa ating mga mali at pagpapabalik sa atin ay <mark>Kanya ring tapat na pag-aalaga</mark>. Kaya ang buhay na hawak ng kamay ng Diyos ay dapat makinig nang may kababaang-loob kahit itinuturo ang kanyang mga pagkakamali. Hindi rin natin kailangang ituring na patunay ng pagpapabaya ng Diyos ang lahat ng hindi nangyari ayon sa gusto natin. Sa lugar na iyon, dapat nating tingnan kung may aral na tumatawag sa ating suriin ang ating landas.", "Talata 27: <mark>\"Sapagkat inililigtas Mo ang mapagpakumbabang bayan, ngunit ang mapagmataas na mata ay Iyong ibinababa.\"</mark> Ang 'mapagpakumbaba' o nagdurusa rito ay hindi lamang mga taong may mahinhing ugali; sila ang mga nagdurusa, inaapi, at nangangailangan ng tulong. Kahit si David, na isang hari, ay tumatayo sa harap ng Diyos bilang ganoong tao. Alam niyang hindi kayang protektahan ng kanyang posisyon at kakayahan ang lahat. Matapos tayong matulungan, madali nating malimutan na tayo rin ay mga taong nangailangan ng tulong. At madali nating hinahatulan ang mga nahihirapan ngayon: 'Bakit hindi niya kayang tiisin iyon? Bakit hindi niya magawa nang tama?' Ngunit ang mga minsang hinawakan ng kamay ng Diyos ay dapat ding suriin kung paano nila tinatrato ang kahinaan ng iba. Sa pag-alala sa biyayang nagbangon sa atin, dapat nating <mark>iabot ang ating mga kamay sa mga nangangailangan ng tulong</mark>."], "points": ["Ang mga nakaaalala sa biyayang nagbangon sa kanila ay iba ang pagtrato sa kahinaan ng iba."]}, {"title": "Talata 28–29 · Sinisindihan ng Panginoon ang Aking Ilawan at Binibigyan Ako ng Lakas na Muling Sumulong", "paragraphs": ["Talata 28: <mark>\"Sapagkat Ikaw ang nagsisindi ng aking ilawan; liliwanagan ni Yahweh na aking Diyos ang aking kadiliman.\"</mark> Nagbibigay ang Diyos ng panibagong buhay at liwanag sa buhay na nauupos. Pagkatapos sa talata 29, ipinahayag ni David, <mark>\"Sapagkat sa pamamagitan Mo ay kaya kong salakayin ang isang hukbo, at sa pamamagitan ng aking Diyos ay kaya kong lundagin ang pader.\"</mark> Sa talata 17, sinabi niyang mas malakas sa kanya ang kanyang mga kaaway. Ngayon, sumusulong siya patungo sa kanila. Hindi niya nalimutan ang kanyang kahinaan. Kumikilos siya nang umaasa sa Diyos na humahawak sa kanya.", "Hindi pangako ang Salitang ito na tiyak nating makakamit ang bawat layuning gusto natin. Ipinapahayag ni David ang lakas na ibinigay sa kanya ng Diyos sa tunay na labanan. Sa pagsunod sa kanyang pagpapahayag, maaari nating gampanan ngayon ang mga pananagutang ipinagkatiwala sa atin nang umaasa sa Diyos. Kailangan ng lakas upang ibigay ang paumanhing matagal nating ipinagpaliban, upang itama ang isang bagay na mali nating nahawakan, upang alagaan ang pagod na kapamilya. Ang pag-asa sa Diyos ay hindi humihinto sa paghiling na mawala na lamang ang mga gawaing iyon. Ito ay <mark>paggawa ng dapat kong gawin sa lakas na ibinibigay Niya</mark>. Ang taong hawak ng kamay ng Diyos ay hindi nagpupumilit na malakas siya, kundi sa lakas na ibinigay ay nag-aalaga sa iba at ginagampanan ang gawaing ipinagkatiwala sa kanya."], "points": ["Ang taong hawak ng Diyos ay hindi nagpupumilit na malakas siya, kundi ginagamit ang ibinigay na lakas upang alagaan ang iba at gampanan ang ipinagkatiwalang gawain."]}, {"title": "Aplikasyon · Sino ang Hinahawakan ng Aking mga Kamay Ngayon?", "paragraphs": ["Sa simula ng talata ngayon ay ang <mark>kamay ng Diyos</mark> na humahawak kay David. Pagkatapos noon ay ang pagpapahayag ni David habang sinusuri niya ang sarili niyang mga kamay sa harap ng Diyos. Ang buhay na hawak ng kamay ng Diyos ay sinusuri rin kung ano ang ginagawa nito sa sarili nitong mga kamay.", "Kahit Siya ang Panginoon, nagpakumbaba si Jesus at naglingkod, hinugasan ng Kanyang sariling mga kamay ang mga paa ng Kanyang mga alagad, at sinabi sa kanila na sila rin ay <mark>dapat maghugasan ng paa ng isa't isa</mark> (Juan 13:14). At sa krus, ibinigay Niya ang Kanyang sariling katawan upang iligtas tayo mula sa kasalanan. Ang ating kaligtasan ay hindi nakakamit sa paglilinis ng ating mga kamay at pag-aabot nito sa Diyos. Natatanggap ito sa <mark>biyaya ni Jesus, na nagbigay ng Kanyang sarili para sa mga makasalanan</mark>. Dahil natanggap natin ang biyayang iyon, tinawag na tayo ngayon upang gamitin ang ating mga kamay ayon sa kalooban ng Panginoon.", "Tingnan natin ang ating mga kamay ngayon. May hinahawakan ka bang mahigpit para sa sarili mong pakinabang? Ipinapasa mo ba sa iba ang pananagutang sa iyo? Sa pag-asa sa biyaya ng Panginoon, baguhin ang isang bagay. <mark>Ibalik ang dapat ibalik, itama ang dapat itama, at iabot ang iyong kamay sa nangangailangan ng tulong.</mark> Hindi ito bayad upang makamit ang biyaya, kundi tugon sa biyayang natanggap na.", "Ang aking mga kamay na nananalanging 'Diyos, hawakan Mo ako' — sino ang hinahawakan nila ngayon, at ano ang kailangan nilang itama?"], "points": ["Bilang tugon sa biyayang humawak sa akin, ngayon ay hahawakan ng aking mga kamay ang isang tao at itatama ang isang bagay."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Hindi ko itinago ang problemang lampas sa aking lakas, kundi tapat kong sinabi sa Diyos, 'Tulungan Mo po ako.'"}, {"key": "c2", "text": "Pinag-isipan ko kung inilalagay ko sa ilalim ng Salita pati ang paggastos ko ng pera, ang mga mensaheng ipinapadala ko, at ang paghawak ko sa trabaho."}, {"key": "c3", "text": "Sinuri ko kung nakinig ako nang may kababaang-loob nang itinuro ang aking mga pagkakamali, sa halip na magtanggol."}, {"key": "c4", "text": "Pinag-isipan ko kung inabot ko ang aking kamay sa nahihirapan sa halip na madaling humatol sa kanya."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sino ang dapat hawakan ngayon ng aking mga kamay — na hawak ng Diyos — at ano ang kailangan nilang itama?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Aminin ang Limitasyon", "value": "Sabihin sa Diyos ang isang problemang mag-isa mong pinapasan — 'Napakahirap nito para sa akin' — at humingi ng tulong na kailangan mo"}, {"key": "act2", "label": "Ibalik", "value": "Kung may hinahawakan kang mahigpit para sa pakinabang o hawak mo ang bahagi ng iba, ibalik ito"}, {"key": "act3", "label": "Itama", "value": "Ibigay ang paumanhing ipinagpaliban mo, o itama ang isang bagay na mali mong nahawakan"}, {"key": "act4", "label": "Iabot ang Kamay", "value": "Sa halip na humatol, mag-alok ng tiyak na tulong sa nangangailangan o sa pagod na kapamilya"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 18:16 at 28, at alalahanin ang kamay ng Diyos na humawak sa iyo"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa pag-abot Mo mula sa itaas upang hanguin ako mula sa maraming tubig, sa pagdadala sa akin sa malawak na lugar dahil nalulugod Ka sa akin, at sa pagliliwanag sa aking kadiliman."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako na habang nananalangin na hawakan Mo ako, ang aking mga kamay ay mahigpit na humawak sa pakinabang, nagpasa ng pananagutan, at madaling humatol sa mga nahihirapan."}, {"key": "p3", "tag": "Kahilingan", "text": "Bilang tugon sa biyaya ni Jesus, tulungan Mo akong gamitin ang aking mga kamay ayon sa Iyong kalooban; sa lakas na ibinibigay Mo, tulungan Mo akong ibalik ang dapat ibalik at itama ang dapat itama."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-29';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
