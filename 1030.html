@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/30(금) 큐티 · 시편 18:30–50">
+<meta property="og:description" content="지나온 내 삶에서 하나님의 도우심이 보입니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 30일 금요일", "ref": "시편 18편 30–50절", "headline": "지나온 내 삶에서<br>하나님의 도우심이 보입니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 18:30-50", "s1heading": "오늘의 말씀", "verse": "\"하나님의 도는 완전하고<br>여호와의 말씀은 순수하니<br>그는 자기에게 피하는 모든 자의 방패시로다\"", "verseRef": "시편 18:30", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 지나온 시간을 돌아볼 때 무엇이 먼저 떠오릅니까", "paragraphs": ["지나온 시간을 돌아볼 때 무엇이 먼저 떠오르십니까? 힘들었던 일입니까, 그것을 이겨 낸 나의 노력입니까, 아니면 그 시간을 함께하신 하나님입니까? 시편 18편의 마지막 부분인 오늘 본문에서 다윗은 실제로 달리고 싸우고 승리했습니다. 그러나 이야기를 마무리하며 자신을 높이지 않고 <mark>자신을 지키고 힘을 주신 하나님을 찬양</mark>합니다.", "오늘 두 가지를 함께 붙듭니다. 첫째, <mark>내 삶에 함께하신 하나님을 알아보는 영적인 눈</mark>입니다. 일이 잘되면 내가 잘해서라고, 일이 막히면 하나님이 떠나셨다고 생각하기 쉽지만, 형편만으로 하나님의 함께하심을 판단할 수는 없습니다. 둘째, <mark>그 은혜를 다음 사람에게 전하는 것</mark>입니다. 동행의 경험은 나를 위로하는 데서 끝나지 않고, 가족과 이웃에게 하나님을 신뢰할 이유가 됩니다."], "points": ["나는 지나온 삶에서 하나님의 돌보심을 어떻게 기억하고 있으며, 그 은혜를 누구에게 전하고 있습니까?"]}, {"title": "30–31절 · 하나님의 길은 완전하고 말씀은 순수합니다", "paragraphs": ["<mark>\"하나님의 도는 완전하고 여호와의 말씀은 순수하니 그는 자기에게 피하는 모든 자의 방패시로다\"</mark>(30절). 하나님의 길이 완전하다는 것은 우리가 그 길을 다 이해한다는 뜻이 아닙니다. 이해되지 않는 시간을 지나면서도 <mark>하나님은 그릇되게 행하시는 분이 아님을 신뢰하는 것</mark>입니다. '순수하다'는 말에는 불로 정련된 금속의 이미지가 담겨 있습니다. 하나님의 말씀은 믿고 맡길 수 있습니다.", "그래서 다윗은 <mark>\"여호와 외에 누가 하나님이며 우리 하나님 외에 누가 반석이냐\"</mark>(31절)고 묻습니다. 삶을 끝까지 맡길 분이 누구인지 분명히 하는 것입니다. 일이 풀리면 하나님이 선하시고, 막히면 선하지 않으신 것이 아닙니다. 하나님의 성품은 우리의 형편에 따라 바뀌지 않습니다. 믿음은 모든 과정을 이해한 뒤에 생기는 것이 아니라, <mark>이해하지 못하는 과정에서도 하나님께 나아가는 것</mark>입니다."], "points": ["나는 상황이 유리할 때에만 하나님을 신뢰하고 있지는 않습니까?"]}, {"title": "32–36절 · 하나님께서 나를 준비시키시고 붙드셨습니다", "paragraphs": ["하나님은 다윗의 길을 완전하게 하시고, 발을 암사슴 발 같게 하시며, <mark>손을 가르쳐 싸우게 하시고</mark> 팔에 힘을 주셨습니다(32–34절). 다윗은 자신의 발과 손과 팔을 보며 하나님의 도우심을 기억합니다. 오늘 일을 감당할 체력, 배울 기회, 조언해 준 사람, 다시 시작할 용기까지 나의 능력만으로 설명하고 있지는 않습니까? 하나님의 도우심에는 보호뿐 아니라 <mark>준비시키심</mark>도 있습니다. 그래서 하나님을 의지하는 사람은 기도하면서 배우고, 힘을 구하면서 맡은 일을 성실히 준비합니다.", "<mark>\"주의 오른손이 나를 붙들고 주의 온유함이 나를 크게 하셨나이다\"</mark>(35절). 산과 땅을 흔드시는 크신 하나님께서 연약한 한 사람을 세심하게 붙드시고 세워 주셨습니다. 그 은혜를 기억한다면 다른 사람을 대하는 태도도 달라져야 합니다. 나를 온유하게 돌보신 하나님을 기억하며 <mark>나도 연약한 사람을 기다려 주고 세워 주는 것</mark>입니다."], "points": ["영적인 눈은 특별한 사건뿐 아니라, 오늘 배우고 버티며 걸어갈 수 있는 은혜도 발견합니다."]}, {"title": "37–45절 · 하나님께서 주신 힘으로 싸워 승리했습니다", "paragraphs": ["다윗은 원수를 추격하고 쓰러뜨렸다고 자신이 한 일을 숨기지 않습니다. 동시에 <mark>\"주께서 나를 전쟁하게 하려고 능력으로 내게 띠 띠우사\"</mark>(39절)라며 그 일을 하신 하나님을 잊지 않습니다. 내가 수고했다는 사실과 하나님께서 힘을 주셨다는 고백은 충돌하지 않습니다. 믿음은 <mark>나의 수고를 돌아보며 그 수고를 가능하게 한 은혜를 발견하는 것</mark>입니다. 어려울 때 누구를 찾는가와 함께, 일이 잘되었을 때 누구에게 영광을 돌리는가도 우리의 믿음을 드러냅니다.", "원수들의 패배를 노래하는 말씀을 나와 다른 사람을 짓밟으라는 뜻으로 읽어서는 안 됩니다. 기도해도 상황이 나아지지 않는 사람을 하나님께 버림받았다고 판단해서도 안 됩니다. 욥도, 죄 없으신 예수님도 고난을 겪으셨습니다. 아픈 것은 아프다고 하나님께 말씀드려도 됩니다. 또 다윗은 높아진 자리에서도 하나님이 자신을 세우셨다고 고백합니다. 은혜로 세워진 사람은 <mark>\"나도 했는데 왜 당신은 못합니까\"라고 몰아세우지 않습니다</mark>."], "points": ["믿음의 눈은 승리했을 때 은혜를 잊지 않게 하고, 아직 승리하지 못한 사람을 함부로 판단하지 않게 합니다."]}, {"title": "46–50절 · 살아 계신 하나님을 모든 민족 가운데 찬양합니다", "paragraphs": ["<mark>\"여호와는 살아 계시니 나의 반석을 찬송하며 내 구원의 하나님을 높일지로다\"</mark>(46절). 18편 시작의 반석과 구원의 고백이 다시 등장합니다. 긴 전쟁 이야기를 마친 다윗의 입에는 하나님을 향한 찬양이 남습니다. 우리가 지나온 삶을 이야기할 때 마지막에 무엇이 남습니까? 나의 능력이나 원망만 남습니까, <mark>나를 붙드신 하나님께 대한 고백</mark>도 남습니까?", "다윗은 <mark>\"이방 나라들 중에서 주께 감사하며 주의 이름을 찬송하리이다\"</mark>(49절)라고 고백하고, 다윗과 그 후손에게 영원히 인자를 베푸시는 하나님을 노래합니다(50절). 이 시가 남겨졌기에 왕조가 무너진 뒤의 사람들도 하나님의 약속을 다시 붙들 수 있었습니다. <mark>다윗의 감사가 다음 사람을 위한 믿음의 증언</mark>이 된 것입니다. 바울은 로마서 15장에서 49절을 인용하며, 그리스도 안에서 이방인들도 하나님의 긍휼을 찬양하게 되었다고 말합니다."], "points": ["나의 감사는 내 안에 머물지 않고, 다음 사람에게 하나님을 신뢰할 이유가 됩니다."]}, {"title": "적용 · 하나님의 함께하심을 기억하고 전합니다", "paragraphs": ["오늘 붙든 두 가지는 연결되어 있습니다. 내 삶에 함께하신 하나님을 알아볼 때, 다음 사람에게 그 하나님을 전할 수 있습니다. 자녀에게 성공한 결과만 말하지 말고, 두려웠던 시간에 어떻게 기도했는지, 누구의 도움을 받았는지, 잘못된 길에서 어떻게 돌아섰는지 들려주십시오. 아직 문제가 해결되지 않았다면 <mark>\"아직 답을 다 알지는 못해. 그래도 하나님께 이 문제를 말씀드리고 있어\"</mark>라고 말해도 괜찮습니다. 필요한 것은 완벽했다는 이야기가 아니라 <mark>연약한 우리가 누구를 의지하며 살아왔는지에 대한 진실한 고백</mark>입니다.", "하나님의 함께하심을 가장 분명하게 보여 주시는 분은 예수님입니다. 아버지의 사랑받는 아들이셨지만 고난을 피하지 않고 아버지의 뜻에 자신을 맡기셨습니다. 십자가는 실패처럼 보였지만 하나님은 예수님을 죽음에서 일으키셨습니다. 그러므로 우리는 <mark>고통스러운 한 장면만으로 하나님이 나를 버리셨다고 결론 내리지 않을 수 있습니다</mark>. 지금 이해하지 못하는 시간이 삶의 전부는 아닙니다.", "지나온 시간에 하나님께서 나를 돌보셨다고 고백할 수 있는 일 하나를 떠올려 보십시오. 특별한 기적이 아니어도 좋습니다. 찾아온 사람, 마음을 붙든 말씀, 다시 시작하도록 받은 도움을 기억하고, <mark>그 이야기를 한 사람에게 자랑이 아닌 감사로 나누십시오</mark>. 상대의 아픔을 충분히 들으며 곁에 서 주십시오. 아직 괴로움의 길 한가운데 계신 분은 너무 빨리 삶의 결론을 내리지 말고, 오늘 감당할 한 걸음을 주님께 구하십시오.", "나는 오늘 어떤 자리에서 하나님의 함께하심을 기억하며, 누구에게 하나님을 신뢰할 이유를 전하시겠습니까?"], "points": ["부활하신 주님 안에 우리의 마지막 소망이 있기에, 오늘의 한 걸음과 미래를 주님께 맡깁니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "잘된 일을 내 실력으로만, 막힌 일을 하나님이 떠나신 증거로만 여기지 않았는지 돌아봤다"}, {"key": "c2", "text": "이해되지 않는 시간 속에서도 하나님의 길이 완전함을 신뢰하며 나아가고 있는지 점검했다"}, {"key": "c3", "text": "나를 붙들어 준 체력, 기회, 사람, 말씀을 하나님의 도우심으로 기억했다"}, {"key": "c4", "text": "아직 어려움 중에 있는 사람을 '나도 했는데'라며 몰아세우지 않았는지 돌아봤다"}], "s4heading": "묵상 한 줄", "memoHint": "지나온 시간 가운데 '하나님이 나를 돌보셨다'고 고백할 수 있는 일 하나는 무엇이며, 그 이야기를 누구에게 전하겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "은혜 떠올리기", "value": "지나온 시간 속 하나님의 돌보심 하나를 구체적으로 적어 보기 (사람, 말씀, 도움)"}, {"key": "act2", "label": "감사로 나누기", "value": "그 이야기를 자녀, 배우자, 성도 중 한 사람에게 자랑이 아닌 감사로 들려주기"}, {"key": "act3", "label": "영광 돌리기", "value": "최근 잘된 일 하나를 두고, 그 수고를 가능하게 하신 하나님께 감사 기도 드리기"}, {"key": "act4", "label": "곁에 서 주기", "value": "어려움 중에 있는 사람의 이야기를 판단 없이 충분히 들어 주고 함께 기도하기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 18:30과 35절을 외우며 이해되지 않는 순간에도 완전하신 하나님의 길을 신뢰하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "완전한 길과 순수한 말씀으로 나를 인도하시고, 내 손을 가르치시며 온유함으로 나를 붙들어 세워 주신 살아 계신 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "잘된 일은 내 실력으로 여기고, 막힌 일은 하나님이 떠나신 증거로 여기며, 아직 어려운 사람을 쉽게 판단했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "지나온 삶에서 주님의 도우심을 알아보는 눈을 주시고, 그 은혜를 다음 사람에게 감사로 전하며, 부활하신 주님께 오늘과 미래를 맡기게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 30, Friday", "ref": "Psalm 18:30–50", "headline": "Looking Back on My Life,<br>Can I See God's Help?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 18:30-50", "s1heading": "Today's Word", "verse": "\"This God — His way is perfect;<br>the word of the LORD proves true;<br>He is a shield for all those who take refuge in Him.\"", "verseRef": "Psalm 18:30", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · When You Look Back, What Comes to Mind First?", "paragraphs": ["When you look back on the time you've come through, what comes to mind first? The hard things? Your own effort to overcome them? Or the God who was with you through that time? Today is the final section of Psalm 18. Earlier, David cried out in crisis and God heard him. God reached out His hand, lifted him up again, and gave him strength to fight. Today's passage shows how David acted with that strength. David really ran, fought, and won. Yet as he wraps up his story, he doesn't exalt himself. He praises <mark>the God who kept him and gave him strength</mark>. Even within his own efforts, David had spiritual eyes to recognize God's help.", "Through this Word we want to hold two things together. First, <mark>spiritual eyes that recognize God's presence in our lives</mark>. When things go well, it's easy to think, 'I got here because I did well.' When things don't work out, it's easy to think, 'God has left me.' But we cannot judge God's presence by our circumstances alone. Today's passage is David's thanks for victory, yet not everyone reading it stands in a place of victory. Some are still in pain; some haven't received the outcome they hoped for. Even so, we can trust God's way. While asking for our plans to succeed, we can entrust our steps to be shaped to His will. Second, <mark>passing that grace on to the next person</mark>. The experience of walking with God doesn't end with comforting me. It can become a story that gives my family or church family a reason to trust God. How do I remember God's care in my past, and to whom am I passing that grace on? Let's look at three parts."], "points": ["How do I remember God's care in my past, and to whom am I passing that grace on?"]}, {"title": "Verses 30–31 · God's Way Is Perfect, and His Word Is Pure", "paragraphs": ["Verse 30: <mark>\"This God — His way is perfect; the word of the LORD proves true; He is a shield for all those who take refuge in Him.\"</mark> David confesses three things: God's way is perfect, God's word is pure, and God is a shield to those who take refuge in Him. Saying God's way is perfect does not mean we understand all of it. It means that even while passing through times we don't understand, we <mark>trust that God is not One who acts wrongly</mark>. The description of God's word as pure (or 'proven') carries the image of metal refined by fire. God's Word can be trusted and relied upon.", "So in verse 31 David asks, <mark>\"For who is God, but the LORD? And who is a rock, except our God?\"</mark> He makes clear who it is he can entrust his life to, all the way to the end. We too must examine whether we trust God only when circumstances are favorable. It isn't that God is good when things work out and not good when things get stuck. God's character does not change with our circumstances. Faith doesn't come after we understand every step of the process; it is <mark>coming to God even in a process we don't understand</mark>."], "points": ["Am I trusting God only when circumstances are in my favor?"]}, {"title": "Verses 32–36 · God Prepared Me and Held Me Up", "paragraphs": ["In verse 30 David confessed that God's way is perfect. Then in verse 32 he confesses that God makes his own way blameless. This doesn't mean David became someone who no longer sinned; it means God made his steps firm and prepared him to carry out the task entrusted to him. Verses 33–34 show this preparation concretely. God made his feet like the feet of a deer, <mark>trained his hands for war</mark>, and gave his arms strength to bend a bow of bronze. Feet, hands, arms — looking at them, David remembers God's help. He doesn't take his abilities for granted. Here we can reflect on our own lives: the physical strength to carry out today's work, opportunities to learn, people who advised us in hard times, even the courage to start again without giving up. Are we explaining all of that by our own ability alone? God also trained David's hands. God's help includes not only protection but <mark>preparation</mark>. Sometimes preparation is hard — that's what makes it training. So those who rely on God learn while they pray. They listen to counsel while asking for wisdom, and they faithfully prepare for their tasks while asking for strength. Trusting God's way goes beyond merely hoping our plans come true; it means entrusting our steps to be shaped to His will.", "Verse 35: <mark>\"You have given me the shield of Your salvation, and Your right hand supported me, and Your gentleness made me great.\"</mark> David confesses that what made him great was God's gentleness. God's gentleness doesn't mean weakness. It means that the God of great power cared graciously for weak David, holding him up and establishing him. Earlier, mountains and earth shook before God's presence; yet that great God carefully holds one person. In verse 36 he confesses that God gave a wide place for his steps so his feet did not slip. David finds the reason he came this far without falling in God's care. Looking back on how we've endured, we too can ask: Who held me up on hard days? How did God care for me — through the Word, through people, through the courage to begin again? If we remember that grace, our attitude toward others must change too. Remembering the God who cared for us gently, <mark>we too wait for weak people and help them stand</mark>."], "points": ["Spiritual eyes see not only extraordinary events, but the grace that lets me learn, endure, and keep walking today."]}, {"title": "Verses 37–45 · I Fought and Won with the Strength God Gave", "paragraphs": ["In verse 37, David says he pursued his enemies, overtook them, and struck them down. He speaks of what he actually did in real battle. Yet in verse 39 he confesses, <mark>\"For You equipped me with strength for the battle; You made those who rise against me sink under me.\"</mark> David doesn't hide what he did, and at the same time he doesn't forget the God who did it. The fact that I worked hard and the confession that God gave me strength do not conflict. Nor does my effort make the reasons to thank God disappear. Rather, faith is <mark>looking back on our labor and discovering the grace that made that labor possible</mark>. Look back on the time you spent caring for your family, the effort you made to learn and handle hard things, the labor you gave to serve your community. Within it is your effort — and also the strength and help God allowed. Along with whom we seek when things are hard, whom we give glory to when things go well also reveals our faith.", "Verses 41–42 describe the enemies' complete defeat. They cried for help but were not saved and were scattered like dust and mud. These are words celebrating the war David experienced and God's salvation. They do not mean we should label people who disagree with us as enemies and trample them. Nor should we ever conclude, while reading this, that someone whose situation hasn't improved despite prayer has been abandoned by God. Job was righteous yet suffered; the sinless Jesus bore the cross. We cannot judge God's love and presence by present success or failure alone. Some of you may feel, 'David won, but nothing has changed for me.' You don't need to force yourself to call pain a victory. Tell God that what hurts, hurts. It's okay to grieve. It's okay to tell God you don't understand. Our hope does not rest on everything already being fine, but on the fact that even in a time that isn't over yet, we can come to God and rely on His faithfulness. In verse 43, David says God delivered him from strife and made him head of the nations — even a people he had not known served him. This first refers to political and military submission, not that they all came to believe in God. What matters is that even in that exalted position, David confesses that God established him. When things are hard, people seek help; once their position is secure, it's very easy to forget they were helped. At first we call it grace, and at some point we begin to think it was all our own skill. So we need spiritual eyes in places of recovery and achievement too — remembering those who helped us, thanking God for opportunities, and reflecting on how to use our present strength. Those who know they were established by grace don't speak carelessly to the weak. Before pressing someone with <mark>'I did it — why can't you?'</mark>, we must first see what help they need right now."], "points": ["Eyes of faith keep me from forgetting grace in victory, and from carelessly judging those who haven't yet won."]}, {"title": "Verses 46–50 · Praising the Living God Among All the Nations", "paragraphs": ["Verse 46: <mark>\"The LORD lives, and blessed be my rock, and exalted be the God of my salvation.\"</mark> The confession of rock and salvation from the beginning of Psalm 18 appears again. After finishing his long war story, what remains on David's lips is praise to God. He doesn't merely say that God exists; he exalts the God who acted and saved in his own life. In verses 47–48, too, David remembers the God who rescued him from his enemies, confessing that it is God who judges evil and saves. When we tell the story of our past, it's good to look at what remains at the end. Does only our own ability remain? Only resentment toward others? Or does <mark>a confession of the God who held us through that time</mark> remain too? Even if not every pain has been resolved, we can remember the small help and care we've received. That memory can become strength to keep leaning on God.", "Verse 49: <mark>\"For this I will praise You, O LORD, among the nations, and sing to Your name.\"</mark> David's thanks doesn't stay in his own heart; it doesn't remain private. He vows to praise God's name where other nations are. In verse 50, he confesses the God who shows steadfast love forever to David and his offspring — God faithfully keeps His promise to David. We must not repackage this promise as a guarantee that everything we want will pass straight to our children. But because this psalm was preserved, later generations could hear about the God David trusted. Even after the Davidic dynasty fell and the foundations of life were shaken, people reading this psalm could take hold of God's promise again. <mark>David's thanksgiving became a testimony of faith for the next person.</mark> And Paul, in Romans 15, quotes verse 49 to explain that through Jesus, the Gentiles too have come to glorify God for His mercy. The praise David sang among the nations has widened into praise offered together in Christ."], "points": ["My thanksgiving doesn't stay within me; it becomes the next person's reason to trust God."]}, {"title": "Application · Remembering and Passing On God's Presence", "paragraphs": ["The two things we held today are connected. When we recognize the God who has been with us, we can pass Him on to the next person. Don't tell your children only about successful outcomes. Tell them how you prayed in fearful times, whose help you received, and how you turned back from a wrong path. If the problem isn't solved yet, it's okay to say, <mark>'I don't know all the answers yet. But I'm talking to God about this, and there were people who helped me not carry it alone.'</mark> What the next person needs is not a story that we were perfect, but <mark>an honest confession of whom we, being weak, have relied on</mark>. Our lives are still in process. And a testimony is not a promise of the same result; more important than a formula — 'I did this, so you do the same' — is helping that person come to God in their own situation.", "The One who shows God's presence most clearly is Jesus. He was the Father's beloved Son, yet He did not avoid suffering; He entrusted Himself to the Father's will. To people's eyes, the cross looked like failure. But God raised Jesus from death. So we who look to the cross and resurrection <mark>need not conclude from one painful scene that God has abandoned us</mark>. The time we don't understand now is not the whole of our lives. Our final hope is in the risen Lord.", "Today, think of one thing in your past about which you can confess, 'God cared for me.' It doesn't have to be a special miracle — remember the person who came to you, the Word that held your heart, the help that let you start again. Then <mark>share that story with one person — not as boasting, but as thanks</mark>: a child, a spouse, a fellow believer. Listen fully to their pain and stand beside them, promising to rely on God together. And if you are still in the middle of a painful road, don't draw conclusions about your life too quickly. Ask the Lord for the one step you can take today. You can entrust your future fully to the risen Jesus.", "Where will I remember God's presence today, and to whom will I pass on a reason to trust Him?"], "points": ["Because our final hope is in the risen Lord, I entrust today's step and my future to Him."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I credit successes only to my skill and treat setbacks as proof that God has left me."}, {"key": "c2", "text": "I checked whether I keep trusting that God's way is perfect even in times I don't understand."}, {"key": "c3", "text": "I remembered the strength, opportunities, people, and Word that held me up as God's help."}, {"key": "c4", "text": "I reflected on whether I've pressed someone still struggling with 'I did it, so why can't you?'"}], "s4heading": "One-Line Reflection", "memoHint": "What is one thing in my past about which I can confess 'God cared for me,' and whom will I tell?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Recall Grace", "value": "Write down one specific instance of God's care in your past (a person, a Word, a help)"}, {"key": "act2", "label": "Share with Thanks", "value": "Tell that story to a child, spouse, or fellow believer — as thanks, not boasting"}, {"key": "act3", "label": "Give Glory", "value": "For one thing that went well recently, thank God who made that effort possible"}, {"key": "act4", "label": "Stand Beside", "value": "Listen fully, without judgment, to someone in difficulty and pray together"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 18:30 and 35, trusting God's perfect way even in moments you don't understand"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, living God, for leading me with Your perfect way and pure Word, training my hands, and holding me up and establishing me with Your gentleness."}, {"key": "p2", "tag": "Repent", "text": "I repent of crediting successes to my own skill, treating setbacks as proof You had left me, and quickly judging those still struggling."}, {"key": "p3", "tag": "Ask", "text": "Give me eyes to recognize Your help in my past, help me pass that grace on to the next person with thanks, and let me entrust today and my future to the risen Lord."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 30, Biyernes", "ref": "Awit 18:30–50", "headline": "Sa Pagbabalik-tanaw sa Aking Buhay,<br>Nakikita Ko ba ang Tulong ng Diyos?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 18:30-50", "s1heading": "Salita Ngayon", "verse": "\"Ang Diyos na ito — sakdal ang Kanyang daan;<br>napatunayang totoo ang salita ni Yahweh;<br>Siya ang kalasag ng lahat ng nanganganlong sa Kanya.\"", "verseRef": "Awit 18:30", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Sa Pagbabalik-tanaw, Ano ang Unang Pumapasok sa Isip?", "paragraphs": ["Kapag binabalikan mo ang panahong iyong nilampasan, ano ang unang pumapasok sa iyong isip? Ang mahihirap na bagay? Ang sarili mong pagsisikap na malampasan ang mga ito? O ang Diyos na kasama mo sa panahong iyon? Ngayon ang huling bahagi ng Awit 18. Kanina, dumaing si David sa krisis at narinig siya ng Diyos. Iniabot ng Diyos ang Kanyang kamay, ibinangon siyang muli, at binigyan siya ng lakas na makipaglaban. Ipinapakita ng talata ngayon kung paano kumilos si David sa lakas na iyon. Tunay na tumakbo, nakipaglaban, at nanalo si David. Gayunman, sa pagtatapos ng kanyang kuwento, hindi niya itinaas ang sarili. Pinupuri niya <mark>ang Diyos na nag-ingat sa kanya at nagbigay sa kanya ng lakas</mark>. Kahit sa loob ng sarili niyang pagsisikap, may espirituwal na mata si David upang makilala ang tulong ng Diyos.", "Sa Salitang ito, nais nating hawakan nang magkasama ang dalawang bagay. Una, <mark>espirituwal na matang nakakikilala sa presensya ng Diyos sa ating buhay</mark>. Kapag maayos ang takbo, madaling isipin, 'Nakarating ako rito dahil mahusay ako.' Kapag hindi umaayon, madaling isipin, 'Iniwan na ako ng Diyos.' Ngunit hindi natin mahuhusgahan ang presensya ng Diyos batay lamang sa ating kalagayan. Ang talata ngayon ay pasasalamat ni David sa tagumpay, ngunit hindi lahat ng bumabasa nito ay nasa lugar ng tagumpay. May ilan na nasa sakit pa; may ilan na hindi natanggap ang resultang inaasahan nila. Gayunman, maaari tayong magtiwala sa daan ng Diyos. Habang humihiling na magtagumpay ang ating mga plano, maaari nating ipagkatiwala na hubugin ang ating mga hakbang ayon sa Kanyang kalooban. Ikalawa, <mark>ang pagpapasa ng biyayang iyon sa susunod na tao</mark>. Ang karanasan ng paglakad kasama ng Diyos ay hindi nagtatapos sa pag-aliw sa akin. Maaari itong maging kuwentong nagbibigay sa aking pamilya o kapatiran sa simbahan ng dahilan upang magtiwala sa Diyos. Paano ko inaalala ang pag-aalaga ng Diyos sa aking nakaraan, at kanino ko ipinapasa ang biyayang iyon? Tingnan natin ang tatlong bahagi."], "points": ["Paano ko inaalala ang pag-aalaga ng Diyos sa aking nakaraan, at kanino ko ipinapasa ang biyayang iyon?"]}, {"title": "Talata 30–31 · Sakdal ang Daan ng Diyos, at Dalisay ang Kanyang Salita", "paragraphs": ["Talata 30: <mark>\"Ang Diyos na ito — sakdal ang Kanyang daan; napatunayang totoo ang salita ni Yahweh; Siya ang kalasag ng lahat ng nanganganlong sa Kanya.\"</mark> Tatlong bagay ang ipinahayag ni David: sakdal ang daan ng Diyos, dalisay ang salita ng Diyos, at ang Diyos ay kalasag ng mga nanganganlong sa Kanya. Ang pagsasabing sakdal ang daan ng Diyos ay hindi nangangahulugang nauunawaan natin ang lahat ng ito. Ibig sabihin, kahit dumaraan tayo sa mga panahong hindi natin nauunawaan, <mark>nagtitiwala tayong hindi gumagawa ng mali ang Diyos</mark>. Ang paglalarawan sa salita ng Diyos bilang dalisay (o 'napatunayan') ay may dalang larawan ng metal na dinalisay sa apoy. Mapagkakatiwalaan at maaasahan ang Salita ng Diyos.", "Kaya sa talata 31, nagtanong si David, <mark>\"Sapagkat sino ang Diyos maliban kay Yahweh? At sino ang bato maliban sa ating Diyos?\"</mark> Nililinaw niya kung kanino niya maipagkakatiwala ang kanyang buhay hanggang sa wakas. Dapat din nating suriin kung nagtitiwala lamang tayo sa Diyos kapag pabor ang kalagayan. Hindi totoo na mabuti ang Diyos kapag umaayon ang mga bagay at hindi mabuti kapag naiipit. Hindi nagbabago ang katangian ng Diyos ayon sa ating kalagayan. Ang pananampalataya ay hindi dumarating matapos nating maunawaan ang bawat hakbang ng proseso; ito ay <mark>paglapit sa Diyos kahit sa prosesong hindi natin nauunawaan</mark>."], "points": ["Nagtitiwala lamang ba ako sa Diyos kapag pabor sa akin ang kalagayan?"]}, {"title": "Talata 32–36 · Inihanda Ako at Inalalayan ng Diyos", "paragraphs": ["Sa talata 30, ipinahayag ni David na sakdal ang daan ng Diyos. Pagkatapos sa talata 32, ipinahayag niyang ginagawang walang kapintasan ng Diyos ang kanyang sariling daan. Hindi ito nangangahulugang naging taong hindi na nagkakasala si David; ibig sabihin, pinatatag ng Diyos ang kanyang mga hakbang at inihanda siya upang gampanan ang gawaing ipinagkatiwala sa kanya. Ipinapakita nang tiyak ng talata 33–34 ang paghahandang ito. Ginawa ng Diyos na tulad ng paa ng usa ang kanyang mga paa, <mark>sinanay ang kanyang mga kamay sa digmaan</mark>, at binigyan ng lakas ang kanyang mga bisig upang bumaluktot ng panang tanso. Paa, kamay, bisig — sa pagtingin sa mga ito, naaalala ni David ang tulong ng Diyos. Hindi niya binabalewala ang kanyang mga kakayahan. Dito, maaari nating pagnilayan ang sarili nating buhay: ang pisikal na lakas upang gawin ang gawain ngayon, mga pagkakataong matuto, mga taong nagpayo sa atin sa mahihirap na panahon, pati ang lakas ng loob na magsimulang muli nang hindi sumusuko. Ipinaliliwanag ba natin ang lahat ng iyon sa sarili lamang nating kakayahan? Sinanay din ng Diyos ang mga kamay ni David. Kasama sa tulong ng Diyos hindi lamang ang proteksyon kundi ang <mark>paghahanda</mark>. Minsan mahirap ang paghahanda — iyon ang dahilan kung bakit ito pagsasanay. Kaya ang mga umaasa sa Diyos ay natututo habang nananalangin. Nakikinig sila sa payo habang humihingi ng karunungan, at tapat na naghahanda sa kanilang gawain habang humihingi ng lakas. Ang pagtitiwala sa daan ng Diyos ay higit pa sa basta pag-asang matupad ang ating mga plano; ito ay pagkakatiwala na hubugin ang ating mga hakbang ayon sa Kanyang kalooban.", "Talata 35: <mark>\"Ibinigay Mo sa akin ang kalasag ng Iyong kaligtasan, inalalayan ako ng Iyong kanang kamay, at ang Iyong kahinahunan ang nagpadakila sa akin.\"</mark> Ipinahayag ni David na ang nagpadakila sa kanya ay ang kahinahunan ng Diyos. Ang kahinahunan ng Diyos ay hindi nangangahulugang kahinaan. Ibig sabihin, ang Diyos na may dakilang kapangyarihan ay mapagbiyayang nag-alaga sa mahinang si David, inaalalayan at itinatayo siya. Kanina, yumanig ang mga bundok at lupa sa harap ng presensya ng Diyos; ngunit ang dakilang Diyos na iyon ay maingat na humahawak sa isang tao. Sa talata 36, ipinahayag niyang pinaluwang ng Diyos ang lugar ng kanyang mga hakbang upang hindi madulas ang kanyang mga paa. Natagpuan ni David sa pag-aalaga ng Diyos ang dahilan kung bakit siya nakarating dito nang hindi bumabagsak. Sa pagbabalik-tanaw kung paano tayo nakatiis, maaari rin nating itanong: Sino ang umalalay sa akin sa mahihirap na araw? Paano ako inalagaan ng Diyos — sa pamamagitan ng Salita, ng mga tao, ng lakas ng loob na magsimulang muli? Kung naaalala natin ang biyayang iyon, dapat ding magbago ang pagtrato natin sa iba. Sa pag-alala sa Diyos na mahinahong nag-alaga sa atin, <mark>tayo rin ay naghihintay sa mahihina at tinutulungan silang tumayo</mark>."], "points": ["Nakikita ng espirituwal na mata hindi lamang ang pambihirang pangyayari, kundi ang biyayang nagpapahintulot sa aking matuto, magtiis, at patuloy na lumakad ngayon."]}, {"title": "Talata 37–45 · Nakipaglaban at Nanalo Ako sa Lakas na Ibinigay ng Diyos", "paragraphs": ["Sa talata 37, sinabi ni David na tinugis niya ang kanyang mga kaaway, inabutan sila, at pinabagsak. Nagsasalita siya tungkol sa tunay niyang ginawa sa tunay na labanan. Gayunman, sa talata 39, ipinahayag niya, <mark>\"Sapagkat binigkisan Mo ako ng lakas para sa labanan; pinasuko Mo sa ilalim ko ang mga bumabangon laban sa akin.\"</mark> Hindi itinatago ni David ang kanyang ginawa, at kasabay nito ay hindi niya nalilimutan ang Diyos na gumawa nito. Hindi nagsasalungatan ang katotohanang nagsikap ako at ang pagpapahayag na binigyan ako ng Diyos ng lakas. Hindi rin nawawala ang mga dahilan upang magpasalamat sa Diyos dahil sa aking pagsisikap. Sa halip, ang pananampalataya ay <mark>pagbabalik-tanaw sa ating pagpapagal at pagtuklas sa biyayang nagpangyari sa pagpapagal na iyon</mark>. Balikan ang panahong ginugol mo sa pag-aalaga sa iyong pamilya, ang pagsisikap mong matuto at harapin ang mahihirap na bagay, ang pagpapagal mong maglingkod sa iyong komunidad. Naroon ang iyong pagsisikap — at naroon din ang lakas at tulong na ipinahintulot ng Diyos. Kasama ng kung sino ang hinahanap natin kapag mahirap, inihahayag din ng ating pananampalataya kung kanino tayo nagbibigay ng kaluwalhatian kapag maayos ang takbo.", "Inilalarawan ng talata 41–42 ang lubos na pagkatalo ng mga kaaway. Humingi sila ng tulong ngunit hindi naligtas at nangalat na parang alikabok at putik. Ito ay mga salitang nagdiriwang sa digmaang naranasan ni David at sa pagliligtas ng Diyos. Hindi ito nangangahulugang dapat nating tawaging kaaway at yurakan ang mga taong hindi sang-ayon sa atin. Hindi rin natin dapat kailanman ipasya, habang binabasa ito, na ang taong hindi umaayos ang kalagayan sa kabila ng panalangin ay pinabayaan ng Diyos. Matuwid si Job ngunit nagdusa; pinasan ng walang-kasalanang si Jesus ang krus. Hindi natin mahuhusgahan ang pag-ibig at presensya ng Diyos batay lamang sa kasalukuyang tagumpay o kabiguan. Maaaring may ilan sa inyo na nakadarama, 'Nanalo si David, ngunit walang nagbago para sa akin.' Hindi mo kailangang pilitin ang sariling tawaging tagumpay ang sakit. Sabihin sa Diyos na masakit ang masakit. Ayos lang magdalamhati. Ayos lang sabihin sa Diyos na hindi mo nauunawaan. Ang ating pag-asa ay hindi nakasalalay sa pagiging maayos na ng lahat, kundi sa katotohanang kahit sa panahong hindi pa tapos, maaari tayong lumapit sa Diyos at umasa sa Kanyang katapatan. Sa talata 43, sinabi ni David na iniligtas siya ng Diyos mula sa alitan at ginawa siyang pinuno ng mga bansa — pati ang bayang hindi niya kilala ay naglingkod sa kanya. Una itong tumutukoy sa pampulitika at pangmilitar na pagsuko, hindi na lahat sila ay naniwala sa Diyos. Ang mahalaga ay kahit sa mataas na posisyong iyon, ipinahayag ni David na ang Diyos ang nagtatag sa kanya. Kapag mahirap, humihingi ng tulong ang tao; kapag panatag na ang posisyon, napakadaling malimutan na tinulungan sila. Sa simula ay tinatawag natin itong biyaya, at sa isang punto ay iniisip nating sarili nating galing ang lahat. Kaya kailangan natin ng espirituwal na mata kahit sa lugar ng paggaling at tagumpay — pag-alala sa mga tumulong sa atin, pasasalamat sa Diyos sa mga pagkakataon, at pagninilay kung paano gagamitin ang kasalukuyan nating lakas. Ang mga nakaaalam na itinatag sila ng biyaya ay hindi nagsasalita nang pabaya sa mahihina. Bago idiin ang isang tao ng <mark>'Nagawa ko — bakit hindi mo kaya?'</mark>, dapat muna nating tingnan kung anong tulong ang kailangan niya ngayon."], "points": ["Pinipigilan ako ng mata ng pananampalataya na malimutan ang biyaya sa tagumpay, at na pabayang hatulan ang mga hindi pa nananalo."]}, {"title": "Talata 46–50 · Pinupuri ang Buhay na Diyos sa Gitna ng Lahat ng Bansa", "paragraphs": ["Talata 46: <mark>\"Buhay si Yahweh, at purihin ang aking bato, at dakilain ang Diyos ng aking kaligtasan.\"</mark> Muling lumitaw ang pagpapahayag ng bato at kaligtasan mula sa simula ng Awit 18. Matapos ang kanyang mahabang kuwento ng digmaan, ang natitira sa mga labi ni David ay papuri sa Diyos. Hindi lamang niya sinasabing umiiral ang Diyos; dinadakila niya ang Diyos na kumilos at nagligtas sa kanyang sariling buhay. Sa talata 47–48 din, naaalala ni David ang Diyos na nagligtas sa kanya mula sa kanyang mga kaaway, ipinahahayag na ang Diyos ang humahatol sa kasamaan at nagliligtas. Kapag ikinukuwento natin ang ating nakaraan, mabuting tingnan kung ano ang natitira sa dulo. Ang sarili lamang ba nating kakayahan ang natitira? Hinanakit lamang sa iba? O natitira rin ba <mark>ang pagpapahayag ng Diyos na humawak sa atin sa panahong iyon</mark>? Kahit hindi pa nalulutas ang bawat sakit, maaari nating alalahanin ang maliit na tulong at pag-aalagang natanggap natin. Ang alaalang iyon ay maaaring maging lakas upang patuloy na sumandig sa Diyos.", "Talata 49: <mark>\"Kaya pupurihin Kita, O Yahweh, sa gitna ng mga bansa, at aawit ako sa Iyong pangalan.\"</mark> Hindi nananatili sa sarili niyang puso ang pasasalamat ni David; hindi ito nananatiling pansarili. Nangangako siyang pupurihin ang pangalan ng Diyos kung nasaan ang ibang mga bansa. Sa talata 50, ipinahayag niya ang Diyos na nagpapakita ng tapat na pag-ibig magpakailanman kay David at sa kanyang mga inapo — tapat na tinutupad ng Diyos ang Kanyang pangako kay David. Hindi natin dapat ibalot ang pangakong ito bilang garantiya na ang lahat ng gusto natin ay diretsong maipapasa sa ating mga anak. Ngunit dahil naingatan ang awit na ito, narinig ng mga susunod na salinlahi ang tungkol sa Diyos na pinagtiwalaan ni David. Kahit bumagsak na ang dinastiya ni David at yumanig ang mga pundasyon ng buhay, nahawakan muli ng mga bumabasa ng awit na ito ang pangako ng Diyos. <mark>Ang pasasalamat ni David ay naging patotoo ng pananampalataya para sa susunod na tao.</mark> At si Pablo, sa Roma 15, ay sumipi sa talata 49 upang ipaliwanag na sa pamamagitan ni Jesus, ang mga Gentil din ay dumating upang luwalhatiin ang Diyos dahil sa Kanyang awa. Ang papuring inawit ni David sa gitna ng mga bansa ay lumawak at naging papuring sama-samang iniaalay kay Cristo."], "points": ["Hindi nananatili sa loob ko ang aking pasasalamat; nagiging dahilan ito ng susunod na tao upang magtiwala sa Diyos."]}, {"title": "Aplikasyon · Inaalala at Ipinapasa ang Presensya ng Diyos", "paragraphs": ["Magkaugnay ang dalawang bagay na hinawakan natin ngayon. Kapag nakikilala natin ang Diyos na kasama natin, maipapasa natin Siya sa susunod na tao. Huwag lamang ikuwento sa iyong mga anak ang matagumpay na resulta. Sabihin sa kanila kung paano ka nanalangin sa mga panahon ng takot, kaninong tulong ang natanggap mo, at kung paano ka tumalikod mula sa maling landas. Kung hindi pa nalulutas ang problema, ayos lang sabihing, <mark>'Hindi ko pa alam ang lahat ng sagot. Ngunit sinasabi ko ito sa Diyos, at may mga taong tumulong upang hindi ko ito pasanin nang mag-isa.'</mark> Ang kailangan ng susunod na tao ay hindi kuwentong perpekto tayo, kundi <mark>tapat na pagpapahayag kung kanino tayo, na mahihina, umasa</mark>. Nasa proseso pa rin ang ating buhay. At ang patotoo ay hindi pangako ng parehong resulta; mas mahalaga kaysa sa pormulang 'Ginawa ko ito, kaya gawin mo rin' ang pagtulong sa taong iyon na lumapit sa Diyos sa sarili niyang kalagayan.", "Ang pinakamalinaw na nagpapakita ng presensya ng Diyos ay si Jesus. Siya ang minamahal na Anak ng Ama, ngunit hindi Niya iniwasan ang pagdurusa; ipinagkatiwala Niya ang Kanyang sarili sa kalooban ng Ama. Sa mata ng tao, mukhang kabiguan ang krus. Ngunit muling binuhay ng Diyos si Jesus mula sa kamatayan. Kaya tayong tumitingin sa krus at muling pagkabuhay ay <mark>hindi kailangang magpasya mula sa isang masakit na tagpo na pinabayaan na tayo ng Diyos</mark>. Ang panahong hindi natin nauunawaan ngayon ay hindi ang kabuuan ng ating buhay. Nasa muling nabuhay na Panginoon ang ating huling pag-asa.", "Ngayon, mag-isip ng isang bagay sa iyong nakaraan na maipahahayag mong, 'Inalagaan ako ng Diyos.' Hindi kailangang espesyal na himala — alalahanin ang taong lumapit sa iyo, ang Salitang humawak sa iyong puso, ang tulong na nagpahintulot sa iyong magsimulang muli. Pagkatapos, <mark>ibahagi ang kuwentong iyon sa isang tao — hindi bilang pagmamalaki, kundi bilang pasasalamat</mark>: sa isang anak, asawa, o kapwa mananampalataya. Pakinggan nang buo ang kanilang sakit at tumayo sa kanilang tabi, nangangakong sama-samang aasa sa Diyos. At kung nasa gitna ka pa ng masakit na daan, huwag masyadong madaliin ang paghuhusga sa iyong buhay. Hingin sa Panginoon ang isang hakbang na kaya mong gawin ngayon. Maipagkakatiwala mo nang buo ang iyong kinabukasan sa muling nabuhay na si Jesus.", "Saan ko aalalahanin ang presensya ng Diyos ngayon, at kanino ko ipapasa ang dahilan upang magtiwala sa Kanya?"], "points": ["Dahil nasa muling nabuhay na Panginoon ang ating huling pag-asa, ipinagkakatiwala ko sa Kanya ang hakbang ngayon at ang aking kinabukasan."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung itinuturing kong bunga lamang ng aking galing ang tagumpay at patunay ng pag-alis ng Diyos ang kabiguan."}, {"key": "c2", "text": "Sinuri ko kung patuloy akong nagtitiwala na sakdal ang daan ng Diyos kahit sa mga panahong hindi ko nauunawaan."}, {"key": "c3", "text": "Inalala ko bilang tulong ng Diyos ang lakas, pagkakataon, mga tao, at Salitang umalalay sa akin."}, {"key": "c4", "text": "Pinag-isipan ko kung idiniin ko ang taong nahihirapan pa ng 'Nagawa ko, bakit hindi mo kaya?'"}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano ang isang bagay sa aking nakaraan na maipahahayag kong 'Inalagaan ako ng Diyos,' at kanino ko ito ikukuwento?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Alalahanin ang Biyaya", "value": "Isulat ang isang tiyak na halimbawa ng pag-aalaga ng Diyos sa iyong nakaraan (isang tao, Salita, o tulong)"}, {"key": "act2", "label": "Ibahagi nang May Pasasalamat", "value": "Ikuwento iyon sa isang anak, asawa, o kapwa mananampalataya — bilang pasasalamat, hindi pagmamalaki"}, {"key": "act3", "label": "Magbigay ng Kaluwalhatian", "value": "Para sa isang bagay na naging maayos kamakailan, pasalamatan ang Diyos na nagpangyari sa pagsisikap na iyon"}, {"key": "act4", "label": "Tumayo sa Tabi", "value": "Pakinggan nang buo at walang paghuhusga ang taong nahihirapan at manalangin nang magkasama"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 18:30 at 35, nagtitiwala sa sakdal na daan ng Diyos kahit sa mga sandaling hindi mo nauunawaan"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, buhay na Diyos, sa pag-akay sa akin sa Iyong sakdal na daan at dalisay na Salita, sa pagsasanay sa aking mga kamay, at sa pag-alalay at pagtatayo sa akin sa Iyong kahinahunan."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagtuturing sa tagumpay na bunga ng sarili kong galing, sa pagtuturing sa kabiguan na patunay na iniwan Mo ako, at sa madaling paghatol sa mga nahihirapan pa."}, {"key": "p3", "tag": "Kahilingan", "text": "Bigyan Mo ako ng mata upang makilala ang Iyong tulong sa aking nakaraan, tulungan Mo akong ipasa ang biyayang iyon sa susunod na tao nang may pasasalamat, at ipagkatiwala ang ngayon at ang aking kinabukasan sa muling nabuhay na Panginoon."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-30';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
