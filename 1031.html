@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="10/31(토) 큐티 · 시편 19:1–14">
+<meta property="og:description" content="말씀을 읽는 나, 무엇이 달라지고 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "10월 31일 토요일", "ref": "시편 19편 1–14절", "headline": "말씀을 읽는 나,<br>무엇이 달라지고 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 19:1-14", "s1heading": "오늘의 말씀", "verse": "\"나의 반석이시요 나의 구속자이신 여호와여<br>내 입의 말과 마음의 묵상이<br>주님 앞에 열납되기를 원하나이다\"", "verseRef": "시편 19:14", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 하늘에서 말씀으로, 말씀에서 내 마음으로", "paragraphs": ["여러분은 언제 하나님의 임재를 느끼십니까? 넓은 바다나 밤하늘의 별을 볼 때입니까? 하나님은 창조 세계를 통해 자신의 영광을 드러내십니다. 그러나 자연을 바라보는 것만으로 하나님의 뜻과 구원의 길을 알 수는 없습니다. 그래서 하나님은 우리에게 <mark>말씀</mark>을 주셔서 자신이 어떤 분이시며 우리가 어떻게 살아야 하는지 알려 주셨습니다.", "다윗은 하늘에 드러난 영광을 찬양하고, 말씀이 자신을 회복시키고 지혜롭게 한다고 고백한 뒤, 마지막에는 <mark>자신의 허물과 말과 마음을 하나님께 내어놓습니다</mark>. 말씀이 좋다고 말하는 데서 그치지 않고 자신을 그 말씀 앞에 세우는 것입니다. 예수님을 안다는 것도 지식을 더하는 데 머물지 않고, 그분의 은혜 안에서 생각과 말과 선택이 변화되는 삶으로 이어집니다."], "points": ["말씀으로 위로받는 것과 함께, 말씀 앞에서 고침받고 있습니까?"]}, {"title": "1–6절 · 하늘은 말없이 하나님의 영광을 선포합니다", "paragraphs": ["<mark>\"하늘이 하나님의 영광을 선포하고 궁창이 그의 손으로 하신 일을 나타내는도다\"</mark>(1절). 날은 날에게 말하고 밤은 밤에게 지식을 전합니다. 다윗은 특별한 사건만이 아니라 <mark>날마다 반복되는 낮과 밤에서도</mark> 하나님의 영광을 봅니다. 우리가 바쁘게 살며 하나님을 잊는 순간에도 창조 세계는 그분을 증언합니다. 오늘 잠시 하늘을 바라보며, 익숙해서 지나쳤던 세상이 하나님이 지으신 세계임을 기억해 보십시오.", "하늘은 사람처럼 말하지 않지만 그 소리가 온 땅에 이릅니다(3–4절). 신랑처럼 찬란하고 장사처럼 힘차게 달리는 해도 <mark>하나님이 장막을 베푸신 피조물</mark>일 뿐입니다. 그러나 자연이 예수님의 십자가와 부활까지 설명해 주지는 않습니다. 자연에서 받은 감동은 귀하지만, 그 감동이 우리를 <mark>하나님의 말씀에 귀 기울이는 자리</mark>로 이끌어야 합니다."], "points": ["하나님의 영광을 바라보는 믿음은 감탄에 머물지 않고, 그분이 내 삶에 무엇을 말씀하시는지 듣는 자리로 나아갑니다."]}, {"title": "7–10절 · 여호와의 말씀은 사람을 살리고 기쁘게 합니다", "paragraphs": ["<mark>\"여호와의 율법은 완전하여 영혼을 소성시키며 여호와의 증거는 확실하여 우둔한 자를 지혜롭게 하며\"</mark>(7절). 율법은 금지 조항이 아니라 하나님의 뜻을 알려 주고 삶을 인도하는 가르침입니다. 말씀은 지친 사람을 다시 세우고, 감정이나 이익에 흔들리는 사람을 멈추어 생각하게 합니다. 말씀으로 지혜로워진다는 것은 원하는 것을 더 잘 얻는 기술이 아니라 <mark>하나님이 원하시는 길을 분별하는 능력</mark>이 자라는 것입니다.", "말씀은 <mark>\"눈을 밝게\"</mark> 합니다(8절). 솔직한 말이라 여겼던 것이 사람을 무시하는 말일 수 있고, 가족을 위한 수고라 여겼던 것에 내 뜻대로 통제하려는 마음이 섞여 있을 수 있습니다. 처음엔 불편해도 돌이킬 때 새로운 기쁨을 배웁니다. 다윗은 말씀이 <mark>\"금 곧 많은 순금보다\"</mark> 귀하고 <mark>\"꿀과 송이꿀보다\"</mark> 달다고 고백합니다(10절). 그 고백은 손해를 보더라도 정직을 택하고, 자존심이 상해도 잘못을 인정하는 선택의 순간에 드러납니다."], "points": ["말씀으로 변화받는 삶은 '아멘'이 늘어나는 것과 함께, 무엇을 귀하게 여기고 어떻게 선택하는지가 달라지는 삶입니다."]}, {"title": "11–12절 · 말씀의 달콤함과 경고는 함께 있습니다", "paragraphs": ["이제 다윗은 자신을 <mark>\"주의 종\"</mark>이라 부르며 말씀을 자기에게 적용합니다. <mark>\"주의 종이 이것으로 경고를 받고 이것을 지킴으로 상이 크니이다\"</mark>(11절). 꿀보다 단 말씀 바로 뒤에 경고가 나옵니다. 나를 해치는 길을 알려 주고 멈추게 하는 것도 하나님의 선하심입니다. \"이 말씀은 저 사람이 들어야 하는데\"라고 생각하기 전에 <mark>\"주님, 제가 돌이켜야 할 것이 무엇입니까?\"</mark>라고 묻는 것입니다.", "<mark>\"자기 허물을 능히 깨달을 자 누구리요 나를 숨은 허물에서 벗어나게 하소서\"</mark>(12절). 완전한 말씀을 만난 다윗은 자신도 완전하다고 주장하지 않습니다. 어떤 잘못은 너무 익숙해서 잘못으로 느껴지지 않습니다. \"원래 내 성격이 이래\", \"내가 경험이 더 많아\"라고 말하지만, 익숙하다고 옳아지는 것은 아닙니다. 이것은 자신을 끝없이 의심하라는 뜻이 아니라, <mark>나를 가장 정확히 아시고 용서하시는 하나님께 맡기는 믿음</mark>입니다."], "points": ["말씀을 사랑하는 사람은 위로와 함께 경고도 받습니다."]}, {"title": "13–14절 · 내 입의 말과 마음의 묵상을 주님께 드립니다", "paragraphs": ["다윗은 <mark>\"고의로 죄를 짓지 말게 하사 그 죄가 나를 주장하지 못하게 하소서\"</mark>(13절)라고 구합니다. 우리는 몰라서도 잘못하지만 알면서 타협할 때도 있습니다. \"이번만 넘어가자\"는 타협이 반복되면 습관이 되고 삶을 지배합니다. 회개에는 지난 잘못을 인정하는 일과 <mark>앞으로의 방향을 바꾸는 일</mark>이 함께 있습니다. 분노 속에 보내려던 문자를 멈추고, 죄로 이끄는 환경에서 거리를 두고, 혼자 끊기 어렵다면 믿을 만한 사람에게 도움을 구하십시오.", "<mark>\"내 입의 말과 마음의 묵상이 주님 앞에 열납되기를 원하나이다\"</mark>(14절). 하늘의 증언으로 시작된 시편이 한 사람의 입과 마음에 도달합니다. 다윗은 허물이 드러났어도 숨지 않고 <mark>나의 반석이시요 나의 구속자</mark>이신 하나님께 나아갑니다. 나를 드러내시는 하나님은 나를 회복시키시는 분이십니다."], "points": ["말씀을 깊이 알수록 내가 옳다고만 확신하는 사람이 아니라, 고침받을 것을 인정하고 은혜를 더 의지하는 사람이 됩니다."]}, {"title": "적용 · 이 말씀 앞에서 내가 바꾸어야 할 것은 무엇입니까", "paragraphs": ["처음 질문으로 돌아가 봅시다. 나는 말씀을 통해 무엇이 달라지고 있습니까? 예수님은 말씀을 듣고 행하는 삶을 보여 주셨습니다. 광야에서 시험받으실 때 하나님의 말씀을 의지해 순종하셨고, 겟세마네에서는 고통을 숨기지 않고 아버지께 아뢰며 끝까지 <mark>아버지의 뜻에 자신을 맡기셨습니다</mark>. 그 순종은 우리를 위한 십자가로 이어졌고, 예수님은 우리의 죄를 담당하시고 부활하셨습니다.", "그러므로 우리는 잘못이 드러났을 때 자신을 포장할 필요가 없습니다. <mark>그리스도의 용서를 의지해 인정하고 다시 순종할 수 있습니다</mark>. 말씀으로 변화된다는 것은 더 이상 잘못이 없다는 말이 아닙니다. 잘못을 깨달았을 때 변명보다 회개로, 자기 고집보다 순종으로 나아가는 것입니다.", "오늘 말씀 앞에서 마음에 걸리는 말이나 행동 하나를 정직하게 돌아보십시오. 상처 준 말이 있다면 사과하고, 알면서 미뤄 둔 순종이 있다면 작은 행동으로 옮겨 보십시오. 그리고 말씀을 읽을 때 <mark>\"이 말씀에서 내가 얻을 위로는 무엇인가\"와 함께 \"이 말씀 앞에서 내가 바꾸어야 할 것은 무엇인가\"</mark>를 물어보십시오.", "하나님의 말씀은 우리를 위로하고 살리시며, 바로 그 선하심 때문에 우리의 욕심을 바로잡고 죄에서 돌아서게 하십니다. 나는 말씀의 다스림 아래 내 생각과 말과 선택을 맡기고 있습니까, 아니면 <mark>내 뜻과 유익을 뒷받침하는 데 말씀을 이용하고 있지는 않습니까?</mark>"], "points": ["말씀의 다스림 아래 내 생각과 말과 선택을 맡깁니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "말씀을 읽으며 위로만 찾지 않고, 내가 고쳐야 할 것도 물었다"}, {"key": "c2", "text": "'이 말씀은 저 사람이 들어야 하는데'라고 남에게 먼저 적용하지 않았는지 돌아봤다"}, {"key": "c3", "text": "'원래 내 성격이 이래'라며 익숙한 허물을 정당화하고 있지 않은지 점검했다"}, {"key": "c4", "text": "'이번만 넘어가자'며 알면서 타협하고 있는 일이 없는지 돌아봤다"}], "s4heading": "묵상 한 줄", "memoHint": "오늘 말씀 앞에서 마음에 걸리는 내 말이나 행동 하나는 무엇이며, 어떻게 돌이키겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "하늘 바라보기", "value": "잠시 하늘을 바라보며 이 세계를 지으신 하나님의 영광을 찬양하기"}, {"key": "act2", "label": "두 가지 질문", "value": "말씀을 읽을 때 '얻을 위로'와 '바꿀 것'을 각각 한 줄씩 적어 보기"}, {"key": "act3", "label": "사과하기", "value": "상처를 준 말이 떠오른다면 변명 없이 사과의 말 건네기"}, {"key": "act4", "label": "타협 끊기", "value": "분노 속 문자는 보내지 않고, 죄로 이끄는 환경에서 거리 두거나 믿을 만한 사람에게 도움 구하기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 19:14을 외우며 말하기 전에 '이 말이 주님 앞에 열납될까?' 묻기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "하늘을 통해 영광을 드러내시고, 완전한 말씀으로 영혼을 소성시키며 눈을 밝게 하시는 나의 반석, 나의 구속자 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "말씀을 귀하다 하면서도 손해 앞에서 정직을 버리고, 익숙한 허물을 성격 탓으로 돌리며, 말씀을 내 뜻을 뒷받침하는 데 썼던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "숨은 허물에서 저를 깨끗하게 하시고 고의로 죄짓지 않게 지켜 주시며, 내 입의 말과 마음의 묵상이 주님 앞에 열납되게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "October 31, Saturday", "ref": "Psalm 19:1–14", "headline": "As I Read the Word,<br>What Is Changing in Me?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 19:1-14", "s1heading": "Today's Word", "verse": "\"Let the words of my mouth and the meditation of my heart<br>be acceptable in Your sight,<br>O LORD, my rock and my redeemer.\"", "verseRef": "Psalm 19:14", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · From the Heavens to the Word, from the Word to My Heart", "paragraphs": ["When do you sense God's existence and presence? When you look out over the wide sea? When you see the stars in the night sky? Or when you face something too hard to handle in your own strength? God reveals His glory through creation. We marvel at nature's beauty and think of the Creator, and before nature's vastness we realize how small we are. But simply looking at nature cannot teach us God's will or the way of salvation. So God gave us <mark>His Word</mark> to tell us who He is and how we should live. Here is the center of today's psalm: those who have received God's Word must respond by letting their lives be changed through it.", "David praises God's glory revealed in the heavens. Then he confesses that God's Word restores him, makes him wise, gives him joy, and brightens his spiritual eyes. And at the end, he willingly <mark>lays his faults, his words, and his heart before God</mark>. He doesn't stop at saying the Word is good; he places himself before that Word. The New Testament testifies that God revealed Himself even more clearly in Jesus. The Word who was with God from the beginning became flesh and came among us. Jesus died for our sins, rose again, and said He will come again. And the Holy Spirit awakens us through the Word and leads us to obey. So knowing Jesus does not stop at adding new content to our knowledge; it leads to a life in which our thoughts, words, and choices are transformed within His grace. Before today's Word, let's honestly ask ourselves: What is changing in me through the Word? Along with being comforted by the Word, am I being corrected before it?"], "points": ["Along with being comforted by the Word, am I being corrected before it?"]}, {"title": "Verses 1–6 · The Heavens Silently Declare God's Glory", "paragraphs": ["Verse 1: <mark>\"The heavens declare the glory of God, and the sky above proclaims His handiwork.\"</mark> The beauty and vastness of the sky reveal the greatness of the Creator. Verse 2 sings, 'Day to day pours out speech, and night to night reveals knowledge.' Day passes and night comes, yet the testimony to God never stops. We tend to think of God when something special happens. But the psalmist David sees God's glory even in <mark>the day and night that repeat every single day</mark>. Even in the moments when we're busy and forget God, creation is displaying His glory. Take a moment today to look at the sky. Remember that the world you've passed by because it felt familiar is a world God made — and that our lives, too, are set before Him.", "In verses 3–4, the heavens don't speak as people do — 'there is no speech, nor are there words' — yet their testimony goes out through all the earth. This is sometimes called general revelation: God reveals Himself to all people through creation. People who speak different languages and stand on different soil can look at the same sky and consider the Creator's glory. But nature does not explain Jesus' cross and resurrection. To know God's salvation and will concretely, we must hear the Word He has revealed. Being moved by nature is precious — and that awe should lead us to <mark>a place of listening to God</mark>. In the second half of verse 4, the psalmist turns to the sun. In verse 5 it is radiant like a bridegroom leaving his chamber and runs its course with joy like a strong man. But it is God who set a tent for the sun. However radiant, the sun is <mark>a creature God made</mark>. Seeing its light, the psalmist exalts the God who made it. Verse 6 sings of the sun's heat reaching everywhere. And in the next section, God's Word brightens human eyes and searches the depths of the heart. David's gaze moves from the heavens to the Word, and then to one person's heart."], "points": ["Faith that sees God's glory doesn't stop at wonder; it moves on to hearing what that God is saying to my life."]}, {"title": "Verses 7–10 · The Word of the LORD Gives Life and Joy", "paragraphs": ["Verse 7: <mark>\"The law of the LORD is perfect, reviving the soul; the testimony of the LORD is sure, making wise the simple.\"</mark> Now the name 'LORD' repeats. The God who made the heavens comes near to His people through His Word. When we hear 'law,' we may think first of prohibitions. But here it carries the sense of teaching that reveals God's will and guides our lives — described as God's personal revelation. That Word revives the soul. It gives life. It raises up those who are worn out and scattered. To those who have lost their sense of worth and direction, it shows who they are before God and how they should live. It also makes the simple wise. The 'simple' here are those who lack discernment and are easily swayed. We are like that too. When emotions run ahead, we make wrong choices and still think we're justified. When we see profit, we brush off the wrongs in the process. The Word makes us stop and think: Is this choice right before God? Am I only looking at what I want? Becoming wise through the Word is not a technique for getting what I want more effectively; it is <mark>growing in the ability to discern the way God wants</mark>.", "Verses 8–9: the precepts of the LORD are right, rejoicing the heart; the commandment of the LORD is pure, <mark>enlightening the eyes</mark>. While the Word restores us, it also makes us see rightly what we had seen wrongly. It makes us reconsider actions we took for granted and see the neighbor's pain we passed by. I thought my words were just honest — but before the Word, they may have been words that belittled someone. I thought my efforts were for my family — but mixed in may have been a desire to control them my way. The Word shows us such things. It may be uncomfortable at first. But as we turn back, repair relationships, and walk according to God's will, we learn a new joy. The 'fear of the LORD' in verse 9 connects here: those who rightly receive the Word honor God and live before Him. How God sees me becomes the real standard for my choices. Verse 10: <mark>\"More to be desired are they than gold, even much fine gold; sweeter also than honey and drippings of the honeycomb.\"</mark> Gold represents preciousness; honey represents delight. For David, the Word is both an authority to obey and a gift to long for and enjoy. Here we can examine our real standard. We say the Word is precious — but do we give up honesty when we might lose money? Do we claim to know God's will yet delay obedience because it's inconvenient? The confession that the Word is more precious than gold is revealed clearly in moments of choice: choosing honesty even if it costs a little profit, admitting a wrong even if it hurts our pride. As we obey, we learn that God's teaching is a gift that gives us life."], "points": ["A life changed by the Word is not only one with more 'amens,' but one where what I treasure and how I choose are changing."]}, {"title": "Verses 11–12 · The Sweetness and the Warning of the Word Go Together", "paragraphs": ["Now David calls himself <mark>\"Your servant.\"</mark> The one who was explaining the benefits of the Word now applies it to himself. Verse 11: <mark>\"Moreover, by them is Your servant warned; in keeping them there is great reward.\"</mark> Right after the Word that is sweeter than honey comes a warning. The Word's sweetness and its warning go together. Showing us the path that harms us and making us stop is also God's goodness. So those who love the Word receive warning along with comfort. Before thinking, 'That person really needs to hear this,' we ask, <mark>'Lord, what do I need to turn from?'</mark> And we shouldn't think of the reward for keeping the Word only as more wealth or status. We must see together the restoration, wisdom, and joy mentioned earlier, and the benefit of living in reverence for God.", "Verse 12: <mark>\"Who can discern his errors? Declare me innocent from hidden faults.\"</mark> Having met the perfect Word, David doesn't claim that he too is perfect. Instead he confesses he cannot know all his faults. Some wrongs are so familiar that we no longer feel they are wrong. We keep using harsh words and explain, 'That's just my personality.' We don't listen to others and think, 'I have more experience.' But being familiar doesn't make something right. And explaining 'that wasn't my intention' doesn't make the hurt we caused disappear. The Word makes us realize our self-judgment is not perfect. So we come to God and ask, 'Cleanse me even from the faults I cannot see.' This doesn't mean endlessly doubting ourselves. It is <mark>faith that entrusts us to the God who knows us most accurately and forgives</mark>."], "points": ["Those who love the Word receive warning along with comfort."]}, {"title": "Verses 13–14 · Offering the Words of My Mouth and the Meditation of My Heart", "paragraphs": ["In verse 13 David asks, <mark>\"Keep back Your servant also from presumptuous sins; let them not have dominion over me!\"</mark> Sometimes we do wrong because we don't know, but sometimes we compromise knowingly. We know the words we shouldn't say but pour them out in anger. We know something isn't honest but think, 'Just this once.' When such compromise repeats, it becomes habit, and at some point it rules our lives. David doesn't stop at asking forgiveness; he prays to be kept from being dragged along by sin. Repentance includes both admitting past wrongs and <mark>changing direction going forward</mark>. We too need a concrete response today: stopping the text we were about to send in anger, distancing ourselves from environments that repeatedly lead us into sin, and, if it's a problem hard to quit alone, asking a trustworthy person for help — seeking God's help while actually turning back.", "Verse 14: <mark>\"Let the words of my mouth and the meditation of my heart be acceptable in Your sight, O LORD, my rock and my redeemer.\"</mark> This psalm, which began with the testimony of the heavens, arrives at one person's mouth and heart. The one who praised the Creator of the whole universe now offers his own words to God. 'Acceptable' means that God receives them with pleasure. David lays before God not only the words he speaks outwardly but the heart from which they come. And he calls God <mark>his rock and his redeemer</mark>. Though his faults have been exposed, he doesn't hide from God; he comes to the One who will hold him and rescue him. Our self-examination, too, must stand on this trust. The God who exposes me is the God who restores me. The more deeply we understand the Word, the less we become people sure only of our own rightness, and the more we become people who admit we need correction and rely all the more on God's grace."], "points": ["The more deeply I know the Word, the more I admit I need correction and rely on grace."]}, {"title": "Application · Before This Word, What Do I Need to Change?", "paragraphs": ["Let's return to the first question: What is changing in me through the Word? Jesus showed us a life of hearing and doing the Word. When tempted in the wilderness, He relied on God's Word and obeyed. In Gethsemane, He did not hide His anguish but told the Father, and He <mark>entrusted Himself to the Father's will</mark> to the end. That obedience led to the cross for us. Jesus bore our sins and rose again.", "So when our wrongs come to light, we don't need to dress ourselves up. <mark>Relying on Christ's forgiveness, we can admit them and obey again.</mark> Being changed by the Word doesn't mean saying we no longer have any faults. It means that when we realize a fault, we move toward repentance rather than excuses, and toward obedience rather than stubbornness.", "Try one thing today. Honestly reflect on one word or action that weighs on your conscience before the Word. If there are hurtful words, apologize; if there's an obedience you've knowingly pushed aside, put it into a small action. And when you read the Word, ask: <mark>'What comfort do I receive from this Word?' — and also, 'What do I need to change before this Word?'</mark>", "God's Word comforts us and gives us life — and because of that very goodness, it also corrects our desires and turns us from sin. Am I entrusting my thoughts, words, and choices to the rule of the Word, or am I <mark>using the Word to back up my own will and interests</mark>?"], "points": ["I entrust my thoughts, words, and choices to the rule of God's Word."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "While reading the Word, I didn't look only for comfort but also asked what I need to correct."}, {"key": "c2", "text": "I reflected on whether I applied the Word to others first — 'That person needs to hear this.'"}, {"key": "c3", "text": "I checked whether I'm justifying familiar faults with 'That's just my personality.'"}, {"key": "c4", "text": "I reflected on whether there's something I'm knowingly compromising on — 'Just this once.'"}], "s4heading": "One-Line Reflection", "memoHint": "What is one word or action of mine that weighs on me before today's Word, and how will I turn from it?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Look at the Sky", "value": "Pause to look at the sky and praise the glory of God who made this world"}, {"key": "act2", "label": "Two Questions", "value": "When reading the Word, write one line each for 'the comfort I receive' and 'what I need to change'"}, {"key": "act3", "label": "Apologize", "value": "If hurtful words come to mind, offer an apology without excuses"}, {"key": "act4", "label": "Break Compromise", "value": "Don't send texts in anger; distance yourself from environments that lead to sin, or ask a trustworthy person for help"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 19:14 and, before speaking, ask, 'Will these words be acceptable to the Lord?'"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, my rock and redeemer, for revealing Your glory through the heavens and for reviving my soul and enlightening my eyes with Your perfect Word."}, {"key": "p2", "tag": "Repent", "text": "I repent that while calling Your Word precious, I gave up honesty in the face of loss, blamed familiar faults on my personality, and used Your Word to back up my own will."}, {"key": "p3", "tag": "Ask", "text": "Cleanse me from hidden faults, keep me from presumptuous sins, and let the words of my mouth and the meditation of my heart be acceptable in Your sight."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Oktubre 31, Sabado", "ref": "Awit 19:1–14", "headline": "Habang Binabasa Ko ang Salita,<br>Ano ang Nagbabago sa Akin?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 19:1-14", "s1heading": "Salita Ngayon", "verse": "\"Ang mga salita nawa ng aking bibig at ang pagbubulay ng aking puso<br>ay maging kalugud-lugod sa Iyong paningin,<br>O Yahweh, aking bato at aking manunubos.\"", "verseRef": "Awit 19:14", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Mula sa Kalangitan Tungo sa Salita, Mula sa Salita Tungo sa Aking Puso", "paragraphs": ["Kailan mo nadarama ang pag-iral at presensya ng Diyos? Kapag tinatanaw mo ang malawak na dagat? Kapag nakikita mo ang mga bituin sa langit sa gabi? O kapag nahaharap ka sa bagay na napakahirap pasanin sa sarili mong lakas? Inihahayag ng Diyos ang Kanyang kaluwalhatian sa pamamagitan ng nilikha. Namamangha tayo sa kagandahan ng kalikasan at naiisip ang Lumikha, at sa harap ng kalawakan nito ay napagtatanto natin kung gaano tayo kaliit. Ngunit hindi natin malalaman ang kalooban ng Diyos at ang daan ng kaligtasan sa pagtingin lamang sa kalikasan. Kaya ibinigay sa atin ng Diyos ang <mark>Kanyang Salita</mark> upang ipakilala kung sino Siya at kung paano tayo dapat mamuhay. Narito ang sentro ng awit ngayon: ang mga tumanggap ng Salita ng Diyos ay dapat tumugon sa pamamagitan ng pagpapahintulot na mabago ang kanilang buhay sa pamamagitan nito.", "Pinupuri ni David ang kaluwalhatian ng Diyos na inihayag sa kalangitan. Pagkatapos, ipinahayag niyang ang Salita ng Diyos ang nagpapanumbalik sa kanya, nagpapatalino sa kanya, nagbibigay sa kanya ng kagalakan, at nagpapaliwanag sa kanyang espirituwal na mata. At sa huli, kusang-loob niyang <mark>inilalapag sa harap ng Diyos ang kanyang mga kasalanan, salita, at puso</mark>. Hindi siya humihinto sa pagsasabing mabuti ang Salita; inilalagay niya ang sarili sa harap ng Salitang iyon. Pinatototohanan ng Bagong Tipan na mas malinaw pang inihayag ng Diyos ang Kanyang sarili kay Jesus. Ang Salitang kasama ng Diyos mula sa pasimula ay naging tao at dumating sa gitna natin. Namatay si Jesus para sa ating mga kasalanan, muling nabuhay, at nagsabing Siya'y babalik. At ginigising tayo ng Espiritu Santo sa pamamagitan ng Salita at inaakay tayong sumunod. Kaya ang pagkakilala kay Jesus ay hindi humihinto sa pagdaragdag ng bagong nilalaman sa ating kaalaman; humahantong ito sa buhay na nababago ang ating mga isip, salita, at pasya sa loob ng Kanyang biyaya. Sa harap ng Salita ngayon, tapat nating itanong sa sarili: Ano ang nagbabago sa akin sa pamamagitan ng Salita? Kasabay ng pagiging naaaliw ng Salita, itinatama ba ako sa harap nito?"], "points": ["Kasabay ng pagiging naaaliw ng Salita, itinatama ba ako sa harap nito?"]}, {"title": "Talata 1–6 · Tahimik na Ipinahahayag ng Kalangitan ang Kaluwalhatian ng Diyos", "paragraphs": ["Talata 1: <mark>\"Ipinahahayag ng kalangitan ang kaluwalhatian ng Diyos, at ipinapakita ng himpapawid ang gawa ng Kanyang mga kamay.\"</mark> Inihahayag ng kagandahan at kalawakan ng langit ang kadakilaan ng Lumikha. Inaawit ng talata 2, 'Araw-araw ay nagbubuhos ng pananalita, at gabi-gabi ay naghahayag ng kaalaman.' Lumilipas ang araw at dumarating ang gabi, ngunit hindi humihinto ang patotoo tungkol sa Diyos. Madalas nating naiisip ang Diyos kapag may espesyal na nangyayari. Ngunit nakikita ng mang-aawit na si David ang kaluwalhatian ng Diyos kahit sa <mark>araw at gabing paulit-ulit araw-araw</mark>. Kahit sa mga sandaling abala tayo at nalilimutan ang Diyos, ipinapakita ng nilikha ang Kanyang kaluwalhatian. Maglaan ng sandali ngayon upang tumingin sa langit. Alalahanin na ang mundong nilalampasan mo dahil pamilyar na ay mundong nilikha ng Diyos — at na ang ating buhay din ay nakalagay sa harap Niya.", "Sa talata 3–4, hindi nagsasalita ang kalangitan gaya ng tao — 'walang pananalita, ni mga salita' — ngunit ang patotoo nito ay umaabot sa buong lupa. Tinatawag ito minsan na pangkalahatang pahayag: inihahayag ng Diyos ang Kanyang sarili sa lahat ng tao sa pamamagitan ng nilikha. Ang mga taong may iba't ibang wika at nakatayo sa iba't ibang lupain ay maaaring tumingin sa iisang langit at pagnilayan ang kaluwalhatian ng Lumikha. Ngunit hindi ipinaliliwanag ng kalikasan ang krus at muling pagkabuhay ni Jesus. Upang malaman nang tiyak ang kaligtasan at kalooban ng Diyos, kailangan nating pakinggan ang Salitang Kanyang inihayag. Mahalaga ang pagkaantig sa kalikasan — at dapat tayong akayin ng pagkamanghang iyon sa <mark>lugar ng pakikinig sa Diyos</mark>. Sa ikalawang bahagi ng talata 4, bumaling ang mang-aawit sa araw. Sa talata 5, nagniningning ito tulad ng kasintahang lalaking lumalabas sa kanyang silid at tumatakbo sa kanyang landas nang may kagalakan tulad ng malakas na lalaki. Ngunit ang Diyos ang naglagay ng tolda para sa araw. Gaano man kaningning, ang araw ay <mark>nilalang na ginawa ng Diyos</mark>. Sa pagkakita sa liwanag nito, dinadakila ng mang-aawit ang Diyos na lumikha nito. Inaawit ng talata 6 ang init ng araw na umaabot sa lahat ng dako. At sa susunod na bahagi, pinaliliwanag ng Salita ng Diyos ang mata ng tao at sinasaliksik ang kailaliman ng puso. Lumilipat ang paningin ni David mula sa kalangitan tungo sa Salita, at pagkatapos ay sa puso ng isang tao."], "points": ["Ang pananampalatayang nakakikita sa kaluwalhatian ng Diyos ay hindi humihinto sa pagkamangha; sumusulong ito sa pakikinig sa sinasabi ng Diyos na iyon sa aking buhay."]}, {"title": "Talata 7–10 · Ang Salita ni Yahweh ay Nagbibigay-Buhay at Kagalakan", "paragraphs": ["Talata 7: <mark>\"Sakdal ang kautusan ni Yahweh, nagpapanumbalik ng kaluluwa; tiyak ang patotoo ni Yahweh, nagpapatalino sa simple.\"</mark> Ngayon ay paulit-ulit ang pangalang 'Yahweh.' Ang Diyos na lumikha ng kalangitan ay lumalapit sa Kanyang bayan sa pamamagitan ng Kanyang Salita. Kapag naririnig natin ang 'kautusan,' maaaring mga pagbabawal ang una nating maisip. Ngunit dito, may dala itong kahulugan ng turong naghahayag ng kalooban ng Diyos at gumagabay sa ating buhay — inilalarawan bilang personal na pahayag ng Diyos. Ang Salitang iyon ay nagpapanumbalik ng kaluluwa. Nagbibigay ito ng buhay. Ibinabangon nito ang mga pagod at nakakalat. Sa mga nawalan ng pakiramdam ng halaga at direksyon, ipinapakita nito kung sino sila sa harap ng Diyos at kung paano sila dapat mamuhay. Pinatatalino rin nito ang simple. Ang 'simple' dito ay ang mga kulang sa pagkilala at madaling matangay. Ganoon din tayo. Kapag nauuna ang damdamin, gumagawa tayo ng maling pasya at iniisip pa ring makatwiran tayo. Kapag may nakikita tayong pakinabang, binabalewala natin ang mga mali sa proseso. Pinahihinto at pinag-iisip tayo ng Salita: Tama ba ang pasyang ito sa harap ng Diyos? Ang gusto ko lamang ba ang tinitingnan ko? Ang pagiging matalino sa pamamagitan ng Salita ay hindi teknik upang mas makuha ang gusto ko; ito ay <mark>paglago ng kakayahang makilala ang daang nais ng Diyos</mark>.", "Talata 8–9: matuwid ang mga tuntunin ni Yahweh, nagpapagalak ng puso; dalisay ang utos ni Yahweh, <mark>nagpapaliwanag ng mga mata</mark>. Habang pinanunumbalik tayo ng Salita, pinatitingin din tayo nito nang tama sa dati nating mali ang pagtingin. Pinag-iisip tayo nito muli sa mga kilos na binalewala natin at ipinapakita ang sakit ng kapwang nilampasan natin. Akala ko tapat lang ang aking mga salita — ngunit sa harap ng Salita, maaaring mga salita pala itong humahamak sa iba. Akala ko para sa aking pamilya ang aking pagsisikap — ngunit maaaring may halong pagnanais na kontrolin sila ayon sa gusto ko. Ipinapakita sa atin ng Salita ang mga ganitong bagay. Maaaring hindi ito komportable sa simula. Ngunit habang tumatalikod tayo, inaayos ang mga relasyon, at lumalakad ayon sa kalooban ng Diyos, natututunan natin ang bagong kagalakan. Kaugnay nito ang 'takot kay Yahweh' sa talata 9: ang mga wastong tumatanggap ng Salita ay gumagalang sa Diyos at namumuhay sa harap Niya. Kung paano ako tinitingnan ng Diyos ang nagiging tunay na pamantayan ng aking mga pasya. Talata 10: <mark>\"Higit silang kanais-nais kaysa ginto, kaysa maraming dalisay na ginto; mas matamis pa kaysa pulot at sa tumutulo mula sa bahay-pukyutan.\"</mark> Ang ginto ay kumakatawan sa kahalagahan; ang pulot ay sa kasiyahan. Para kay David, ang Salita ay kapwa awtoridad na dapat sundin at kaloob na dapat hangarin at tamasahin. Dito, masusuri natin ang ating tunay na pamantayan. Sinasabi nating mahalaga ang Salita — ngunit isinusuko ba natin ang katapatan kapag maaari tayong mawalan ng pera? Sinasabi ba nating alam natin ang kalooban ng Diyos ngunit ipinagpapaliban ang pagsunod dahil hindi ito maginhawa? Malinaw na nahahayag sa mga sandali ng pagpili ang pagpapahayag na mas mahalaga ang Salita kaysa ginto: pagpili sa katapatan kahit mabawasan ng kaunting kita, pag-amin sa mali kahit masaktan ang ating pride. Habang sumusunod tayo, natututunan nating ang turo ng Diyos ay kaloob na nagbibigay sa atin ng buhay."], "points": ["Ang buhay na binago ng Salita ay hindi lamang may mas maraming 'amen,' kundi buhay na nagbabago ang aking pinahahalagahan at kung paano ako pumipili."]}, {"title": "Talata 11–12 · Magkasama ang Tamis at Babala ng Salita", "paragraphs": ["Ngayon, tinatawag ni David ang sarili na <mark>\"Iyong lingkod.\"</mark> Ang nagpapaliwanag kanina ng mga pakinabang ng Salita ay inilalapat na ito ngayon sa sarili. Talata 11: <mark>\"Bukod dito, sa pamamagitan nila ay binababalaan ang Iyong lingkod; sa pagsunod sa mga ito ay may malaking gantimpala.\"</mark> Kasunod mismo ng Salitang mas matamis kaysa pulot ay isang babala. Magkasama ang tamis ng Salita at ang babala nito. Ang pagpapakita sa atin ng landas na nakasasama sa atin at ang pagpapahinto sa atin ay kabutihan din ng Diyos. Kaya ang mga umiibig sa Salita ay tumatanggap ng babala kasama ng aliw. Bago isiping, 'Kailangan talaga itong marinig ng taong iyon,' itinatanong natin, <mark>'Panginoon, ano ang kailangan kong talikuran?'</mark> At hindi natin dapat isipin ang gantimpala ng pagsunod sa Salita bilang dagdag na kayamanan o katayuan lamang. Dapat nating makita nang sabay ang pagpapanumbalik, karunungan, at kagalakang binanggit kanina, at ang pakinabang ng pamumuhay nang may paggalang sa Diyos.", "Talata 12: <mark>\"Sino ang makauunawa sa kanyang mga pagkakamali? Linisin Mo ako mula sa mga nakatagong kasalanan.\"</mark> Nang makatagpo ang sakdal na Salita, hindi inangkin ni David na sakdal din siya. Sa halip, ipinahayag niyang hindi niya malalaman ang lahat ng kanyang pagkakamali. May mga maling napakapamilyar na hindi na natin nadaramang mali. Patuloy tayong gumagamit ng masasakit na salita at nagpapaliwanag, 'Ganito lang talaga ang ugali ko.' Hindi tayo nakikinig sa iba at iniisip, 'Mas marami akong karanasan.' Ngunit hindi nagiging tama ang isang bagay dahil lamang pamilyar ito. At hindi nawawala ang sakit na idinulot natin dahil lamang sinabi nating 'hindi ko iyon intensyon.' Ipinauunawa sa atin ng Salita na hindi sakdal ang ating paghatol sa sarili. Kaya lumalapit tayo sa Diyos at humihiling, 'Linisin Mo ako kahit sa mga kasalanang hindi ko nakikita.' Hindi ito nangangahulugang walang katapusang pagdududa sa sarili. Ito ay <mark>pananampalatayang ipinagkakatiwala tayo sa Diyos na pinakawastong nakakikilala at nagpapatawad sa atin</mark>."], "points": ["Ang mga umiibig sa Salita ay tumatanggap ng babala kasama ng aliw."]}, {"title": "Talata 13–14 · Iniaalay ang mga Salita ng Aking Bibig at ang Pagbubulay ng Aking Puso", "paragraphs": ["Sa talata 13, humiling si David, <mark>\"Pigilan Mo rin ang Iyong lingkod mula sa sinadyang mga kasalanan; huwag Mo silang hayaang maghari sa akin!\"</mark> Minsan nagkakamali tayo dahil hindi natin alam, ngunit minsan ay sadyang nakikipagkompromiso tayo. Alam natin ang mga salitang hindi dapat sabihin ngunit ibinubuhos natin ang mga ito sa galit. Alam nating hindi tapat ang isang bagay ngunit iniisip, 'Ngayon lang.' Kapag paulit-ulit ang ganitong kompromiso, nagiging ugali ito, at sa isang punto ay naghahari sa ating buhay. Hindi humihinto si David sa paghingi ng tawad; nananalangin siyang huwag madala ng kasalanan. Kasama sa pagsisisi kapwa ang pag-amin sa nakaraang mali at ang <mark>pagbabago ng direksyon sa hinaharap</mark>. Kailangan din natin ng kongkretong tugon ngayon: paghinto sa mensaheng ipapadala sana natin sa galit, paglayo sa mga kapaligirang paulit-ulit na umaakay sa atin sa kasalanan, at kung mahirap itong putulin nang mag-isa, paghingi ng tulong sa mapagkakatiwalaang tao — humihingi ng tulong ng Diyos habang tunay na tumatalikod.", "Talata 14: <mark>\"Ang mga salita nawa ng aking bibig at ang pagbubulay ng aking puso ay maging kalugud-lugod sa Iyong paningin, O Yahweh, aking bato at aking manunubos.\"</mark> Ang awit na nagsimula sa patotoo ng kalangitan ay umaabot sa bibig at puso ng isang tao. Ang pumuri sa Lumikha ng buong sansinukob ay nag-aalay na ngayon ng sarili niyang mga salita sa Diyos. Ang 'kalugud-lugod' ay nangangahulugang tinatanggap ito ng Diyos nang may kasiyahan. Inilalapag ni David sa harap ng Diyos hindi lamang ang mga salitang sinasabi niya sa labas kundi ang pusong pinagmumulan ng mga ito. At tinatawag niya ang Diyos na <mark>kanyang bato at kanyang manunubos</mark>. Bagama't nalantad ang kanyang mga kasalanan, hindi siya nagtatago sa Diyos; lumalapit siya sa Isang hahawak at magliligtas sa kanya. Ang ating pagsusuri sa sarili rin ay dapat nakatayo sa pagtitiwalang ito. Ang Diyos na naglalantad sa akin ay ang Diyos na nagpapanumbalik sa akin. Habang lumalalim ang ating pag-unawa sa Salita, hindi tayo nagiging mga taong tiyak lamang sa sariling katuwiran, kundi mga taong umaaming kailangan ng pagtutuwid at lalong umaasa sa biyaya ng Diyos."], "points": ["Habang lumalalim ang aking pagkakilala sa Salita, lalo kong inaamin na kailangan ko ng pagtutuwid at umaasa ako sa biyaya."]}, {"title": "Aplikasyon · Sa Harap ng Salitang Ito, Ano ang Kailangan Kong Baguhin?", "paragraphs": ["Bumalik tayo sa unang tanong: Ano ang nagbabago sa akin sa pamamagitan ng Salita? Ipinakita sa atin ni Jesus ang buhay ng pakikinig at paggawa ng Salita. Nang tuksuhin sa ilang, umasa Siya sa Salita ng Diyos at sumunod. Sa Getsemani, hindi Niya itinago ang Kanyang paghihirap kundi sinabi ito sa Ama, at <mark>ipinagkatiwala Niya ang Kanyang sarili sa kalooban ng Ama</mark> hanggang sa wakas. Ang pagsunod na iyon ay humantong sa krus para sa atin. Pinasan ni Jesus ang ating mga kasalanan at muling nabuhay.", "Kaya kapag nalantad ang ating mga mali, hindi natin kailangang pagandahin ang ating sarili. <mark>Sa pag-asa sa kapatawaran ni Cristo, maaari nating aminin ang mga ito at muling sumunod.</mark> Ang pagbabago sa pamamagitan ng Salita ay hindi pagsasabing wala na tayong anumang pagkakamali. Ibig sabihin, kapag napagtanto natin ang isang pagkakamali, sumusulong tayo sa pagsisisi sa halip na sa pagdadahilan, at sa pagsunod sa halip na sa katigasan ng ulo.", "Subukan ang isang bagay ngayon. Tapat na pagnilayan ang isang salita o kilos na bumabagabag sa iyong konsensya sa harap ng Salita. Kung may masasakit na salita, humingi ng paumanhin; kung may pagsunod na sadya mong isinantabi, gawin itong maliit na kilos. At kapag binabasa mo ang Salita, itanong: <mark>'Anong aliw ang natatanggap ko sa Salitang ito?' — at gayundin, 'Ano ang kailangan kong baguhin sa harap ng Salitang ito?'</mark>", "Inaaliw tayo ng Salita ng Diyos at binibigyan tayo ng buhay — at dahil sa kabutihan ding iyon, itinatama nito ang ating mga pagnanasa at inilalayo tayo sa kasalanan. Ipinagkakatiwala ko ba ang aking mga isip, salita, at pasya sa paghahari ng Salita, o <mark>ginagamit ko ang Salita upang suportahan ang sarili kong kalooban at pakinabang</mark>?"], "points": ["Ipinagkakatiwala ko ang aking mga isip, salita, at pasya sa paghahari ng Salita ng Diyos."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Habang binabasa ang Salita, hindi lamang aliw ang hinanap ko kundi itinanong ko rin kung ano ang kailangan kong itama."}, {"key": "c2", "text": "Pinag-isipan ko kung inilapat ko muna sa iba ang Salita — 'Kailangan itong marinig ng taong iyon.'"}, {"key": "c3", "text": "Sinuri ko kung binibigyang-katwiran ko ang mga pamilyar na kasalanan sa 'Ganito lang talaga ang ugali ko.'"}, {"key": "c4", "text": "Pinag-isipan ko kung may bagay akong sadyang kinokompromiso — 'Ngayon lang.'"}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano ang isang salita o kilos ko na bumabagabag sa akin sa harap ng Salita ngayon, at paano ko ito tatalikuran?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Tumingin sa Langit", "value": "Huminto sandali upang tumingin sa langit at purihin ang kaluwalhatian ng Diyos na lumikha ng mundong ito"}, {"key": "act2", "label": "Dalawang Tanong", "value": "Kapag binabasa ang Salita, sumulat ng tig-isang linya para sa 'aliw na natatanggap ko' at 'kailangan kong baguhin'"}, {"key": "act3", "label": "Humingi ng Paumanhin", "value": "Kung may masasakit na salitang naaalala, humingi ng paumanhin nang walang dahilan"}, {"key": "act4", "label": "Putulin ang Kompromiso", "value": "Huwag magpadala ng mensahe sa galit; lumayo sa mga kapaligirang umaakay sa kasalanan, o humingi ng tulong sa mapagkakatiwalaang tao"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 19:14 at, bago magsalita, itanong, 'Magiging kalugud-lugod ba sa Panginoon ang mga salitang ito?'"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, aking bato at manunubos, sa paghahayag ng Iyong kaluwalhatian sa kalangitan at sa pagpapanumbalik ng aking kaluluwa at pagpapaliwanag ng aking mga mata sa Iyong sakdal na Salita."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako na habang tinatawag kong mahalaga ang Iyong Salita, isinuko ko ang katapatan sa harap ng pagkalugi, isinisi ko sa aking ugali ang mga pamilyar na kasalanan, at ginamit ko ang Iyong Salita upang suportahan ang sarili kong kalooban."}, {"key": "p3", "tag": "Kahilingan", "text": "Linisin Mo ako mula sa mga nakatagong kasalanan, ilayo Mo ako sa sinadyang mga kasalanan, at ang mga salita nawa ng aking bibig at ang pagbubulay ng aking puso ay maging kalugud-lugod sa Iyong paningin."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-10-31';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
