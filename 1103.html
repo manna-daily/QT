@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/3(화) 큐티 · 고린도후서 1:23–2:17">
+<meta property="og:description" content="잘못을 바로잡은 뒤, 사랑도 확인해 주었나요?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 3일 화요일", "ref": "고린도후서 1장 23절–2장 17절", "headline": "잘못을 바로잡은 뒤,<br>사랑도 확인해 주었나요?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 고린도후서 1:23-2:17", "s1heading": "오늘의 말씀", "verse": "\"그런즉 너희는 차라리 그를 용서하고 위로할 것이니<br>그가 너무 많은 근심에 잠길까 두려워하노라<br>그러므로 너희를 권하노니 사랑을 그들에게 나타내라\"", "verseRef": "고린도후서 2:7–8", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 책망할 때도, 책망 이후에도 사랑이 필요합니다", "paragraphs": ["누군가의 잘못을 바로잡아야 할 때 우리는 두 가지 어려움을 만납니다. 필요한 말을 했다가 관계가 불편해질까 두렵고, 반대로 잘못을 지적한 뒤에는 그 사람을 계속 잘못한 사람으로만 대하기도 합니다. 그러나 함께 믿음으로 살아가려면 서로 바로 서도록 도와야 할 때가 있습니다. 중요한 것은 목적입니다. 징계의 목적은 사람을 꺾거나 내 자존심을 세우는 데 있지 않고, <mark>죄에서 돌이켜 믿음과 기쁨을 회복하도록 돕는 데</mark> 있습니다.", "바울은 성도들을 아꼈기에 다시 고통스러운 만남이 되는 것을 피했지만, 문제를 덮지는 않았습니다. 방문 대신 <mark>눈물로 편지를 써서</mark> 잘못을 바로잡게 했고, 공동체가 그 잘못을 다룬 뒤에는 징계받은 사람을 <mark>용서하고 위로하며 사랑을 확인해 주라</mark>고 권면합니다. 잘못을 지적하는 것으로 우리의 책임이 끝나는 것은 아닙니다."], "points": ["나는 내 옳음을 증명하는 데서 멈추고 있습니까, 그 사람이 믿음 안에서 다시 서도록 돕고 있습니까?"]}, {"title": "1:23–2:4 · 성도의 회복을 위해 눈물로 편지를 씁니다", "paragraphs": ["바울은 하나님을 증인으로 부르며 고린도에 가지 않은 것은 <mark>\"너희를 아끼려 함\"</mark>이라고 말합니다. 그리고 <mark>\"우리가 너희 믿음을 주관하려는 것이 아니요 오직 너희 기쁨을 돕는 자가 되려 함이니\"</mark>(1:24)라고 사역을 설명합니다. 바울에게 사도적 권위는 있었지만, 성도들을 자기 뜻대로 통제하기 위한 것이 아니었습니다. 믿음의 주인은 바울이 아니라 주님이십니다. 기쁨을 돕는다는 것은 듣기 좋은 말만 하는 것이 아니라, 죄를 바로잡고 하나님과의 바른 관계 안에서 누리는 기쁨을 돕는 것입니다. 가정이나 교회에서 나는 <mark>사람을 내 뜻에 따르게 하려 하고 있지는 않습니까?</mark>", "바울은 <mark>\"마음에 큰 눌림과 걱정이 있어 많은 눈물로\"</mark>(2:4) 편지를 썼습니다. 근심을 주려는 것이 아니라 넘치는 사랑을 알리고 다시 기쁨으로 만나기 위해서였고, 그 근심은 회개로 이어졌습니다(7장). 사랑한다는 이유로 모든 잘못을 덮어도 안 되고, 사랑이라는 말로 거친 말과 모욕을 정당화해서도 안 됩니다."], "points": ["사랑은 어려운 말을 피하는 데서가 아니라, 필요한 말을 하면서도 상대의 회복을 끝까지 구하는 데서 드러납니다."]}, {"title": "2:5–11 · 징계 이후에는 용서와 위로로 다시 세웁니다", "paragraphs": ["바울은 공동체에 근심을 준 사람의 이름이나 잘못을 자세히 밝히지 않습니다. 그리고 많은 사람에게서 받은 벌이 <mark>이제 충분하다</mark>고 말합니다(6절). 징계에는 목적이 있고 그에 맞는 한계도 있습니다. 끝없이 벌해 사람을 무너뜨리려는 것이 아닙니다. 바울은 이제 <mark>\"그를 용서하고 위로할 것이니 그가 너무 많은 근심에 잠길까 두려워하노라\"</mark>(7절), <mark>\"사랑을 그들에게 나타내라\"</mark>(8절)고 권합니다. 용서는 잘못을 붙들고 보복하지 않는 것, 위로는 근심에 무너지지 않도록 곁에서 붙드는 것, 사랑의 확인은 다시 공동체의 일원으로 받아들인다는 것을 행동으로 보여 주는 것입니다.", "물론 용서가 책임을 없애지는 않으며, 신뢰를 다시 쌓는 과정도 필요합니다. 그러나 그 과정을 함께 걸을 마음은 있어야 합니다. 같은 사랑이 어떤 때는 책망을, 어떤 때는 용서를 요구합니다. 바울은 \"내가 상처받았으니 더 엄하게 벌하라\"고 하지 않고 함께 용서합니다. 그리고 이것을 <mark>\"사탄에게 속지 않게\"</mark>(11절) 하는 일과 연결합니다. 죄를 방치해도, 돌아온 사람을 끝없이 정죄해도 공동체는 망가집니다."], "points": ["교회의 성숙함은 죄를 엄하게 다루는 데서만이 아니라, 돌이킨 사람을 다시 받아들이는 태도에서도 드러납니다."]}, {"title": "2:12–13 · 열린 문 앞에서도 교회를 염려합니다", "paragraphs": ["바울은 그리스도의 복음을 위해 드로아에 갔고, 그곳에서 <mark>\"주 안에서 문이 내게 열렸으되\"</mark>(12절)라고 고백합니다. 사역의 기회를 자기 능력으로 만든 성과라고 말하지 않습니다. 그런데 고린도 교회의 소식을 가져올 디도를 만나지 못해 마음이 편하지 않았고, 결국 마게도냐로 떠납니다.", "이 말씀을 \"마음이 불편하면 사역을 떠나도 된다\"는 공식으로 삼을 수도, 바울의 믿음이 부족했다고 단정할 수도 없습니다. 분명한 것은 바울이 <mark>공동체의 상태를 깊이 염려했다</mark>는 사실입니다. 편지를 보내고 지시한 것으로 책임을 끝내지 않고, 성도들이 어떻게 반응하는지 마음을 썼습니다. 사람을 바로잡는 일도 필요한 말만 하고 끝내지 말고, 그가 <mark>어떻게 다시 서고 있는지</mark> 계속 관심을 가져야 합니다."], "points": ["회복을 위한 사랑은 권면을 전달하는 데서 끝나지 않고, 그 이후의 삶에도 계속 관심을 기울입니다."]}, {"title": "2:14–17 · 연약한 사람을 통해 그리스도의 향기를 드러내십니다", "paragraphs": ["불안한 이야기를 하던 바울은 갑자기 <mark>\"항상 우리를 그리스도 안에서 이기게 하시고 … 그리스도를 아는 냄새를 나타내시는 하나님께 감사하노라\"</mark>(14절)고 고백합니다. 개선 행렬의 그림에서 승리의 주인공은 하나님이시고, 바울은 그 행렬에 붙들려 이끌리는 사람입니다. 한때 교회를 박해하던 사람이 이제 그리스도를 전합니다. 사람을 회복시키는 분도 우리가 아니라 <mark>하나님</mark>이십니다.", "바울은 <mark>\"우리는 … 하나님 앞에서 그리스도의 향기니\"</mark>(15절)라고 말합니다. 그리스도의 향기는 그저 호감 가는 사람이 아니라, 복음의 말씀과 그에 어울리는 삶이 함께 그분을 드러내는 것입니다. 같은 복음 앞에서 반응은 다르지만, 우리의 거친 태도로 생긴 반감까지 복음 탓으로 돌려서는 안 됩니다. 바울은 말씀을 <mark>\"혼잡하게 하지 아니하고\"</mark> 순전함으로 전합니다(17절). 말씀을 이용해 내 감정을 쏟아내거나 내 권위를 지키려 해서는 안 됩니다."], "points": ["그리스도의 향기는 전하는 말씀뿐 아니라, 잘못한 사람을 바로잡고 다시 세우는 과정에서도 드러납니다."]}, {"title": "적용 · 경고하고, 회개하거든 용서하라", "paragraphs": ["징계의 목적은 무엇입니까? 상대를 꺾으려는 것입니까, 내가 옳다는 것만 주장하려는 것입니까, 아니면 죄에서 돌이켜 믿음과 기쁨을 회복하도록 돕는 것입니까? 예수님은 <mark>\"너희는 스스로 조심하라 만일 네 형제가 죄를 범하거든 경고하고 회개하거든 용서하라\"</mark>(눅 17:3)고 말씀하셨습니다. 죄를 외면하라고 하지 않으시고, 회개한 사람을 계속 벌하라고도 하지 않으십니다. <mark>경고와 용서는 함께 가야 합니다</mark>.", "그 중심에는 주님의 십자가가 있습니다. 예수님은 죄를 가볍게 여기지 않으셨지만 죄인을 버리지 않으시고 구원하시려고 자신을 내주셨습니다. 부활하신 주님은 자신을 부인했던 베드로에게도 <mark>다시 양들을 돌보는 사명</mark>을 맡기셨습니다. 우리는 그 은혜로 다시 선 사람들입니다. 그러니 다른 사람을 대할 때에도 잘못을 지적하는 데서 멈추지 말고, 돌이키도록 권면하며 돌아온 사람을 붙들어 주어야 합니다.", "혹시 필요한 말을 피하고 있었다면 <mark>사랑으로 진실을 전하십시오</mark>. 이미 돌이킨 사람을 계속 과거의 잘못으로만 대하고 있었다면, 이제 그가 우리의 사랑을 알 수 있도록 <mark>행동으로 옮기십시오</mark>. 먼저 인사하고, 함께 식사하고, 다시 함께 일할 자리를 마련하는 작은 걸음이 그 사람을 다시 세웁니다.", "내가 그 사람에게 진정 바라는 것은 내 말이 옳았음을 인정받는 것입니까, 아니면 그가 주님 안에서 다시 살아가는 것입니까?"], "points": ["잘못을 바로잡는 데서 멈추지 않고, 돌아온 사람에게 사랑을 확인해 줍니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "관계가 불편해질까 두려워 필요한 말을 피하고 있지 않은지 돌아봤다"}, {"key": "c2", "text": "권면할 때 사랑이라는 이름으로 거친 말이나 모욕을 정당화하지 않았는지 점검했다"}, {"key": "c3", "text": "이미 돌이킨 사람을 여전히 과거의 잘못으로만 대하고 있지 않은지 돌아봤다"}, {"key": "c4", "text": "말씀을 내 감정이나 권위를 지키는 데 이용하지 않았는지 점검했다"}], "s4heading": "묵상 한 줄", "memoHint": "내가 사랑으로 진실을 전해야 할 사람, 혹은 이제 용서와 사랑을 확인해 주어야 할 사람은 누구입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "사랑으로 진실 전하기", "value": "미뤄 온 필요한 말을, 상대의 회복을 바라는 마음으로 차분하게 전하기"}, {"key": "act2", "label": "사랑 확인하기", "value": "이미 돌이킨 사람에게 먼저 인사하거나 함께 식사하며 다시 받아들였음을 보여 주기"}, {"key": "act3", "label": "끝까지 관심 갖기", "value": "권면했던 사람이 어떻게 지내는지 안부를 묻고 기도해 주기"}, {"key": "act4", "label": "통제 내려놓기", "value": "가정이나 공동체에서 내 뜻대로 움직이려던 사람에게 선택을 존중하는 말 건네기"}, {"key": "act5", "label": "말씀 암송", "value": "고린도후서 2:7–8을 외우며 용서와 위로, 사랑의 확인을 실천하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "죄를 가볍게 여기지 않으시면서도 저를 버리지 않으시고, 십자가의 은혜로 다시 세우시며 그리스도의 향기로 삼아 주신 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "필요한 말을 피하거나 거칠게 쏟아내고, 돌이킨 사람을 계속 과거로만 대하며, 내 옳음을 인정받는 데만 마음을 두었던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "사랑으로 진실을 말하게 하시고, 돌아온 사람을 용서하고 위로하며 사랑을 확인해 주어, 우리 공동체가 사탄에게 속지 않게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 3, Tuesday", "ref": "2 Corinthians 1:23–2:17", "headline": "After Correcting a Wrong,<br>Did You Also Reaffirm Your Love?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · 2 Corinthians 1:23-2:17", "s1heading": "Today's Word", "verse": "\"So you should rather turn to forgive and comfort him,<br>or he may be overwhelmed by excessive sorrow.<br>So I beg you to reaffirm your love for him.\"", "verseRef": "2 Corinthians 2:7–8", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Love Is Needed in Rebuke — and After It", "paragraphs": ["When we need to correct someone's wrong, we face two difficulties. We fear that saying what needs to be said will make the relationship uncomfortable. Or, after pointing out the wrong, we keep treating that person only as someone who did wrong. In today's church, where individual choice is highly valued, it's hard even to bring up the word 'discipline.' But to live together in faith, there are times we must point out each other's wrongs and help one another stand upright. What matters is the purpose. The purpose of discipline is not to break a person, nor to bolster my pride. It is <mark>to help them turn from sin and recover faith and joy</mark>.", "In the previous passage, Paul explained that changing his visit plans didn't come from fickleness or double-mindedness. Today he reveals the specific reason: he cared for the Corinthian believers and spared them, avoiding another painful, uncomfortable meeting. Yet he didn't cover up the problem. Instead of visiting, he <mark>wrote a letter with tears</mark> so they would set the wrong right. And after the community had dealt with the wrong, he urges them to <mark>forgive, comfort, and reaffirm their love</mark> for the one disciplined. Love is needed when we rebuke — and love is needed after the rebuke. Our responsibility doesn't end with pointing out a wrong. Before today's Word, let's look at ourselves first: Am I stopping at proving I'm right? Or am I helping that person stand again in faith? Let's look at four parts."], "points": ["Am I stopping at proving I'm right, or helping that person stand again in faith?"]}, {"title": "1:23–2:4 · Writing a Tearful Letter for the Believers' Restoration", "paragraphs": ["In 1:23–24, Paul calls God as his witness and says he didn't come to Corinth <mark>'to spare you.'</mark> It is a solemn confession before the God who knows his motives. Had he visited then, it would have been a meeting requiring discipline. Paul hoped the believers would turn back so their next meeting could be one of shared joy. So he explains his ministry this way: <mark>'Not that we lord it over your faith, but we work with you for your joy, for you stand firm in your faith'</mark> (1:24). Paul had apostolic authority, but that authority was not for controlling the believers according to his will; it was to help them believe in Christ and stand firm. The Lord, not Paul, is the master of their faith — and Paul himself stands only because God holds him. 'Working for your joy' doesn't mean saying only pleasant things. It means helping them correct sin and enjoy the joy found in a right relationship with God. So necessary rebuke is part of that service. We must also examine the authority entrusted to us. At home or at church, <mark>am I trying to control people and make them follow my will?</mark> Or am I helping them trust the Lord and stand?", "In 2:1–2, Paul says he decided not to make another painful visit, showing there had already been a painful meeting. To Paul, the believers were the ones who made him glad; he couldn't rejoice alone while they had fallen. Even if his authority were acknowledged, if they fell away from faith, that wasn't the outcome he wanted. The purpose of discipline becomes clear here: not deciding who won, but standing together in faith and rejoicing again. In 2:3–4, Paul confesses he wrote <mark>'out of much affliction and anguish of heart and with many tears'</mark> — the so-called tearful letter, sent between 1 and 2 Corinthians. He didn't write to hurt them back, but to let them know his abundant love and to correct the wrong so they could meet again in joy. That letter did cause sorrow. But in chapter 7, Paul explains that the sorrow led to repentance. Pain itself was never the goal. If we cover up every wrong in the name of love, we may leave a person in sin. Conversely, we must never justify harsh words and insults by calling it love. We must say what's needed while checking whether our words point toward the other's restoration."], "points": ["Love shows not in avoiding hard words, but in saying what's needed while seeking the other's restoration to the end."]}, {"title": "2:5–11 · After Discipline, Rebuild Through Forgiveness and Comfort", "paragraphs": ["In verses 5–6, Paul mentions the one who caused grief in the community but doesn't reveal his name or the details of his wrong. Whether he is the same person as in 1 Corinthians 5 can't be determined from the text alone. What's clear is that his wrong hurt the community beyond Paul personally, and many rebuked him. Now Paul says that punishment is <mark>'enough.'</mark> That word matters. Discipline has a purpose and limits that fit that purpose. Its aim is to have the person face the wrong and turn — not to punish endlessly and break them. The text doesn't directly say he repented, but the flow — the punishment is enough, now forgive and comfort — shows it has reached the stage of rebuilding him. In verses 7–8, Paul urges them to <mark>forgive and comfort him, so he won't be overwhelmed by excessive sorrow</mark>, and to <mark>reaffirm their love</mark>. Forgiveness is not holding on to the wrong and retaliating. Comfort is standing beside him so he isn't crushed by sorrow. Reaffirming love is showing through action that he is received again as a member of the community. We can't end with, 'I forgave you — now you're on your own.' We must help from beside them as they live by faith again.", "Of course, forgiveness doesn't erase responsibility. We must distinguish restoring fellowship from immediately returning former roles or authority; rebuilding trust is a necessary process. But we must have the heart to walk that process together. If the community was involved in dealing with the wrong, it must also be involved in rebuilding the person. In chapter 1, Paul said we comfort others with the comfort we receive from God. Now that comfort flows even to the one who grieved the community. God's comfort isn't only for those on my side; it is surely needed by those who must turn from wrong and stand again. In verses 9–10, Paul says he wrote to test their obedience. Before, obedience meant responding to the wrong; now, it means forgiving and receiving. Outwardly Paul's stance seems changed, but the purpose is the same: restoring a person. The same love sometimes demands rebuke and sometimes demands stopping discipline and forgiving. If, in the name of principle, we repeat the same measures after the situation has changed, we may actually fail to achieve the principle's purpose. Paul himself joins in forgiving; he doesn't demand harsher punishment because he was hurt. He says he forgave in the presence of Christ for their sake. We must remember we stand before God when handling conflict — the Lord knows not only what we say but our reasons for delaying forgiveness. In verse 11, Paul connects forgiveness with the community's spiritual battle: <mark>'so that we would not be outwitted by Satan.'</mark> In context, Satan's scheme involves driving the person who should be restored into despair and binding the community in resentment and division. Leaving sin unchecked damages the community — but endlessly condemning one who has returned also ruins it."], "points": ["A church's maturity shows not only in dealing seriously with sin, but in receiving back the one who has turned."]}, {"title": "2:12–13 · Concerned for the Church Even Before an Open Door", "paragraphs": ["In verse 12, Paul went to Troas to preach the gospel of Christ, and there <mark>'a door was opened for me in the Lord.'</mark> There was an opportunity for ministry the Lord had opened. Paul doesn't call it an achievement of his own ability; he confesses that the door was opened in the Lord. In verse 13, however, he records that his spirit was not at rest because he didn't find Titus. As we'll see in chapter 7, Titus was the co-worker bringing news from the Corinthian church. Paul couldn't look only at new ministry possibilities and forget the church in Corinth. So he said goodbye and left for Macedonia.", "We can't turn this into a formula: 'If you feel uneasy, it's fine to leave ministry.' Nor should we conclude that Paul was anxious because his faith was lacking. What's clear is that Paul <mark>was deeply concerned about the state of the community</mark>. He didn't consider his responsibility finished once he sent Titus and gave instructions; he cared about how the believers were responding. Correcting someone is like that too. We mustn't stop at having said what was needed. We should keep caring about <mark>how they're receiving the Word and how they're standing again</mark>."], "points": ["Love for restoration doesn't end with delivering counsel; it keeps caring about the life that follows."]}, {"title": "2:14–17 · God Reveals the Fragrance of Christ Through Weak Servants", "paragraphs": ["In verse 14, in the middle of describing his unrest, Paul suddenly gives thanks: <mark>'But thanks be to God, who in Christ always leads us in triumphal procession, and through us spreads the fragrance of the knowledge of Him everywhere.'</mark> This doesn't mean there were no difficulties; he sees God working even in his weakness. Verse 14 carries the picture of a victorious general's triumphal procession. What matters is that the victor is God. Paul portrays himself not as the general leading the procession but as one held and led by God. A man who once persecuted the church now proclaims Christ — his very life displays God's power. Unrest and hardship don't mean God's leading has vanished. We too meet our own inadequacy in the process of caring for people. But the One who accomplishes restoration is not you or me — it is <mark>God</mark>. We simply carry out what's entrusted to us, relying on Him.", "In verses 15–16, Paul confesses, <mark>'For we are the aroma of Christ to God among those who are being saved and among those who are perishing.'</mark> 'We' here refers to the gospel workers around Paul. The aroma of Christ doesn't simply mean being kind and likable. It means that words proclaiming Christ and a life fitting that gospel reveal Him together. Responses to the same gospel differ: some believe in Christ and move toward life; others reject the gospel. The gospel is a weighty word concerning life and judgment. So faithful ministry doesn't require that everyone like it. But neither should we treat every hostility caused by our own harsh attitude as rejection of the gospel. Paul asks, 'Who is sufficient for these things?' — and in chapter 3 he declares that sufficiency comes from God. We serve not by overestimating our strength but by relying on God. In verse 17, Paul says, <mark>'We are not, like so many, peddlers of God's word, but as men of sincerity, as commissioned by God, in the sight of God we speak in Christ.'</mark> Receiving financial support for ministry isn't the problem; the problem is when self-interest controls the purpose and content of preaching the Word. This attitude connects with today's theme of discipline. We must not use the Word to pour out our emotions or protect our authority. With the Word God entrusted to us, before God, we must counsel as people who belong to Christ. Paul's tears, forgiveness, comfort, and love are connected to the gospel he preaches. Our words proclaiming Christ and the way we treat people must go together too."], "points": ["The aroma of Christ shows not only in the Word we speak, but in how we correct and rebuild someone who has done wrong."]}, {"title": "Application · Rebuke, and If They Repent, Forgive", "paragraphs": ["What is the purpose of discipline? Are we trying to break the other person? Insisting only that we're right? Or helping them turn from sin and recover faith and joy? In Luke 17, Jesus says, <mark>'Pay attention to yourselves! If your brother sins, rebuke him, and if he repents, forgive him'</mark> (Luke 17:3). Jesus doesn't tell us to ignore sin. Nor does He tell us to keep punishing someone who has repented. <mark>Rebuke and forgiveness must go together.</mark>", "At the center is the Lord's cross. Jesus did not take sin lightly. Yet He did not abandon sinners; He gave Himself to save them. The risen Lord even entrusted Peter, who had denied Him, with <mark>the mission of caring for His sheep again</mark>. We are people who have stood again by that grace. So when we deal with others, we can't stop at pointing out their wrong. We must urge them to turn and hold on to those who return.", "If you've been avoiding something that needs to be said, <mark>speak the truth in love</mark>. If you've kept treating someone who has already turned back only by their past wrong, now <mark>put your love into action</mark> so they can know it — a greeting first, a shared meal, making room to work together again. Small steps like these rebuild a person.", "What do I truly want for that person — to have my words acknowledged as right, or for them to live again in the Lord?"], "points": ["I won't stop at correcting a wrong; I will reaffirm my love for the one who has returned."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I'm avoiding needed words for fear the relationship will become uncomfortable."}, {"key": "c2", "text": "I checked whether I justified harsh words or insults in the name of love when giving counsel."}, {"key": "c3", "text": "I reflected on whether I still treat someone who has turned back only by their past wrong."}, {"key": "c4", "text": "I checked whether I used the Word to protect my feelings or authority."}], "s4heading": "One-Line Reflection", "memoHint": "Who needs me to speak the truth in love — or who now needs me to reaffirm forgiveness and love?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Truth in Love", "value": "Calmly share something needed that you've put off, with a heart that seeks their restoration"}, {"key": "act2", "label": "Reaffirm Love", "value": "Greet first or share a meal with someone who has turned back, showing you've received them again"}, {"key": "act3", "label": "Keep Caring", "value": "Check in on someone you counseled and pray for them"}, {"key": "act4", "label": "Release Control", "value": "Speak words that respect the choices of someone at home or in your community you've tried to control"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize 2 Corinthians 2:7–8 and practice forgiveness, comfort, and reaffirming love"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for not taking sin lightly yet not abandoning me — for rebuilding me by the grace of the cross and making me the aroma of Christ."}, {"key": "p2", "tag": "Repent", "text": "I repent of avoiding needed words or pouring them out harshly, treating those who turned back only by their past, and caring only to have my rightness acknowledged."}, {"key": "p3", "tag": "Ask", "text": "Help me speak the truth in love, forgive and comfort those who return and reaffirm my love for them, so that our community will not be outwitted by Satan."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 3, Martes", "ref": "2 Corinto 1:23–2:17", "headline": "Matapos Itama ang Mali,<br>Pinagtibay Mo rin ba ang Iyong Pag-ibig?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · 2 Corinto 1:23-2:17", "s1heading": "Salita Ngayon", "verse": "\"Kaya sa halip ay patawarin at aliwin ninyo siya,<br>baka siya'y madaig ng labis na kalungkutan.<br>Kaya nakikiusap ako na pagtibayin ninyo ang inyong pag-ibig sa kanya.\"", "verseRef": "2 Corinto 2:7–8", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Kailangan ang Pag-ibig sa Pagsaway — at Pagkatapos Nito", "paragraphs": ["Kapag kailangan nating itama ang mali ng isang tao, dalawang hirap ang hinaharap natin. Natatakot tayong maging hindi komportable ang relasyon kapag sinabi natin ang dapat sabihin. O kaya, matapos ituro ang mali, patuloy nating tinatrato ang taong iyon bilang taong nagkamali lamang. Sa iglesya ngayon, kung saan lubos na pinahahalagahan ang personal na pagpili, mahirap kahit banggitin ang salitang 'disiplina.' Ngunit upang mamuhay nang sama-sama sa pananampalataya, may mga panahong kailangan nating ituro ang mali ng isa't isa at tulungang tumayo nang tuwid ang bawat isa. Ang mahalaga ay ang layunin. Ang layunin ng disiplina ay hindi ang gibain ang tao, ni palakasin ang aking pride. Ito ay <mark>tulungan siyang tumalikod sa kasalanan at mabawi ang pananampalataya at kagalakan</mark>.", "Sa naunang talata, ipinaliwanag ni Pablo na ang pagbabago ng kanyang plano ng pagdalaw ay hindi nagmula sa pagiging pabagu-bago o dalawahang isip. Ngayon, inihahayag niya ang tiyak na dahilan: inalagaan at pinagpaumanhinan niya ang mga mananampalataya sa Corinto, iniiwasan ang isa pang masakit at hindi komportableng pagkikita. Gayunman, hindi niya tinakpan ang problema. Sa halip na dumalaw, <mark>sumulat siya ng liham nang may luha</mark> upang itama nila ang mali. At matapos harapin ng komunidad ang mali, hinihimok niya silang <mark>patawarin, aliwin, at pagtibayin ang kanilang pag-ibig</mark> sa taong dinisiplina. Kailangan ang pag-ibig kapag sumasaway tayo — at kailangan ang pag-ibig pagkatapos ng pagsaway. Hindi nagtatapos ang ating pananagutan sa pagtuturo ng mali. Sa harap ng Salita ngayon, tingnan muna natin ang ating sarili: Humihinto ba ako sa pagpapatunay na tama ako? O tinutulungan ko ang taong iyon na muling tumayo sa pananampalataya? Tingnan natin ang apat na bahagi."], "points": ["Humihinto ba ako sa pagpapatunay na tama ako, o tinutulungan ko ang taong iyon na muling tumayo sa pananampalataya?"]}, {"title": "1:23–2:4 · Sumulat ng Liham ng Luha para sa Pagpapanumbalik ng mga Mananampalataya", "paragraphs": ["Sa 1:23–24, tinawag ni Pablo ang Diyos bilang saksi at sinabing hindi siya pumunta sa Corinto <mark>'upang kayo'y pagpaumanhinan.'</mark> Ito'y taimtim na pagpapahayag sa harap ng Diyos na nakaaalam ng kanyang motibo. Kung dumalaw siya noon, magiging pagkikitang nangangailangan ng disiplina iyon. Inaasahan ni Pablo na tatalikod ang mga mananampalataya upang ang susunod nilang pagkikita ay maging pagkikita ng sama-samang kagalakan. Kaya ganito niya ipinaliliwanag ang kanyang ministeryo: <mark>'Hindi sa kami'y naghahari sa inyong pananampalataya, kundi kami'y kasama ninyong gumagawa para sa inyong kagalakan, sapagkat kayo'y matatag na nakatayo sa pananampalataya'</mark> (1:24). May awtoridad si Pablo bilang apostol, ngunit ang awtoridad na iyon ay hindi upang kontrolin ang mga mananampalataya ayon sa kanyang gusto; ito ay upang tulungan silang manampalataya kay Cristo at tumayo nang matatag. Ang Panginoon, hindi si Pablo, ang may-ari ng kanilang pananampalataya — at si Pablo mismo ay nakatayo lamang dahil hinahawakan siya ng Diyos. Ang 'paggawa para sa inyong kagalakan' ay hindi nangangahulugang pagsasabi lamang ng masasarap pakinggan. Ibig sabihin nito ay pagtulong sa kanilang itama ang kasalanan at tamasahin ang kagalakang matatagpuan sa tamang relasyon sa Diyos. Kaya bahagi ng paglilingkod na iyon ang kinakailangang pagsaway. Dapat din nating suriin ang awtoridad na ipinagkatiwala sa atin. Sa tahanan o sa iglesya, <mark>sinisikap ko bang kontrolin ang mga tao at pasunurin sila sa aking gusto?</mark> O tinutulungan ko silang magtiwala sa Panginoon at tumayo?", "Sa 2:1–2, sinabi ni Pablo na nagpasya siyang huwag nang gumawa ng isa pang masakit na pagdalaw, na nagpapakitang nagkaroon na ng masakit na pagkikita. Para kay Pablo, ang mga mananampalataya ang nagpapagalak sa kanya; hindi siya makapagagalak nang mag-isa habang sila'y bumagsak. Kahit kilalanin ang kanyang awtoridad, kung lumayo sila sa pananampalataya, hindi iyon ang resultang gusto niya. Dito lumilinaw ang layunin ng disiplina: hindi ang pagpapasya kung sino ang nanalo, kundi ang sama-samang pagtayo sa pananampalataya at muling pagkagalak. Sa 2:3–4, ipinahayag ni Pablo na sumulat siya <mark>'mula sa labis na kapighatian at dalamhati ng puso at may maraming luha'</mark> — ang tinatawag na liham ng luha, na ipinadala sa pagitan ng 1 at 2 Corinto. Hindi siya sumulat upang gumanti ng sakit, kundi upang ipaalam ang kanyang masaganang pag-ibig at itama ang mali upang muli silang magkita sa kagalakan. Nagdulot nga ng kalungkutan ang liham na iyon. Ngunit sa kabanata 7, ipinaliwanag ni Pablo na humantong ang kalungkutang iyon sa pagsisisi. Hindi kailanman ang sakit mismo ang layunin. Kung tatakpan natin ang bawat mali sa ngalan ng pag-ibig, maaari nating iwan ang tao sa kasalanan. Sa kabilang banda, hindi natin dapat kailanman bigyang-katwiran ang masasakit na salita at insulto sa pagtawag dito na pag-ibig. Dapat nating sabihin ang kailangan habang sinusuri kung ang ating mga salita ay tumuturo sa pagpapanumbalik ng iba."], "points": ["Nahahayag ang pag-ibig hindi sa pag-iwas sa mahihirap na salita, kundi sa pagsasabi ng kailangan habang hinahangad ang pagpapanumbalik ng iba hanggang sa wakas."]}, {"title": "2:5–11 · Matapos ang Disiplina, Itayong Muli sa Pamamagitan ng Kapatawaran at Aliw", "paragraphs": ["Sa talata 5–6, binanggit ni Pablo ang taong nagdulot ng kalungkutan sa komunidad ngunit hindi inihayag ang kanyang pangalan o ang detalye ng kanyang mali. Hindi matitiyak mula sa talata lamang kung siya rin ang tao sa 1 Corinto 5. Ang malinaw ay nakasakit ang kanyang mali sa komunidad lampas kay Pablo mismo, at marami ang sumaway sa kanya. Ngayon, sinabi ni Pablo na <mark>'sapat na'</mark> ang parusang iyon. Mahalaga ang salitang iyon. May layunin ang disiplina at may hangganang angkop sa layuning iyon. Ang layunin nito ay harapin ng tao ang mali at tumalikod — hindi ang walang katapusang pagpaparusa at pagdurog sa kanya. Hindi tuwirang sinasabi ng talata na nagsisi siya, ngunit ang daloy — sapat na ang parusa, ngayon ay patawarin at aliwin — ay nagpapakitang umabot na ito sa yugto ng muling pagtatayo sa kanya. Sa talata 7–8, hinihimok ni Pablo na <mark>patawarin at aliwin siya, upang hindi siya madaig ng labis na kalungkutan</mark>, at <mark>pagtibayin ang kanilang pag-ibig</mark>. Ang kapatawaran ay hindi pagkapit sa mali at paghihiganti. Ang aliw ay pagtayo sa tabi niya upang hindi siya madurog ng kalungkutan. Ang pagpapatibay ng pag-ibig ay pagpapakita sa pamamagitan ng kilos na tinatanggap siyang muli bilang kasapi ng komunidad. Hindi tayo maaaring magtapos sa, 'Pinatawad na kita — bahala ka na ngayon.' Dapat tayong tumulong mula sa kanyang tabi habang muli siyang namumuhay sa pananampalataya.", "Siyempre, hindi binubura ng kapatawaran ang pananagutan. Dapat nating ibukod ang pagpapanumbalik ng pakikisama mula sa agarang pagbabalik ng dating tungkulin o awtoridad; kinakailangang proseso ang muling pagbuo ng tiwala. Ngunit dapat may puso tayong sama-samang lakarin ang prosesong iyon. Kung kasangkot ang komunidad sa pagharap sa mali, dapat din itong kasangkot sa muling pagtatayo sa tao. Sa kabanata 1, sinabi ni Pablo na inaaliw natin ang iba sa aliw na natatanggap natin mula sa Diyos. Ngayon, dumadaloy ang aliw na iyon kahit sa taong nagdulot ng kalungkutan sa komunidad. Ang aliw ng Diyos ay hindi lamang para sa mga nasa panig ko; tiyak na kailangan din ito ng mga dapat tumalikod sa mali at muling tumayo. Sa talata 9–10, sinabi ni Pablo na sumulat siya upang subukin ang kanilang pagsunod. Noon, ang pagsunod ay pagtugon sa mali; ngayon, ito ay pagpapatawad at pagtanggap. Sa panlabas, tila nagbago ang paninindigan ni Pablo, ngunit iisa ang layunin: ang pagpapanumbalik ng tao. Ang iisang pag-ibig ay minsang humihingi ng pagsaway at minsang humihingi ng paghinto sa disiplina at pagpapatawad. Kung sa ngalan ng prinsipyo ay uulitin natin ang parehong hakbang matapos magbago ang sitwasyon, maaari pa nating mabigong makamit ang layunin ng prinsipyo. Si Pablo mismo ay nakikiisa sa pagpapatawad; hindi siya humihingi ng mas mabigat na parusa dahil nasaktan siya. Sinabi niyang nagpatawad siya sa harap ni Cristo alang-alang sa kanila. Dapat nating alalahanin na nakatayo tayo sa harap ng Diyos kapag humaharap sa alitan — alam ng Panginoon hindi lamang ang ating sinasabi kundi ang ating mga dahilan sa pagpapaliban ng kapatawaran. Sa talata 11, iniugnay ni Pablo ang kapatawaran sa espirituwal na labanan ng komunidad: <mark>'upang hindi tayo malinlang ni Satanas.'</mark> Sa konteksto, ang balak ni Satanas ay itulak sa kawalang-pag-asa ang taong dapat maibalik at igapos ang komunidad sa hinanakit at pagkakahati. Ang pagpapabaya sa kasalanan ay nakasisira sa komunidad — ngunit ang walang katapusang paghatol sa taong nagbalik ay sumisira rin dito."], "points": ["Nahahayag ang pagkahinog ng iglesya hindi lamang sa seryosong pagharap sa kasalanan, kundi sa muling pagtanggap sa taong tumalikod."]}, {"title": "2:12–13 · Nag-aalala para sa Iglesya Kahit sa Harap ng Bukas na Pinto", "paragraphs": ["Sa talata 12, pumunta si Pablo sa Troas upang ipangaral ang ebanghelyo ni Cristo, at doon ay <mark>'binuksan sa akin ang isang pinto sa Panginoon.'</mark> May pagkakataon ng ministeryo na binuksan ng Panginoon. Hindi ito tinatawag ni Pablo na tagumpay ng sarili niyang kakayahan; ipinahayag niyang binuksan ang pinto sa Panginoon. Gayunman, sa talata 13, isinulat niyang hindi mapalagay ang kanyang espiritu dahil hindi niya natagpuan si Tito. Gaya ng makikita natin sa kabanata 7, si Tito ang kamanggagawang nagdadala ng balita mula sa iglesya sa Corinto. Hindi kayang tingnan lamang ni Pablo ang mga bagong posibilidad ng ministeryo at kalimutan ang iglesya sa Corinto. Kaya nagpaalam siya at umalis patungong Macedonia.", "Hindi natin ito magagawang pormula: 'Kung hindi ka mapalagay, ayos lang na iwan ang ministeryo.' Hindi rin natin dapat ipasya na nabalisa si Pablo dahil kulang ang kanyang pananampalataya. Ang malinaw ay <mark>lubhang nag-aalala si Pablo sa kalagayan ng komunidad</mark>. Hindi niya itinuring na tapos na ang kanyang pananagutan nang maipadala niya si Tito at makapagbigay ng tagubilin; inalala niya kung paano tumutugon ang mga mananampalataya. Ganoon din ang pagtatama sa isang tao. Hindi tayo dapat humintong nasabi na natin ang kailangan. Dapat nating patuloy na alalahanin <mark>kung paano nila tinatanggap ang Salita at kung paano sila muling tumatayo</mark>."], "points": ["Ang pag-ibig para sa pagpapanumbalik ay hindi nagtatapos sa paghahatid ng payo; patuloy nitong inaalala ang buhay na kasunod."]}, {"title": "2:14–17 · Inihahayag ng Diyos ang Halimuyak ni Cristo sa Pamamagitan ng Mahihinang Lingkod", "paragraphs": ["Sa talata 14, sa gitna ng paglalarawan ng kanyang pagkabalisa, biglang nagpasalamat si Pablo: <mark>'Ngunit salamat sa Diyos, na kay Cristo ay laging umaakay sa amin sa matagumpay na prusisyon, at sa pamamagitan namin ay ikinakalat ang halimuyak ng pagkakilala sa Kanya sa lahat ng dako.'</mark> Hindi ito nangangahulugang walang hirap; nakikita niyang kumikilos ang Diyos kahit sa kanyang kahinaan. May dalang larawan ang talata 14 ng matagumpay na prusisyon ng isang heneral. Ang mahalaga ay ang Diyos ang nagwagi. Inilalarawan ni Pablo ang sarili hindi bilang heneral na nangunguna sa prusisyon kundi bilang taong hinahawakan at inaakay ng Diyos. Ang taong minsang umusig sa iglesya ay nangangaral na ngayon tungkol kay Cristo — ang kanyang buhay mismo ay nagpapakita ng kapangyarihan ng Diyos. Hindi nangangahulugang nawala ang pag-akay ng Diyos dahil may pagkabalisa at hirap. Tayo rin ay nakatatagpo ng sarili nating kakulangan sa proseso ng pag-aalaga sa mga tao. Ngunit ang Isang nagsasakatuparan ng pagpapanumbalik ay hindi ikaw o ako — ito ay <mark>ang Diyos</mark>. Ginagampanan lamang natin ang ipinagkatiwala sa atin, umaasa sa Kanya.", "Sa talata 15–16, ipinahayag ni Pablo, <mark>'Sapagkat kami ang halimuyak ni Cristo sa Diyos sa gitna ng mga inililigtas at sa gitna ng mga napapahamak.'</mark> Ang 'kami' rito ay tumutukoy sa mga manggagawa ng ebanghelyo sa paligid ni Pablo. Ang halimuyak ni Cristo ay hindi basta nangangahulugang pagiging mabait at kaibig-ibig. Ibig sabihin nito ay sama-samang naghahayag sa Kanya ang mga salitang nagpapahayag kay Cristo at ang buhay na angkop sa ebanghelyong iyon. Magkakaiba ang tugon sa iisang ebanghelyo: may naniniwala kay Cristo at sumusulong sa buhay; may tumatanggi sa ebanghelyo. Ang ebanghelyo ay mabigat na salita tungkol sa buhay at paghatol. Kaya hindi kailangang magustuhan ng lahat upang maging tapat ang ministeryo. Ngunit hindi rin natin dapat ituring na pagtanggi sa ebanghelyo ang bawat pagkapoot na dulot ng sarili nating magaspang na saloobin. Nagtanong si Pablo, 'Sino ang sapat para sa mga bagay na ito?' — at sa kabanata 3 ay ipinahayag niyang mula sa Diyos ang kasapatan. Naglilingkod tayo hindi sa pagmamalabis sa ating lakas kundi sa pag-asa sa Diyos. Sa talata 17, sinabi ni Pablo, <mark>'Hindi kami, gaya ng marami, mga nagtitinda ng salita ng Diyos, kundi bilang mga taong tapat, bilang isinugo ng Diyos, sa paningin ng Diyos ay nagsasalita kami kay Cristo.'</mark> Hindi problema ang pagtanggap ng suportang pinansyal para sa ministeryo; ang problema ay kapag kinokontrol ng sariling interes ang layunin at nilalaman ng pangangaral ng Salita. Kaugnay ng saloobing ito ang tema ngayon ng disiplina. Hindi natin dapat gamitin ang Salita upang ibuhos ang ating damdamin o protektahan ang ating awtoridad. Sa Salitang ipinagkatiwala ng Diyos sa atin, sa harap ng Diyos, dapat tayong magpayo bilang mga taong pag-aari ni Cristo. Ang mga luha, kapatawaran, aliw, at pag-ibig ni Pablo ay kaugnay ng ebanghelyong kanyang ipinangangaral. Dapat ding magkasama ang ating mga salitang nagpapahayag kay Cristo at ang paraan ng ating pagtrato sa mga tao."], "points": ["Nahahayag ang halimuyak ni Cristo hindi lamang sa Salitang ating sinasabi, kundi sa paraan ng ating pagtatama at muling pagtatayo sa taong nagkamali."]}, {"title": "Aplikasyon · Sawayin, at Kung Magsisi, Patawarin", "paragraphs": ["Ano ang layunin ng disiplina? Sinisikap ba nating gibain ang iba? Ipinipilit lamang ba nating tama tayo? O tinutulungan natin silang tumalikod sa kasalanan at mabawi ang pananampalataya at kagalakan? Sa Lucas 17, sinabi ni Jesus, <mark>'Mag-ingat kayo! Kung magkasala ang iyong kapatid, sawayin mo siya, at kung magsisi siya, patawarin mo siya'</mark> (Lucas 17:3). Hindi sinasabi ni Jesus na balewalain ang kasalanan. Hindi rin Niya sinasabing patuloy na parusahan ang nagsisi. <mark>Dapat magkasama ang pagsaway at kapatawaran.</mark>", "Nasa sentro ang krus ng Panginoon. Hindi binalewala ni Jesus ang kasalanan. Gayunman, hindi Niya pinabayaan ang mga makasalanan; ibinigay Niya ang Kanyang sarili upang iligtas sila. Ipinagkatiwala pa ng muling nabuhay na Panginoon kay Pedro, na nagkaila sa Kanya, ang <mark>misyong muling alagaan ang Kanyang mga tupa</mark>. Tayo ang mga taong muling tumayo sa biyayang iyon. Kaya sa pakikitungo natin sa iba, hindi tayo maaaring humintong nagtuturo lamang ng kanilang mali. Dapat natin silang himukin na tumalikod at hawakan ang mga nagbabalik.", "Kung may iniiwasan kang dapat sabihin, <mark>sabihin ang katotohanan nang may pag-ibig</mark>. Kung patuloy mong tinatrato ang taong tumalikod na batay lamang sa kanyang nakaraang mali, ngayon ay <mark>isagawa ang iyong pag-ibig</mark> upang malaman niya ito — unang bumati, magsalo sa pagkain, maglaan ng puwang upang muling magtulungan. Ang maliliit na hakbang na tulad nito ang muling nagtatayo sa tao.", "Ano ang tunay kong nais para sa taong iyon — ang kilalaning tama ang aking mga salita, o ang muli siyang mabuhay sa Panginoon?"], "points": ["Hindi ako hihinto sa pagtatama ng mali; pagtitibayin ko ang aking pag-ibig sa taong nagbalik."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung iniiwasan ko ang kinakailangang salita dahil natatakot akong maging hindi komportable ang relasyon."}, {"key": "c2", "text": "Sinuri ko kung binigyang-katwiran ko ang masasakit na salita o insulto sa ngalan ng pag-ibig nang magpayo."}, {"key": "c3", "text": "Pinag-isipan ko kung tinatrato ko pa rin ang taong tumalikod na batay lamang sa kanyang nakaraang mali."}, {"key": "c4", "text": "Sinuri ko kung ginamit ko ang Salita upang protektahan ang aking damdamin o awtoridad."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sino ang nangangailangang sabihin ko ang katotohanan nang may pag-ibig — o sino ang nangangailangang pagtibayin ko ngayon ang kapatawaran at pag-ibig?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Katotohanan nang May Pag-ibig", "value": "Mahinahong ibahagi ang kinakailangang bagay na ipinagpaliban mo, nang may pusong naghahangad ng kanyang pagpapanumbalik"}, {"key": "act2", "label": "Pagtibayin ang Pag-ibig", "value": "Unang bumati o magsalo sa pagkain kasama ang taong tumalikod na, ipinapakitang tinanggap mo siyang muli"}, {"key": "act3", "label": "Patuloy na Mag-alala", "value": "Kumustahin ang taong pinayuhan mo at ipanalangin siya"}, {"key": "act4", "label": "Bitawan ang Kontrol", "value": "Magsalita ng mga salitang gumagalang sa pasya ng taong sinikap mong kontrolin sa tahanan o komunidad"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang 2 Corinto 2:7–8 at isagawa ang kapatawaran, aliw, at pagpapatibay ng pag-ibig"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa hindi pagbabalewala sa kasalanan ngunit hindi rin pagpapabaya sa akin — sa muling pagtatayo sa akin sa biyaya ng krus at paggawa sa akin na halimuyak ni Cristo."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pag-iwas sa kinakailangang salita o sa magaspang na pagbubuhos nito, sa pagtrato sa mga tumalikod batay lamang sa kanilang nakaraan, at sa pagnanais lamang na kilalanin ang aking katuwiran."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong sabihin ang katotohanan nang may pag-ibig, patawarin at aliwin ang mga nagbabalik at pagtibayin ang aking pag-ibig sa kanila, upang hindi malinlang ni Satanas ang aming komunidad."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-03';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
