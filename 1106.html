@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/6(금) 큐티 · 고린도후서 5:1–10">
+<meta property="og:description" content="탄식 속에서도 담대할 수 있는 이유">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 6일 금요일", "ref": "고린도후서 5장 1–10절", "headline": "탄식 속에서도<br>담대할 수 있는 이유", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 고린도후서 5:1-10", "s1heading": "오늘의 말씀", "verse": "\"만일 땅에 있는 우리의 장막 집이 무너지면<br>하나님께서 지으신 집 곧 손으로 지은 것이 아니요<br>하늘에 있는 영원한 집이 우리에게 있는 줄 아느니라\"", "verseRef": "고린도후서 5:1", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 탄식과 담대함이 함께 있는 삶", "paragraphs": ["우리 삶에는 탄식과 담대함이 함께 있을 수 있습니다. 몸이 약해지고 해결되지 않은 문제 앞에서 한숨이 나옵니다. 그런데 그 자리에서도 하나님의 약속을 바라보면 다시 일어설 용기를 얻습니다. 무엇을 소망하느냐에 따라 오늘을 살아가는 방향이 달라집니다. <mark>주님과 함께할 부활의 소망은 우리를 담대하게 하고, 지금 주님을 기쁘시게 하는 삶으로 이끕니다</mark>.", "4장에서 바울은 자신을 깨지기 쉬운 질그릇에 비유하고, 겉사람이 낡아져도 부활과 영원한 영광을 바라보며 낙심하지 않는다고 했습니다. 오늘 5장에서는 우리의 몸을 언젠가 무너질 <mark>장막</mark>에 비유하면서, 하나님께서 주실 <mark>영원한 집</mark>이 있다고 말합니다. 성도는 그 약속을 믿으며 주님과 함께할 때를 기다립니다."], "points": ["오늘 나는 무엇을 믿으며 살아가고, 그 믿음은 주님을 기쁘시게 하는 삶으로 이어지고 있습니까?"]}, {"title": "1절 · 장막이 무너져도 하나님이 지으신 영원한 집이 있습니다", "paragraphs": ["장막은 옮겨 다니며 쓰는 임시 거처입니다. 오래 머물 수 없고 언젠가는 거두어야 합니다. 바울은 장막을 통해 <mark>우리의 몸이 연약하고 죽음에 이른다</mark>는 사실을 드러냅니다. 건강이 예전 같지 않고, 나이가 들어 가고, 사랑하는 사람을 떠나보내는 현실이 이 장막의 모습입니다.", "그러나 바울은 <mark>\"하나님께서 지으신 집 곧 손으로 지은 것이 아니요 하늘에 있는 영원한 집이 우리에게 있는 줄 아느니라\"</mark>고 고백합니다. 고린도전서 15장의 부활 말씀과 함께 보면 이 집은 하나님께서 주실 <mark>부활의 몸과 영원한 생명</mark>을 나타냅니다. 사람이 아니라 하나님께서 지으신 집입니다. 바울은 예수님을 다시 살리신 하나님께서 자기 백성도 살리신다는 약속을 믿습니다."], "points": ["무너질 장막보다 하나님께서 지으신 영원한 집이 우리의 마지막 거처입니다."]}, {"title": "2–5절 · 탄식 속에서 생명을 덧입기를 사모합니다", "paragraphs": ["바울은 <mark>\"참으로 우리가 여기 있어 탄식하며\"</mark>(2절)라고 고백합니다. 그에게 고난은 머릿속 이야기가 아니었습니다. 실제로 압박과 박해를 겪었고 죽음의 위험도 만났습니다. 그러나 그 탄식에는 소망이 있습니다. 벗고자 함이 아니라 <mark>\"덧입고자 함이니 죽을 것이 생명에 삼킨 바 되게 하려 함\"</mark>(4절)입니다. 3절의 '벗은 자들'이 죽음 뒤의 상태를 가리키는지, 심판 앞에 준비되지 않은 모습을 가리키는지는 해석이 갈리지만, 핵심은 분명합니다. 바울은 하나님께서 주시는 생명을 덧입기를 원합니다.", "<mark>\"이것을 우리에게 이루게 하시고 보증으로 성령을 우리에게 주신 이는 하나님이시니라\"</mark>(5절). 성령님은 지금 우리와 함께하시며 하나님께서 장차 이루실 구원을 확신하게 하십니다. 아직 모든 것이 완성되지 않았기에 여전히 탄식할 수 있지만, 성령께서 함께하시기에 <mark>탄식 가운데서도 약속을 바라보며 다시 일어날 수 있습니다</mark>."], "points": ["탄식과 소망은 함께 있을 수 있습니다. 눈물 속에서도 성령께서 약속을 붙들게 하십니다."]}, {"title": "6–8절 · 보는 것이 아니라 믿음으로 행합니다", "paragraphs": ["<mark>\"그러므로 우리가 항상 담대하여\"</mark>(6절). 2절과 4절에서 탄식하던 바울이 이제 담대하다고 고백합니다. 그 사이에 성령을 보증으로 주신 하나님의 약속이 있습니다. 몸에 거하는 동안 주님과 따로 있다는 말은, 성령님이 지금도 함께하시지만 <mark>주님과 온전히 함께할 날을 기다린다</mark>는 뜻입니다.", "<mark>\"이는 우리가 믿음으로 행하고 보는 것으로 행하지 아니함이로라\"</mark>(7절). 우리는 아직 부활의 완성을 눈으로 보지 못하지만, 예수님을 다시 살리신 하나님을 믿고 그 약속을 의지하며 오늘을 삽니다. 기도해도 문제가 곧바로 달라지지 않을 때, <mark>오늘의 책임을 감당하고 지친 사람을 사랑하며 하나님께 도움을 구하는 것</mark>이 믿음으로 걷는 삶입니다. 바울은 <mark>\"몸을 떠나 주와 함께 거하는 그것\"</mark>(8절)을 원한다고 말합니다. 이 말씀은 성도가 죽은 뒤에도 주님과 함께한다는 위로로 이해되어 왔습니다."], "points": ["믿음은 눈앞의 문제를 안고서도, 하나님이 약속하신 미래를 신뢰하며 오늘의 걸음을 이어 가게 합니다."]}, {"title": "9–10절 · 그리스도 앞에 설 것을 기억하며 주님을 기쁘시게 합니다", "paragraphs": ["<mark>\"그런즉 우리는 몸으로 있든지 떠나든지 주를 기쁘시게 하는 자가 되기를 힘쓰노라\"</mark>(9절). 주님과 함께할 미래를 소망하기에 지금도 주님을 기쁘시게 하려고 힘씁니다. 미래에 대한 소망이 오늘의 삶을 이끕니다. 선택할 때 우리도 물어야 합니다. 나는 사람들의 인정과 눈앞의 결과를 위해 움직입니까, 주님이 기뻐하실 일을 구합니까?", "<mark>\"우리가 다 반드시 그리스도의 심판대 앞에 나타나게 되어 각각 선악간에 그 몸으로 행한 것을 따라 받으려 함이라\"</mark>(10절). 1절에서 무너질 장막이던 그 몸으로 살아온 삶이 주님 앞에 드러납니다. 오늘 건네는 말과 섬김, 아무도 모르는 선택이 주님 앞에서 의미를 갖습니다. 구원은 그리스도 안에서 주시는 은혜이고, 그 은혜를 받은 믿음은 사랑과 순종으로 나타납니다. <mark>주님을 기쁘시게 하는 삶은 구원받기 위한 조건이 아니라 은혜에 대한 응답</mark>입니다."], "points": ["주님 앞에 설 날을 소망하는 사람은 아무도 보지 않는 자리에서도 주님이 기뻐하실 말과 선택을 구합니다."]}, {"title": "적용 · 눈물 가운데서도 오늘 주님을 기쁘시게", "paragraphs": ["오늘 말씀은 탄식하는 현실 속에서도 우리가 담대할 수 있는 이유를 보여 줍니다. 하나님께서 <mark>부활의 생명을 약속하시고 성령님을 보증으로 주셨기 때문</mark>입니다. 우리가 기다리는 미래의 중심에는 주님과 함께하는 기쁨이 있습니다. 몸이 약해지고 문제가 그대로여도, 그 약속은 무너질 장막이 아니라 하나님께서 지으신 영원한 집에 우리의 소망을 두게 합니다.", "예수님도 십자가를 앞두고 겟세마네에서 깊이 고민하고 슬퍼하셨습니다. 그 마음을 아버지께 아뢰며 아버지의 뜻을 구하셨습니다. <mark>예수님께도 탄식과 담대함이 함께 있었습니다</mark>. 예수님은 우리의 죄를 위해 십자가를 지셨고, 하나님은 그분을 다시 살리셨습니다. 우리는 그 은혜로 용서받았고 주님과 함께할 소망을 얻었습니다.", "그러므로 우리의 담대함은 고통이 모두 사라진 뒤에 시작되지 않습니다. <mark>눈물 가운데서도 주님의 약속을 붙들고 오늘 그분을 기쁘시게 하는 길을 선택할 수 있습니다</mark>. 걱정되는 일이 있다면 하나님께 아뢰십시오. 그리고 주님 앞에 설 것을 기억하며, 사과해야 할 사람에게 먼저 말하고, 도움이 필요한 사람에게 손을 내밀며, 오늘 만나는 한 사람을 정직과 사랑으로 대하십시오.", "오늘 내가 마주한 자리에서, 나는 무엇을 믿으며 누구를 기쁘시게 하기 위해 살아가고 있습니까?"], "points": ["탄식 속에서도 부활의 약속을 붙들고, 오늘 주님을 기쁘시게 하는 한 걸음을 선택합니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "몸의 연약함과 해결되지 않은 문제 앞에서 탄식을 숨기지 않고 하나님께 아뢰었다"}, {"key": "c2", "text": "보이는 상황보다 부활과 영원한 집의 약속을 믿음으로 붙들고 있는지 돌아봤다"}, {"key": "c3", "text": "오늘의 선택이 사람의 인정을 위한 것인지, 주님을 기쁘시게 하기 위한 것인지 점검했다"}, {"key": "c4", "text": "아무도 보지 않는 자리에서의 말과 행동도 주님 앞에서 의미가 있음을 기억했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 나를 탄식하게 하는 일은 무엇이며, 그 자리에서 주님을 기쁘시게 할 오늘의 한 걸음은 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "걱정 아뢰기", "value": "오늘 가장 걱정되는 일 하나를 구체적으로 하나님께 아뢰고 맡기기"}, {"key": "act2", "label": "먼저 사과하기", "value": "사과해야 할 사람이 있다면 오늘 먼저 말을 건네기"}, {"key": "act3", "label": "손 내밀기", "value": "도움이 필요한 한 사람에게 구체적인 도움이나 안부를 전하기"}, {"key": "act4", "label": "보이지 않는 곳에서", "value": "아무도 보지 않는 자리에서 주님이 기뻐하실 정직한 선택 하나 하기"}, {"key": "act5", "label": "말씀 암송", "value": "고린도후서 5:7과 9절을 외우며 믿음으로 행하고 주님을 기쁘시게 하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "무너질 장막 같은 우리에게 하늘의 영원한 집을 약속하시고, 성령을 보증으로 주셔서 탄식 속에서도 담대하게 하시는 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "보이는 것으로만 행하며 쉽게 낙심하고, 주님보다 사람의 인정과 눈앞의 결과를 위해 움직였던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "눈물 가운데서도 부활의 약속을 붙들고 믿음으로 행하게 하시며, 몸으로 있든지 떠나든지 주님을 기쁘시게 하는 자가 되게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 6, Friday", "ref": "2 Corinthians 5:1–10", "headline": "Why We Can Be Courageous<br>Even While We Groan", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · 2 Corinthians 5:1-10", "s1heading": "Today's Word", "verse": "\"For we know that if the tent that is our earthly home is destroyed,<br>we have a building from God, a house not made with hands,<br>eternal in the heavens.\"", "verseRef": "2 Corinthians 5:1", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · A Life Where Groaning and Courage Coexist", "paragraphs": ["In our lives, groaning and courage can exist together. As our bodies weaken and problems remain unsolved, we sigh. Yet even there, when we look to God's promises, we find courage to rise again. What we hope for changes the direction in which we live today. <mark>The hope of resurrection — of being with the Lord — makes us courageous and leads us to a life that pleases Him now.</mark>", "In chapter 4, Paul compared himself, entrusted with the gospel, to a fragile clay jar: God's power is revealed through weak people who suffer. And even as his outer self wasted away, he did not lose heart, looking to the resurrection and eternal glory. Today in chapter 5, Paul compares our bodies to a <mark>tent</mark> that will one day come down. Yet he says there is <mark>an eternal house</mark> God will give us. Believers trust that promise and wait for the time they will be with the Lord. What am I living by faith in today? And is that faith leading to a life that pleases the Lord? Let's look at three parts."], "points": ["What am I living by faith in today — and is that faith leading to a life that pleases the Lord?"]}, {"title": "Verse 1 · Though the Tent Falls, We Have an Eternal House Built by God", "paragraphs": ["A tent is a temporary dwelling used while moving from place to place. You can't stay in it long, and one day it must be taken down. Through the image of a tent, Paul reveals that <mark>our bodies are weak and headed toward death</mark>. Health that isn't what it used to be, growing older, saying goodbye to loved ones — these are the realities of this tent.", "Yet Paul confesses, <mark>'For we know that if the tent that is our earthly home is destroyed, we have a building from God, a house not made with hands, eternal in the heavens.'</mark> Read alongside the resurrection teaching of 1 Corinthians 15, this house represents <mark>the resurrection body and eternal life</mark> God will give. It is a house God built, not human hands. Paul believes the promise that the God who raised Jesus will also raise His people."], "points": ["Our final dwelling is not the tent that will fall, but the eternal house God has built."]}, {"title": "Verses 2–5 · Groaning, We Long to Be Clothed with Life", "paragraphs": ["In verse 2, Paul confesses, <mark>'For in this tent we groan.'</mark> For him, suffering wasn't an idea in his head. He actually experienced pressure and persecution and faced the danger of death. But there is hope in his groaning: he earnestly longs to put on the life God will give. In verse 4, <mark>'not that we would be unclothed, but that we would be further clothed, so that what is mortal may be swallowed up by life.'</mark> Interpretations differ slightly on whether 'found naked' in verse 3 refers to the state of being separated from the body after death or to being unprepared before judgment; the text alone makes it hard to decide. But the core is clear: Paul wants to be clothed with the life God gives. We too groan when our bodies hurt or when we see the suffering of those we love. In those tears, we can wait for the life God has promised.", "Verse 5: <mark>'He who has prepared us for this very thing is God, who has given us the Spirit as a guarantee.'</mark> God prepares us to reach that life and has given us the Holy Spirit as a guarantee. The Spirit is with us now and assures us of the salvation God will one day complete. Because not everything is complete yet, we may still groan. And because the Spirit is with us, <mark>even in our groaning we can look to God's promise and rise again</mark>."], "points": ["Groaning and hope can coexist. Even in tears, the Spirit helps us hold on to God's promise."]}, {"title": "Verses 6–8 · We Walk by Faith, Not by Sight", "paragraphs": ["Verse 6 begins with 'So' — connecting back to God giving the Spirit as a guarantee. Because God has promised a future, Paul is courageous: <mark>'So we are always of good courage.'</mark> Paul, who groaned in verses 2 and 4, now confesses courage in verse 6 — and between them stands God's promise of the Spirit as a guarantee. Paul says that while we are at home in the body, we are away from the Lord. The Spirit is with us even now; Paul is waiting for <mark>the day he will be fully with the Lord</mark>.", "Verse 7: <mark>'For we walk by faith, not by sight.'</mark> We don't yet see the completion of resurrection with our eyes. But we believe in the God who raised Jesus, and relying on that promise, we live today amid the realities before us. Sometimes our prayers don't change the problem right away. Even then, <mark>carrying out today's responsibilities, loving those who are worn out, and asking God for help</mark> is what walking by faith looks like. In verse 8, Paul confesses that he would rather <mark>'be away from the body and at home with the Lord.'</mark> These words have long been understood as the comfort that believers are with the Lord even after death. In verse 4 Paul longed to be clothed with the life God gives; in verse 8 he confesses the hope of being with the Lord even when facing death. The One he looks to is Jesus, who conquered death."], "points": ["Faith lets me carry today's problems while trusting God's promised future and continuing today's steps."]}, {"title": "Verses 9–10 · Remembering We Will Stand Before Christ, We Aim to Please Him", "paragraphs": ["Verse 9: <mark>'So whether we are at home or away, we make it our aim to please Him.'</mark> Because Paul hopes for the future with the Lord, he strives to please Him now. Hope for the future guides life today. When we make choices, we too must ask: Am I moving for people's approval and immediate results? Or am I seeking what the Lord would be pleased with?", "Verse 10: <mark>'For we must all appear before the judgment seat of Christ, so that each one may receive what is due for what he has done in the body, whether good or evil.'</mark> Paul confesses that all of us — including himself and the Corinthians — will stand before Christ. In verse 1, the body was a tent that would one day fall; in verse 10, the life lived in that body is revealed before the Lord. The words we speak today, our acts of service, and choices no one knows about all carry meaning before the Lord. Paul teaches that salvation is God's grace given in Christ, and faith that has received that grace shows itself in love and obedience. Some explanations of this judgment emphasize the evaluation of believers' lives and rewards; others emphasize how the fruit of a life reveals the genuineness of faith. Either way, the text says our lives carry responsibility before the Lord. <mark>A life that pleases the Lord is not a condition for salvation but a response to the grace that saved us.</mark>"], "points": ["Those who hope to stand before the Lord seek words and choices that please Him even where no one sees."]}, {"title": "Application · Pleasing the Lord Today, Even Through Tears", "paragraphs": ["Today's Word shows why we can be courageous even in a reality full of groaning: because God <mark>has promised resurrection life and given us the Holy Spirit as a guarantee</mark>. At the center of the future we await is the joy of being with the Lord.", "Before the cross, Jesus also wrestled deeply and grieved in Gethsemane. He poured out His heart to the Father and sought the Father's will. <mark>In Jesus too, groaning and courage were present together.</mark> Jesus bore the cross for our sins, and God raised Him again. By that grace we have been forgiven and have received the hope of being with the Lord.", "So our courage does not begin only after all pain has disappeared. <mark>Even through tears, we can hold on to the Lord's promise and choose the way that pleases Him today.</mark> If something is worrying you, tell God. And remembering that you will stand before the Lord, speak first to someone you need to apologize to, reach out to someone who needs help, and treat the one person you meet today with honesty and love.", "In the place I face today, what am I believing, and whom am I living to please?"], "points": ["Even while groaning, I hold on to the promise of resurrection and choose one step today that pleases the Lord."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I didn't hide my groaning over bodily weakness and unsolved problems, but brought it to God."}, {"key": "c2", "text": "I reflected on whether I'm holding on by faith to the promise of resurrection and an eternal house rather than to what I see."}, {"key": "c3", "text": "I checked whether today's choices are for people's approval or to please the Lord."}, {"key": "c4", "text": "I remembered that even words and actions where no one sees have meaning before the Lord."}], "s4heading": "One-Line Reflection", "memoHint": "What is making me groan right now, and what is one step I can take there today to please the Lord?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Tell God My Worry", "value": "Bring your biggest worry today to God in specific words and entrust it to Him"}, {"key": "act2", "label": "Apologize First", "value": "If there's someone you need to apologize to, speak to them first today"}, {"key": "act3", "label": "Reach Out", "value": "Offer concrete help or a check-in to one person who needs it"}, {"key": "act4", "label": "Where No One Sees", "value": "Make one honest choice that pleases the Lord in a place where no one is watching"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize 2 Corinthians 5:7 and 9, walking by faith and aiming to please the Lord"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for promising an eternal house in heaven to us who are like tents that will fall, and for giving the Spirit as a guarantee so we can be courageous even while we groan."}, {"key": "p2", "tag": "Repent", "text": "I repent of walking only by sight and losing heart easily, and of moving for people's approval and immediate results rather than for You."}, {"key": "p3", "tag": "Ask", "text": "Even through tears, help me hold on to the promise of resurrection and walk by faith; whether at home in the body or away, make me one who pleases You."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 6, Biyernes", "ref": "2 Corinto 5:1–10", "headline": "Kung Bakit Tayo Makapagtatapang<br>Kahit Habang Dumaraing", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · 2 Corinto 5:1-10", "s1heading": "Salita Ngayon", "verse": "\"Sapagkat alam namin na kung masira ang tolda na aming tahanan sa lupa,<br>mayroon kaming gusali mula sa Diyos, isang bahay na hindi gawa ng mga kamay,<br>walang hanggan sa kalangitan.\"", "verseRef": "2 Corinto 5:1", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Isang Buhay na Magkasama ang Pagdaing at Katapangan", "paragraphs": ["Sa ating buhay, maaaring magkasama ang pagdaing at katapangan. Habang humihina ang ating katawan at nananatiling hindi nalulutas ang mga problema, napabubuntong-hininga tayo. Ngunit kahit doon, kapag tumitingin tayo sa mga pangako ng Diyos, nagkakaroon tayo ng lakas ng loob na muling bumangon. Ang ating inaasahan ang nagbabago sa direksyon ng ating pamumuhay ngayon. <mark>Ang pag-asa ng muling pagkabuhay — ng pagiging kasama ng Panginoon — ay nagpapatapang sa atin at umaakay sa atin sa buhay na nakalulugod sa Kanya ngayon.</mark>", "Sa kabanata 4, inihambing ni Pablo ang kanyang sarili, na pinagkatiwalaan ng ebanghelyo, sa marupok na sisidlang luwad: nahahayag ang kapangyarihan ng Diyos sa pamamagitan ng mahihinang taong nagdurusa. At kahit nanlulupaypay ang kanyang panlabas na pagkatao, hindi siya nanghina ang loob, tumitingin sa muling pagkabuhay at walang-hanggang kaluwalhatian. Ngayon sa kabanata 5, inihahambing ni Pablo ang ating katawan sa isang <mark>tolda</mark> na balang araw ay babagsak. Gayunman, sinasabi niyang may <mark>walang-hanggang bahay</mark> na ibibigay sa atin ng Diyos. Nagtitiwala ang mga mananampalataya sa pangakong iyon at naghihintay sa panahong makakasama nila ang Panginoon. Ano ang pinaniniwalaan ko sa aking pamumuhay ngayon? At humahantong ba ang pananampalatayang iyon sa buhay na nakalulugod sa Panginoon? Tingnan natin ang tatlong bahagi."], "points": ["Ano ang pinaniniwalaan ko sa aking pamumuhay ngayon — at humahantong ba ang pananampalatayang iyon sa buhay na nakalulugod sa Panginoon?"]}, {"title": "Talata 1 · Bagama't Bumagsak ang Tolda, May Walang-Hanggang Bahay na Itinayo ng Diyos", "paragraphs": ["Ang tolda ay pansamantalang tirahang ginagamit habang palipat-lipat ng lugar. Hindi ka makapananatili rito nang matagal, at balang araw ay kailangan itong tiklupin. Sa larawan ng tolda, inihahayag ni Pablo na <mark>mahina ang ating katawan at patungo sa kamatayan</mark>. Ang kalusugang hindi na tulad ng dati, ang pagtanda, ang pagpapaalam sa mga mahal sa buhay — ito ang realidad ng toldang ito.", "Gayunman, ipinahayag ni Pablo, <mark>'Sapagkat alam namin na kung masira ang tolda na aming tahanan sa lupa, mayroon kaming gusali mula sa Diyos, isang bahay na hindi gawa ng mga kamay, walang hanggan sa kalangitan.'</mark> Kapag binasa kasama ng turo tungkol sa muling pagkabuhay sa 1 Corinto 15, kinakatawan ng bahay na ito ang <mark>katawan ng muling pagkabuhay at buhay na walang hanggan</mark> na ibibigay ng Diyos. Ito ay bahay na itinayo ng Diyos, hindi ng kamay ng tao. Naniniwala si Pablo sa pangakong ang Diyos na bumuhay kay Jesus ay bubuhay rin sa Kanyang bayan."], "points": ["Ang ating huling tahanan ay hindi ang toldang babagsak, kundi ang walang-hanggang bahay na itinayo ng Diyos."]}, {"title": "Talata 2–5 · Sa Pagdaing, Nananabik Tayong Mabihisan ng Buhay", "paragraphs": ["Sa talata 2, ipinahayag ni Pablo, <mark>'Sapagkat sa toldang ito ay dumaraing kami.'</mark> Para sa kanya, ang pagdurusa ay hindi ideya lamang sa isip. Tunay niyang naranasan ang panggigipit at pag-uusig at hinarap ang panganib ng kamatayan. Ngunit may pag-asa sa kanyang pagdaing: masigasig siyang nananabik na isuot ang buhay na ibibigay ng Diyos. Sa talata 4, <mark>'hindi sa nais naming mahubaran, kundi mabihisan pa, upang ang may kamatayan ay lamunin ng buhay.'</mark> Bahagyang magkakaiba ang interpretasyon kung ang 'masumpungang hubad' sa talata 3 ay tumutukoy sa kalagayan ng pagkahiwalay sa katawan matapos ang kamatayan o sa pagiging hindi handa sa harap ng paghatol; mahirap itong pagpasyahan mula sa talata lamang. Ngunit malinaw ang ubod: nais ni Pablo na mabihisan ng buhay na ibinibigay ng Diyos. Tayo rin ay dumaraing kapag masakit ang ating katawan o kapag nakikita natin ang pagdurusa ng mga mahal natin. Sa mga luhang iyon, maaari nating hintayin ang buhay na ipinangako ng Diyos.", "Talata 5: <mark>'Ang naghanda sa amin para sa bagay na ito ay ang Diyos, na nagbigay sa amin ng Espiritu bilang garantiya.'</mark> Inihahanda tayo ng Diyos upang maabot ang buhay na iyon at ibinigay sa atin ang Espiritu Santo bilang garantiya. Kasama natin ang Espiritu ngayon at pinatitiyak sa atin ang kaligtasang lulubusin ng Diyos balang araw. Dahil hindi pa ganap ang lahat, maaari pa rin tayong dumaing. At dahil kasama natin ang Espiritu, <mark>kahit sa ating pagdaing ay makatitingin tayo sa pangako ng Diyos at muling makababangon</mark>."], "points": ["Maaaring magkasama ang pagdaing at pag-asa. Kahit sa luha, tinutulungan tayo ng Espiritu na hawakan ang pangako ng Diyos."]}, {"title": "Talata 6–8 · Lumalakad Tayo sa Pananampalataya, Hindi sa Paningin", "paragraphs": ["Nagsisimula ang talata 6 sa 'Kaya' — iniuugnay pabalik sa pagbibigay ng Diyos ng Espiritu bilang garantiya. Dahil nangako ang Diyos ng hinaharap, matapang si Pablo: <mark>'Kaya lagi kaming malakas ang loob.'</mark> Si Pablo, na dumaing sa talata 2 at 4, ay nagpapahayag na ngayon ng katapangan sa talata 6 — at sa pagitan nila ay nakatayo ang pangako ng Diyos na Espiritu bilang garantiya. Sinasabi ni Pablo na habang nasa katawan tayo, malayo tayo sa Panginoon. Kasama natin ang Espiritu kahit ngayon; hinihintay ni Pablo ang <mark>araw na lubos siyang makakasama ng Panginoon</mark>.", "Talata 7: <mark>'Sapagkat lumalakad kami sa pananampalataya, hindi sa paningin.'</mark> Hindi pa natin nakikita ng ating mga mata ang kaganapan ng muling pagkabuhay. Ngunit naniniwala tayo sa Diyos na bumuhay kay Jesus, at sa pag-asa sa pangakong iyon, namumuhay tayo ngayon sa gitna ng mga realidad sa harap natin. Minsan, hindi agad binabago ng ating panalangin ang problema. Kahit noon, <mark>ang pagganap sa mga pananagutan ngayon, ang pag-ibig sa mga pagod, at ang paghingi ng tulong sa Diyos</mark> ang anyo ng paglakad sa pananampalataya. Sa talata 8, ipinahayag ni Pablo na mas nais niyang <mark>'lumayo sa katawan at manahan kasama ng Panginoon.'</mark> Matagal nang inuunawa ang mga salitang ito bilang aliw na kasama ng Panginoon ang mga mananampalataya kahit matapos ang kamatayan. Sa talata 4, nananabik si Pablo na mabihisan ng buhay na ibinibigay ng Diyos; sa talata 8, ipinahayag niya ang pag-asang makasama ang Panginoon kahit sa harap ng kamatayan. Ang Isang tinitingnan niya ay si Jesus, na nagtagumpay sa kamatayan."], "points": ["Pinapangyari ng pananampalataya na dalhin ko ang mga problema ngayon habang nagtitiwala sa ipinangakong hinaharap ng Diyos at ipinagpapatuloy ang mga hakbang ngayon."]}, {"title": "Talata 9–10 · Sa Pag-alalang Haharap Tayo kay Cristo, Nagsisikap Tayong Kalugdan Niya", "paragraphs": ["Talata 9: <mark>'Kaya nasa tahanan man kami o malayo, layunin naming makalugod sa Kanya.'</mark> Dahil umaasa si Pablo sa hinaharap kasama ng Panginoon, nagsisikap siyang kalugdan Siya ngayon. Ang pag-asa sa hinaharap ang gumagabay sa buhay ngayon. Kapag pumipili tayo, dapat din nating itanong: Kumikilos ba ako para sa pagsang-ayon ng tao at agarang resulta? O hinahanap ko ang ikalulugod ng Panginoon?", "Talata 10: <mark>'Sapagkat tayong lahat ay kailangang humarap sa hukuman ni Cristo, upang tanggapin ng bawat isa ang nararapat sa kanyang ginawa sa katawan, mabuti man o masama.'</mark> Ipinahayag ni Pablo na tayong lahat — kasama siya at ang mga taga-Corinto — ay haharap kay Cristo. Sa talata 1, ang katawan ay toldang babagsak balang araw; sa talata 10, nahahayag sa harap ng Panginoon ang buhay na ipinamuhay sa katawang iyon. Ang mga salitang sinasabi natin ngayon, ang ating mga paglilingkod, at ang mga pasyang walang nakaaalam ay may kahulugan sa harap ng Panginoon. Itinuturo ni Pablo na ang kaligtasan ay biyaya ng Diyos na ibinigay kay Cristo, at ang pananampalatayang tumanggap ng biyayang iyon ay nahahayag sa pag-ibig at pagsunod. May mga paliwanag sa paghatol na ito na nagbibigay-diin sa pagsusuri sa buhay ng mga mananampalataya at sa mga gantimpala; ang iba ay nagbibigay-diin sa kung paano inihahayag ng bunga ng buhay ang katapatan ng pananampalataya. Alinman dito, sinasabi ng talata na may pananagutan ang ating buhay sa harap ng Panginoon. <mark>Ang buhay na nakalulugod sa Panginoon ay hindi kondisyon para sa kaligtasan kundi tugon sa biyayang nagligtas sa atin.</mark>"], "points": ["Ang mga umaasang haharap sa Panginoon ay naghahanap ng mga salita at pasyang nakalulugod sa Kanya kahit sa lugar na walang nakakakita."]}, {"title": "Aplikasyon · Nakalulugod sa Panginoon Ngayon, Kahit sa Gitna ng Luha", "paragraphs": ["Ipinapakita ng Salita ngayon kung bakit tayo makapagtatapang kahit sa realidad na puno ng pagdaing: dahil ang Diyos ay <mark>nangako ng buhay ng muling pagkabuhay at ibinigay sa atin ang Espiritu Santo bilang garantiya</mark>. Nasa sentro ng hinaharap na hinihintay natin ang kagalakan ng pagiging kasama ng Panginoon.", "Bago ang krus, si Jesus din ay lubhang nakipagbuno at nagdalamhati sa Getsemani. Ibinuhos Niya ang Kanyang puso sa Ama at hinanap ang kalooban ng Ama. <mark>Kay Jesus din, magkasama ang pagdaing at katapangan.</mark> Pinasan ni Jesus ang krus para sa ating mga kasalanan, at muli Siyang binuhay ng Diyos. Sa biyayang iyon, pinatawad tayo at tumanggap ng pag-asang makasama ang Panginoon.", "Kaya hindi nagsisimula ang ating katapangan pagkatapos lamang mawala ang lahat ng sakit. <mark>Kahit sa gitna ng luha, maaari nating hawakan ang pangako ng Panginoon at piliin ang daang nakalulugod sa Kanya ngayon.</mark> Kung may bumabagabag sa iyo, sabihin ito sa Diyos. At sa pag-alalang haharap ka sa Panginoon, ikaw muna ang magsalita sa taong kailangan mong hingan ng tawad, iabot ang iyong kamay sa nangangailangan ng tulong, at tratuhin ang isang taong makakatagpo mo ngayon nang may katapatan at pag-ibig.", "Sa lugar na kinakaharap ko ngayon, ano ang pinaniniwalaan ko, at sino ang sinisikap kong kalugdan sa aking pamumuhay?"], "points": ["Kahit habang dumaraing, hinahawakan ko ang pangako ng muling pagkabuhay at pinipili ang isang hakbang ngayon na nakalulugod sa Panginoon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Hindi ko itinago ang aking pagdaing dahil sa kahinaan ng katawan at mga problemang hindi nalulutas, kundi dinala ko ito sa Diyos."}, {"key": "c2", "text": "Pinag-isipan ko kung hinahawakan ko sa pananampalataya ang pangako ng muling pagkabuhay at walang-hanggang bahay sa halip na ang nakikita."}, {"key": "c3", "text": "Sinuri ko kung ang aking mga pasya ngayon ay para sa pagsang-ayon ng tao o upang kalugdan ang Panginoon."}, {"key": "c4", "text": "Inalala ko na kahit ang mga salita at kilos sa lugar na walang nakakakita ay may kahulugan sa harap ng Panginoon."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano ang nagpapadaing sa akin ngayon, at ano ang isang hakbang na magagawa ko roon ngayon upang kalugdan ang Panginoon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Sabihin sa Diyos ang Alalahanin", "value": "Dalhin sa Diyos sa tiyak na mga salita ang pinakamalaki mong alalahanin ngayon at ipagkatiwala ito sa Kanya"}, {"key": "act2", "label": "Unang Humingi ng Tawad", "value": "Kung may taong kailangan mong hingan ng tawad, ikaw muna ang magsalita sa kanya ngayon"}, {"key": "act3", "label": "Iabot ang Kamay", "value": "Mag-alok ng tiyak na tulong o pangungumusta sa isang taong nangangailangan nito"}, {"key": "act4", "label": "Kung Saan Walang Nakakakita", "value": "Gumawa ng isang tapat na pasyang nakalulugod sa Panginoon sa lugar na walang nanonood"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang 2 Corinto 5:7 at 9, lumalakad sa pananampalataya at naglalayong kalugdan ang Panginoon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa pangako ng walang-hanggang bahay sa langit para sa amin na tulad ng mga toldang babagsak, at sa pagbibigay ng Espiritu bilang garantiya upang makapagtapang kami kahit habang dumaraing."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa paglakad lamang sa paningin at madaling panghihina ng loob, at sa pagkilos para sa pagsang-ayon ng tao at agarang resulta sa halip na para sa Iyo."}, {"key": "p3", "tag": "Kahilingan", "text": "Kahit sa gitna ng luha, tulungan Mo akong hawakan ang pangako ng muling pagkabuhay at lumakad sa pananampalataya; nasa katawan man o malayo, gawin Mo akong isang nakalulugod sa Iyo."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-06';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
