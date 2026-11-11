@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/12(목) 큐티 · 고린도후서 9:1–15">
+<meta property="og:description" content="내가 받은 은혜는 나눔으로 이어지고 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 12일 목요일", "ref": "고린도후서 9장 1–15절", "headline": "내가 받은 은혜는<br>나눔으로 이어지고 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 고린도후서 9:1-15", "s1heading": "오늘의 말씀", "verse": "\"각각 그 마음에 정한 대로 할 것이요<br>인색함으로나 억지로 하지 말지니<br>하나님은 즐겨 내는 자를 사랑하시느니라\"", "verseRef": "고린도후서 9:7", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 재물을 쓰는 방식에도 복음이 드러납니다", "paragraphs": ["나눔을 생각할 때 우리는 돕고 싶으면서도 내 형편이 걱정됩니다. 약속은 했는데 실천을 미루거나, 다른 사람의 시선 때문에 마지못해 참여할 때도 있습니다. 바울은 <mark>우리의 필요를 아시고 섬길 은혜를 주시는 하나님</mark>을 바라보게 합니다. 하나님의 은혜를 붙들고 돌이킨 사람은 <mark>물질을 사용하는 삶에서도 복음을 드러냅니다</mark>. 그 나눔으로 이웃의 필요가 채워지고 하나님께 영광이 돌아갑니다.", "이 흐름은 고린도후서 전체와 연결됩니다. 3장의 성령의 변화, 5장의 하나님과의 화목, 7장의 회개가 이제 재물을 사용하고 다른 성도를 돌보는 삶으로 이어져야 합니다. 8장이 마게도냐 교회에 주신 은혜로 시작했다면, 9장은 하나님께 드리는 감사로 끝맺습니다. 예수님도 <mark>하나님과 재물을 함께 섬길 수 없다</mark>고 하셨습니다(마 6:24). 재물을 어떻게 쓰는지는 우리가 누구를 의지하는지와 연결되어 있습니다."], "points": ["내가 받은 은혜는 지금 누구의 필요를 돌보는 나눔으로 이어지고 있습니까?"]}, {"title": "1–5절 · 자원하는 나눔이 되도록 미리 준비합니다", "paragraphs": ["바울은 예루살렘의 가난한 성도들을 돕기 위해 여러 교회의 나눔을 모으고 있었습니다(롬 15:26). 고린도가 속한 아가야 성도들은 <mark>\"일 년 전부터 준비\"</mark>하려는 마음을 품었고, 바울이 그 열심을 마게도냐에 전하자 많은 사람이 분발했습니다(2절). 8장에서는 마게도냐가 고린도의 모범이었는데, 여기서는 고린도가 마게도냐를 격려합니다. <mark>교회들은 서로에게 나타난 은혜를 배우며 함께 자랍니다</mark>.", "다만 나누려는 마음이 있다는 것과 준비가 끝났다는 것은 다릅니다. 그래서 바울은 디도와 형제들을 먼저 보냅니다. <mark>\"너희가 전에 약속한 연보를 미리 준비하게 하도록 … 이렇게 준비하여야 참 연보답고 억지가 아니니라\"</mark>(5절). 도착한 뒤 당황해서 급히 내놓는 헌금이 아니라, 어려운 성도들에게 복이 되는 준비된 선물이 되기를 바란 것입니다. 이번 달에 무엇을 줄일지, 누구를 어떻게 도울지 미리 생각해 볼 수 있습니다."], "points": ["사랑의 진실함은 돕고 싶은 마음과 함께, 그 마음을 실제 도움으로 옮기는 준비에서도 드러납니다."]}, {"title": "6–7절 · 인색함이나 억지가 아니라 즐겨 냅니다", "paragraphs": ["<mark>\"적게 심는 자는 적게 거두고 많이 심는 자는 많이 거둔다\"</mark>(6절). 하나님께 받은 것을 다른 사람을 위해 너그럽게 사용하라는 권면입니다. 그러나 8장 12절의 기준처럼 <mark>가진 것과 형편에 따라</mark> 나누는 것이며, 액수로 믿음을 비교하라는 말씀이 아닙니다. 무엇을 거두는지는 이어지는 말씀이 보여 줍니다. 섬길 수 있게 하시는 공급, 의의 열매, 하나님께 드리는 감사와 성도들의 사랑입니다. <mark>헌금을 내면 더 많은 돈으로 돌려받는다는 공식으로 바꿀 수 없습니다</mark>.", "<mark>\"각각 그 마음에 정한 대로 할 것이요 인색함으로나 억지로 하지 말지니 하나님은 즐겨 내는 자를 사랑하시느니라\"</mark>(7절). 형편을 살펴 결정하되, 아까워 괴로워하거나 사람의 압박에 밀려 주지 말라는 것입니다. 하나님이 기뻐하시는 것은 억지로 만든 밝은 표정이 아니라, 하나님의 선하심을 믿으며 돕는 일을 기꺼이 받아들이는 마음입니다. 우리는 헌금으로 하나님의 사랑을 얻지 않습니다. 은혜로 사랑받았기에 베푸시는 하나님을 닮아 가는 것입니다."], "points": ["나눌 때에는 얼마를 줄 것인지와 함께, 누구를 믿으며 주는지도 살핍니다."]}, {"title": "8–11절 · 씨와 양식을 주시는 하나님을 신뢰합니다", "paragraphs": ["나누고 나면 내게 필요한 것은 어떻게 될까 하는 걱정이 생깁니다. 바울은 <mark>\"하나님이 능히 모든 은혜를 너희에게 넘치게 하시나니 … 모든 착한 일을 넘치게 하게 하려 하심이라\"</mark>(8절)고 말합니다. 그 공급에는 목적이 있습니다. 여기서 넉넉함은 원하는 것을 끝없이 갖는 상태가 아니라, <mark>하나님의 은혜에 족하며 그것으로 다른 사람도 돌보는 삶</mark>입니다. 이 약속 때문에 모든 가난이 즉시 사라지는 것은 아닙니다. 마게도냐 성도들은 여전히 가난한 가운데서 나누었습니다.", "바울은 시편 112편 9절을 인용하고, 이사야 55장 10절처럼 <mark>\"심는 자에게 씨와 먹을 양식을 주시는 이\"</mark>(10절)를 고백합니다. 농부에게는 오늘 먹을 양식과 내일 뿌릴 씨가 필요합니다. 하나님은 우리를 돌보실 뿐 아니라 <mark>다른 사람을 위해 나눌 것도 공급하십니다</mark>. 우리가 나눌 수 있는 것부터 하나님께 받은 것입니다. 하나님은 우리를 누군가의 필요를 채우는 통로로 사용하시고, 그 나눔은 하나님께 드리는 감사로 이어집니다(11절)."], "points": ["받은 것을 살필 때, 얼마나 남았는지와 함께 그것으로 누구를 돌볼 수 있는지도 생각합니다."]}, {"title": "12–15절 · 나눔으로 필요가 채워지고 하나님께 영광이 돌아갑니다", "paragraphs": ["<mark>\"이 봉사의 직무가 성도들의 부족한 것을 보충할 뿐 아니라 … 하나님께 드리는 많은 감사로 말미암아 넘쳤느니라\"</mark>(12절). 실제 필요가 채워지고, 도움받은 이들이 하나님의 돌보심을 경험하며 감사하게 됩니다. 그들은 고린도 성도들이 <mark>\"그리스도의 복음을 진실로 믿고 복종하는 것\"</mark>(13절)이 나눔으로 드러났기 때문에 하나님께 영광을 돌립니다. 돈을 내고 믿음을 얻는 순서가 아니라, 그리스도를 믿는 믿음이 돌보는 행동을 낳는 것입니다. 7장의 회개가 이제 나눔으로도 이어져야 합니다. 하나님께 돌아왔다면 <mark>재물을 쓰는 방향도 주님 앞에서 돌이켜야</mark> 합니다.", "도움받은 성도들은 고린도 성도들을 위해 간구하며 그들을 사모합니다(14절). 주는 사람만 필요한 사람이 아니고, 도움받은 사람도 사랑과 기도로 섬깁니다. 그리고 바울은 <mark>\"말할 수 없는 그의 은사로 말미암아 하나님께 감사하노라\"</mark>(15절)로 마칩니다. 8장 9절과 연결하면, 모든 나눔의 근원에 우리를 위해 자신을 내어 주신 그리스도가 계십니다."], "points": ["나눔의 결실은 필요가 채워지는 일, 관계가 세워지는 일, 하나님께 감사가 드려지는 일로 풍성하게 이어집니다."]}, {"title": "적용 · 막연한 마음을 한 가지 행동으로", "paragraphs": ["회개의 열매는 지난 잘못을 인정하는 말과 함께, 앞으로 맡겨진 것을 누구를 위해 사용하는지에서도 드러납니다. 삭개오를 떠올려 보십시오. 예수님은 사람들이 죄인이라고 수군거리던 그의 집에 들어가셨고, 삭개오는 <mark>소유의 절반을 가난한 이들에게 주고 속여 빼앗은 것이 있으면 네 갑절로 갚겠다</mark>고 말했습니다. 예수님은 <mark>\"오늘 구원이 이 집에 이르렀으니 … 인자가 온 것은 잃어버린 자를 찾아 구원하려 함이니라\"</mark>(눅 19:9–10)고 선언하셨습니다.", "삭개오가 돈으로 구원을 산 것이 아닙니다. 찾아오신 주님을 맞아들인 자리에서 재물을 쓰는 방향이 달라졌고, 나누는 사랑과 함께 잘못을 바로잡는 책임도 나타났습니다. 그 주님은 십자가에서 죽으시고 다시 살아나셔서, 우리가 더 이상 자신만을 위해 살지 않도록 부르셨습니다. 우리의 나눔은 <mark>구원을 얻기 위한 값이 아니라 받은 은혜에 대한 응답</mark>입니다.", "오늘 막연히 돕고 싶다는 생각을 <mark>한 가지 행동으로</mark> 옮겨 보십시오. 미뤄 둔 나눔이 있다면 형편에 맞게 준비하고, 도움이 필요한 사람에게 무엇이 필요한지 물어보며, 신뢰할 수 있는 공동체의 섬김에 참여하십시오. 모든 필요를 다 해결할 수는 없지만, <mark>내게 맡겨진 것으로 누군가의 필요를 돌볼 수는 있습니다</mark>. 그 사람이 도움을 얻고 하나님께 감사하게 된다면, 우리의 물질을 통해 복음이 드러나는 것입니다.", "나는 은혜를 받았다고 고백하면서, 정작 그 은혜가 흘러가야 할 누군가의 필요 앞에서 손을 멈추고 있지는 않습니까?"], "points": ["말할 수 없는 은사를 받은 사람으로서, 오늘 즐겨 내는 손으로 한 사람의 필요를 채웁니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "나누겠다고 약속하거나 마음먹은 일을 실천 없이 미루고 있지 않은지 돌아봤다"}, {"key": "c2", "text": "인색함이나 다른 사람의 압박이 아니라 기쁜 마음으로 나누고 있는지 점검했다"}, {"key": "c3", "text": "나눔을 더 많이 돌려받는 공식으로 생각하지 않고 은혜에 대한 응답으로 여겼다"}, {"key": "c4", "text": "내게 맡겨진 것으로 돌볼 수 있는 이웃이 누구인지 생각해 보았다"}], "s4heading": "묵상 한 줄", "memoHint": "하나님께 받은 은혜를 기억할 때, 오늘 즐겨 내는 마음으로 돌볼 수 있는 한 사람의 필요는 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "미리 준비하기", "value": "이번 달에 무엇을 줄여 누구를 어떻게 도울지 구체적으로 계획 세우기"}, {"key": "act2", "label": "필요 물어보기", "value": "도움이 필요한 사람에게 지금 무엇이 가장 필요한지 직접 물어보기"}, {"key": "act3", "label": "즐겨 내기", "value": "형편에 맞게 정한 나눔을 아까워하지 않고 기쁜 마음으로 실천하기"}, {"key": "act4", "label": "함께 섬기기", "value": "신뢰할 수 있는 공동체의 구제 사역에 참여하거나 그 필요를 위해 기도하기"}, {"key": "act5", "label": "말씀 암송", "value": "고린도후서 9:7을 외우며 즐겨 내는 자를 사랑하시는 하나님을 기억하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "말할 수 없는 은사인 그리스도를 주시고, 심는 자에게 씨와 양식을 주시며, 모든 은혜를 넘치게 하시는 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "은혜를 고백하면서도 나눔을 미루고, 인색하거나 억지로 드리며, 재물을 내 안전과 편안함만을 위해 붙들었던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "하나님의 공급을 신뢰하여 즐겨 내는 사람이 되게 하시고, 저를 누군가의 필요를 채우는 통로로 사용하셔서 하나님께 감사와 영광이 돌아가게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 12, Thursday", "ref": "2 Corinthians 9:1–15", "headline": "Is the Grace I've Received<br>Flowing into Sharing?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · 2 Corinthians 9:1-15", "s1heading": "Today's Word", "verse": "\"Each one must give as he has decided in his heart,<br>not reluctantly or under compulsion,<br>for God loves a cheerful giver.\"", "verseRef": "2 Corinthians 9:7", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · The Gospel Shows Even in How We Use Money", "paragraphs": ["When you think about sharing, what comes to mind first? We want to help, but we also worry about our own circumstances. Sometimes we've promised but put off acting, or we take part reluctantly because of others' eyes. Paul directs us to <mark>the God who knows our needs and gives grace to serve</mark>. Those who hold on to God's grace and turn back <mark>reveal the gospel even in how they use material things</mark>. Through that sharing, neighbors' needs are met and glory goes to God. This is the center of today's Word. In the previous passage, Paul introduced the co-workers who would handle the collection and explained a management method the community could trust.", "Today he explains why he sends them ahead of himself, and with what heart believers should give. This flow connects with all of 2 Corinthians: the Spirit's transformation in chapter 3, reconciliation with God in chapter 5, and the repentance confirmed in chapter 7 must now carry into using money and caring for other believers. If chapter 8 began with the grace given to the Macedonian churches, chapter 9 ends with thanksgiving to God and the exhortation to give. Jesus also said <mark>we cannot serve both God and money</mark> (Matthew 6:24). How we use money is connected to whom we rely on. Let's hold this question as we look at the Word: Into whose needs is the grace I've received now flowing? Let's look at three parts."], "points": ["Into whose needs is the grace I've received flowing right now?"]}, {"title": "Verses 1–5 · Preparing Ahead So Giving Is Willing", "paragraphs": ["First, remember the background of this collection. Paul was gathering gifts from many churches to help the poor believers in Jerusalem; Romans 15 confirms that believers in Macedonia and Achaia took part. Though far apart, they belonged to the same Lord. In verse 1, Paul says there's no need for him to write about this service, and verse 2 explains why: the Corinthians had already shown their readiness. The believers of Achaia, where Corinth was, had been <mark>'ready since last year.'</mark> Paul told the Macedonians of their zeal, and it stirred up many. In chapter 8, the Macedonian church appeared as a model for Corinth — now Corinth encourages Macedonia. They influenced each other. <mark>Churches grow together as they learn from the grace shown in one another.</mark>", "But having the desire to give and having finished preparing are different. The Corinthians wanted to and had begun, but there was still work to complete. In verses 3–5, Paul sends Titus and the brothers ahead to help their zeal turn into practical preparation. He was concerned about an embarrassing situation if he arrived with Macedonians and the collection wasn't ready — this is tied to trust between the churches. But his aim doesn't stop at saving face. In verse 5, Paul urges them to <mark>'arrange in advance for the gift you have promised, so that it may be ready as a willing gift, not as an exaction.'</mark> He hopes it won't be an offering hurriedly produced in a panic after he arrives, but a prepared gift that becomes a blessing to believers in hardship. A willing heart must be followed by responsible preparation. We can think ahead about what to cut back this month and whom to help and how. Preparation helps turn love into action."], "points": ["The sincerity of love shows not only in wanting to help, but in the preparation that turns that desire into real help."]}, {"title": "Verses 6–7 · Giving Cheerfully, Not Reluctantly or Under Compulsion", "paragraphs": ["In verse 6, Paul uses the farming principle of sowing and reaping: <mark>'whoever sows sparingly will also reap sparingly, and whoever sows bountifully will also reap bountifully.'</mark> It's an exhortation to use what we've received from God generously for others. Here we must also remember the standard of 8:11–12: giving <mark>according to what we have and our circumstances</mark>. This isn't a word for comparing people's faith by amounts. Then what do we reap? The following verses show it: God's provision enabling us to serve others, the fruit of a righteous life, thanksgiving to God, and the love of believers. <mark>It can't be turned into a formula that giving money gets you more money back.</mark>", "Verse 7: <mark>'Each one must give as he has decided in his heart, not reluctantly or under compulsion, for God loves a cheerful giver.'</mark> Decide on giving by considering your circumstances, but don't give grudgingly in distress or pushed by people's pressure. What God delights in isn't a forced bright expression. It's a blessed heart that trusts God's goodness and gladly embraces helping others. We don't earn God's love by giving. Having been loved by grace, we become like the God who gives. When we give, we should consider not only how much we'll give but whom we trust as we give."], "points": ["When I give, I consider not only how much, but whom I'm trusting as I give."]}, {"title": "Verses 8–11 · Trusting the God Who Supplies Seed and Bread", "paragraphs": ["Yet a worry arises in a corner of our hearts: after I share, what about my own needs? In verse 8 Paul says, <mark>'And God is able to make all grace abound to you, so that having all sufficiency in all things at all times, you may abound in every good work.'</mark> He leads us to trust the care of God who knows every matter and every time. That provision has a purpose: that believers may abound in good works. God makes us see not only our own needs but also the needs of the neighbors we can care for. 'Sufficiency' here isn't endlessly having whatever we want; it's <mark>a life content in God's grace that uses it to care for others too</mark>. God gives not only resources to share but the heart and strength to use them. This promise doesn't mean every believer's poverty disappears immediately — the Macedonians gave while still poor. God's grace stirred giving even amid hardship.", "Verse 9 quotes Psalm 112:9, which shows a God-fearing person giving to the poor; faith that trusts God shows in how money is used. In verse 10, echoing Isaiah 55:10, Paul confesses God as <mark>'He who supplies seed to the sower and bread for food.'</mark> A farmer needs bread to eat today and seed to sow tomorrow. Paul says God not only cares for believers but <mark>supplies what they can share for others</mark>. Even what we can share was first received from God. And God increases the harvest of our righteousness: lives of helping neighbors grow, needs are met, and thanksgiving to God increases. Verse 11 restates the purpose of making us rich: so we can be generous in every way. When Paul and his co-workers deliver the collection, those helped will give thanks to God. A life relying on God leads to love for one another. God uses us as channels to meet someone's needs. When we look at what we've received from God, we should think not only about how much remains for us but whom we can care for with it. This is the posture of the gospel."], "points": ["Looking at what I've received, I think not only of how much is left, but of whom I can care for with it."]}, {"title": "Verses 12–15 · Needs Are Met and Glory Goes to God", "paragraphs": ["Paul foresees the fruit when the collection is delivered. Verse 12 says two things together: <mark>'the ministry of this service is not only supplying the needs of the saints but is also overflowing in many thanksgivings to God.'</mark> Needed food and resources for living must actually be supplied, and Paul expects that through that help the believers will experience God's care and give thanks. Service that cares for others leads to a life that exalts God. Verse 13 explains why they glorify God: because the Corinthians' <mark>'submission that comes from your confession of the gospel of Christ'</mark> was revealed through their giving. The grace received by faith shows itself in how money is used too. It's not the order of paying money to obtain faith; faith in Christ produces actions that care for others. In chapter 7, Paul rejoiced at news that the believers had admitted their wrong and turned back. Now he urges that repentance to flow into giving as well. Restoration must widen beyond growing close to Paul again, into a love that cares even for distant believers' hardships. If we have returned to God, <mark>the direction in which we use money must turn back before the Lord too</mark>.", "In verse 14, the believers who are helped pray for the Corinthians and long for them, recognizing God's grace in their giving. It's not only the giver who is needed; those who receive help also serve the givers with love and prayer. Churches of different regions and backgrounds become more deeply connected in God. Finally, in verse 15, Paul gives thanks: <mark>'Thanks be to God for His inexpressible gift!'</mark> Connecting with 8:9, we're reminded that at the root of all giving is Christ, who gave Himself for us. Paul thanks God, who gave grace so the believers could give. Giving that God began leads to thanksgiving offered to God."], "points": ["The fruit of giving overflows richly: needs met, relationships built up, and thanks offered to God."]}, {"title": "Application · Turning a Vague Desire into One Action", "paragraphs": ["The fruit of repentance shows not only in words admitting past wrongs but in whom we use what's entrusted to us for from now on. Think of Zacchaeus. Jesus entered his house while people grumbled that he was a sinner. There Zacchaeus said he would <mark>give half his goods to the poor and repay fourfold anyone he had defrauded</mark>. Jesus declared, <mark>'Today salvation has come to this house … For the Son of Man came to seek and to save the lost'</mark> (Luke 19:9–10).", "Zacchaeus did not buy salvation with money. In welcoming the Lord who came to him, the direction of how he used money changed — and along with generous love came responsibility to set wrongs right. That Lord died for us on the cross and rose again, giving us new life and calling us no longer to live only for ourselves. Our giving is <mark>not a price to obtain salvation, but a response to the grace we've received</mark>.", "Today, turn a vague wish to help into <mark>one action</mark>. If there's giving you've put off, prepare it according to your means. Ask someone in need what they actually need. You can join the service of a trustworthy community. We can't meet every need, but <mark>with what's entrusted to us, we can care for someone's need</mark>. If that person is helped and gives thanks to God, the gospel is revealed through our material resources.", "Finally, ask yourself: While confessing that I've received grace, am I stopping my hand before the very need of someone that grace should flow to?"], "points": ["As one who has received an inexpressible gift, today I meet one person's need with a cheerful, giving hand."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I'm postponing giving I've promised or decided on without acting."}, {"key": "c2", "text": "I checked whether I give with a glad heart, not grudgingly or under others' pressure."}, {"key": "c3", "text": "I treated giving as a response to grace, not as a formula for getting more back."}, {"key": "c4", "text": "I thought about which neighbor I can care for with what's been entrusted to me."}], "s4heading": "One-Line Reflection", "memoHint": "Remembering the grace I've received from God, whose need can I care for today with a cheerful, giving heart?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Prepare Ahead", "value": "Make a concrete plan for what to cut back this month and whom to help, and how"}, {"key": "act2", "label": "Ask About Needs", "value": "Ask someone in need directly what they need most right now"}, {"key": "act3", "label": "Give Cheerfully", "value": "Carry out the giving you've decided on according to your means, gladly and without grudging"}, {"key": "act4", "label": "Serve Together", "value": "Join a trustworthy community relief ministry or pray for its needs"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize 2 Corinthians 9:7 and remember the God who loves a cheerful giver"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for giving Christ, Your inexpressible gift, for supplying seed to the sower and bread for food, and for making all grace abound to us."}, {"key": "p2", "tag": "Repent", "text": "I repent of confessing grace while postponing giving, offering grudgingly or under compulsion, and clinging to money only for my own security and comfort."}, {"key": "p3", "tag": "Ask", "text": "Help me trust Your provision and become a cheerful giver; use me as a channel to meet someone's need, so that thanks and glory go to You."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 12, Huwebes", "ref": "2 Corinto 9:1–15", "headline": "Dumadaloy ba sa Pagbabahagi<br>ang Biyayang Natanggap Ko?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · 2 Corinto 9:1-15", "s1heading": "Salita Ngayon", "verse": "\"Ang bawat isa ay dapat magbigay ayon sa ipinasya ng kanyang puso,<br>hindi nang may pag-aatubili o sapilitan,<br>sapagkat iniibig ng Diyos ang masayang nagbibigay.\"", "verseRef": "2 Corinto 9:7", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Nahahayag ang Ebanghelyo Kahit sa Paggamit Natin ng Pera", "paragraphs": ["Kapag iniisip mo ang pagbabahagi, ano ang unang pumapasok sa isip mo? Gusto nating tumulong, ngunit nag-aalala rin tayo sa sarili nating kalagayan. Minsan nangako tayo ngunit ipinagpaliban ang paggawa, o nakikibahagi tayo nang atubili dahil sa tingin ng iba. Itinuturo tayo ni Pablo sa <mark>Diyos na nakaaalam ng ating pangangailangan at nagbibigay ng biyaya upang maglingkod</mark>. Ang mga humahawak sa biyaya ng Diyos at tumatalikod ay <mark>naghahayag ng ebanghelyo kahit sa paggamit nila ng materyal na bagay</mark>. Sa pagbabahaging iyon, natutugunan ang pangangailangan ng kapwa at napupunta sa Diyos ang kaluwalhatian. Ito ang sentro ng Salita ngayon. Sa naunang talata, ipinakilala ni Pablo ang mga kamanggagawang hahawak sa koleksyon at ipinaliwanag ang paraan ng pamamahalang mapagkakatiwalaan ng komunidad.", "Ngayon, ipinaliliwanag niya kung bakit niya sila pinauna sa kanya, at kung anong puso dapat magbigay ang mga mananampalataya. Kaugnay ng daloy na ito ang buong 2 Corinto: ang pagbabagong gawa ng Espiritu sa kabanata 3, ang pakikipagkasundo sa Diyos sa kabanata 5, at ang pagsisising nakumpirma sa kabanata 7 ay dapat na ngayong umabot sa paggamit ng pera at pag-aalaga sa ibang mananampalataya. Kung nagsimula ang kabanata 8 sa biyayang ibinigay sa mga iglesya sa Macedonia, nagtatapos naman ang kabanata 9 sa pasasalamat sa Diyos at sa pagpapayo na magbigay. Sinabi rin ni Jesus na <mark>hindi tayo maaaring maglingkod kapwa sa Diyos at sa salapi</mark> (Mateo 6:24). Ang paraan ng ating paggamit ng pera ay kaugnay ng kung kanino tayo umaasa. Hawakan natin ang tanong na ito habang tinitingnan ang Salita: Sa pangangailangan ng sino dumadaloy ngayon ang biyayang natanggap ko? Tingnan natin ang tatlong bahagi."], "points": ["Sa pangangailangan ng sino dumadaloy ngayon ang biyayang natanggap ko?"]}, {"title": "Talata 1–5 · Maagang Paghahanda Upang Maging Kusang-loob ang Pagbibigay", "paragraphs": ["Una, alalahanin ang konteksto ng koleksyong ito. Nangongolekta si Pablo ng mga kaloob mula sa maraming iglesya upang tulungan ang mga dukhang mananampalataya sa Jerusalem; kinukumpirma ng Roma 15 na nakibahagi rito ang mga mananampalataya sa Macedonia at Acaya. Bagama't magkakalayo, iisang Panginoon ang kanilang pinagkakabilangan. Sa talata 1, sinasabi ni Pablo na hindi na niya kailangang sumulat tungkol sa paglilingkod na ito, at ipinaliliwanag ng talata 2 kung bakit: ipinakita na ng mga taga-Corinto ang kanilang kahandaan. Ang mga mananampalataya sa Acaya, kung saan naroon ang Corinto, ay <mark>'handa na mula pa noong nakaraang taon.'</mark> Ibinalita ni Pablo sa mga taga-Macedonia ang kanilang sigasig, at napukaw nito ang marami. Sa kabanata 8, lumitaw ang iglesya sa Macedonia bilang huwaran para sa Corinto — ngayon ay pinasisigla naman ng Corinto ang Macedonia. Nakaimpluwensya sila sa isa't isa. <mark>Sama-samang lumalago ang mga iglesya habang natututo sila sa biyayang nahahayag sa isa't isa.</mark>", "Ngunit magkaiba ang pagkakaroon ng pagnanais na magbigay at ang pagtatapos ng paghahanda. Nais ng mga taga-Corinto at nasimulan na nila, ngunit may natitira pang dapat tapusin. Sa talata 3–5, pinauna ni Pablo si Tito at ang mga kapatid upang tulungang maging praktikal na paghahanda ang kanilang sigasig. Nag-alala siya sa nakahihiyang sitwasyon kung darating siya kasama ng mga taga-Macedonia at hindi pa handa ang koleksyon — kaugnay ito ng tiwala sa pagitan ng mga iglesya. Ngunit hindi humihinto ang kanyang layunin sa pagliligtas ng dangal. Sa talata 5, hinihimok ni Pablo na <mark>'ihanda nang maaga ang kaloob na inyong ipinangako, upang ito'y maging handa bilang kusang-loob na kaloob, hindi bilang sapilitang paniningil.'</mark> Inaasahan niyang hindi ito magiging handog na minadaling inilabas sa pagkataranta matapos siyang dumating, kundi handang kaloob na nagiging pagpapala sa mga mananampalatayang nasa hirap. Dapat sundan ng responsableng paghahanda ang kusang-loob na puso. Maaari nating pag-isipan nang maaga kung ano ang babawasan ngayong buwan at kung sino at paano tutulungan. Tinutulungan ng paghahanda na gawing kilos ang pag-ibig."], "points": ["Nahahayag ang katapatan ng pag-ibig hindi lamang sa pagnanais na tumulong, kundi sa paghahandang ginagawang tunay na tulong ang pagnanais na iyon."]}, {"title": "Talata 6–7 · Masayang Nagbibigay, Hindi Atubili o Sapilitan", "paragraphs": ["Sa talata 6, ginamit ni Pablo ang prinsipyo ng pagsasaka sa paghahasik at pag-aani: <mark>'ang naghahasik nang kaunti ay aani rin nang kaunti, at ang naghahasik nang sagana ay aani rin nang sagana.'</mark> Pagpapayo ito na gamitin nang mapagbigay para sa iba ang natanggap natin mula sa Diyos. Dito, dapat din nating alalahanin ang pamantayan ng 8:11–12: pagbibigay <mark>ayon sa kung ano ang mayroon tayo at sa ating kalagayan</mark>. Hindi ito salitang naghahambing sa pananampalataya ng tao batay sa halaga. Kung gayon, ano ang ating inaani? Ipinapakita ito ng mga sumunod na talata: ang probisyon ng Diyos na nagpapangyaring makapaglingkod tayo sa iba, ang bunga ng matuwid na buhay, pasasalamat sa Diyos, at pag-ibig ng mga mananampalataya. <mark>Hindi ito maaaring gawing pormula na ang pagbibigay ng pera ay magbabalik ng mas maraming pera.</mark>", "Talata 7: <mark>'Ang bawat isa ay dapat magbigay ayon sa ipinasya ng kanyang puso, hindi nang may pag-aatubili o sapilitan, sapagkat iniibig ng Diyos ang masayang nagbibigay.'</mark> Magpasya sa pagbibigay sa pagsasaalang-alang ng iyong kalagayan, ngunit huwag magbigay nang may panghihinayang at pagdadalamhati o dahil itinulak ng presyon ng tao. Ang kinalulugdan ng Diyos ay hindi sapilitang masayang mukha. Ito ay pinagpalang pusong nagtitiwala sa kabutihan ng Diyos at masayang tumatanggap sa pagtulong sa iba. Hindi natin nakakamit ang pag-ibig ng Diyos sa pagbibigay. Dahil inibig tayo sa biyaya, nagiging kawangis tayo ng Diyos na nagbibigay. Kapag nagbibigay tayo, dapat nating isaalang-alang hindi lamang kung magkano ang ibibigay kundi kung kanino tayo nagtitiwala habang nagbibigay."], "points": ["Kapag nagbibigay ako, isinasaalang-alang ko hindi lamang kung magkano, kundi kung kanino ako nagtitiwala habang nagbibigay."]}, {"title": "Talata 8–11 · Nagtitiwala sa Diyos na Naglalaan ng Binhi at Tinapay", "paragraphs": ["Gayunman, may pag-aalalang sumusulpot sa isang sulok ng ating puso: matapos akong magbahagi, paano ang sarili kong pangangailangan? Sa talata 8, sinabi ni Pablo, <mark>'At kaya ng Diyos na pasaganain sa inyo ang lahat ng biyaya, upang sa pagkakaroon ng lahat ng kasapatan sa lahat ng bagay sa lahat ng panahon, ay managana kayo sa bawat mabuting gawa.'</mark> Inaakay tayo nitong magtiwala sa pag-aalaga ng Diyos na nakaaalam ng bawat bagay at bawat panahon. May layunin ang probisyong iyon: upang managana ang mga mananampalataya sa mabubuting gawa. Pinatitingin tayo ng Diyos hindi lamang sa ating sariling pangangailangan kundi pati sa pangangailangan ng kapwang maaalagaan natin. Ang 'kasapatan' dito ay hindi walang katapusang pagkakaroon ng anumang gusto natin; ito ay <mark>buhay na kontento sa biyaya ng Diyos na ginagamit ito upang alagaan din ang iba</mark>. Nagbibigay ang Diyos hindi lamang ng mga mapagkukunang maibabahagi kundi ng puso at lakas upang gamitin ang mga ito. Hindi nangangahulugan ang pangakong ito na agad na mawawala ang kahirapan ng bawat mananampalataya — nagbigay ang mga taga-Macedonia habang dukha pa rin. Pinukaw ng biyaya ng Diyos ang pagbibigay kahit sa gitna ng hirap.", "Sinisipi ng talata 9 ang Awit 112:9, na nagpapakita ng taong may takot sa Diyos na nagbibigay sa mga dukha; nahahayag ang pananampalatayang nagtitiwala sa Diyos sa paraan ng paggamit ng pera. Sa talata 10, sa pag-alingawngaw ng Isaias 55:10, ipinahayag ni Pablo ang Diyos bilang <mark>'Siya na naglalaan ng binhi sa manghahasik at tinapay na makakain.'</mark> Kailangan ng magsasaka ang tinapay na makakain ngayon at binhing ihahasik bukas. Sinasabi ni Pablo na hindi lamang inaalagaan ng Diyos ang mga mananampalataya kundi <mark>inilalaan din ang maibabahagi nila para sa iba</mark>. Kahit ang kaya nating ibahagi ay unang natanggap mula sa Diyos. At pinararami ng Diyos ang ani ng ating katuwiran: lumalago ang buhay ng pagtulong sa kapwa, natutugunan ang mga pangangailangan, at dumarami ang pasasalamat sa Diyos. Inuulit ng talata 11 ang layunin ng pagpapayaman sa atin: upang maging mapagbigay tayo sa lahat ng paraan. Kapag inihatid ni Pablo at ng kanyang mga kamanggagawa ang koleksyon, magpapasalamat sa Diyos ang mga natulungan. Ang buhay na umaasa sa Diyos ay humahantong sa pag-ibig sa isa't isa. Ginagamit tayo ng Diyos bilang daluyan upang punan ang pangangailangan ng iba. Kapag tinitingnan natin ang natanggap natin mula sa Diyos, dapat nating isipin hindi lamang kung gaano karami ang natitira para sa atin kundi kung sino ang maaalagaan natin gamit ito. Ito ang tindig ng ebanghelyo."], "points": ["Sa pagtingin sa natanggap ko, iniisip ko hindi lamang kung gaano karami ang natitira, kundi kung sino ang maaalagaan ko gamit ito."]}, {"title": "Talata 12–15 · Natutugunan ang Pangangailangan at Napupunta sa Diyos ang Kaluwalhatian", "paragraphs": ["Tinatanaw ni Pablo ang bunga kapag naihatid na ang koleksyon. Dalawang bagay ang magkasamang sinasabi ng talata 12: <mark>'ang ministeryo ng paglilingkod na ito ay hindi lamang pumupuno sa pangangailangan ng mga banal kundi umaapaw rin sa maraming pasasalamat sa Diyos.'</mark> Kailangang tunay na maipagkaloob ang kinakailangang pagkain at mapagkukunan para sa pamumuhay, at inaasahan ni Pablo na sa tulong na iyon ay mararanasan ng mga mananampalataya ang pag-aalaga ng Diyos at magpapasalamat. Ang paglilingkod na nag-aalaga sa iba ay humahantong sa buhay na nagdadakila sa Diyos. Ipinaliliwanag ng talata 13 kung bakit nila niluluwalhati ang Diyos: dahil nahayag sa pagbibigay ng mga taga-Corinto ang kanilang <mark>'pagsunod na nagmumula sa inyong pagpapahayag ng ebanghelyo ni Cristo.'</mark> Nahahayag din sa paggamit ng pera ang biyayang natanggap sa pananampalataya. Hindi ito pagkakasunod na nagbabayad ng pera upang makamit ang pananampalataya; ang pananampalataya kay Cristo ang nagbubunga ng mga kilos na nag-aalaga sa iba. Sa kabanata 7, nagalak si Pablo sa balitang inamin ng mga mananampalataya ang kanilang mali at tumalikod. Ngayon, hinihimok niyang umabot din ang pagsisising iyon sa pagbibigay. Dapat lumawak ang pagpapanumbalik lampas sa muling paglapit kay Pablo, tungo sa pag-ibig na nag-aalaga kahit sa hirap ng mga mananampalatayang nasa malayo. Kung bumalik na tayo sa Diyos, <mark>dapat ding bumaling sa harap ng Panginoon ang direksyon ng ating paggamit ng pera</mark>.", "Sa talata 14, nananalangin para sa mga taga-Corinto ang mga natulungang mananampalataya at nananabik sa kanila, kinikilala ang biyaya ng Diyos sa kanilang pagbibigay. Hindi lamang ang nagbibigay ang kailangan; ang mga tumatanggap din ng tulong ay naglilingkod sa mga nagbigay sa pag-ibig at panalangin. Lalong nagkakaugnay sa Diyos ang mga iglesyang may iba't ibang rehiyon at pinagmulan. Sa wakas, sa talata 15, nagpasalamat si Pablo: <mark>'Salamat sa Diyos dahil sa Kanyang kaloob na hindi maipahayag!'</mark> Kapag iniugnay sa 8:9, ipinaaalala sa atin na nasa ugat ng lahat ng pagbibigay si Cristo, na nagbigay ng Kanyang sarili para sa atin. Pinasasalamatan ni Pablo ang Diyos, na nagbigay ng biyaya upang makapagbigay ang mga mananampalataya. Ang pagbibigay na sinimulan ng Diyos ay humahantong sa pasasalamat na iniaalay sa Diyos."], "points": ["Masaganang umaapaw ang bunga ng pagbibigay: natutugunang pangangailangan, naitatayong relasyon, at pasasalamat na iniaalay sa Diyos."]}, {"title": "Aplikasyon · Ginagawang Isang Kilos ang Malabong Pagnanais", "paragraphs": ["Nahahayag ang bunga ng pagsisisi hindi lamang sa mga salitang umaamin ng nakaraang mali kundi sa kung para kanino natin gagamitin mula ngayon ang ipinagkatiwala sa atin. Isipin si Zaqueo. Pumasok si Jesus sa kanyang bahay habang bumubulong ang mga tao na siya'y makasalanan. Doon ay sinabi ni Zaqueo na <mark>ibibigay niya ang kalahati ng kanyang ari-arian sa mga dukha at babayaran nang apat na ulit ang sinumang nadaya niya</mark>. Ipinahayag ni Jesus, <mark>'Ngayon ay dumating ang kaligtasan sa bahay na ito … Sapagkat ang Anak ng Tao ay naparito upang hanapin at iligtas ang nawawala'</mark> (Lucas 19:9–10).", "Hindi binili ni Zaqueo ang kaligtasan sa pera. Sa pagtanggap sa Panginoong dumating sa kanya, nagbago ang direksyon ng kanyang paggamit ng pera — at kasama ng mapagbigay na pag-ibig ay dumating ang pananagutang ituwid ang mga mali. Ang Panginoong iyon ay namatay para sa atin sa krus at muling nabuhay, binigyan tayo ng bagong buhay at tinawag tayong hindi na mamuhay para lamang sa ating sarili. Ang ating pagbibigay ay <mark>hindi bayad upang makamit ang kaligtasan, kundi tugon sa biyayang natanggap natin</mark>.", "Ngayon, gawing <mark>isang kilos</mark> ang malabong pagnanais na tumulong. Kung may pagbibigay kang ipinagpaliban, ihanda ito ayon sa iyong kakayahan. Tanungin ang taong nangangailangan kung ano talaga ang kailangan niya. Maaari kang makibahagi sa paglilingkod ng mapagkakatiwalaang komunidad. Hindi natin matutugunan ang bawat pangangailangan, ngunit <mark>sa ipinagkatiwala sa atin, maaalagaan natin ang pangangailangan ng isang tao</mark>. Kung matulungan ang taong iyon at magpasalamat siya sa Diyos, nahahayag ang ebanghelyo sa pamamagitan ng ating materyal na yaman.", "Sa wakas, tanungin ang sarili: Habang ipinahahayag kong nakatanggap ako ng biyaya, pinipigilan ko ba ang aking kamay sa harap mismo ng pangangailangan ng isang taong dapat daluyan ng biyayang iyon?"], "points": ["Bilang taong tumanggap ng kaloob na hindi maipahayag, pinupunan ko ngayon ang pangangailangan ng isang tao sa masayang kamay na nagbibigay."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung ipinagpapaliban ko ang pagbibigay na ipinangako o ipinasya ko nang hindi kumikilos."}, {"key": "c2", "text": "Sinuri ko kung nagbibigay ako nang may masayang puso, hindi atubili o dahil sa presyon ng iba."}, {"key": "c3", "text": "Itinuring ko ang pagbibigay bilang tugon sa biyaya, hindi pormula upang makakuha ng higit pa."}, {"key": "c4", "text": "Inisip ko kung sinong kapwa ang maaalagaan ko gamit ang ipinagkatiwala sa akin."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa pag-alala sa biyayang natanggap ko mula sa Diyos, kaninong pangangailangan ang maaalagaan ko ngayon nang may masayang pusong nagbibigay?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Maghanda nang Maaga", "value": "Gumawa ng tiyak na plano kung ano ang babawasan ngayong buwan at kung sino at paano tutulungan"}, {"key": "act2", "label": "Itanong ang Pangangailangan", "value": "Direktang tanungin ang taong nangangailangan kung ano ang pinakakailangan niya ngayon"}, {"key": "act3", "label": "Masayang Magbigay", "value": "Isagawa ang pagbibigay na ipinasya mo ayon sa iyong kakayahan, nang masaya at walang panghihinayang"}, {"key": "act4", "label": "Sama-samang Maglingkod", "value": "Makibahagi sa mapagkakatiwalaang ministeryo ng pagtulong ng komunidad o ipanalangin ang mga pangangailangan nito"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang 2 Corinto 9:7 at alalahanin ang Diyos na umiibig sa masayang nagbibigay"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa pagbibigay kay Cristo, ang Iyong kaloob na hindi maipahayag, sa paglalaan ng binhi sa manghahasik at tinapay na makakain, at sa pagpapasagana sa amin ng lahat ng biyaya."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagpapahayag ng biyaya habang ipinagpapaliban ang pagbibigay, sa pagbibigay nang atubili o sapilitan, at sa pagkapit sa pera para lamang sa sarili kong seguridad at ginhawa."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong magtiwala sa Iyong probisyon at maging masayang nagbibigay; gamitin Mo ako bilang daluyan upang punan ang pangangailangan ng iba, upang sa Iyo mapunta ang pasasalamat at kaluwalhatian."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-12';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
