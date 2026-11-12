@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/13(금) 큐티 · 고린도후서 10:1–18">
+<meta property="og:description" content="교만은 무너뜨리고, 사람은 세우고 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 13일 금요일", "ref": "고린도후서 10장 1–18절", "headline": "교만은 무너뜨리고,<br>사람은 세우고 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 고린도후서 10:1-18", "s1heading": "오늘의 말씀", "verse": "\"주께서 주신 권세는<br>너희를 무너뜨리려고 하신 것이 아니요<br>세우려고 하신 것이니\"", "verseRef": "고린도후서 10:8", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 무엇을 기준으로 사람과 사역을 평가합니까", "paragraphs": ["교회에서 어떤 리더를 능력 있다고 생각하십니까? 설교를 잘하고 판단이 빠르며 힘 있게 이끄는 사람을 떠올릴 수 있습니다. 그러나 우리는 겉으로 보이는 인상과 성과만으로 사역을 판단할 때가 있습니다. 고린도 교회의 일부 사람들도 바울을 그렇게 평가했습니다. 편지로는 강하지만 직접 만나면 약하고 말도 기대에 못 미친다는 것입니다. 그러나 바울은 사역의 능력을 <mark>그리스도</mark>에게서 찾습니다. 그분의 온유를 따르며 사람들을 그리스도께 순종하도록 세웁니다.", "오늘 두 가지를 살핍니다. 첫째, <mark>무너뜨릴 것과 세워야 할 것을 분별해야 합니다</mark>. 복음을 가로막는 교만은 무너져야 하고, 성도들과 교회는 세워져야 합니다. 둘째, <mark>다른 사람에게 주신 은혜를 본받는 일과 내 우월함을 증명하는 비교는 다릅니다</mark>. 회개와 관계 회복이 있었어도 바로잡아야 할 문제가 남아 있었기에, 바울은 이제 생각과 태도를 복음의 기준으로 바로잡도록 권면합니다."], "points": ["나는 무엇을 기준으로 사람과 사역을 평가하며, 내 영향력은 누구를 세우는 데 사용되고 있습니까?"]}, {"title": "1–6절 · 그리스도의 온유를 따르며 하나님의 능력으로 싸웁니다", "paragraphs": ["바울은 <mark>\"그리스도의 온유와 관용으로\"</mark>(1절) 성도들을 권합니다. 온유는 잘못을 보고도 침묵하는 것이 아니라, 상대가 돌이키도록 기다리며 필요한 말을 전하는 태도입니다. 바울은 다음 방문 때 담대하게 대할 필요가 없도록 해 달라고 구합니다. 편지로 먼저 바로잡을 기회를 주는 것입니다. 즉시 힘을 보여 주는 것보다 성도들의 회개가 중요했습니다. <mark>기다림과 경고는 모두 성도들이 그리스도께 돌아오도록 돕는 일</mark>입니다.", "<mark>\"우리의 싸우는 무기는 육신에 속한 것이 아니요 오직 어떤 견고한 진도 무너뜨리는 하나님의 능력이라\"</mark>(4절). 무너뜨릴 것은 <mark>\"하나님 아는 것을 대적하여 높아진 것\"</mark>(5절), 곧 복음을 받아들이지 못하게 하는 완고한 논리와 교만입니다. \"바울이 약해 보이니 하나님의 능력도 없을 것\"이라는 판단도 여기에 해당합니다. \"모든 생각을 사로잡아 그리스도에게 복종하게\" 한다는 말씀은 일차적으로 개인의 잡념을 없애는 방법이 아니라, 복음을 거스르는 생각을 그리스도의 다스림 아래로 이끄는 사역입니다."], "points": ["영향력은 상대를 즉시 제압하는 힘보다, 그 사람이 진리로 돌아오도록 돕는 책임으로 사용해야 합니다."]}, {"title": "7–11절 · 주님이 주신 권위는 세우기 위한 것입니다", "paragraphs": ["<mark>\"너희는 외모만 보는도다\"</mark>(7절). 고린도 성도들은 바울이 전한 복음으로 그리스도를 믿게 되었습니다. 사람의 인상만으로 그를 통해 전해진 복음과 하나님의 역사를 판단할 수 없습니다. <mark>\"주께서 주신 권세는 너희를 무너뜨리려고 하신 것이 아니요 세우려고 하신 것이니\"</mark>(8절). 4–5절과 8절에 모두 '무너뜨린다'는 말이 나오지만 대상이 다릅니다. <mark>복음을 거스르는 교만은 무너뜨리고, 성도들은 믿음 안에 세웁니다</mark>. 진리를 지킨다는 이유로 사람을 함부로 대해도, 사람을 배려한다는 이유로 잘못된 가르침을 그대로 두어도 이 목적을 잃습니다.", "이것을 오늘의 지도자에게 적용할 때도 분별이 필요합니다. 지도자의 모든 판단이 바울의 사도적 권위와 같은 것은 아닙니다. <mark>교회는 목회자 위가 아니라 말씀 위에 세워진 공동체</mark>입니다. 비판자들은 바울이 \"몸으로 대할 때는 약하고 그 말도 시원하지 않다\"(10절)고 했지만, 바울에게 중요한 것은 사람을 압도하는 인상이 아니라 복음을 진실하게 전하고 교회를 세우는 일이었습니다."], "points": ["권면한 뒤에는 내가 옳았다는 것만 확인할 것이 아니라, 상대가 다시 서도록 어떻게 도울지 생각합니다."]}, {"title": "12–14절 · 자기 기준의 비교가 아니라 맡기신 분량을 따라", "paragraphs": ["<mark>\"그들이 자기로써 자기를 헤아리고 자기로써 자기를 비교하니 지혜가 없도다\"</mark>(12절). 바울은 대적자들이 만든 자기 칭찬의 경쟁에 참여하지 않겠다고 말합니다. 그들은 스스로 기준을 만들고 그 기준으로 자신을 평가해 훌륭하다는 결론을 내립니다. 그 과정에서 하나님이 무엇을 맡기셨고 어떻게 일하셨는지는 빠져 있습니다. 그러나 바울이 모든 비교나 본받음을 금지한 것은 아닙니다. 8장에서 마게도냐의 나눔을, 9장에서 고린도의 열심을 소개했습니다. 차이는 기준과 목적입니다. <mark>다른 사람에게 주신 은혜를 보고 배우면 함께 자랍니다. 우월함을 증명하려 비교하면 주님이 평가하실 자리에 나를 올려놓는 것입니다</mark>.", "바울은 <mark>\"하나님이 우리에게 나누어 주신 그 분량의 한계를 따라\"</mark>(13절) 자랑합니다. 소극적으로 살겠다는 뜻이 아니라, 하나님이 맡기시고 이루신 일을 근거로 말한다는 뜻입니다. 고린도에 교회가 세워진 것이 그 증거이지만, 교회가 바울의 소유가 되지는 않습니다. 그는 \"나는 심었고 아볼로는 물을 주었으되 오직 하나님은 자라나게 하셨나니\"(고전 3:6)라고 가르쳤습니다."], "points": ["받은 사명에 충실한 사람은 다른 사람의 열매를 자기 공로로 가져올 필요가 없습니다."]}, {"title": "15–18절 · 주 안에서 자랑하고, 주님의 칭찬을 구합니다", "paragraphs": ["바울은 고린도 성도들의 믿음이 자라고, 그 성장이 <mark>\"너희 지역을 넘어 복음을 전하\"</mark>는 일로 이어지기를 바랍니다(15–16절). 교회의 회복은 공동체 안의 안정에서 멈추지 않습니다. 회복된 교회는 어려운 성도를 돌보고, 복음이 필요한 이웃을 바라봅니다. <mark>믿음의 성장은 사랑과 선교의 시야를 넓힙니다</mark>.", "<mark>\"자랑하는 자는 주 안에서 자랑할지니라\"</mark>(17절). 예레미야 9장 23–24절처럼 지혜와 재물을 자랑하기보다, 사랑과 정의와 공의를 행하시는 하나님을 알고 자랑하라는 말씀입니다. <mark>\"옳다 인정함을 받는 자는 자기를 칭찬하는 자가 아니요 오직 주께서 칭찬하시는 자니라\"</mark>(18절). 자기 칭찬이나 인기만으로 사역의 진실함이 결정되지 않습니다. 사람들이 그리스도께 돌아오고 믿음 안에서 자라는지를 살펴야 합니다. 바울 자신도 마지막 판단의 자리를 주님께 둡니다."], "points": ["다른 사람의 열매로 내 가치를 증명하려 하기보다, 그 은혜를 배우고 맡겨진 자리에서 충실하게 섬깁니다."]}, {"title": "적용 · 사람들이 나보다 예수님을 더 분명히 보도록", "paragraphs": ["예수님도 높아지고 싶어 하는 제자들에게 섬김을 가르치셨습니다. 세상의 권력자들처럼 사람을 지배하지 말고 섬기는 자가 되라 하시며 <mark>\"인자가 온 것은 섬김을 받으려 함이 아니라 도리어 섬기려 하고 자기 목숨을 많은 사람의 대속물로 주려 함이니라\"</mark>(막 10:45)고 말씀하셨습니다. 주님은 십자가에서 우리 죄를 담당하시고 부활하셔서 새 생명을 주셨습니다. 교회는 그 은혜 위에 세워졌으므로, <mark>교회의 권위와 섬김도 사람들을 그리스도께로 이끌어야 합니다</mark>.", "설교는 오늘의 한국 교회에 나타나는 두 흐름을 예로 듭니다. 직분 없이 신앙생활하려는 '노 타이틀' 성도가 늘어나는 현상 앞에서는, 직분을 맡으라고 권하기에 앞서 <mark>그 직분이 누구를 세우는 책임인지</mark> 섬김으로 보여 주어야 합니다. 또 사람들을 교회로 초대하는 일과 함께 삶과 섬김으로 복음의 진실함을 드러내는 전도가 강조됩니다. 이웃을 실제로 도우며, 우리가 왜 기꺼이 섬기는지 예수 그리스도의 은혜를 전해야 합니다. <mark>내 교회의 이름이 아니라 예수님을 알리는 섬김</mark>입니다.", "지금 맡은 사역에서 내려놓아야 할 내 교만은 무엇입니까? 다시 믿음으로 서도록 도와야 할 사람은 누구입니까? 다른 교회나 사람에게서 좋은 열매를 보았다면 <mark>감사하며 배울 점을 찾아보십시오</mark>. 교회의 회복은 사람이나 교회의 이름을 높이는 일이 아니라 예수 그리스도와 그분의 복음이 드러나는 것입니다.", "오늘 나의 말과 섬김을 통해 사람들은 나를 더 크게 보게 됩니까, 아니면 예수 그리스도와 복음을 더 분명하게 보게 됩니까?"], "points": ["교만은 무너뜨리고 사람은 세우며, 오직 주 안에서 자랑합니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "사람과 사역을 겉으로 보이는 인상과 성과만으로 판단하지 않았는지 돌아봤다"}, {"key": "c2", "text": "내 영향력을 상대를 제압하는 데가 아니라 세우는 데 사용하고 있는지 점검했다"}, {"key": "c3", "text": "다른 사람과의 비교가 배움이 아니라 우월감 증명이 되고 있지 않은지 돌아봤다"}, {"key": "c4", "text": "다른 사람의 수고와 열매를 정직하게 인정하고 주님만 자랑했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 맡은 자리에서 무너뜨려야 할 내 교만은 무엇이며, 다시 세워야 할 사람은 누구입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "교만 내려놓기", "value": "맡은 일에서 내 판단만 옳다고 고집하던 부분 하나를 주님 앞에 내려놓기"}, {"key": "act2", "label": "한 사람 세우기", "value": "믿음으로 다시 서도록 도와야 할 한 사람에게 격려와 기도로 다가가기"}, {"key": "act3", "label": "배우며 감사하기", "value": "다른 사람이나 교회의 좋은 열매를 찾아 감사하고 배울 점 한 가지 적기"}, {"key": "act4", "label": "공로 돌리기", "value": "함께 이룬 일에서 다른 사람의 수고를 정직하게 인정하고 감사 표현하기"}, {"key": "act5", "label": "말씀 암송", "value": "고린도후서 10:17–18을 외우며 주 안에서만 자랑하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "섬기러 오셔서 목숨을 대속물로 주시고, 연약한 사람을 통해 하나님의 능력으로 일하시며, 교만은 무너뜨리고 우리를 세우시는 주님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "사람과 사역을 겉모습으로 판단하고, 영향력을 나를 높이는 데 쓰며, 비교로 우월함을 증명하려 했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "그리스도의 온유로 사람을 세우게 하시고, 맡기신 분량 안에서 충실하게 섬기며, 오직 주 안에서 자랑하고 주님의 칭찬을 구하게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 13, Friday", "ref": "2 Corinthians 10:1–18", "headline": "Am I Tearing Down Pride<br>and Building Up People?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · 2 Corinthians 10:1-18", "s1heading": "Today's Word", "verse": "\"For even if I boast a little too much of our authority,<br>which the Lord gave for building you up<br>and not for destroying you, I will not be ashamed.\"", "verseRef": "2 Corinthians 10:8", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · By What Standard Do We Evaluate People and Ministry?", "paragraphs": ["What kind of leader do you consider capable in the church? We might picture someone who preaches well, makes quick decisions, and leads with strength. But sometimes we judge the value of ministry only by outward impressions and results. Some in the Corinthian church evaluated Paul that way: strong in his letters, but weak in person, and his speech — his preaching — didn't meet expectations. But Paul finds the power of ministry in <mark>Christ</mark>. Following His meekness, he builds people up to obey Christ.", "Today we'll look at two things. First, <mark>we must discern what to tear down and what to build up</mark>. Pride that blocks the gospel must be torn down; believers and the church must be built up. Second, <mark>imitating the grace given to others is different from comparing to prove our own superiority</mark>. In chapter 9, Paul said that through the collection believers' needs would be met and thanksgiving to God would overflow. In chapter 10 he deals directly with criticism of his ministry. Even after repentance and restored relationships, problems remained to be corrected. Having urged them to prepare the collection, Paul now urges them to correct their thinking and attitudes by the standard of the gospel. The goal is still the building up — the restoration — of the church. We too must ask: By what standard do I evaluate people and ministry, and whom is my influence being used to build up? Let's look at three parts."], "points": ["By what standard do I evaluate people and ministry, and whom is my influence being used to build up?"]}, {"title": "Verses 1–6 · Following Christ's Meekness, Fighting with God's Power", "paragraphs": ["In verses 1–2, Paul appeals to the believers <mark>'by the meekness and gentleness of Christ.'</mark> Meekness doesn't mean saying nothing when we see wrong; it's an attitude that waits for the other to turn while speaking what needs to be said. Paul asks that he not need to be bold toward them on his next visit. He's giving them a chance to correct things first through his letter. Their repentance mattered more than an immediate show of his strength. Yet if they persisted in disobedience, he was ready to respond firmly. <mark>Both waiting and warning help all believers return to Christ.</mark>", "In verse 3, 'we' refers first to Paul and his gospel co-workers. They too were weak people whose bodies grew tired and who suffered. But ministry doesn't depend on human strength alone, and human weakness doesn't weaken God's power. Verses 4–5 compare this to warfare: <mark>'For the weapons of our warfare are not of the flesh but have divine power to destroy strongholds. We destroy arguments and every lofty opinion raised against the knowledge of God, and take every thought captive to obey Christ.'</mark> What's to be torn down is wrong arguments and pride that block knowing God. In this context, 'strongholds' are the stubborn logic, self-assurance, and obstinacy that keep people from accepting the gospel — including the judgment that 'Paul looks weak, so God's power must not be with him.' Paul proclaims the truth of the gospel in the Spirit's power and serves with a life worthy of it. So 'taking every thought captive' in verse 5 is not primarily a method for clearing personal distractions; it's the ministry of bringing thoughts that oppose the gospel under Christ's rule. Applying it to examining our own thoughts before the Word must stand on this flow. In verse 6, Paul says he's ready to deal with remaining disobedience once their obedience is complete. This doesn't mean waiting until everyone is morally perfect; it means the community making its direction of following the gospel clear, and responsibly dealing with stubborn refusal. The text doesn't specify the method of discipline. Paul earnestly hopes, through exhortation, waiting, and necessary discipline, that the church will stand on the Word and the truth."], "points": ["Influence should be used not as power to subdue others immediately, but as responsibility to help them return to the truth."]}, {"title": "Verses 7–11 · Authority from the Lord Is for Building Up", "paragraphs": ["In verse 7 Paul points out judgment by appearances: <mark>'Look at what is before your eyes.'</mark> The Corinthians had come to believe in Christ through the gospel Paul preached; they should recognize that Paul too belongs to Christ. A person's impression alone cannot judge the gospel delivered through them and God's work. In verse 8, Paul's authority was given by the Lord, and it has a purpose: <mark>'our authority, which the Lord gave for building you up and not for destroying you.'</mark> Look at verses 4–5 and verse 8 together — both speak of 'destroying,' but the targets differ. <mark>Pride that opposes the gospel is torn down; believers are built up in faith and in the Word.</mark> We must discern together what needs correcting and whom we need to restore. If we treat people carelessly in the name of defending the truth, we lose this purpose. If we leave wrong teaching in place in the name of being considerate, we lose the same purpose. Even necessary rebuke must help the person admit the wrong and stand again in faith. Authority in the church is responsibility to care for the people God loves.", "We need discernment in applying this to today's leaders, too. Not every judgment of a modern leader equals Paul's apostolic authority. Leaders also stand under the judgment of the Word and must check whether their counsel is faithful to the gospel and builds people up. <mark>The church is not a community built on its pastor; it is built on the Word.</mark> Pastors are important, but they are not the core — the Word and the gospel are the church's roots. In verses 9–11, critics said Paul's letters were weighty and strong, but <mark>'his bodily presence is weak, and his speech of no account.'</mark> In that time, public eloquence and the impression one made were important measures of a leader. But what mattered to Paul was not an overpowering impression but faithfully proclaiming the gospel entrusted to him and building up the church. He rejects the idea that he tries to frighten them with letters, yet makes clear he'll actually do what he wrote if needed. Both meek waiting and decisive action aim at the believers' restoration."], "points": ["After counseling, I don't just confirm I was right; I consider how to help the other person stand again."]}, {"title": "Verses 12–14 · Not Self-Made Comparisons, but Within the Measure God Assigned", "paragraphs": ["In verse 12, Paul says, with a note of irony, that he dares not compare himself with his opponents: <mark>'when they measure themselves by one another and compare themselves with one another, they are without understanding.'</mark> He won't join their competition of self-praise. They make their own standards, evaluate themselves by them, and conclude that they're excellent. What's missing in that process is what God entrusted and how He worked. Yet Paul doesn't forbid all comparison or imitation. In chapter 8 he presented the Macedonians' generosity, and in chapter 9 he said the Corinthians' zeal encouraged other believers. The difference lies in standard and purpose. <mark>Learning from the grace given to others helps us grow together; comparing to prove our superiority puts ourselves in the seat where the Lord alone evaluates.</mark> The same goes for looking at other churches' ministries: a heart that learns from the grace God gave them and a heart that wants to show we're better point in different directions.", "In verses 13–14, Paul says he boasts <mark>'only with regard to the area of influence God assigned to us.'</mark> This doesn't mean living passively; it means speaking on the basis of what God has entrusted and actually accomplished — not overstepping. That a church was planted in Corinth, where he preached the gospel, is an important evidence of his ministry. Yet that doesn't make the church Paul's possession. He taught, <mark>'I planted, Apollos watered, but God gave the growth'</mark> (1 Corinthians 3:6), and he honestly acknowledged other co-workers' labor."], "points": ["Those faithful to the mission God gave them don't need to claim others' fruit as their own achievement."]}, {"title": "Verses 15–18 · Boasting in the Lord, Seeking His Commendation", "paragraphs": ["In verses 15–16, Paul hopes the Corinthians' faith will grow, and longs for that growth to lead to <mark>'preaching the gospel in lands beyond you.'</mark> He hopes the church will be strengthened and the news of Christ will reach those who haven't heard. The church's restoration doesn't stop at stability within the community. A restored church cares for believers in hardship and looks toward neighbors who need the gospel. <mark>Growth in faith widens the horizon of love and mission.</mark>", "Verse 17: <mark>'Let the one who boasts, boast in the Lord.'</mark> This carries the meaning of Jeremiah 9:23–24 — rather than boasting in wisdom or wealth, know and boast in the God who practices steadfast love, justice, and righteousness. Boasting in the Lord means rejoicing in and acknowledging who He is and what He has done. Verse 18 confesses that the One who finally approves is the Lord: <mark>'For it is not the one who commends himself who is approved, but the one whom the Lord commends.'</mark> Self-praise or popularity doesn't determine a ministry's genuineness. We must look at whether people are turning to Christ through the gospel and growing in faith. Paul himself places the final verdict with the Lord. Rather than trying to prove our worth through others' fruit, we should learn from that grace and serve faithfully where we've been placed."], "points": ["Rather than proving my worth by others' fruit, I learn from that grace and serve faithfully where I've been placed."]}, {"title": "Application · So People See Jesus More Clearly Than Me", "paragraphs": ["Jesus also taught servanthood to disciples who wanted to be great. He told them not to lord it over people like worldly rulers, but to become servants of others, and He described His own path this way: <mark>'For even the Son of Man came not to be served but to serve, and to give His life as a ransom for many'</mark> (Mark 10:45). The Lord bore our sins on the cross and rose to give us new life. The church is built on that grace. So <mark>the church's authority and service must also lead people to Christ</mark>.", "The sermon applies this to two trends in today's Korean church. First, more believers want to live their faith without church titles — 'no-title' believers. In light of the Word, before urging people to take on roles, we must show through service <mark>whom that role exists to build up</mark>; caring for and building someone up in faith reveals what a role truly means. Second, there's an emphasis on reforming evangelism: alongside inviting people to church, revealing the gospel's genuineness through life and service. Applied to today's Word, we must actually help our neighbors and share the grace of Jesus Christ that explains why we gladly serve — <mark>not just making our church's name known, but serving so people come to know and believe in Jesus</mark>.", "What pride of mine must I lay down in my current ministry? Whom must I help stand again in faith? If you've seen good fruit in another church or person, <mark>give thanks and look for something to learn</mark>. The church's restoration isn't about exalting a person's or a church's name, but about Jesus Christ and His gospel being revealed.", "Through my words and service today, do people see me as bigger — or do they see Jesus Christ and His gospel more clearly?"], "points": ["I tear down pride, build up people, and boast only in the Lord."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I judged people and ministry only by outward impressions and results."}, {"key": "c2", "text": "I checked whether I'm using my influence to build others up rather than to subdue them."}, {"key": "c3", "text": "I reflected on whether my comparisons with others have become proving superiority rather than learning."}, {"key": "c4", "text": "I honestly acknowledged others' labor and fruit, and boasted only in the Lord."}], "s4heading": "One-Line Reflection", "memoHint": "In my current role, what pride of mine needs to be torn down, and whom do I need to build up again?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Lay Down Pride", "value": "Lay before the Lord one area where you've insisted only your judgment is right"}, {"key": "act2", "label": "Build Up One Person", "value": "Approach one person who needs to stand again in faith with encouragement and prayer"}, {"key": "act3", "label": "Learn with Thanks", "value": "Find good fruit in another person or church, give thanks, and write down one thing to learn"}, {"key": "act4", "label": "Give Credit", "value": "Honestly acknowledge and thank others for their labor in something accomplished together"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize 2 Corinthians 10:17–18 and boast only in the Lord"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Lord, for coming to serve and giving Your life as a ransom, working with God's power through weak people, tearing down pride and building us up."}, {"key": "p2", "tag": "Repent", "text": "I repent of judging people and ministry by appearances, using influence to exalt myself, and trying to prove my superiority through comparison."}, {"key": "p3", "tag": "Ask", "text": "Help me build people up with the meekness of Christ, serve faithfully within the measure You've assigned, boast only in You, and seek Your commendation."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 13, Biyernes", "ref": "2 Corinto 10:1–18", "headline": "Ginigiba Ko ba ang Kapalaluan<br>at Itinatayo ang mga Tao?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · 2 Corinto 10:1-18", "s1heading": "Salita Ngayon", "verse": "\"Sapagkat kahit ako'y magmalaki nang kaunti sa aming awtoridad,<br>na ibinigay ng Panginoon upang itayo kayo<br>at hindi upang gibain kayo, hindi ako mapapahiya.\"", "verseRef": "2 Corinto 10:8", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Sa Anong Pamantayan Natin Sinusuri ang mga Tao at Ministeryo?", "paragraphs": ["Anong uri ng pinuno ang itinuturing mong may kakayahan sa iglesya? Maaaring maisip natin ang taong mahusay mangaral, mabilis magpasya, at malakas mamuno. Ngunit minsan ay hinuhusgahan natin ang halaga ng ministeryo batay lamang sa panlabas na impresyon at resulta. Ganoon sinuri ng ilan sa iglesya sa Corinto si Pablo: malakas sa kanyang mga liham, ngunit mahina sa personal, at ang kanyang pananalita — ang kanyang pangangaral — ay hindi umabot sa inaasahan. Ngunit natagpuan ni Pablo ang kapangyarihan ng ministeryo kay <mark>Cristo</mark>. Sa pagsunod sa Kanyang kaamuan, itinatayo niya ang mga tao upang sumunod kay Cristo.", "Ngayon, titingnan natin ang dalawang bagay. Una, <mark>dapat nating kilalanin kung ano ang dapat gibain at kung ano ang dapat itayo</mark>. Dapat gibain ang kapalaluang humahadlang sa ebanghelyo; dapat itayo ang mga mananampalataya at ang iglesya. Ikalawa, <mark>iba ang pagtulad sa biyayang ibinigay sa iba kaysa sa paghahambing upang patunayan ang sariling kahigitan</mark>. Sa kabanata 9, sinabi ni Pablo na sa pamamagitan ng koleksyon ay matutugunan ang pangangailangan ng mga mananampalataya at aapaw ang pasasalamat sa Diyos. Sa kabanata 10, tuwiran niyang hinaharap ang pagpuna sa kanyang ministeryo. Kahit matapos ang pagsisisi at naibalik na relasyon, may natitira pang problemang dapat itama. Matapos silang himuking ihanda ang koleksyon, hinihimok sila ngayon ni Pablo na itama ang kanilang pag-iisip at saloobin ayon sa pamantayan ng ebanghelyo. Ang layunin ay ang pagtatayo pa rin — ang pagpapanumbalik — ng iglesya. Dapat din nating itanong: Sa anong pamantayan ko sinusuri ang mga tao at ministeryo, at sino ang itinatayo ng aking impluwensya? Tingnan natin ang tatlong bahagi."], "points": ["Sa anong pamantayan ko sinusuri ang mga tao at ministeryo, at sino ang itinatayo ng aking impluwensya?"]}, {"title": "Talata 1–6 · Sumusunod sa Kaamuan ni Cristo, Lumalaban sa Kapangyarihan ng Diyos", "paragraphs": ["Sa talata 1–2, nakikiusap si Pablo sa mga mananampalataya <mark>'sa pamamagitan ng kaamuan at kahinahunan ni Cristo.'</mark> Ang kaamuan ay hindi pananahimik kapag nakakakita tayo ng mali; ito ay saloobing naghihintay na tumalikod ang iba habang sinasabi ang kailangang sabihin. Hiniling ni Pablo na hindi na niya kailangang maging matapang sa kanila sa susunod niyang pagdalaw. Binibigyan niya sila ng pagkakataong unang ayusin ang mga bagay sa pamamagitan ng kanyang liham. Mas mahalaga ang kanilang pagsisisi kaysa sa agarang pagpapakita ng kanyang lakas. Gayunman, kung magpapatuloy sila sa pagsuway, handa siyang tumugon nang matatag. <mark>Kapwa ang paghihintay at babala ay tumutulong sa lahat ng mananampalataya na bumalik kay Cristo.</mark>", "Sa talata 3, ang 'kami' ay unang tumutukoy kay Pablo at sa kanyang mga kamanggagawa sa ebanghelyo. Sila rin ay mahihinang taong napapagod ang katawan at nagdurusa. Ngunit ang ministeryo ay hindi umaasa sa lakas ng tao lamang, at hindi pinahihina ng kahinaan ng tao ang kapangyarihan ng Diyos. Inihahambing ito ng talata 4–5 sa digmaan: <mark>'Sapagkat ang mga sandata ng aming pakikidigma ay hindi sa laman kundi may banal na kapangyarihang gumiba ng mga muog. Ginigiba namin ang mga pangangatwiran at bawat mataas na palagay na itinataas laban sa pagkakilala sa Diyos, at binibihag ang bawat isip upang sumunod kay Cristo.'</mark> Ang dapat gibain ay ang maling pangangatwiran at kapalaluang humahadlang sa pagkakilala sa Diyos. Sa kontekstong ito, ang 'mga muog' ay ang matigas na lohika, pagtitiwala sa sarili, at katigasan ng ulo na pumipigil sa tao na tanggapin ang ebanghelyo — kasama ang paghatol na 'Mukhang mahina si Pablo, kaya wala sa kanya ang kapangyarihan ng Diyos.' Ipinapahayag ni Pablo ang katotohanan ng ebanghelyo sa kapangyarihan ng Espiritu at naglilingkod nang may buhay na karapat-dapat dito. Kaya ang 'pagbihag sa bawat isip' sa talata 5 ay hindi pangunahing paraan upang alisin ang personal na pagkagambala; ito ang ministeryo ng pagdadala sa mga isip na sumasalungat sa ebanghelyo sa ilalim ng paghahari ni Cristo. Ang paglalapat nito sa pagsusuri ng sarili nating isip sa harap ng Salita ay dapat nakatayo sa daloy na ito. Sa talata 6, sinabi ni Pablo na handa siyang harapin ang natitirang pagsuway kapag ganap na ang kanilang pagsunod. Hindi ito nangangahulugang maghintay hanggang maging perpekto sa moral ang lahat; ibig sabihin, nililinaw ng komunidad ang direksyon nito sa pagsunod sa ebanghelyo at responsableng hinaharap ang matigas na pagtanggi. Hindi tinutukoy ng talata ang paraan ng disiplina. Taimtim na umaasa si Pablo, sa pamamagitan ng pagpapayo, paghihintay, at kinakailangang disiplina, na tatayo ang iglesya sa Salita at katotohanan."], "points": ["Dapat gamitin ang impluwensya hindi bilang kapangyarihang agad na supilin ang iba, kundi bilang pananagutang tulungan silang bumalik sa katotohanan."]}, {"title": "Talata 7–11 · Ang Awtoridad Mula sa Panginoon ay para sa Pagtatayo", "paragraphs": ["Sa talata 7, itinuro ni Pablo ang paghatol batay sa panlabas: <mark>'Tingnan ninyo ang nasa harap ng inyong mga mata.'</mark> Nanampalataya ang mga taga-Corinto kay Cristo sa pamamagitan ng ebanghelyong ipinangaral ni Pablo; dapat nilang kilalaning si Pablo rin ay pag-aari ni Cristo. Hindi mahuhusgahan ng impresyon lamang sa isang tao ang ebanghelyong naihatid sa pamamagitan niya at ang gawa ng Diyos. Sa talata 8, ang awtoridad ni Pablo ay ibinigay ng Panginoon, at may layunin ito: <mark>'ang aming awtoridad, na ibinigay ng Panginoon upang itayo kayo at hindi upang gibain kayo.'</mark> Tingnan nang magkasama ang talata 4–5 at talata 8 — kapwa nagsasalita ng 'paggiba,' ngunit magkaiba ang tinutukoy. <mark>Ginigiba ang kapalaluang sumasalungat sa ebanghelyo; itinatayo ang mga mananampalataya sa pananampalataya at sa Salita.</mark> Dapat nating sama-samang kilalanin kung ano ang kailangang itama at kung sino ang kailangang ibalik. Kung pababayaan nating tratuhin ang mga tao sa ngalan ng pagtatanggol sa katotohanan, nawawala natin ang layuning ito. Kung hahayaan nating manatili ang maling turo sa ngalan ng pagiging maalalahanin, nawawala rin natin ang parehong layunin. Kahit ang kinakailangang pagsaway ay dapat tumulong sa tao na aminin ang mali at muling tumayo sa pananampalataya. Ang awtoridad sa iglesya ay pananagutang alagaan ang mga taong iniibig ng Diyos.", "Kailangan din natin ng pagkilala sa paglalapat nito sa mga pinuno ngayon. Hindi lahat ng pasya ng modernong pinuno ay katumbas ng awtoridad ng apostol na si Pablo. Ang mga pinuno rin ay nakatayo sa ilalim ng paghatol ng Salita at dapat suriin kung tapat sa ebanghelyo ang kanilang payo at kung nagtatayo ito ng mga tao. <mark>Ang iglesya ay hindi komunidad na itinayo sa pastor nito; itinayo ito sa Salita.</mark> Mahalaga ang mga pastor, ngunit hindi sila ang ubod — ang Salita at ebanghelyo ang ugat ng iglesya. Sa talata 9–11, sinabi ng mga kritiko na mabigat at malakas ang mga liham ni Pablo, ngunit <mark>'mahina ang kanyang presensya, at walang halaga ang kanyang pananalita.'</mark> Noong panahong iyon, mahalagang sukatan ng pinuno ang husay sa pagsasalita sa publiko at ang impresyong ibinibigay. Ngunit ang mahalaga kay Pablo ay hindi ang nakadadaig na impresyon kundi ang tapat na pagpapahayag ng ebanghelyong ipinagkatiwala sa kanya at pagtatayo ng iglesya. Tinatanggihan niya ang ideyang sinisikap niyang takutin sila sa mga liham, ngunit nililinaw na tunay niyang gagawin ang isinulat niya kung kinakailangan. Kapwa ang mahinahong paghihintay at mapagpasyang kilos ay naglalayon sa pagpapanumbalik ng mga mananampalataya."], "points": ["Matapos magpayo, hindi ko lamang kinukumpirmang tama ako; iniisip ko kung paano tutulungan ang iba na muling tumayo."]}, {"title": "Talata 12–14 · Hindi Sariling-Gawang Paghahambing, kundi sa Loob ng Sukat na Itinakda ng Diyos", "paragraphs": ["Sa talata 12, sinabi ni Pablo, na may bahid ng balintuna, na hindi siya nangangahas na ihambing ang sarili sa kanyang mga kalaban: <mark>'kapag sinusukat nila ang kanilang sarili sa isa't isa at inihahambing ang kanilang sarili sa isa't isa, wala silang pag-unawa.'</mark> Hindi siya sasali sa kanilang paligsahan ng pagpupuri sa sarili. Gumagawa sila ng sariling pamantayan, sinusuri ang sarili batay rito, at nagpapasyang sila'y magaling. Ang nawawala sa prosesong iyon ay kung ano ang ipinagkatiwala ng Diyos at kung paano Siya kumilos. Gayunman, hindi ipinagbabawal ni Pablo ang lahat ng paghahambing o pagtulad. Sa kabanata 8, ipinakilala niya ang kagandahang-loob ng mga taga-Macedonia, at sa kabanata 9 ay sinabi niyang pinasigla ng sigasig ng mga taga-Corinto ang ibang mananampalataya. Ang pagkakaiba ay nasa pamantayan at layunin. <mark>Ang pagkatuto sa biyayang ibinigay sa iba ay tumutulong sa ating sama-samang paglago; ang paghahambing upang patunayan ang ating kahigitan ay naglalagay sa ating sarili sa upuang ang Panginoon lamang ang sumusuri.</mark> Ganoon din sa pagtingin sa ministeryo ng ibang iglesya: magkaiba ang direksyon ng pusong natututo sa biyayang ibinigay ng Diyos sa kanila at ng pusong nais ipakitang mas magaling tayo.", "Sa talata 13–14, sinabi ni Pablo na nagmamalaki lamang siya <mark>'kaugnay ng saklaw ng impluwensyang itinakda sa amin ng Diyos.'</mark> Hindi ito nangangahulugang pamumuhay nang pasibo; ibig sabihin, nagsasalita batay sa ipinagkatiwala at tunay na isinakatuparan ng Diyos — hindi lumalampas. Ang pagkakatayo ng iglesya sa Corinto, kung saan niya ipinangaral ang ebanghelyo, ay mahalagang patunay ng kanyang ministeryo. Gayunman, hindi nito ginagawang pag-aari ni Pablo ang iglesya. Itinuro niya, <mark>'Ako ang nagtanim, si Apolos ang nagdilig, ngunit ang Diyos ang nagpalago'</mark> (1 Corinto 3:6), at tapat niyang kinilala ang pagpapagal ng ibang kamanggagawa."], "points": ["Ang mga tapat sa misyong ibinigay ng Diyos ay hindi na kailangang angkinin ang bunga ng iba bilang sarili nilang tagumpay."]}, {"title": "Talata 15–18 · Nagmamalaki sa Panginoon, Hinahanap ang Kanyang Papuri", "paragraphs": ["Sa talata 15–16, inaasahan ni Pablo na lalago ang pananampalataya ng mga taga-Corinto, at nananabik siyang humantong ang paglagong iyon sa <mark>'pangangaral ng ebanghelyo sa mga lupaing lampas sa inyo.'</mark> Inaasahan niyang mapapalakas ang iglesya at aabot ang balita ni Cristo sa mga hindi pa nakaririnig. Hindi humihinto ang pagpapanumbalik ng iglesya sa katatagan sa loob ng komunidad. Ang naibalik na iglesya ay nag-aalaga sa mga mananampalatayang nasa hirap at tumitingin sa kapwang nangangailangan ng ebanghelyo. <mark>Pinalalawak ng paglago sa pananampalataya ang abot-tanaw ng pag-ibig at misyon.</mark>", "Talata 17: <mark>'Ang nagmamalaki ay magmalaki sa Panginoon.'</mark> Dala nito ang kahulugan ng Jeremias 9:23–24 — sa halip na magmalaki sa karunungan o kayamanan, kilalanin at ipagmalaki ang Diyos na nagsasagawa ng tapat na pag-ibig, katarungan, at katuwiran. Ang pagmamalaki sa Panginoon ay pagkagalak at pagkilala sa kung sino Siya at sa Kanyang ginawa. Ipinahayag ng talata 18 na ang Isang huling sumasang-ayon ay ang Panginoon: <mark>'Sapagkat hindi ang pumupuri sa sarili ang sinasang-ayunan, kundi ang pinupuri ng Panginoon.'</mark> Hindi tinutukoy ng pagpupuri sa sarili o kasikatan ang katapatan ng ministeryo. Dapat nating tingnan kung bumabalik ang mga tao kay Cristo sa pamamagitan ng ebanghelyo at lumalago sa pananampalataya. Si Pablo mismo ay inilalagay sa Panginoon ang huling hatol. Sa halip na subukang patunayan ang ating halaga sa pamamagitan ng bunga ng iba, dapat tayong matuto sa biyayang iyon at tapat na maglingkod kung saan tayo inilagay."], "points": ["Sa halip na patunayan ang aking halaga sa bunga ng iba, natututo ako sa biyayang iyon at tapat na naglilingkod kung saan ako inilagay."]}, {"title": "Aplikasyon · Upang Makita ng mga Tao si Jesus nang Mas Malinaw Kaysa sa Akin", "paragraphs": ["Itinuro rin ni Jesus ang paglilingkod sa mga alagad na nais maging dakila. Sinabi Niyang huwag silang mamuno sa mga tao tulad ng makamundong pinuno, kundi maging mga lingkod ng iba, at inilarawan Niya ang Kanyang sariling landas nang ganito: <mark>'Sapagkat ang Anak ng Tao ay naparito hindi upang paglingkuran kundi upang maglingkod, at ibigay ang Kanyang buhay bilang pantubos sa marami'</mark> (Marcos 10:45). Pinasan ng Panginoon ang ating mga kasalanan sa krus at muling nabuhay upang bigyan tayo ng bagong buhay. Itinayo ang iglesya sa biyayang iyon. Kaya <mark>dapat ding akayin ng awtoridad at paglilingkod ng iglesya ang mga tao kay Cristo</mark>.", "Inilalapat ng sermon ito sa dalawang kalakaran sa iglesya sa Korea ngayon. Una, dumarami ang mga mananampalatayang nais mamuhay sa pananampalataya nang walang titulo sa iglesya — mga mananampalatayang 'walang titulo.' Sa liwanag ng Salita, bago himukin ang mga tao na tumanggap ng tungkulin, dapat nating ipakita sa paglilingkod <mark>kung sino ang itinatayo ng tungkuling iyon</mark>; ang pag-aalaga at pagtatayo sa isang tao sa pananampalataya ang naghahayag ng tunay na kahulugan ng tungkulin. Ikalawa, may pagbibigay-diin sa pagbabago ng ebanghelismo: kasama ng pag-aanyaya sa mga tao sa iglesya, ang paghahayag ng katapatan ng ebanghelyo sa pamamagitan ng buhay at paglilingkod. Kapag inilapat sa Salita ngayon, dapat nating tunay na tulungan ang ating kapwa at ibahagi ang biyaya ni Jesu-Cristo na nagpapaliwanag kung bakit tayo masayang naglilingkod — <mark>hindi lamang ipinakikilala ang pangalan ng ating iglesya, kundi naglilingkod upang makilala at sampalatayanan ng mga tao si Jesus</mark>.", "Anong kapalaluan ko ang dapat kong bitawan sa aking kasalukuyang ministeryo? Sino ang dapat kong tulungang muling tumayo sa pananampalataya? Kung nakakita ka ng mabuting bunga sa ibang iglesya o tao, <mark>magpasalamat at maghanap ng matututunan</mark>. Ang pagpapanumbalik ng iglesya ay hindi tungkol sa pagtataas ng pangalan ng tao o iglesya, kundi sa paghahayag kay Jesu-Cristo at sa Kanyang ebanghelyo.", "Sa pamamagitan ng aking mga salita at paglilingkod ngayon, mas malaki ba ang tingin ng mga tao sa akin — o mas malinaw ba nilang nakikita si Jesu-Cristo at ang Kanyang ebanghelyo?"], "points": ["Ginigiba ko ang kapalaluan, itinatayo ang mga tao, at nagmamalaki lamang sa Panginoon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung hinusgahan ko ang mga tao at ministeryo batay lamang sa panlabas na impresyon at resulta."}, {"key": "c2", "text": "Sinuri ko kung ginagamit ko ang aking impluwensya upang itayo ang iba sa halip na supilin sila."}, {"key": "c3", "text": "Pinag-isipan ko kung ang aking paghahambing sa iba ay naging pagpapatunay ng kahigitan sa halip na pagkatuto."}, {"key": "c4", "text": "Tapat kong kinilala ang pagpapagal at bunga ng iba, at nagmalaki lamang sa Panginoon."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa aking kasalukuyang tungkulin, anong kapalaluan ko ang dapat gibain, at sino ang kailangan kong muling itayo?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Bitawan ang Kapalaluan", "value": "Ilapag sa Panginoon ang isang bahagi kung saan ipinipilit mong ang pasya mo lamang ang tama"}, {"key": "act2", "label": "Itayo ang Isang Tao", "value": "Lapitan nang may pampalakas-loob at panalangin ang isang taong kailangang muling tumayo sa pananampalataya"}, {"key": "act3", "label": "Matuto nang May Pasasalamat", "value": "Maghanap ng mabuting bunga sa ibang tao o iglesya, magpasalamat, at isulat ang isang bagay na matututunan"}, {"key": "act4", "label": "Ibigay ang Pagkilala", "value": "Tapat na kilalanin at pasalamatan ang iba sa kanilang pagpapagal sa isang bagay na sama-samang nagawa"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang 2 Corinto 10:17–18 at magmalaki lamang sa Panginoon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Panginoon, sa pagparito upang maglingkod at ibigay ang Iyong buhay bilang pantubos, sa pagkilos sa kapangyarihan ng Diyos sa pamamagitan ng mahihinang tao, sa paggiba ng kapalaluan at pagtatayo sa amin."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa paghatol sa mga tao at ministeryo batay sa panlabas, sa paggamit ng impluwensya upang itaas ang sarili, at sa pagsisikap na patunayan ang aking kahigitan sa pamamagitan ng paghahambing."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong itayo ang mga tao sa kaamuan ni Cristo, tapat na maglingkod sa loob ng sukat na itinakda Mo, magmalaki lamang sa Iyo, at hanapin ang Iyong papuri."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-13';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
