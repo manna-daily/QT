@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/14(토) 큐티 · 고린도후서 11:1–15">
+<meta property="og:description" content="내 믿음의 중심은 나입니까, 예수님입니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 14일 토요일", "ref": "고린도후서 11장 1–15절", "headline": "내 믿음의 중심은<br>나입니까, 예수님입니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 고린도후서 11:1-15", "s1heading": "오늘의 말씀", "verse": "\"그러나 나는 뱀이 그 간계로 하와를 미혹한 것 같이<br>너희 마음이 그리스도를 향하는 진실함과 깨끗함에서<br>떠나 부패할까 두려워하노라\"", "verseRef": "고린도후서 11:3", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 듣기 좋은 말과 복음에 충실한 말", "paragraphs": ["앞에서 자기 칭찬을 경계하며 주 안에서 자랑하라고 했던 바울이, 오늘은 자신에 관한 이야기를 들어 달라고 요청합니다. 고린도 성도들이 자신을 낮추어 섬긴 바울은 의심하면서, 그들을 그리스도에게서 멀어지게 하는 사람들은 쉽게 받아들이고 있었기 때문입니다. 우리도 비슷합니다. 내 잘못을 돌아보라는 권면에는 마음이 불편하고, \"예수님을 믿으면 원하는 일이 다 이루어진다\"는 말에는 쉽게 마음이 갑니다. <mark>나를 만족시키는 말인지 먼저 따지다 보면, 그 말이 복음에 충실한지는 충분히 살피지 않을 수 있습니다</mark>.", "예수님의 이름을 말한다고 모든 가르침이 예수님께 충실한 것은 아닙니다. 그 이름을 내 욕심을 채우는 데 사용할 수도 있습니다. 그래서 오늘은 우리의 기준을 살핍니다. <mark>그리스도가 삶의 중심이 되시면 사람을 보는 눈과 섬기는 방식도 달라집니다</mark>. 내가 얻을 이익을 넘어, 누군가 주님을 알고 믿음으로 서는 일을 귀하게 여기게 됩니다."], "points": ["나는 예수님을 나를 높이는 데 필요한 분으로 여깁니까, 나를 구원하신 주인으로 믿고 따릅니까?"]}, {"title": "1–3절 · 교회를 그리스도께 드리려는 열심", "paragraphs": ["<mark>\"내가 하나님의 열심으로 너희를 위하여 열심을 내노니 내가 너희를 정결한 처녀로 한 남편인 그리스도께 드리려고 중매함이로다\"</mark>(2절). 자기 칭찬을 피하던 바울이 \"어리석은\" 이야기까지 하는 이유는 성도들의 믿음이 위험해졌기 때문입니다. 당시 유대인의 약혼은 결혼을 약속하는 엄중한 관계였습니다. 바울은 이 모습을 빌려 교회가 그리스도께 속했으며 그분을 만날 때까지 충실해야 한다고 말합니다. 그는 성도들이 자신에게 매이기를 바라지 않고, <mark>그들을 그리스도께 드리기를</mark> 바랍니다. 교회를 개척한 목회자도 교회의 주인이 될 수 없습니다.", "<mark>\"뱀이 그 간계로 하와를 미혹한 것 같이 너희 마음이 그리스도를 향하는 진실함과 깨끗함에서 떠나 부패할까 두려워하노라\"</mark>(3절). 창세기 3장에서 뱀은 말로 하와를 속여 하나님의 말씀을 의심하게 했습니다. 바울의 열심은 사람을 자기 곁에 붙잡아 두려는 소유욕이 아니라, <mark>성도들이 주님을 떠나지 않도록 돌보는 사랑</mark>입니다."], "points": ["나의 섬김을 통해 사람들이 나를 더 의지하게 되는지, 말씀을 붙들고 그리스도를 따르게 되는지 살핍니다."]}, {"title": "4–6절 · 다른 예수, 다른 영, 다른 복음을 분별합니다", "paragraphs": ["<mark>\"만일 누가 가서 우리가 전파하지 아니한 다른 예수를 전파하거나 … 다른 영을 받게 하거나 … 다른 복음을 받게 할 때에는 너희가 잘 용납하는구나\"</mark>(4절). 바울과 동역자들이 처음 전한 사도적 복음이 분별의 기준입니다. 예수님과 성령님과 복음에 대한 이해는 연결되어 있습니다. 예수님을 <mark>내 성공만 보장하는 분</mark>으로 여기면, 성령의 역사도 원하는 결과를 얻는 능력으로만 이해하게 되고, 죄에서 돌이켜 주님을 따르는 복음은 흐려집니다. 내 기대가 말씀 앞에서 바로잡혀야 하는데, 오히려 <mark>말씀을 내 기대에 맞추려</mark> 할 수 있습니다.", "바울은 <mark>\"내가 비록 말에는 부족하나 지식에는 그렇지 아니하니\"</mark>(6절)라며 말하는 기술과 복음에 대한 지식을 구별합니다. 당시에는 말솜씨가 사람의 가치를 판단하는 중요한 기준이었지만, 바울에게 중요한 것은 그리스도를 바르게 알고 전하는 일이었습니다. 우리도 설교를 들으며 감동했는지와 함께 <mark>무엇을 믿게 되었는지</mark> 살펴야 합니다. 나를 불편하게 하는 말씀도 주님께 돌아오게 하는 은혜가 될 수 있습니다."], "points": ["말씀을 통해 십자가와 부활의 주님을 더 바르게 알고, 회개하며 순종하게 되는지가 중요합니다."]}, {"title": "7–12절 · 자기 권리를 내려놓은 바울의 섬김", "paragraphs": ["<mark>\"내가 너희를 높이려고 나를 낮추어 하나님의 복음을 값없이 너희에게 전함으로 죄를 지었느냐\"</mark>(7절). 바울은 고린도에서 사례를 받지 않고 천막을 만들며 복음을 전했습니다(행 18:3). 당시에는 후원과 명예가 밀접하게 연결되어 있어서, 후원을 거절하는 일도 오해를 낳을 수 있었습니다. 8절의 \"탈취\"는 실제로 돈을 빼앗았다는 뜻이 아니라, 다른 교회들이 도와주었기에 고린도 성도들이 부담 없이 복음을 들었다는 사실을 강하게 표현한 것입니다. 마게도냐 형제들이 부족한 것을 채웠습니다(9절).", "여기서 <mark>사역자는 사례를 받으면 안 된다</mark>는 결론을 내려서는 안 됩니다. 바울은 복음 전하는 사람이 지원받을 권리를 인정했습니다(고전 9:14). 다만 고린도에서는 복음에 장애가 생기지 않도록 그 권리를 기꺼이 내려놓았습니다. 중요한 것은 돈을 받았느냐만이 아니라 <mark>그 선택이 누구의 유익을 향하느냐</mark>입니다. 바울은 이 방식을 이어 가며 말로 내세우는 자격과 실제로 사람을 섬기는 삶을 함께 살펴보게 합니다(10–12절)."], "points": ["그리스도의 은혜를 중심에 두면, 사람에게서 무엇을 얻을지보다 그가 주님 안에서 살도록 무엇을 내어 줄지 생각합니다."]}, {"title": "13–15절 · 광명의 천사로 가장하는 것을 분별합니다", "paragraphs": ["<mark>\"그런 사람들은 거짓 사도요 속이는 일꾼이니 자기를 그리스도의 사도로 가장하는 자들이니라\"</mark>(13절). 그들은 그리스도의 사도처럼 보이지만 실제로는 성도들을 그리스도에게서 멀어지게 합니다. <mark>\"사탄도 자기를 광명의 천사로 가장하나니\"</mark>(14절). 그러므로 경건해 보이는 말과 모습만으로 그 가르침을 받아들여서는 안 됩니다. <mark>복음의 내용과 섬기는 행실</mark>을 함께 보며, 사람들을 그리스도께 충실하게 하는지, 자기 이익을 위해 이용하는지 분별해야 합니다.", "<mark>\"그들의 마지막은 그 행위대로 되리라\"</mark>(15절). 하나님은 겉으로 꾸민 모습에 속지 않으십니다. 주님의 이름을 내세워도 거짓과 착취가 정당해지지 않습니다. 이 말씀 앞에서 우리 자신도 살펴야 합니다. <mark>내가 전하는 말과 실제로 사람을 대하는 방식이 같은 복음을 드러내고 있는지</mark> 돌아보아야 합니다. 그리스도의 사랑을 받은 사람은 다른 사람이 믿음으로 서도록 자신의 시간과 편의를 기꺼이 내어 줍니다."], "points": ["복음을 전하는 방식에서도 내가 무엇을 믿는지가 드러납니다."]}, {"title": "적용 · 내게 돌아오는 이익이 없어도", "paragraphs": ["제자들이 높은 자리를 구할 때 예수님은 <mark>\"인자가 온 것은 섬김을 받으려 함이 아니라 도리어 섬기려 하고 자기 목숨을 많은 사람의 대속물로 주려 함이니라\"</mark>(막 10:45)고 말씀하셨습니다. 주님은 십자가에서 우리의 죄를 담당하시고 부활하셔서 새 생명을 주셨습니다. 바울의 섬김은 그 구원을 전하며 자신이 받은 사랑에 응답하는 삶이었습니다. <mark>나를 중심에 두면 사람에게서 무엇을 얻을지 먼저 계산하고, 그리스도의 은혜를 중심에 두면 그 사람을 위해 무엇을 내어 줄지 생각합니다</mark>.", "설교는 미국 한인 교회에서도 차세대 사역자를 구하기 어렵다는 호소가 이어진다고 말합니다. 이럴 때 우리가 참된 사역자를 알아보는 기준도 돌아보아야 합니다. 바울처럼 복음에 충실하게 섬기는 사람이 있어도, 내가 원하는 모습과 성과만 찾다가 그 수고를 놓칠 수 있습니다. <mark>아이들에게 말씀을 가르치고, 한 사람을 위해 기도하고, 오래 기다리며 돌보는 섬김</mark>을 알아보고 있습니까? 화려하지 않다는 이유로 그 가치를 낮추고 있지는 않습니까? 사역자를 분별하는 기준에도 복음이 중심에 있어야 하고, 그 일꾼이 잘 섬기도록 함께 책임을 나눠야 합니다.", "주님께서 먼저 자신을 내어 주셨기에 우리가 살았습니다. 그 은혜를 받은 우리는 오늘 다른 사람이 주님을 알도록 섬길 수 있습니다. 나의 이익을 판단의 가장 높은 자리에 두면 나를 높여 주는 말에 쉽게 흔들리지만, 하나님 나라의 가치를 두면 누군가 그리스도를 알고 자라는 일을 귀하게 여기게 됩니다. 오늘 <mark>내 시간과 편의의 일부를 내어 주어 누군가의 믿음을 돕는 일</mark>을 실천해 보십시오.", "나에게 돌아오는 이익이 없어도 누군가 그리스도를 알고 믿음으로 서게 된다면, 나는 기꺼이 나의 시간과 마음을 내어놓겠습니까?"], "points": ["예수님을 내 믿음의 중심에 모시고, 오늘 누군가 주님을 알도록 내 시간과 마음을 내어 줍니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "듣기 좋은 말인지보다 복음에 충실한 말인지를 먼저 분별했다"}, {"key": "c2", "text": "예수님을 내 성공을 보장하는 분으로만 여기고 있지 않은지 돌아봤다"}, {"key": "c3", "text": "나의 섬김이 사람을 나에게 매이게 하는지, 그리스도께 이끄는지 점검했다"}, {"key": "c4", "text": "화려하지 않아도 복음에 충실하게 섬기는 사람들의 수고를 알아보았다"}], "s4heading": "묵상 한 줄", "memoHint": "내게 돌아오는 이익이 없어도, 누군가의 믿음을 위해 오늘 내어 줄 수 있는 나의 시간과 마음은 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "기준 점검하기", "value": "최근 마음이 끌렸던 신앙적인 말이나 가르침을 십자가와 부활의 복음에 비추어 살펴보기"}, {"key": "act2", "label": "시간 내어 주기", "value": "내 시간과 편의의 일부를 내어 누군가의 믿음을 돕는 일 하나 실천하기"}, {"key": "act3", "label": "숨은 섬김 알아보기", "value": "아이들을 가르치거나 기도로 돌보는 사역자에게 감사와 격려 전하기"}, {"key": "act4", "label": "그리스도께 이끌기", "value": "내가 돌보는 사람이 나보다 말씀과 주님을 더 의지하도록 돕기"}, {"key": "act5", "label": "말씀 암송", "value": "고린도후서 11:3을 외우며 그리스도를 향한 진실함과 깨끗함을 지키기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "섬기러 오셔서 자기 목숨을 대속물로 주시고, 우리를 그리스도께 속한 정결한 신부로 부르시며, 진리의 복음을 맡겨 주신 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "듣기 좋은 말을 더 쉽게 받아들이고, 예수님을 내 욕심을 채우는 분으로 여기며, 사람에게서 무엇을 얻을지 먼저 계산했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "제 마음이 그리스도를 향한 진실함과 깨끗함에서 떠나지 않게 하시고, 거짓을 분별하며, 이익이 없어도 누군가의 믿음을 위해 기꺼이 내어 주게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 14, Saturday", "ref": "2 Corinthians 11:1–15", "headline": "Is the Center of My Faith<br>Me, or Jesus?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · 2 Corinthians 11:1-15", "s1heading": "Today's Word", "verse": "\"But I am afraid that as the serpent deceived Eve by his cunning,<br>your thoughts will be led astray<br>from a sincere and pure devotion to Christ.\"", "verseRef": "2 Corinthians 11:3", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Pleasing Words and Words Faithful to the Gospel", "paragraphs": ["In the previous passage, Paul warned against self-commendation and told us to boast in the Lord. He also made clear that the authority given to him was for building believers up. Yet today he asks them to listen to a story about himself. That's because the Corinthian believers doubted Paul, who had humbled himself to serve them, while readily accepting people who were drawing them away from Christ. We can judge the same way. We feel uncomfortable with counsel that tells us to examine our wrongs, but our hearts readily go toward words like, 'If you believe in Jesus, everything you want will come true.' <mark>If we first ask whether words satisfy us, we may not sufficiently examine whether they are faithful to the gospel.</mark>", "Speaking the name of Jesus doesn't make every teaching faithful to Jesus. That name can be used to fulfill our own desires. So today we examine our standard: Do I regard Jesus as someone I need to exalt myself? Or do I believe and follow Him as the Lord who saved me — my Master? <mark>When Christ becomes the center of life, the way we see people and the way we serve change too.</mark> Beyond what we'll gain, we come to treasure someone coming to know the Lord and standing in faith. Today's passage can be divided into two warnings."], "points": ["Do I regard Jesus as someone I need to exalt myself, or believe and follow Him as the Lord who saved me?"]}, {"title": "Verses 1–3 · Zeal to Present the Church to Christ", "paragraphs": ["The first warning is against the danger of being deceived by another gospel. In verses 1–2, Paul asks them to bear with a bit of his foolishness. Why would someone who avoided self-praise go this far? Because the believers' faith was in danger. <mark>'For I feel a divine jealousy for you, since I betrothed you to one husband, to present you as a pure virgin to Christ.'</mark> He describes himself as one who arranged the church's engagement to Christ. In Jewish custom of that time, betrothal was a solemn relationship promising marriage. Paul borrows this picture to say the church belongs to Christ and must remain faithful until it meets Him. Paul doesn't want the believers bound to himself; he wants to <mark>present them to Christ</mark>. Even a pastor who planted a church cannot be the church's owner. So Paul's zeal is distinct from possessiveness that wants to keep people at his side; it is love that cares for believers so they don't leave the Lord. Our service must follow this direction too: we must check whether people come to rely more on us, or hold to the Word and follow Christ.", "In verse 3, Paul reveals his worry: <mark>'But I am afraid that as the serpent deceived Eve by his cunning, your thoughts will be led astray from a sincere and pure devotion to Christ.'</mark> In Genesis 3, the serpent deceived Eve with words and made her doubt God's Word. Paul fears that the Corinthians' hearts toward Christ will grow clouded."], "points": ["I check whether my service makes people rely more on me, or hold to the Word and follow Christ."]}, {"title": "Verses 4–6 · Discerning Another Jesus, Another Spirit, Another Gospel", "paragraphs": ["In verse 4, Paul points out their attitude of readily accepting <mark>'another Jesus than the one we proclaimed, or … a different spirit from the one you received, or … a different gospel from the one you accepted.'</mark> 'We' here refers first to the co-workers who preached the gospel with Paul; the apostolic gospel they first proclaimed is the standard for discernment. Our understanding of Jesus, the Holy Spirit, and the gospel are connected. If we distort Jesus' salvation, we'll misunderstand the Spirit's work, and the news of salvation will change too. Today, if we regard Jesus as <mark>One who only guarantees my success</mark>, we may understand the Spirit's work merely as power to get the results we want. Then the gospel of turning from sin to follow the Lord grows dim. Paul shows the danger of the Corinthian church pushing away sincere counsel while being tolerant of appealing claims. Our expectations should be corrected before the Word — yet we may instead try to <mark>fit the Word to our expectations</mark>.", "In verses 5–6, after stating that he's not inferior as an apostle, Paul distinguishes speaking skill from knowledge of the gospel: <mark>'Even if I am unskilled in speaking, I am not so in knowledge.'</mark> In those days, eloquence was an important standard for judging a person's worth. But what mattered to Paul was knowing and proclaiming Christ rightly, and he made that gospel clear to the believers. When we hear sermons, we too must ask not only whether we were moved, but <mark>what we came to believe</mark>. What matters is whether, through the Word, we come to know the crucified and risen Lord more rightly, repent, and obey. If the words we want to hear become our standard, the direction of what we accept can be reversed. Even a Word that makes us uncomfortable can be grace that brings us back to the Lord."], "points": ["What matters is whether, through the Word, I know the crucified and risen Lord more rightly, repent, and obey."]}, {"title": "Verses 7–12 · Paul's Service in Laying Down His Rights", "paragraphs": ["The second warning tells us to discern Paul's service from the reality of the false apostles. In verses 7–9, Paul confesses that he preached the gospel to the Corinthians without receiving payment: <mark>'Or did I commit a sin in humbling myself so that you might be exalted, because I preached God's gospel to you free of charge?'</mark> He humbled himself to lift them up — serving them with the gospel so they could enjoy a life belonging to God. Yet even that choice was criticized. In Corinth, Paul also made tents (Acts 18:3). In those days support and honor were closely linked, and refusing support could create misunderstanding in relationships. Paul gave up his right for the sake of the believers' faith; he bore his own labor to serve them and also received help from other churches. In verse 8, he speaks as if he 'robbed other churches,' but that doesn't mean he actually extorted money. It strongly expresses that because other churches helped, the Corinthians could hear the gospel without burden. Verse 9 explains that brothers from Macedonia supplied what he lacked.", "We must not conclude from this that <mark>ministers should not receive support</mark>. Paul acknowledged the right of those who preach the gospel to be supported (1 Corinthians 9:14). He simply laid down that right willingly in Corinth so no obstacle would arise for the gospel. What matters is not only whether money was received, but <mark>whose benefit the choice serves</mark>. Paul valued believers hearing the gospel and standing in faith more than his own comfort. In verses 10–12, Paul says he'll continue not to burden the Corinthians — not to receive support — and that God knows it's not because he doesn't love them. By keeping this approach, he wants to completely remove any basis for his opponents to claim they work just as he does. He makes them look at both the credentials people claim with words and the life that actually serves people."], "points": ["With Christ's grace at the center, I think less about what I'll get from people and more about what I'll give so they can live in the Lord."]}, {"title": "Verses 13–15 · Discerning Those Disguised as Angels of Light", "paragraphs": ["In verses 13–15, Paul names his opponents: <mark>'For such men are false apostles, deceitful workmen, disguising themselves as apostles of Christ.'</mark> They look like apostles of Christ but actually draw believers away from Christ. <mark>'And no wonder, for even Satan disguises himself as an angel of light.'</mark> So we must not accept a teaching on the basis of pious-sounding words and appearances alone. We must look at both <mark>the content of the gospel and the conduct of service</mark>, discerning whether people are being made faithful to Christ or used for someone's own gain.", "Verse 15 warns, <mark>'Their end will correspond to their deeds.'</mark> God is not fooled by outward disguises. Even when the Lord's name is invoked, lies and exploitation are not justified. Before this Word, we must each examine ourselves too: <mark>Do the words I proclaim and the way I actually treat people reveal the same gospel?</mark> What we believe shows even in how we share the gospel. Those who have received Christ's love gladly give their time and convenience so that others may stand in faith."], "points": ["What I believe shows even in the way I share the gospel."]}, {"title": "Application · Even When Nothing Comes Back to Me", "paragraphs": ["When the disciples sought high positions, Jesus made clear why He came: <mark>'For even the Son of Man came not to be served but to serve, and to give His life as a ransom for many'</mark> (Mark 10:45). The Lord bore our sins on the cross and rose to give us new life. Paul's service was a life of proclaiming that salvation and responding to the love he had received. <mark>When I put myself at the center, I first calculate what I can get from people; when I put Christ's grace at the center, I think about what I can give so they may live in the Lord.</mark> Such service is precious even when nothing comes back right away, because it is rooted in the values of God's kingdom.", "The sermon notes that Korean churches in the U.S. are also crying out that it's hard to find next-generation ministers. At such a time, we must also reexamine our standards for recognizing true ministers and serving alongside them. Even when there are people serving faithfully to the gospel like Paul, we may miss their labor if we only look for the image and results we want. Do you recognize <mark>service that teaches children the Word, prays for one person, and cares with long patience</mark>? Do you lower its worth because it isn't flashy? The gospel must be at the center of our standards for discerning ministers too, and we must share responsibility so those workers can serve well.", "Jesus' cross shows where the life we've received came from: because the Lord first gave Himself, we live. Having received that grace, we can serve today so that others may know the Lord. If we put our own interests at the highest place of judgment, we're easily swayed by words that flatter us; if we put God's kingdom values there, we treasure someone coming to know Christ and growing in faith. Today, <mark>give part of your time and convenience to help someone's faith</mark>.", "Keep this question in your heart: Even if nothing comes back to me, if someone comes to know Christ and stand in faith — will I gladly give my time and heart?"], "points": ["With Jesus at the center of my faith, I give my time and heart today so that someone may know the Lord."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I discerned first whether words are faithful to the gospel, rather than whether they're pleasant to hear."}, {"key": "c2", "text": "I reflected on whether I regard Jesus only as the One who guarantees my success."}, {"key": "c3", "text": "I checked whether my service binds people to me or leads them to Christ."}, {"key": "c4", "text": "I recognized the labor of those who serve faithfully to the gospel, even without flash."}], "s4heading": "One-Line Reflection", "memoHint": "Even if nothing comes back to me, what time and heart can I give today for someone's faith?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Check My Standard", "value": "Examine a recent spiritual message or teaching that appealed to you in light of the gospel of the cross and resurrection"}, {"key": "act2", "label": "Give My Time", "value": "Give part of your time and convenience to do one thing that helps someone's faith"}, {"key": "act3", "label": "Notice Hidden Service", "value": "Offer thanks and encouragement to a minister who teaches children or cares for others through prayer"}, {"key": "act4", "label": "Point to Christ", "value": "Help someone you care for rely more on the Word and the Lord than on you"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize 2 Corinthians 11:3 and keep a sincere and pure devotion to Christ"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for sending the One who came to serve and gave His life as a ransom, for calling us as a pure bride belonging to Christ, and for entrusting us with the gospel of truth."}, {"key": "p2", "tag": "Repent", "text": "I repent of more readily accepting pleasant words, regarding Jesus as One who fulfills my desires, and calculating first what I can get from people."}, {"key": "p3", "tag": "Ask", "text": "Keep my heart from straying from a sincere and pure devotion to Christ; help me discern falsehood and gladly give for someone's faith even when nothing comes back to me."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 14, Sabado", "ref": "2 Corinto 11:1–15", "headline": "Ang Sentro ba ng Aking Pananampalataya<br>ay Ako, o si Jesus?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · 2 Corinto 11:1-15", "s1heading": "Salita Ngayon", "verse": "\"Ngunit natatakot ako na kung paanong nilinlang ng ahas si Eva sa kanyang katusuhan,<br>ang inyong mga isip ay maililigaw<br>mula sa tapat at dalisay na debosyon kay Cristo.\"", "verseRef": "2 Corinto 11:3", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Mga Salitang Masarap Pakinggan at mga Salitang Tapat sa Ebanghelyo", "paragraphs": ["Sa naunang talata, nagbabala si Pablo laban sa pagpupuri sa sarili at sinabi sa ating magmalaki sa Panginoon. Nilinaw din niya na ang awtoridad na ibinigay sa kanya ay para sa pagtatayo ng mga mananampalataya. Gayunman, ngayon ay hinihiling niyang pakinggan nila ang isang kuwento tungkol sa kanyang sarili. Iyon ay dahil pinagdududahan ng mga mananampalataya sa Corinto si Pablo, na nagpakumbaba upang paglingkuran sila, habang madaling tinatanggap ang mga taong naglalayo sa kanila kay Cristo. Maaari rin tayong humatol nang ganoon. Hindi tayo komportable sa payong nagsasabing suriin ang ating mga mali, ngunit madaling napupunta ang ating puso sa mga salitang tulad ng, 'Kung maniniwala ka kay Jesus, matutupad ang lahat ng gusto mo.' <mark>Kung uunahin nating itanong kung kinasisiyahan natin ang mga salita, maaaring hindi natin sapat na masuri kung tapat ang mga ito sa ebanghelyo.</mark>", "Ang pagbanggit sa pangalan ni Jesus ay hindi gumagawang tapat kay Jesus ang bawat turo. Maaaring gamitin ang pangalang iyon upang tuparin ang sarili nating pagnanasa. Kaya ngayon ay sinusuri natin ang ating pamantayan: Itinuturing ko ba si Jesus bilang Isang kailangan ko upang itaas ang aking sarili? O pinaniniwalaan at sinusundan ko Siya bilang Panginoong nagligtas sa akin — ang aking Panginoon? <mark>Kapag si Cristo ang naging sentro ng buhay, nagbabago rin ang paraan ng ating pagtingin sa mga tao at ng ating paglilingkod.</mark> Lampas sa ating makukuha, pinahahalagahan natin ang pagkakilala ng iba sa Panginoon at pagtayo sa pananampalataya. Maaaring hatiin ang talata ngayon sa dalawang babala."], "points": ["Itinuturing ko ba si Jesus bilang Isang kailangan ko upang itaas ang sarili, o pinaniniwalaan at sinusundan ko Siya bilang Panginoong nagligtas sa akin?"]}, {"title": "Talata 1–3 · Sigasig na Iharap ang Iglesya kay Cristo", "paragraphs": ["Ang unang babala ay laban sa panganib na malinlang ng ibang ebanghelyo. Sa talata 1–2, hinihiling ni Pablo na pagtiisan nila ang kaunti niyang kahangalan. Bakit gagawin ito ng taong umiiwas sa pagpupuri sa sarili? Dahil nanganganib ang pananampalataya ng mga mananampalataya. <mark>'Sapagkat nadarama ko ang banal na paninibugho para sa inyo, sapagkat ipinagkasundo ko kayo sa iisang asawa, upang iharap kayo bilang dalisay na birhen kay Cristo.'</mark> Inilalarawan niya ang sarili bilang ang nag-ayos ng pakikipagkasundo ng iglesya kay Cristo. Sa kaugaliang Judio noon, ang pakikipagkasundo ay taimtim na relasyong nangangako ng kasal. Hinihiram ni Pablo ang larawang ito upang sabihing ang iglesya ay pag-aari ni Cristo at dapat manatiling tapat hanggang sa makita Siya. Hindi nais ni Pablo na matali sa kanya ang mga mananampalataya; nais niyang <mark>iharap sila kay Cristo</mark>. Kahit ang pastor na nagtatag ng iglesya ay hindi maaaring maging may-ari nito. Kaya iba ang sigasig ni Pablo sa pagiging mapag-angkin na gustong panatilihin ang mga tao sa kanyang tabi; ito ay pag-ibig na nag-aalaga sa mga mananampalataya upang hindi nila iwan ang Panginoon. Dapat ding sundan ng ating paglilingkod ang direksyong ito: dapat nating suriin kung lalong umaasa sa atin ang mga tao, o humahawak sila sa Salita at sumusunod kay Cristo.", "Sa talata 3, inihayag ni Pablo ang kanyang pag-aalala: <mark>'Ngunit natatakot ako na kung paanong nilinlang ng ahas si Eva sa kanyang katusuhan, ang inyong mga isip ay maililigaw mula sa tapat at dalisay na debosyon kay Cristo.'</mark> Sa Genesis 3, nilinlang ng ahas si Eva sa pamamagitan ng mga salita at pinagduda siya sa Salita ng Diyos. Natatakot si Pablo na lalabo ang puso ng mga taga-Corinto para kay Cristo."], "points": ["Sinusuri ko kung pinapangyari ng aking paglilingkod na lalong umasa sa akin ang mga tao, o humawak sila sa Salita at sumunod kay Cristo."]}, {"title": "Talata 4–6 · Pagkilala sa Ibang Jesus, Ibang Espiritu, Ibang Ebanghelyo", "paragraphs": ["Sa talata 4, itinuro ni Pablo ang kanilang saloobing madaling tumanggap ng <mark>'ibang Jesus kaysa sa aming ipinangaral, o … ibang espiritu kaysa sa inyong tinanggap, o … ibang ebanghelyo kaysa sa inyong tinanggap.'</mark> Ang 'kami' rito ay unang tumutukoy sa mga kamanggagawang nangaral ng ebanghelyo kasama ni Pablo; ang ebanghelyo ng mga apostol na una nilang ipinangaral ang pamantayan ng pagkilala. Magkaugnay ang ating pag-unawa kay Jesus, sa Espiritu Santo, at sa ebanghelyo. Kung babaluktutin natin ang kaligtasan ni Jesus, hindi natin mauunawaan nang tama ang gawa ng Espiritu, at magbabago rin ang balita ng kaligtasan. Ngayon, kung itinuturing natin si Jesus bilang <mark>Isang gumagarantiya lamang ng aking tagumpay</mark>, maaari nating maunawaan ang gawa ng Espiritu bilang kapangyarihan lamang upang makuha ang gusto nating resulta. Kung gayon, lumalabo ang ebanghelyo ng pagtalikod sa kasalanan upang sundin ang Panginoon. Ipinapakita ni Pablo ang panganib na itinutulak ng iglesya sa Corinto ang tapat na payo habang mapagparaya sa mga kaakit-akit na pahayag. Dapat itama ang ating mga inaasahan sa harap ng Salita — ngunit maaari pa nating subukang <mark>iangkop ang Salita sa ating mga inaasahan</mark>.", "Sa talata 5–6, matapos sabihing hindi siya mababa bilang apostol, ibinukod ni Pablo ang husay sa pagsasalita mula sa kaalaman sa ebanghelyo: <mark>'Kahit ako'y hindi bihasa sa pagsasalita, hindi ako ganoon sa kaalaman.'</mark> Noong panahong iyon, ang husay sa pananalita ay mahalagang pamantayan sa paghatol sa halaga ng tao. Ngunit ang mahalaga kay Pablo ay ang wastong pagkakilala at pagpapahayag kay Cristo, at nilinaw niya ang ebanghelyong iyon sa mga mananampalataya. Kapag nakikinig tayo ng sermon, dapat din nating itanong hindi lamang kung naantig tayo, kundi <mark>kung ano ang pinaniwalaan natin</mark>. Ang mahalaga ay kung, sa pamamagitan ng Salita, mas wasto nating nakikilala ang ipinako at muling nabuhay na Panginoon, nagsisisi, at sumusunod. Kung ang mga salitang gusto nating marinig ang naging pamantayan, maaaring mabaligtad ang direksyon ng ating tinatanggap. Kahit ang Salitang nagpapahirap sa atin ay maaaring maging biyayang nagbabalik sa atin sa Panginoon."], "points": ["Ang mahalaga ay kung, sa pamamagitan ng Salita, mas wasto kong nakikilala ang ipinako at muling nabuhay na Panginoon, nagsisisi, at sumusunod."]}, {"title": "Talata 7–12 · Ang Paglilingkod ni Pablo sa Pagbitaw sa Kanyang mga Karapatan", "paragraphs": ["Ang ikalawang babala ay nagsasabing kilalanin ang paglilingkod ni Pablo mula sa tunay na anyo ng mga huwad na apostol. Sa talata 7–9, ipinahayag ni Pablo na ipinangaral niya ang ebanghelyo sa mga taga-Corinto nang hindi tumatanggap ng bayad: <mark>'O nagkasala ba ako sa pagpapakumbaba ko upang kayo'y maitaas, dahil ipinangaral ko sa inyo ang ebanghelyo ng Diyos nang walang bayad?'</mark> Nagpakumbaba siya upang itaas sila — pinaglingkuran sila sa ebanghelyo upang matamasa nila ang buhay na pag-aari ng Diyos. Gayunman, kahit ang pasyang iyon ay pinuna. Sa Corinto, gumawa rin si Pablo ng mga tolda (Gawa 18:3). Noong panahong iyon, malapit na magkaugnay ang suporta at karangalan, at ang pagtanggi sa suporta ay maaaring magdulot ng hindi pagkakaunawaan sa relasyon. Isinuko ni Pablo ang kanyang karapatan alang-alang sa pananampalataya ng mga mananampalataya; pinasan niya ang sarili niyang pagpapagal upang paglingkuran sila at tumanggap din ng tulong mula sa ibang iglesya. Sa talata 8, nagsasalita siya na parang 'ninakawan niya ang ibang iglesya,' ngunit hindi ito nangangahulugang tunay siyang nangikil ng pera. Matinding pagpapahayag ito na dahil tumulong ang ibang iglesya, narinig ng mga taga-Corinto ang ebanghelyo nang walang pasanin. Ipinaliwanag ng talata 9 na pinunan ng mga kapatid mula sa Macedonia ang kanyang kakulangan.", "Hindi natin dapat ipasya mula rito na <mark>hindi dapat tumanggap ng suporta ang mga ministro</mark>. Kinilala ni Pablo ang karapatan ng mga nangangaral ng ebanghelyo na suportahan (1 Corinto 9:14). Kusang-loob lamang niyang binitawan ang karapatang iyon sa Corinto upang walang hadlang na lumitaw para sa ebanghelyo. Ang mahalaga ay hindi lamang kung tumanggap ng pera, kundi <mark>kung kaninong pakinabang naglilingkod ang pasya</mark>. Mas pinahalagahan ni Pablo ang pakikinig ng mga mananampalataya sa ebanghelyo at pagtayo sa pananampalataya kaysa sa sarili niyang ginhawa. Sa talata 10–12, sinabi ni Pablo na patuloy siyang hindi magiging pasanin sa mga taga-Corinto — hindi tatanggap ng suporta — at alam ng Diyos na hindi ito dahil hindi niya sila iniibig. Sa pagpapanatili ng paraang ito, nais niyang tuluyang alisin ang anumang batayan ng kanyang mga kalaban na angkining gumagawa sila tulad niya. Pinatitingin niya sila kapwa sa mga kredensyal na inaangkin ng tao sa salita at sa buhay na tunay na naglilingkod sa mga tao."], "points": ["Kapag nasa sentro ang biyaya ni Cristo, mas iniisip ko kung ano ang ibibigay ko upang mamuhay sila sa Panginoon kaysa sa makukuha ko sa mga tao."]}, {"title": "Talata 13–15 · Pagkilala sa mga Nagkukunwaring Anghel ng Liwanag", "paragraphs": ["Sa talata 13–15, pinangalanan ni Pablo ang kanyang mga kalaban: <mark>'Sapagkat ang mga taong iyon ay mga huwad na apostol, mapanlinlang na manggagawa, nagkukunwaring mga apostol ni Cristo.'</mark> Mukha silang mga apostol ni Cristo ngunit sa katunayan ay inilalayo ang mga mananampalataya kay Cristo. <mark>'At hindi nakapagtataka, sapagkat kahit si Satanas ay nagkukunwaring anghel ng liwanag.'</mark> Kaya hindi natin dapat tanggapin ang isang turo batay lamang sa mukhang banal na salita at anyo. Dapat nating tingnan kapwa <mark>ang nilalaman ng ebanghelyo at ang asal ng paglilingkod</mark>, kinikilala kung ginagawang tapat kay Cristo ang mga tao o ginagamit para sa sariling pakinabang ng iba.", "Nagbababala ang talata 15, <mark>'Ang kanilang wakas ay ayon sa kanilang mga gawa.'</mark> Hindi nalilinlang ang Diyos ng panlabas na pagkukunwari. Kahit banggitin ang pangalan ng Panginoon, hindi nabibigyang-katwiran ang kasinungalingan at pagsasamantala. Sa harap ng Salitang ito, dapat ding suriin ng bawat isa sa atin ang sarili: <mark>Inihahayag ba ng mga salitang ipinapahayag ko at ng paraan ng tunay kong pagtrato sa mga tao ang iisang ebanghelyo?</mark> Nahahayag kahit sa paraan ng ating pagbabahagi ng ebanghelyo kung ano ang ating pinaniniwalaan. Ang mga tumanggap ng pag-ibig ni Cristo ay masayang nagbibigay ng kanilang oras at ginhawa upang makatayo ang iba sa pananampalataya."], "points": ["Nahahayag kahit sa paraan ng aking pagbabahagi ng ebanghelyo kung ano ang aking pinaniniwalaan."]}, {"title": "Aplikasyon · Kahit Walang Bumabalik sa Akin", "paragraphs": ["Nang hanapin ng mga alagad ang matataas na posisyon, nilinaw ni Jesus kung bakit Siya dumating: <mark>'Sapagkat ang Anak ng Tao ay naparito hindi upang paglingkuran kundi upang maglingkod, at ibigay ang Kanyang buhay bilang pantubos sa marami'</mark> (Marcos 10:45). Pinasan ng Panginoon ang ating mga kasalanan sa krus at muling nabuhay upang bigyan tayo ng bagong buhay. Ang paglilingkod ni Pablo ay buhay ng pagpapahayag ng kaligtasang iyon at pagtugon sa pag-ibig na natanggap niya. <mark>Kapag inilalagay ko ang sarili sa sentro, inuuna kong kuwentahin kung ano ang makukuha ko sa mga tao; kapag inilalagay ko sa sentro ang biyaya ni Cristo, iniisip ko kung ano ang maibibigay ko upang mamuhay sila sa Panginoon.</mark> Mahalaga ang ganitong paglilingkod kahit walang agad na bumabalik, dahil nakaugat ito sa mga pagpapahalaga ng kaharian ng Diyos.", "Binabanggit ng sermon na ang mga iglesyang Koreano sa Amerika ay dumaraing din na mahirap makahanap ng mga ministro ng susunod na henerasyon. Sa ganitong panahon, dapat din nating suriing muli ang ating pamantayan sa pagkilala sa tunay na mga ministro at paglilingkod kasama nila. Kahit may mga taong tapat na naglilingkod sa ebanghelyo tulad ni Pablo, maaari nating makaligtaan ang kanilang pagpapagal kung hinahanap lamang natin ang larawan at resultang gusto natin. Kinikilala mo ba ang <mark>paglilingkod na nagtuturo ng Salita sa mga bata, nananalangin para sa isang tao, at nag-aalaga nang may mahabang pagtitiyaga</mark>? Ibinababa mo ba ang halaga nito dahil hindi ito marangya? Dapat ding nasa sentro ng ating pamantayan sa pagkilala sa mga ministro ang ebanghelyo, at dapat nating ibahagi ang pananagutan upang maglingkod nang mabuti ang mga manggagawang iyon.", "Ipinapakita ng krus ni Jesus kung saan nagmula ang buhay na natanggap natin: dahil ang Panginoon ang unang nagbigay ng Kanyang sarili, tayo'y nabubuhay. Dahil natanggap natin ang biyayang iyon, maaari tayong maglingkod ngayon upang makilala ng iba ang Panginoon. Kung ilalagay natin ang sariling interes sa pinakamataas na lugar ng paghatol, madali tayong matangay ng mga salitang nambobola sa atin; kung ilalagay natin doon ang mga pagpapahalaga ng kaharian ng Diyos, pinahahalagahan natin ang pagkakilala ng iba kay Cristo at paglago sa pananampalataya. Ngayon, <mark>ibigay ang bahagi ng iyong oras at ginhawa upang tulungan ang pananampalataya ng iba</mark>.", "Itago ang tanong na ito sa iyong puso: Kahit walang bumabalik sa akin, kung may makakilala kay Cristo at tatayo sa pananampalataya — masaya ko bang ibibigay ang aking oras at puso?"], "points": ["Kasama si Jesus sa sentro ng aking pananampalataya, ibinibigay ko ngayon ang aking oras at puso upang may makakilala sa Panginoon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Inuna kong kilalanin kung tapat sa ebanghelyo ang mga salita, sa halip na kung masarap itong pakinggan."}, {"key": "c2", "text": "Pinag-isipan ko kung itinuturing ko si Jesus bilang Isang gumagarantiya lamang ng aking tagumpay."}, {"key": "c3", "text": "Sinuri ko kung itinatali ng aking paglilingkod ang mga tao sa akin o inaakay sila kay Cristo."}, {"key": "c4", "text": "Kinilala ko ang pagpapagal ng mga tapat na naglilingkod sa ebanghelyo, kahit walang karangyaan."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Kahit walang bumabalik sa akin, anong oras at puso ang maibibigay ko ngayon para sa pananampalataya ng iba?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Suriin ang Pamantayan", "value": "Suriin sa liwanag ng ebanghelyo ng krus at muling pagkabuhay ang isang espirituwal na mensahe o turong kamakailang umakit sa iyo"}, {"key": "act2", "label": "Ibigay ang Aking Oras", "value": "Ibigay ang bahagi ng iyong oras at ginhawa upang gawin ang isang bagay na tumutulong sa pananampalataya ng iba"}, {"key": "act3", "label": "Pansinin ang Nakatagong Paglilingkod", "value": "Mag-alok ng pasasalamat at pampalakas-loob sa ministrong nagtuturo sa mga bata o nag-aalaga sa iba sa panalangin"}, {"key": "act4", "label": "Ituro kay Cristo", "value": "Tulungan ang taong inaalagaan mo na mas umasa sa Salita at sa Panginoon kaysa sa iyo"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang 2 Corinto 11:3 at panatilihin ang tapat at dalisay na debosyon kay Cristo"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa pagsugo sa Isang naparito upang maglingkod at ibinigay ang Kanyang buhay bilang pantubos, sa pagtawag sa amin bilang dalisay na nobyang pag-aari ni Cristo, at sa pagkakatiwala sa amin ng ebanghelyo ng katotohanan."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa mas madaling pagtanggap ng masasarap pakinggang salita, sa pagtuturing kay Jesus bilang Isang tumutupad sa aking pagnanasa, at sa pag-uuna ng pagkukuwenta kung ano ang makukuha ko sa mga tao."}, {"key": "p3", "tag": "Kahilingan", "text": "Ingatan Mo ang aking puso mula sa paglayo sa tapat at dalisay na debosyon kay Cristo; tulungan Mo akong kilalanin ang kasinungalingan at masayang magbigay para sa pananampalataya ng iba kahit walang bumabalik sa akin."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-14';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
