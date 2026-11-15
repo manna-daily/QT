@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/15(주일) 큐티 · 고린도후서 11:16–33">
+<meta property="og:description" content="나의 약함으로 예수님을 자랑할 수 있습니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 15일 주일", "ref": "고린도후서 11장 16–33절", "headline": "나의 약함으로<br>예수님을 자랑할 수 있습니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 고린도후서 11:16-33", "s1heading": "오늘의 말씀", "verse": "\"내가 부득불 자랑할진대<br>내 약한 것을<br>자랑하리라\"", "verseRef": "고린도후서 11:30", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 무엇을 능력이라고 생각합니까", "paragraphs": ["바울은 고린도에서 1년 6개월 동안 말씀을 가르쳤습니다. 그런데 이후 들어온 사람들이 바울을 비판하며 성도들을 흔들었습니다. 그의 약한 모습과 말솜씨가 문제가 되었고, 재정 지원을 받지 않는 섬김마저 오해를 받았습니다. 당시 고린도에서는 말하는 능력과 사회적 지위가 사람을 평가하는 중요한 기준이었습니다. 오늘로 말하면 어느 대학을 나왔는지, 어느 직장에 다니는지 같은 기준입니다. <mark>자신을 높이고 강하게 행동하는 사람은 능력 있어 보이고, 자신을 낮추어 섬기는 바울은 약해 보였습니다</mark>.", "우리도 능력 있는 목회자를 원합니다. 그런데 무엇을 능력이라고 생각합니까? 자신감 넘치는 말과 눈에 보이는 성과만 보고 있지는 않습니까? 바울도 자랑할 것이 있다고 말합니다. 그런데 그가 꺼낸 것은 <mark>복음을 전하다 겪은 고난, 성도들을 돌보며 감당한 수고, 그리고 남의 도움을 받아 도망했던 일</mark>입니다. 그 약함을 통해 자신을 붙드신 하나님과 그리스도가 드러나기 때문입니다."], "points": ["내 삶에는 그리스도의 은혜를 말할 때, 이 땅에서 얻은 좋은 것이 아닌 자랑할 수 있는 약함과 고난의 흔적이 있습니까?"]}, {"title": "16–21절 · 사람을 지배하는 힘을 참된 권위로 착각하지 마십시오", "paragraphs": ["바울은 자신을 어리석은 자로 여기더라도 잠시 말을 들어 달라고 간청합니다. 다른 사람들의 자랑은 잘 받아 주니 자기 이야기도 들어 보라는 것입니다. 바울의 마음은 편하지 않았을 것입니다. 자신을 높이며 우월함을 증명하는 방식은 주님을 따르는 모범이 될 수 없기 때문입니다. 그래서 그는 이 방식을 거듭 \"어리석다\"고 말합니다. 이것은 자기 과시를 허락하는 말씀이 아니라 <mark>성도들이 무엇에 현혹되고 있는지 깨우치려는</mark> 말입니다.", "<mark>\"누가 너희를 종으로 삼거나 잡아먹거나 빼앗거나 스스로 높이거나 뺨을 칠지라도 너희가 용납하는도다\"</mark>(20절). 거짓 교사들은 성도들을 짓누르고 이용했습니다. 바울은 이런 대우를 참는 것이 믿음이라고 칭찬하지 않고, 그것을 용납하는 교회의 판단을 책망합니다. 그리고 <mark>\"나는 우리가 약한 것 같이 욕되게 말하노라\"</mark>(21절)라고 말합니다. 성도들을 지배하고 이용하는 것이 강함이라면 자신은 그런 강함을 보여 주지 않았다는 것입니다."], "points": ["사역을 살피려면 누가 대가를 치르는지 보아야 합니다. 성도를 이용해 자신을 높이는지, 자신을 내어 주어 성도를 세우는지입니다."]}, {"title": "22–27절 · 그리스도를 위해 감당한 수고", "paragraphs": ["<mark>\"그들이 히브리인이냐 나도 그러하며 … 그들이 그리스도의 일꾼이냐 정신 없는 말을 하거니와 나는 더욱 그러하도다\"</mark>(22–23절). 바울은 대적자들이 자랑하는 배경을 자신도 가졌다고 말하지만, 조건을 길게 자랑하지 않고 곧바로 그리스도를 섬기며 감당한 수고로 이야기를 옮깁니다. 유대인에게 <mark>\"사십에서 하나 감한 매\"</mark>를 다섯 번 맞았습니다(신 25:3). 로마식 형벌인 태장으로 세 번(행 16장), 돌로 한 번 맞고, 세 번 파선하고 일 주야를 깊은 바다에서 지냈습니다. 이 파선들은 사도행전 27장의 로마행보다 앞선 일로, <mark>사도행전이 바울의 모든 고난을 기록하지는 않았음</mark>을 보여 줍니다.", "그는 강도와 동족과 이방인, 도시와 광야와 바다, 거짓 형제 가운데서 위험을 겪었고, 잠 못 이룸과 굶주림과 목마름과 추위를 견뎠습니다. 그러나 <mark>고생한 양이 사역의 진실함을 자동으로 증명하지는 않습니다</mark>. 잘못된 목적을 위해서도 사람은 큰 고통을 감당할 수 있습니다. 바울은 복음을 전하고 성도들을 세우기 위해 이 길을 걸었고, 그의 고난은 자신의 강인함보다 그를 붙드신 하나님의 은혜를 증언합니다."], "points": ["무엇을 위해, 누구를 위해 그 수고를 감당했는지가 중요합니다."]}, {"title": "28–29절 · 누가 약하면 나도 약하고", "paragraphs": ["바울의 이야기는 고난의 횟수에서 끝나지 않습니다. <mark>\"아직도 날마다 내 속에 눌리는 일이 있으니 곧 모든 교회를 위하여 염려하는 것이라\"</mark>(28절). 그는 복음을 전한 뒤 성도들의 상태를 잊지 않았습니다. 그들이 그리스도를 믿고 살아가는지를 계속 돌보았습니다.", "<mark>\"누가 약하면 내가 약하지 아니하며 누가 실족하게 되면 내가 애타지 않더냐\"</mark>(29절). 누군가 약해지면 바울도 함께 아파했고, 누군가 죄에 걸려 넘어지면 마음이 타들어 갔으며 그를 넘어뜨리는 일에 분노했습니다. 우리도 사역을 평가할 때 얼마나 많은 일을 했는지와 함께 <mark>한 사람을 어떻게 돌보는지</mark> 살펴야 합니다. 약한 사람의 이야기를 듣고, 넘어지는 사람을 붙들며, 다시 믿음으로 서도록 돕는 사랑이 중요합니다."], "points": ["참된 사역은 고난을 견뎌 낸 나를 보여 주는 데서 멈추지 않고, 여전히 약한 한 사람을 돌보는 사랑으로 이어집니다."]}, {"title": "30–33절 · 광주리에 실려 내려간 사도", "paragraphs": ["<mark>\"내가 부득불 자랑할진대 내 약한 것을 자랑하리라\"</mark>(30절). 바울은 하나님께서 자신의 말이 진실함을 아신다고 고백합니다. 사람들에게 강한 인상을 주려고 경험을 꾸미는 말이 아닙니다. 그의 약함에는 복음을 위해 감당한 위험과 결핍, 도움이 필요했던 한계가 담겨 있고, 그는 그 약함을 통해 하나님의 돌보심을 드러냅니다. 이 고백은 12장에서 약한 가운데 나타나는 그리스도의 능력으로 더 분명해집니다.", "그리고 바울은 다메섹에서 자신을 잡으려는 고관을 피해 <mark>\"광주리를 타고 들창문으로 성벽을 내려가\"</mark>(33절) 벗어난 일을 고백합니다(행 9:25). 적을 제압한 장면이 아니라, <mark>다른 사람들의 손에 생명을 맡겨야 했던 일</mark>입니다. 성도들을 돌보던 바울에게도 돌봄이 필요했습니다. 그러므로 약함을 인정하고 도움을 받는 것을 믿음의 실패로 여길 필요는 없습니다. 하나님은 우리를 통해 다른 사람을 돌보시고, 다른 사람을 통해 우리도 돌보십니다."], "points": ["믿음의 자랑에는 도움받은 이야기도 들어갑니다. 나를 혼자 버틴 영웅이 아니라 하나님의 은혜를 드러내기 때문입니다."]}, {"title": "적용 · 나의 고생보다 나를 붙드신 예수님을", "paragraphs": ["부활하신 예수님은 제자들에게 손과 옆구리를 보여 주셨고, 도마에게도 그 흔적을 확인하고 믿음으로 나아가라 하셨습니다(요 20:27). 십자가에서 죽으신 바로 그분이 살아나셨습니다. 주님의 상처는 우리를 구원하시려고 자신을 내어 주신 사랑을 증언합니다. 다시 강조합니다. <mark>우리의 수고나 고난이 예수님의 구원을 대신하거나 보충하지는 않습니다</mark>. 우리는 그분의 죽음과 부활로 구원받았고, 그 은혜를 받은 사람으로서 다른 사람을 사랑하다 겪는 수고를 감당합니다.", "모두가 바울처럼 매 맞음과 파선을 겪어야 하는 것은 아닙니다. 그러나 그리스도를 따르는 삶에는 <mark>내 편의와 이익을 내려놓는 나만의 십자가의 선택</mark>이 있습니다. 정직을 지키느라 감수한 손해, 지친 사람을 돌보느라 내어 준 시간, 사랑했지만 오해받아 흘린 눈물이 있을 수 있습니다. 그때 나의 자랑은 얼마나 고생했는가에 머물지 않고, <mark>그 가운데 주님께서 나를 붙드셨고 다시 사랑할 힘을 주셨다</mark>는 고백으로 나아가야 합니다.", "오늘 사역과 사람을 바라보는 내 기준을 돌아보십시오. <mark>눈에 보이는 강함에만 감탄하고 있는지, 그리스도를 닮아 자신을 내어 주는 사랑을 알아보고 있는지</mark> 살펴보십시오. 그리고 도움이 필요하다면 부끄러워하지 말고 손을 내미십시오. 나를 성벽 아래로 내려 줄 광주리를 붙든 손들도 하나님이 보내신 은혜입니다.", "나는 그리스도를 사랑하고 사람을 섬기기 위해 어떤 불편과 손해를 기꺼이 받아들이고 있습니까? 그 흔적을 통해 나의 고생보다 나를 붙드신 예수님을 자랑할 수 있습니까?"], "points": ["나의 약함을 숨기지 않고, 그 약함 속에서 나를 붙드신 예수님을 자랑합니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "사역과 사람을 말솜씨, 지위, 성과 같은 겉모습으로만 평가하지 않았는지 돌아봤다"}, {"key": "c2", "text": "권위를 사람을 지배하는 힘이 아니라 세우는 책임으로 이해하고 있는지 점검했다"}, {"key": "c3", "text": "얼마나 많은 일을 했는지보다 한 사람을 어떻게 돌보고 있는지 돌아봤다"}, {"key": "c4", "text": "약함을 인정하고 도움을 받는 것을 부끄러워하지 않았다"}], "s4heading": "묵상 한 줄", "memoHint": "그리스도를 따르며 내가 감수한 불편과 손해, 혹은 도움받은 일 가운데 나를 붙드신 예수님을 자랑할 수 있는 흔적은 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "기준 돌아보기", "value": "겉모습보다 자신을 내어 주어 섬기는 사람 한 명을 떠올리고 감사 표현하기"}, {"key": "act2", "label": "한 사람 돌보기", "value": "약해져 있거나 넘어진 한 사람의 이야기를 끝까지 들어 주고 함께 기도하기"}, {"key": "act3", "label": "도움 요청하기", "value": "혼자 버티던 일이 있다면 믿을 만한 사람에게 솔직하게 도움을 구하기"}, {"key": "act4", "label": "흔적 나누기", "value": "고생담이 아니라 그 속에서 나를 붙드신 하나님의 은혜를 한 사람에게 나누기"}, {"key": "act5", "label": "말씀 암송", "value": "고린도후서 11:30을 외우며 약함 속에서 예수님을 자랑하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "우리를 위해 상처 입으시고 다시 살아나신 예수님, 약함 속에서도 저를 붙드시고 다른 사람의 손을 통해 저를 돌보시는 하나님께 감사합니다"}, {"key": "p2", "tag": "회개", "text": "겉으로 보이는 강함에만 감탄하고, 약함을 숨기며 혼자 영웅처럼 버티려 했고, 내 고생을 자랑하려 했던 저를 회개합니다"}, {"key": "p3", "tag": "간구", "text": "사람을 지배하는 힘이 아니라 세우는 사랑을 따르게 하시고, 약한 한 사람을 돌보며, 나의 약함 속에서 그리스도만을 자랑하게 하소서"}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 15, Lord's Day", "ref": "2 Corinthians 11:16–33", "headline": "Can I Boast of Jesus<br>Through My Weakness?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · 2 Corinthians 11:16-33", "s1heading": "Today's Word", "verse": "\"If I must boast,<br>I will boast of the things<br>that show my weakness.\"", "verseRef": "2 Corinthians 11:30", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · What Do We Consider Power?", "paragraphs": ["Today's passage begins with 'I repeat' — Paul continues his request that they listen to him. The issue was by what standard his gospel and ministry should be judged. Paul had first taught the Word in Corinth for a year and six months. But people who came into the church later criticized him and unsettled the believers. His weak appearance and speaking ability became issues, and even his service without receiving financial support was misunderstood. In Corinth then, speaking ability and social status were important standards for evaluating people — today we might say which university someone attended or where they work. Within the church too, <mark>those who exalted themselves and acted forcefully looked capable, while Paul, who humbled himself to serve, looked weak</mark>.", "We too want capable ministers and pastors. But what do we consider capability? Are we looking only at confident words and visible results? In today's passage, Paul too says he has things to boast of. But what he brings out are <mark>the sufferings he endured preaching the gospel, the labor of caring for believers, and finally even the time he escaped with others' help</mark> — because through that weakness, the God who held him and the Christ he serves are revealed. Today let's reflect on two things: By what standard do I evaluate ministry? And when I speak of Christ's grace, does my life carry marks of weakness and suffering I can boast of — rather than the good things I've gained in this world? Let's look at three parts."], "points": ["When I speak of Christ's grace, does my life carry marks of weakness and suffering I can boast of, rather than worldly gains?"]}, {"title": "Verses 16–21 · Don't Mistake Power to Dominate People for True Authority", "paragraphs": ["In verse 16, Paul pleads that even if they think him a fool, they listen to him for a while: since they gladly put up with others' boasting, let them hear his story too. Paul's heart couldn't have been at ease saying this, because exalting oneself and proving superiority can't be a model for following the Lord. So he repeatedly calls this approach 'foolish.' We must not read his words as permission to show off. He is trying to <mark>awaken the believers to what was dazzling them</mark>. What Paul seeks to protect isn't his own honor, but their holding to the gospel he preached and staying loyal to Christ. In verse 19, he points out that the believers who consider themselves wise gladly bear with fools — it sounds like praise but actually exposes their wrong judgment.", "Verse 20 lists the behaviors they tolerated: <mark>'For you bear it if someone makes slaves of you, or devours you, or takes advantage of you, or puts on airs, or strikes you in the face.'</mark> — treating them like slaves, consuming the community's resources for personal gain, trapping people through deceit, exalting themselves, and shaming them. Whether 'striking in the face' was actual violence or humiliating treatment is hard to determine, but it's clear the false teachers oppressed and used the believers. Paul doesn't praise enduring such treatment as faith; he rebukes the church's judgment in tolerating it. And he confesses, <mark>'To my shame, I must say, we were too weak for that!'</mark> (v. 21). Put simply: if dominating and using believers is strength, he never showed that kind of strength. True authority is responsibility to build people up in the Lord, and we must look at how those claiming authority treat believers."], "points": ["To examine ministry, look at who is paying the cost — whether believers are used to exalt someone, or someone gives himself to build believers up."]}, {"title": "Verses 22–27 · Labors Endured for Christ", "paragraphs": ["In verse 22, Paul says, <mark>'Are they Hebrews? So am I. Are they Israelites? So am I. Are they offspring of Abraham? So am I.'</mark> He too possesses the Jewish background and covenant privileges his opponents boast of. 'Are they servants of Christ? I am a better one — I am talking like a madman.' This doesn't withdraw his judgment that they are false apostles; it takes up their claim to examine who actually serves Christ. Yet Paul doesn't boast at length about his credentials; he immediately turns to the labors he endured serving Christ. From the latter part of verse 23 through verse 27, he speaks of imprisonments, beatings, and repeated danger of death. Five times he received <mark>'forty lashes less one'</mark> — Jewish community discipline; its background, Deuteronomy 25:3, prohibits more than forty lashes. Three times he was beaten with rods, a Roman punishment (see Philippi in Acts 16). Once he was stoned. Three times he was shipwrecked, and a night and a day he was adrift at sea. These three shipwrecks precede the voyage to Rome in Acts 27 — events we don't otherwise know about. <mark>Acts doesn't record every one of Paul's sufferings.</mark>", "On his journeys he faced danger from robbers, from his own people and Gentiles, in the city, the wilderness, and at sea — even from false brothers. That labor carried into daily life: sleepless nights, hunger and thirst, cold and lack of clothing. Yet <mark>the amount of suffering doesn't automatically prove a ministry's genuineness.</mark> People can endure great pain even for wrong purposes. We must see what Paul endured this for and for whom. He walked this path to proclaim the gospel and build up believers. His sufferings testify not to his own toughness but to the grace of God who held him on that path."], "points": ["What matters is what and whom the labor was for."]}, {"title": "Verses 28–29 · If Anyone Is Weak, I Am Weak", "paragraphs": ["Paul's story doesn't end with a count of hardships. <mark>'And, apart from other things, there is the daily pressure on me of my anxiety for all the churches'</mark> (v. 28). After proclaiming the gospel, he didn't forget the believers' condition. He kept caring whether they were believing in and living for Christ.", "Verse 29 shows that heart: <mark>'Who is weak, and I am not weak? Who is made to fall, and I am not indignant?'</mark> When someone grew weak, Paul ached with them. When someone stumbled into sin, his heart burned, and he was indignant at what caused them to fall. We too, when evaluating ministry, must look not only at how much work was done, but at <mark>how one person is being cared for</mark>. Love that listens to the weak, holds up those who are falling, and helps them stand again in faith matters. At the destination of Paul's labor were people."], "points": ["True ministry doesn't stop at showing the self who endured suffering; it continues in love that still cares for one weak person."]}, {"title": "Verses 30–33 · The Apostle Lowered in a Basket", "paragraphs": ["In verse 30, Paul makes the direction of his boasting clear: <mark>'If I must boast, I will boast of the things that show my weakness.'</mark> He then confesses that God knows he isn't lying. These aren't words embellishing experiences to impress people; he testifies before the God who knows his life. Paul's weakness includes the dangers and deprivation he bore for the gospel and the limits where he needed help. Through that weakness he reveals God's care. This confession becomes even clearer in chapter 12, with Christ's power made perfect in weakness.", "In verses 32–33, Paul confesses that in Damascus, to escape the governor who sought to seize him, <mark>'I was let down in a basket through a window in the wall and escaped his hands'</mark> (cf. Acts 9:25, where the disciples let him down). Paul doesn't recount a scene of overpowering his enemies by his own strength; he confesses a time when <mark>he had to entrust his life to others' hands</mark>. Paul, who cared for believers, also needed care. Even an apostle proclaiming the gospel absolutely needed people's hands to lower the basket. So we needn't regard admitting weakness and receiving help as a failure of faith. We all must help one another. God cares for others through us, and cares for us through others."], "points": ["Boasting in faith includes stories of being helped — because they reveal not a lone hero, but God's grace."]}, {"title": "Application · Boasting Not of My Hardship, but of the Jesus Who Held Me", "paragraphs": ["The risen Jesus showed His disciples His hands and side, and told Thomas to see those marks and move forward in faith (John 20:27). The very One who died on the cross rose again. The Lord's wounds testify to the love that gave Himself to save us. Let me emphasize again: <mark>our labor or suffering does not replace or supplement Jesus' salvation.</mark> We were saved by His death and resurrection, and as people who have received that grace, we bear the labor that comes from loving others.", "Not all of us must endure beatings and shipwrecks like Paul. But a life following Christ includes <mark>my own choices of the cross — laying down my convenience and interests</mark>. There may be losses accepted to keep honesty, time given to care for someone worn out, tears shed when loving led to being misunderstood. At such times our boasting shouldn't stop at how much we suffered; it must move to the confession that <mark>in the midst of it the Lord held me and gave me strength to love again</mark>.", "Today, reexamine your standards for viewing ministry and people. See whether you <mark>marvel only at visible strength, or recognize Christlike, self-giving love</mark>. And if you need help, don't be ashamed — reach out. The hands that held the basket lowering you down the wall are also grace sent by God.", "What inconvenience and loss am I gladly accepting to love Christ and serve people? Through those marks, can I boast not of my hardship but of the Jesus who held me?"], "points": ["I don't hide my weakness; within it, I boast of the Jesus who held me."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I reflected on whether I evaluated ministry and people only by eloquence, status, or results."}, {"key": "c2", "text": "I checked whether I understand authority as responsibility to build people up, not power to dominate them."}, {"key": "c3", "text": "I reflected on how I'm caring for one person rather than how much work I've done."}, {"key": "c4", "text": "I wasn't ashamed to admit weakness and receive help."}], "s4heading": "One-Line Reflection", "memoHint": "Among the inconveniences, losses, or help I've received while following Christ, what mark lets me boast of the Jesus who held me?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Reexamine My Standard", "value": "Think of someone who serves self-givingly rather than impressively, and express thanks"}, {"key": "act2", "label": "Care for One Person", "value": "Listen fully to someone who is weak or has fallen, and pray together"}, {"key": "act3", "label": "Ask for Help", "value": "If you've been holding on alone, honestly ask a trustworthy person for help"}, {"key": "act4", "label": "Share the Marks", "value": "Share with one person not a tale of hardship, but God's grace that held you in it"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize 2 Corinthians 11:30 and boast of Jesus in weakness"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Jesus, for being wounded for us and rising again; thank You, God, for holding me in weakness and caring for me through others' hands."}, {"key": "p2", "tag": "Repent", "text": "I repent of marveling only at visible strength, hiding my weakness and trying to hold on alone like a hero, and wanting to boast of my own hardship."}, {"key": "p3", "tag": "Ask", "text": "Help me follow love that builds up rather than power that dominates, care for one weak person, and boast only of Christ in my weakness."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 15, Araw ng Panginoon", "ref": "2 Corinto 11:16–33", "headline": "Maipagmamalaki Ko ba si Jesus<br>sa Pamamagitan ng Aking Kahinaan?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · 2 Corinto 11:16-33", "s1heading": "Salita Ngayon", "verse": "\"Kung kailangan kong magmalaki,<br>ipagmamalaki ko ang mga bagay<br>na nagpapakita ng aking kahinaan.\"", "verseRef": "2 Corinto 11:30", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ano ang Itinuturing Nating Kapangyarihan?", "paragraphs": ["Nagsisimula ang talata ngayon sa 'Inuulit ko' — ipinagpapatuloy ni Pablo ang kanyang kahilingang pakinggan siya. Ang isyu ay kung sa anong pamantayan dapat hatulan ang kanyang ebanghelyo at ministeryo. Unang nagturo si Pablo ng Salita sa Corinto sa loob ng isang taon at anim na buwan. Ngunit ang mga taong pumasok sa iglesya pagkatapos ay pumuna sa kanya at ginulo ang mga mananampalataya. Naging isyu ang kanyang mahinang anyo at kakayahan sa pagsasalita, at kahit ang kanyang paglilingkod nang hindi tumatanggap ng suportang pinansyal ay hindi naunawaan. Sa Corinto noon, mahalagang pamantayan sa pagsusuri ng tao ang kakayahan sa pagsasalita at katayuan sa lipunan — ngayon ay masasabi nating kung saang unibersidad nag-aral o saan nagtatrabaho ang isang tao. Sa loob din ng iglesya, <mark>ang mga nagtataas ng sarili at kumikilos nang malakas ay mukhang may kakayahan, habang si Pablo, na nagpakumbaba upang maglingkod, ay mukhang mahina</mark>.", "Gusto rin natin ng mga ministro at pastor na may kakayahan. Ngunit ano ang itinuturing nating kakayahan? Tinitingnan lamang ba natin ang mga salitang puno ng tiwala sa sarili at nakikitang resulta? Sa talata ngayon, sinasabi rin ni Pablo na may maipagmamalaki siya. Ngunit ang inilabas niya ay <mark>ang mga pagdurusang tiniis niya sa pangangaral ng ebanghelyo, ang pagpapagal sa pag-aalaga sa mga mananampalataya, at sa wakas pati ang panahong tumakas siya sa tulong ng iba</mark> — dahil sa kahinaang iyon, nahahayag ang Diyos na humawak sa kanya at ang Cristong kanyang pinaglilingkuran. Ngayon, pagnilayan natin ang dalawang bagay: Sa anong pamantayan ko sinusuri ang ministeryo? At kapag nagsasalita ako tungkol sa biyaya ni Cristo, may dala ba ang aking buhay na mga marka ng kahinaan at pagdurusang maipagmamalaki ko — sa halip na ang mabubuting bagay na nakamit ko sa mundong ito? Tingnan natin ang tatlong bahagi."], "points": ["Kapag nagsasalita ako tungkol sa biyaya ni Cristo, may dala ba ang aking buhay na mga marka ng kahinaan at pagdurusang maipagmamalaki ko, sa halip na makamundong pakinabang?"]}, {"title": "Talata 16–21 · Huwag Ipagkamali ang Kapangyarihang Maghari sa Tao bilang Tunay na Awtoridad", "paragraphs": ["Sa talata 16, nakiusap si Pablo na kahit ituring nila siyang hangal, pakinggan nila siya sandali: dahil masaya nilang pinagtitiisan ang pagmamalaki ng iba, pakinggan din nila ang kanyang kuwento. Hindi siguro mapalagay ang puso ni Pablo sa pagsasabi nito, dahil ang pagtataas ng sarili at pagpapatunay ng kahigitan ay hindi maaaring maging huwaran ng pagsunod sa Panginoon. Kaya paulit-ulit niyang tinatawag na 'kahangalan' ang paraang ito. Hindi natin dapat basahin ang kanyang mga salita bilang pahintulot na magpakitang-gilas. Sinisikap niyang <mark>gisingin ang mga mananampalataya sa kung ano ang bumibighani sa kanila</mark>. Ang sinisikap protektahan ni Pablo ay hindi ang sarili niyang karangalan, kundi ang kanilang paghawak sa ebanghelyong kanyang ipinangaral at pananatiling tapat kay Cristo. Sa talata 19, itinuro niya na ang mga mananampalatayang nag-iisip na sila'y marunong ay masayang nagtitiis sa mga hangal — mukhang papuri ngunit sa katunayan ay inilalantad ang kanilang maling paghatol.", "Inilista ng talata 20 ang mga kilos na kanilang pinagtiisan: <mark>'Sapagkat pinagtitiisan ninyo kung may umalipin sa inyo, o lumamon sa inyo, o sumamantala sa inyo, o nagmamataas, o sumampal sa inyo.'</mark> — pagtrato sa kanila na parang alipin, paggamit ng yaman ng komunidad para sa sariling pakinabang, pag-bitag sa mga tao sa pamamagitan ng panlilinlang, pagtataas ng sarili, at pagpapahiya sa kanila. Mahirap matiyak kung ang 'pagsampal' ay tunay na karahasan o nakahihiyang pagtrato, ngunit malinaw na inapi at ginamit ng mga huwad na guro ang mga mananampalataya. Hindi pinupuri ni Pablo ang pagtitiis sa ganitong pagtrato bilang pananampalataya; sinasaway niya ang paghatol ng iglesya sa pagpaparaya rito. At ipinahayag niya, <mark>'Sa aking kahihiyan, dapat kong sabihin, napakahina namin para riyan!'</mark> (t. 21). Sa madaling salita: kung ang pagmamaniobra at paggamit sa mga mananampalataya ay kalakasan, hindi niya kailanman ipinakita ang ganoong kalakasan. Ang tunay na awtoridad ay pananagutang itayo ang mga tao sa Panginoon, at dapat nating tingnan kung paano tinatrato ng mga nag-aangkin ng awtoridad ang mga mananampalataya."], "points": ["Upang suriin ang ministeryo, tingnan kung sino ang nagbabayad ng halaga — kung ginagamit ang mga mananampalataya upang itaas ang isang tao, o may nagbibigay ng sarili upang itayo ang mga mananampalataya."]}, {"title": "Talata 22–27 · Mga Pagpapagal na Tiniis Para kay Cristo", "paragraphs": ["Sa talata 22, sinabi ni Pablo, <mark>'Sila ba'y mga Hebreo? Ako rin. Sila ba'y mga Israelita? Ako rin. Sila ba'y mga inapo ni Abraham? Ako rin.'</mark> Taglay rin niya ang pinagmulang Judio at mga pribilehiyo ng tipan na ipinagmamalaki ng kanyang mga kalaban. 'Sila ba'y mga lingkod ni Cristo? Ako'y higit — nagsasalita ako na parang baliw.' Hindi nito binabawi ang kanyang paghatol na sila'y mga huwad na apostol; tinatanggap nito ang kanilang pahayag upang suriin kung sino ang tunay na naglilingkod kay Cristo. Gayunman, hindi nagmamalaki si Pablo nang mahaba tungkol sa kanyang mga kredensyal; agad siyang bumaling sa mga pagpapagal na tiniis niya sa paglilingkod kay Cristo. Mula sa huling bahagi ng talata 23 hanggang talata 27, nagsalita siya tungkol sa pagkabilanggo, pambubugbog, at paulit-ulit na panganib ng kamatayan. Limang beses siyang tumanggap ng <mark>'apatnapung hagupit kulang ng isa'</mark> — disiplina ng komunidad ng mga Judio; ang batayan nito, ang Deuteronomio 25:3, ay nagbabawal ng higit sa apatnapung hagupit. Tatlong beses siyang pinalo ng pamalo, isang parusang Romano (tingnan ang Filipos sa Gawa 16). Minsan siyang binato. Tatlong beses siyang nalunod ang barko, at isang gabi at isang araw siyang palutang-lutang sa dagat. Ang tatlong pagkalunod na ito ay nauna sa paglalayag patungong Roma sa Gawa 27 — mga pangyayaring hindi natin alam sa ibang paraan. <mark>Hindi itinala ng Gawa ang bawat pagdurusa ni Pablo.</mark>", "Sa kanyang mga paglalakbay, hinarap niya ang panganib mula sa mga tulisan, mula sa kanyang sariling bayan at sa mga Gentil, sa lungsod, sa ilang, at sa dagat — pati mula sa mga huwad na kapatid. Umabot ang pagpapagal na iyon sa pang-araw-araw na buhay: mga gabing walang tulog, gutom at uhaw, lamig at kakulangan ng damit. Gayunman, <mark>hindi awtomatikong pinatutunayan ng dami ng pagdurusa ang katapatan ng ministeryo.</mark> Maaaring magtiis ang tao ng matinding sakit kahit para sa maling layunin. Dapat nating tingnan kung para saan at para kanino ito tiniis ni Pablo. Nilakad niya ang landas na ito upang ipangaral ang ebanghelyo at itayo ang mga mananampalataya. Pinatototohanan ng kanyang mga pagdurusa hindi ang sarili niyang katatagan kundi ang biyaya ng Diyos na humawak sa kanya sa landas na iyon."], "points": ["Ang mahalaga ay kung para saan at para kanino ang pagpapagal."]}, {"title": "Talata 28–29 · Kung May Mahina, Ako'y Mahina Rin", "paragraphs": ["Hindi nagtatapos ang kuwento ni Pablo sa bilang ng mga paghihirap. <mark>'At, bukod sa ibang mga bagay, nariyan ang araw-araw na panggigipit sa akin ng aking pag-aalala para sa lahat ng iglesya'</mark> (t. 28). Matapos ipangaral ang ebanghelyo, hindi niya nalimutan ang kalagayan ng mga mananampalataya. Patuloy niyang inalala kung nananampalataya at namumuhay sila para kay Cristo.", "Ipinapakita ng talata 29 ang pusong iyon: <mark>'Sino ang mahina, at hindi ako mahina? Sino ang napatitisod, at hindi ako nagagalit?'</mark> Kapag may humihina, nasasaktan si Pablo kasama nila. Kapag may natitisod sa kasalanan, nag-aalab ang kanyang puso, at nagagalit siya sa nagpatisod sa kanila. Tayo rin, kapag sinusuri ang ministeryo, ay dapat tumingin hindi lamang sa dami ng gawaing nagawa, kundi sa <mark>kung paano inaalagaan ang isang tao</mark>. Mahalaga ang pag-ibig na nakikinig sa mahihina, umaalalay sa mga natitisod, at tumutulong sa kanilang muling tumayo sa pananampalataya. Sa patutunguhan ng pagpapagal ni Pablo ay naroon ang mga tao."], "points": ["Ang tunay na ministeryo ay hindi humihinto sa pagpapakita ng sariling nagtiis sa pagdurusa; nagpapatuloy ito sa pag-ibig na nag-aalaga pa rin sa isang mahinang tao."]}, {"title": "Talata 30–33 · Ang Apostol na Ibinaba sa Isang Basket", "paragraphs": ["Sa talata 30, nilinaw ni Pablo ang direksyon ng kanyang pagmamalaki: <mark>'Kung kailangan kong magmalaki, ipagmamalaki ko ang mga bagay na nagpapakita ng aking kahinaan.'</mark> Pagkatapos ay ipinahayag niyang alam ng Diyos na hindi siya nagsisinungaling. Hindi ito mga salitang nagpapaganda ng karanasan upang humanga ang mga tao; nagpapatotoo siya sa harap ng Diyos na nakaaalam ng kanyang buhay. Kasama sa kahinaan ni Pablo ang mga panganib at kakulangang pinasan niya para sa ebanghelyo at ang mga hangganang nangailangan siya ng tulong. Sa kahinaang iyon, inihahayag niya ang pag-aalaga ng Diyos. Lalo pang lumilinaw ang pagpapahayag na ito sa kabanata 12, sa kapangyarihan ni Cristo na nagiging ganap sa kahinaan.", "Sa talata 32–33, ipinahayag ni Pablo na sa Damasco, upang takasan ang gobernador na nagnanais humuli sa kanya, <mark>'ibinaba ako sa isang basket sa bintana ng pader at nakatakas sa kanyang mga kamay'</mark> (tingnan ang Gawa 9:25, kung saan ang mga alagad ang nagbaba sa kanya). Hindi isinalaysay ni Pablo ang tagpo ng pagdaig sa kanyang mga kaaway sa sarili niyang lakas; ipinahayag niya ang panahong <mark>kailangan niyang ipagkatiwala ang kanyang buhay sa kamay ng iba</mark>. Si Pablo, na nag-aalaga sa mga mananampalataya, ay nangailangan din ng pag-aalaga. Kahit ang apostol na nangangaral ng ebanghelyo ay lubos na nangailangan ng mga kamay ng tao upang ibaba ang basket. Kaya hindi natin kailangang ituring na kabiguan ng pananampalataya ang pag-amin sa kahinaan at pagtanggap ng tulong. Dapat tayong lahat na magtulungan. Inaalagaan ng Diyos ang iba sa pamamagitan natin, at inaalagaan Niya tayo sa pamamagitan ng iba."], "points": ["Kasama sa pagmamalaki sa pananampalataya ang mga kuwento ng pagiging tinulungan — dahil inihahayag nito hindi ang nag-iisang bayani, kundi ang biyaya ng Diyos."]}, {"title": "Aplikasyon · Ipinagmamalaki Hindi ang Aking Hirap, kundi si Jesus na Humawak sa Akin", "paragraphs": ["Ipinakita ng muling nabuhay na si Jesus sa Kanyang mga alagad ang Kanyang mga kamay at tagiliran, at sinabihan si Tomas na tingnan ang mga markang iyon at sumulong sa pananampalataya (Juan 20:27). Ang mismong Isang namatay sa krus ay muling nabuhay. Pinatototohanan ng mga sugat ng Panginoon ang pag-ibig na nagbigay ng Kanyang sarili upang iligtas tayo. Muli kong idiriin: <mark>hindi pinapalitan o dinaragdagan ng ating pagpapagal o pagdurusa ang kaligtasan ni Jesus.</mark> Iniligtas tayo ng Kanyang kamatayan at muling pagkabuhay, at bilang mga taong tumanggap ng biyayang iyon, pinapasan natin ang pagpapagal na dulot ng pag-ibig sa iba.", "Hindi lahat sa atin ay kailangang magtiis ng pambubugbog at pagkalunod ng barko tulad ni Pablo. Ngunit kasama sa buhay na sumusunod kay Cristo ang <mark>sarili kong mga pasya ng krus — pagbitaw sa aking ginhawa at interes</mark>. Maaaring may mga pagkalugi na tinanggap upang manatiling tapat, oras na ibinigay upang alagaan ang taong pagod, luhang ibinuhos nang ang pag-ibig ay humantong sa hindi pagkakaunawaan. Sa mga ganoong panahon, ang ating pagmamalaki ay hindi dapat huminto sa kung gaano tayo nahirapan; dapat itong sumulong sa pagpapahayag na <mark>sa gitna nito ay hinawakan ako ng Panginoon at binigyan ako ng lakas na muling umibig</mark>.", "Ngayon, suriing muli ang iyong pamantayan sa pagtingin sa ministeryo at mga tao. Tingnan kung <mark>namamangha ka lamang sa nakikitang kalakasan, o nakikilala mo ang pag-ibig na kawangis ni Cristo na nagbibigay ng sarili</mark>. At kung kailangan mo ng tulong, huwag mahiya — iabot ang iyong kamay. Ang mga kamay na humawak sa basket na nagbaba sa iyo sa pader ay biyaya ring ipinadala ng Diyos.", "Anong abala at pagkalugi ang masaya kong tinatanggap upang ibigin si Cristo at paglingkuran ang mga tao? Sa pamamagitan ng mga markang iyon, maipagmamalaki ko ba hindi ang aking hirap kundi si Jesus na humawak sa akin?"], "points": ["Hindi ko itinatago ang aking kahinaan; sa loob nito, ipinagmamalaki ko si Jesus na humawak sa akin."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Pinag-isipan ko kung sinuri ko ang ministeryo at mga tao batay lamang sa husay sa pananalita, katayuan, o resulta."}, {"key": "c2", "text": "Sinuri ko kung nauunawaan ko ang awtoridad bilang pananagutang itayo ang mga tao, hindi kapangyarihang maghari sa kanila."}, {"key": "c3", "text": "Pinag-isipan ko kung paano ko inaalagaan ang isang tao sa halip na kung gaano karaming gawain ang nagawa ko."}, {"key": "c4", "text": "Hindi ako nahiyang aminin ang kahinaan at tumanggap ng tulong."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa mga abala, pagkalugi, o tulong na natanggap ko habang sumusunod kay Cristo, anong marka ang nagpapahintulot sa aking ipagmalaki si Jesus na humawak sa akin?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Suriing Muli ang Pamantayan", "value": "Mag-isip ng taong naglilingkod nang nagbibigay ng sarili sa halip na kahanga-hanga, at magpasalamat"}, {"key": "act2", "label": "Alagaan ang Isang Tao", "value": "Pakinggan nang buo ang taong mahina o natisod, at manalangin nang magkasama"}, {"key": "act3", "label": "Humingi ng Tulong", "value": "Kung mag-isa kang nagtitiis, tapat na humingi ng tulong sa mapagkakatiwalaang tao"}, {"key": "act4", "label": "Ibahagi ang mga Marka", "value": "Ibahagi sa isang tao hindi ang kuwento ng hirap, kundi ang biyaya ng Diyos na humawak sa iyo roon"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang 2 Corinto 11:30 at ipagmalaki si Jesus sa kahinaan"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Jesus, sa pagkasugat para sa amin at muling pagkabuhay; salamat, Diyos, sa paghawak sa akin sa kahinaan at pag-aalaga sa akin sa pamamagitan ng mga kamay ng iba."}, {"key": "p2", "tag": "Pagsisisi", "text": "Nagsisisi ako sa pagkamangha lamang sa nakikitang kalakasan, sa pagtatago ng aking kahinaan at pagsisikap na magtiis nang mag-isa na parang bayani, at sa pagnanais na ipagmalaki ang sarili kong hirap."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong sundin ang pag-ibig na nagtatayo sa halip na kapangyarihang naghahari, alagaan ang isang mahinang tao, at ipagmalaki lamang si Cristo sa aking kahinaan."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-15';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
