@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/20(금) 큐티 · 시편 21:1–13">
+<meta property="og:description" content="기도 제목은 자세했는데, 감사는 한마디로 끝났나요?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 20일 금요일", "ref": "시편 21편 1–13절", "headline": "기도 제목은 자세했는데,<br>감사는 한마디로 끝났나요?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 21:1-13", "s1heading": "오늘의 말씀", "verse": "\"왕이 여호와를 의지하오니<br>지존하신 이의 인자함으로<br>흔들리지 아니하리이다\"", "verseRef": "시편 21:7", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 응답받은 뒤에도 하나님께 할 말이 많습니까", "paragraphs": ["기도를 부탁할 때 우리는 할 말이 많습니다. 무슨 일이 생겼는지, 언제 결과가 나오는지, 무엇이 가장 걱정되는지 자세히 이야기합니다. 그런데 며칠 뒤 함께 기도해 준 사람이 \"그 일은 어떻게 됐어요?\" 하고 물으면 <mark>\"네, 잘 해결됐습니다\" 한마디로 끝내고</mark> 다음 일로 넘어갈 때가 있습니다. 돌아보면 그토록 간절히 찾았던 하나님께 무슨 말씀을 드렸는지 잘 기억나지 않습니다.", "앞선 시편 20편에서 백성은 위기를 앞둔 왕을 위해 중보 기도했습니다. 오늘 21편의 백성은 <mark>응답을 받은 뒤에도 할 말이 많습니다</mark>. 하나님께서 왕에게 무엇을 주셨는지, 어떤 관을 씌우셨는지, 왕이 지금 누구 앞에서 기뻐하는지를 하나씩 하나씩 노래합니다.", "이 말씀은 어려울 때 간절히 찾았던 하나님을 응답받은 뒤에도 기억하고, <mark>그 은혜에 감사로 응답하며 살아가도록</mark> 우리를 초대합니다. 간절히 구하던 일이 이루어진 뒤, 나는 하나님께 어떤 말씀을 드렸는지 오늘 말씀과 함께 돌아보시기 바랍니다."], "points": ["간절히 구하던 일이 이루어진 뒤, 나는 하나님께 어떤 말씀을 드렸습니까?"]}, {"title": "1–3절 · 주의 힘과 구원을 기뻐하는 왕", "paragraphs": ["<mark>\"여호와여 왕이 주의 힘으로 말미암아 기뻐하며 주의 구원으로 말미암아 크게 즐거워하리이다\"</mark>(1절). 왕이 무엇을 기뻐하는지 보십시오. 자기 능력이 아니라 <mark>주님의 힘, 주님께서 자신을 건지신 일</mark>입니다. 2절은 그 구원이 왕에게 얼마나 절실했는지 들려줍니다. <mark>\"그의 마음의 소원을 들어 주셨으며 그의 입술의 요구를 거절하지 아니하셨나이다\"</mark>. 왕은 마음에 품은 소원을 입술로 아뢰었고, 백성도 그 소원을 이루어 달라고 함께 기도했습니다. 시편 20:4–5에서 함께 드렸던 기도가 이제 21:2에서 그대로 감사의 고백이 된 것입니다. 우리도 감사할 말을 찾고 싶다면, 그때 무엇을 위해 기도했는지부터 떠올려 보면 좋겠습니다.", "3절에서 왕의 머리에는 <mark>순금 관</mark>이 있습니다. 사람들 눈에는 그 관이 보이지만, 백성은 그 관을 씌워 주신 하나님의 손길까지 기억합니다. 왕관을 쓰고 사람들 앞에 서 있는 오늘도, 왕은 하나님께 은혜를 받은 사람입니다.", "우리도 한때 간절히 기도했던 자리에 서게 될 때가 있습니다. 그 자리에서 내 말에 힘이 생겼다면, 회의 때마다 말할 기회를 얻지 못하는 사람에게 먼저 의견을 물어볼 수 있습니다. <mark>하나님께 받은 것을 기억하는 감사는 내가 사람을 대하는 태도에까지 이어집니다.</mark>"], "points": ["지금 내가 서 있는 자리에서, 그 자리를 주신 하나님의 손길을 기억하고 있습니까?"]}, {"title": "4–7절 · 주 앞에서 기뻐하며 인자하심을 의지하다", "paragraphs": ["위험했던 날 왕이 구한 것은 생명이었습니다. 하나님께서는 그에게 살아갈 날들을 더해 주셨습니다. 시인은 그 풍성한 은혜를 <mark>\"영원한 장수\"</mark>(4절)라는 말로 노래합니다. 이 고백을 다윗에게 주신 왕위의 약속과 함께 읽으면, 그 왕위를 이어 영원히 다스리시는 예수님까지 바라보게 됩니다.", "왕은 존귀와 위엄을 받습니다(5절). 그런데 6절은 그 모든 것을 받은 왕이 어디에서 기뻐하는지를 들려줍니다. 바로 <mark>\"주 앞에서\"</mark>입니다. 위험한 날 그의 목소리를 들으신 하나님께서 평안해진 오늘도 함께 계십니다. 왕은 그것을 기뻐합니다. 응답을 받은 뒤에도 우리가 하나님께 나아갈 이유가 여기에 있습니다. 그토록 간절히 찾았던 분과 오늘도 함께 살아갈 수 있기 때문입니다.", "<mark>\"왕이 여호와를 의지하오니 지존하신 이의 인자함으로 흔들리지 아니하리이다\"</mark>(7절). 오늘 본문 전체의 핵심절입니다. 여기서 인자함은 자기 백성과 맺으신 약속을 지키시는 <mark>하나님의 한결같은 사랑</mark>입니다. 7절을 경계로 시인의 시선이 달라집니다. 앞에서는 이미 받은 복을 돌아보았고, 이제는 앞으로 마주할 위협을 바라봅니다. 왕이 내일도 하나님을 의지할 수 있는 까닭은 분명합니다. 어제 자기를 붙드셨던 하나님이 오늘도 내일도 신실하시기 때문입니다. 응답을 받은 뒤에도 하나님께 말을 건네는 사람은 <mark>평안한 날에도 그분을 의지하는 법</mark>을 배웁니다."], "points": ["응답받고 평안해진 지금도, 나는 주님 앞에서 기뻐하며 그분을 의지하고 있습니까?"]}, {"title": "8–12절 · 악을 꺾으시는 하나님께 맡기는 믿음", "paragraphs": ["감사를 노래하던 시에 원수들이 등장합니다(8–9절). 감사할 일이 생긴 뒤에도 백성에게는 여전히 하나님께 맡기고 간구할 일이 남아 있습니다. 개역개정은 8절을 백성이 왕에게 하는 말로 옮기지만, 하나님께 직접 드리는 말로 읽을 수도 있습니다. 어느 쪽이든 <mark>악을 심판하시는 분은 하나님</mark>이심을 밝힙니다. 왕의 생명을 귀하게 보신 하나님께서는 그 생명을 해치려는 악에도 응답하십니다.", "10절은 원수들의 후손까지 땅에서 끊어진다고 노래합니다. 듣기에도 참 무거운 말씀입니다. 이는 고대 전쟁의 언어로, 사람을 해치던 세력이 다시 일어설 길까지 사라지는 심판을 그리는 것입니다. 그리고 <mark>그 심판은 하나님께 속합니다</mark>. 예수님은 우리에게 원수를 사랑하고 박해하는 사람을 위해 기도하라고 가르치셨습니다. 우리는 피해를 입은 사람들 곁에 서고 해로운 일이 멈추도록 힘쓰면서, <mark>보복하고 싶은 마음은 주님께 맡길 수 있습니다</mark>.", "11절에서 원수들은 왕을 해치려고 계략을 꾸미지만 이루지 못합니다. 12절에서 백성이 내다보는 장면은 그들이 돌아서 물러가는 모습입니다. 아직 위험이 남아 있는데 어떻게 이렇게 노래할 수 있을까요? 자기들을 건지셨던 하나님이 어떤 분인지 기억하기 때문입니다. 우리도 한 가지 기도에 응답받고 얼마 지나지 않아 또 다른 어려움을 만날 수 있습니다. 그것이 인생입니다. 그때 <mark>지난 감사는 새로운 기도의 첫마디</mark>가 됩니다. \"주님, 그때 저를 붙들어 주셨으니 오늘 이 두려움도 주님께 고백합니다.\" 받은 은혜를 기억하면, 억울한 날에도 내 손으로 모든 결말을 정하려는 마음을 내려놓을 수 있습니다."], "points": ["억울한 일 앞에서, 내 손으로 모든 결말을 정하려 하지 않고 주님께 맡기고 있습니까?"]}, {"title": "13절 · 왕의 기쁨이 우리의 찬송이 되다", "paragraphs": ["<mark>\"여호와여 주의 능력으로 높임을 받으소서 우리가 주의 권능을 노래하고 찬송하게 하소서\"</mark>(13절). 왕의 머리에 관을 씌우신 하나님께, 이제 백성은 높임을 받아 주시기를 구합니다. 여기에는 <mark>감사와 간구가 함께</mark> 있습니다. 지금까지 보여 주신 능력을 찬양하며, 앞으로도 그 능력을 나타내 주시기를 기도합니다.", "1절에서 기뻐한 사람은 왕이었습니다. 하지만 13절에서 노래하는 사람은 <mark>\"우리\"</mark>입니다. 시편 20편에서 왕의 짐을 함께 졌던 백성이, 21편에서는 그를 위해 드린 기도의 열매도 함께 누리며 기뻐합니다.", "내가 어떤 은혜를 받았는지 들려주면, <mark>나를 위해 기도한 사람에게도 하나님을 찬양할 이유가 생깁니다</mark>. 감사를 나누는 일은 한 사람의 기쁨에서 멈추지 않고 공동체 전체의 찬송이 됩니다."], "points": ["나를 위해 기도해 준 사람에게, 하나님이 하신 일을 구체적으로 들려주었습니까?"]}, {"title": "적용 · 구할 때만큼 구체적인 감사를", "paragraphs": ["누가복음 17장에서 열 명의 나병 환자는 멀리 서서 소리를 높여 예수님께 긍휼을 구했습니다. 그리고 열 사람 모두 가는 길에 깨끗해졌습니다. 그중 한 사마리아 사람은 자기가 나은 것을 보고 <mark>큰 소리로 하나님께 영광을 돌리며 돌아와</mark> 예수님의 발 앞에 엎드려 감사했습니다(눅 17:15–16). 도움을 구할 때 높였던 그 목소리로 이제 하나님을 찬양한 것입니다.", "예수님께서 먼저 은혜를 베푸셨고, 그 사람은 자신을 고쳐 주신 분께 발걸음을 돌렸습니다. 감사는 은혜를 받은 사람이 <mark>은혜를 주신 분께 다시 돌아가는 걸음</mark>입니다. 응답을 받고도 그냥 가던 길을 가는 것이 아니라, 그 은혜를 기억하며 주님 앞에 다시 서는 것입니다.", "오늘 누군가에게 기도를 부탁했던 메시지 하나를 다시 열어 보십시오. 그리고 <mark>그때의 부탁만큼 구체적인 감사의 문장</mark>을 하나님께 드려 보십시오. 서먹해진 가족과 마주 앉을 용기를 구했다면 이렇게 기도할 수 있습니다. \"주님, 어제 제가 먼저 미안하다고 말할 수 있게 해 주셔서 감사합니다.\" 그리고 함께 기도해 준 분에게도 그 이야기를 들려주십시오. 아직 답을 기다리는 중이라면, 기다리는 동안 곁을 지켜 준 사람의 손길부터 떠올려 보시기 바랍니다.", "오늘 내가 \"잘 해결됐습니다\" 한마디로 지나친 일 가운데, 주님께 돌아가 감사드릴 은혜 한 가지는 무엇입니까?"], "points": ["구할 때만큼 자세하게, 받은 은혜를 기억하며 주님께 돌아가 감사하겠습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "응답받은 기도를 한마디로 넘기지 않고 하나님께 구체적으로 감사했다"}, {"key": "c2", "text": "지금 내가 선 자리와 받은 것이 하나님의 은혜임을 기억했다"}, {"key": "c3", "text": "억울한 일 앞에서 보복하고 싶은 마음을 주님께 맡겼다"}, {"key": "c4", "text": "나를 위해 기도해 준 사람에게 하나님이 하신 일을 들려주었다"}], "s4heading": "묵상 한 줄", "memoHint": "\"잘 해결됐습니다\" 한마디로 지나친 일 가운데, 주님께 돌아가 감사드릴 은혜 한 가지는 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "메시지 다시 열기", "value": "기도를 부탁했던 메시지 하나를 다시 열고, 그만큼 구체적인 감사 기도를 드리기"}, {"key": "act2", "label": "감사 나누기", "value": "나를 위해 기도해 준 사람에게 어떻게 응답받았는지 구체적으로 들려주기"}, {"key": "act3", "label": "먼저 의견 묻기", "value": "내 말에 힘이 생긴 자리에서, 말할 기회를 얻지 못하는 사람에게 먼저 의견 묻기"}, {"key": "act4", "label": "곁의 손길 기억하기", "value": "아직 답을 기다린다면, 기다리는 동안 곁을 지켜 준 사람을 떠올리고 고마움 전하기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 21:7을 외우며 평안한 날에도 하나님의 인자함을 의지하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "위험한 날 제 기도를 들으시고, 평안해진 오늘도 함께하시며, 약속을 지키시는 한결같은 인자함으로 저를 붙드시는 주님께 감사드립니다."}, {"key": "p2", "tag": "회개", "text": "구할 때는 자세했지만 응답받은 뒤에는 감사를 한마디로 끝내고, 받은 자리를 제 힘으로 얻은 것처럼 여겼던 것을 회개합니다."}, {"key": "p3", "tag": "간구", "text": "받은 은혜를 기억하며 주님께 돌아가 감사하게 하시고, 억울한 날에도 결말을 주님께 맡기며, 나의 감사가 공동체의 찬송이 되게 해 주십시오."}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 20, Friday", "ref": "Psalm 21:1–13", "headline": "Our Prayer Requests Were Detailed—<br>Did Our Thanks End in One Line?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 21:1-13", "s1heading": "Today's Word", "verse": "\"For the king trusts in the LORD,<br>and through the steadfast love of the Most High<br>he shall not be moved.\"", "verseRef": "Psalm 21:7", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · After the Answer, Do We Still Have Much to Say to God?", "paragraphs": ["When we ask others to pray for us, we have a lot to say. We explain in detail what happened, when the results will come, and what worries us most. But a few days later, when the person who prayed with us asks, \"How did that turn out?\", we sometimes end it with one line—<mark>\"Oh, it worked out fine\"</mark>—and move on to the next thing. Looking back, we can hardly remember what we said to the God we had sought so earnestly.", "In Psalm 20, the people interceded for their king as he faced a crisis. In Psalm 21, the people <mark>still have much to say even after the answer has come</mark>. One by one, they sing of what God gave the king, what crown He placed on his head, and before whom the king now rejoices.", "This Word invites us to remember the God we sought so desperately in hard times, even after He has answered, and <mark>to live responding to His grace with thanksgiving</mark>."], "points": ["After something I earnestly prayed for came to pass, what did I say to God?"]}, {"title": "Verses 1–3 · A King Rejoicing in God's Strength and Salvation", "paragraphs": ["<mark>\"O LORD, in your strength the king rejoices, and in your salvation how greatly he exults!\"</mark> (v.1). Notice what the king rejoices in: not his own ability, but <mark>the Lord's strength—the Lord's act of rescuing him</mark>. Verse 2 tells us how urgently he needed that deliverance: <mark>\"You have given him his heart's desire and have not withheld the request of his lips.\"</mark> The king had voiced the desire of his heart, and the people had prayed with him for it. The prayer they offered together in Psalm 20:4–5 has now become a confession of thanks in Psalm 21:2. If we want to find words of thanks, a good place to start is remembering what we prayed for back then.", "In verse 3, there is <mark>a crown of fine gold</mark> on the king's head. People see the crown, but the people of God also remember the hand of God who placed it there. Even today, standing before others wearing the crown, the king is someone who has received grace from God.", "We too sometimes find ourselves standing in the very place we once prayed earnestly for. If our words have gained weight in that place, we can be the first to ask for the opinion of someone who rarely gets a chance to speak in meetings. <mark>Gratitude that remembers what God has given flows into how we treat people.</mark>"], "points": ["In the place where I now stand, do I remember the hand of God who gave it to me?"]}, {"title": "Verses 4–7 · Rejoicing Before the Lord and Trusting His Steadfast Love", "paragraphs": ["In the day of danger, what the king asked for was life, and God added days to his life. The psalmist celebrates that abundant grace as <mark>\"length of days forever and ever\"</mark> (v.4). When read alongside God's promise of the throne to David, this points us all the way to Jesus, who inherits that throne and reigns forever.", "The king receives splendor and majesty (v.5). But verse 6 tells us where the king, having received all this, finds his joy: <mark>\"in the joy of your presence.\"</mark> The God who heard his voice on the day of danger is still with him today, now that peace has come. The king rejoices in that. This is why we still draw near to God after our prayers are answered: we get to live today with the very One we sought so earnestly.", "<mark>\"For the king trusts in the LORD, and through the steadfast love of the Most High he shall not be moved\"</mark> (v.7). This is the key verse of the whole psalm. Steadfast love is <mark>God's unchanging love that keeps the covenant He made with His people</mark>. With verse 7 as the turning point, the psalmist's gaze shifts from blessings already received to threats yet to come. The reason the king can trust God tomorrow is clear: the God who held him yesterday is faithful today and tomorrow. Those who keep speaking to God after the answer comes learn <mark>to trust Him even on peaceful days</mark>."], "points": ["Now that I have been answered and have peace, am I still rejoicing before the Lord and trusting Him?"]}, {"title": "Verses 8–12 · Entrusting Justice to the God Who Overthrows Evil", "paragraphs": ["In a psalm of thanksgiving, enemies suddenly appear (vv.8–9). Even after there is something to be thankful for, the people still have matters to entrust to God and to pray about. Some translations render verse 8 as the people speaking to the king; it can also be read as words addressed directly to God. Either way, it makes clear that <mark>the One who judges evil is God</mark>. The God who valued the king's life also responds to the evil that seeks to destroy it.", "Verse 10, which speaks of the enemies' offspring being cut off from the earth, is heavy to hear. It uses the language of ancient warfare to depict a judgment in which the powers that harmed people lose any way to rise again—and <mark>that judgment belongs to God</mark>. Jesus taught us to love our enemies and pray for those who persecute us. We can stand beside those who have been harmed and work to stop what is harmful, while <mark>entrusting our desire for revenge to the Lord</mark>.", "In verse 11 the enemies plot evil against the king, but they cannot carry it out. In verse 12, the people foresee them turning back in retreat. How can they sing this while danger still remains? Because they remember who the God who rescued them is. We too may receive an answer to one prayer and soon face another difficulty—that is simply life. At such times, <mark>yesterday's thanksgiving becomes the first words of a new prayer</mark>: \"Lord, You held me then, so I bring today's fear to You as well.\" Remembering the grace we've received helps us let go of trying to decide every outcome with our own hands, even on days we feel wronged."], "points": ["When I am wronged, do I entrust the outcome to the Lord instead of trying to settle everything myself?"]}, {"title": "Verse 13 · The King's Joy Becomes Our Song", "paragraphs": ["<mark>\"Be exalted, O LORD, in your strength! We will sing and praise your power\"</mark> (v.13). To the God who placed a crown on the king's head, the people now pray that He Himself be exalted. Here <mark>thanksgiving and petition stand together</mark>. They praise the power He has shown so far, and they pray that He will continue to display it.", "In verse 1, the one rejoicing was the king. But in verse 13, the ones singing are <mark>\"we.\"</mark> The people who shared the king's burden in Psalm 20 now share in the fruit of the prayers they lifted for him, and they rejoice together in Psalm 21.", "When I tell others what grace I have received, <mark>those who prayed for me gain a reason to praise God too</mark>. Sharing our thanksgiving becomes the praise of the whole community."], "points": ["Have I told the people who prayed for me, in detail, what God has done?"]}, {"title": "Application · Thanks as Specific as Our Requests", "paragraphs": ["In Luke 17, ten men with leprosy stood at a distance and lifted their voices, asking Jesus for mercy. All ten were cleansed as they went on their way. But one of them, a Samaritan, when he saw that he was healed, <mark>turned back, praising God with a loud voice</mark>, and fell at Jesus' feet, giving Him thanks (Luke 17:15–16). The same voice he had raised to ask for help, he now raised in praise to God.", "Jesus showed grace first, and the man turned his steps back toward the One who had healed him. Thanksgiving is <mark>the step of returning to the Giver of grace</mark>. It is not simply going on our way after the answer comes, but remembering that grace and standing before the Lord once again.", "Today, open again one message in which you asked someone for prayer. Then offer God <mark>a sentence of thanks as specific as that request</mark>. If you had asked for courage to sit down with a family member you had grown distant from, you might pray: \"Lord, thank You for helping me be the first to say I was sorry yesterday.\" And tell that story to the person who prayed with you. If you are still waiting for an answer, begin by remembering the people who stood by you while you waited.", "Among the things I passed over today with a quick \"It worked out fine,\" what is one grace for which I can return to the Lord and give thanks?"], "points": ["As specifically as I asked, I will remember the grace I received, return to the Lord, and give thanks."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I did not pass over an answered prayer with one line, but thanked God specifically."}, {"key": "c2", "text": "I remembered that the place I stand and what I have received are God's grace."}, {"key": "c3", "text": "In the face of being wronged, I entrusted my desire for revenge to the Lord."}, {"key": "c4", "text": "I told someone who prayed for me what God had done."}], "s4heading": "One-Line Reflection", "memoHint": "Among the things I passed over with \"It worked out fine,\" what is one grace for which I can return to the Lord and give thanks?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Reopen a Message", "value": "Reopen a message where you asked for prayer, and offer a thank-you prayer just as specific"}, {"key": "act2", "label": "Share Your Thanks", "value": "Tell someone who prayed for you specifically how God answered"}, {"key": "act3", "label": "Ask Others First", "value": "Where your words carry weight, first ask the opinion of someone who rarely gets to speak"}, {"key": "act4", "label": "Remember Helping Hands", "value": "If you're still waiting, think of someone who stood by you and express your gratitude"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 21:7 and trust God's steadfast love even on peaceful days"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Lord, for hearing my prayer in the day of danger, for being with me still in today's peace, and for holding me with Your unchanging, covenant-keeping love."}, {"key": "p2", "tag": "Repent", "text": "I repent of being detailed when I asked but ending my thanks in a single line once answered, and of treating the place I've been given as if I earned it by my own strength."}, {"key": "p3", "tag": "Ask", "text": "Help me remember Your grace and return to You with thanks; on days I am wronged, let me entrust the outcome to You; and let my thanksgiving become the praise of our community."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 20, Biyernes", "ref": "Awit 21:1–13", "headline": "Detalyado ang Ating mga Kahilingan—<br>Isang Pangungusap Lang ba ang Pasasalamat?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 21:1-13", "s1heading": "Salita Ngayon", "verse": "\"Sapagkat ang hari ay nagtitiwala sa PANGINOON,<br>at dahil sa tapat na pag-ibig ng Kataas-taasan<br>ay hindi siya matitinag.\"", "verseRef": "Awit 21:7", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Matapos Sagutin, Marami Pa Ba Tayong Masasabi sa Diyos?", "paragraphs": ["Kapag humihingi tayo ng panalangin sa iba, marami tayong sinasabi. Detalyado nating ipinaliliwanag kung ano ang nangyari, kailan lalabas ang resulta, at kung ano ang pinakakinababahala natin. Ngunit makalipas ang ilang araw, kapag tinanong tayo ng taong nanalangin kasama natin, \"Ano na ang nangyari roon?\", minsan ay tinatapos natin sa isang pangungusap—<mark>\"Ay, maayos na po\"</mark>—at lumilipat na sa susunod na bagay. Kung babalikan, halos hindi na natin maalala kung ano ang sinabi natin sa Diyos na taimtim nating hinanap.", "Sa Awit 20, namagitan ang bayan para sa kanilang hari habang hinaharap niya ang krisis. Sa Awit 21, ang bayan ay <mark>marami pa ring masasabi kahit dumating na ang sagot</mark>. Isa-isa nilang inaawit kung ano ang ibinigay ng Diyos sa hari, anong korona ang ipinutong Niya sa kanyang ulo, at sa harap ng sino ngayon nagagalak ang hari.", "Inaanyayahan tayo ng Salitang ito na alalahanin ang Diyos na taimtim nating hinanap sa mahihirap na panahon, kahit matapos Niya tayong sagutin, at <mark>mamuhay na tumutugon sa Kanyang biyaya nang may pasasalamat</mark>."], "points": ["Matapos matupad ang isang bagay na taimtim kong ipinanalangin, ano ang sinabi ko sa Diyos?"]}, {"title": "Talata 1–3 · Isang Haring Nagagalak sa Lakas at Pagliligtas ng Diyos", "paragraphs": ["<mark>\"O PANGINOON, sa Iyong lakas ay nagagalak ang hari, at sa Iyong pagliligtas ay labis siyang nagdiriwang!\"</mark> (t.1). Pansinin kung saan nagagalak ang hari: hindi sa sarili niyang kakayahan, kundi sa <mark>lakas ng Panginoon—sa pagliligtas ng Panginoon sa kanya</mark>. Sinasabi ng talata 2 kung gaano niya kailangan ang pagliligtas na iyon: <mark>\"Ibinigay Mo sa kanya ang nais ng kanyang puso, at hindi Mo ipinagkait ang hiling ng kanyang mga labi.\"</mark> Ang panalanging sama-sama nilang inialay sa Awit 20:4–5 ay naging pahayag ng pasasalamat sa Awit 21:2. Kung nais nating makahanap ng mga salita ng pasasalamat, magandang simulan sa pag-alala kung para saan tayo nanalangin noon.", "Sa talata 3, may <mark>koronang yari sa purong ginto</mark> sa ulo ng hari. Nakikita ng mga tao ang korona, ngunit naaalala rin ng bayan ng Diyos ang kamay ng Diyos na naglagay nito roon. Kahit ngayon, nakatayo sa harap ng iba na suot ang korona, ang hari ay isang taong tumanggap ng biyaya mula sa Diyos.", "Tayo rin ay minsang nakatatayo sa mismong lugar na dati nating taimtim na ipinanalangin. Kung nagkaroon ng bigat ang ating mga salita sa lugar na iyon, maaari tayong maunang humingi ng opinyon sa isang taong bihirang mabigyan ng pagkakataong magsalita sa mga pulong. <mark>Ang pasasalamat na umaalala sa ibinigay ng Diyos ay dumadaloy sa paraan ng ating pakikitungo sa tao.</mark>"], "points": ["Sa lugar na kinatatayuan ko ngayon, naaalala ko ba ang kamay ng Diyos na nagbigay nito sa akin?"]}, {"title": "Talata 4–7 · Nagagalak sa Harap ng Panginoon at Nagtitiwala sa Kanyang Tapat na Pag-ibig", "paragraphs": ["Sa araw ng panganib, buhay ang hiniling ng hari, at dinagdagan ng Diyos ang kanyang mga araw. Ipinagdiriwang ng mang-aawit ang masaganang biyayang iyon bilang <mark>\"mahabang buhay magpakailanman\"</mark> (t.4). Kapag binasa kasama ng pangako ng Diyos kay David tungkol sa trono, itinuturo tayo nito hanggang kay Jesus, na nagmana ng tronong iyon at naghahari magpakailanman.", "Tumanggap ang hari ng karangalan at kamahalan (t.5). Ngunit sinasabi ng talata 6 kung saan nagagalak ang haring tumanggap ng lahat ng ito: <mark>\"sa galak ng Iyong presensya.\"</mark> Ang Diyos na nakarinig sa kanyang tinig sa araw ng panganib ay kasama pa rin niya ngayon, nang dumating na ang kapayapaan. Doon nagagalak ang hari. Ito ang dahilan kung bakit lumalapit pa rin tayo sa Diyos matapos sagutin ang ating mga panalangin: makakasama natin ngayon ang mismong Siyang taimtim nating hinanap.", "<mark>\"Sapagkat ang hari ay nagtitiwala sa PANGINOON, at dahil sa tapat na pag-ibig ng Kataas-taasan ay hindi siya matitinag\"</mark> (t.7). Ito ang susing talata ng buong awit. Ang tapat na pag-ibig ay <mark>ang di-nagbabagong pag-ibig ng Diyos na tumutupad sa tipan Niya sa Kanyang bayan</mark>. Sa talata 7 bilang hangganan, lumilipat ang tingin ng mang-aawit mula sa mga pagpapalang natanggap na tungo sa mga bantang darating pa. Malinaw kung bakit makapagtitiwala ang hari sa Diyos bukas: ang Diyos na humawak sa kanya kahapon ay tapat ngayon at bukas. Ang mga patuloy na nakikipag-usap sa Diyos matapos dumating ang sagot ay natututong <mark>magtiwala sa Kanya kahit sa mapayapang mga araw</mark>."], "points": ["Ngayong nasagot na ako at may kapayapaan, nagagalak pa rin ba ako sa harap ng Panginoon at nagtitiwala sa Kanya?"]}, {"title": "Talata 8–12 · Pagkakatiwala ng Katarungan sa Diyos na Gumigiba sa Kasamaan", "paragraphs": ["Sa isang awit ng pasasalamat, biglang lumitaw ang mga kaaway (t.8–9). Kahit may dahilan nang magpasalamat, may mga bagay pa ring dapat ipagkatiwala at ipanalangin ng bayan sa Diyos. Isinasalin ng ilang salin ang talata 8 bilang pananalita ng bayan sa hari; maaari rin itong basahin bilang mga salitang tuwirang iniaalay sa Diyos. Alinman doon, malinaw na <mark>ang Diyos ang humahatol sa kasamaan</mark>. Ang Diyos na nagpahalaga sa buhay ng hari ay tumutugon din sa kasamaang naghahangad na wasakin ito.", "Mabigat pakinggan ang talata 10, na nagsasabing mapuputol sa lupa ang mga supling ng mga kaaway. Gumagamit ito ng wika ng sinaunang digmaan upang ilarawan ang hatol kung saan mawawalan ng daan upang muling bumangon ang mga kapangyarihang nanakit sa tao—at <mark>ang hatol na iyon ay sa Diyos</mark>. Itinuro ni Jesus na mahalin natin ang ating mga kaaway at ipanalangin ang mga umuusig sa atin. Maaari tayong tumayo sa tabi ng mga nasaktan at magsikap na mapahinto ang nakasasama, habang <mark>ipinagkakatiwala sa Panginoon ang ating pagnanais na gumanti</mark>.", "Sa talata 11, nagbalak ng masama ang mga kaaway laban sa hari, ngunit hindi nila ito naisagawa. Sa talata 12, nakikita ng bayan na sila'y tatalikod at uurong. Paano nila ito naaawit habang may panganib pa? Dahil naaalala nila kung sino ang Diyos na nagligtas sa kanila. Tayo rin ay maaaring masagot sa isang panalangin at hindi magtagal ay humarap sa ibang pagsubok—ganyan talaga ang buhay. Sa ganitong mga panahon, <mark>ang pasasalamat kahapon ay nagiging unang salita ng bagong panalangin</mark>: \"Panginoon, hinawakan Mo ako noon, kaya iniaalay ko rin sa Iyo ang takot ko ngayon.\" Ang pag-alala sa biyayang natanggap ay tumutulong sa atin na bitawan ang pagnanais na itakda ang bawat kalalabasan sa sarili nating kamay, kahit sa mga araw na tayo'y naaapi."], "points": ["Kapag ako'y naaapi, ipinagkakatiwala ko ba sa Panginoon ang kalalabasan sa halip na ayusin ang lahat sa sarili kong paraan?"]}, {"title": "Talata 13 · Ang Galak ng Hari ay Nagiging Ating Awit", "paragraphs": ["<mark>\"Itanghal Ka, O PANGINOON, sa Iyong lakas! Aawitin at pupurihin namin ang Iyong kapangyarihan\"</mark> (t.13). Sa Diyos na nagputong ng korona sa ulo ng hari, nananalangin ngayon ang bayan na Siya mismo ang itanghal. Dito, <mark>magkasama ang pasasalamat at paghiling</mark>. Pinupuri nila ang kapangyarihang ipinakita Niya hanggang ngayon, at nananalanging patuloy Niya itong ipakita.", "Sa talata 1, ang hari ang nagagalak. Ngunit sa talata 13, ang mga umaawit ay <mark>\"kami.\"</mark> Ang bayang nakibahagi sa pasanin ng hari sa Awit 20 ay nakikibahagi ngayon sa bunga ng mga panalanging iniakyat nila para sa kanya, at sama-sama silang nagagalak sa Awit 21.", "Kapag ikinukuwento ko sa iba kung anong biyaya ang aking natanggap, <mark>nagkakaroon din ng dahilan ang mga nanalangin para sa akin na purihin ang Diyos</mark>. Ang pagbabahagi ng ating pasasalamat ay nagiging papuri ng buong komunidad."], "points": ["Naikuwento ko na ba nang detalyado sa mga nanalangin para sa akin kung ano ang ginawa ng Diyos?"]}, {"title": "Pagsasabuhay · Pasasalamat na Kasingtiyak ng Ating mga Kahilingan", "paragraphs": ["Sa Lucas 17, sampung lalaking may ketong ang tumayo sa malayo at nagtaas ng tinig, humihingi kay Jesus ng awa. Nalinis silang sampu habang sila'y naglalakad. Ngunit ang isa sa kanila, isang Samaritano, nang makita niyang siya'y gumaling, ay <mark>bumalik na nagpupuri sa Diyos nang malakas na tinig</mark>, at nagpatirapa sa paanan ni Jesus at nagpasalamat sa Kanya (Lucas 17:15–16). Ang tinig na itinaas niya upang humingi ng tulong ay itinaas niya ngayon sa pagpupuri sa Diyos.", "Si Jesus ang unang nagbigay ng biyaya, at ibinaling ng lalaki ang kanyang mga hakbang pabalik sa Siyang nagpagaling sa kanya. Ang pasasalamat ay <mark>ang hakbang ng pagbabalik sa Nagbigay ng biyaya</mark>. Hindi ito basta pagpapatuloy sa ating lakad matapos dumating ang sagot, kundi pag-alala sa biyayang iyon at muling pagtayo sa harap ng Panginoon.", "Ngayon, buksan muli ang isang mensahe kung saan humingi ka ng panalangin sa isang tao. Pagkatapos, mag-alay sa Diyos ng <mark>isang pangungusap ng pasasalamat na kasingtiyak ng kahilingang iyon</mark>. Kung humingi ka ng lakas ng loob na makaharap ang isang kapamilyang naging malayo sa iyo, maaari kang manalangin: \"Panginoon, salamat at tinulungan Mo akong maunang humingi ng tawad kahapon.\" At ikuwento mo rin ito sa taong nanalangin kasama mo. Kung naghihintay ka pa ng sagot, magsimula sa pag-alala sa mga taong sumama sa iyo habang ikaw ay naghihintay.", "Sa mga bagay na nilampasan ko ngayon sa isang mabilis na \"Maayos na po,\" ano ang isang biyayang maaari kong balikan sa Panginoon at ipagpasalamat?"], "points": ["Kasingtiyak ng aking paghiling, aalalahanin ko ang biyayang natanggap, babalik ako sa Panginoon, at magpapasalamat."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Hindi ko nilampasan sa isang pangungusap ang nasagot na panalangin, kundi nagpasalamat ako sa Diyos nang tiyak."}, {"key": "c2", "text": "Naalala kong ang lugar na kinatatayuan ko at ang aking natanggap ay biyaya ng Diyos."}, {"key": "c3", "text": "Sa harap ng pang-aapi, ipinagkatiwala ko sa Panginoon ang aking pagnanais na gumanti."}, {"key": "c4", "text": "Ikinuwento ko sa isang nanalangin para sa akin kung ano ang ginawa ng Diyos."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa mga bagay na nilampasan ko sa \"Maayos na po,\" ano ang isang biyayang maaari kong balikan sa Panginoon at ipagpasalamat?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Buksan Muli ang Mensahe", "value": "Buksan muli ang isang mensaheng humingi ka ng panalangin, at mag-alay ng pasasalamat na kasingtiyak nito"}, {"key": "act2", "label": "Ibahagi ang Pasasalamat", "value": "Ikuwento nang tiyak sa isang nanalangin para sa iyo kung paano sumagot ang Diyos"}, {"key": "act3", "label": "Unang Magtanong sa Iba", "value": "Kung saan may bigat ang iyong salita, unang hingin ang opinyon ng taong bihirang makapagsalita"}, {"key": "act4", "label": "Alalahanin ang mga Tumulong", "value": "Kung naghihintay ka pa, isipin ang isang taong sumama sa iyo at ipahayag ang iyong pasasalamat"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 21:7 at magtiwala sa tapat na pag-ibig ng Diyos kahit sa mapayapang mga araw"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Panginoon, sa pakikinig sa aking panalangin sa araw ng panganib, sa pananatili Mo sa akin sa kapayapaan ngayon, at sa paghawak sa akin ng Iyong di-nagbabago at tapat na pag-ibig."}, {"key": "p2", "tag": "Pagsisisi", "text": "Pinagsisisihan ko ang pagiging detalyado kapag humihiling ngunit pagtatapos ng pasasalamat sa isang pangungusap kapag nasagot na, at ang pagturing sa lugar na ibinigay Mo na para bang nakamit ko ito sa sarili kong lakas."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong alalahanin ang Iyong biyaya at bumalik sa Iyo nang may pasasalamat; sa mga araw na ako'y naaapi, hayaan Mong ipagkatiwala ko sa Iyo ang kalalabasan; at gawin Mong papuri ng aming komunidad ang aking pasasalamat."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-20';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
