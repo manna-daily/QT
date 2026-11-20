@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/21(토) 큐티 · 시편 22:1–21">
+<meta property="og:description" content="하나님, 제 기도도 듣고 계십니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 21일 토요일", "ref": "시편 22편 1–21절", "headline": "하나님,<br>제 기도도 듣고 계십니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 22:1-21", "s1heading": "오늘의 말씀", "verse": "\"내 하나님이여 내 하나님이여 어찌 나를 버리셨나이까<br>어찌 나를 멀리 하여 돕지 아니하시오며<br>내 신음 소리를 듣지 아니하시나이까\"", "verseRef": "시편 22:1", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 응답을 기다리는 밤에도 그분은 우리의 아버지이십니다", "paragraphs": ["다른 사람의 기도 응답을 들으면 내 일처럼 기쁩니다. 그런데 그날 밤 내 기도를 드리려니 문득 서러워진 적이 있으십니까? 나에게도 <mark>오래 기다려 온 일</mark>이 있기 때문입니다. 함께 기뻐하는 마음과 내 기다림의 아픔이 한 사람 안에 함께 있습니다.", "앞선 시편 21편에서 왕은 하나님께 생명을 구했고, 하나님은 그에게 생명을 주셨습니다. 온 백성이 함께 기도하며 노래했습니다. 오늘 시편 22편에서도 한 사람이 살려 달라고 기도합니다. 그런데 낮이 지나고 밤이 와도 대답이 들리지 않습니다. 우리에게도 <mark>시편 21편 같은 날이 있고, 시편 22편 첫머리 같은 밤</mark>이 있습니다.", "응답을 기다리는 그 밤에도 하나님은 우리의 아버지이십니다. 기뻐서 감사할 때도, 버려진 것 같아 울 때도, <mark>그분을 부르는 기도에 우리가 누구의 자녀인지</mark>가 드러납니다. 오늘 말씀을 네 부분으로 따라가며, 대답이 들리지 않는 밤에도 하나님을 부르는 기도를 함께 배워 봅니다."], "points": ["다른 사람의 응답은 반가운데, 내 기다림 때문에 서러웠던 적이 있습니까?"]}, {"title": "1–5절 · 응답이 없는 밤에 조상들을 건지신 하나님을 기억합니다", "paragraphs": ["시인의 첫마디를 들어 보십시오. <mark>\"내 하나님이여 내 하나님이여 어찌 나를 버리셨나이까\"</mark>(1절). '내 하나님'을 두 번 부르고, 왜 나를 버리셨느냐고 묻습니다. <mark>\"내가 낮에도 부르짖고 밤에도 잠잠하지 아니하오나 응답하지 아니하시나이다\"</mark>(2절). 낮에 부르짖다 지친 사람이 밤에도 다시 하나님을 부릅니다. 하나님이 멀게 느껴져 괴롭다는 말까지 <mark>하나님께 직접</mark> 드립니다.", "3절에서 시인은 <mark>\"이스라엘의 찬송 중에 계시는\"</mark> 거룩하신 하나님을 기억합니다. 4–5절에는 조상들이 주님을 의뢰했다는 말이 세 번 나옵니다. 그들이 부르짖을 때 주님은 그들을 건지셨고, 그들은 수치를 당하지 않았습니다. 그 이야기를 알기에 시인은 오늘도 기도합니다.", "그런데 바로 그 이야기를 알기에 오늘의 침묵이 더 아프기도 합니다. 다른 사람의 응답은 반갑고 내 기다림은 서럽습니다. 이것이 우리의 솔직한 고백입니다. <mark>그 두 마음을 한 기도에 담아도 괜찮습니다.</mark> 하나님은 꾸민 말이 아니라 정직한 부르짖음을 들으시는 분입니다."], "points": ["하나님이 멀게 느껴지는 마음까지 하나님께 정직하게 아뢰고 있습니까?"]}, {"title": "6–11절 · 조롱 속에서, 태어날 때부터 돌보신 주님을 찾습니다", "paragraphs": ["5절에서 조상들은 하나님을 의지하여 수치를 면했습니다. 그런데 6절에서 시인은 <mark>\"나는 벌레요 사람이 아니라\"</mark>고 고백합니다. 사람들은 입술을 비쭉거리고 머리를 흔듭니다. <mark>\"그가 여호와께 의탁하니 구원하실걸, 그를 기뻐하시니 건지실걸\"</mark>(8절). 지금 당장 구원받는 걸 봐야 하나님이 그를 사랑하시는지 알겠다는 것입니다. 이것은 세상의 시각입니다.", "9절에서 시인은 어머니 품에 안겨 젖을 먹던 때를 떠올립니다. 하나님을 부를 말도 배우기 전입니다. <mark>\"내가 날 때부터 주께 맡긴 바 되었고 모태에서 나올 때부터 주는 나의 하나님이 되셨나이다\"</mark>(10절). 그때 이미 주님은 그의 하나님이셨습니다. 그 주님께 이제 한 가지를 부탁합니다. <mark>\"나를 멀리 하지 마옵소서 환난이 가까우나 도울 자 없나이다\"</mark>(11절).", "'하나님이 나를 사랑하신다면 벌써 내 기도를 들어 주셨겠지.' 기다림이 길어질 때 나도 내게 이런 말을 하고 있지는 않습니까? 그것은 세상이 시인에게 던진 조롱과 같은 논리입니다. 그럴 때는 <mark>내가 기도를 배우기 전부터 나를 돌보신 주님</mark>을 기억하시기 바랍니다. 응답의 속도가 하나님의 사랑을 재는 잣대가 아닙니다."], "points": ["응답이 늦어질 때, 하나님의 사랑을 의심하는 말을 스스로에게 하고 있지는 않습니까?"]}, {"title": "12–18절 · 원수에게 둘러싸여 죽음의 두려움을 고백합니다", "paragraphs": ["시인은 원수들이 자기를 둘러싼 <mark>바산의 힘센 소들</mark> 같고, 입을 벌리고 달려드는 사자 같다고 고백합니다(12–13절). <mark>\"나는 물 같이 쏟아졌으며 내 모든 뼈는 어그러졌으며 내 마음은 밀랍 같아서 내 속에서 녹았으며\"</mark>(14절). 힘은 말라 질그릇 조각 같고 혀는 입천장에 붙었습니다. 9절에서는 주님이 자기를 세상에 나오게 하셨다고 고백했는데, 이제는 바로 그분께 <mark>\"주께서 또 나를 죽음의 진토 속에 두셨나이다\"</mark>(15절)라고 호소합니다.", "개들이 그를 에워싸고 악한 무리가 둘러 <mark>수족을 찔렀습니다</mark>(16절). 뼈를 하나하나 셀 수 있을 만큼 쇠약해졌습니다. 시인은 아직 살려 달라고 기도하는데, 사람들은 벌써 <mark>그의 겉옷을 나누며 속옷을 제비 뽑습니다</mark>(18절). 그가 죽을 것을 이미 기정사실로 여기는 것입니다.", "7절에서도 17절에서도 그를 보는 사람은 참 많습니다. 그런데 11절에서 시인은 자기 곁에 <mark>도울 사람이 하나도 없다</mark>고 고백합니다. 바라보는 눈은 많아도 함께 아파하는 사람은 없습니다. 예수님께서도 십자가 위에서 무너지는 고통 가운데, 많은 사람들 앞에서 홀로 견디시며 그 두려움을 하나님께 아뢰셨습니다."], "points": ["많은 사람들 사이에서도 혼자라고 느낄 때, 그 두려움을 하나님께 고백하고 있습니까?"]}, {"title": "19–21절 · 하나뿐인 목숨을 맡긴 시인이 응답을 고백합니다", "paragraphs": ["15절에서 시인은 자기 힘이 다 말랐다고 고백했습니다. 그런 그가 19절에서 주님을 <mark>\"나의 힘이시여\"</mark>라고 부르며 속히 도와 달라고 합니다. 사람들은 여호와의 이름을 들먹이며 그를 비웃었지만, 시인은 바로 그 이름을 부릅니다. 20절의 <mark>\"내 유일한 것\"</mark>은 대신할 수 없는 하나뿐인 자기 목숨입니다. 그는 그 목숨을 주님께 맡깁니다.", "<mark>\"나를 사자의 입에서 구하소서 주께서 내게 응답하시고 들소의 뿔에서 구원하셨나이다\"</mark>(21절). 한 절 안에서 시인의 말이 바뀝니다. 앞에서는 구해 달라고 하고, 끝에서는 <mark>주께서 응답하셨다</mark>고 고백합니다. 시인은 그 사이에 무슨 일이 있었는지 자세히 말하지 않습니다. 그러나 2절에서 아무 대답이 없다고 울던 그가 이제는 하나님이 자기 목소리를 들으셨다고 고백합니다.", "처음에 시인은 조상들의 이야기에 기대어 기도했습니다. 그리고 이어지는 22절에서는 자신이 형제들에게 주님의 이름을 전하겠다고 고백합니다. 조상들의 이야기가 그의 기도를 붙들었듯이, <mark>오늘 내가 들려주는 감사도 누군가에게 기도를 이어 갈 힘</mark>이 될 수 있습니다."], "points": ["내가 받은 응답의 이야기를, 지금 기다리는 누군가에게 들려주고 있습니까?"]}, {"title": "적용 · 가장 막막한 밤에도 \"내 하나님\"이라 부르며", "paragraphs": ["십자가 아래에서도 사람들은 예수님을 비웃었습니다. 하나님이 원하시면 지금 그를 구해 보라고 했습니다. 그 자리에서 예수님은 이 시편 22편의 첫마디로 기도하셨습니다. <mark>\"나의 하나님, 나의 하나님, 어찌하여 나를 버리셨나이까\"</mark>(마 27:46). 예수님은 그 아픔을 아버지께 숨김없이 아뢰셨습니다.", "그리고 마지막 숨을 거두시기 전에는 <mark>자기 영혼을 아버지 손에 맡기셨습니다</mark>(눅 23:46). 아버지는 우리를 위해 십자가에서 죽으신 예수님을 다시 살리셨습니다. 그러므로 우리가 부르는 주님은 <mark>대답이 들리지 않는 밤이 얼마나 아픈지 아시는 분</mark>입니다. 우리의 기다림을 멀리서 지켜보시는 분이 아니라, 그 밤을 직접 지나신 분입니다.", "여러분의 기도는 오늘도 2절에 머물러 있을 수 있습니다. 아직 21절의 고백을 할 수 없어도 괜찮습니다. 시인이 처음 <mark>\"내 하나님이여\"</mark>라고 부른 곳은 가장 막막했던 1절이었습니다. 응답이 보이지 않는 자리에서도 그는 하나님을 '내 하나님'이라 불렀습니다. 그 부름 속에 그가 누구의 자녀인지가 드러납니다.", "오늘 밤 그 한마디로 기도를 시작해 보십시오. \"내 하나님, 오늘도 많이 기다렸습니다. 제 마음이 얼마나 지쳤는지 주님은 아십니다. 오늘 밤 제 곁에 계셔 주십시오.\" 그리고 다른 사람의 응답 소식을 들을 때, 그 기쁨과 나의 서러움을 함께 주님께 가져가 보십시오."], "points": ["응답이 보이지 않는 밤에도, \"내 하나님\"이라 부르며 주님께 나아가겠습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "하나님이 멀게 느껴지는 마음까지 꾸미지 않고 정직하게 아뢰었다"}, {"key": "c2", "text": "응답의 속도로 하나님의 사랑을 판단하지 않으려 했다"}, {"key": "c3", "text": "기도를 배우기 전부터 나를 돌보신 하나님의 은혜를 기억했다"}, {"key": "c4", "text": "다른 사람의 응답을 함께 기뻐하며, 나의 감사도 누군가에게 나누었다"}], "s4heading": "묵상 한 줄", "memoHint": "아직 응답을 기다리는 일 앞에서, 오늘 밤 \"내 하나님\"이라 부르며 무엇을 아뢰겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "정직하게 아뢰기", "value": "오래 기다려 온 일 하나를 꾸미지 않고 지친 마음 그대로 하나님께 아뢰기"}, {"key": "act2", "label": "돌보심 기억하기", "value": "태어날 때부터 지금까지 나를 돌보신 하나님의 손길 세 가지를 적어 보기"}, {"key": "act3", "label": "함께 기뻐하기", "value": "다른 사람의 응답 소식에 진심으로 축하를 전하고, 내 서러움은 주님께 가져가기"}, {"key": "act4", "label": "감사 들려주기", "value": "내가 받은 응답의 이야기를 지금 기다리는 사람에게 들려주며 함께 기도하기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 22:1을 외우며 막막한 밤에도 \"내 하나님\"이라 부르기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "제가 기도를 배우기 전부터 저를 돌보시고, 대답이 들리지 않는 밤의 아픔을 십자가에서 친히 겪으신 주님께 감사드립니다."}, {"key": "p2", "tag": "회개", "text": "응답이 늦어질 때 하나님의 사랑을 의심하고, 다른 사람의 응답을 시기하거나 서러움을 숨긴 채 기도를 멈추었던 것을 회개합니다."}, {"key": "p3", "tag": "간구", "text": "가장 막막한 밤에도 \"내 하나님\"이라 부르게 하시고, 제 곁에 계셔 주시며, 언젠가 받을 응답을 형제들에게 들려주게 해 주십시오."}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 21, Saturday", "ref": "Psalm 22:1–21", "headline": "God,<br>Are You Hearing My Prayer Too?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 22:1-21", "s1heading": "Today's Word", "verse": "\"My God, my God, why have you forsaken me?<br>Why are you so far from saving me,<br>from the words of my groaning?\"", "verseRef": "Psalm 22:1", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Even on Nights of Waiting, He Is Our Father", "paragraphs": ["When we hear that someone else's prayer has been answered, we rejoice as if it were our own. But have you ever felt a sudden ache that same night as you began your own prayer? That is because <mark>you, too, have been waiting a long time for something</mark>. Joy for others and the pain of our own waiting can live side by side in one heart.", "In Psalm 21, the king asked God for life, and God gave it to him. The whole people prayed and sang together. In Psalm 22, someone is also crying out to be saved. But day passes, night comes, and still no answer is heard. We too have <mark>days like Psalm 21 and nights like the opening of Psalm 22</mark>.", "Even on those nights of waiting, God is our Father. Whether we give thanks in joy or weep as if abandoned, <mark>our prayer that calls on Him reveals whose children we are</mark>. Let us follow today's passage in four parts and learn together how to call on God even on nights when no answer is heard."], "points": ["Have I ever felt sorrow over my own waiting even while rejoicing at someone else's answer?"]}, {"title": "Verses 1–5 · On a Night Without Answer, Remembering the God Who Rescued Our Ancestors", "paragraphs": ["Listen to the psalmist's first words: <mark>\"My God, my God, why have you forsaken me?\"</mark> (v.1). He calls 'my God' twice, and asks why he has been abandoned. <mark>\"O my God, I cry by day, but you do not answer, and by night, but I find no rest\"</mark> (v.2). Someone who has grown weary of crying out by day calls on God again by night. He brings even the words 'You feel so far away, and it hurts' <mark>directly to God</mark>.", "In verse 3, the psalmist remembers the holy God <mark>\"enthroned on the praises of Israel.\"</mark> In verses 4–5, the phrase that the ancestors trusted the Lord appears three times. When they cried out, the Lord rescued them, and they were not put to shame. Because the psalmist knows that story, he prays today too.", "Yet precisely because he knows that story, today's silence hurts even more. Others' answers are welcome; my own waiting is painful. This is our honest confession. <mark>It is all right to carry both of those feelings in a single prayer.</mark> God listens not to polished words but to honest cries."], "points": ["Am I honestly bringing even the feeling that God is far away to God Himself?"]}, {"title": "Verses 6–11 · Amid Mockery, Seeking the Lord Who Cared for Me from Birth", "paragraphs": ["In verse 5, the ancestors trusted God and were spared shame. But in verse 6, the psalmist confesses, <mark>\"But I am a worm and not a man.\"</mark> People make mouths at him and wag their heads: <mark>\"He trusts in the LORD; let him deliver him; let him rescue him, for he delights in him!\"</mark> (v.8). In other words: 'We'll believe God loves him when we see him rescued right now.' That is the world's way of seeing.", "In verse 9, the psalmist recalls being held at his mother's breast—before he had even learned words to call on God. <mark>\"On you was I cast from my birth, and from my mother's womb you have been my God\"</mark> (v.10). Even then, the Lord was already his God. Now he asks that Lord for one thing: <mark>\"Be not far from me, for trouble is near, and there is none to help\"</mark> (v.11).", "'If God loved me, He would have answered my prayer by now.' When the waiting grows long, aren't we sometimes saying this to ourselves? It is the same logic as the mockery the world hurled at the psalmist. At such times, remember <mark>the Lord who cared for you even before you learned to pray</mark>. The speed of an answer is not the measure of God's love."], "points": ["When answers are delayed, am I telling myself words that doubt God's love?"]}, {"title": "Verses 12–18 · Surrounded by Enemies, Confessing the Fear of Death", "paragraphs": ["The psalmist says his enemies surround him like <mark>the strong bulls of Bashan</mark>, like a lion opening its mouth to tear and roar (vv.12–13). <mark>\"I am poured out like water, and all my bones are out of joint; my heart is like wax; it is melted within my breast\"</mark> (v.14). His strength is dried up like a potsherd; his tongue sticks to his jaws. In verse 9, he confessed that the Lord brought him into the world; now he cries out to that same Lord, <mark>\"You lay me in the dust of death\"</mark> (v.15).", "Dogs encompass him; a company of evildoers encircles him, and <mark>they have pierced his hands and feet</mark> (v.16). He has grown so frail he can count all his bones. While he is still praying to be saved, people are already <mark>dividing his garments and casting lots for his clothing</mark> (v.18). They treat his death as a settled fact.", "In verse 7 and in verse 17, many people are looking at him. Yet in verse 11, the psalmist confesses that <mark>there is no one to help</mark>. Many eyes are watching, but no one shares his pain. Jesus too, in crushing agony on the cross, endured alone before many onlookers and brought that fear to God."], "points": ["When I feel alone even among many people, do I confess that fear to God?"]}, {"title": "Verses 19–21 · Entrusting His Only Life, the Psalmist Confesses God's Answer", "paragraphs": ["In verse 15, the psalmist confessed that his strength was dried up. Yet in verse 19 he calls the Lord <mark>\"O you my help\"</mark>—literally, 'my strength'—and asks Him to come quickly. People mocked him by invoking the LORD's name, but the psalmist calls on that very name. In verse 20, <mark>\"my precious life\"</mark> (literally, 'my only one') is his one irreplaceable life. He entrusts that life to the Lord.", "<mark>\"Save me from the mouth of the lion! You have rescued me from the horns of the wild oxen!\"</mark> (v.21). Within a single verse, the psalmist's words change. At the beginning he asks to be saved; at the end he confesses that <mark>the Lord has answered</mark>. He does not tell us in detail what happened in between. But the one who wept in verse 2 that there was no answer now confesses that God has heard his voice.", "At first, the psalmist prayed leaning on the stories of his ancestors. And in the next verse, verse 22, he declares that he will tell of the Lord's name to his brothers. Just as the ancestors' story held up his prayer, <mark>the thanksgiving I share today can give someone else the strength to keep praying</mark>."], "points": ["Am I sharing the story of my answered prayers with someone who is still waiting?"]}, {"title": "Application · Calling Him \"My God\" Even on the Darkest Night", "paragraphs": ["Even beneath the cross, people mocked Jesus. They said, if God wants him, let Him rescue him now. In that very place, Jesus prayed with the first words of this Psalm 22: <mark>\"My God, my God, why have you forsaken me?\"</mark> (Matthew 27:46). Jesus poured out that pain to the Father without hiding anything.", "And before He breathed His last, He <mark>committed His spirit into the Father's hands</mark> (Luke 23:46). The Father raised Jesus, who died on the cross for us. So the Lord we call upon is <mark>the One who knows how painful a night without an answer can be</mark>. He is not someone watching our waiting from a distance, but the One who passed through that night Himself.", "Your prayer may still be stuck at verse 2 today. It is all right if you cannot yet make the confession of verse 21. The place where the psalmist first cried <mark>\"My God\"</mark> was verse 1, the most desperate moment of all. Even where no answer could be seen, he called God 'my God.' In that cry, it becomes clear whose child he is.", "Tonight, begin your prayer with those words: \"My God, I have waited so long again today. You know how weary my heart is. Please be with me tonight.\" And when you hear news of someone else's answered prayer, bring both that joy and your own sorrow to the Lord together."], "points": ["Even on nights when no answer is in sight, I will come to the Lord calling Him \"my God.\""]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I honestly told God, without dressing it up, even that He feels far away."}, {"key": "c2", "text": "I tried not to judge God's love by how quickly He answers."}, {"key": "c3", "text": "I remembered God's grace in caring for me even before I learned to pray."}, {"key": "c4", "text": "I rejoiced in others' answered prayers and shared my own thanksgiving with someone."}], "s4heading": "One-Line Reflection", "memoHint": "Facing something I am still waiting for, what will I bring to God tonight as I call Him \"my God\"?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Pray Honestly", "value": "Bring one long-awaited matter to God just as you are, weary heart and all, without dressing it up"}, {"key": "act2", "label": "Remember His Care", "value": "Write down three ways God has cared for you from birth until now"}, {"key": "act3", "label": "Rejoice Together", "value": "Sincerely congratulate someone on their answered prayer, and bring your own sorrow to the Lord"}, {"key": "act4", "label": "Share Your Thanks", "value": "Tell someone who is waiting the story of an answer you received, and pray with them"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 22:1 and call Him \"my God\" even on desperate nights"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Lord, for caring for me even before I learned to pray, and for personally enduring on the cross the pain of a night without an answer."}, {"key": "p2", "tag": "Repent", "text": "I repent of doubting Your love when answers were slow, of envying others' answers, and of hiding my sorrow and giving up on prayer."}, {"key": "p3", "tag": "Ask", "text": "Help me call You \"my God\" even on the darkest night; stay beside me, and one day let me tell my brothers and sisters of the answer You give."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 21, Sabado", "ref": "Awit 22:1–21", "headline": "Diyos ko,<br>Naririnig Mo Rin ba ang Aking Panalangin?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 22:1-21", "s1heading": "Salita Ngayon", "verse": "\"Diyos ko, Diyos ko, bakit Mo ako pinabayaan?<br>Bakit Ka napakalayo sa pagliligtas sa akin,<br>sa mga salita ng aking pagdaing?\"", "verseRef": "Awit 22:1", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Kahit sa Gabi ng Paghihintay, Siya ang Ating Ama", "paragraphs": ["Kapag naririnig nating nasagot ang panalangin ng iba, nagagalak tayo na parang atin. Ngunit naranasan mo na bang biglang malungkot nang gabing iyon habang sinisimulan mo ang sarili mong panalangin? Iyon ay dahil <mark>ikaw rin ay matagal nang naghihintay sa isang bagay</mark>. Ang galak para sa iba at ang sakit ng sarili nating paghihintay ay maaaring magkasama sa iisang puso.", "Sa Awit 21, humingi ang hari ng buhay sa Diyos, at ibinigay ito ng Diyos sa kanya. Sama-samang nanalangin at umawit ang buong bayan. Sa Awit 22, may isang tao ring dumaraing upang iligtas. Ngunit lumipas ang araw, dumating ang gabi, at wala pa ring sagot na naririnig. Tayo rin ay may <mark>mga araw na gaya ng Awit 21, at mga gabing gaya ng simula ng Awit 22</mark>.", "Kahit sa mga gabing iyon ng paghihintay, ang Diyos ang ating Ama. Nagpapasalamat man tayo sa galak o umiiyak na parang pinabayaan, <mark>ang ating panalanging tumatawag sa Kanya ang naghahayag kung kaninong mga anak tayo</mark>. Sundan natin ang talata ngayon sa apat na bahagi at sama-samang matutuhan kung paano tumawag sa Diyos kahit sa mga gabing walang sagot na naririnig."], "points": ["Naranasan ko na bang malungkot sa sarili kong paghihintay kahit nagagalak ako sa sagot na natanggap ng iba?"]}, {"title": "Talata 1–5 · Sa Gabing Walang Sagot, Inaalala ang Diyos na Nagligtas sa Ating mga Ninuno", "paragraphs": ["Pakinggan ang unang mga salita ng mang-aawit: <mark>\"Diyos ko, Diyos ko, bakit Mo ako pinabayaan?\"</mark> (t.1). Dalawang beses niyang tinawag ang 'Diyos ko,' at itinanong kung bakit siya iniwan. <mark>\"O Diyos ko, dumaraing ako sa araw, ngunit hindi Ka sumasagot, at sa gabi, ngunit wala akong kapahingahan\"</mark> (t.2). Ang taong napagod nang dumaing sa araw ay muling tumatawag sa Diyos sa gabi. Dinadala niya kahit ang mga salitang 'Pakiramdam ko'y napakalayo Mo, at masakit ito' <mark>tuwiran sa Diyos</mark>.", "Sa talata 3, inaalala ng mang-aawit ang banal na Diyos na <mark>\"nakaluklok sa mga papuri ng Israel.\"</mark> Sa talata 4–5, tatlong beses lumitaw ang pariralang nagtiwala ang mga ninuno sa Panginoon. Nang sila'y dumaing, iniligtas sila ng Panginoon, at hindi sila napahiya. Dahil alam ng mang-aawit ang kuwentong iyon, nananalangin pa rin siya ngayon.", "Ngunit dahil mismo alam niya ang kuwentong iyon, lalong masakit ang katahimikan ngayon. Ang sagot sa iba ay ikinatutuwa; ang sarili kong paghihintay ay masakit. Ito ang ating tapat na pagtatapat. <mark>Ayos lang na dalhin ang dalawang damdaming iyon sa iisang panalangin.</mark> Hindi pinakikinggan ng Diyos ang mga salitang pinaganda, kundi ang tapat na pagdaing."], "points": ["Tapat ko bang dinadala sa Diyos mismo kahit ang pakiramdam na Siya ay malayo?"]}, {"title": "Talata 6–11 · Sa Gitna ng Panlilibak, Hinahanap ang Panginoong Nag-alaga sa Akin Mula sa Pagsilang", "paragraphs": ["Sa talata 5, nagtiwala ang mga ninuno sa Diyos at hindi napahiya. Ngunit sa talata 6, sinabi ng mang-aawit, <mark>\"Ngunit ako'y uod at hindi tao.\"</mark> Inaangilan siya ng mga tao at iniiling ang kanilang ulo: <mark>\"Nagtitiwala siya sa PANGINOON; iligtas Niya siya; sagipin Niya siya, sapagkat kinalulugdan Niya siya!\"</mark> (t.8). Sa madaling salita: 'Maniniwala kaming mahal siya ng Diyos kapag nakita naming iniligtas siya ngayon din.' Iyan ang pananaw ng mundo.", "Sa talata 9, inaalala ng mang-aawit ang panahong siya'y kalong sa dibdib ng kanyang ina—bago pa niya natutuhan ang mga salitang pantawag sa Diyos. <mark>\"Sa Iyo ako ipinagkatiwala mula sa aking pagsilang, at mula sa sinapupunan ng aking ina, Ikaw ang aking Diyos\"</mark> (t.10). Noon pa man, ang Panginoon ay kanya nang Diyos. Ngayon, isang bagay ang hinihiling niya sa Panginoong iyon: <mark>\"Huwag Kang lumayo sa akin, sapagkat malapit ang kagipitan, at walang tumutulong\"</mark> (t.11).", "'Kung mahal ako ng Diyos, sinagot na sana Niya ang aking panalangin.' Kapag humahaba ang paghihintay, hindi ba't minsan ay sinasabi rin natin ito sa ating sarili? Ito ang parehong lohika ng panlilibak na ibinato ng mundo sa mang-aawit. Sa ganitong mga panahon, alalahanin <mark>ang Panginoong nag-alaga sa iyo bago mo pa natutuhang manalangin</mark>. Ang bilis ng sagot ay hindi panukat ng pag-ibig ng Diyos."], "points": ["Kapag naaantala ang sagot, sinasabi ko ba sa sarili ang mga salitang nagdududa sa pag-ibig ng Diyos?"]}, {"title": "Talata 12–18 · Napaliligiran ng mga Kaaway, Ipinagtatapat ang Takot sa Kamatayan", "paragraphs": ["Sinabi ng mang-aawit na pinaliligiran siya ng kanyang mga kaaway na gaya ng <mark>malalakas na toro ng Basan</mark>, gaya ng leong nakanganga upang manlapa at umungal (t.12–13). <mark>\"Ako'y ibinuhos na parang tubig, at ang lahat ng aking buto ay nalinsad; ang aking puso ay parang pagkit; natutunaw ito sa loob ko\"</mark> (t.14). Natuyo ang kanyang lakas na parang basag na palayok; dumikit ang kanyang dila sa ngalangala. Sa talata 9, ipinahayag niyang dinala siya ng Panginoon sa mundo; ngayon ay dumaraing siya sa Panginoon ding iyon, <mark>\"Inilagay Mo ako sa alabok ng kamatayan\"</mark> (t.15).", "Pinaliligiran siya ng mga aso; nakapalibot sa kanya ang pangkat ng masasama, at <mark>tinusok nila ang kanyang mga kamay at paa</mark> (t.16). Sa sobrang panghihina, mabibilang na niya ang lahat ng kanyang buto. Habang nananalangin pa siyang iligtas, ang mga tao ay <mark>naghahati-hati na ng kanyang mga kasuotan at nagpapalabunutan sa kanyang damit</mark> (t.18). Itinuturing nilang tiyak na ang kanyang kamatayan.", "Sa talata 7 at sa talata 17, maraming tao ang nakatingin sa kanya. Gayunman, sa talata 11, ipinagtapat ng mang-aawit na <mark>walang sinumang tumutulong</mark>. Maraming matang nakatingin, ngunit walang nakikiramay sa kanyang sakit. Si Jesus din, sa matinding paghihirap sa krus, ay nagtiis nang mag-isa sa harap ng maraming nanonood at dinala ang takot na iyon sa Diyos."], "points": ["Kapag pakiramdam ko'y nag-iisa ako kahit napaliligiran ng maraming tao, ipinagtatapat ko ba ang takot na iyon sa Diyos?"]}, {"title": "Talata 19–21 · Ipinagkatiwala ang Kanyang Nag-iisang Buhay, Ipinahayag ng Mang-aawit ang Sagot ng Diyos", "paragraphs": ["Sa talata 15, ipinagtapat ng mang-aawit na natuyo na ang kanyang lakas. Gayunman, sa talata 19, tinawag niya ang Panginoon na <mark>\"O aking lakas\"</mark> at hiniling na Siya'y dumating agad. Tinutuya siya ng mga tao gamit ang pangalan ng PANGINOON, ngunit ang mismong pangalang iyon ang tinatawag ng mang-aawit. Sa talata 20, ang <mark>\"aking mahalagang buhay\"</mark> (sa literal, 'aking nag-iisa') ay ang kanyang nag-iisa at di-mapapalitang buhay. Ipinagkakatiwala niya ang buhay na iyon sa Panginoon.", "<mark>\"Iligtas Mo ako sa bibig ng leon! Sinagot Mo ako at iniligtas mula sa mga sungay ng mababangis na toro!\"</mark> (t.21). Sa iisang talata, nagbabago ang mga salita ng mang-aawit. Sa simula ay humihiling siyang iligtas; sa dulo ay ipinahahayag niyang <mark>sumagot na ang Panginoon</mark>. Hindi niya sinasabi nang detalyado kung ano ang nangyari sa pagitan. Ngunit ang taong umiyak sa talata 2 na walang sagot ay nagpapahayag ngayon na narinig ng Diyos ang kanyang tinig.", "Sa simula, nanalangin ang mang-aawit na nakasandal sa mga kuwento ng kanyang mga ninuno. At sa susunod na talata, talata 22, ipinahahayag niyang ibabalita niya ang pangalan ng Panginoon sa kanyang mga kapatid. Kung paanong inalalayan ng kuwento ng mga ninuno ang kanyang panalangin, <mark>ang pasasalamat na ibinabahagi ko ngayon ay maaaring magbigay sa iba ng lakas na magpatuloy sa pananalangin</mark>."], "points": ["Ibinabahagi ko ba ang kuwento ng mga sagot na natanggap ko sa isang taong naghihintay pa?"]}, {"title": "Pagsasabuhay · Tinatawag Siyang \"Aking Diyos\" Kahit sa Pinakamadilim na Gabi", "paragraphs": ["Kahit sa ilalim ng krus, tinuya ng mga tao si Jesus. Sinabi nila, kung nais Siya ng Diyos, iligtas Niya Siya ngayon. Sa mismong lugar na iyon, nanalangin si Jesus gamit ang unang mga salita ng Awit 22: <mark>\"Diyos ko, Diyos ko, bakit Mo Ako pinabayaan?\"</mark> (Mateo 27:46). Ibinuhos ni Jesus ang sakit na iyon sa Ama nang walang itinatago.", "At bago Siya nalagutan ng hininga, <mark>ipinagkatiwala Niya ang Kanyang espiritu sa mga kamay ng Ama</mark> (Lucas 23:46). Muling binuhay ng Ama si Jesus, na namatay sa krus para sa atin. Kaya ang Panginoong tinatawag natin ay <mark>ang Siyang nakaaalam kung gaano kasakit ang gabing walang sagot</mark>. Hindi Siya nanonood lamang sa ating paghihintay mula sa malayo, kundi Siya mismo ang dumaan sa gabing iyon.", "Maaaring nasa talata 2 pa rin ang iyong panalangin ngayon. Ayos lang kung hindi mo pa masabi ang pagpapahayag ng talata 21. Ang lugar kung saan unang tumawag ang mang-aawit ng <mark>\"Diyos ko\"</mark> ay ang talata 1, ang pinakadesperadong sandali. Kahit saan walang makitang sagot, tinawag niya ang Diyos na 'aking Diyos.' Sa pagtawag na iyon, nagiging malinaw kung kaninong anak siya.", "Ngayong gabi, simulan ang iyong panalangin sa mga salitang iyon: \"Diyos ko, matagal na naman akong naghintay ngayon. Alam Mo kung gaano kapagod ang aking puso. Samahan Mo ako ngayong gabi.\" At kapag narinig mo ang balita ng sagot sa panalangin ng iba, dalhin mo nang sabay ang galak na iyon at ang sarili mong lungkot sa Panginoon."], "points": ["Kahit sa mga gabing walang makitang sagot, lalapit ako sa Panginoon at tatawagin Siyang \"aking Diyos.\""]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Tapat kong sinabi sa Diyos, nang hindi pinaganda, kahit ang pakiramdam na malayo Siya."}, {"key": "c2", "text": "Sinikap kong huwag hatulan ang pag-ibig ng Diyos batay sa bilis ng Kanyang pagsagot."}, {"key": "c3", "text": "Naalala ko ang biyaya ng Diyos na nag-alaga sa akin bago ko pa natutuhang manalangin."}, {"key": "c4", "text": "Nakigalak ako sa nasagot na panalangin ng iba at ibinahagi ko rin ang sarili kong pasasalamat."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa harap ng bagay na hinihintay ko pa, ano ang dadalhin ko sa Diyos ngayong gabi habang tinatawag ko Siyang \"aking Diyos\"?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Manalangin nang Tapat", "value": "Dalhin sa Diyos ang isang matagal nang hinihintay, kasama ang pagod na puso, nang hindi ito pinaganda"}, {"key": "act2", "label": "Alalahanin ang Kanyang Pag-aalaga", "value": "Isulat ang tatlong paraan kung paano ka inalagaan ng Diyos mula pagsilang hanggang ngayon"}, {"key": "act3", "label": "Makigalak", "value": "Taos-pusong batiin ang isang taong nasagot ang panalangin, at dalhin ang iyong lungkot sa Panginoon"}, {"key": "act4", "label": "Ibahagi ang Pasasalamat", "value": "Ikuwento sa isang naghihintay ang sagot na natanggap mo, at manalangin kasama niya"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 22:1 at tawagin Siyang \"aking Diyos\" kahit sa mga desperadong gabi"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Panginoon, sa pag-aalaga sa akin bago ko pa natutuhang manalangin, at sa personal Mong pagdanas sa krus ng sakit ng gabing walang sagot."}, {"key": "p2", "tag": "Pagsisisi", "text": "Pinagsisisihan ko ang pagdududa sa Iyong pag-ibig kapag mabagal ang sagot, ang pagkainggit sa sagot na natanggap ng iba, at ang pagtatago ng aking lungkot at pagsuko sa panalangin."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong tawagin Kang \"aking Diyos\" kahit sa pinakamadilim na gabi; manatili Ka sa aking tabi, at balang araw ay hayaan Mong ikuwento ko sa aking mga kapatid ang sagot na ibibigay Mo."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-21';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
