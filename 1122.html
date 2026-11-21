@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/22(주일) 큐티 · 시편 22:22–31">
+<meta property="og:description" content="내가 울며 기도한 이야기가 누군가에게 위로가 될까요?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 22일 주일", "ref": "시편 22편 22–31절", "headline": "내가 울며 기도한 이야기가<br>누군가에게 위로가 될까요?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 22:22-31", "s1heading": "오늘의 말씀", "verse": "\"그는 곤고한 자의 곤고를 멸시하거나 싫어하지 아니하시며<br>그의 얼굴을 그에게서 숨기지 아니하시고<br>그가 울부짖을 때에 들으셨도다\"", "verseRef": "시편 22:24", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 내가 견뎌 온 이야기가 누군가의 힘이 됩니다", "paragraphs": ["힘든 날 곁에 앉아 내 이야기를 들어 준 사람이 있었습니까? 왜 그런 일이 생겼는지는 지금도 잘 모르지만, <mark>그날 내 말을 들어 준 사람의 얼굴</mark>은 오래 기억납니다. 누군가 내 아픔을 외면하지 않았다는 사실이 그 시간을 견디게 해 주었습니다.", "시편 22편 앞부분에서 시인은 밤낮으로 하나님을 불렀습니다. 원수들에게 둘러싸였고 도와줄 사람도 없었습니다. 그러던 그가 21절 끝에서 <mark>\"주께서 내게 응답하시고\"</mark>라고 고백합니다. 어떻게 위험을 벗어났는지는 알 수 없습니다. 오늘 본문에서 시인은 형제들 앞에 서서, 자기가 울고 있을 때 하나님이 어떻게 곁을 지켜 주셨는지 들려줍니다.", "우리는 예수님이 십자가에서 고난받으심으로 새 생명을 얻었습니다. 그 은혜로 사는 우리에게도 나눌 이야기가 있습니다. <mark>하나님을 의지해 힘겨운 하루를 견뎌 낸 이야기</mark>가 오늘 누군가에게 위로가 되고, 훗날 우리 아이들이 기도할 힘이 될 수 있습니다."], "points": ["힘든 날 하나님이 나를 붙들어 주신 이야기를, 누군가에게 들려준 적이 있습니까?"]}, {"title": "22–24절 · 내 울음을 들으신 하나님을 함께 찬양합니다", "paragraphs": ["<mark>\"내가 주의 이름을 형제에게 선포하고 회중 가운데에서 주를 찬송하리이다\"</mark>(22절). 시인은 자기가 겪은 일을 통해 하나님이 어떤 분이신지 들려주겠다고 고백합니다. 이어서 여호와를 경외하는 이스라엘 백성에게 <mark>함께 찬양하자</mark>고 권합니다(23절). 한 사람의 응답이 공동체 전체의 찬송으로 넓어집니다.", "무엇이 그토록 감사했을까요? <mark>\"그는 곤고한 자의 곤고를 멸시하거나 싫어하지 아니하시며 그의 얼굴을 그에게서 숨기지 아니하시고 그가 울부짖을 때에 들으셨도다\"</mark>(24절). 하나님은 고통당하는 사람을 귀찮아하거나 외면하지 않으십니다. 그의 부르짖음을 들으십니다.", "7절에서 사람들은 고통당하는 시인을 보고 머리를 흔들며 비웃었습니다. 시인 자신도 하나님께 버림받은 것 같았습니다. 그런데 그날을 돌아보니, <mark>사람들이 고개를 젓던 바로 그때 하나님은 그의 울음에 귀를 기울이고 계셨습니다</mark>. 지금은 보이지 않아도, 지나고 나면 그 자리에 계셨던 하나님을 고백하게 됩니다."], "points": ["사람들이 외면하던 때에도 하나님이 내 울음을 듣고 계셨음을 고백할 수 있습니까?"]}, {"title": "25–26절 · 서원을 갚는 자리에서 낮은 이들이 함께 먹습니다", "paragraphs": ["<mark>\"큰 회중 가운데에서 나의 찬송은 주께로부터 온 것이니\"</mark>(25절). 시인은 자기 찬송이 주님께로부터 온다고 말합니다. 다시 노래할 이유를 주신 분이 하나님이시기 때문입니다. 그리고 주를 경외하는 자 앞에서 <mark>서원, 곧 하나님께 드린 약속을 갚겠다</mark>고 합니다. 이스라엘에서는 서원 예물을 드릴 때 가족과 이웃이 함께 음식을 나누어 먹었습니다.", "<mark>\"겸손한 자는 먹고 배부를 것이며\"</mark>(26절). 그 식탁에서 겸손한 자들이 배불리 먹습니다. 여기서 겸손한 자들은 가난하고 힘이 없어 주님의 도움을 바라는 이들입니다. 시인은 그들을 향해 <mark>\"너희 마음은 영원히 살지어다\"</mark>라고 축복합니다.", "14절에서 시인은 자기 마음이 밀랍처럼 녹는다고 했던 사람입니다. 마음이 무너지는 아픔을 아는 그가 이제 다른 이의 마음을 축복합니다. 내 기도가 응답받은 날에도 누군가는 저녁 끼니를 걱정합니다. <mark>감사한 날, 내 식탁의 교제에 누구를 부르고 싶습니까?</mark> 받은 은혜는 낮은 자리의 이웃과 함께 나눌 때 온전한 감사가 됩니다."], "points": ["감사한 날, 나의 식탁에 함께 초대하고 싶은 낮은 자리의 이웃은 누구입니까?"]}, {"title": "27–29절 · 땅끝의 모든 민족이 왕이신 여호와께 돌아옵니다", "paragraphs": ["<mark>\"땅의 모든 끝이 여호와를 기억하고 돌아오며 모든 나라의 모든 족속이 주의 앞에 예배하리니\"</mark>(27절). 시인은 땅끝의 사람들이 여호와를 기억하고 그분께 돌아와 그 앞에 엎드려 예배할 날을 내다봅니다. 한 사람의 기도 이야기가 어떻게 땅끝까지 이어질까요?", "24절과 28절을 함께 보십시오. 회중이 찬양하는 이유는 하나님이 <mark>한 사람의 울음을 들으셨기 때문</mark>입니다. 모든 민족이 예배하는 이유는 <mark>\"나라는 여호와의 것이요 여호와는 모든 나라의 주재심이로다\"</mark>(28절), 곧 그분이 온 세상을 다스리시는 참된 왕이시기 때문입니다. 그 왕께서 귀를 기울이신 사람이 바로 곁에 도울 이도 없었던 이 시인입니다.", "29절에서는 넉넉하게 먹고 사는 사람도, 자기 목숨을 붙들 힘이 없어 진토 속으로 내려가는 사람도 하나님 앞에 엎드립니다. 15절에서 시인은 자기가 죽음의 진토에 놓였다고 고백했습니다. 그 자리까지 가 본 사람이 이제 <mark>모든 생명이 누구의 손에 있는지</mark> 고백합니다. 26절에서는 배고픈 이가 먹고 29절에서는 풍족한 이가 먹습니다. 두 사람 모두 하나님이 주신 생명으로 오늘을 살아갑니다."], "points": ["형편이 넉넉하든 부족하든, 내 생명이 하나님의 손에 있음을 고백하고 있습니까?"]}, {"title": "30–31절 · 하나님이 하신 일이 태어날 세대에게 전해집니다", "paragraphs": ["히브리어에 '사파르'라는 말이 있습니다. 17절에서 시인이 <mark>\"내가 내 모든 뼈를 셀 수 있나이다\"</mark>라고 할 때 쓰인 말입니다. 22절에서 주의 이름을 '선포한다'는 말과, 30절에서 대대에 주를 '전한다'는 말도 같은 어근에서 나옵니다. <mark>한때 자기 뼈를 세던 사람이 이제 형제들에게 주님의 일을 들려줍니다.</mark>", "<mark>\"후손이 그를 섬길 것이요 대대에 주를 전할 것이며 와서 그의 공의를 태어날 백성에게 전함이여 주께서 이를 행하셨다 할 것이로다\"</mark>(30–31절). 훗날에는 그 이야기를 들은 이들이 입을 열 것입니다. 후손들이 전할 것은 하나님의 공의입니다. 공의는 어디에서 드러났습니까? 사람들이 시인을 업신여길 때 하나님은 그의 호소를 들으시고 그를 건지셨습니다.", "후손들은 그날 그 자리에 없었어도 <mark>\"주께서 이를 행하셨다\"</mark>고 전할 수 있습니다. 오늘 식탁에서 들은 부모의 기도와 감사의 이야기를, 아이는 훗날 혼자 기도해야 하는 밤에 떠올릴 수 있습니다. 우리의 이야기는 우리 세대에서 끝나지 않고, 아직 태어나지 않은 세대의 믿음으로 이어집니다."], "points": ["하나님이 내 삶에 행하신 일을 다음 세대에게 들려주고 있습니까?"]}, {"title": "적용 · 오늘 저녁 식탁에서 나누는 한 가지 이야기", "paragraphs": ["예수님은 십자가에서 시편 22편의 첫마디로 부르짖으셨습니다. <mark>\"내 하나님이여 내 하나님이여 어찌 나를 버리셨나이까\"</mark>. 우리 죄를 지고 죽으신 예수님을 하나님은 다시 살리셨고, 그 십자가와 부활로 우리는 새 생명을 얻었습니다. 시편 22편의 울음과 찬송이 모두 예수님 안에서 이루어졌습니다.", "히브리서 2장은 오늘 본문 22절을 예수님의 말씀으로 들려줍니다. <mark>\"내가 주의 이름을 내 형제들에게 선포하고 내가 주를 교회 중에서 찬송하리라\"</mark>(히 2:12). 예수님은 우리를 기꺼이 형제라 부르시고, 우리 가운데서 하나님을 찬양하십니다. 우리의 찬송 한가운데 예수님이 계십니다.", "아직 슬픔 가운데 있는 분이 계십니까? 오늘은 곁에 있는 믿음의 식구의 기도를 들으며 쉬어도 좋습니다. 십자가에서 부르짖으신 예수님은 <mark>기도하다 지친 우리의 마음을 아십니다</mark>. 지금 내가 찬송할 수 없다면, 공동체의 찬송이 나를 대신해 하나님께 올라가고 있습니다.", "오늘 저녁에는 자녀나 마음에 떠오르는 한 사람과 식탁에 앉아 보십시오. 내가 무엇을 두고 울었는지, 그 하루를 지나도록 <mark>하나님이 어떻게 붙들어 주셨는지 한 가지</mark>를 나눠 주십시오. 그리고 그 사람의 이야기도 들어 주십시오. 하나님을 의지해 견뎌 온 시간이 오늘 그 사람에게 다시 기도할 힘이 될 것입니다."], "points": ["하나님이 나를 붙들어 주신 이야기 한 가지를, 오늘 한 사람과 나누겠습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "힘든 날 하나님이 내 울음을 들으셨던 일을 기억하며 감사했다"}, {"key": "c2", "text": "하나님이 하신 일을 혼자 간직하지 않고 누군가에게 들려주었다"}, {"key": "c3", "text": "감사한 날, 어려운 이웃을 기억하고 나누려 했다"}, {"key": "c4", "text": "다른 사람의 이야기도 귀 기울여 들어 주었다"}], "s4heading": "묵상 한 줄", "memoHint": "하나님이 나를 붙들어 주신 이야기 가운데, 오늘 누구에게 어떤 이야기를 들려주겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "식탁에서 나누기", "value": "오늘 저녁 가족이나 한 사람과 식탁에 앉아 하나님이 나를 붙드신 이야기 한 가지 나누기"}, {"key": "act2", "label": "끝까지 들어 주기", "value": "힘든 시간을 보내는 사람 곁에 앉아 그의 이야기를 끝까지 들어 주기"}, {"key": "act3", "label": "이웃을 식탁에", "value": "감사한 일을 기념하며 형편이 어려운 이웃 한 사람과 식사나 음식을 나누기"}, {"key": "act4", "label": "다음 세대에 전하기", "value": "자녀나 다음 세대에게 내가 받은 응답의 이야기를 구체적으로 들려주기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 22:24를 외우며 내 울음을 들으시는 하나님을 기억하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "곤고한 자의 곤고를 멸시하지 않으시고 제가 울부짖을 때 들으신 하나님, 우리를 형제라 부르시며 함께 찬양하시는 예수님께 감사드립니다."}, {"key": "p2", "tag": "회개", "text": "받은 은혜를 혼자 간직하고, 감사한 날에도 어려운 이웃을 잊었으며, 다른 사람의 이야기를 끝까지 들어 주지 못했던 것을 회개합니다."}, {"key": "p3", "tag": "간구", "text": "하나님을 의지해 견뎌 온 저의 이야기가 누군가에게 위로가 되게 하시고, 다음 세대가 \"주께서 이를 행하셨다\"고 고백하게 해 주십시오."}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 22, Lord's Day", "ref": "Psalm 22:22–31", "headline": "Could the Story of My Tearful Prayers<br>Comfort Someone Else?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 22:22-31", "s1heading": "Today's Word", "verse": "\"For he has not despised or abhorred<br>the affliction of the afflicted, and he has not hidden his face from him,<br>but has heard, when he cried to him.\"", "verseRef": "Psalm 22:24", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · The Story of What I Endured Can Strengthen Someone Else", "paragraphs": ["Was there someone who sat beside you on a hard day and listened to your story? Even now you may not fully understand why that happened, but <mark>the face of the one who listened to you that day</mark> stays in your memory for a long time. The simple fact that someone did not turn away from your pain helped you endure that season.", "In the first part of Psalm 22, the psalmist called on God day and night. He was surrounded by enemies, and there was no one to help. Yet at the end of verse 21 he confesses, <mark>\"You have answered me.\"</mark> We do not know how he escaped the danger. In today's passage, the psalmist stands before his brothers and tells how God stayed by his side while he was weeping.", "We have received new life because Jesus suffered on the cross. We who live by that grace also have stories to share. <mark>The story of enduring a hard day by relying on God</mark> can comfort someone today, and one day it can become the strength our children need to pray."], "points": ["Have I ever told someone the story of how God held me up on a hard day?"]}, {"title": "Verses 22–24 · Praising Together the God Who Heard My Cry", "paragraphs": ["<mark>\"I will tell of your name to my brothers; in the midst of the congregation I will praise you\"</mark> (v.22). The psalmist resolves to tell others, through what he has experienced, who God is. Then he urges the people of Israel who fear the LORD to <mark>praise Him together</mark> (v.23). One person's answered prayer widens into the praise of the whole community.", "What was he so thankful for? <mark>\"For he has not despised or abhorred the affliction of the afflicted, and he has not hidden his face from him, but has heard, when he cried to him\"</mark> (v.24). God does not find the suffering a nuisance or turn away from them. He hears their cry.", "In verse 7, people saw the suffering psalmist, wagged their heads, and mocked him. The psalmist himself felt abandoned by God. But looking back on that day, he realized that <mark>at the very moment people were shaking their heads, God was listening to his cry</mark>. Even when we cannot see it now, once we have passed through, we come to confess the God who was there all along."], "points": ["Can I confess that God was listening to my cry even when people turned away?"]}, {"title": "Verses 25–26 · Where Vows Are Paid, the Lowly Eat Together", "paragraphs": ["<mark>\"From you comes my praise in the great congregation\"</mark> (v.25). The psalmist says his praise comes from the Lord, because God is the One who gave him a reason to sing again. And before those who fear Him, he will <mark>pay his vows—the promises he made to God</mark>. In Israel, when vow offerings were presented, family and neighbors shared a meal together.", "<mark>\"The afflicted shall eat and be satisfied\"</mark> (v.26). At that table, the humble eat their fill. Here 'the afflicted' or 'humble' are those who are poor and powerless, looking to the Lord for help. The psalmist blesses them: <mark>\"May your hearts live forever!\"</mark>", "In verse 14, this was the man who said his heart was melting like wax. Knowing the pain of a heart that collapses, he now blesses the hearts of others. Even on the day my prayer is answered, someone else is worrying about dinner. <mark>On a day of thanksgiving, whom would you invite to share your table?</mark> Grace received becomes complete thanksgiving when it is shared with neighbors in lowly places."], "points": ["On a day of thanksgiving, which neighbor in need would I like to invite to my table?"]}, {"title": "Verses 27–29 · All Nations to the Ends of the Earth Return to the LORD the King", "paragraphs": ["<mark>\"All the ends of the earth shall remember and turn to the LORD, and all the families of the nations shall worship before you\"</mark> (v.27). The psalmist looks ahead to the day when people at the ends of the earth will remember the LORD, return to Him, and bow down in worship. How can one person's prayer story reach the ends of the earth?", "Look at verses 24 and 28 together. The congregation praises because God <mark>heard the cry of one person</mark>. All nations worship because <mark>\"kingship belongs to the LORD, and he rules over the nations\"</mark> (v.28)—He is the true King who reigns over the whole world. And the one this King bent down to hear was this very psalmist, who had no one beside him to help.", "In verse 29, both the prosperous who eat well and those who go down to the dust, unable to keep themselves alive, bow before God. In verse 15, the psalmist confessed that he had been laid in the dust of death. Having been to that place himself, he now confesses <mark>in whose hands all life rests</mark>. In verse 26 the hungry eat, and in verse 29 the prosperous eat. Both live today by the life God gives."], "points": ["Whether I have plenty or little, do I confess that my life is in God's hands?"]}, {"title": "Verses 30–31 · What God Has Done Is Passed On to Generations Yet Unborn", "paragraphs": ["There is a Hebrew word, <i>saphar</i>. It is the word used in verse 17 when the psalmist says, <mark>\"I can count all my bones.\"</mark> The word for 'tell' of the Lord's name in verse 22, and for the Lord being 'told' to the coming generation in verse 30, come from the same root. <mark>The one who once counted his own bones now recounts the Lord's works to his brothers.</mark>", "<mark>\"Posterity shall serve him; it shall be told of the Lord to the coming generation; they shall come and proclaim his righteousness to a people yet unborn, that he has done it\"</mark> (vv.30–31). In days to come, those who heard the story will open their mouths. What their descendants will proclaim is God's righteousness. Where was that righteousness revealed? When people despised the psalmist, God heard his plea and rescued him.", "Even though later generations were not there that day, they can proclaim, <mark>\"He has done it.\"</mark> The prayers and stories of thanks a child hears from a parent at the table today may come back to that child on some future night when they must pray alone. Our stories do not end with our generation; they carry on into the faith of generations not yet born."], "points": ["Am I telling the next generation what God has done in my life?"]}, {"title": "Application · One Story to Share at Tonight's Table", "paragraphs": ["On the cross, Jesus cried out with the opening words of Psalm 22: <mark>\"My God, my God, why have you forsaken me?\"</mark> God raised Jesus, who died bearing our sins, and through that cross and resurrection we received new life. Both the weeping and the praise of Psalm 22 are fulfilled in Jesus.", "Hebrews 2 presents verse 22 of today's passage as the words of Jesus: <mark>\"I will tell of your name to my brothers; in the midst of the congregation I will sing your praise\"</mark> (Hebrews 2:12). Jesus is glad to call us brothers and sisters, and He praises God in our midst. At the very center of our praise is Jesus.", "Is anyone here still in sorrow? Today it is all right to rest and simply listen to the prayers of the believers beside you. Jesus, who cried out on the cross, <mark>knows our hearts when we are weary from praying</mark>. If you cannot praise right now, the praise of the community is rising to God on your behalf.", "This evening, sit at the table with your children or with someone who comes to mind. Share <mark>one thing about how God held you up</mark>—what you wept over, and how God carried you through that day. Then listen to their story too. The time you have endured by relying on God may become, today, the strength for that person to pray again."], "points": ["Today I will share with one person a story of how God held me up."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I remembered with thanks how God heard my cry on a hard day."}, {"key": "c2", "text": "I did not keep what God has done to myself, but told someone about it."}, {"key": "c3", "text": "On a day of thanksgiving, I remembered a neighbor in need and tried to share."}, {"key": "c4", "text": "I listened attentively to someone else's story as well."}], "s4heading": "One-Line Reflection", "memoHint": "Of the stories of how God held me up, which one will I share today, and with whom?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Share at the Table", "value": "Sit at the table this evening with family or one person and share one story of how God held you up"}, {"key": "act2", "label": "Listen to the End", "value": "Sit beside someone going through a hard time and listen to their story all the way through"}, {"key": "act3", "label": "Invite a Neighbor", "value": "Celebrate something you're thankful for by sharing a meal or food with a neighbor in need"}, {"key": "act4", "label": "Tell the Next Generation", "value": "Tell your children or the next generation, in detail, the story of an answer you received"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 22:24 and remember the God who hears your cry"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for not despising the affliction of the afflicted and for hearing me when I cried out; and thank You, Jesus, for calling us brothers and sisters and praising with us."}, {"key": "p2", "tag": "Repent", "text": "I repent of keeping the grace I received to myself, of forgetting neighbors in need even on days of thanksgiving, and of failing to listen fully to others' stories."}, {"key": "p3", "tag": "Ask", "text": "Let the story of what I have endured by relying on You become comfort for someone, and let the next generation confess, \"He has done it.\""}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 22, Araw ng Panginoon", "ref": "Awit 22:22–31", "headline": "Makaaaliw Kaya sa Iba<br>ang Kuwento ng Aking Lumuluhang Panalangin?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 22:22-31", "s1heading": "Salita Ngayon", "verse": "\"Sapagkat hindi Niya hinamak o kinasuklaman<br>ang paghihirap ng nagdurusa, at hindi Niya itinago ang Kanyang mukha sa kanya,<br>kundi nakinig nang siya'y dumaing sa Kanya.\"", "verseRef": "Awit 22:24", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Ang Kuwento ng Aking Pagtitiis ay Makapagpapalakas sa Iba", "paragraphs": ["May tao bang naupo sa tabi mo sa isang mahirap na araw at nakinig sa iyong kuwento? Hanggang ngayon ay maaaring hindi mo lubos na nauunawaan kung bakit iyon nangyari, ngunit <mark>ang mukha ng taong nakinig sa iyo noong araw na iyon</mark> ay matagal mong naaalala. Ang simpleng katotohanang may taong hindi tumalikod sa iyong sakit ang tumulong sa iyong makatiis sa panahong iyon.", "Sa unang bahagi ng Awit 22, araw at gabing tumawag sa Diyos ang mang-aawit. Napaliligiran siya ng mga kaaway, at walang tumutulong. Gayunman, sa dulo ng talata 21 ay ipinahayag niya, <mark>\"Sinagot Mo ako.\"</mark> Hindi natin alam kung paano siya nakatakas sa panganib. Sa talata ngayon, tumayo ang mang-aawit sa harap ng kanyang mga kapatid at ikinuwento kung paano siya sinamahan ng Diyos habang siya'y umiiyak.", "Tumanggap tayo ng bagong buhay dahil nagdusa si Jesus sa krus. Tayong nabubuhay sa biyayang iyon ay may mga kuwento ring maibabahagi. <mark>Ang kuwento ng pagtitiis sa isang mahirap na araw sa pag-asa sa Diyos</mark> ay maaaring makaaliw sa isang tao ngayon, at balang araw ay maging lakas ng ating mga anak upang manalangin."], "points": ["Naikuwento ko na ba sa iba kung paano ako inalalayan ng Diyos sa isang mahirap na araw?"]}, {"title": "Talata 22–24 · Sama-samang Pinupuri ang Diyos na Nakinig sa Aking Daing", "paragraphs": ["<mark>\"Ihahayag ko ang Iyong pangalan sa aking mga kapatid; sa gitna ng kapulungan ay pupurihin Kita\"</mark> (t.22). Nagpasya ang mang-aawit na ikuwento sa iba, sa pamamagitan ng kanyang naranasan, kung sino ang Diyos. Pagkatapos ay hinikayat niya ang bayang Israel na may takot sa PANGINOON na <mark>sama-samang magpuri sa Kanya</mark> (t.23). Ang sagot sa panalangin ng isang tao ay lumalawak tungo sa papuri ng buong komunidad.", "Ano ang labis niyang ipinagpapasalamat? <mark>\"Sapagkat hindi Niya hinamak o kinasuklaman ang paghihirap ng nagdurusa, at hindi Niya itinago ang Kanyang mukha sa kanya, kundi nakinig nang siya'y dumaing sa Kanya\"</mark> (t.24). Hindi itinuturing ng Diyos na abala ang mga nagdurusa, ni tinatalikuran sila. Pinakikinggan Niya ang kanilang pagdaing.", "Sa talata 7, nakita ng mga tao ang nagdurusang mang-aawit, iniling ang kanilang ulo, at tinuya siya. Pakiramdam din ng mang-aawit ay pinabayaan siya ng Diyos. Ngunit nang balikan niya ang araw na iyon, napagtanto niyang <mark>sa mismong sandaling umiiling ang mga tao, nakikinig ang Diyos sa kanyang pagdaing</mark>. Kahit hindi natin ito nakikita ngayon, kapag nakalampas na tayo, ipinahahayag natin ang Diyos na naroon sa buong panahon."], "points": ["Maipapahayag ko bang nakikinig ang Diyos sa aking daing kahit tumalikod ang mga tao?"]}, {"title": "Talata 25–26 · Kung Saan Tinutupad ang Panata, Sama-samang Kumakain ang mga Mababa", "paragraphs": ["<mark>\"Mula sa Iyo ang aking papuri sa malaking kapulungan\"</mark> (t.25). Sinasabi ng mang-aawit na ang kanyang papuri ay nagmumula sa Panginoon, sapagkat ang Diyos ang nagbigay sa kanya ng dahilan upang muling umawit. At sa harap ng mga may takot sa Kanya, <mark>tutuparin niya ang kanyang mga panata—ang mga pangakong ginawa niya sa Diyos</mark>. Sa Israel, kapag iniaalay ang mga handog ng panata, sama-samang kumakain ang pamilya at mga kapitbahay.", "<mark>\"Ang mga dukha ay kakain at mabubusog\"</mark> (t.26). Sa hapag na iyon, nabubusog ang mga mapagpakumbaba. Dito, ang 'mga dukha' o 'mapagpakumbaba' ay ang mga mahirap at walang kapangyarihan na umaasa sa tulong ng Panginoon. Pinagpapala sila ng mang-aawit: <mark>\"Mabuhay nawa magpakailanman ang inyong mga puso!\"</mark>", "Sa talata 14, siya ang lalaking nagsabing natutunaw ang kanyang puso na parang pagkit. Dahil alam niya ang sakit ng pusong gumuguho, pinagpapala niya ngayon ang puso ng iba. Kahit sa araw na nasagot ang aking panalangin, may iba namang nag-aalala kung ano ang kakainin sa hapunan. <mark>Sa araw ng pasasalamat, sino ang nais mong anyayahan sa iyong hapag?</mark> Ang biyayang natanggap ay nagiging ganap na pasasalamat kapag ibinahagi sa mga kapwang nasa mababang kalagayan."], "points": ["Sa araw ng pasasalamat, sinong nangangailangang kapwa ang nais kong anyayahan sa aking hapag?"]}, {"title": "Talata 27–29 · Ang Lahat ng Bansa Hanggang sa Dulo ng Lupa ay Babalik sa PANGINOON na Hari", "paragraphs": ["<mark>\"Ang lahat ng dulo ng lupa ay aalala at babalik sa PANGINOON, at ang lahat ng angkan ng mga bansa ay sasamba sa harap Mo\"</mark> (t.27). Inaabangan ng mang-aawit ang araw na ang mga tao sa dulo ng lupa ay aalala sa PANGINOON, babalik sa Kanya, at magpapatirapa sa pagsamba. Paano aabot hanggang sa dulo ng lupa ang kuwento ng panalangin ng isang tao?", "Tingnan nang sabay ang talata 24 at 28. Nagpupuri ang kapulungan dahil <mark>pinakinggan ng Diyos ang daing ng isang tao</mark>. Sumasamba ang lahat ng bansa dahil <mark>\"ang paghahari ay sa PANGINOON, at Siya ang namamahala sa mga bansa\"</mark> (t.28)—Siya ang tunay na Haring naghahari sa buong mundo. At ang pinakinggan ng Haring ito ay ang mismong mang-aawit na walang sinumang katabi upang tumulong.", "Sa talata 29, kapwa ang mayayamang kumakain nang sagana at ang mga bumababa sa alabok, na hindi kayang panatilihing buhay ang sarili, ay yumuyukod sa harap ng Diyos. Sa talata 15, ipinagtapat ng mang-aawit na siya'y inilagay sa alabok ng kamatayan. Dahil napuntahan na niya ang lugar na iyon, ipinahahayag niya ngayon <mark>kung kaninong mga kamay nakasalalay ang lahat ng buhay</mark>. Sa talata 26 ay kumakain ang nagugutom, at sa talata 29 ay kumakain ang masagana. Pareho silang nabubuhay ngayon sa buhay na ibinibigay ng Diyos."], "points": ["Marami man o kaunti ang mayroon ako, ipinahahayag ko bang nasa kamay ng Diyos ang aking buhay?"]}, {"title": "Talata 30–31 · Ang Ginawa ng Diyos ay Ipinapasa sa mga Salinlahing Hindi pa Isinisilang", "paragraphs": ["May salitang Hebreo na <i>saphar</i>. Ito ang salitang ginamit sa talata 17 nang sabihin ng mang-aawit, <mark>\"Mabibilang ko ang lahat ng aking buto.\"</mark> Ang salitang 'ihayag' ang pangalan ng Panginoon sa talata 22, at ang pagkukuwento tungkol sa Panginoon sa susunod na salinlahi sa talata 30, ay nagmumula sa iisang ugat. <mark>Ang taong minsang nagbilang ng sarili niyang mga buto ay nagsasalaysay ngayon sa kanyang mga kapatid ng mga gawa ng Panginoon.</mark>", "<mark>\"Ang susunod na lahi ay maglilingkod sa Kanya; ikukuwento ang tungkol sa Panginoon sa darating na salinlahi; sila'y darating at ipahahayag ang Kanyang katuwiran sa bayang hindi pa isinisilang, na Siya ang gumawa nito\"</mark> (t.30–31). Sa mga araw na darating, magbubukas ng bibig ang mga nakarinig ng kuwento. Ang ipahahayag ng kanilang mga inapo ay ang katuwiran ng Diyos. Saan nahayag ang katuwirang iyon? Nang hamakin ng mga tao ang mang-aawit, pinakinggan ng Diyos ang kanyang pakiusap at iniligtas siya.", "Kahit wala roon ang mga susunod na salinlahi noong araw na iyon, maipahahayag nila, <mark>\"Siya ang gumawa nito.\"</mark> Ang mga panalangin at kuwento ng pasasalamat na naririnig ng isang anak mula sa magulang sa hapag ngayon ay maaaring bumalik sa kanya sa isang gabi sa hinaharap na kailangan niyang manalanging mag-isa. Hindi nagtatapos ang ating mga kuwento sa ating salinlahi; nagpapatuloy ito sa pananampalataya ng mga salinlahing hindi pa isinisilang."], "points": ["Ikinukuwento ko ba sa susunod na salinlahi ang ginawa ng Diyos sa aking buhay?"]}, {"title": "Pagsasabuhay · Isang Kuwentong Ibabahagi sa Hapag Ngayong Gabi", "paragraphs": ["Sa krus, dumaing si Jesus gamit ang unang mga salita ng Awit 22: <mark>\"Diyos ko, Diyos ko, bakit Mo Ako pinabayaan?\"</mark> Muling binuhay ng Diyos si Jesus na namatay na pasan ang ating mga kasalanan, at sa krus at muling pagkabuhay na iyon ay tumanggap tayo ng bagong buhay. Kapwa natupad kay Jesus ang pag-iyak at ang papuri ng Awit 22.", "Inihaharap ng Hebreo 2 ang talata 22 ng ating talata ngayon bilang mga salita ni Jesus: <mark>\"Ihahayag ko ang Iyong pangalan sa Aking mga kapatid; sa gitna ng kapulungan ay aawitan Kita ng papuri\"</mark> (Hebreo 2:12). Ikinagagalak ni Jesus na tawagin tayong mga kapatid, at pinupuri Niya ang Diyos sa ating gitna. Nasa mismong sentro ng ating papuri si Jesus.", "May tao bang narito na nasa kalungkutan pa rin? Ngayon, ayos lang na magpahinga at makinig na lamang sa mga panalangin ng mga mananampalatayang katabi mo. Si Jesus, na dumaing sa krus, ay <mark>nakaaalam ng ating puso kapag pagod na tayo sa pananalangin</mark>. Kung hindi ka makapagpuri ngayon, ang papuri ng komunidad ay umaakyat sa Diyos para sa iyo.", "Ngayong gabi, umupo sa hapag kasama ang iyong mga anak o ang isang taong pumapasok sa iyong isip. Ibahagi ang <mark>isang bagay tungkol sa kung paano ka inalalayan ng Diyos</mark>—kung ano ang iyong iniyakan, at kung paano ka itinawid ng Diyos sa araw na iyon. Pagkatapos, pakinggan din ang kanyang kuwento. Ang panahong tiniis mo sa pag-asa sa Diyos ay maaaring maging, ngayon, ang lakas ng taong iyon upang muling manalangin."], "points": ["Ngayon, ibabahagi ko sa isang tao ang kuwento kung paano ako inalalayan ng Diyos."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Naalala ko nang may pasasalamat kung paano pinakinggan ng Diyos ang aking daing sa isang mahirap na araw."}, {"key": "c2", "text": "Hindi ko sinarili ang ginawa ng Diyos, kundi ikinuwento ko ito sa iba."}, {"key": "c3", "text": "Sa araw ng pasasalamat, naalala ko ang nangangailangang kapwa at sinikap kong magbahagi."}, {"key": "c4", "text": "Matamang nakinig din ako sa kuwento ng iba."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa mga kuwento kung paano ako inalalayan ng Diyos, alin ang ibabahagi ko ngayon, at kanino?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Magbahagi sa Hapag", "value": "Umupo sa hapag ngayong gabi kasama ang pamilya o isang tao at ibahagi ang isang kuwento kung paano ka inalalayan ng Diyos"}, {"key": "act2", "label": "Makinig Hanggang Dulo", "value": "Umupo sa tabi ng isang dumaraan sa mahirap na panahon at pakinggan ang kanyang kuwento hanggang dulo"}, {"key": "act3", "label": "Mag-anyaya ng Kapwa", "value": "Ipagdiwang ang isang bagay na ipinagpapasalamat mo sa pagbabahagi ng pagkain sa isang nangangailangang kapwa"}, {"key": "act4", "label": "Ikuwento sa Susunod na Salinlahi", "value": "Ikuwento nang detalyado sa iyong mga anak o sa susunod na salinlahi ang sagot na natanggap mo"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 22:24 at alalahanin ang Diyos na nakikinig sa iyong daing"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa hindi paghamak sa paghihirap ng nagdurusa at sa pakikinig sa akin nang ako'y dumaing; at salamat, Jesus, sa pagtawag sa amin na mga kapatid at sa pagpupuri kasama namin."}, {"key": "p2", "tag": "Pagsisisi", "text": "Pinagsisisihan ko ang pagsasarili ng biyayang natanggap ko, ang paglimot sa nangangailangang kapwa kahit sa mga araw ng pasasalamat, at ang hindi lubos na pakikinig sa kuwento ng iba."}, {"key": "p3", "tag": "Kahilingan", "text": "Hayaan Mong ang kuwento ng aking pagtitiis sa pag-asa sa Iyo ay maging aliw sa iba, at hayaan Mong ipahayag ng susunod na salinlahi, \"Siya ang gumawa nito.\""}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-22';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
