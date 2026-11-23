@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/24(화) 큐티 · 시편 24:1–10">
+<meta property="og:description" content="교회 문을 나선 뒤, 나는 어떻게 하나님을 예배할까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 24일 화요일", "ref": "시편 24편 1–10절", "headline": "교회 문을 나선 뒤,<br>나는 어떻게 하나님을 예배할까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 24:1-10", "s1heading": "오늘의 말씀", "verse": "\"여호와의 산에 오를 자 누구며 그의 거룩한 곳에 설 자가 누구인가<br>곧 손이 깨끗하며 마음이 청결하며<br>뜻을 허탄한 데에 두지 아니하며 거짓 맹세하지 아니하는 자로다\"", "verseRef": "시편 24:3–4", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 주일의 고백은 월요일 아침에 어떻게 드러날까요", "paragraphs": ["시험을 앞두거나 일터에서 중요한 일을 맡으면 우리는 간절히 기도합니다. \"주님, 이번 일은 꼭 잘되게 해 주세요.\" 그런데 좋은 결과를 구하는 만큼, <mark>그 과정에서 내가 어떻게 공부하고 일할지도</mark> 주님께 묻고 있습니까?", "앞선 시편 23편에서 다윗은 여호와를 '나의 목자'라고 불렀습니다. 누구도 대신해 줄 수 없는 믿음의 고백입니다. 주님을 나의 목자라고 부를 때 나 역시 주님께 속한 양임을 고백합니다. 오늘 24편에서는 <mark>온 회중이 그 목자를 온 땅의 왕으로 선포하고 맞이합니다</mark>. 나를 돌보신 하나님은 나만의 하나님이 아니라 모든 민족과 만물의 주인이십니다.", "그렇다면 주일에 드린 나의 고백은 월요일 아침에 어떻게 드러날까요? 오늘 말씀은 예배가 예배당 안에서 끝나지 않고, <mark>교회 문을 나선 뒤의 손과 마음과 말</mark>로 이어져야 함을 보여 줍니다. 세 부분으로 나누어 함께 살펴봅니다."], "points": ["좋은 결과를 구하는 만큼, 그 과정에서 어떻게 살아야 할지도 주님께 묻고 있습니까?"]}, {"title": "1–2절 · 온 땅은 그 터를 세우신 여호와의 것입니다", "paragraphs": ["<mark>\"땅과 거기에 충만한 것과 세계와 그 가운데에 사는 자들은 다 여호와의 것이로다\"</mark>(1절). 예배하러 모인 사람들이 먼저 온 세상을 바라봅니다. 나와 함께 찬양하는 사람도, 내가 평생 만나지 못할 먼 나라 사람도 같은 창조주께 속합니다. 말이 다르고 믿음이 다른 이웃도 <mark>하나님이 지으신 귀한 하나님의 형상</mark>을 지닌 사람들입니다.", "<mark>\"여호와께서 그 터를 바다 위에 세우심이여 강들 위에 건설하셨도다\"</mark>(2절). 시인은 바다와 강 위에 땅의 기초를 놓으신 하나님을 찬양합니다. 우리가 아침마다 일어나 발을 디딜 곳이 있는 것은 하나님이 삶의 터전을 마련해 주셨기 때문입니다. <mark>예배를 마치고 교회 문을 나서는 순간에도 우리의 발은 여전히 주님의 땅을 딛고 있습니다.</mark>", "적용해서 생각해 보면 이렇습니다. 약속에 10분 늦은 날, 나를 기다려 준 사람도 그만큼 자기 시간을 내어 주었습니다. 나는 그 사람의 시간을 내 시간만큼 귀하게 여기고 있습니까? 모든 것이 하나님의 것이라면, <mark>다른 사람의 시간과 수고도 하나님께 속한 귀한 것</mark>입니다."], "points": ["말과 믿음이 다른 이웃도, 하나님의 형상을 지닌 귀한 사람으로 대하고 있습니까?"]}, {"title": "3–4절 · 깨끗한 손과 청결한 마음으로 주님 앞에 섭니다", "paragraphs": ["<mark>\"여호와의 산에 오를 자 누구며 그의 거룩한 곳에 설 자가 누구인가\"</mark>(3절). 시인은 누가 하나님 앞에 설 수 있는지 묻습니다. 그 대답에 손과 마음이 나옵니다. <mark>\"곧 손이 깨끗하며 마음이 청결하며 뜻을 허탄한 데에 두지 아니하며 거짓 맹세하지 아니하는 자로다\"</mark>(4절). 손은 내가 실제로 한 일을, 마음은 그 일을 하며 품었던 나의 뜻을 보여 줍니다.", "허탄한 것에 마음을 두거나 거짓으로 맹세하는 일도 돌아보게 합니다. 입으로는 꼭 해 주겠다고 약속했는데 마음속에는 처음부터 그 약속을 지킬 생각이 없었다면 어떻습니까? <mark>하나님은 내 말을 들으시고, 그 속에 담긴 태도와 뜻도 아십니다.</mark> 겉으로 드러난 행동과 속마음이 하나 되는 것이 하나님 앞에 서는 사람의 모습입니다.", "학생이라면 어려운 문제 앞에 앉은 자신을 떠올려 보십시오. 친구의 답을 옮기면 숙제는 금방 끝납니다. 그때 내가 풀어 본 데까지 적고 선생님께 이렇게 말씀드릴 수 있습니다. \"여기까지는 풀었는데 그다음은 잘 모르겠습니다.\" <mark>하나님 앞에서 정직하게 배우려는 그 태도가 예배가 될 수 있습니다.</mark>"], "points": ["내 손이 한 일과 내 마음이 품은 뜻이, 하나님 앞에서 하나가 되어 있습니까?"]}, {"title": "5–6절 · 복을 받은 뒤에도 여전히 주님의 얼굴을 구합니다", "paragraphs": ["<mark>\"그는 여호와께 복을 받고 구원의 하나님께 의를 얻으리니\"</mark>(5절). 깨끗한 손과 청결한 마음으로 사는 사람의 삶을 옳다고 인정해 주시는 분이 하나님이시라는 뜻입니다. 의는 내가 스스로 증명하는 것이 아니라 <mark>구원의 하나님께로부터 받는 것</mark>입니다.", "이어 6절은 이들을 <mark>\"여호와를 찾는 족속이요 야곱의 하나님의 얼굴을 구하는 자\"</mark>라고 부릅니다. 얼굴을 구한다는 것은 하나님을 가까이 뵙고 싶다는 말입니다. 원하는 것만 얻고 돌아서는 것이 아니라, 하나님 그분과 함께 있기를 바라는 마음입니다.", "5절에서 복을 받은 사람이 6절에서도 <mark>여전히 하나님을 찾습니다</mark>. 복이 목적이었다면 5절에서 멈췄을 것입니다. 그러나 이들은 복을 주신 분의 얼굴을 계속 구합니다. 기도하던 일이 잘 풀린 다음 날에도, 나는 주님과 무슨 이야기를 나누고 싶습니까?"], "points": ["기도하던 일이 잘 풀린 다음 날에도, 나는 주님의 얼굴을 구하고 있습니까?"]}, {"title": "7–10절 · 문들아, 머리를 들라 영광의 왕이 들어가신다", "paragraphs": ["앞에서는 사람들이 하나님을 예배하러 산에 올랐습니다. 이제는 <mark>왕이신 하나님이 들어오십니다</mark>. 회중은 오래된 문들을 향해 외칩니다. <mark>\"문들아 너희 머리를 들지어다 영원한 문들아 들릴지어다 영광의 왕이 들어가시리로다\"</mark>(7절). 문이 머리를 들 듯 활짝 열려 왕을 맞는 모습입니다. \"영광의 왕이 누구시냐\"는 첫 물음에 회중은 <mark>\"강하고 능한 여호와시요 전쟁에 능한 여호와시로다\"</mark>(8절)라고 답합니다.", "9절과 10절에서 같은 외침과 질문이 한 번 더 울립니다. 이번에는 <mark>\"만군의 여호와께서 곧 영광의 왕이시로다\"</mark>(10절)라고 답합니다. 온 군대를 거느리시는 여호와께서 영광의 왕이십니다. 1절에서 온 세상의 주인이라고 고백한 분을, 이제 온 회중이 <mark>자기들의 왕으로 맞이하고 있습니다</mark>.", "직장에서 팀이 함께 만든 보고서로 나 혼자 칭찬을 받을 때가 있습니다. 가만히 있으면 그 칭찬은 고스란히 내 몫이 됩니다. 그때 \"그 자료는 제 동료들이 함께 만들어 줬습니다\"라고 말할 수 있습니다. 동료의 수고를 알아주는 그 한마디로 <mark>우리는 일터에서도 하나님을 왕으로 모시며 살아갈 수 있습니다</mark>. 주님의 능력을 의지한다고 말하면서 내 뜻이 꼭 이루어져야 한다고 고집하는 일이 있다면, 바로 그 일에서 주님이 기뻐하시는 선택을 물을 수 있습니다."], "points": ["내 삶의 문을 열고, 일터와 가정에서도 하나님을 왕으로 모시고 있습니까?"]}, {"title": "적용 · 내가 서 있는 자리에서 온 땅의 주님을 예배합니다", "paragraphs": ["사마리아의 한 여인이 물을 길으러 왔습니다. 우물가에 앉아 계시던 예수님이 먼저 그 여인에게 마실 물을 청하셨습니다. 이야기를 나누던 여인이 어디서 하나님을 예배해야 하는지 묻자, 예수님은 <mark>\"아버지께서는 자기에게 이렇게 예배하는 자들을 찾으시느니라… 영과 진리로 예배할지니라\"</mark>(요 4:23–24)고 말씀하셨습니다.", "시편 24편에서는 사람이 하나님의 얼굴을 찾았습니다. 우물가에서는 <mark>예배자를 먼저 찾으시는 하나님의 마음</mark>을 봅니다. 예수님은 사마리아 사람들의 초대를 받아 그들과 이틀을 함께 지내셨고, 말씀을 직접 들은 마을 사람들은 예수님을 <mark>\"세상의 구주\"</mark>(요 4:42)로 고백했습니다. 우리가 '나의 주님'이라 부르는 분은 내가 낯설어하는 이웃도 귀하게 여기십니다.", "직장에서 새로운 동료가 같은 일을 또다시 물을 때, 잠시 곁에 앉아 한 번 더 친절하게 알려 줄 수 있습니다. 약속 시간을 지키고, 정직하게 배우고, 동료의 수고를 알아주는 일이 모두 <mark>교회 문을 나선 뒤에 드리는 예배</mark>입니다. 온 땅이 주님의 것이기에, 내가 서 있는 모든 자리가 예배의 자리가 됩니다.", "오늘도 우리는 \"주님, 제 일이 잘되게 해 주세요\"라고 기도합니다. 그 기도를 마치고 고개를 들었을 때 곁에는 누가 있습니까? 오늘은 그 사람에게 먼저 따뜻한 말을 건네며, <mark>내가 서 있는 자리에서 온 땅의 주님을 예배하시기 바랍니다</mark>."], "points": ["기도를 마치고 고개를 들었을 때 곁에 있는 사람에게, 오늘 먼저 따뜻한 말을 건네겠습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "좋은 결과만 구하지 않고 과정에서도 정직하게 공부하고 일하려 했다"}, {"key": "c2", "text": "다른 사람의 시간과 수고를 내 것만큼 귀하게 여겼다"}, {"key": "c3", "text": "지킬 마음 없는 약속이나 거짓된 말을 하지 않았다"}, {"key": "c4", "text": "동료의 수고를 알아주고, 낯선 이웃에게도 친절을 베풀었다"}], "s4heading": "묵상 한 줄", "memoHint": "오늘 교회 문을 나선 뒤의 자리에서, 나는 어떤 손과 마음으로 하나님을 예배하겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "과정도 맡기기", "value": "결과를 위한 기도와 함께 \"이 일을 어떻게 해야 할지 알려 주십시오\"라고 기도하기"}, {"key": "act2", "label": "시간 존중하기", "value": "오늘 약속 시간을 지키고, 늦었다면 기다려 준 사람에게 진심으로 사과하기"}, {"key": "act3", "label": "정직하게 하기", "value": "쉬운 길이 있어도 내가 할 수 있는 데까지 정직하게 하고 모르는 것은 솔직히 묻기"}, {"key": "act4", "label": "공 돌리기", "value": "함께 이룬 일로 칭찬받을 때 동료의 수고를 구체적으로 알려 주기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 24:3–4를 외우며 깨끗한 손과 청결한 마음을 구하기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "온 땅과 그 가운데 사는 모든 사람의 주인이시며, 저를 돌보시는 목자이자 영광의 왕으로 오시고, 먼저 예배자를 찾으시는 주님께 감사드립니다."}, {"key": "p2", "tag": "회개", "text": "좋은 결과만 구하고 과정의 정직함은 묻지 않았으며, 다른 사람의 시간과 수고를 가볍게 여기고, 지키지 않을 말을 했던 것을 회개합니다."}, {"key": "p3", "tag": "간구", "text": "깨끗한 손과 청결한 마음으로 살게 하시고, 교회 문을 나선 뒤에도 일터와 가정에서 주님을 왕으로 모시며, 곁에 있는 이웃을 귀히 여기게 해 주십시오."}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 24, Tuesday", "ref": "Psalm 24:1–10", "headline": "After I Walk Out the Church Door,<br>How Will I Worship God?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 24:1-10", "s1heading": "Today's Word", "verse": "\"Who shall ascend the hill of the LORD? And who shall stand in his holy place?<br>He who has clean hands and a pure heart,<br>who does not lift up his soul to what is false and does not swear deceitfully.\"", "verseRef": "Psalm 24:3–4", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · How Does Sunday's Confession Show Up on Monday Morning?", "paragraphs": ["When an exam is coming or we've been given an important task at work, we pray earnestly: \"Lord, please let this go well.\" But as much as we ask for a good outcome, are we also asking the Lord <mark>how we should study and work along the way</mark>?", "In Psalm 23, David called the LORD 'my shepherd.' It is a confession of faith no one else can make for us. When we call the Lord our shepherd, we are also confessing that we are sheep who belong to Him. In Psalm 24, <mark>the whole congregation proclaims and welcomes that Shepherd as King of all the earth</mark>. The God who cares for me is not my God alone; He is the Lord of all nations and all creation.", "So how does the confession I made on Sunday show up on Monday morning? Today's passage shows that worship does not end inside the sanctuary but must continue in <mark>our hands, hearts, and words after we walk out the church door</mark>. Let us look at it together in three parts."], "points": ["As much as I ask for good results, am I also asking the Lord how I should live along the way?"]}, {"title": "Verses 1–2 · The Whole Earth Belongs to the LORD Who Founded It", "paragraphs": ["<mark>\"The earth is the LORD's and the fullness thereof, the world and those who dwell therein\"</mark> (v.1). Those gathered to worship first look out upon the whole world. The person praising beside me and someone in a faraway land I will never meet belong to the same Creator. Even neighbors who speak a different language or hold a different faith are <mark>precious people bearing the image of God</mark>.", "<mark>\"For he has founded it upon the seas and established it upon the rivers\"</mark> (v.2). The psalmist praises God who laid the foundations of the land upon seas and rivers. We have a place to set our feet each morning because God has prepared the ground of our lives. <mark>Even the moment we step out of the church door after worship, our feet are still standing on the Lord's land.</mark>", "Applied, it looks like this: on a day you were ten minutes late, the person who waited for you gave up that much of their own time. Do you value that person's time as much as your own? If everything belongs to God, then <mark>other people's time and effort are also precious things that belong to Him</mark>."], "points": ["Do I treat neighbors of different language and faith as precious people bearing God's image?"]}, {"title": "Verses 3–4 · Standing Before the Lord with Clean Hands and a Pure Heart", "paragraphs": ["<mark>\"Who shall ascend the hill of the LORD? And who shall stand in his holy place?\"</mark> (v.3). The psalmist asks who can stand before God. The answer involves hands and heart: <mark>\"He who has clean hands and a pure heart, who does not lift up his soul to what is false and does not swear deceitfully\"</mark> (v.4). Our hands show what we have actually done; our hearts show the intentions we held while doing it.", "It also calls us to examine whether we set our hearts on empty things or swear falsely. What if we promised with our lips to do something, but from the start had no intention of keeping that promise? <mark>God hears our words and also knows the attitude and intention behind them.</mark> The person who stands before God is one whose outward actions and inner heart are one.", "If you are a student, picture yourself sitting before a difficult problem. Copying a friend's answer would finish the homework quickly. Instead, you can write down as far as you were able to solve it and tell your teacher, \"I got this far, but I don't understand the next part.\" <mark>That attitude of learning honestly before God can itself be worship.</mark>"], "points": ["Are what my hands have done and what my heart intends one before God?"]}, {"title": "Verses 5–6 · Still Seeking His Face After Receiving Blessing", "paragraphs": ["<mark>\"He will receive blessing from the LORD and righteousness from the God of his salvation\"</mark> (v.5). This means it is God who affirms as right the life of one who lives with clean hands and a pure heart. Righteousness is not something we prove on our own, but something <mark>we receive from the God of our salvation</mark>.", "Then verse 6 calls them <mark>\"the generation of those who seek him, who seek the face of the God of Jacob.\"</mark> To seek His face means wanting to see God up close. It is not getting what we want and turning away, but longing to be with God Himself.", "The one who received blessing in verse 5 is <mark>still seeking God</mark> in verse 6. If blessing had been the goal, they would have stopped at verse 5. But they keep seeking the face of the One who gave the blessing. Even the day after something you prayed for works out, what do you want to talk about with the Lord?"], "points": ["Even the day after my prayers are answered, am I still seeking the Lord's face?"]}, {"title": "Verses 7–10 · Lift Up Your Heads, O Gates—the King of Glory Comes In", "paragraphs": ["Earlier, people climbed the hill to worship God. Now <mark>God the King is coming in</mark>. The congregation cries out to the ancient gates: <mark>\"Lift up your heads, O gates! And be lifted up, O ancient doors, that the King of glory may come in\"</mark> (v.7). It is the picture of gates swinging wide, as if lifting their heads, to welcome the King. To the first question, \"Who is this King of glory?\", they answer, <mark>\"The LORD, strong and mighty, the LORD, mighty in battle!\"</mark> (v.8).", "In verses 9 and 10, the same cry and question ring out once more. This time the answer is, <mark>\"The LORD of hosts, he is the King of glory!\"</mark> (v.10). The LORD who commands all the armies of heaven is the King of glory. The One confessed in verse 1 as Owner of the whole world is now <mark>being welcomed by the whole congregation as their own King</mark>.", "At work, there are times when I alone get praised for a report the team made together. If I stay quiet, the praise becomes entirely mine. At that moment I can say, \"My colleagues helped put that material together.\" With that one sentence that acknowledges a colleague's effort, <mark>we can live with God as King even in the workplace</mark>. If there is something where I claim to rely on the Lord's power yet insist that my will must be done, that is exactly where I can ask for the choice that pleases the Lord."], "points": ["Am I opening the gates of my life and honoring God as King at work and at home?"]}, {"title": "Application · Worshiping the Lord of All the Earth Right Where I Stand", "paragraphs": ["A Samaritan woman came to draw water. Jesus, sitting by the well, first asked her for a drink. As they talked, she asked where people should worship God, and Jesus said, <mark>\"The Father is seeking such people to worship him… those who worship him must worship in spirit and truth\"</mark> (John 4:23–24).", "In Psalm 24, people sought the face of God. At the well, we see <mark>the heart of God who seeks worshipers first</mark>. Jesus accepted the Samaritans' invitation and stayed with them two days, and the villagers who heard Him directly confessed Him as <mark>\"the Savior of the world\"</mark> (John 4:42). The One we call 'my Lord' treasures even the neighbors who feel strange to us.", "When a new coworker asks about the same task yet again, we can sit beside them for a moment and kindly explain it once more. Keeping appointments, learning honestly, and acknowledging a colleague's work are all <mark>worship offered after we walk out the church door</mark>. Because the whole earth is the Lord's, every place we stand becomes a place of worship.", "Today, too, we pray, \"Lord, please let my work go well.\" When you finish that prayer and lift your head, who is beside you? Today, offer that person a warm word first, and <mark>worship the Lord of all the earth right where you stand</mark>."], "points": ["When I lift my head after prayer, I will offer a warm word first to the person beside me today."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I didn't just ask for good results, but tried to study and work honestly in the process."}, {"key": "c2", "text": "I valued other people's time and effort as much as my own."}, {"key": "c3", "text": "I made no promises I didn't intend to keep and spoke no false words."}, {"key": "c4", "text": "I acknowledged my colleagues' efforts and showed kindness to an unfamiliar neighbor."}], "s4heading": "One-Line Reflection", "memoHint": "In the places I go after walking out the church door today, with what hands and heart will I worship God?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Entrust the Process", "value": "Along with praying for results, pray, \"Show me how I should do this work\""}, {"key": "act2", "label": "Respect Time", "value": "Keep your appointments today, and if you were late, sincerely apologize to the one who waited"}, {"key": "act3", "label": "Do It Honestly", "value": "Even if there's an easy shortcut, do what you can honestly and ask openly about what you don't know"}, {"key": "act4", "label": "Share the Credit", "value": "When praised for shared work, specifically point out your colleagues' contributions"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 24:3–4 and ask for clean hands and a pure heart"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, Lord, Owner of the whole earth and all who dwell in it, my Shepherd who cares for me and the King of glory who comes in, and the One who seeks worshipers first."}, {"key": "p2", "tag": "Repent", "text": "I repent of asking only for good results without asking about honesty in the process, of taking others' time and effort lightly, and of saying words I did not intend to keep."}, {"key": "p3", "tag": "Ask", "text": "Help me live with clean hands and a pure heart; even after I leave the church door, let me honor You as King at work and at home, and treasure the neighbors beside me."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 24, Martes", "ref": "Awit 24:1–10", "headline": "Paglabas Ko sa Pinto ng Iglesya,<br>Paano Ko Sasambahin ang Diyos?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 24:1-10", "s1heading": "Salita Ngayon", "verse": "\"Sino ang aakyat sa bundok ng PANGINOON? Sino ang tatayo sa Kanyang banal na dako?<br>Ang may malinis na kamay at dalisay na puso,<br>na hindi itinataas ang kanyang kaluluwa sa kasinungalingan at hindi sumusumpa nang may daya.\"", "verseRef": "Awit 24:3–4", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Paano Makikita sa Lunes ng Umaga ang Pagpapahayag Natin sa Linggo?", "paragraphs": ["Kapag may darating na pagsusulit o may mahalagang gawaing ibinigay sa atin sa trabaho, taimtim tayong nananalangin: \"Panginoon, sana'y maging maayos ito.\" Ngunit kung gaano tayo humihingi ng magandang resulta, tinatanong din ba natin sa Panginoon <mark>kung paano tayo dapat mag-aral at magtrabaho sa proseso</mark>?", "Sa Awit 23, tinawag ni David ang PANGINOON na 'aking pastol.' Ito ay pagpapahayag ng pananampalatayang walang ibang makagagawa para sa atin. Kapag tinatawag natin ang Panginoon na ating pastol, ipinahahayag din natin na tayo ay mga tupang pag-aari Niya. Sa Awit 24, <mark>ipinahahayag at tinatanggap ng buong kapulungan ang Pastol na iyon bilang Hari ng buong lupa</mark>. Ang Diyos na nag-aalaga sa akin ay hindi lamang aking Diyos; Siya ang Panginoon ng lahat ng bansa at ng buong nilikha.", "Kaya paano makikita sa Lunes ng umaga ang pagpapahayag na ginawa ko noong Linggo? Ipinapakita ng talata ngayon na ang pagsamba ay hindi nagtatapos sa loob ng santuwaryo kundi dapat magpatuloy sa <mark>ating mga kamay, puso, at salita paglabas natin sa pinto ng iglesya</mark>. Sama-sama nating tingnan ito sa tatlong bahagi."], "points": ["Kung gaano ako humihingi ng magandang resulta, tinatanong ko rin ba sa Panginoon kung paano ako dapat mamuhay sa proseso?"]}, {"title": "Talata 1–2 · Ang Buong Lupa ay sa PANGINOON na Nagtatag Nito", "paragraphs": ["<mark>\"Ang lupa ay sa PANGINOON at ang lahat ng naririto, ang sanlibutan at ang mga naninirahan dito\"</mark> (t.1). Ang mga nagtipon upang sumamba ay unang tumitingin sa buong mundo. Ang taong nagpupuri sa tabi ko at ang isang tao sa malayong lupain na hindi ko kailanman makikilala ay kapwa pag-aari ng iisang Manlilikha. Kahit ang mga kapwang iba ang wika o iba ang pananampalataya ay <mark>mahahalagang taong may larawan ng Diyos</mark>.", "<mark>\"Sapagkat itinatag Niya ito sa ibabaw ng mga dagat at itinayo sa ibabaw ng mga ilog\"</mark> (t.2). Pinupuri ng mang-aawit ang Diyos na naglagay ng pundasyon ng lupa sa ibabaw ng mga dagat at ilog. May matatapakan tayo tuwing umaga dahil inihanda ng Diyos ang lupa ng ating buhay. <mark>Kahit sa sandaling lumabas tayo sa pinto ng iglesya matapos ang pagsamba, nakatapak pa rin ang ating mga paa sa lupa ng Panginoon.</mark>", "Kung isasabuhay, ganito ang itsura nito: sa araw na nahuli ka nang sampung minuto, ang taong naghintay sa iyo ay nagbigay rin ng ganoon kahabang oras niya. Pinahahalagahan mo ba ang oras ng taong iyon na gaya ng sarili mong oras? Kung ang lahat ay sa Diyos, kung gayon <mark>ang oras at pagod ng ibang tao ay mahahalagang bagay rin na pag-aari Niya</mark>."], "points": ["Itinuturing ko ba ang mga kapwang iba ang wika at pananampalataya bilang mahahalagang taong may larawan ng Diyos?"]}, {"title": "Talata 3–4 · Tumatayo sa Harap ng Panginoon na May Malinis na Kamay at Dalisay na Puso", "paragraphs": ["<mark>\"Sino ang aakyat sa bundok ng PANGINOON? Sino ang tatayo sa Kanyang banal na dako?\"</mark> (t.3). Itinatanong ng mang-aawit kung sino ang makatatayo sa harap ng Diyos. Ang sagot ay may kinalaman sa kamay at puso: <mark>\"Ang may malinis na kamay at dalisay na puso, na hindi itinataas ang kanyang kaluluwa sa kasinungalingan at hindi sumusumpa nang may daya\"</mark> (t.4). Ipinapakita ng ating mga kamay ang talagang ginawa natin; ipinapakita ng ating puso ang layuning dala natin habang ginagawa ito.", "Tinatawag din tayo nitong suriin kung inilalagay natin ang ating puso sa mga walang kabuluhan o sumusumpa nang may kasinungalingan. Paano kung nangako tayo sa ating mga labi na gagawin ang isang bagay, ngunit sa simula pa lang ay wala tayong balak tuparin ito? <mark>Naririnig ng Diyos ang ating mga salita at alam din Niya ang saloobin at layunin sa likod ng mga ito.</mark> Ang taong tumatayo sa harap ng Diyos ay ang isang nagkakaisa ang panlabas na gawa at panloob na puso.", "Kung ikaw ay estudyante, isipin ang sarili mong nakaupo sa harap ng isang mahirap na tanong. Mabilis matatapos ang takdang-aralin kung kokopyahin mo ang sagot ng kaibigan. Sa halip, maaari mong isulat hanggang sa kaya mong lutasin at sabihin sa iyong guro, \"Hanggang dito lang po ang nalutas ko, pero hindi ko po maintindihan ang susunod.\" <mark>Ang saloobing iyon ng tapat na pagkatuto sa harap ng Diyos ay maaaring maging pagsamba.</mark>"], "points": ["Nagkakaisa ba sa harap ng Diyos ang ginawa ng aking mga kamay at ang layunin ng aking puso?"]}, {"title": "Talata 5–6 · Patuloy na Hinahanap ang Kanyang Mukha Kahit Matapos Tumanggap ng Pagpapala", "paragraphs": ["<mark>\"Tatanggap siya ng pagpapala mula sa PANGINOON at ng katuwiran mula sa Diyos ng kanyang kaligtasan\"</mark> (t.5). Nangangahulugan ito na ang Diyos ang kumikilalang tama sa buhay ng taong namumuhay na may malinis na kamay at dalisay na puso. Ang katuwiran ay hindi bagay na pinatutunayan natin sa sarili, kundi <mark>tinatanggap natin mula sa Diyos ng ating kaligtasan</mark>.", "Pagkatapos ay tinatawag sila ng talata 6 na <mark>\"ang salinlahi ng mga humahanap sa Kanya, na humahanap sa mukha ng Diyos ni Jacob.\"</mark> Ang paghahanap sa Kanyang mukha ay nangangahulugang nais makita ang Diyos nang malapitan. Hindi ito pagkuha ng gusto natin at pagtalikod, kundi paghahangad na makasama ang Diyos Mismo.", "Ang tumanggap ng pagpapala sa talata 5 ay <mark>patuloy pa ring humahanap sa Diyos</mark> sa talata 6. Kung pagpapala ang layunin, huminto na sana sila sa talata 5. Ngunit patuloy nilang hinahanap ang mukha ng Siyang nagbigay ng pagpapala. Kahit sa araw pagkatapos maging maayos ang bagay na ipinanalangin mo, ano ang nais mong pag-usapan kasama ng Panginoon?"], "points": ["Kahit sa araw pagkatapos masagot ang aking panalangin, hinahanap ko pa rin ba ang mukha ng Panginoon?"]}, {"title": "Talata 7–10 · Itaas Ninyo ang Inyong mga Ulo, O mga Pintuan—Papasok ang Hari ng Kaluwalhatian", "paragraphs": ["Kanina, umakyat ang mga tao sa bundok upang sumamba sa Diyos. Ngayon, <mark>ang Diyos na Hari ang pumapasok</mark>. Sumisigaw ang kapulungan sa mga sinaunang pintuan: <mark>\"Itaas ninyo ang inyong mga ulo, O mga pintuan! Mataas kayo, O sinaunang mga pinto, upang makapasok ang Hari ng kaluwalhatian\"</mark> (t.7). Larawan ito ng mga pintuang bumubukas nang malapad, na parang nagtataas ng ulo, upang salubungin ang Hari. Sa unang tanong, \"Sino ang Haring ito ng kaluwalhatian?\", sumagot sila, <mark>\"Ang PANGINOON, malakas at makapangyarihan, ang PANGINOON, makapangyarihan sa digmaan!\"</mark> (t.8).", "Sa talata 9 at 10, muling umalingawngaw ang parehong sigaw at tanong. Sa pagkakataong ito ang sagot ay, <mark>\"Ang PANGINOON ng mga hukbo, Siya ang Hari ng kaluwalhatian!\"</mark> (t.10). Ang PANGINOONG namumuno sa lahat ng hukbo ng langit ang Hari ng kaluwalhatian. Ang Siyang ipinahayag sa talata 1 bilang May-ari ng buong mundo ay <mark>tinatanggap na ngayon ng buong kapulungan bilang kanilang sariling Hari</mark>.", "Sa trabaho, may mga pagkakataong ako lamang ang pinupuri sa isang ulat na sama-samang ginawa ng koponan. Kung mananahimik ako, magiging akin nang buo ang papuri. Sa sandaling iyon, masasabi ko, \"Tinulungan po ako ng aking mga kasamahan sa paggawa ng materyal na iyan.\" Sa isang pangungusap na kumikilala sa pagod ng kasamahan, <mark>makapamumuhay tayo na ang Diyos ang Hari kahit sa lugar ng trabaho</mark>. Kung may bagay na sinasabi kong umaasa ako sa kapangyarihan ng Panginoon ngunit ipinagpipilitan kong matupad ang aking kalooban, iyon mismo ang lugar kung saan maaari kong itanong ang pagpiling kinalulugdan ng Panginoon."], "points": ["Binubuksan ko ba ang mga pintuan ng aking buhay at iginagalang ang Diyos bilang Hari sa trabaho at sa tahanan?"]}, {"title": "Pagsasabuhay · Sinasamba ang Panginoon ng Buong Lupa sa Mismong Kinatatayuan Ko", "paragraphs": ["Isang babaeng Samaritana ang dumating upang umigib ng tubig. Si Jesus, na nakaupo sa tabi ng balon, ang unang humingi sa kanya ng maiinom. Habang nag-uusap sila, itinanong niya kung saan dapat sumamba ang mga tao sa Diyos, at sinabi ni Jesus, <mark>\"Ang Ama ay naghahanap ng ganitong mga tao upang sumamba sa Kanya… ang mga sumasamba sa Kanya ay dapat sumamba sa espiritu at katotohanan\"</mark> (Juan 4:23–24).", "Sa Awit 24, hinanap ng mga tao ang mukha ng Diyos. Sa balon, nakikita natin <mark>ang puso ng Diyos na unang naghahanap ng mga sumasamba</mark>. Tinanggap ni Jesus ang paanyaya ng mga Samaritano at nanatili sa kanila nang dalawang araw, at ang mga taga-nayon na tuwirang nakarinig sa Kanya ay nagpahayag na Siya ang <mark>\"Tagapagligtas ng sanlibutan\"</mark> (Juan 4:42). Ang Siyang tinatawag nating 'aking Panginoon' ay nagpapahalaga kahit sa mga kapwang tila estranghero sa atin.", "Kapag muling nagtanong ang isang bagong katrabaho tungkol sa parehong gawain, maaari tayong umupo sa tabi niya sandali at mabait na ipaliwanag itong muli. Ang pagtupad sa oras ng usapan, tapat na pagkatuto, at pagkilala sa gawa ng kasamahan ay pawang <mark>pagsambang iniaalay paglabas natin sa pinto ng iglesya</mark>. Dahil ang buong lupa ay sa Panginoon, ang bawat lugar na ating kinatatayuan ay nagiging lugar ng pagsamba.", "Ngayon din, nananalangin tayo, \"Panginoon, sana'y maging maayos ang aking gawain.\" Kapag natapos mo ang panalanging iyon at itinaas mo ang iyong ulo, sino ang nasa tabi mo? Ngayon, unahan mong bigyan ng mainit na salita ang taong iyon, at <mark>sambahin ang Panginoon ng buong lupa sa mismong kinatatayuan mo</mark>."], "points": ["Kapag itinaas ko ang aking ulo matapos manalangin, uunahan kong bigyan ng mainit na salita ang taong nasa tabi ko ngayon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Hindi lamang magandang resulta ang hiningi ko, kundi sinikap kong mag-aral at magtrabaho nang tapat sa proseso."}, {"key": "c2", "text": "Pinahalagahan ko ang oras at pagod ng iba na gaya ng sa akin."}, {"key": "c3", "text": "Hindi ako nangako ng hindi ko balak tuparin at hindi ako nagsalita ng kasinungalingan."}, {"key": "c4", "text": "Kinilala ko ang pagod ng aking mga kasamahan at nagpakita ng kabaitan sa isang hindi pamilyar na kapwa."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Sa mga lugar na pupuntahan ko paglabas sa pinto ng iglesya ngayon, sa anong mga kamay at puso ko sasambahin ang Diyos?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Ipagkatiwala ang Proseso", "value": "Kasabay ng pananalangin para sa resulta, manalangin ng, \"Ipakita Mo sa akin kung paano ko dapat gawin ang gawaing ito\""}, {"key": "act2", "label": "Igalang ang Oras", "value": "Tuparin ang iyong mga oras ng usapan ngayon, at kung nahuli ka, taos-pusong humingi ng tawad sa naghintay"}, {"key": "act3", "label": "Gawin nang Tapat", "value": "Kahit may madaling paraan, gawin nang tapat ang kaya mo at magtanong nang bukas tungkol sa hindi mo alam"}, {"key": "act4", "label": "Ibahagi ang Papuri", "value": "Kapag pinuri sa sama-samang gawain, tiyak na banggitin ang ambag ng iyong mga kasamahan"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 24:3–4 at humingi ng malinis na kamay at dalisay na puso"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Panginoon, May-ari ng buong lupa at ng lahat ng naninirahan dito, aking Pastol na nag-aalaga sa akin at Hari ng kaluwalhatian na pumapasok, at ang Siyang unang naghahanap ng mga sumasamba."}, {"key": "p2", "tag": "Pagsisisi", "text": "Pinagsisisihan ko ang paghingi lamang ng magandang resulta nang hindi tinatanong ang katapatan sa proseso, ang pagbalewala sa oras at pagod ng iba, at ang pagsasabi ng mga salitang hindi ko balak tuparin."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong mamuhay na may malinis na kamay at dalisay na puso; kahit paglabas ko sa pinto ng iglesya, hayaan Mong igalang Kita bilang Hari sa trabaho at sa tahanan, at pahalagahan ang mga kapwang nasa aking tabi."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-24';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
