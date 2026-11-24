@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/25(수) 큐티 · 시편 25:1–22">
+<meta property="og:description" content="같은 잘못을 되풀이할 때, 용서와 함께 무엇을 구할까요?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 25일 수요일", "ref": "시편 25편 1–22절", "headline": "같은 잘못을 되풀이할 때,<br>용서와 함께 무엇을 구할까요?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 시편 25:1-22", "s1heading": "오늘의 말씀", "verse": "\"여호와여 주의 도를 내게 보이시고 주의 길을 내게 가르치소서<br>주의 진리로 나를 지도하시고 교훈하소서<br>주는 내 구원의 하나님이시니 내가 종일 주를 기다리나이다\"", "verseRef": "시편 25:4–5", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 용서를 구한 자리에서 길을 묻습니다", "paragraphs": ["\"하나님, 제가 또 입술의 죄를 범했습니다.\" 이렇게 기도해 보신 적이 있으십니까? 속이 상해서 가족에게 \"넌 늘 매번 그렇더라\"라고 말했다고 해 봅시다. 밤이 되니 그 말이 마음에 걸립니다. 얼마 전에도 <mark>같은 말로 상처를 주고 사과했기 때문</mark>입니다. 다시 하나님께 용서를 구합니다. 그런데 내일이면 그 사람과 또 한 식탁에 앉습니다. 그때는 어떻게 말하면 좋을까요?", "앞선 24편에서 다윗은 깨끗한 손과 마음으로 하나님의 얼굴을 구하는 사람을 노래했습니다. 오늘 25편에서 그 하나님을 바라보는 다윗은 <mark>자기 죄를 기억합니다</mark>. 그는 남에게 당한 억울한 일도, 자기가 저지른 잘못도 주님께 모두 가져갑니다.", "그리고 다윗은 <mark>용서를 구한 자리에서 길을 묻습니다</mark>. 용서는 과거를 정리해 주지만, 내일 같은 자리에 설 때 어떻게 걸어야 할지는 주님께 배워야 합니다. 오늘 나는 같은 잘못을 되풀이하지 않기 위해 주님께 무엇을 배우고 싶습니까?"], "points": ["같은 잘못을 되풀이할 때, 용서만 구하고 그 다음 걸음은 묻지 않고 있지는 않습니까?"]}, {"title": "1–7절 · 주님을 기다리며 길과 용서를 구합니다", "paragraphs": ["<mark>\"나의 하나님이여 내가 주께 의지하였사오니 나를 부끄럽지 않게 하시고 나의 원수들이 나를 이겨 개가를 부르지 못하게 하소서\"</mark>(2절). 다윗은 하나님을 의지하며 기다린 일이 사람들 앞에서 부끄러움으로 돌아올까 염려합니다. 3절에서는 자기처럼 주님을 기다리는 사람들을 떠올리며 그들이 수치를 당하지 않으리라고 믿습니다. 다윗이 보기에 수치를 부르는 길은 <mark>까닭 없이 남을 속이는 길</mark>입니다.", "원수들 이야기를 하던 다윗이 이제 자기 걸음에 대해 묻습니다. <mark>\"여호와여 주의 도를 내게 보이시고 주의 길을 내게 가르치소서 주의 진리로 나를 지도하시고 교훈하소서\"</mark>(4–5절). 구원은 하나님이 베푸시는 은혜입니다. 다윗은 그 은혜를 기다리며 <mark>오늘 어떻게 살아야 할지도</mark> 주님께 묻습니다. 억울한 일로 마음이 급해질수록 이 기도가 필요합니다. 어떻게 대답할지, 어떤 행동을 멈출지 오늘 결정해야 하기 때문입니다.", "6절과 7절에서는 '기억하다'라는 말이 세 번 반복됩니다. 먼저 주님이 영원부터 베풀어 오신 <mark>긍휼과 인자하심을 기억해 달라</mark>고 합니다. 다음으로 <mark>젊은 시절의 죄와 허물을 기억하지 말아 달라</mark>고 합니다. 마지막에는 주의 인자하심을 따라 <mark>자기 자신을 기억해 달라</mark>고 합니다. 과거의 잘못이 오래 마음에 남아 있을 때 6절을 기억해 보십시오. 내가 그 죄를 짓기 전부터 하나님은 자비를 베풀어 오신 분이십니다."], "points": ["억울함으로 마음이 급할 때, 오늘 내가 걸어야 할 길을 먼저 주님께 묻고 있습니까?"]}, {"title": "8–14절 · 선하신 여호와께서 죄인에게 길을 가르치십니다", "paragraphs": ["다윗은 어떻게 하나님께 길을 가르쳐 달라고 할 수 있었을까요? 8절의 '그러므로'를 눈여겨보십시오. <mark>\"여호와는 선하시고 정직하시니 그러므로 그의 도로 죄인들을 교훈하시리로다\"</mark>. 하나님은 잘못된 길에 들어선 사람에게도 <mark>어느 쪽으로 발을 돌이켜야 할지 알려 주시는 분</mark>입니다. 9절은 그 가르침을 받는 사람을 온유한 자라고 부릅니다. 내가 옳다고 여기던 일도 하나님 앞에서 다시 살펴보는 겸손입니다. 10절은 주님의 길을 '인자와 진리'라고 부릅니다.", "<mark>\"여호와여 나의 죄악이 크오니 주의 이름으로 말미암아 사하소서\"</mark>(11절). 죄인을 가르치시는 하나님을 말하던 다윗이 이제 자기 죄를 고백합니다. 우리는 잘못을 말할 때면 내가 왜 그랬는지부터 설명하고 싶습니다. 그러나 다윗은 자기 죄가 크다고 그대로 아룁니다. 그가 의지하는 것은 자기 변명이 아니라 <mark>주님의 이름</mark>입니다. 선하시고 약속을 지키시는 하나님을 믿기에 부끄러운 잘못도 솔직히 아뢸 수 있습니다.", "<mark>\"여호와를 경외하는 자 누구냐 그가 택할 길을 그에게 가르치시리로다\"</mark>(12절). 주님을 경외하는 마음은 선택할 일이 있을 때 드러납니다. 내 생각이 분명해도 주님의 말씀에 귀를 기울입니다. 다윗은 그런 사람이 평안히 살고 그 자손이 땅을 상속할 날을 바라봅니다. <mark>\"여호와의 친밀하심이 그를 경외하는 자들에게 있음이여\"</mark>(14절). 누군가 내게 잘못을 털어놓을 때, 나도 주님께 길을 배우는 사람임을 기억하면 건네는 말이 달라집니다."], "points": ["잘못을 고백할 때, 변명부터 하지 않고 주님의 이름을 의지해 솔직하게 아뢰고 있습니까?"]}, {"title": "15–19절 · 외롭고 괴로운 자리에서 한 기도에 두 가지를 아룁니다", "paragraphs": ["<mark>\"내 눈이 항상 여호와를 바라봄은 내 발을 그물에서 벗어나게 하실 것임이로다\"</mark>(15절). 다윗의 발은 그물에 걸려 있고, 눈은 자기를 건져 주실 주님을 향합니다. 그런데 다음 절에서 다윗은 주님께 자기를 돌아봐 달라고 합니다. <mark>\"주여 나는 외롭고 괴로우니 내게 돌이키사 나에게 은혜를 베푸소서\"</mark>(16절). 주님을 신뢰하는 사람도 이렇게 말할 수 있습니다. \"주님, 오늘 저는 참 외롭습니다. 제 사정을 봐 주십시오.\"", "18절과 19절에서 다윗은 연이어 두 번 '보아 달라'고 간청합니다. 먼저 <mark>\"나의 곤고와 환난을 보시고 내 모든 죄를 사하소서\"</mark>(18절)라고 하고, 이어 <mark>\"내 원수를 보소서 그들의 수가 많고 나를 심히 미워하나이다\"</mark>(19절)라고 합니다. 자기의 고통과 죄, 그리고 자기를 미워하는 원수를 모두 주님 앞에 내놓습니다.", "우리도 한 기도 안에서 두 가지를 아뢸 수 있습니다. \"주님, 그 사람이 한 말로 제가 많이 아팠습니다. 저를 지켜 주세요. 그리고 제가 화풀이로 가족에게 한 말은 제 잘못입니다. 저를 용서해 주세요.\" <mark>받은 상처와 내가 준 상처를 함께 정직하게</mark> 주님께 가져갈 때, 억울함이 다른 사람을 향한 화풀이로 번지지 않습니다."], "points": ["한 기도 안에서, 내가 받은 상처와 내가 준 상처를 함께 주님께 아뢰고 있습니까?"]}, {"title": "20–22절 · 성실과 정직으로 기다리며 온 이스라엘을 위해 구합니다", "paragraphs": ["<mark>\"내 영혼을 지켜 나를 구원하소서 내가 주께 피하오니 수치를 당하지 않게 하소서 내가 주를 바라오니 성실과 정직으로 나를 보호하소서\"</mark>(20–21절). 다윗은 주님께 피하며 성실과 정직으로 자기를 지켜 달라고 간구합니다. 3절과 5절에서 주님을 기다린 사람이 21절에서도 <mark>여전히 기다립니다</mark>.", "그 기다림 속에서 구한 성실과 정직은 오늘 우리에게 어떤 모습일까요? 억울한 일이 언제 풀릴지 몰라도 <mark>오늘 있었던 일을 있는 그대로 말할 수 있습니다</mark>. 내가 잘못 전한 말이 있다면 오늘 바로잡을 수 있습니다. 결과를 내 손으로 앞당기려 하기보다, 기다리는 동안 정직하게 사는 것이 주님께 피하는 사람의 모습입니다.", "<mark>\"하나님이여 이스라엘을 그 모든 환난에서 속량하소서\"</mark>(22절). 자기 발을 그물에서 꺼내 달라고 기도하던 사람이 이제는 온 백성을 모든 환난에서 풀어 달라고 간청합니다. 자기에게 절실한 하나님의 자비가 다른 이들에게도 얼마나 필요한지 알기 때문입니다. 다윗은 이미 3절에서 주님을 기다리는 모든 사람을 떠올렸습니다. 내 문제가 아직 풀리지 않은 오늘도, <mark>나처럼 기다리는 한 사람의 이름을 기도에 담을 수 있습니다</mark>."], "points": ["내 문제가 아직 풀리지 않은 오늘, 나처럼 기다리는 사람의 이름을 기도에 담고 있습니까?"]}, {"title": "적용 · 용서를 구하고, 다시 설 자리에서 할 말을 배우십시오", "paragraphs": ["제자 한 사람이 예수님께 기도를 가르쳐 달라고 했습니다. 예수님은 아버지께 <mark>\"우리 죄도 사하여 주옵소서\"</mark>라고 구하도록 가르치셨습니다. 그리고 바로 이어서 <mark>\"우리를 시험에 들게 하지 마옵소서\"</mark>라는 기도도 가르쳐 주셨습니다(눅 11:4). 용서를 구하며 길을 묻던 다윗의 기도와 닮았습니다.", "어제 잘못한 일을 안고도 우리는 하나님을 <mark>'아버지'라고 부를 수 있습니다</mark>. 그리고 오늘 같은 유혹 앞에 섰을 때, 입을 열기 전에 아버지께 도움을 구할 수 있습니다. 용서는 과거를 덮는 데서 끝나지 않고, 다시 같은 자리에 설 때 다르게 걸을 힘이 됩니다.", "처음에 떠올렸던 그 식탁으로 돌아가 봅시다. 어제 가족에게 모진 말을 했다면 오늘 먼저 이렇게 말해 보면 어떨까요? <mark>\"어제 내가 한 말은 잘못했어. 미안해.\"</mark> 그리고 다시 마음이 상할 때는 잠시 멈추고 그 사람의 말을 끝까지 들어 봅시다. 주님께 받은 용서에 오늘 내 식탁에서 이렇게 응답할 수 있습니다.", "오늘 이렇게 기도해 보십시오. \"아버지, 내 죄를 용서해 주세요. 다시 같은 자리에 설 때 <mark>제가 할 말과 행동을 가르쳐 주세요</mark>. 오늘 가르쳐 주신 대로 한 걸음 걷게 해 주세요. 예수님의 이름으로 기도합니다. 아멘.\""], "points": ["용서를 구하는 것에서 멈추지 않고, 다시 같은 자리에 설 때 할 말과 행동을 주님께 배우겠습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "잘못을 고백할 때 변명보다 주님의 이름을 의지해 솔직하게 아뢰었다"}, {"key": "c2", "text": "용서를 구한 뒤, 같은 자리에서 어떻게 말하고 행동할지 주님께 물었다"}, {"key": "c3", "text": "억울한 마음을 다른 사람에게 화풀이하지 않고 주님께 가져갔다"}, {"key": "c4", "text": "내가 잘못 전한 말을 오늘 바로잡고, 상처 준 사람에게 먼저 사과했다"}], "s4heading": "묵상 한 줄", "memoHint": "내가 자주 되풀이하는 잘못은 무엇이며, 다시 그 자리에 설 때 주님께 무엇을 배우고 싶습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "먼저 사과하기", "value": "어제 상처 준 말이 있다면 오늘 먼저 \"그 말은 잘못했어, 미안해\"라고 말하기"}, {"key": "act2", "label": "멈추고 듣기", "value": "마음이 상할 때 바로 말하지 않고 잠시 멈춘 뒤 상대의 말을 끝까지 들어 보기"}, {"key": "act3", "label": "두 가지 아뢰기", "value": "받은 상처와 내가 준 상처를 한 기도 안에서 함께 주님께 정직하게 아뢰기"}, {"key": "act4", "label": "바로잡기", "value": "사실과 다르게 전한 말이 있다면 오늘 있는 그대로 바로잡기"}, {"key": "act5", "label": "말씀 암송", "value": "시편 25:4–5를 외우며 오늘 걸어야 할 길을 주님께 묻기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "제가 죄를 짓기 전부터 긍휼과 인자를 베풀어 오시고, 잘못된 길에 선 죄인에게도 돌이킬 길을 가르쳐 주시는 선하신 주님께 감사드립니다."}, {"key": "p2", "tag": "회개", "text": "같은 말로 가족에게 또 상처를 주고, 잘못을 고백할 때 변명부터 앞세우며, 억울함을 다른 사람에게 화풀이했던 것을 회개합니다."}, {"key": "p3", "tag": "간구", "text": "제 죄를 용서해 주시고, 다시 같은 자리에 설 때 할 말과 행동을 가르쳐 주시며, 성실과 정직으로 저를 지켜 주시고, 함께 기다리는 이들도 건져 주십시오."}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 25, Wednesday", "ref": "Psalm 25:1–22", "headline": "When I Repeat the Same Mistake,<br>What Should I Ask for Along with Forgiveness?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Psalm 25:1-22", "s1heading": "Today's Word", "verse": "\"Make me to know your ways, O LORD; teach me your paths.<br>Lead me in your truth and teach me,<br>for you are the God of my salvation; for you I wait all the day long.\"", "verseRef": "Psalm 25:4–5", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Asking for the Way Where We Asked for Forgiveness", "paragraphs": ["\"God, I've sinned with my lips again.\" Have you ever prayed like that? Suppose that, upset, you said to a family member, \"You're always like this.\" When night comes, those words weigh on your heart, because <mark>not long ago you hurt them with the same words and apologized</mark>. Again you ask God for forgiveness. But tomorrow you'll sit at the same table with that person again. What should you say then?", "In Psalm 24, David sang of those who seek God's face with clean hands and a pure heart. In Psalm 25, David, looking to that God, <mark>remembers his own sin</mark>. He brings to the Lord both the injustices he has suffered from others and the wrongs he himself has done.", "And David <mark>asks for the way in the very place where he asks for forgiveness</mark>. Forgiveness settles the past, but how to walk when we stand in the same place tomorrow is something we must learn from the Lord. Today, what do I want to learn from the Lord so that I do not repeat the same mistake?"], "points": ["When I repeat the same mistake, am I only asking for forgiveness without asking about the next step?"]}, {"title": "Verses 1–7 · Waiting on the Lord, Asking for the Way and for Forgiveness", "paragraphs": ["<mark>\"O my God, in you I trust; let me not be put to shame; let not my enemies exult over me\"</mark> (v.2). David worries that his waiting on God might end in shame before others. In verse 3 he thinks of others who, like him, wait for the Lord, and believes they will not be put to shame. In David's eyes, the path that leads to shame is <mark>the path of those who are wantonly treacherous</mark>.", "Having spoken of his enemies, David now asks about his own steps: <mark>\"Make me to know your ways, O LORD; teach me your paths. Lead me in your truth and teach me\"</mark> (vv.4–5). Salvation is a grace God gives. While waiting for that grace, David also asks the Lord <mark>how to live today</mark>. The more our hearts are rushed by injustice, the more we need this prayer—because today we must decide how to answer and what actions to stop.", "In verses 6 and 7, the word 'remember' appears three times. First, he asks the Lord to <mark>remember His mercy and steadfast love</mark>, which have been from of old. Next, he asks Him <mark>not to remember the sins and transgressions of his youth</mark>. Finally, he asks the Lord, according to His steadfast love, to <mark>remember him</mark>. When past wrongs linger long in your heart, remember verse 6: God has been showing mercy since long before you committed that sin."], "points": ["When injustice rushes my heart, am I first asking the Lord about the path I should walk today?"]}, {"title": "Verses 8–14 · The Good LORD Teaches Sinners the Way", "paragraphs": ["How could David ask God to teach him the way? Notice the word 'therefore' in verse 8: <mark>\"Good and upright is the LORD; therefore he instructs sinners in the way.\"</mark> God is the One who shows even those who have taken a wrong road <mark>which way to turn their feet</mark>. Verse 9 calls those who receive His teaching 'the humble'—the humility to reexamine before God even what we thought was right. Verse 10 calls the Lord's paths 'steadfast love and faithfulness.'", "<mark>\"For your name's sake, O LORD, pardon my guilt, for it is great\"</mark> (v.11). David, who had been speaking of God who teaches sinners, now begins to confess his own sin. When we talk about our wrongs, we want to begin by explaining why we did it. But David simply says that his guilt is great. What he relies on is not self-justification but <mark>the Lord's name</mark>. Because he trusts the good God who keeps His promises, he can honestly confess even shameful wrongs.", "<mark>\"Who is the man who fears the LORD? Him will he instruct in the way that he should choose\"</mark> (v.12). Fear of the Lord shows itself when there is a choice to make. Even when our own opinion is clear, we listen to the Lord's Word. David looks to the day when such a person will abide in well-being and his offspring will inherit the land. <mark>\"The friendship of the LORD is for those who fear him\"</mark> (v.14). When someone confides a wrong to me, remembering that I too am learning the way from the Lord changes the words I offer."], "points": ["When I confess a wrong, do I honestly bring it to the Lord, relying on His name instead of making excuses first?"]}, {"title": "Verses 15–19 · From a Lonely and Afflicted Place, Bringing Two Things in One Prayer", "paragraphs": ["<mark>\"My eyes are ever toward the LORD, for he will pluck my feet out of the net\"</mark> (v.15). David's feet are caught in a net, and his eyes are turned to the Lord who will rescue him. Then in the next verse, David asks the Lord to turn toward him: <mark>\"Turn to me and be gracious to me, for I am lonely and afflicted\"</mark> (v.16). Even a person who trusts the Lord can say this: \"Lord, I feel so lonely today. Please look upon my situation.\"", "In verses 18 and 19, David twice in a row pleads, 'Consider.' First, <mark>\"Consider my affliction and my trouble, and forgive all my sins\"</mark> (v.18); then, <mark>\"Consider how many are my foes, and with what violent hatred they hate me\"</mark> (v.19). He lays before the Lord both his own pain and sin, and the enemies who hate him.", "We too can bring two things in a single prayer: \"Lord, what that person said hurt me deeply. Please protect me. And the words I said to my family to vent my anger—that was my fault. Please forgive me.\" When we honestly bring to the Lord <mark>both the wounds we received and the wounds we caused</mark>, our sense of injustice does not spill over into taking it out on others."], "points": ["In one prayer, am I bringing to the Lord both the hurt I received and the hurt I caused?"]}, {"title": "Verses 20–22 · Waiting with Integrity and Uprightness, Praying for All Israel", "paragraphs": ["<mark>\"Oh, guard my soul, and deliver me! Let me not be put to shame, for I take refuge in you. May integrity and uprightness preserve me, for I wait for you\"</mark> (vv.20–21). David takes refuge in the Lord and asks that integrity and uprightness guard him. The one who waited for the Lord in verses 3 and 5 is <mark>still waiting</mark> in verse 21.", "What might the integrity and uprightness he asked for in that waiting look like for us today? Even if we don't know when an injustice will be resolved, <mark>we can speak about what happened today just as it was</mark>. If there is something I misreported, I can set it right today. Rather than trying to hurry the outcome with our own hands, living honestly while we wait is the mark of someone who takes refuge in the Lord.", "<mark>\"Redeem Israel, O God, out of all his troubles\"</mark> (v.22). The one who prayed for his own feet to be freed from the net now pleads for the whole people to be released from all their troubles. He knows how much others, too, need the mercy of God that he so desperately needs. Already in verse 3, David had thought of all who wait for the Lord. Even today, while my own problem remains unresolved, <mark>I can carry in my prayer the name of one person who is waiting like me</mark>."], "points": ["Today, while my problem is still unresolved, am I including in my prayers someone who is waiting like me?"]}, {"title": "Application · Ask for Forgiveness, and Learn What to Say When You Stand There Again", "paragraphs": ["One of the disciples asked Jesus to teach them to pray. Jesus taught them to ask the Father, <mark>\"Forgive us our sins.\"</mark> And right after that, He taught them to pray, <mark>\"Lead us not into temptation\"</mark> (Luke 11:4). It resembles David's prayer of seeking forgiveness and asking for the way.", "Even carrying yesterday's wrong, we can <mark>call God 'Father.'</mark> And when we stand before the same temptation today, we can ask the Father for help before we open our mouths. Forgiveness does not end with covering the past; it becomes the strength to walk differently when we stand in the same place again.", "Let's go back to the table we pictured at the beginning. If you spoke harshly to a family member yesterday, how about saying this first today: <mark>\"What I said yesterday was wrong. I'm sorry.\"</mark> And when your heart is hurt again, pause for a moment and listen to that person all the way through. This is how we can respond, at our own table today, to the forgiveness we have received from the Lord.", "Pray this today: \"Father, forgive my sin. When I stand in the same place again, <mark>teach me what to say and how to act</mark>. Let me take one step today as You have taught me. I pray in Jesus' name. Amen.\""], "points": ["Not stopping at asking for forgiveness, I will learn from the Lord what to say and do when I stand in the same place again."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "When I confessed a wrong, I relied on the Lord's name and spoke honestly rather than making excuses."}, {"key": "c2", "text": "After asking forgiveness, I asked the Lord how to speak and act in the same situation."}, {"key": "c3", "text": "I brought my sense of injustice to the Lord instead of taking it out on others."}, {"key": "c4", "text": "I corrected something I had misreported, and apologized first to someone I had hurt."}], "s4heading": "One-Line Reflection", "memoHint": "What wrong do I often repeat, and what do I want to learn from the Lord when I stand in that place again?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Apologize First", "value": "If you said something hurtful yesterday, be the first to say today, \"What I said was wrong. I'm sorry\""}, {"key": "act2", "label": "Pause and Listen", "value": "When you're hurt, don't speak right away—pause, then listen to the other person all the way through"}, {"key": "act3", "label": "Bring Both", "value": "In one prayer, honestly bring to the Lord both the hurt you received and the hurt you caused"}, {"key": "act4", "label": "Set It Right", "value": "If you passed on something inaccurately, correct it today just as it was"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Psalm 25:4–5 and ask the Lord about the path to walk today"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, good Lord, for showing mercy and steadfast love since before I ever sinned, and for teaching even sinners on the wrong road the way to turn back."}, {"key": "p2", "tag": "Repent", "text": "I repent of hurting my family again with the same words, of putting excuses first when confessing my wrongs, and of venting my sense of injustice on others."}, {"key": "p3", "tag": "Ask", "text": "Forgive my sin; teach me what to say and do when I stand in the same place again; guard me with integrity and uprightness; and rescue those who wait alongside me."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 25, Miyerkules", "ref": "Awit 25:1–22", "headline": "Kapag Inuulit Ko ang Parehong Pagkakamali,<br>Ano ang Dapat Kong Hingin Kasama ng Kapatawaran?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Awit 25:1-22", "s1heading": "Salita Ngayon", "verse": "\"Ipakilala Mo sa akin ang Iyong mga daan, O PANGINOON; ituro Mo sa akin ang Iyong mga landas.<br>Akayin Mo ako sa Iyong katotohanan at turuan Mo ako,<br>sapagkat Ikaw ang Diyos ng aking kaligtasan; Ikaw ang hinihintay ko buong araw.\"", "verseRef": "Awit 25:4–5", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Nagtatanong ng Daan sa Lugar Kung Saan Humingi ng Kapatawaran", "paragraphs": ["\"Diyos ko, nagkasala na naman ako sa aking mga labi.\" Nanalangin ka na ba nang ganito? Ipagpalagay nating, dahil sa sama ng loob, sinabi mo sa isang kapamilya, \"Palagi ka namang ganyan.\" Pagsapit ng gabi, bumibigat ang mga salitang iyon sa iyong puso, dahil <mark>hindi pa natatagalan ay nasaktan mo rin siya sa parehong mga salita at humingi ka ng tawad</mark>. Muli kang humihingi ng kapatawaran sa Diyos. Ngunit bukas ay uupo ka na naman sa iisang hapag kasama ang taong iyon. Ano ang dapat mong sabihin noon?", "Sa Awit 24, inawit ni David ang mga naghahanap sa mukha ng Diyos na may malinis na kamay at dalisay na puso. Sa Awit 25, si David, habang nakatingin sa Diyos na iyon, ay <mark>umaalala sa sarili niyang kasalanan</mark>. Dinadala niya sa Panginoon kapwa ang mga kawalang-katarungang dinanas niya mula sa iba at ang mga maling siya mismo ang gumawa.", "At si David ay <mark>nagtatanong ng daan sa mismong lugar kung saan siya humihingi ng kapatawaran</mark>. Inaayos ng kapatawaran ang nakaraan, ngunit kung paano lalakad kapag nakatayo tayo sa parehong lugar bukas ay isang bagay na dapat nating matutuhan mula sa Panginoon. Ngayon, ano ang nais kong matutuhan mula sa Panginoon upang hindi ko na ulitin ang parehong pagkakamali?"], "points": ["Kapag inuulit ko ang parehong pagkakamali, kapatawaran lamang ba ang hinihingi ko nang hindi itinatanong ang susunod na hakbang?"]}, {"title": "Talata 1–7 · Naghihintay sa Panginoon, Humihingi ng Daan at ng Kapatawaran", "paragraphs": ["<mark>\"O Diyos ko, sa Iyo ako nagtitiwala; huwag Mo akong hayaang mapahiya; huwag Mong hayaang magdiwang ang aking mga kaaway laban sa akin\"</mark> (t.2). Nag-aalala si David na baka mauwi sa kahihiyan sa harap ng iba ang kanyang paghihintay sa Diyos. Sa talata 3, naiisip niya ang ibang naghihintay din sa Panginoon gaya niya, at naniniwalang hindi sila mapapahiya. Sa paningin ni David, ang landas na humahantong sa kahihiyan ay <mark>ang landas ng mga nandaraya nang walang dahilan</mark>.", "Matapos magsalita tungkol sa kanyang mga kaaway, nagtatanong na ngayon si David tungkol sa sarili niyang mga hakbang: <mark>\"Ipakilala Mo sa akin ang Iyong mga daan, O PANGINOON; ituro Mo sa akin ang Iyong mga landas. Akayin Mo ako sa Iyong katotohanan at turuan Mo ako\"</mark> (t.4–5). Ang kaligtasan ay biyayang ibinibigay ng Diyos. Habang hinihintay ang biyayang iyon, itinatanong din ni David sa Panginoon <mark>kung paano mamuhay ngayon</mark>. Habang lalong nagmamadali ang ating puso dahil sa kawalang-katarungan, lalo nating kailangan ang panalanging ito—dahil ngayon ay kailangan nating magpasya kung paano sasagot at kung anong mga gawa ang ititigil.", "Sa talata 6 at 7, tatlong beses lumitaw ang salitang 'alalahanin.' Una, hinihiling niya sa Panginoon na <mark>alalahanin ang Kanyang habag at tapat na pag-ibig</mark>, na mula pa noong una. Sunod, hinihiling niyang <mark>huwag nang alalahanin ang mga kasalanan at pagsuway ng kanyang kabataan</mark>. Sa huli, hinihiling niya sa Panginoon, ayon sa Kanyang tapat na pag-ibig, na <mark>alalahanin siya</mark>. Kapag matagal nang nananatili sa iyong puso ang mga nakaraang pagkakamali, alalahanin ang talata 6: matagal nang nagpapakita ng awa ang Diyos bago mo pa nagawa ang kasalanang iyon."], "points": ["Kapag nagmamadali ang aking puso dahil sa kawalang-katarungan, una ko bang itinatanong sa Panginoon ang landas na dapat kong lakaran ngayon?"]}, {"title": "Talata 8–14 · Ang Mabuting PANGINOON ay Nagtuturo ng Daan sa mga Makasalanan", "paragraphs": ["Paano nahiling ni David sa Diyos na ituro sa kanya ang daan? Pansinin ang salitang 'kaya' sa talata 8: <mark>\"Mabuti at matuwid ang PANGINOON; kaya tinuturuan Niya ang mga makasalanan sa daan.\"</mark> Ang Diyos ang Siyang nagtuturo kahit sa mga lumihis ng landas <mark>kung saan dapat ibaling ang kanilang mga paa</mark>. Tinatawag ng talata 9 ang mga tumatanggap ng Kanyang pagtuturo na 'mapagpakumbaba'—ang kababaang-loob na suriing muli sa harap ng Diyos kahit ang inakala nating tama. Tinatawag ng talata 10 ang mga landas ng Panginoon na 'tapat na pag-ibig at katapatan.'", "<mark>\"Alang-alang sa Iyong pangalan, O PANGINOON, patawarin Mo ang aking kasalanan, sapagkat ito'y malaki\"</mark> (t.11). Si David, na nagsasalita tungkol sa Diyos na nagtuturo sa mga makasalanan, ay nagsisimula nang ipagtapat ang sarili niyang kasalanan. Kapag pinag-uusapan natin ang ating mga pagkakamali, nais nating magsimula sa pagpapaliwanag kung bakit natin ito ginawa. Ngunit simpleng sinasabi ni David na malaki ang kanyang kasalanan. Ang kanyang inaasahan ay hindi pagbibigay-katwiran sa sarili kundi <mark>ang pangalan ng Panginoon</mark>. Dahil nagtitiwala siya sa mabuting Diyos na tumutupad ng Kanyang mga pangako, tapat niyang naipagtatapat kahit ang nakahihiyang pagkakamali.", "<mark>\"Sino ang taong may takot sa PANGINOON? Siya'y tuturuan Niya sa daang dapat niyang piliin\"</mark> (t.12). Lumilitaw ang takot sa Panginoon kapag may kailangang piliin. Kahit malinaw ang sarili nating opinyon, nakikinig tayo sa Salita ng Panginoon. Inaabangan ni David ang araw na ang ganitong tao ay mananahan sa kapayapaan at mamanahin ng kanyang mga supling ang lupain. <mark>\"Ang pakikipagkaibigan ng PANGINOON ay para sa mga may takot sa Kanya\"</mark> (t.14). Kapag may nagtapat sa akin ng kanyang pagkakamali, ang pag-alalang ako rin ay natututo ng daan mula sa Panginoon ay nagbabago ng mga salitang iniaalok ko."], "points": ["Kapag ipinagtatapat ko ang isang pagkakamali, tapat ko ba itong dinadala sa Panginoon, umaasa sa Kanyang pangalan sa halip na unahin ang pagdadahilan?"]}, {"title": "Talata 15–19 · Mula sa Malungkot at Nagdurusang Kalagayan, Dalawang Bagay sa Iisang Panalangin", "paragraphs": ["<mark>\"Ang aking mga mata ay laging nakatuon sa PANGINOON, sapagkat hahanguin Niya ang aking mga paa sa lambat\"</mark> (t.15). Nahuli sa lambat ang mga paa ni David, at nakatuon ang kanyang mga mata sa Panginoong magliligtas sa kanya. Pagkatapos, sa sumunod na talata, hiniling ni David sa Panginoon na lumingon sa kanya: <mark>\"Bumaling Ka sa akin at maging mapagbiyaya Ka sa akin, sapagkat ako'y nag-iisa at nagdurusa\"</mark> (t.16). Kahit ang taong nagtitiwala sa Panginoon ay makapagsasabi nito: \"Panginoon, labis akong nalulungkot ngayon. Tingnan Mo po ang aking kalagayan.\"", "Sa talata 18 at 19, dalawang beses na sunud-sunod na nakiusap si David, 'Tingnan Mo.' Una, <mark>\"Tingnan Mo ang aking paghihirap at kagipitan, at patawarin Mo ang lahat ng aking kasalanan\"</mark> (t.18); pagkatapos, <mark>\"Tingnan Mo kung gaano karami ang aking mga kaaway, at kung gaano kabangis ang kanilang pagkapoot sa akin\"</mark> (t.19). Inilalapag niya sa harap ng Panginoon kapwa ang sarili niyang sakit at kasalanan, at ang mga kaaway na napopoot sa kanya.", "Tayo rin ay maaaring magdala ng dalawang bagay sa iisang panalangin: \"Panginoon, labis akong nasaktan sa sinabi ng taong iyon. Ingatan Mo po ako. At ang mga salitang sinabi ko sa aking pamilya upang ibuhos ang aking galit—kasalanan ko iyon. Patawarin Mo po ako.\" Kapag tapat nating dinadala sa Panginoon <mark>kapwa ang mga sugat na natanggap natin at ang mga sugat na idinulot natin</mark>, hindi umaapaw ang ating sama ng loob sa pagbubuhos nito sa iba."], "points": ["Sa iisang panalangin, dinadala ko ba sa Panginoon kapwa ang sakit na natanggap ko at ang sakit na idinulot ko?"]}, {"title": "Talata 20–22 · Naghihintay nang may Katapatan at Katuwiran, Nananalangin para sa Buong Israel", "paragraphs": ["<mark>\"Ingatan Mo ang aking kaluluwa at iligtas Mo ako! Huwag Mo akong hayaang mapahiya, sapagkat sa Iyo ako nanganganlong. Ingatan nawa ako ng katapatan at katuwiran, sapagkat hinihintay Kita\"</mark> (t.20–21). Nanganganlong si David sa Panginoon at hinihiling na ingatan siya ng katapatan at katuwiran. Ang naghintay sa Panginoon sa talata 3 at 5 ay <mark>naghihintay pa rin</mark> sa talata 21.", "Ano kaya ang itsura para sa atin ngayon ng katapatan at katuwirang hiningi niya sa paghihintay na iyon? Kahit hindi natin alam kung kailan malulutas ang isang kawalang-katarungan, <mark>maaari nating sabihin ang nangyari ngayon kung ano talaga ito</mark>. Kung may naipasa akong hindi tumpak, maitatama ko ito ngayon. Sa halip na subukang madaliin ang kalalabasan sa sarili nating kamay, ang pamumuhay nang tapat habang naghihintay ang tanda ng isang nanganganlong sa Panginoon.", "<mark>\"Tubusin Mo ang Israel, O Diyos, mula sa lahat ng kanyang kagipitan\"</mark> (t.22). Ang taong nanalangin na mapalaya ang sarili niyang mga paa mula sa lambat ay nakikiusap na ngayon na mapalaya ang buong bayan mula sa lahat ng kanilang kagipitan. Alam niya kung gaano rin kailangan ng iba ang awa ng Diyos na lubha niyang kailangan. Sa talata 3 pa lamang, naisip na ni David ang lahat ng naghihintay sa Panginoon. Kahit ngayon, habang hindi pa nalulutas ang sarili kong problema, <mark>maaari kong dalhin sa aking panalangin ang pangalan ng isang taong naghihintay rin gaya ko</mark>."], "points": ["Ngayon, habang hindi pa nalulutas ang aking problema, isinasama ko ba sa aking mga panalangin ang isang taong naghihintay rin gaya ko?"]}, {"title": "Pagsasabuhay · Humingi ng Kapatawaran, at Matutuhan Kung Ano ang Sasabihin Kapag Muling Nakatayo Roon", "paragraphs": ["Isa sa mga alagad ang humiling kay Jesus na turuan silang manalangin. Itinuro ni Jesus na hilingin sa Ama, <mark>\"Patawarin Mo kami sa aming mga kasalanan.\"</mark> At kasunod agad nito, itinuro Niyang manalangin, <mark>\"Huwag Mo kaming ihatid sa tukso\"</mark> (Lucas 11:4). Kahawig ito ng panalangin ni David na humihingi ng kapatawaran at nagtatanong ng daan.", "Kahit dala natin ang pagkakamali kahapon, <mark>matatawag pa rin natin ang Diyos na 'Ama.'</mark> At kapag nakatayo tayo sa harap ng parehong tukso ngayon, maaari tayong humingi ng tulong sa Ama bago pa natin buksan ang ating bibig. Ang kapatawaran ay hindi nagtatapos sa pagtatakip sa nakaraan; ito ay nagiging lakas upang lumakad nang iba kapag muli tayong nakatayo sa parehong lugar.", "Balikan natin ang hapag na naisip natin sa simula. Kung nagsalita ka nang masakit sa isang kapamilya kahapon, paano kung unahin mong sabihin ngayon: <mark>\"Mali ang sinabi ko kahapon. Pasensya na.\"</mark> At kapag muling nasaktan ang iyong puso, tumigil sandali at pakinggan ang taong iyon hanggang dulo. Ganito tayo makatutugon, sa sarili nating hapag ngayon, sa kapatawarang natanggap natin mula sa Panginoon.", "Manalangin nang ganito ngayon: \"Ama, patawarin Mo ang aking kasalanan. Kapag muli akong nakatayo sa parehong lugar, <mark>turuan Mo ako kung ano ang sasabihin at kung paano kikilos</mark>. Hayaan Mong humakbang ako ng isang hakbang ngayon ayon sa itinuro Mo. Sa pangalan ni Jesus ako nananalangin. Amen.\""], "points": ["Hindi humihinto sa paghingi ng kapatawaran, matututuhan ko mula sa Panginoon kung ano ang sasabihin at gagawin kapag muli akong nakatayo sa parehong lugar."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Nang ipagtapat ko ang isang pagkakamali, umasa ako sa pangalan ng Panginoon at nagsalita nang tapat sa halip na magdahilan."}, {"key": "c2", "text": "Matapos humingi ng tawad, itinanong ko sa Panginoon kung paano magsalita at kumilos sa parehong sitwasyon."}, {"key": "c3", "text": "Dinala ko sa Panginoon ang aking sama ng loob sa halip na ibuhos ito sa iba."}, {"key": "c4", "text": "Itinama ko ang naipasa kong hindi tumpak, at unang humingi ng tawad sa taong nasaktan ko."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Anong pagkakamali ang madalas kong ulitin, at ano ang nais kong matutuhan mula sa Panginoon kapag muli akong nakatayo sa lugar na iyon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Unang Humingi ng Tawad", "value": "Kung may nasabi kang nakasasakit kahapon, unahin mong sabihin ngayon, \"Mali ang sinabi ko. Pasensya na\""}, {"key": "act2", "label": "Tumigil at Makinig", "value": "Kapag nasaktan ka, huwag agad magsalita—tumigil, pagkatapos ay pakinggan ang kapwa hanggang dulo"}, {"key": "act3", "label": "Dalhin ang Dalawa", "value": "Sa iisang panalangin, tapat na dalhin sa Panginoon kapwa ang sakit na natanggap mo at ang sakit na idinulot mo"}, {"key": "act4", "label": "Itama Ito", "value": "Kung may naipasa kang hindi tumpak, itama ito ngayon kung ano talaga ang nangyari"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Awit 25:4–5 at itanong sa Panginoon ang landas na lalakaran ngayon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, mabuting Panginoon, sa pagpapakita ng habag at tapat na pag-ibig bago pa ako nagkasala, at sa pagtuturo kahit sa mga makasalanang lumihis ng landas kung paano manumbalik."}, {"key": "p2", "tag": "Pagsisisi", "text": "Pinagsisisihan ko ang muling pananakit sa aking pamilya sa parehong mga salita, ang pag-una sa pagdadahilan kapag ipinagtatapat ang aking mga pagkakamali, at ang pagbubuhos ng aking sama ng loob sa iba."}, {"key": "p3", "tag": "Kahilingan", "text": "Patawarin Mo ang aking kasalanan; turuan Mo ako kung ano ang sasabihin at gagawin kapag muli akong nakatayo sa parehong lugar; ingatan Mo ako ng katapatan at katuwiran; at iligtas Mo ang mga naghihintay kasama ko."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-25';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
