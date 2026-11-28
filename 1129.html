@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/29(주일) 큐티 · 이사야 41:21–29">
+<meta property="og:description" content="미래를 알 수 없어도 오늘을 믿음으로 살아갈 수 있는 이유">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 29일 주일", "ref": "이사야 41장 21–29절", "headline": "미래를 알 수 없어도<br>오늘을 믿음으로 살아갈 수 있는 이유", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 이사야 41:21-29", "s1heading": "오늘의 말씀", "verse": "\"내가 비로소 시온에게<br>너희는 이제 그들을 보라 하였노라<br>내가 기쁜 소식을 전할 자를 예루살렘에 주리라\"", "verseRef": "이사야 41:27", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 나의 미래는 누구의 손에 맡겨져 있습니까", "paragraphs": ["이사야 40장부터 하나님은 여러 질문을 통해 자신이 어떤 분이신지 보여 주십니다. 첫째, <mark>하나님은 여전히 우리를 구원하기 원하시는가?</mark> 하나님은 먼저 자기 백성을 찾아와 위로하십니다. 둘째, <mark>하나님은 정말 우리를 구원하실 능력이 있으신가?</mark> 하나님은 창조주이시며 역사를 다스리시는 분입니다. 41장 전반부에서는 하나님이 역사 속에서 어떻게 구원을 이루시는지 보여 주셨습니다. 이제 오늘 본문은 또 하나의 질문을 던집니다. <mark>그 구원이 하나님의 역사라는 것을 어떻게 알 수 있는가?</mark>", "하나님의 대답은 분명합니다. 하나님은 <mark>그 일을 미리 말씀하시고 실제로 이루시는 분</mark>입니다. 예수님 또한 자신의 죽음과 부활, 다시 오심을 미리 말씀하시고 성취하셨습니다. 우리는 시간의 흐름을 따라 살아가지만, 하나님은 시간을 주관하시며 그 안에서 약속을 신실하게 이루어 가십니다. 우리는 미래를 알 수 없기에 불안해합니다. 그래서 경제가 어떻게 될지, 사회가 어떻게 변할지, 내 삶에 무슨 일이 일어날지 예측하려고 애씁니다.", "그러나 <mark>미래를 예측하는 것과 미래를 실제로 주관하는 것은 전혀 다른 일</mark>입니다. 우리는 미래를 예상하고 준비할 수는 있지만 모든 일을 통제할 수는 없습니다. 오늘 본문에서 하나님은 우상들에게, 참된 신이라면 과거와 미래를 말해 보고 실제로 무엇인가를 해 보라고 도전하십니다. 그러나 우상들은 아무 대답도 하지 못합니다. 바벨론 포로라는 현실 앞에서 이스라엘은 미래가 끝났다고 생각할 수 있었지만, 하나님은 이미 그들의 회복을 계획하고 계셨습니다. 오늘 본문의 질문은 누가 미래를 잘 맞히느냐가 아니라 <mark>나의 미래를 누구에게 맡길 수 있느냐</mark>입니다."], "points": ["미래에 대한 불안 때문에, 예측하고 통제하는 데 마음을 다 쏟고 있지는 않습니까?"]}, {"title": "21–24절 · 우상들은 참된 신이라는 증거를 내놓지 못합니다", "paragraphs": ["<mark>\"여호와가 말하노니 너희 우상들은 소송을 제기하라 야곱의 왕이 말하노니 너희는 확실한 증거를 보이라\"</mark>(21절). 다시 법정 장면이 등장합니다. 41장 1절에서는 열방을 재판 자리로 부르셨다면, 이제는 그 열방이 의지하는 우상들에게 증거를 요구하십니다. 이 법정의 쟁점은 <mark>누가 참된 하나님인가</mark>입니다. 하나님은 자신을 '야곱의 왕'이라 하십니다. 이스라엘의 왕이시지만 한 나라에 제한되지 않으시고 온 세상의 모든 신적 권위를 판단하시는 창조주요 주권자이십니다. 하나님은 재판 결과를 모르셔서 묻는 것이 아니라, 우상의 무능함을 드러내어 백성이 다시 참된 하나님을 신뢰하게 하려는 것입니다.", "<mark>\"장차 당할 일을 우리에게 진술하라 또 이전 일이 어떠한 것도 알게 하라 우리가 마음에 두고 그 결말을 알리라\"</mark>(22절). '이전 일'의 정확한 범위에는 여러 견해가 있지만 본문의 중심은 분명합니다. 단순히 미래를 맞혀 보라는 것이 아니라 <mark>역사의 의미와 방향을 설명할 수 있느냐</mark>는 것입니다. 23절에서는 요구가 한층 높아집니다. <mark>\"복을 내리든지 재난을 내리라\"</mark>. 미래를 알고 선언하는 능력, 그리고 그 역사 속에서 실제로 일하는 능력입니다. 하나님이 미래를 미리 말씀하실 수 있는 것은 뛰어난 예측력 때문이 아니라 역사를 주관하시는 분이기 때문입니다.", "<mark>\"보라 너희는 아무것도 아니며 너희 일은 허망하며 너희를 택한 자는 가증하니라\"</mark>(24절). 우상에 대한 첫 번째 판결입니다. 하나님은 우상만이 아니라 그것을 선택하는 사람에 대해서도 말씀하십니다. 우상 숭배는 잘못된 정보를 믿는 지적인 문제가 아니라 <mark>하나님께 드려야 할 신뢰와 예배를 다른 대상에게 돌리는 영적인 문제</mark>입니다. 8절과 비교해 보십시오. 8절에서는 하나님이 이스라엘을 택하셨지만, 24절에서는 사람이 우상을 택합니다. 하나님은 택하신 백성을 붙드시지만, 사람이 택한 우상은 그 사람을 구원할 수 없습니다. 미래를 준비하는 것은 잘못이 아니지만, 준비한 것들이 하나님을 대신하는 궁극적 신뢰의 대상이 되어서는 안 됩니다."], "points": ["내가 미래를 맡기고 있는 대상은, 정말 내 미래를 책임질 수 있는 존재입니까?"]}, {"title": "25–27절 · 하나님은 역사를 미리 선언하시고 말씀대로 이루십니다", "paragraphs": ["<mark>\"내가 한 사람을 일으켜 북방에서 오게 하며 내 이름을 부르는 자를 해 돋는 곳에서 오게 하였나니\"</mark>(25절). 41장 2절의 인물과 같은 사람으로, 44–45장에서 이름이 밝혀지는 바사 왕 고레스를 가리킵니다. 그는 바벨론을 무너뜨리고 이스라엘이 고향으로 돌아갈 길을 열어 줄 인물입니다. '내 이름을 부르는 자'라는 표현을 고레스가 하나님을 믿게 되었다는 뜻으로 단정해서는 안 됩니다. 45장 4–5절은 고레스가 하나님을 알지 못했다고 말하기 때문입니다. 중요한 것은 <mark>하나님이 자신을 알지 못하는 이방 왕까지도 구원 계획에 사용하신다</mark>는 사실입니다. 그렇다고 그의 모든 행동을 승인하셨다는 뜻은 아닙니다. 본문의 중심은 고레스의 위대함이 아니라 그를 일으키신 하나님의 주권입니다.", "<mark>\"누가 처음부터 이 일을 알게 하여 우리가 알았느냐… 알게 하는 자도 없고 들려 주는 자도 없고 너희 말을 듣는 자도 없도다\"</mark>(26절). 하나님은 고레스의 등장이라는 구체적인 사건을 제시하며, 그 일을 미리 선언한 우상이 있는지 물으십니다. 대답은 '아무도 없다'입니다. 부정의 표현이 세 번 반복됩니다. <mark>하나님은 일이 일어난 뒤에 자기 일이라고 주장하시는 분이 아니라, 앞으로 이루실 일을 미리 말씀하시고 그 말씀에 신실하게 일하시는 분</mark>입니다. 그러므로 성경의 예언은 미래에 대한 호기심을 채우기 위한 것이 아니라 하나님의 신실하심을 깨닫고 그분을 신뢰하게 하기 위한 것입니다.", "<mark>\"내가 비로소 시온에게 너희는 이제 그들을 보라 하였노라 내가 기쁜 소식을 전할 자를 예루살렘에 주리라\"</mark>(27절). 여기서 하나님이 미래를 알려 주시는 목적이 드러납니다. 고레스의 등장은 한 제국이 무너지고 새 제국이 일어나는 정치적 사건이었지만, 하나님은 그것이 이스라엘에게 <mark>포로 생활에서 벗어나는 구원의 소식</mark>임을 알려 주십니다. 하나님은 역사 속에서 일하실 뿐 아니라 말씀을 통해 그 의미까지 알려 주십니다. (다만 오늘의 모든 정치적 사건을 하나님의 특정한 뜻이라고 단정할 수는 없습니다. 본문에서는 하나님이 직접 그 의미를 알려 주셨습니다.) 27절의 '기쁜 소식'은 40장 9절의 '아름다운 소식'과 이어집니다. 회복의 소식을 들었다고 현실이 즉시 바뀌지는 않지만, 그 말씀을 신뢰하면 현실을 바라보는 시선이 달라집니다. 지금의 포로 생활이 하나님의 마지막 계획이 아님을 알게 되었기 때문입니다."], "points": ["하나님이 약속하신 미래를 믿기에, 오늘의 현실을 바라보는 내 시선이 달라지고 있습니까?"]}, {"title": "28–29절 · 대답하지 못하는 우상은 결국 헛된 것으로 드러납니다", "paragraphs": ["<mark>\"내가 본즉 한 사람도 없으며 내가 물어도 그들 가운데에 한 말도 대답할 조언자가 없도다\"</mark>(28절). 여기서 조언자(모사)는 지혜를 제공하는 사람입니다. 이것은 40장 13–14절을 떠올리게 합니다. 40장에서는 <mark>하나님께 조언할 자가 없다</mark>고 했고, 오늘 본문에서는 <mark>우상들 가운데 하나님의 질문에 대답할 자가 없다</mark>고 합니다. 중요한 차이가 있습니다. 하나님은 완전한 지혜를 가지셨기에 누구의 조언도 필요 없으시고, 우상은 아무 신적 지혜가 없기에 대답하지 못합니다.", "<mark>\"보라 그들은 다 헛되며 그들의 행사는 허무하며 그들이 부어 만든 우상들은 바람이요 공허한 것뿐이니라\"</mark>(29절). 마지막 판결입니다. '바람'은 붙잡을 수 없는 것을, '공허한 것'은 의미와 실체가 없는 것을 나타냅니다. 사람은 자기 미래를 안전하게 지켜 줄 것이라 생각하며 우상을 만들었지만, 정작 미래를 맡긴 대상은 그 미래에 대해 아무 대답도 할 수 없었습니다. 그리고 이어지는 42장에서 하나님은 <mark>자신의 종</mark>을 소개하십니다. 아무것도 할 수 없는 우상과 달리, 하나님의 종은 하나님의 영을 받아 열방에 정의를 베푸는 사명을 받습니다.", "본문의 흐름을 보십시오. 26절에서 우상들은 아무 소식도 전하지 못합니다. 27절에서 하나님은 시온에 기쁜 소식을 전하십니다. 28절에서 우상들은 다시 침묵합니다. <mark>우상의 침묵 사이에 하나님의 말씀이 있습니다.</mark> 우리에게 미래에 대한 모든 대답이 주어지지는 않았습니다. 그러나 하나님은 우리가 어떤 미래를 만나더라도 신뢰할 수 있는 말씀을 주셨습니다. 불확실한 미래 속에서도 <mark>확실한 하나님의 말씀을 붙들고 살아갈 수 있습니다</mark>."], "points": ["미래에 대한 모든 답을 알지 못해도, 하나님의 확실한 말씀을 붙들고 있습니까?"]}, {"title": "적용 · 시간을 주관하시는 하나님과 함께 오늘을 살아가십시오", "paragraphs": ["제자들은 부활하신 예수님께 \"주께서 이스라엘 나라를 회복하심이 이때니이까\"라고 물었습니다. 하나님이 이루실 미래를 알고 싶었던 것입니다. 예수님은 <mark>\"때와 시기는 아버지께서 자기의 권한에 두셨으니 너희가 알 바 아니요\"</mark>(행 1:7)라고 하시고, 이어서 <mark>\"오직 성령이 너희에게 임하시면 너희가 권능을 받고… 땅 끝까지 이르러 내 증인이 되리라\"</mark>(행 1:8)고 말씀하셨습니다. 제자들은 '언제'를 물었지만 예수님은 '무엇을 하며 살아야 하는지'를 말씀하셨습니다. <mark>때와 시기는 하나님의 권한에 있고, 순종은 우리에게 주어진 사명입니다.</mark>", "우리는 지나간 시간 때문에 후회하고, 오지 않은 시간 때문에 불안해합니다. 그렇게 과거와 미래에 마음을 빼앗기다 보면 정작 하나님이 주신 오늘을 살아가지 못합니다. 시간을 주관하시는 하나님을 믿는다면 시간을 대하는 태도도 달라져야 합니다. 첫째, <mark>과거의 실패를 인생의 최종 결론으로 삼지 마십시오</mark>. 지나간 시간을 되돌릴 수는 없지만 회개하며 하나님께 돌아갈 수는 있습니다. 이스라엘의 실패가 하나님의 구원 계획을 끝내지 못했듯이, 하나님은 우리의 실패 이후에도 새 길을 여실 수 있습니다.", "둘째, <mark>아직 오지 않은 미래의 두려움 때문에 오늘을 잃어버리지 마십시오</mark>. 미래를 준비하는 것은 지혜이지만, 미래를 완전히 통제해야만 안심할 수 있다면 평생 불안에서 벗어나기 어렵습니다. 예수님의 십자가는 제자들에게 모든 것이 끝난 것처럼 보였지만, 하나님은 부활로 그것이 구원의 길이었음을 드러내셨습니다. 지금 내가 보는 한 장면이 하나님의 전체 이야기는 아닙니다. 셋째, <mark>하나님이 맡기신 오늘의 시간을 충실하게 살아가십시오</mark>. 결과를 몰라도 오늘 해야 할 순종은 할 수 있습니다. 사랑해야 할 사람을 사랑하고, 용서해야 할 사람을 용서하며, 맡기신 일에 충실할 수 있습니다.", "지금 하나님의 때가 너무 늦다고 생각하고 계십니까? 아니면 아직 오지 않은 미래 때문에 오늘을 잃어버리고 계십니까? 시간을 주관하시는 하나님을 신뢰한다는 것은 내가 원하는 때에 모든 일이 이루어진다고 믿는 것이 아니라, <mark>하나님의 시간표를 다 알지 못해도 그분의 지혜와 신실하심을 신뢰하며 살아가는 것</mark>입니다. 우리가 시간을 주관할 수는 없지만, 시간을 주관하시는 하나님과 동행할 수는 있습니다. 오늘도 과거와 미래를 하나님께 맡기고, 허락하신 오늘을 믿음과 순종으로 살아가시기 바랍니다."], "points": ["과거와 미래를 하나님께 맡기고, 오늘 해야 할 순종 하나를 충실히 하겠습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "미래를 준비하되, 내가 준비한 것을 궁극적인 신뢰의 대상으로 삼지 않았다"}, {"key": "c2", "text": "과거의 실패를 인생의 최종 결론으로 여기지 않고 하나님께 돌아갔다"}, {"key": "c3", "text": "오지 않은 미래의 두려움 때문에 오늘 해야 할 일을 놓치지 않았다"}, {"key": "c4", "text": "사랑하고 용서하며, 오늘 맡기신 일에 충실했다"}], "s4heading": "묵상 한 줄", "memoHint": "하나님의 시간표를 다 알지 못하는 지금, 오늘 내가 할 수 있는 순종 한 가지는 무엇입니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "미래 맡기기", "value": "불안한 미래의 일 하나를 적고 \"때와 시기는 주님께 있습니다\"라고 기도하며 맡기기"}, {"key": "act2", "label": "과거 내려놓기", "value": "자꾸 떠오르는 과거의 실패 하나를 회개하며 주님께 내려놓기"}, {"key": "act3", "label": "오늘의 순종", "value": "오늘 사랑하거나 용서해야 할 사람 한 명에게 구체적으로 마음을 표현하기"}, {"key": "act4", "label": "말씀 붙들기", "value": "불안할 때 예측 정보를 찾기 전에 먼저 성경 한 구절을 읽고 묵상하기"}, {"key": "act5", "label": "말씀 암송", "value": "사도행전 1:7–8을 외우며 오늘 증인으로 살아가기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "앞으로 이루실 일을 미리 말씀하시고 신실하게 이루시며, 우상들의 침묵 속에서도 기쁜 소식을 전해 주시는 시간의 주인이신 하나님께 감사드립니다."}, {"key": "p2", "tag": "회개", "text": "미래를 통제하려고 불안해하며, 제가 준비한 것을 하나님보다 더 신뢰하고, 과거의 실패에 매여 오늘을 잃어버렸던 것을 회개합니다."}, {"key": "p3", "tag": "간구", "text": "하나님의 시간표를 다 알지 못해도 주님의 신실하심을 신뢰하게 하시고, 과거와 미래를 맡긴 채 오늘 사랑하고 용서하며 맡기신 일에 충실하게 해 주십시오."}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 29, Lord's Day", "ref": "Isaiah 41:21–29", "headline": "Why We Can Live Today by Faith<br>Even When We Can't Know the Future", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Isaiah 41:21-29", "s1heading": "Today's Word", "verse": "\"I was the first to say to Zion,<br>'Behold, here they are!'<br>and I give to Jerusalem a herald of good news.\"", "verseRef": "Isaiah 41:27", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · Whose Hands Is My Future In?", "paragraphs": ["From Isaiah 40 onward, God reveals who He is through a series of questions. First, <mark>does God still want to save us?</mark> God comes first to His people and comforts them. Second, <mark>does God truly have the power to save us?</mark> He is the Creator who rules history. In the first half of chapter 41, God showed how He brings about salvation within history. Now today's passage raises another question: <mark>how can we know that this salvation is God's work?</mark>", "God's answer is clear. He is <mark>the One who speaks of things beforehand and actually brings them to pass</mark>. Jesus too foretold His death, resurrection, and return, and fulfilled what He said. We live along the flow of time, but God governs time and faithfully fulfills His promises within it. Because we cannot know the future, we grow anxious. So we work hard to predict how the economy will go, how society will change, and what will happen in our own lives.", "But <mark>predicting the future and actually governing the future are entirely different things</mark>. We can anticipate and prepare for the future, but we cannot control everything in it. In today's passage, God challenges the idols: if they are true gods, let them speak of the past and the future and actually do something. But the idols give no answer. Facing exile in Babylon, Israel might have thought their future was over, but God had already planned their restoration. Today's question is not who predicts the future best, but <mark>to whom I can entrust my future</mark>."], "points": ["Because of anxiety about the future, am I pouring all my heart into predicting and controlling it?"]}, {"title": "Verses 21–24 · The Idols Cannot Present Evidence That They Are True Gods", "paragraphs": ["<mark>\"Set forth your case, says the LORD; bring your proofs, says the King of Jacob\"</mark> (v.21). The courtroom scene appears again. In 41:1 God summoned the nations to judgment; now He demands evidence from the idols they rely on. The issue in this court is <mark>who the true God is</mark>. God calls Himself 'the King of Jacob.' He is Israel's King, yet He is not limited to one nation; He is the Creator and Sovereign who judges every claim to divine authority in the whole world. God doesn't ask because He doesn't know the verdict; He exposes the idols' powerlessness so His people will trust the true God again.", "<mark>\"Let them bring them, and tell us what is to happen. Tell us the former things, what they are, that we may consider them, that we may know their outcome\"</mark> (v.22). There are various views on the exact scope of 'former things,' but the heart of the passage is clear: it's not merely asking them to guess the future, but whether they can <mark>explain the meaning and direction of history</mark>. In verse 23 the demand rises further: <mark>\"do good, or do harm.\"</mark> The ability to know and declare the future, and the ability to actually act within history. God can declare the future beforehand not because of superior forecasting, but because He governs history.", "<mark>\"Behold, you are nothing, and your work is less than nothing; an abomination is he who chooses you\"</mark> (v.24). This is the first verdict on the idols. God speaks not only of the idols but of the people who choose them. Idolatry is not an intellectual problem of believing wrong information, but <mark>a spiritual problem of giving to something else the trust and worship that belong to God</mark>. Compare verse 8: there God chose Israel, but in verse 24 people choose idols. God upholds the people He has chosen, but the idols people choose cannot save them. Preparing for the future is not wrong, but what we prepare must never become the ultimate object of trust in place of God."], "points": ["Is what I'm entrusting my future to truly able to take responsibility for my future?"]}, {"title": "Verses 25–27 · God Declares History Beforehand and Fulfills It by His Word", "paragraphs": ["<mark>\"I stirred up one from the north, and he has come, from the rising of the sun, and he shall call upon my name\"</mark> (v.25). This is the same figure as in 41:2—Cyrus, king of Persia, whose name is revealed in chapters 44–45. He would overthrow Babylon and open the way for Israel to return home. We should not conclude from 'call upon my name' that Cyrus became a believer, for 45:4–5 says that Cyrus did not know God. What matters is that <mark>God uses even a foreign king who does not know Him for His plan of salvation</mark>. That doesn't mean God approved of all his actions. The heart of the passage is not Cyrus's greatness but the sovereignty of the God who raised him up.", "<mark>\"Who declared it from the beginning, that we might know… There was none who declared it, none who proclaimed, none who heard your words\"</mark> (v.26). Presenting the concrete event of Cyrus's rise, God asks whether any idol declared it beforehand. The answer is: none. The negative phrase is repeated three times. <mark>God is not one who claims events as His work after they happen; He speaks beforehand of what He will do and works faithfully according to His word.</mark> So biblical prophecy is not meant to satisfy our curiosity about the future, but to help us realize God's faithfulness and trust Him.", "<mark>\"I was the first to say to Zion, 'Behold, here they are!' and I give to Jerusalem a herald of good news\"</mark> (v.27). Here the purpose of God revealing the future becomes clear. Cyrus's rise was a political event—one empire falling and another rising—but God makes known that for Israel it was <mark>news of salvation, of release from exile</mark>. God not only works in history but also reveals its meaning through His word. (Still, we cannot declare every political event today to be God's specific will; in this passage God Himself revealed the meaning.) The 'good news' of verse 27 connects with the 'good news' of 40:9. Hearing of restoration did not change their reality immediately, but trusting that word changed how they saw their reality—because they now knew that exile was not God's final plan."], "points": ["Because I believe the future God has promised, is the way I see today's reality changing?"]}, {"title": "Verses 28–29 · Idols That Cannot Answer Are Shown to Be Empty", "paragraphs": ["<mark>\"But when I look, there is no one; among these there is no counselor who, when I ask, gives an answer\"</mark> (v.28). A counselor is someone who offers wisdom. This recalls 40:13–14. In chapter 40, <mark>no one can counsel God</mark>; in today's passage, <mark>no one among the idols can answer God's question</mark>. There is an important difference: God needs no one's counsel because He has perfect wisdom, while the idols cannot answer because they have no divine wisdom at all.", "<mark>\"Behold, they are all a delusion; their works are nothing; their metal images are empty wind\"</mark> (v.29). This is the final verdict. 'Wind' represents what cannot be grasped; 'empty' represents what has no meaning or substance. People made idols thinking they would keep their future safe, yet what they entrusted their future to could give no answer about that future. And in the next chapter, chapter 42, God introduces <mark>His Servant</mark>. Unlike the idols that can do nothing, God's Servant receives God's Spirit and the mission to bring justice to the nations.", "Look at the flow of the passage. In verse 26 the idols bring no news. In verse 27 God brings good news to Zion. In verse 28 the idols fall silent again. <mark>Between the silences of the idols stands the word of God.</mark> We have not been given every answer about the future. But God has given us a word we can trust whatever future we meet. Even in an uncertain future, <mark>we can live holding on to the certain word of God</mark>."], "points": ["Even without knowing every answer about the future, am I holding on to God's certain word?"]}, {"title": "Application · Live Today with the God Who Governs Time", "paragraphs": ["The disciples asked the risen Jesus, \"Lord, will you at this time restore the kingdom to Israel?\" They wanted to know the future God would bring about. Jesus said, <mark>\"It is not for you to know times or seasons that the Father has fixed by his own authority\"</mark> (Acts 1:7), and continued, <mark>\"But you will receive power when the Holy Spirit has come upon you, and you will be my witnesses… to the end of the earth\"</mark> (Acts 1:8). The disciples asked 'when,' but Jesus told them 'how to live.' <mark>Times and seasons belong to God's authority; obedience is the mission given to us.</mark>", "We regret the time that has passed and fear the time not yet come. When our hearts are captured by past and future, we fail to live the today God has given us. If we believe in the God who governs time, our attitude toward time must change. First, <mark>don't make past failures the final verdict on your life</mark>. We cannot turn back time, but we can repent and return to God. Just as Israel's failure did not end God's plan of salvation, God can open a new way for us even after our failures.", "Second, <mark>don't lose today because of fear of a future that hasn't come</mark>. Preparing for the future is wise, but if we can only feel safe when we completely control the future, we will struggle with anxiety all our lives. The cross looked to the disciples like the end of everything, but God revealed through the resurrection that it was the way of salvation. The one scene I see now is not God's whole story. Third, <mark>live faithfully in the today God has entrusted to you</mark>. Even without knowing the outcome, we can do today's obedience: love those we should love, forgive those we should forgive, and be faithful in the work He has given us.", "Do you feel God's timing is too late? Or are you losing today because of a future that hasn't come? Trusting the God who governs time does not mean believing everything will happen when I want it to; it means <mark>living with trust in His wisdom and faithfulness even without knowing His whole timetable</mark>. We cannot govern time, but we can walk with the God who does. Today, entrust your past and future to God, and live the today He has given you in faith and obedience."], "points": ["I will entrust my past and future to God and faithfully do one act of obedience today."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "I prepared for the future, but did not make what I prepared my ultimate trust."}, {"key": "c2", "text": "I did not treat past failures as the final verdict on my life, but returned to God."}, {"key": "c3", "text": "I did not miss what I should do today because of fear of the future."}, {"key": "c4", "text": "I loved, forgave, and was faithful in the work entrusted to me today."}], "s4heading": "One-Line Reflection", "memoHint": "Not knowing God's whole timetable, what is one act of obedience I can do today?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Entrust the Future", "value": "Write down one anxious future matter and entrust it, praying, \"The times and seasons are Yours, Lord\""}, {"key": "act2", "label": "Release the Past", "value": "Repent of one past failure that keeps coming back and lay it down before the Lord"}, {"key": "act3", "label": "Today's Obedience", "value": "Concretely express love or forgiveness to one person today"}, {"key": "act4", "label": "Hold the Word", "value": "When anxious, read and meditate on one Bible verse before searching for predictions"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Acts 1:7–8 and live as a witness today"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, Lord of time, for declaring beforehand what You will do and faithfully fulfilling it, and for bringing good news even amid the silence of the idols."}, {"key": "p2", "tag": "Repent", "text": "I repent of anxiously trying to control the future, of trusting what I've prepared more than You, and of losing today by being bound to past failures."}, {"key": "p3", "tag": "Ask", "text": "Help me trust Your faithfulness even without knowing Your whole timetable, and, having entrusted my past and future to You, to love, forgive, and be faithful in Your work today."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 29, Araw ng Panginoon", "ref": "Isaias 41:21–29", "headline": "Kung Bakit Tayo Makapamumuhay Ngayon sa Pananampalataya<br>Kahit Hindi Natin Alam ang Hinaharap", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Isaias 41:21-29", "s1heading": "Salita Ngayon", "verse": "\"Ako ang unang nagsabi sa Zion,<br>'Narito, sila'y narito!'<br>at nagbibigay Ako sa Jerusalem ng tagapaghatid ng mabuting balita.\"", "verseRef": "Isaias 41:27", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Kaninong Kamay Nakasalalay ang Aking Kinabukasan?", "paragraphs": ["Mula Isaias 40, inihahayag ng Diyos kung sino Siya sa pamamagitan ng sunud-sunod na mga tanong. Una, <mark>nais pa rin ba tayong iligtas ng Diyos?</mark> Ang Diyos ang unang lumalapit sa Kanyang bayan at umaaliw sa kanila. Ikalawa, <mark>may kapangyarihan ba talaga ang Diyos na iligtas tayo?</mark> Siya ang Manlilikhang namamahala sa kasaysayan. Sa unang kalahati ng kabanata 41, ipinakita ng Diyos kung paano Niya isinasakatuparan ang kaligtasan sa loob ng kasaysayan. Ngayon, may isa pang tanong ang talata ngayon: <mark>paano natin malalaman na ang kaligtasang ito ay gawa ng Diyos?</mark>", "Malinaw ang sagot ng Diyos. Siya <mark>ang nagsasalita ng mga bagay bago pa mangyari at talagang isinasakatuparan ang mga ito</mark>. Si Jesus din ay nagpahayag nang maaga ng Kanyang kamatayan, muling pagkabuhay, at pagbabalik, at tinupad ang Kanyang sinabi. Namumuhay tayo ayon sa daloy ng panahon, ngunit pinamamahalaan ng Diyos ang panahon at tapat na tinutupad ang Kanyang mga pangako sa loob nito. Dahil hindi natin alam ang hinaharap, nababalisa tayo. Kaya nagsisikap tayong hulaan kung ano ang mangyayari sa ekonomiya, kung paano magbabago ang lipunan, at kung ano ang mangyayari sa sarili nating buhay.", "Ngunit <mark>ang paghula sa hinaharap at ang tunay na pamamahala sa hinaharap ay ganap na magkaibang bagay</mark>. Maaari nating asahan at paghandaan ang hinaharap, ngunit hindi natin makokontrol ang lahat ng naroroon. Sa talata ngayon, hinahamon ng Diyos ang mga diyus-diyusan: kung sila'y tunay na diyos, magsalita sila tungkol sa nakaraan at hinaharap at talagang gumawa ng anuman. Ngunit walang sagot ang mga diyus-diyusan. Sa harap ng pagkabihag sa Babilonia, maaaring inakala ng Israel na tapos na ang kanilang kinabukasan, ngunit naplano na ng Diyos ang kanilang panunumbalik. Ang tanong ngayon ay hindi kung sino ang pinakamagaling humula ng hinaharap, kundi <mark>kanino ko maipagkakatiwala ang aking kinabukasan</mark>."], "points": ["Dahil sa pagkabalisa tungkol sa hinaharap, ibinubuhos ko ba ang buong puso ko sa paghula at pagkontrol dito?"]}, {"title": "Talata 21–24 · Hindi Makapagharap ng Patunay ang mga Diyus-diyusan na Sila'y Tunay na Diyos", "paragraphs": ["<mark>\"Iharap ninyo ang inyong usapin, sabi ng PANGINOON; dalhin ninyo ang inyong mga patunay, sabi ng Hari ni Jacob\"</mark> (t.21). Muling lumitaw ang tagpo ng hukuman. Sa 41:1, ipinatawag ng Diyos ang mga bansa sa paghuhukom; ngayon ay humihingi Siya ng patunay mula sa mga diyus-diyusang kanilang sinasandalan. Ang usapin sa hukumang ito ay <mark>kung sino ang tunay na Diyos</mark>. Tinatawag ng Diyos ang Kanyang sarili na 'Hari ni Jacob.' Siya ang Hari ng Israel, ngunit hindi Siya limitado sa iisang bansa; Siya ang Manlilikha at Soberanong humahatol sa bawat pag-aangkin ng banal na awtoridad sa buong mundo. Hindi nagtatanong ang Diyos dahil hindi Niya alam ang hatol; inilalantad Niya ang kawalang-kapangyarihan ng mga diyus-diyusan upang muling magtiwala ang Kanyang bayan sa tunay na Diyos.", "<mark>\"Dalhin nila ang mga ito, at sabihin sa amin kung ano ang mangyayari. Sabihin sa amin ang mga naunang bagay, kung ano ang mga ito, upang aming pag-isipan at malaman ang kinalabasan\"</mark> (t.22). May iba't ibang pananaw tungkol sa eksaktong saklaw ng 'mga naunang bagay,' ngunit malinaw ang puso ng talata: hindi lamang ito paghingi na hulaan ang hinaharap, kundi kung kaya nilang <mark>ipaliwanag ang kahulugan at direksyon ng kasaysayan</mark>. Sa talata 23, lalo pang tumataas ang hinihingi: <mark>\"gumawa kayo ng mabuti, o gumawa ng masama.\"</mark> Ang kakayahang malaman at ipahayag ang hinaharap, at ang kakayahang talagang kumilos sa loob ng kasaysayan. Naipahahayag ng Diyos ang hinaharap nang maaga hindi dahil sa mahusay na panghuhula, kundi dahil Siya ang namamahala sa kasaysayan.", "<mark>\"Narito, kayo'y walang kabuluhan, at ang inyong gawa ay mas mababa pa sa wala; kasuklam-suklam ang pumipili sa inyo\"</mark> (t.24). Ito ang unang hatol sa mga diyus-diyusan. Nagsasalita ang Diyos hindi lamang tungkol sa mga diyus-diyusan kundi pati sa mga taong pumipili sa kanila. Ang pagsamba sa diyus-diyusan ay hindi problemang intelektwal ng paniniwala sa maling impormasyon, kundi <mark>espirituwal na problema ng pagbibigay sa iba ng pagtitiwala at pagsambang nararapat sa Diyos</mark>. Ihambing sa talata 8: doon ay pinili ng Diyos ang Israel, ngunit sa talata 24 ay pinipili ng tao ang mga diyus-diyusan. Inaalalayan ng Diyos ang bayang pinili Niya, ngunit hindi sila maililigtas ng mga diyus-diyusang pinipili ng tao. Hindi mali ang paghahanda para sa hinaharap, ngunit ang ating inihanda ay hindi kailanman dapat maging pangunahing pinagtitiwalaan kapalit ng Diyos."], "points": ["Ang pinagkakatiwalaan ko ba ng aking kinabukasan ay talagang kayang managot sa aking kinabukasan?"]}, {"title": "Talata 25–27 · Ipinahahayag ng Diyos nang Maaga ang Kasaysayan at Tinutupad Ito ayon sa Kanyang Salita", "paragraphs": ["<mark>\"Nagbangon Ako ng isa mula sa hilaga, at siya'y dumating, mula sa sikatan ng araw, at tatawag siya sa Aking pangalan\"</mark> (t.25). Ito rin ang taong nasa 41:2—si Ciro, hari ng Persia, na ang pangalan ay inihayag sa kabanata 44–45. Ibabagsak niya ang Babilonia at bubuksan ang daan para makauwi ang Israel. Hindi natin dapat ipalagay mula sa 'tatawag sa Aking pangalan' na naging mananampalataya si Ciro, sapagkat sinasabi ng 45:4–5 na hindi kilala ni Ciro ang Diyos. Ang mahalaga ay <mark>ginagamit ng Diyos kahit ang dayuhang haring hindi Siya kilala para sa Kanyang plano ng kaligtasan</mark>. Hindi ito nangangahulugang sinang-ayunan ng Diyos ang lahat ng kanyang ginawa. Ang puso ng talata ay hindi ang kadakilaan ni Ciro kundi ang soberanya ng Diyos na nagbangon sa kanya.", "<mark>\"Sino ang nagpahayag nito mula sa simula, upang aming malaman… Walang nagpahayag nito, walang nagbalita, walang nakarinig ng inyong mga salita\"</mark> (t.26). Inihaharap ang kongkretong pangyayari ng pagbangon ni Ciro, itinatanong ng Diyos kung may diyus-diyusang nagpahayag nito nang maaga. Ang sagot ay: wala. Tatlong beses inuulit ang negatibong pananalita. <mark>Ang Diyos ay hindi umaangkin sa mga pangyayari bilang Kanyang gawa matapos itong mangyari; nagsasalita Siya nang maaga kung ano ang Kanyang gagawin at tapat na kumikilos ayon sa Kanyang salita.</mark> Kaya ang propesiya sa Biblia ay hindi upang bigyang-kasiyahan ang ating pag-uusisa tungkol sa hinaharap, kundi upang tulungan tayong mapagtanto ang katapatan ng Diyos at magtiwala sa Kanya.", "<mark>\"Ako ang unang nagsabi sa Zion, 'Narito, sila'y narito!' at nagbibigay Ako sa Jerusalem ng tagapaghatid ng mabuting balita\"</mark> (t.27). Dito nagiging malinaw ang layunin ng paghahayag ng Diyos sa hinaharap. Ang pagbangon ni Ciro ay isang pampulitikang pangyayari—isang imperyong bumabagsak at isa pang bumabangon—ngunit ipinaaalam ng Diyos na para sa Israel, ito ay <mark>balita ng kaligtasan, ng paglaya mula sa pagkabihag</mark>. Hindi lamang kumikilos ang Diyos sa kasaysayan kundi inihahayag din Niya ang kahulugan nito sa pamamagitan ng Kanyang salita. (Gayunman, hindi natin maipahahayag na ang bawat pampulitikang pangyayari ngayon ay tiyak na kalooban ng Diyos; sa talatang ito, ang Diyos Mismo ang naghayag ng kahulugan.) Ang 'mabuting balita' sa talata 27 ay nakaugnay sa 'mabuting balita' sa 40:9. Ang pagkarinig sa panunumbalik ay hindi agad nagpabago sa kanilang realidad, ngunit ang pagtitiwala sa salitang iyon ay nagpabago sa paraan ng kanilang pagtingin sa realidad—dahil alam na nilang hindi ang pagkabihag ang huling plano ng Diyos."], "points": ["Dahil naniniwala ako sa kinabukasang ipinangako ng Diyos, nagbabago ba ang paraan ng aking pagtingin sa realidad ngayon?"]}, {"title": "Talata 28–29 · Ang mga Diyus-diyusang Hindi Makasagot ay Napatunayang Walang Kabuluhan", "paragraphs": ["<mark>\"Ngunit nang Ako'y tumingin, walang sinuman; sa gitna nila ay walang tagapayo na, kapag Ako'y nagtanong, ay sasagot\"</mark> (t.28). Ang tagapayo ay isang nagbibigay ng karunungan. Ipinaaalala nito ang 40:13–14. Sa kabanata 40, <mark>walang makapagpapayo sa Diyos</mark>; sa talata ngayon, <mark>walang sinuman sa mga diyus-diyusan ang makasasagot sa tanong ng Diyos</mark>. May mahalagang pagkakaiba: hindi kailangan ng Diyos ang payo ninuman dahil may ganap Siyang karunungan, samantalang hindi makasagot ang mga diyus-diyusan dahil wala silang anumang banal na karunungan.", "<mark>\"Narito, silang lahat ay isang panlilinlang; ang kanilang mga gawa ay walang kabuluhan; ang kanilang mga hinulmang larawan ay hanging hungkag\"</mark> (t.29). Ito ang huling hatol. Ang 'hangin' ay kumakatawan sa hindi mahahawakan; ang 'hungkag' ay kumakatawan sa walang kahulugan o laman. Gumawa ang mga tao ng mga diyus-diyusan sa pag-aakalang iingatan ng mga ito ang kanilang kinabukasan, ngunit ang pinagkatiwalaan nila ng kanilang kinabukasan ay walang maisagot tungkol sa kinabukasang iyon. At sa susunod na kabanata, kabanata 42, ipinakikilala ng Diyos <mark>ang Kanyang Lingkod</mark>. Hindi gaya ng mga diyus-diyusang walang magawa, tumatanggap ang Lingkod ng Diyos ng Espiritu ng Diyos at ng misyong magdala ng katarungan sa mga bansa.", "Tingnan ang daloy ng talata. Sa talata 26, walang balitang dala ang mga diyus-diyusan. Sa talata 27, nagdadala ang Diyos ng mabuting balita sa Zion. Sa talata 28, muling tumahimik ang mga diyus-diyusan. <mark>Sa pagitan ng katahimikan ng mga diyus-diyusan ay naroroon ang salita ng Diyos.</mark> Hindi ibinigay sa atin ang bawat sagot tungkol sa hinaharap. Ngunit binigyan tayo ng Diyos ng salitang mapagkakatiwalaan natin anumang kinabukasan ang ating harapin. Kahit sa di-tiyak na hinaharap, <mark>makapamumuhay tayo na nanghahawak sa tiyak na salita ng Diyos</mark>."], "points": ["Kahit hindi ko alam ang bawat sagot tungkol sa hinaharap, nanghahawak ba ako sa tiyak na salita ng Diyos?"]}, {"title": "Pagsasabuhay · Mamuhay Ngayon Kasama ng Diyos na Namamahala sa Panahon", "paragraphs": ["Nagtanong ang mga alagad sa muling nabuhay na Jesus, \"Panginoon, ibabalik Mo na ba ngayon ang kaharian sa Israel?\" Nais nilang malaman ang hinaharap na isasakatuparan ng Diyos. Sinabi ni Jesus, <mark>\"Hindi para sa inyo na malaman ang mga panahon o kapanahunang itinakda ng Ama sa Kanyang sariling kapangyarihan\"</mark> (Mga Gawa 1:7), at nagpatuloy, <mark>\"Ngunit tatanggap kayo ng kapangyarihan kapag dumating sa inyo ang Banal na Espiritu, at kayo'y magiging mga saksi Ko… hanggang sa dulo ng lupa\"</mark> (Mga Gawa 1:8). Itinanong ng mga alagad ang 'kailan,' ngunit sinabi sa kanila ni Jesus ang 'paano mamuhay.' <mark>Ang mga panahon at kapanahunan ay nasa awtoridad ng Diyos; ang pagsunod ay ang misyong ibinigay sa atin.</mark>", "Pinagsisisihan natin ang panahong lumipas at kinatatakutan ang panahong hindi pa dumarating. Kapag nabihag ng nakaraan at hinaharap ang ating puso, hindi natin naisasabuhay ang ngayon na ibinigay ng Diyos. Kung naniniwala tayo sa Diyos na namamahala sa panahon, dapat magbago ang ating saloobin sa panahon. Una, <mark>huwag gawing huling hatol sa iyong buhay ang mga nakaraang kabiguan</mark>. Hindi natin maibabalik ang panahon, ngunit maaari tayong magsisi at bumalik sa Diyos. Kung paanong hindi tinapos ng kabiguan ng Israel ang plano ng kaligtasan ng Diyos, makapagbubukas ang Diyos ng bagong daan para sa atin kahit matapos ang ating mga kabiguan.", "Ikalawa, <mark>huwag mawala ang ngayon dahil sa takot sa hinaharap na hindi pa dumarating</mark>. Karunungan ang paghahanda para sa hinaharap, ngunit kung makadarama lamang tayo ng kapanatagan kapag ganap nating kontrolado ang hinaharap, mahihirapan tayo sa pagkabalisa sa buong buhay natin. Ang krus ay tila wakas ng lahat sa paningin ng mga alagad, ngunit inihayag ng Diyos sa pamamagitan ng muling pagkabuhay na ito ang daan ng kaligtasan. Ang isang eksenang nakikita ko ngayon ay hindi ang buong kuwento ng Diyos. Ikatlo, <mark>mamuhay nang tapat sa ngayon na ipinagkatiwala sa iyo ng Diyos</mark>. Kahit hindi alam ang kalalabasan, magagawa natin ang pagsunod ngayon: mahalin ang dapat nating mahalin, patawarin ang dapat nating patawarin, at maging tapat sa gawaing ibinigay Niya.", "Pakiramdam mo ba ay huli na ang panahon ng Diyos? O nawawala ba ang iyong ngayon dahil sa hinaharap na hindi pa dumarating? Ang pagtitiwala sa Diyos na namamahala sa panahon ay hindi paniniwalang mangyayari ang lahat kapag gusto ko; ito ay <mark>pamumuhay na nagtitiwala sa Kanyang karunungan at katapatan kahit hindi alam ang Kanyang buong talaorasan</mark>. Hindi natin mapamamahalaan ang panahon, ngunit makalalakad tayo kasama ng Diyos na namamahala rito. Ngayon, ipagkatiwala sa Diyos ang iyong nakaraan at hinaharap, at isabuhay ang ngayon na ibinigay Niya sa pananampalataya at pagsunod."], "points": ["Ipagkakatiwala ko sa Diyos ang aking nakaraan at hinaharap at tapat kong gagawin ang isang pagsunod ngayon."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Naghanda ako para sa hinaharap, ngunit hindi ko ginawang pangunahing pinagtitiwalaan ang aking inihanda."}, {"key": "c2", "text": "Hindi ko itinuring na huling hatol sa aking buhay ang mga nakaraang kabiguan, kundi bumalik ako sa Diyos."}, {"key": "c3", "text": "Hindi ko pinalampas ang dapat kong gawin ngayon dahil sa takot sa hinaharap."}, {"key": "c4", "text": "Nagmahal ako, nagpatawad, at naging tapat sa gawaing ipinagkatiwala sa akin ngayon."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Hindi alam ang buong talaorasan ng Diyos, ano ang isang pagsunod na magagawa ko ngayon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Ipagkatiwala ang Hinaharap", "value": "Isulat ang isang bagay sa hinaharap na ikinababalisa mo at ipagkatiwala ito, nananalangin, \"Sa Iyo ang mga panahon at kapanahunan, Panginoon\""}, {"key": "act2", "label": "Bitawan ang Nakaraan", "value": "Pagsisihan ang isang nakaraang kabiguang paulit-ulit na bumabalik at ilapag ito sa harap ng Panginoon"}, {"key": "act3", "label": "Pagsunod Ngayon", "value": "Kongkretong ipahayag ang pagmamahal o pagpapatawad sa isang tao ngayon"}, {"key": "act4", "label": "Hawakan ang Salita", "value": "Kapag nababalisa, magbasa at magnilay muna sa isang talata ng Biblia bago maghanap ng mga hula"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Mga Gawa 1:7–8 at mamuhay bilang saksi ngayon"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, Panginoon ng panahon, sa pagpapahayag nang maaga ng Iyong gagawin at sa tapat na pagtupad nito, at sa pagdadala ng mabuting balita kahit sa gitna ng katahimikan ng mga diyus-diyusan."}, {"key": "p2", "tag": "Pagsisisi", "text": "Pinagsisisihan ko ang balisang pagsisikap na kontrolin ang hinaharap, ang pagtitiwala sa aking inihanda nang higit kaysa sa Iyo, at ang pagkawala ng ngayon dahil sa pagkagapos sa mga nakaraang kabiguan."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong magtiwala sa Iyong katapatan kahit hindi ko alam ang Iyong buong talaorasan, at, matapos ipagkatiwala sa Iyo ang aking nakaraan at hinaharap, na magmahal, magpatawad, at maging tapat sa Iyong gawain ngayon."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-29';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
