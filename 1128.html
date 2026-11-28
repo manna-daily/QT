@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만나 큐티</title>
+<meta property="og:title" content="11/28(토) 큐티 · 이사야 41:1–20">
+<meta property="og:description" content="두려움 속에서 무엇을 붙들고, 회복된 후에는 무엇을 위해 살아갑니까?">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eee5; --ink0:#1f1a14; --gold:#c9a25a; --ink:#2b241c; --ink2:#6b5f4e; --line:#d9cfbc;
+    --sun:#c8772a; --sun2:#f0b26a; --card:#fffaf0; --sky:#3f6d8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(15px,4.1vw,18px)}
+  html.f1{font-size:clamp(13.5px,3.6vw,16px)} html.f3{font-size:clamp(17px,4.8vw,21px)}
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:'Gowun Dodum','Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+    background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
+  .wrap{max-width:560px;margin:0 auto;padding:.8rem 1.1rem 4rem}
+  h1,h2,blockquote.key{font-family:'Gowun Batang',serif}
+
+  .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem .6rem;font-size:.8rem;color:var(--ink2);padding:0 .1rem}
+  .topRight{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem}
+  .bgm{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:.3rem}
+  .bgm.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+  .bgm.on .bar{display:inline-flex;gap:2px;align-items:flex-end;height:.8rem}
+  .bgm .bar{display:none}
+  .bgm .bar i{width:2px;background:#fff;animation:eq .8s ease-in-out infinite}
+  .bgm .bar i:nth-child(2){animation-delay:.2s}.bgm .bar i:nth-child(3){animation-delay:.4s}
+  @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+  .langsw{display:inline-flex;gap:.25rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.15rem}
+  .langsw button{font:inherit;font-size:.8rem;background:transparent;border:0;border-radius:999px;padding:.2rem .55rem;color:var(--ink2);cursor:pointer;line-height:1.3}
+  .langsw button.on{background:var(--sun);color:#fff}
+  .fs button{font:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.15rem .55rem;margin-left:.25rem;color:var(--ink2);cursor:pointer}
+  .fs button.on{background:var(--sun);color:#fff;border-color:var(--sun)}
+  .fs b:nth-child(2){font-size:.75rem}.fs b:nth-child(3){font-size:.95rem}.fs b:nth-child(4){font-size:1.15rem}
+
+  header{position:relative;margin:.9rem -1.1rem 0;padding:5.5rem 1.4rem 1.6rem;text-align:left;color:#f5efe3;
+    background:#3a2d21 url(header.jpg) center 22%/cover no-repeat;border-radius:0 0 26px 26px;overflow:hidden;min-height:17rem;display:flex;flex-direction:column;justify-content:flex-end}
+  header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,18,12,0) 0%,rgba(25,18,12,.05) 35%,rgba(35,24,14,.55) 70%,rgba(35,24,14,.82) 100%)}
+  header>*{position:relative}
+  .kicker{font-size:.7rem;letter-spacing:.28em;color:#f3d79a;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);display:flex;align-items:center;gap:.6rem}
+  .kicker::before{content:'';width:1.4rem;height:1px;background:#f3d79a;opacity:.9}
+  .date{font-size:.85rem;margin-top:.45rem;color:#efe6d6;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ref{display:inline-block;margin:.6rem 0 0;padding:.2rem .8rem;border:1px solid rgba(243,215,154,.65);border-radius:999px;font-size:.8rem;color:#f3d79a;background:rgba(25,18,12,.45);backdrop-filter:blur(3px)}
+  h1{font-size:1.55rem;line-height:1.4;margin:.8rem 0 0;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7),0 0 2px rgba(0,0,0,.4)}
+  h1::after{display:none}
+
+  .name{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem;margin-top:1.2rem}
+  .name label{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+  .name input{flex:1;font:inherit;font-size:1rem;border:0;border-bottom:1px solid var(--line);background:transparent;padding:.2rem;color:var(--ink)}
+  .name input:focus{outline:0;border-color:var(--sun)}
+
+  .video{display:flex;align-items:center;gap:.8rem;background:#2b241c;color:#fff;border-radius:14px;padding:.8rem 1rem;margin-top:1.2rem;text-decoration:none}
+  .video .play{width:2.4rem;height:2.4rem;border-radius:50%;background:#e33;display:flex;align-items:center;justify-content:center;flex:none}
+  .video .play::after{content:'';border-left:.8rem solid #fff;border-top:.5rem solid transparent;border-bottom:.5rem solid transparent;margin-left:.2rem}
+  .video small{display:block;opacity:.7;font-size:.8rem}
+
+  section{margin-top:2rem}
+  h2{font-size:1.15rem;color:var(--sun);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+  h2 .n{font-size:.75rem;background:var(--sun);color:#fff;border-radius:50%;width:1.5rem;height:1.5rem;display:inline-flex;align-items:center;justify-content:center;font-family:sans-serif;flex:none}
+
+  blockquote.key{background:var(--card);border-left:5px solid var(--sun);padding:1rem 1.1rem;border-radius:0 12px 12px 0;font-size:1.05rem;line-height:1.8}
+  blockquote.key small{display:block;margin-top:.5rem;color:var(--ink2);font-family:'Gowun Dodum';font-size:.85rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;overflow:hidden}
+  .card b.t{color:var(--sun);display:block;margin-bottom:.25rem}
+  mark{background:linear-gradient(transparent 45%,#ffd88f 45%);color:inherit;font-weight:700;padding:0 .1em}
+  .point{margin-top:.7rem;background:#fff3df;border:1px dashed var(--sun);border-radius:10px;padding:.6rem .8rem;font-size:.95rem;font-weight:700;color:#7a4a14;display:flex;gap:.5rem;align-items:flex-start}
+  .point::before{content:'★';color:var(--sun);flex:none}
+  .card p{font-size:.95rem;margin-bottom:.6rem}.card p:last-child{margin-bottom:0}
+
+  label.chk{display:flex;gap:.8rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:.2s}
+  label.chk:has(input:checked){background:#fff3df;border-color:var(--sun)}
+  label.chk input{width:1.4rem;height:1.4rem;margin-top:.2rem;accent-color:var(--sun);flex:none}
+  label.chk span{font-size:.98rem}
+  label.chk .tag{display:inline-block;font-size:.75rem;background:var(--sun2);color:#5a3a12;border-radius:6px;padding:0 .4rem;margin-right:.3rem;vertical-align:middle}
+
+  textarea,input.line{width:100%;font:inherit;font-size:1rem;padding:.9rem;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
+  textarea{min-height:100px;resize:vertical}
+  textarea:focus,input.line:focus{outline:2px solid var(--sun2)}
+  .hint{font-size:.85rem;color:var(--ink2);margin:0 0 .5rem}
+  .field{margin-bottom:.8rem}
+  .field label{display:block;font-size:.9rem;color:var(--ink2);margin-bottom:.3rem}
+
+  .pill{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill label{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.5rem .9rem;font-size:.9rem;cursor:pointer}
+  .pill label:has(input:checked){background:var(--sun);color:#fff;border-color:var(--sun)}
+  .pill input{display:none}
+  #actDetail{display:none;margin-top:.7rem}
+  #actDetail.on{display:block}
+
+  .actions{position:fixed;bottom:0;left:0;right:0;background:rgba(246,241,231,.92);backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.45rem .8rem calc(.45rem + env(safe-area-inset-bottom));display:flex;gap:.5rem;justify-content:center}
+  button.b{font:inherit;font-size:.9rem;font-weight:700;border:0;border-radius:999px;padding:.55rem 1rem;cursor:pointer;white-space:nowrap;line-height:1.3}
+  .b1{background:var(--sun);color:#fff;flex:1;max-width:240px}
+  .b2{background:#fff;border:1px solid var(--line)!important;color:var(--ink2)}
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+  .done{font-size:.85rem;color:var(--ink2);text-align:center;margin-top:1.5rem}
+  footer{text-align:center;font-size:.8rem;color:var(--ink2);margin-top:2.5rem;font-family:'Gowun Batang',serif}
+</style>
+<div class="wrap">
+
+<div class="top">
+  <button class="bgm" id="bgm">🎵 <span id="bgmLabel">묵상 음악</span> <span class="bar"><i></i><i></i><i></i></span></button>
+  <div class="topRight">
+    <span class="langsw" id="langsw">
+      <button data-lang="ko">한국어</button><button data-lang="en">English</button><button data-lang="tl">Tagalog</button>
+    </span>
+    <span class="fs"><span id="fontLabel">글자</span> <button data-f="f1"><b>가</b></button><button data-f="" class="on"><b>가</b></button><button data-f="f3"><b>가</b></button></span>
+  </div>
+</div>
+
+<header>
+  <div class="kicker" id="kickerEl">Daily Bible QT</div>
+  <div class="date" id="dateEl"></div>
+  <div class="ref" id="refEl"></div>
+  <h1 id="headlineEl"></h1>
+</header>
+
+<a class="video" id="video" href="VIDEO_URL" target="_blank">
+  <div class="play"></div>
+  <div><span id="videoLabelEl"></span><small id="videoSubEl"></small></div>
+</a>
+
+<section>
+  <h2><span class="n">1</span><span id="s1heading"></span></h2>
+  <blockquote class="key">
+    <span id="verseEl"></span>
+    <small id="verseRefEl"></small>
+  </blockquote>
+</section>
+
+<section>
+  <h2><span class="n">2</span><span id="s2heading"></span></h2>
+  <div id="cardsContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">3</span><span id="s3heading"></span></h2>
+  <div id="checklistContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">4</span><span id="s4heading"></span></h2>
+  <p class="hint" id="memoHintEl"></p>
+  <textarea id="memo" placeholder=""></textarea>
+</section>
+
+<section>
+  <h2><span class="n">5</span><span id="s5heading"></span></h2>
+  <div class="pill" id="pillsContainer"></div>
+  <div id="actDetail">
+    <input class="line" id="actWho" placeholder="">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span><span id="s6heading"></span></h2>
+  <div id="prayerContainer"></div>
+</section>
+
+<section>
+  <h2><span class="n">7</span><span id="s7heading"></span></h2>
+  <div class="field"><label id="pr1LabelEl"></label><input class="line" id="pr1" placeholder=""></div>
+  <div class="field"><label id="pr2LabelEl"></label><input class="line" id="pr2" placeholder=""></div>
+  <p class="done" id="saved"></p>
+</section>
+
+<footer id="footerEl"></footer>
+</div>
+
+<div class="actions">
+  <button class="b b1" id="copy"></button>
+  <button class="b b2" id="share"></button>
+</div>
+<audio id="audio" src="bgm.mp3" loop preload="none"></audio>
+<div class="toast" id="toast"></div>
+
+<script>
+const CONTENT = {"ko": {"kicker": "Daily Bible QT", "date": "11월 28일 토요일", "ref": "이사야 41장 1–20절", "headline": "두려움 속에서 무엇을 붙들고,<br>회복된 후에는 무엇을 위해 살아갑니까?", "videoLabel": "오늘의 10분 말씀 듣기", "videoSub": "매일성경 큐티 · 이사야 41:1-20", "s1heading": "오늘의 말씀", "verse": "\"두려워하지 말라 내가 너와 함께 함이라 놀라지 말라 나는 네 하나님이 됨이라<br>내가 너를 굳세게 하리라 참으로 너를 도와 주리라<br>참으로 나의 의로운 오른손으로 너를 붙들리라\"", "verseRef": "이사야 41:10", "s2heading": "5분 요약", "cards": [{"title": "들어가며 · 같은 '새 힘', 다른 근원", "paragraphs": ["40장 마지막 31절은 <mark>여호와를 앙망하는 자는 새 힘을 얻는다</mark>고 말씀했습니다. 그런데 오늘 41장 1절에서도 하나님은 민족들을 향해 <mark>\"힘을 새롭게 하라\"</mark>고 말씀하십니다. 같은 표현이지만 그 힘을 어디에서 얻느냐에 중요한 차이가 있습니다. 예수님을 믿는 사람이든 믿지 않는 사람이든 우리는 모두 살아가면서 두려움을 경험합니다. 오늘 본문에서 열방은 두려움을 이기려고 서로 격려하며 의지할 우상을 만듭니다. 어찌 보면 그것이 그들이 할 수 있는 최선이었습니다.", "반면 하나님은 자기 백성에게 <mark>\"두려워하지 말라\"</mark>고 명령하십니다. 이것은 하나님의 백성도 두려움을 경험한다는 사실을 보여 줍니다. 다만 의지하는 대상이 다릅니다. 열방은 자신들이 만든 신을 의지하지만, 이스라엘은 자신들을 창조하고 선택하신 하나님을 의지하도록 부름받았습니다. <mark>믿음은 두려움을 느끼지 않는 능력이 아니라 두려움 속에서도 하나님을 의지하는 선택입니다.</mark>", "본문은 한 걸음 더 나아갑니다. 하나님은 이스라엘의 실패를 부정하지 않으시지만, 그 실패로 그들의 미래가 끝났다고 말씀하지도 않으십니다. 오히려 그들을 새롭게 하여 하나님의 뜻을 이루는 일에 쓰시겠다고 하십니다. 그러니 이 말씀을 '노력하면 누구나 강해질 수 있다'는 자기계발의 메시지로 읽어서는 안 됩니다. 힘의 근원은 우리가 아니라 하나님이시고, 그 힘에는 <mark>우리 삶을 통해 하나님을 드러내려는 목적</mark>이 있습니다. 나는 두려움 속에서 무엇을 붙들고 있습니까? 하나님이 나를 새롭게 하시는 목적에 합당하게 살고 있습니까?"], "points": ["두려움이 찾아올 때, 나는 가장 먼저 무엇을 붙들고 있습니까?"]}, {"title": "1–7절 · 두려움 속에서 무엇을 의지하는가", "paragraphs": ["<mark>\"섬들아 내 앞에 잠잠하라 민족들아 힘을 새롭게 하라 가까이 나아오라… 우리가 서로 재판 자리에 가까이 나아가자\"</mark>(1절). 하나님은 온 세상 민족들을 재판 자리로 부르시고, 누가 참으로 세상을 다스리는 하나님인지 밝히겠다고 하십니다. 2절에서는 <mark>동방에서 한 사람이 일어나</mark> 여러 나라와 왕들을 정복합니다. 아직 이름은 나오지 않지만, 44–45장을 보면 바벨론을 무너뜨리고 이스라엘이 돌아갈 길을 열어 줄 바사 왕 고레스로 이해하는 것이 자연스럽습니다. 그런데 중요한 것은 고레스가 누구인가보다 <mark>누가 고레스를 일으켰는가</mark>입니다.", "<mark>\"이 일을 누가 행하였느냐 누가 이루었느냐 누가 처음부터 만대를 불러내었느냐 나 여호와라 처음에도 나요 나중 있을 자에게도 내가 곧 그니라\"</mark>(4절). 바벨론이 아무리 강해도 역사의 처음과 마지막을 결정할 수는 없습니다. 하나님은 역사의 한 부분에 갇혀 계신 분이 아니라 <mark>역사를 주관하시는 주인</mark>이십니다. 그러므로 하나님의 백성이 포로가 되는 역사도, 다시 돌아오는 역사도 하나님의 통치 밖에 있지 않습니다.", "강력한 정복자가 일어나자 열방은 두려워 떨며 서로 \"너는 힘을 내라\"고 격려합니다(5–6절). 서로 격려하고 협력하는 것 자체는 잘못이 아닙니다. 중요한 것은 무엇을 위해 힘을 내느냐입니다. 7절에서 여러 장인이 협력해 우상을 만들고, 마지막에는 <mark>못을 단단히 박아 우상을 움직이지 않게</mark> 합니다. 자신들을 지켜 줄 신을 만들었는데 정작 그 신이 넘어지지 않도록 자신들이 붙들어 주어야 합니다. 40장이 우상의 무력함을 보여 주었다면, 오늘 본문은 <mark>인간의 두려움이 어떻게 우상을 만들어 내는지</mark> 보여 줍니다. 돈, 능력, 사람들의 인정—현실적인 준비는 필요하지만 그것이 하나님을 대신하는 최종적인 신뢰의 대상이 되어서는 안 됩니다. 믿음의 차이는 두려움이 있느냐가 아니라 두려움 가운데 누구를 의지하느냐에 있습니다."], "points": ["현실적인 준비와 노력이, 어느새 하나님을 대신하는 최종 신뢰의 대상이 되지는 않았습니까?"]}, {"title": "8–13절 · 실패가 끝이 아니라, 나를 붙드시는 하나님", "paragraphs": ["<mark>\"그러나 나의 종 너 이스라엘아 내가 택한 야곱아 나의 벗 아브라함의 자손아\"</mark>(8절). 본문의 분위기가 달라집니다. 이스라엘 공동체 전체가 하나님의 종으로 불립니다. '종'이라는 표현에는 하나님께서 특별한 목적을 위해 선택하시고 자신의 일에 참여하도록 부르셨다는 의미가 담겨 있습니다. 그런데 이들은 말씀에 불순종하여 심판을 겪게 될 백성이었습니다. 그럼에도 하나님은 <mark>\"내가 너를 택하고 싫어하여 버리지 아니하였다\"</mark>(9절)고 말씀하십니다. 하나님은 그들의 죄를 가볍게 여기지 않으셨지만, 그 실패로 아브라함에게 주신 약속을 포기하지도 않으셨습니다. <mark>이스라엘은 실패했지만 하나님은 약속에 실패하지 않으셨습니다.</mark>", "<mark>\"두려워하지 말라 내가 너와 함께 함이라 놀라지 말라 나는 네 하나님이 됨이라 내가 너를 굳세게 하리라 참으로 너를 도와 주리라 참으로 나의 의로운 오른손으로 너를 붙들리라\"</mark>(10절). 두려워하지 않아도 되는 이유는 이스라엘이 강해서가 아니라 하나님께서 함께하시며 그들의 하나님이 되시기 때문입니다. 굳세게 하시고, 도우시고, 붙드시겠다는 세 가지 약속입니다. 하나님은 단순히 \"용기를 내라\"고 말씀하시는 분이 아니라 <mark>우리가 용기를 낼 수 있는 이유가 되어 주시는 분</mark>입니다. 11–12절의 대적들이 아무것도 아닌 것같이 된다는 말씀은 나를 반대하는 모든 사람이 무너진다는 개인적 보복의 약속이 아닙니다. 어떤 권세도 하나님의 구원 계획을 궁극적으로 막을 수 없다는 뜻입니다.", "10절에서는 하나님의 의로운 오른손으로 붙드신다고 하셨는데, 13절에서는 <mark>\"네 오른손을 붙들고\"</mark> 말씀하십니다. 두려워하는 아이의 손을 부모가 꼭 잡아 주는 모습입니다. 7절의 우상과 비교해 보십시오. 우상은 사람이 넘어지지 않도록 붙들어 주어야 했지만, <mark>하나님은 넘어질 것 같은 우리의 손을 친히 붙들어 주십니다</mark>. 믿음의 확신은 내가 하나님을 얼마나 강하게 붙드느냐보다 나를 붙드시는 하나님의 신실하심에 있습니다. 실패를 인정하고 하나님께 돌아가는 사람에게 과거의 실패가 마지막 이야기가 되는 것은 아닙니다."], "points": ["실패 때문에 하나님께 나아가기를 두려워하고 있다면, 내 손을 잡으시는 하나님을 기억하고 있습니까?"]}, {"title": "14–16절 · 버러지 같은 야곱을 새 타작기로 바꾸시는 구속자", "paragraphs": ["<mark>\"버러지 같은 너 야곱아, 너희 이스라엘 사람들아 두려워하지 말라… 네 구속자는 이스라엘의 거룩한 이니라\"</mark>(14절). (새번역은 '지렁이 같은'으로 옮깁니다.) 이것은 이스라엘이 가치 없는 존재라는 뜻이 아니라, 자기 힘으로는 아무것도 할 수 없는 연약한 현실을 보여 주는 표현입니다. 그런 그들에게 하나님은 자신을 <mark>'구속자'</mark>로 나타내십니다. 히브리어 '고엘'은 어려움에 빠진 가족을 위해 잃어버린 기업을 되찾아 주거나 속박에서 벗어나도록 돕는 가까운 친족을 가리킵니다. 룻기에서 보아스가 기업 무를 자로 등장하는 것과 같은 개념입니다. 온 우주를 창조하신 거룩하신 하나님이 연약한 이스라엘의 고엘이 되어 주십니다.", "<mark>\"보라 내가 너를 이가 날카로운 새 타작기로 삼으리니 네가 산들을 쳐서 부스러기를 만들 것이며 작은 산들을 겨 같이 만들 것이라\"</mark>(15절). 14절의 버러지 같던 야곱이 15절에서는 날카로운 새 타작기가 됩니다. 타작기는 나무판 아래 날카로운 돌이나 쇠를 박아 곡식을 떠는 도구인데, 그것이 산과 언덕까지 부술 것이라고 하십니다. 하나님의 구원 계획을 가로막는 거대한 장애물조차 넘어서게 하시겠다는 말씀입니다. 여기서 가장 중요한 것은 <mark>변화의 주체</mark>입니다. 이스라엘이 스스로 새로워진 것이 아니라 하나님께서 그들을 새롭게 하시겠다고 선언하십니다. 인간의 잠재력을 발견해 스스로 강해지라는 자기계발의 메시지가 아니라 은혜의 선언입니다.", "16절에서 타작한 겨는 바람에 날려 사라집니다. 그런데 마지막에 이스라엘은 무엇을 자랑합니까? 자기가 강한 타작기가 되었다는 사실이 아니라, <mark>\"여호와로 말미암아 즐거워하겠고 이스라엘의 거룩한 이로 말미암아 자랑하리라\"</mark>. 여기서 하나님이 우리를 변화시키시는 목적이 드러납니다. <mark>하나님께서 주신 능력은 자신을 높이는 수단이 아니라 하나님을 영화롭게 하는 선물입니다.</mark> 하나님의 은혜는 우리를 보호하는 데서 멈추지 않고 우리를 변화시켜 사명의 자리로 이끕니다. 하나님께서 주신 능력과 경험, 회복의 기회를 나는 지금 무엇을 위해 쓰고 있습니까?"], "points": ["하나님이 주신 능력과 회복을, 나를 높이는 데 쓰고 있습니까, 하나님을 자랑하는 데 쓰고 있습니까?"]}, {"title": "17–20절 · 회복의 목적: 하나님이 하셨음을 알게 하려 하심", "paragraphs": ["<mark>\"가련하고 가난한 자가 물을 구하되 물이 없어서 갈증으로 그들의 혀가 마를 때에 나 여호와가 그들에게 응답하겠고 나 이스라엘의 하나님이 그들을 버리지 아니할 것이라\"</mark>(17절). 자기 힘으로 삶의 어려움을 해결할 수 없는 백성의 모습입니다. 9절에서는 선택하신 백성을 '버리지 아니하였다'고 하셨는데, 17절에서는 궁핍한 현실 속에서도 <mark>'버리지 아니할 것'</mark>이라고 하십니다. 하나님의 신실하심은 과거의 선택에만 머물지 않고 오늘의 어려움 속에서도 계속됩니다.", "<mark>\"내가 헐벗은 산에 강을 내며 골짜기 가운데에 샘이 나게 하며 광야가 못이 되게 하며 마른 땅이 샘 근원이 되게 할 것이며\"</mark>(18절). 출애굽 때 광야에서 백성에게 물을 주시던 하나님을 떠올리게 합니다. 하나님은 물 있는 곳을 찾아 주시는 데 그치지 않고 <mark>물이 없던 곳을 물이 풍성한 곳으로 바꾸십니다</mark>. 18절에서 생존에 필요한 물을 공급하시고, 19절에서는 백향목과 싯딤나무와 화석류 같은 나무를 심어 쉼을 누리게 하십니다. 인간의 힘으로는 회복할 수 없어 보이는 현실도 새롭게 하실 수 있는 분입니다.", "<mark>\"무리가 보고 여호와의 손이 지으신 바요 이스라엘의 거룩한 이가 창조하신 바인 줄 알며 함께 헤아리며 깨달으리라\"</mark>(20절). 오늘 본문의 결론입니다. 하나님은 광야를 새롭게 하시는 일을 <mark>'창조'</mark>라고 부르십니다. 40장에서 하늘의 별을 창조하신 하나님이 이제 자기 백성의 메마른 삶을 새롭게 하시고, 그 회복을 통해 하나님이 누구신지 알게 하십니다. 이는 43장에서 백성을 하나님의 증인으로 부르시는 말씀과도 이어집니다. 우리는 어려움에서 벗어나기 위해 기도합니다. 그런데 벗어난 뒤에는 무엇을 위해 살아갑니까? 하나님이 은혜를 베푸시는 목적은 이전의 편안한 삶을 되찾게 하는 데만 있지 않고, <mark>우리가 하나님을 더 깊이 알고 우리 삶을 통해 다른 사람도 하나님을 알게 하는 데</mark> 있습니다."], "points": ["어려움에서 회복된 뒤, 내 삶을 통해 하나님이 하신 일이 드러나고 있습니까?"]}, {"title": "적용 · 나를 붙드시는 손을 신뢰하고, 회복의 목적대로 살아가십시오", "paragraphs": ["베드로는 예수님을 끝까지 따르겠다고 자신했던 사람입니다. 그러나 예수님이 붙잡히셨을 때 두려움 속에서 예수님을 세 번이나 부인했습니다. 자신의 의지와 능력만으로는 끝까지 따를 수 없었던 것입니다. 그런데 누가복음 22장을 보면 예수님은 이미 베드로의 연약함을 알고 계셨습니다. <mark>\"내가 너를 위하여 네 믿음이 떨어지지 않기를 기도하였노니 너는 돌이킨 후에 네 형제를 굳게 하라\"</mark>(눅 22:32). 예수님은 베드로의 실패 이전에 이미 그의 회복과 사명을 말씀하셨습니다.", "십자가에서 죽으시고 부활하신 예수님은 실패한 베드로를 다시 찾아오셨습니다. 요한복음 21장에서 예수님은 \"네가 나를 사랑하느냐\" 물으시고 다시 자기 양을 돌보는 사명을 맡기셨습니다. <mark>예수님은 베드로의 실패를 없었던 일로 만들지 않으셨지만, 그 실패로 베드로의 미래를 끝내지도 않으셨습니다.</mark> 버러지 같은 야곱을 새 타작기로 삼으시는 하나님의 은혜를 베드로의 회복에서도 발견합니다.", "오늘 두 가지를 기억하십시오. 첫째, 두려움 가운데 <mark>내가 붙들 수 있는 것만 찾지 말고 나를 붙들고 계시는 하나님을 바라보십시오</mark>. 둘째, <mark>하나님께서 나를 붙드시고 회복시키시는 목적을 기억하십시오</mark>. 예수님은 십자가와 부활로 우리를 죄에서 구원하셨고, 구원받은 우리를 하나님 나라의 일에 참여하도록 부르십니다. 가정에서, 직장에서, 학교에서, 하나님이 보내신 자리에서 받은 은혜를 드러내며 살아가는 것입니다.", "오늘 두려움을 겪고 있다면 그 두려움을 하나님께 맡기십시오. 그리고 하나님께서 이미 주신 은혜와 능력을 누구를 위해, 무엇을 위해 쓰고 있는지 돌아보십시오. 하나님은 우리를 붙드시기만 하는 분이 아니라 <mark>우리를 새롭게 하시고 자신의 뜻을 이루는 일에 사용하시는 분</mark>입니다. 오늘도 나를 붙드시는 하나님의 손을 신뢰하며, 나를 새롭게 하시는 목적에 합당하게 살아가시기 바랍니다."], "points": ["두려움은 하나님께 맡기고, 받은 은혜와 능력을 하나님을 드러내는 데 쓰겠습니다."]}], "s3heading": "오늘 나를 점검합니다", "checks": [{"key": "c1", "text": "두려움 앞에서 돈·능력·사람보다 먼저 하나님을 의지했다"}, {"key": "c2", "text": "과거의 실패 때문에 하나님께 나아가기를 포기하지 않았다"}, {"key": "c3", "text": "내가 이룬 일이나 회복을 나의 자랑이 아니라 하나님의 자랑으로 돌렸다"}, {"key": "c4", "text": "받은 은혜와 능력을 다른 사람을 세우고 하나님을 드러내는 데 사용했다"}], "s4heading": "묵상 한 줄", "memoHint": "지금 나를 두렵게 하는 것은 무엇이며, 그 자리에서 \"네 오른손을 붙들리라\"는 말씀을 어떻게 붙들겠습니까?", "memoPlaceholder": "한 문장이면 충분합니다.", "s5heading": "오늘 실천 하나", "pills": [{"key": "act1", "label": "두려움 맡기기", "value": "지금 나를 두렵게 하는 일 하나를 적고 \"주님이 내 손을 붙드십니다\"라고 기도하기"}, {"key": "act2", "label": "의지하는 것 점검", "value": "두려울 때 가장 먼저 붙드는 것을 돌아보고, 그것보다 하나님을 먼저 찾기"}, {"key": "act3", "label": "하나님 자랑하기", "value": "최근 회복되거나 이룬 일 하나를 누군가에게 나누며 하나님이 하신 일로 고백하기"}, {"key": "act4", "label": "형제를 굳게", "value": "실패나 두려움 속에 있는 사람에게 연락해 함께 기도하며 격려하기"}, {"key": "act5", "label": "말씀 암송", "value": "이사야 41:10을 외우며 두려울 때마다 되뇌기"}], "s6heading": "오늘의 기도", "prayers": [{"key": "p1", "tag": "감사", "text": "실패한 저를 버리지 않으시고 의로운 오른손으로 붙드시며, 저의 구속자가 되어 버러지 같은 저를 새롭게 하시는 하나님께 감사드립니다."}, {"key": "p2", "tag": "회개", "text": "두려울 때 하나님보다 돈과 능력과 사람을 먼저 붙들고, 받은 은혜와 회복을 제 자랑으로 삼았던 것을 회개합니다."}, {"key": "p3", "tag": "간구", "text": "두려움 속에서도 저를 붙드시는 주님의 손을 신뢰하게 하시고, 회복시키신 목적대로 제 삶을 통해 하나님이 하신 일이 드러나게 해 주십시오."}], "s7heading": "나의 기도제목", "pr1Label": "나를 위해", "pr1Placeholder": "한 줄", "pr2Label": "구역 · 이웃을 위해", "pr2Placeholder": "서로 기도해 드릴 수 있도록", "actWhoPlaceholder": "누구에게 · 언제 · 어떻게 (예: ○○에게 오늘 저녁 전화)", "footer": "항상 기뻐하라 · 쉬지 말고 기도하라 · 범사에 감사하라", "ui": {"bgmIdle": "🎵 묵상 음악 ", "bgmPlaying": "🎵 재생 중 ", "bgmTapToPlay": "🎵 눌러서 재생 ", "fontLabel": "글자", "copyBtn": "📋 나눔 복사", "shareBtn": "공유", "toastMusicFail": "음악 파일을 불러올 수 없습니다", "toastCopied": "복사됨! 카톡방에 붙여넣으세요", "toastLinkCopied": "링크 복사됨", "savedPrefix": "이 기기에 자동 저장됨 · ", "loadedPrev": "이전에 저장한 내용을 불러왔습니다", "shareText": "오늘 큐티 함께해요", "copyHeader": "나눔", "copyCheck": "점검", "copyAct": "실천", "copyPrayer": "기도", "copyPrayerReq": "기도제목", "copyMine": "나", "copyGroup": "구역"}}, "en": {"kicker": "Daily Bible QT", "date": "November 28, Saturday", "ref": "Isaiah 41:1–20", "headline": "What Do I Hold On to in Fear,<br>and What Do I Live for After Restoration?", "videoLabel": "Listen to Today's 10-Minute Message", "videoSub": "Daily Bible QT · Isaiah 41:1-20", "s1heading": "Today's Word", "verse": "\"Fear not, for I am with you; be not dismayed, for I am your God;<br>I will strengthen you, I will help you,<br>I will uphold you with my righteous right hand.\"", "verseRef": "Isaiah 41:10", "s2heading": "5-Minute Summary", "cards": [{"title": "Introduction · The Same 'New Strength,' a Different Source", "paragraphs": ["The last verse of chapter 40, verse 31, said that <mark>those who wait for the LORD shall renew their strength</mark>. Yet in today's 41:1, God also says to the peoples, <mark>\"Let the peoples renew their strength.\"</mark> It's the same expression, but there is an important difference in where that strength comes from. Whether we believe in Jesus or not, all of us experience fear in life. In today's passage, the nations try to overcome fear by encouraging one another and making idols to rely on. In a sense, that was the best they could do.", "By contrast, God commands His people, <mark>\"Fear not.\"</mark> This shows that God's people also experience fear. The difference is what they rely on. The nations rely on gods they made themselves, but Israel is called to rely on the God who created and chose them. <mark>Faith is not the ability to feel no fear; it is the choice to rely on God even in the midst of fear.</mark>", "The passage goes one step further. God does not deny Israel's failure, yet He does not say that failure has ended their future either. Instead, He says He will renew them and use them to accomplish His will. So we must not read this as a self-help message that 'anyone can become strong with enough effort.' The source of strength is not us but God, and that strength has <mark>a purpose: to reveal God through our lives</mark>. What am I holding on to in fear? Am I living in a way worthy of God's purpose in renewing me?"], "points": ["When fear comes, what is the first thing I grab hold of?"]}, {"title": "Verses 1–7 · What Do We Rely On in Fear?", "paragraphs": ["<mark>\"Listen to me in silence, O coastlands; let the peoples renew their strength; let them approach, then let them speak; let us together draw near for judgment\"</mark> (v.1). God summons the nations of the world to court to reveal who truly rules the world. In verse 2, <mark>someone is stirred up from the east</mark> and conquers nations and kings. His name is not yet given, but in light of chapters 44–45 it is natural to understand this as Cyrus, king of Persia, who would overthrow Babylon and open the way for Israel to return. Yet what matters most is not who Cyrus is but <mark>who raised Cyrus up</mark>.", "<mark>\"Who has performed and done this, calling the generations from the beginning? I, the LORD, the first, and with the last; I am he\"</mark> (v.4). However strong Babylon was, it could not determine the beginning and end of history. God is not confined to one part of history; He is <mark>the Lord who governs history</mark>. Therefore, both the history of God's people going into exile and the history of their return lie within God's rule.", "When a mighty conqueror arises, the nations tremble in fear and encourage one another, \"Be strong!\" (vv.5–6). Encouraging and helping one another is not wrong in itself; what matters is what they are gathering strength for. In verse 7, craftsmen work together to make an idol, and finally <mark>they fasten it with nails so that it cannot be moved</mark>. They made a god to protect them, yet they must hold it up so it won't fall over. If chapter 40 showed the powerlessness of idols, today's passage shows <mark>how human fear produces idols</mark>. Money, ability, people's approval—practical preparation is necessary, but it must never become the ultimate object of trust that replaces God. The difference faith makes is not whether we have fear, but whom we rely on in our fear."], "points": ["Has my practical preparation and effort quietly become my ultimate trust in place of God?"]}, {"title": "Verses 8–13 · Failure Is Not the End—God Holds Me", "paragraphs": ["<mark>\"But you, Israel, my servant, Jacob, whom I have chosen, the offspring of Abraham, my friend\"</mark> (v.8). The tone of the passage changes. The whole community of Israel is called God's servant. The word 'servant' carries the sense that God chose them for a special purpose and called them to take part in His work. Yet these were people who would face judgment for disobeying His word. Even so, God says, <mark>\"I have chosen you and not cast you off\"</mark> (v.9). God did not take their sin lightly, but He did not abandon the promise He gave to Abraham because of their failure. <mark>Israel failed, but God did not fail in His promise.</mark>", "<mark>\"Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand\"</mark> (v.10). The reason they need not fear is not that Israel is strong, but that God is with them and is their God. Three promises: He will strengthen, help, and uphold. God doesn't simply say, \"Be brave\"; He is <mark>the very reason we can be brave</mark>. The words in verses 11–12 that their enemies will be as nothing are not a promise of personal revenge that everyone opposing us will fall. They mean that no power can ultimately block God's plan of salvation.", "In verse 10, God upholds with His righteous right hand; in verse 13, He says, <mark>\"I… hold your right hand.\"</mark> It is like a parent firmly holding the hand of a frightened child. Compare this with the idol of verse 7. The idol had to be held up by people so it wouldn't fall, but <mark>God Himself holds our hand when we are about to fall</mark>. The assurance of faith lies not in how tightly I hold on to God, but in the faithfulness of the God who holds me. For those who admit their failure and return to God, past failure is not the final story."], "points": ["If I'm afraid to come to God because of my failures, do I remember the God who takes my hand?"]}, {"title": "Verses 14–16 · The Redeemer Who Turns Worm-Like Jacob into a New Threshing Sledge", "paragraphs": ["<mark>\"Fear not, you worm Jacob, you men of Israel! I am the one who helps you, declares the LORD; your Redeemer is the Holy One of Israel\"</mark> (v.14). This does not mean Israel is worthless; it describes their weak reality—unable to do anything in their own strength. To such people, God reveals Himself as <mark>'Redeemer.'</mark> The Hebrew <i>go'el</i> refers to a close relative who recovers lost family land or helps a family member out of bondage. It is the same idea as Boaz appearing as the kinsman-redeemer in the book of Ruth. The holy God who created the whole universe becomes the <i>go'el</i> of weak Israel.", "<mark>\"Behold, I make of you a threshing sledge, new, sharp, and having teeth; you shall thresh the mountains and crush them, and you shall make the hills like chaff\"</mark> (v.15). The worm-like Jacob of verse 14 becomes a sharp new threshing sledge in verse 15. A threshing sledge was a wooden board with sharp stones or metal fixed underneath for threshing grain—and God says it will crush mountains and hills. He will enable them to overcome even the huge obstacles standing in the way of His saving plan. The most important thing here is <mark>who brings about the change</mark>. Israel did not renew itself; God declares that He will make them new. This is not a self-help message about discovering human potential and becoming strong on our own, but a declaration of grace.", "In verse 16, the threshed chaff is blown away by the wind. But in the end, what does Israel boast in? Not that they became a strong threshing sledge, but <mark>\"you shall rejoice in the LORD; in the Holy One of Israel you shall glory.\"</mark> Here the purpose of God's transforming us is revealed. <mark>The power God gives is not a means to exalt ourselves but a gift for glorifying God.</mark> God's grace does not stop at protecting us; it transforms us and leads us into our calling. What am I using the abilities, experiences, and opportunities of restoration God has given me for right now?"], "points": ["Am I using the strength and restoration God has given me to exalt myself, or to boast in Him?"]}, {"title": "Verses 17–20 · The Purpose of Restoration: That People May Know God Has Done It", "paragraphs": ["<mark>\"When the poor and needy seek water, and there is none, and their tongue is parched with thirst, I the LORD will answer them; I the God of Israel will not forsake them\"</mark> (v.17). This is a picture of people who cannot solve life's hardships by their own strength. In verse 9 God said He had 'not cast off' His chosen people; in verse 17 He says that even in their need He <mark>'will not forsake them.'</mark> God's faithfulness does not stay in a past choice; it continues in today's difficulties.", "<mark>\"I will open rivers on the bare heights, and fountains in the midst of the valleys. I will make the wilderness a pool of water, and the dry land springs of water\"</mark> (v.18). This recalls the God who gave His people water in the wilderness during the exodus. God does not merely find a place with water; He <mark>turns waterless places into places abundant with water</mark>. In verse 18 He supplies the water needed to survive, and in verse 19 He plants trees like cedar, acacia, and myrtle so they can enjoy rest. He is able to renew even realities that seem beyond human restoration.", "<mark>\"That they may see and know, may consider and understand together, that the hand of the LORD has done this, the Holy One of Israel has created it\"</mark> (v.20). This is the conclusion of today's passage. God calls His renewing of the wilderness <mark>'creating.'</mark> The God who created the stars in chapter 40 now renews the parched lives of His people, and through that restoration He makes known who He is. This connects with chapter 43, where He calls His people His witnesses. We pray to be delivered from hardship. But after we are delivered, what do we live for? The purpose of God's grace is not only to restore our former comfortable life, but for <mark>us to know God more deeply and for others to come to know God through our lives</mark>."], "points": ["After being restored from hardship, is what God has done becoming visible through my life?"]}, {"title": "Application · Trust the Hand That Holds You, and Live for the Purpose of Your Restoration", "paragraphs": ["Peter was confident that he would follow Jesus to the end. But when Jesus was arrested, Peter denied Him three times out of fear. He could not follow to the end by his own will and ability. Yet in Luke 22, Jesus already knew Peter's weakness: <mark>\"I have prayed for you that your faith may not fail. And when you have turned again, strengthen your brothers\"</mark> (Luke 22:32). Before Peter even failed, Jesus spoke of his restoration and his calling.", "Having died on the cross and risen again, Jesus came to find the failed Peter once more. In John 21, Jesus asked, \"Do you love me?\" and again entrusted him with caring for His sheep. <mark>Jesus did not pretend Peter's failure never happened, but neither did He let that failure end Peter's future.</mark> In Peter's restoration we see the same grace of the God who makes worm-like Jacob into a new threshing sledge.", "Remember two things today. First, in the midst of fear, <mark>don't look only for things you can hold on to—look to the God who is holding on to you</mark>. Second, <mark>remember the purpose for which God holds and restores you</mark>. Through the cross and resurrection, Jesus saved us from sin and calls us, the saved, to take part in the work of God's kingdom—to live revealing the grace we've received at home, at work, at school, and wherever God sends us.", "If you are experiencing fear today, entrust that fear to God. And reflect on whom and what you are using the grace and abilities God has already given you for. God is not only the One who holds us; He is <mark>the One who renews us and uses us to accomplish His will</mark>. Today, trust the hand of God that holds you, and live in a way worthy of His purpose in renewing you."], "points": ["I will entrust my fears to God and use the grace and strength I've received to reveal Him."]}], "s3heading": "Check Myself Today", "checks": [{"key": "c1", "text": "In the face of fear, I relied on God before money, ability, or people."}, {"key": "c2", "text": "I did not give up coming to God because of my past failures."}, {"key": "c3", "text": "I gave the credit for what I achieved or the restoration I received to God, not myself."}, {"key": "c4", "text": "I used the grace and abilities I've received to build up others and reveal God."}], "s4heading": "One-Line Reflection", "memoHint": "What is making me afraid right now, and how will I hold on to the words \"I hold your right hand\" in that place?", "memoPlaceholder": "One sentence is enough.", "s5heading": "One Action Today", "pills": [{"key": "act1", "label": "Entrust Your Fear", "value": "Write down one thing that frightens you and pray, \"The Lord is holding my hand\""}, {"key": "act2", "label": "Check Your Reliance", "value": "Reflect on what you grab first when afraid, and seek God before it"}, {"key": "act3", "label": "Boast in God", "value": "Share a recent restoration or achievement with someone, confessing it as God's work"}, {"key": "act4", "label": "Strengthen Others", "value": "Reach out to someone struggling with failure or fear, and encourage them through prayer together"}, {"key": "act5", "label": "Memorize the Word", "value": "Memorize Isaiah 41:10 and repeat it whenever you feel afraid"}], "s6heading": "Today's Prayer", "prayers": [{"key": "p1", "tag": "Thanks", "text": "Thank You, God, for not casting me off when I failed, for upholding me with Your righteous right hand, and for being my Redeemer who renews even a worm like me."}, {"key": "p2", "tag": "Repent", "text": "I repent of grabbing money, ability, and people before You when I'm afraid, and of making the grace and restoration I received into my own boast."}, {"key": "p3", "tag": "Ask", "text": "Help me trust Your hand that holds me even in fear, and let what You have done become visible through my life, according to the purpose for which You restored me."}], "s7heading": "My Prayer Requests", "pr1Label": "For myself", "pr1Placeholder": "One line", "pr2Label": "For my group · neighbors", "pr2Placeholder": "So we can pray for one another", "actWhoPlaceholder": "To whom · when · how (e.g., call ○○ this evening)", "footer": "Rejoice always · Pray without ceasing · Give thanks in all circumstances", "ui": {"bgmIdle": "🎵 Reflection Music ", "bgmPlaying": "🎵 Playing ", "bgmTapToPlay": "🎵 Tap to play ", "fontLabel": "Text", "copyBtn": "📋 Copy to Share", "shareBtn": "Share", "toastMusicFail": "Couldn't load the music file", "toastCopied": "Copied! Paste it in your group chat", "toastLinkCopied": "Link copied", "savedPrefix": "Auto-saved on this device · ", "loadedPrev": "Loaded your previous entry", "shareText": "Join today's QT with me", "copyHeader": "QT share", "copyCheck": "Checked", "copyAct": "Action", "copyPrayer": "Prayer", "copyPrayerReq": "Prayer requests", "copyMine": "Me", "copyGroup": "Group"}}, "tl": {"kicker": "Daily Bible QT", "date": "Nobyembre 28, Sabado", "ref": "Isaias 41:1–20", "headline": "Ano ang Hinahawakan Ko sa Gitna ng Takot,<br>at Para Saan Ako Nabubuhay Matapos Manumbalik?", "videoLabel": "Pakinggan ang 10-Minutong Mensahe Ngayon", "videoSub": "Daily Bible QT · Isaias 41:1-20", "s1heading": "Salita Ngayon", "verse": "\"Huwag kang matakot, sapagkat Ako'y kasama mo; huwag kang manlupaypay, sapagkat Ako ang iyong Diyos;<br>palalakasin kita, tutulungan kita,<br>aalalayan kita ng Aking matuwid na kanang kamay.\"", "verseRef": "Isaias 41:10", "s2heading": "5 Minutong Buod", "cards": [{"title": "Panimula · Iisang 'Bagong Lakas,' Magkaibang Pinagmulan", "paragraphs": ["Sinabi ng huling talata ng kabanata 40, talata 31, na <mark>ang mga naghihintay sa PANGINOON ay magbabagong-lakas</mark>. Gayunman, sa Isaias 41:1 ngayon, sinasabi rin ng Diyos sa mga bayan, <mark>\"Magbagong-lakas ang mga bayan.\"</mark> Iisang pananalita, ngunit may mahalagang pagkakaiba kung saan nagmumula ang lakas na iyon. Naniniwala man tayo kay Jesus o hindi, lahat tayo ay nakararanas ng takot sa buhay. Sa talata ngayon, sinisikap ng mga bansa na mapagtagumpayan ang takot sa pamamagitan ng pagpapalakas ng loob ng isa't isa at paggawa ng mga diyus-diyusang masasandalan. Sa isang banda, iyon na ang pinakamabuting magagawa nila.", "Sa kabaligtaran, iniuutos ng Diyos sa Kanyang bayan, <mark>\"Huwag kang matakot.\"</mark> Ipinapakita nito na ang bayan ng Diyos ay nakararanas din ng takot. Ang pagkakaiba ay kung ano ang kanilang sinasandalan. Sumasandal ang mga bansa sa mga diyos na sila mismo ang gumawa, ngunit tinawag ang Israel upang sumandal sa Diyos na lumikha at pumili sa kanila. <mark>Ang pananampalataya ay hindi kakayahang hindi makaramdam ng takot; ito ay pagpiling umasa sa Diyos kahit sa gitna ng takot.</mark>", "Humahakbang pa nang isang hakbang ang talata. Hindi itinatanggi ng Diyos ang kabiguan ng Israel, ngunit hindi rin Niya sinasabing tinapos na ng kabiguang iyon ang kanilang kinabukasan. Sa halip, sinasabi Niyang babaguhin Niya sila at gagamitin upang matupad ang Kanyang kalooban. Kaya hindi natin dapat basahin ito bilang mensahe ng pagpapaunlad sa sarili na 'kahit sino ay maaaring lumakas kung magsisikap.' Ang pinagmumulan ng lakas ay hindi tayo kundi ang Diyos, at ang lakas na iyon ay may <mark>layunin: ihayag ang Diyos sa pamamagitan ng ating buhay</mark>. Ano ang hinahawakan ko sa gitna ng takot? Namumuhay ba ako nang karapat-dapat sa layunin ng Diyos sa pagbabago sa akin?"], "points": ["Kapag dumating ang takot, ano ang una kong hinahawakan?"]}, {"title": "Talata 1–7 · Ano ang Sinasandalan Natin sa Gitna ng Takot?", "paragraphs": ["<mark>\"Makinig kayo sa Akin nang tahimik, O mga baybayin; magbagong-lakas ang mga bayan; lumapit sila, at saka magsalita; sama-sama tayong lumapit sa paghuhukom\"</mark> (t.1). Ipinatatawag ng Diyos ang mga bansa sa mundo sa hukuman upang ihayag kung sino talaga ang namamahala sa mundo. Sa talata 2, <mark>may ibinangon mula sa silangan</mark> na sumasakop sa mga bansa at hari. Hindi pa binabanggit ang kanyang pangalan, ngunit sa liwanag ng kabanata 44–45, natural na unawain ito bilang si Ciro, hari ng Persia, na magpapabagsak sa Babilonia at magbubukas ng daan para makabalik ang Israel. Gayunman, ang pinakamahalaga ay hindi kung sino si Ciro kundi <mark>kung sino ang nagbangon kay Ciro</mark>.", "<mark>\"Sino ang gumawa at nagsakatuparan nito, na tumatawag sa mga salinlahi mula sa simula? Ako, ang PANGINOON, ang una, at kasama ng huli; Ako nga\"</mark> (t.4). Gaano man kalakas ang Babilonia, hindi nito kayang itakda ang simula at wakas ng kasaysayan. Ang Diyos ay hindi nakakulong sa isang bahagi ng kasaysayan; Siya <mark>ang Panginoong namamahala sa kasaysayan</mark>. Kaya ang kasaysayan ng pagkabihag ng bayan ng Diyos at ang kasaysayan ng kanilang pagbabalik ay kapwa nasa ilalim ng pamamahala ng Diyos.", "Nang bumangon ang isang makapangyarihang mananakop, nanginig sa takot ang mga bansa at pinalakas ang loob ng isa't isa, \"Magpakalakas ka!\" (t.5–6). Ang pagpapalakas ng loob at pagtutulungan ay hindi mali sa kanilang sarili; ang mahalaga ay kung para saan sila nagtitipon ng lakas. Sa talata 7, nagtutulungan ang mga manggagawa sa paggawa ng diyus-diyusan, at sa huli ay <mark>ipinapako nila ito upang hindi gumalaw</mark>. Gumawa sila ng diyos upang magtanggol sa kanila, ngunit sila pa ang dapat umalalay rito upang hindi matumba. Kung ipinakita ng kabanata 40 ang kawalang-kapangyarihan ng mga diyus-diyusan, ipinapakita naman ng talata ngayon <mark>kung paano lumilikha ng mga diyus-diyusan ang takot ng tao</mark>. Pera, kakayahan, pagkilala ng tao—kailangan ang praktikal na paghahanda, ngunit hindi ito kailanman dapat maging pangunahing pinagtitiwalaan na pumapalit sa Diyos. Ang pagkakaibang ginagawa ng pananampalataya ay hindi kung may takot tayo, kundi kung kanino tayo umaasa sa ating takot."], "points": ["Naging pangunahing pinagtitiwalaan ko na ba, kapalit ng Diyos, ang aking praktikal na paghahanda at pagsisikap?"]}, {"title": "Talata 8–13 · Hindi Wakas ang Kabiguan—Hinahawakan Ako ng Diyos", "paragraphs": ["<mark>\"Ngunit ikaw, Israel, Aking lingkod, Jacob, na Aking pinili, supling ni Abraham, Aking kaibigan\"</mark> (t.8). Nagbabago ang tono ng talata. Ang buong komunidad ng Israel ay tinatawag na lingkod ng Diyos. Ang salitang 'lingkod' ay may kahulugang pinili sila ng Diyos para sa isang natatanging layunin at tinawag upang makibahagi sa Kanyang gawain. Gayunman, ito ang mga taong haharap sa hatol dahil sa pagsuway sa Kanyang salita. Gayunpaman, sinasabi ng Diyos, <mark>\"Pinili kita at hindi kita itinakwil\"</mark> (t.9). Hindi binalewala ng Diyos ang kanilang kasalanan, ngunit hindi rin Niya iniwan ang pangakong ibinigay Niya kay Abraham dahil sa kanilang kabiguan. <mark>Nabigo ang Israel, ngunit hindi nabigo ang Diyos sa Kanyang pangako.</mark>", "<mark>\"Huwag kang matakot, sapagkat Ako'y kasama mo; huwag kang manlupaypay, sapagkat Ako ang iyong Diyos; palalakasin kita, tutulungan kita, aalalayan kita ng Aking matuwid na kanang kamay\"</mark> (t.10). Ang dahilan kung bakit hindi nila kailangang matakot ay hindi dahil malakas ang Israel, kundi dahil kasama nila ang Diyos at Siya ang kanilang Diyos. Tatlong pangako: palalakasin, tutulungan, at aalalayan. Hindi lamang sinasabi ng Diyos, \"Lakasan mo ang loob mo\"; Siya <mark>ang mismong dahilan kung bakit tayo makapagpapakalakas-loob</mark>. Ang mga salita sa talata 11–12 na ang kanilang mga kaaway ay magiging parang wala ay hindi pangako ng personal na paghihiganti na babagsak ang lahat ng sumasalungat sa atin. Nangangahulugan itong walang kapangyarihang sa huli ay makahahadlang sa plano ng kaligtasan ng Diyos.", "Sa talata 10, umaalalay ang Diyos sa Kanyang matuwid na kanang kamay; sa talata 13, sinasabi Niya, <mark>\"Hinahawakan Ko ang iyong kanang kamay.\"</mark> Ito ay gaya ng isang magulang na mahigpit na humahawak sa kamay ng isang natatakot na bata. Ihambing ito sa diyus-diyusan sa talata 7. Kailangang alalayan ng tao ang diyus-diyusan upang hindi ito matumba, ngunit <mark>ang Diyos Mismo ang humahawak sa ating kamay kapag tayo'y babagsak na</mark>. Ang katiyakan ng pananampalataya ay hindi nakasalalay sa kung gaano kahigpit ang paghawak ko sa Diyos, kundi sa katapatan ng Diyos na humahawak sa akin. Para sa mga umaamin sa kanilang kabiguan at bumabalik sa Diyos, ang nakaraang kabiguan ay hindi ang huling kuwento."], "points": ["Kung natatakot akong lumapit sa Diyos dahil sa aking mga kabiguan, naaalala ko ba ang Diyos na humahawak sa aking kamay?"]}, {"title": "Talata 14–16 · Ang Manunubos na Ginagawang Bagong Panggiik ang Uod na si Jacob", "paragraphs": ["<mark>\"Huwag kang matakot, ikaw na uod na Jacob, kayong mga tao ng Israel! Ako ang tumutulong sa iyo, sabi ng PANGINOON; ang iyong Manunubos ay ang Banal ng Israel\"</mark> (t.14). Hindi ito nangangahulugang walang halaga ang Israel; inilalarawan nito ang kanilang mahinang kalagayan—walang magawa sa sarili nilang lakas. Sa ganitong mga tao, inihahayag ng Diyos ang Kanyang sarili bilang <mark>'Manunubos.'</mark> Ang Hebreong <i>go'el</i> ay tumutukoy sa malapit na kamag-anak na bumabawi sa nawalang lupain ng pamilya o tumutulong sa kapamilyang makalaya sa pagkaalipin. Ito rin ang ideya ng paglitaw ni Boaz bilang kamag-anak na manunubos sa aklat ng Ruth. Ang banal na Diyos na lumikha ng buong sansinukob ay nagiging <i>go'el</i> ng mahinang Israel.", "<mark>\"Narito, gagawin kitang panggiik, bago, matalas, at may mga ngipin; gigiikin mo ang mga bundok at dudurugin ang mga ito, at gagawin mong parang ipa ang mga burol\"</mark> (t.15). Ang parang uod na si Jacob sa talata 14 ay nagiging matalas na bagong panggiik sa talata 15. Ang panggiik ay isang tablang kahoy na may matatalas na bato o metal sa ilalim na ginagamit sa paggiik ng butil—at sinasabi ng Diyos na dudurugin nito ang mga bundok at burol. Bibigyan Niya sila ng kakayahang mapagtagumpayan kahit ang malalaking hadlang sa daan ng Kanyang plano ng kaligtasan. Ang pinakamahalaga rito ay <mark>kung sino ang nagdadala ng pagbabago</mark>. Hindi binago ng Israel ang sarili nito; ipinahahayag ng Diyos na Siya ang magpapanibago sa kanila. Hindi ito mensahe ng pagpapaunlad sa sarili tungkol sa pagtuklas ng potensyal ng tao at pagpapalakas sa sarili, kundi pahayag ng biyaya.", "Sa talata 16, tinatangay ng hangin ang ipang ginapas. Ngunit sa huli, sa ano nagmamalaki ang Israel? Hindi sa pagiging malakas na panggiik, kundi <mark>\"magagalak ka sa PANGINOON; sa Banal ng Israel ka magmamalaki.\"</mark> Dito nahahayag ang layunin ng pagbabago sa atin ng Diyos. <mark>Ang kapangyarihang ibinibigay ng Diyos ay hindi paraan upang itaas ang ating sarili kundi kaloob upang luwalhatiin ang Diyos.</mark> Hindi humihinto ang biyaya ng Diyos sa pag-iingat sa atin; binabago tayo nito at inaakay sa ating tungkulin. Para saan ko ginagamit ngayon ang mga kakayahan, karanasan, at pagkakataon ng panunumbalik na ibinigay sa akin ng Diyos?"], "points": ["Ginagamit ko ba ang lakas at panunumbalik na ibinigay ng Diyos upang itaas ang aking sarili, o upang magmalaki sa Kanya?"]}, {"title": "Talata 17–20 · Ang Layunin ng Panunumbalik: Upang Malaman ng mga Tao na ang Diyos ang Gumawa Nito", "paragraphs": ["<mark>\"Kapag ang mga dukha at nangangailangan ay naghahanap ng tubig, at wala, at ang kanilang dila ay tuyo sa uhaw, Ako, ang PANGINOON, ay sasagot sa kanila; Ako, ang Diyos ng Israel, ay hindi magpapabaya sa kanila\"</mark> (t.17). Larawan ito ng mga taong hindi kayang lutasin ang mga paghihirap sa buhay sa sarili nilang lakas. Sa talata 9, sinabi ng Diyos na 'hindi Niya itinakwil' ang Kanyang piniling bayan; sa talata 17, sinasabi Niyang kahit sa kanilang pangangailangan ay <mark>'hindi Niya sila pababayaan.'</mark> Ang katapatan ng Diyos ay hindi nananatili sa isang nakaraang pagpili; nagpapatuloy ito sa mga paghihirap ngayon.", "<mark>\"Magbubukas Ako ng mga ilog sa mga hubad na kaitaasan, at mga bukal sa gitna ng mga lambak. Gagawin Kong lawa ng tubig ang ilang, at mga bukal ng tubig ang tuyong lupa\"</mark> (t.18). Ipinaaalala nito ang Diyos na nagbigay ng tubig sa Kanyang bayan sa ilang noong exodo. Hindi lamang naghahanap ang Diyos ng lugar na may tubig; <mark>ginagawa Niyang masagana sa tubig ang mga lugar na walang tubig</mark>. Sa talata 18, ibinibigay Niya ang tubig na kailangan upang mabuhay, at sa talata 19, nagtatanim Siya ng mga puno gaya ng sedro, akasya, at mirto upang sila'y makapagpahinga. Kaya Niyang panibaguhin kahit ang mga kalagayang tila hindi na kayang ibalik ng tao.", "<mark>\"Upang kanilang makita at malaman, mapag-isipan at maunawaan nang sama-sama, na ang kamay ng PANGINOON ang gumawa nito, ang Banal ng Israel ang lumikha nito\"</mark> (t.20). Ito ang konklusyon ng talata ngayon. Tinatawag ng Diyos ang Kanyang pagpapanibago sa ilang na <mark>'paglikha.'</mark> Ang Diyos na lumikha ng mga bituin sa kabanata 40 ay pinanibago ngayon ang tuyong buhay ng Kanyang bayan, at sa pamamagitan ng panunumbalik na iyon ay ipinakikilala Niya kung sino Siya. Nakaugnay ito sa kabanata 43, kung saan tinatawag Niya ang Kanyang bayan na Kanyang mga saksi. Nananalangin tayo upang mailigtas sa paghihirap. Ngunit matapos tayong mailigtas, para saan tayo nabubuhay? Ang layunin ng biyaya ng Diyos ay hindi lamang ibalik ang dati nating maginhawang buhay, kundi upang <mark>lalo nating makilala ang Diyos at makilala rin Siya ng iba sa pamamagitan ng ating buhay</mark>."], "points": ["Matapos manumbalik mula sa paghihirap, nakikita ba sa aking buhay ang ginawa ng Diyos?"]}, {"title": "Pagsasabuhay · Magtiwala sa Kamay na Humahawak sa Iyo, at Mamuhay para sa Layunin ng Iyong Panunumbalik", "paragraphs": ["Tiwala si Pedro na susunod siya kay Jesus hanggang sa wakas. Ngunit nang dakpin si Jesus, tatlong beses Siyang ikinaila ni Pedro dahil sa takot. Hindi siya nakasunod hanggang sa wakas sa sarili niyang kalooban at kakayahan. Gayunman, sa Lucas 22, alam na ni Jesus ang kahinaan ni Pedro: <mark>\"Ipinanalangin kita na huwag manghina ang iyong pananampalataya. At kapag nanumbalik ka na, palakasin mo ang iyong mga kapatid\"</mark> (Lucas 22:32). Bago pa man mabigo si Pedro, sinabi na ni Jesus ang kanyang panunumbalik at tungkulin.", "Matapos mamatay sa krus at muling mabuhay, muling hinanap ni Jesus ang nabigong si Pedro. Sa Juan 21, nagtanong si Jesus, \"Mahal mo ba Ako?\" at muling ipinagkatiwala sa kanya ang pag-aalaga sa Kanyang mga tupa. <mark>Hindi nagkunwari si Jesus na hindi nangyari ang kabiguan ni Pedro, ngunit hindi rin Niya hinayaang tapusin ng kabiguang iyon ang kinabukasan ni Pedro.</mark> Sa panunumbalik ni Pedro, nakikita natin ang parehong biyaya ng Diyos na ginagawang bagong panggiik ang parang uod na si Jacob.", "Alalahanin ang dalawang bagay ngayon. Una, sa gitna ng takot, <mark>huwag lamang hanapin ang mga bagay na mahahawakan mo—tumingin sa Diyos na humahawak sa iyo</mark>. Ikalawa, <mark>alalahanin ang layunin kung bakit ka hinahawakan at pinanunumbalik ng Diyos</mark>. Sa pamamagitan ng krus at muling pagkabuhay, iniligtas tayo ni Jesus mula sa kasalanan at tinatawag tayong mga iniligtas upang makibahagi sa gawain ng kaharian ng Diyos—upang mamuhay na naghahayag ng biyayang natanggap natin sa tahanan, sa trabaho, sa paaralan, at saanman tayo isugo ng Diyos.", "Kung nakararanas ka ng takot ngayon, ipagkatiwala ang takot na iyon sa Diyos. At pagnilayan kung para kanino at para saan mo ginagamit ang biyaya at mga kakayahang ibinigay na sa iyo ng Diyos. Ang Diyos ay hindi lamang ang Siyang humahawak sa atin; Siya <mark>ang Siyang nagpapanibago sa atin at gumagamit sa atin upang matupad ang Kanyang kalooban</mark>. Ngayon, magtiwala sa kamay ng Diyos na humahawak sa iyo, at mamuhay nang karapat-dapat sa Kanyang layunin sa pagpapanibago sa iyo."], "points": ["Ipagkakatiwala ko sa Diyos ang aking mga takot at gagamitin ko ang biyaya at lakas na natanggap ko upang ihayag Siya."]}], "s3heading": "Suriin Ko ang Sarili Ngayon", "checks": [{"key": "c1", "text": "Sa harap ng takot, umasa ako sa Diyos bago sa pera, kakayahan, o tao."}, {"key": "c2", "text": "Hindi ako sumuko sa paglapit sa Diyos dahil sa aking mga nakaraang kabiguan."}, {"key": "c3", "text": "Ibinigay ko sa Diyos, hindi sa aking sarili, ang papuri sa aking nagawa o sa panunumbalik na natanggap ko."}, {"key": "c4", "text": "Ginamit ko ang biyaya at mga kakayahang natanggap ko upang patibayin ang iba at ihayag ang Diyos."}], "s4heading": "Isang-Linyang Pagninilay", "memoHint": "Ano ang nagpapatakot sa akin ngayon, at paano ko panghahawakan ang mga salitang \"Hinahawakan Ko ang iyong kanang kamay\" sa lugar na iyon?", "memoPlaceholder": "Sapat na ang isang pangungusap.", "s5heading": "Isang Gawain Ngayon", "pills": [{"key": "act1", "label": "Ipagkatiwala ang Takot", "value": "Isulat ang isang bagay na nagpapatakot sa iyo at manalangin, \"Hinahawakan ng Panginoon ang aking kamay\""}, {"key": "act2", "label": "Suriin ang Sinasandalan", "value": "Pagnilayan kung ano ang una mong hinahawakan kapag natatakot, at hanapin muna ang Diyos bago iyon"}, {"key": "act3", "label": "Magmalaki sa Diyos", "value": "Ibahagi sa isang tao ang isang kamakailang panunumbalik o tagumpay, at ipahayag ito bilang gawa ng Diyos"}, {"key": "act4", "label": "Palakasin ang Iba", "value": "Kontakin ang isang taong nahihirapan sa kabiguan o takot, at palakasin ang kanyang loob sa sama-samang panalangin"}, {"key": "act5", "label": "Isaulo ang Salita", "value": "Isaulo ang Isaias 41:10 at ulitin ito tuwing ikaw ay natatakot"}], "s6heading": "Panalangin Ngayon", "prayers": [{"key": "p1", "tag": "Pasasalamat", "text": "Salamat, Diyos, sa hindi pagtatakwil sa akin nang ako'y nabigo, sa pag-alalay sa akin ng Iyong matuwid na kanang kamay, at sa pagiging aking Manunubos na nagpapanibago kahit sa isang uod na gaya ko."}, {"key": "p2", "tag": "Pagsisisi", "text": "Pinagsisisihan ko ang paghawak sa pera, kakayahan, at tao bago sa Iyo kapag ako'y natatakot, at ang paggawa sa biyaya at panunumbalik na natanggap ko bilang sarili kong ipinagmamalaki."}, {"key": "p3", "tag": "Kahilingan", "text": "Tulungan Mo akong magtiwala sa Iyong kamay na humahawak sa akin kahit sa takot, at hayaan Mong makita sa aking buhay ang Iyong ginawa, ayon sa layunin kung bakit Mo ako pinanumbalik."}], "s7heading": "Aking mga Kahilingan sa Panalangin", "pr1Label": "Para sa akin", "pr1Placeholder": "Isang linya", "pr2Label": "Para sa grupo · kapwa", "pr2Placeholder": "Upang makapanalangin tayo sa isa't isa", "actWhoPlaceholder": "Kanino · kailan · paano (hal., tawagan si ○○ ngayong gabi)", "footer": "Magalak kayong lagi · Manalangin kayong walang tigil · Magpasalamat kayo sa lahat ng bagay", "ui": {"bgmIdle": "🎵 Musika sa Pagninilay ", "bgmPlaying": "🎵 Tumutugtog ", "bgmTapToPlay": "🎵 Pindutin para tumugtog ", "fontLabel": "Font", "copyBtn": "📋 Kopyahin para Ibahagi", "shareBtn": "Ibahagi", "toastMusicFail": "Hindi ma-load ang music file", "toastCopied": "Nakopya! I-paste sa inyong group chat", "toastLinkCopied": "Nakopya ang link", "savedPrefix": "Awtomatikong na-save sa device na ito · ", "loadedPrev": "Na-load ang dati mong sagot", "shareText": "Sumali sa QT natin ngayon", "copyHeader": "QT sharing", "copyCheck": "Nasuri", "copyAct": "Gawain", "copyPrayer": "Panalangin", "copyPrayerReq": "Mga kahilingan", "copyMine": "Ako", "copyGroup": "Grupo"}}};
+const KEY='qt-2026-11-28';
+const LANGKEY='qt-lang';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+
+let LANG = ls.get(LANGKEY) || 'ko';
+
+// 글자 크기
+$$('.fs button').forEach(b=>b.onclick=()=>{document.documentElement.className=b.dataset.f;$$('.fs button').forEach(x=>x.classList.toggle('on',x===b));ls.set('qt-font',b.dataset.f)});
+const f=ls.get('qt-font');if(f!==null){document.documentElement.className=f;$$('.fs button').forEach(x=>x.classList.toggle('on',x.dataset.f===f))}
+
+// 배경음악
+const au=$('#audio'),bb=$('#bgm');au.volume=0.35;
+function bgmUI(on){bb.classList.toggle('on',on);$('#bgmLabel').textContent=on?CONTENT[LANG].ui.bgmPlaying:CONTENT[LANG].ui.bgmIdle}
+bb.onclick=async()=>{if(au.paused){try{await au.play();bgmUI(true);ls.set('qt-bgm','1')}catch(e){toast(CONTENT[LANG].ui.toastMusicFail)}}else{au.pause();bgmUI(false);ls.set('qt-bgm','0')}};
+au.onerror=()=>{bb.style.display='none'};
+
+// 영상 링크 없으면 숨김
+if($('#video').getAttribute('href')==='VIDEO_URL')$('#video').style.display='none';
+
+function actToggle(){$('#actDetail').classList.toggle('on',!!$('input[name=act]:checked'))}
+
+function state(){return{
+  c:$$('input[name=c]:checked').map(i=>i.value),
+  memo:$('#memo').value.trim(),
+  act:($('input[name=act]:checked')||{}).value||'', actWho:$('#actWho').value.trim(),
+  p:$$('input[name=p]:checked').map(i=>i.value),
+  pr1:$('#pr1').value.trim(), pr2:$('#pr2').value.trim()
+}}
+function save(){const s=state();ls.set(KEY,JSON.stringify(s));
+  $('#saved').textContent=CONTENT[LANG].ui.savedPrefix+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}
+function load(){
+  const s=JSON.parse(ls.get(KEY)||'null');if(!s)return;
+  $$('input[name=c]').forEach(i=>i.checked=s.c.includes(i.value));
+  $('#memo').value=s.memo||'';if(s.act)($$('input[name=act]').find(i=>i.value===s.act)||{}).checked=true;
+  $('#actWho').value=s.actWho||'';$$('input[name=p]').forEach(i=>i.checked=(s.p||[]).includes(i.value));
+  $('#pr1').value=s.pr1||'';$('#pr2').value=s.pr2||'';
+  $('#saved').textContent=CONTENT[LANG].ui.loadedPrev}
+
+function bindDynamicEvents(){
+  document.removeEventListener('input',save);document.removeEventListener('change',changeHandler);
+  document.addEventListener('input',save);document.addEventListener('change',changeHandler);
+}
+function changeHandler(){actToggle();save()}
+
+function render(lang){
+  LANG = lang; ls.set(LANGKEY, lang);
+  const c = CONTENT[lang];
+  $$('#langsw button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+
+  $('#dateEl').textContent = c.date;
+  $('#refEl').textContent = c.ref;
+  $('#headlineEl').innerHTML = c.headline;
+  $('#videoLabelEl').textContent = c.videoLabel;
+  $('#videoSubEl').textContent = c.videoSub;
+  $('#s1heading').textContent = c.s1heading;
+  $('#verseEl').innerHTML = c.verse;
+  $('#verseRefEl').textContent = c.verseRef;
+  $('#s2heading').textContent = c.s2heading;
+
+  $('#cardsContainer').innerHTML = c.cards.map(card=>{
+    const paras = card.paragraphs.map(p=>`<p>${p}</p>`).join('');
+    const points = (card.points||[]).map(p=>`<div class="point">${p}</div>`).join('');
+    return `<div class="card"><b class="t">${card.title}</b>${paras}${points}</div>`;
+  }).join('');
+
+  $('#s3heading').textContent = c.s3heading;
+  $('#checklistContainer').innerHTML = c.checks.map(ch=>
+    `<label class="chk"><input type="checkbox" name="c" value="${ch.key}"><span>${ch.text}</span></label>`
+  ).join('');
+
+  $('#s4heading').textContent = c.s4heading;
+  $('#memoHintEl').textContent = c.memoHint;
+  $('#memo').placeholder = c.memoPlaceholder;
+
+  $('#s5heading').textContent = c.s5heading;
+  $('#pillsContainer').innerHTML = c.pills.map(p=>
+    `<label><input type="radio" name="act" value="${p.key}">${p.label}</label>`
+  ).join('');
+  $('#actWho').placeholder = c.actWhoPlaceholder;
+
+  $('#s6heading').textContent = c.s6heading;
+  $('#prayerContainer').innerHTML = c.prayers.map(p=>
+    `<label class="chk"><input type="checkbox" name="p" value="${p.key}"><span><em class="tag">${p.tag}</em>${p.text}</span></label>`
+  ).join('');
+
+  $('#s7heading').textContent = c.s7heading;
+  $('#pr1LabelEl').textContent = c.pr1Label; $('#pr1').placeholder = c.pr1Placeholder;
+  $('#pr2LabelEl').textContent = c.pr2Label; $('#pr2').placeholder = c.pr2Placeholder;
+
+  $('#footerEl').textContent = c.footer;
+
+  $('#fontLabel').textContent = c.ui.fontLabel;
+  $('#copy').textContent = c.ui.copyBtn;
+  $('#share').textContent = c.ui.shareBtn;
+  bgmUI(!au.paused);
+
+  bindDynamicEvents();
+  load();
+  actToggle();
+}
+
+$$('#langsw button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+
+render(LANG);
+
+$('#copy').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const s=state();
+  const checkMap={}; c.checks.forEach(ch=>checkMap[ch.key]=ch.text);
+  const actMap={}; c.pills.forEach(p=>actMap[p.key]=p.label);
+  const prayerMap={}; c.prayers.forEach(p=>prayerMap[p.key]=p.tag);
+  const L=[`📖 ${c.date} ${c.ref} ${c.ui.copyHeader}`,`✅ ${c.ui.copyCheck} ${s.c.length}/${c.checks.length}`];
+  if(s.memo)L.push(`💭 ${s.memo}`);
+  if(s.act)L.push(`🙏 ${c.ui.copyAct}: ${actMap[s.act]||s.act}`+(s.actWho?` — ${s.actWho}`:''));
+  if(s.p.length)L.push(`🕯 ${c.ui.copyPrayer}: ${s.p.map(k=>prayerMap[k]||k).join('·')}`);
+  if(s.pr1||s.pr2)L.push(`🕊 ${c.ui.copyPrayerReq}`+(s.pr1?`\n  ${c.ui.copyMine} — ${s.pr1}`:'')+(s.pr2?`\n  ${c.ui.copyGroup} — ${s.pr2}`:''));
+  const txt=L.join('\n');
+  try{await navigator.clipboard.writeText(txt);toast(c.ui.toastCopied)}catch(e){prompt('',txt)}
+};
+$('#share').onclick=async()=>{
+  const c = CONTENT[LANG];
+  const d={title:document.title,text:c.ui.shareText,url:location.href};
+  if(navigator.share){try{await navigator.share(d)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);toast(c.ui.toastLinkCopied)}catch(e){prompt('',location.href)}}
+};
+</script>
+
+</body>
+</html>
